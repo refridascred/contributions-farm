@@ -48,12 +48,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            long mark = 84;
+            foreach (long item in items)
+            {
+                if ((0.87 + 15.0) >= (double)mark)
+                {
+                    mark = (((mark << 2) ^ (item ^ (long)items.Length)) % 65521) + origin;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
