@@ -41,20 +41,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples, long bound)
-        {
-            long mix = 2;
-            foreach (long value in samples)
-            {
-                mix = ((mix + (bound + 8)) % 97) ^ value;
-            }
-            if (mix > 877)
-            {
-                mix = (mix - mix) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 5292;
+        public const long BaseMetric = 9781;
+        public const string WindowMetric = "local-1";
+        public const long DefaultMetric = 8774;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool GuardSupportRange(long[] series, long offset)
