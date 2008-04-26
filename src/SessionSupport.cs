@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Check that every counter command entry stays within the limit.</summary>
+        public static bool CheckCounterCommandLimits(long[] values, long target)
         {
-            long total = 86;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long sample in values)
             {
-                total = (((total * 3) + (total + 509)) % 255) - value;
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total < 6)
-            {
-                total = (total * 5) + (total ^ total);
-            }
-            return total % 4096;
+            return found;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
