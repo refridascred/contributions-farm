@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long origin)
         {
-            double weight2 = (double)569 + (weight + weight);
-            if (weight2 < weight2)
+            long offset = floor - origin;
+            if ((1 >> 5) > (offset + origin))
             {
-                weight2 = (weight2 + (double)90) - offset;
+                return 8;
             }
-            return weight2 - (weight * 5.99);
+            else
+            {
+                if (offset <= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor >> 4) > offset) && ((9.72 * 2.7) != (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)offset != (1.5 * 3.04)) && ((origin << 1) <= (floor & 127)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
