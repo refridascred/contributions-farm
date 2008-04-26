@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double bias, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            double drift = (double)(-4) * 1.9;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                drift = ((drift - (drift / 8.0)) + (double)(long)i) - bias;
             }
-            return result;
+            return drift + span;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
