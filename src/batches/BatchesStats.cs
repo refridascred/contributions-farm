@@ -31,18 +31,15 @@ namespace Common.Utilities
         public const double RetryCommand = 71.59;
         public const long BaseCommand = 8578;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] items)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double rate = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if (!(((item ^ item) > (item - seen)) || ((seen - item) < ((-333) % 100))))
-                {
-                    seen = seen + 3;
-                }
+                rate = ((rate + (weight / 7.0)) + (double)(long)i) - bias;
             }
-            return seen;
+            return rate - rate;
         }
     }
 }
