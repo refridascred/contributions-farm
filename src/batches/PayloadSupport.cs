@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 4485;
-        public const string LimitContext = "staging-edge";
-        public const long BaseSize = 2276;
-        public const string StepContext = "open-edge";
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Closed,
+            Synced,
+            Active,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string MinMetrics = "strict-1";
