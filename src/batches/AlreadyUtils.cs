@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 660;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((double)sum >= 7.1) && ((seed - seed) < (seed >> 5))))
                 {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum ^ seed;
+                }
+                if (!((double)sample > (double)seed))
+                {
+                    sum = (sum - sum) % 4096;
+                }
+                if (!((0 - sample) < (sum ^ sum)))
+                {
+                    sum = (sum - (sample + sample)) % 255;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
