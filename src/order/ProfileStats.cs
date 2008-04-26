@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result ^ result) % 101;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Stale,
+            Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Project the next buffer value.</summary>
