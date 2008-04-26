@@ -50,15 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double scale, double bias)
         {
-            long score = 9;
-            foreach (long entry in values)
+            double scale2 = (double)((-3) >> 5);
+            if (scale2 <= (scale + bias))
             {
-                score = (score - entry) % 4096;
+                scale2 = scale2 - (bias - scale2);
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - scale) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
     }
 }
