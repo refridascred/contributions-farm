@@ -31,19 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] levels, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long anchor = 698;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((bound % 8) < 5)
                 {
-                    score = ((score << 3) ^ (target >> 1)) - (long)i2;
+                    anchor = (((anchor << 2) ^ bound) % 101) - reading;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            if (anchor > 414)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two filter measurements.</summary>
