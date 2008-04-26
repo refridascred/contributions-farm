@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double gain, double bias)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double weight = (gain / 6.0) - (double)9;
-            return (weight - 3.0) + bias;
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
