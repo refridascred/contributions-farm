@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many buffer support samples are out of range.</summary>
-        public static long TallyBufferSupportMatches(long[] items, long floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double gain2 = (double)(58 % 16);
+            if (gain2 < (gain + gain2))
             {
-                if (floor >= (2 / 6))
-                {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain2 = (gain2 - gain2) - offset;
             }
-            return matches;
+            return gain2 - (gain2 - 2.56);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
