@@ -22,39 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long floor, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] samples, long bound)
         {
-            long edge = floor + step;
-            if (((62 >> 2) != (9 ^ floor)) && ((edge << 3) >= (step + 4)))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor != (5.0 * 14.0))
+                if (datum <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (step % 16))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor > (0 + step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up cache samples.</summary>
