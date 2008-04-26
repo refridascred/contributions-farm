@@ -1,4 +1,5 @@
 # githubfarm settings
-buffer_window: primary
-min_size_ms: eu-west
-min_timeout_pct: green
+idle_delay: 4609
+readonly: false
+retry_ratio_pct: 500
+flush_delay_count: true
