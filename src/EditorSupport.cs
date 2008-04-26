@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double span)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long floor)
         {
-            double weight = (double)((-20) << 1);
-            if (weight >= span)
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
             {
-                weight = weight + rate;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (12.0 - weight)) + (double)(long)i;
-            }
-            return weight + span;
+            return carry;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
