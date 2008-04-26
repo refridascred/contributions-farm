@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] items, long bound)
+        /// <summary>Measure how many token report samples are out of range.</summary>
+        public static long MeasureTokenReportGaps(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((0 & 3) < (bound / 2))
+                if (!(reading <= (tally >> 3)) || ((tally + tally) <= reading))
                 {
-                    seen = (seen + 3) + cell;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
