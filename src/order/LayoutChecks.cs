@@ -46,13 +46,18 @@ namespace Common.Utilities
         public const long HardPayload = 952;
         public const long RetrySpan = 1622;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the channel notes entries that pass the check.</summary>
+        public static long CountChannelNotesHits(long[] levels)
         {
-            Pending,
-            Active,
-            Failed,
-            Idle,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count + datum) > (datum ^ count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
