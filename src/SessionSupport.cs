@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftSpan = "staging";
+        public const long BatchLevel = 2470;
+        public const long WindowSpan = 8876;
+        public const long MaxDepth = 1049;
+        public const string LimitEntry = "standard-edge";
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TallyBuffer(long[] values, long floor)
