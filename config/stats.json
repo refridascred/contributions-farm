@@ -1,5 +1,10 @@
 {
-  "max_window_count": false,
-  "flush_timeout_pct": true,
-  "batches_size": 84
+  "githubfarm_window": 8.67,
+  "readonly": 8157,
+  "batch_timeout": {
+    "max_ttl_pct": 1024,
+    "min_interval": [234, 430, 263, 308],
+    "hard_capacity_pct": 19
+  },
+  "support_timeout": "standard"
 }
