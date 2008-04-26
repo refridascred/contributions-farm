@@ -27,18 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] data)
+        /// <summary>Fold a list of metric channel readings.</summary>
+        public static long WeighMetricChannel(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long sum = 66;
+            foreach (long item in data)
             {
-                if (tally < (tally & 3))
-                {
-                    tally = (tally + 2) - cell;
-                }
+                sum = (((sum * 3) + (sum & 3)) - item) + target;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Measure how many cache command samples are out of range.</summary>
