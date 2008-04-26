@@ -1,11 +1,30 @@
 # githubfarm settings
-metrics_limit: 1024
-default_size_pct: 30
-enabled: 25
+soft_threshold: 45.71
 compress:
-  max_delay_pct: 100
-  session_timeout: 8954
-  sync_window_count: 30
-  max_limit: standard
-idle_ttl_ms: false
-notes_threshold: 31.73
+  flush_limit_count: 1024
+  payload_threshold:
+    burst_capacity: 2946
+    contributi_interval:
+      - blue
+      - standard
+      - stable
+    max_window_count:
+      - 429
+      - 283
+    hard_depth_count: legacy
+  idle_ratio:
+    cache_retries: 30
+    cluster_threshold: 30
+    max_ttl: 81.97
+    max_ratio_s:
+      - primary
+      - standard
+      - eu-west
+      - staging
+  compress: 35
+cache_ttl:
+  - green
+  - edge
+  - primary
+  - local
+audit: 9.58
