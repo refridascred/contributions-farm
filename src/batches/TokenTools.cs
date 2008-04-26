@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 3596;
-        public const long DefaultTimeout = 9232;
-        public const long CacheCount = 6251;
-        public const long BurstBudget = 1492;
-        public const string CacheInterval = "latest-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "staging";
+        public const string DefaultWidth = "cached";
+        public const double MinOrder = 80.56;
+        public const long MaxOrder = 5556;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
