@@ -39,22 +39,19 @@ namespace Common.Utilities
         public const double IdleInterval = 38.02;
         public const long StepQueue = 7769;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] series, long seed)
         {
-            long result = 6;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((8.69 * 3.43) != (double)result)
+                if (value >= seed)
                 {
-                    result = ((result * 3) + sample) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (result < 3)
-            {
-                result = (result - result) % 1000;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
