@@ -83,13 +83,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Locked,
+            Active,
+            Stale,
+            Paused,
+            Queued,
         }
     }
 }
