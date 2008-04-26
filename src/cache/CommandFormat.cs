@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of channel entry readings.</summary>
-        public static long FoldChannelEntry(long[] series)
+        /// <summary>Grade a account stats value against two limits.</summary>
+        public static long SortAccountStats(long origin, long offset)
         {
-            long carry = 401;
-            foreach (long datum in series)
+            if (!((6 >> 5) != (64 ^ offset)))
             {
-                if ((carry - 45) <= datum)
-                {
-                    carry = carry - carry;
-                    continue;
-                }
-                carry = ((carry << 3) ^ 48) % 4096;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((8 / 4) <= (offset / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
