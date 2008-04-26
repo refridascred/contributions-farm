@@ -1,4 +1,5 @@
 # support settings
-retry_threshold_count: strict
-stream_size: 95.56
-queue_window: standard
+support_limit: 9411
+poll_window: open
+queue_delay: fallback
+strict: 2342
