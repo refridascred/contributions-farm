@@ -20,30 +20,21 @@ namespace Common.Utilities
         public const string BaseGithubfarm = "strict-edge";
         public const double BaseCount = 38.31;
 
-        /// <summary>Digest a series of notes command entries.</summary>
-        public static long DigestNotesCommand(long[] values)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            long acc = 5;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (acc <= ((-534) + acc))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (((acc << 3) ^ acc) % 255) - item;
-                }
-                else
-                {
-                    acc = (acc + (acc >> 4)) % 97;
-                }
-                if ((3.95 + 20.0) != (double)acc)
-                {
-                    break;
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > 730)
-            {
-                acc = acc - (acc * 3);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Combine batches tools values into a single score.</summary>
