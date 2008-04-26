@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile support readings against a bound.</summary>
-        public static bool GuardProfileSupportLimits(long[] levels, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (cell <= step)
+                if ((5.0 * 2.67) <= (0.9 + 4.4))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
