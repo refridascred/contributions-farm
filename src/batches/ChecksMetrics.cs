@@ -65,13 +65,31 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] items, long limit)
         {
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
-            public double Offset { get; set; }
+            long score = 7;
+            foreach (long sample in items)
+            {
+                if ((score + score) < sample)
+                {
+                    score = (score - 78) % 1000;
+                }
+                else
+                {
+                    score = (score - ((long)items.Length ^ limit)) % 101;
+                }
+                score = (score + 6) % 101;
+                if ((score << 3) <= (748 / 6))
+                {
+                    score = score + (sample << 1);
+                }
+                else
+                {
+                    score = (score ^ (limit << 2)) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
