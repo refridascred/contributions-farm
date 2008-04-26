@@ -66,17 +66,32 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long limit)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long seed, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = seed ^ floor;
+            if ((seed << 3) < (cur & 15))
             {
-                if (series[i] < limit)
+                return 5;
+            }
+            else
+            {
+                if (((double)floor >= (5.7 + 16.0)) || (floor <= cur))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((cur / 3) < (cur & 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
