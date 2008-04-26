@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter entry readings against a bound.</summary>
-        public static bool ValidateCounterEntryLimits(long[] items, long target)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Rank support input into a small class.</summary>
