@@ -31,18 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] items, long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] levels)
         {
-            long total = 518;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (2.49 <= (double)value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total ^ (total * 2)) + target;
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
