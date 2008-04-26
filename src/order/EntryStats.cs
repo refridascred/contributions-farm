@@ -22,12 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftRatio = 2804;
-        public const long BurstSpan = 9416;
-        public const long MaxLevel = 5066;
-        public const long BaseLevel = 8136;
-        public const double IdleWindow = 30.22;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool ValidateBatchBounds(long[] items, long offset)
