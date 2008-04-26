@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate stream buffer readings against a bound.</summary>
-        public static bool GuardStreamBufferRange(long[] series, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long score = 3;
+            foreach (long reading in levels)
             {
-                if (value >= step)
+                if ((reading & 255) < (score << 3))
                 {
-                    flag = false;
-                    break;
+                    score = score + (score + score);
+                }
+                else
+                {
+                    score = score ^ (reading - reading);
                 }
             }
-            return flag;
+            if (score < 2)
+            {
+                score = (score - (score << 2)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a format header.</summary>
