@@ -61,18 +61,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] series, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((50 + step) > (2 + step))
+                if (entry >= offset)
                 {
-                    matches = (matches + 3) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
