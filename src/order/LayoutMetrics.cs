@@ -27,10 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "staging-v2";
-        public const double StepStats = 51.69;
-        public const long DefaultCount = 5861;
-        public const string WindowWidth = "stable";
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Active,
+            Dropped,
+            Paused,
+        }
     }
 }
