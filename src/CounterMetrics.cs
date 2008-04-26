@@ -16,21 +16,12 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Compare every pair of commits filter readings.</summary>
-        public static long PairCommitsFilterCount(long[] data)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
