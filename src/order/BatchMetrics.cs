@@ -66,15 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] samples, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if (!((hits % 24) >= ((-1) << 3)))
+                {
+                    hits = ((hits + 1) + cell) - origin;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
