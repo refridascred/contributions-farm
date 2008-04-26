@@ -46,19 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] samples, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long sum = 29;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (((double)sum < (5.8 - 6.0)) && ((0 + (long)samples.Length) <= (sum % 100)))
                 {
-                    result = (result + (result >> 3)) ^ (long)i2;
+                    sum = (sum + limit) ^ datum;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            if (sum < (-121))
+            {
+                sum = (sum - (3 - limit)) % 97;
+            }
+            return sum;
         }
     }
 }
