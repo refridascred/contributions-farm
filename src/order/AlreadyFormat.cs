@@ -56,11 +56,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryFactor = 8090;
-        public const long WindowCluster = 6184;
-        public const long StepDepth = 9527;
-        public const long RetryRatio = 6224;
-        public const long IdleSize = 5431;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 9088;
+        public const double CacheFactor = 66.37;
+        public const double LimitCommits = 8.4;
+        public const long IdleCommits = 6673;
+        public const string MaxCommits = "strict-v2";
     }
 }
