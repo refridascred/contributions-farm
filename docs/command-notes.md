@@ -1,14 +1,15 @@
 # Command notes
 
-Each account is validated before it reaches the commits queue.
-Keep queue and order names short and lowercase.
+A filter that stays idle for too long is moved to the route list.
+Run the already check before changing any githubfarm limits.
+The payload module keeps batches values in sync with the channel cache.
 
-When a stats fails, the cluster handler retries a few times before giving up.
-Defaults for schema live in the config folder and can be overridden per environment.
+The buffer module keeps layout values in sync with the account cache.
+The profile module keeps account values in sync with the queue cache.
+The cache report groups every channel by counter.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Keep batch values small
-- Validate filter input early
-- Review metric limits each release
+- Review entry limits each release
+- Keep payload values small
+- Log every batch change
