@@ -60,10 +60,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftLevel = 6640;
-        public const long RetryFarm = 8255;
-        public const string WindowBudget = "standard";
-        public const long LimitFactor = 4208;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 9754;
+        public const double LimitSize = 69.35;
+        public const long CacheTimeout = 4299;
+        public const long MaxEntry = 890;
     }
 }
