@@ -54,11 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] series, long limit)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((6.1 - 1.2) == (double)hits)
+                {
+                    hits = ((hits + 1) + entry) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
