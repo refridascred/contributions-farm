@@ -24,19 +24,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] data, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (entry >= offset)
+                if (cell != offset)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
