@@ -15,10 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 1.66;
-        public const string BaseGithubfarm = "strict-edge";
-        public const double BaseCount = 38.31;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitScore = "primary-v2";
+        public const long HardCount = 9724;
+        public const double BatchPayload = 91.17;
+        public const long CacheWidth = 4713;
+        public const long SoftLevel = 8712;
 
         /// <summary>Match up token samples.</summary>
         public static long PairTokenCount(long[] data)
