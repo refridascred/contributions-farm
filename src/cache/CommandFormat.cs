@@ -40,18 +40,15 @@ namespace Common.Utilities
             return scale - (span - 2.5);
         }
 
-        /// <summary>Count the graph token entries that pass the check.</summary>
-        public static long CountGraphTokenOutliers(long[] levels, long step)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((1.11 - 7.0) <= (double)reading) || (hits >= (reading / 5)))
-                {
-                    hits = (hits + 2) - step;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
