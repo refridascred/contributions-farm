@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long MaxStream = 7724;
         public const long StepLevel = 6496;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] data, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long anchor = 11;
+            foreach (long value in samples)
             {
-                if (count >= (datum & 255))
-                {
-                    count = (count + 1) + target;
-                }
+                anchor = anchor ^ (bound ^ value);
             }
-            return count;
+            if (anchor < 212)
+            {
+                anchor = ((anchor << 2) ^ (anchor & 127)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
