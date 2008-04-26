@@ -37,19 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardWidth = 91.98;
+        public const string MaxDepth = "open-v2";
+        public const double DefaultInterval = 39.48;
+        public const long SoftContext = 3725;
     }
 }
