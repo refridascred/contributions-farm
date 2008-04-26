@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double weight, double bias)
         {
-            long state = 7;
-            foreach (long value in samples)
+            double rate = weight;
+            if (rate < (double)959)
             {
-                if ((value + value) >= (-15))
-                {
-                    state = (state - (state - state)) % 4096;
-                }
-                if ((703 & 15) < (value + state))
-                {
-                    state = state + (state & 3);
-                }
-                else
-                {
-                    state = ((state * 5) + (value + value)) % 65521;
-                }
-                state = state - state;
+                rate = (rate + rate) - bias;
             }
-            return state;
+            return rate + (rate + weight);
         }
 
         /// <summary>Hold a metrics summary.</summary>
