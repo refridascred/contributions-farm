@@ -65,17 +65,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] items, long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
