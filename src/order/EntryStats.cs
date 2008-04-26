@@ -22,17 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] samples, long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 16;
+            foreach (long cell in items)
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark - (940 + step)) % 4096) ^ cell;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Match up entry samples.</summary>
