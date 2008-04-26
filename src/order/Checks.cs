@@ -57,17 +57,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] items, long seed)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] <= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the account state values.</summary>
