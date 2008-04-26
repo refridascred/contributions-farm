@@ -59,12 +59,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long seed)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == seed)
+                if (readings[i] > limit)
                 {
                     return (long)i;
                 }
