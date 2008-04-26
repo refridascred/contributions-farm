@@ -57,17 +57,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] items, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                if ((50 + step) > (2 + step))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
