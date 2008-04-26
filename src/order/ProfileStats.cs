@@ -40,25 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a buffer record counter forward.</summary>
-        public static long StepBufferRecord(long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                mark = (mark - (mark << 1)) % 97;
-                if (((double)mark >= (3.46 / 8.0)) || ((mark - step) == (long)i))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    mark = ((mark << 3) ^ step) % 97;
+                    result = (result + (result >> 3)) ^ (long)i2;
                 }
-                else
-                {
-                    mark = mark - (95 * 2);
-                    mark = (mark * 2) + (step + (long)i);
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return mark;
+            return result;
         }
     }
 }
