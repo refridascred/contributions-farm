@@ -20,11 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] readings)
         {
-            public double Stamp { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((((hits - hits) >= hits) && ((double)hits > (8.4 + 7.02))) || !((sample + sample) < (104 + sample)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
