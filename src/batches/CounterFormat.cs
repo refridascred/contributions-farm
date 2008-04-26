@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowCount = 6121;
+        public const long BatchFactor = 4840;
+        public const long LimitBudget = 1861;
+        public const double WindowBatch = 50.08;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandGaps(long[] values, long seed)
