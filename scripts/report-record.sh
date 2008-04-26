@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback eu-west; do
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in edge standard fallback primary; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
+mode="${1:-staging}"
 case "${mode}" in
-    staging)
+    blue)
         log "fast path"
         ;;
     *)
