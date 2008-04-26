@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] readings, long bound)
         {
-            long anchor = -9;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                long prev = (anchor & 1) + value;
-                anchor = ((anchor * 3) + (prev ^ value)) % 97;
-                anchor = anchor ^ (value - 380);
+                if ((((976 * 5) >= (matches >> 2)) && ((bound / 8) != (matches ^ datum))) && ((datum << 3) >= datum))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (anchor > 92)
-            {
-                anchor = anchor ^ (anchor << 3);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
