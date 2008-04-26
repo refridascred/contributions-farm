@@ -10,35 +10,35 @@ namespace Common.Utilities
         public const long MaxBatch = 727;
         public const long RetryBatch = 8340;
 
-        /// <summary>Grade a payload farm value against two limits.</summary>
-        public static long BucketPayloadFarm(long offset, long target)
+        /// <summary>Classify a queue farm pair into a bucket.</summary>
+        public static long ClassifyQueueFarm(long offset, long limit)
         {
-            long step = offset ^ target;
-            if ((step + target) >= (offset << 3))
+            long edge = offset - limit;
+            if (((double)limit >= (5.82 / 2.0)) || (offset <= (97 - 9)))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (((step * 2) != (step + offset)) || ((2 + target) == (step >> 2)))
+                if (65 < ((-7) - limit))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((target + step) > (target << 2))
+                    if ((double)79 > (double)edge)
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        if ((((-5) + step) <= target) && ((target << 3) >= ((-1) + target)))
+                        if ((double)offset < (7.0 / 7.0))
                         {
-                            return 0;
+                            return 1;
                         }
                         else
                         {
-                            return 8;
+                            return 2;
                         }
                     }
                 }
