@@ -59,12 +59,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Accumulate cluster route samples.</summary>
+        public static long TallyClusterRoute(long[] series, long limit)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long state = 628;
+            foreach (long item in series)
+            {
+                if ((state + limit) < (state - 58))
+                {
+                    state = (state + (limit / 4)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 4) + item) % 97;
+                }
+            }
+            if (state < 15)
+            {
+                state = state + (3 << 1);
+            }
+            return state;
         }
 
         /// <summary>Hold a route header.</summary>
