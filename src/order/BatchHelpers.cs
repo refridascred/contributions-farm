@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] series, long offset)
+        /// <summary>Validate notes editor readings against a bound.</summary>
+        public static bool CheckNotesEditorLimits(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((3.0 + 2.7) != (double)seen)
+                if (entry > offset)
                 {
-                    seen = ((seen + 2) ^ reading) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
