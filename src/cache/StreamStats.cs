@@ -39,22 +39,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long score = 33;
+            foreach (long value in readings)
             {
-                if (((-87) + cell) > (hits - 6))
+                if ((step + 79) > score)
                 {
-                    hits = hits + 1;
+                    score = (score + (step - 57)) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    score = (score << 2) ^ (value + score);
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
