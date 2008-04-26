@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count payload graph pairs that satisfy a relation.</summary>
-        public static long PairPayloadGraphCount(long[] readings)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Accumulate context tools samples.</summary>
