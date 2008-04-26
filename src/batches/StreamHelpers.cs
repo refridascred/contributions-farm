@@ -63,26 +63,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster route samples.</summary>
-        public static long TallyClusterRoute(long[] series, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] data)
         {
-            long state = 628;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((state + limit) < (state - 58))
+                if ((((double)matches > 5.42) || ((sample << 2) < (matches - 282))) || ((sample % 60) < 57))
                 {
-                    state = (state + (limit / 4)) % 4096;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    state = ((state * 4) + item) % 97;
+                    matches = matches - 1;
                 }
             }
-            if (state < 15)
-            {
-                state = state + (3 << 1);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a route header.</summary>
