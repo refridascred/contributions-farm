@@ -1,13 +1,8 @@
 {
-  "cache_size": false,
-  "warm_limit_ms": 8256,
-  "report_limit": ["legacy", "strict", "fallback"],
-  "schema_ratio": {
-    "batch_capacity": 0.38,
-    "soft_retries": ["edge", "legacy", "blue"],
-    "cache_limit_s": false,
-    "checks_threshold": "eu-west",
-    "flush_window_ms": "staging",
-    "strict": "strict"
-  }
+  "soft_timeout": true,
+  "audit": "fallback",
+  "idle_ratio_count": 69,
+  "max_delay": [17, 296, 260],
+  "max_size": 23.81,
+  "poll_ratio_s": false
 }
