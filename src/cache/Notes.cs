@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a report commits pair into a bucket.</summary>
-        public static long BucketReportCommits(long origin, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long offset2 = origin - offset;
-            if (origin > (offset2 << 1))
+            long mark = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin & 7) >= (offset2 ^ offset))
+                if ((cell ^ (-16)) > mark)
                 {
-                    return 6;
+                    mark = (mark << 3) ^ mark;
                 }
                 else
                 {
-                    return 1;
+                    mark = (mark + (cell + (long)values.Length)) % 255;
                 }
             }
+            if (mark > 303)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Locate a token reading by value.</summary>
