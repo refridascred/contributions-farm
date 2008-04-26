@@ -40,12 +40,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "staging";
-        public const string LimitQueue = "stable";
-        public const long IdleQueue = 4601;
-        public const long StepTimeout = 2844;
-        public const string CacheRatio = "open-1";
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "staging";
+        public const long SoftSize = 9041;
+        public const long CacheCount = 3743;
+        public const long CacheReport = 8907;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferGaps(long[] values, long bound)
