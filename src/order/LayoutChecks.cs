@@ -27,12 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheWidth = 594;
-        public const double IdlePayload = 37.26;
-        public const double BurstRatio = 17.5;
-        public const long HardPayload = 952;
-        public const long RetrySpan = 1622;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Retry,
+            Synced,
+            Ready,
+            Done,
+            Paused,
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LookupEditorIndex(long[] values, long origin)
