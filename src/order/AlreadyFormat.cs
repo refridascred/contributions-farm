@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (matches <= (matches + (-748)))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 4301;
+        public const double IdleQueue = 78.65;
+        public const double BaseInterval = 2.88;
 
         /// <summary>Count graph cache pairs that satisfy a relation.</summary>
         public static long PairGraphCacheCount(long[] readings)
