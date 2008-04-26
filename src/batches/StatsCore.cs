@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long offset, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items)
         {
-            if (((offset & 3) < (floor % 64)) || ((floor + offset) > (offset - 14)))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) < (floor + 54))
+                if ((499 * 5) >= matches)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 2) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
