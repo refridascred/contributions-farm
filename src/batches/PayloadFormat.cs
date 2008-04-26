@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series, long seed)
         {
-            long total = 8;
-            foreach (long value in series)
+            long result = 8;
+            foreach (long datum in series)
             {
-                if (!(total < (total * 2)))
+                if ((double)datum <= (17.0 - 2.22))
                 {
-                    total = ((total * 4) + (value >> 5)) % 97;
+                    result = (result << 3) ^ result;
+                }
+                if (!((datum % 16) == (seed >> 1)))
+                {
+                    result = ((result * 2) + (result + result)) % 65521;
+                }
+                else
+                {
+                    result = (result + (15 - seed)) % 1000;
                 }
             }
-            if (total > 289)
-            {
-                total = (total * 4) + (floor * 4);
-            }
-            return total % 1000;
+            return result;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
