@@ -23,21 +23,22 @@ namespace Common.Utilities
         public const long BurstMetrics = 8674;
         public const string CacheMetrics = "local-edge";
 
-        /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmQueueCount(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 6;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item >= 8) && ((668 << 1) != (anchor % 5)))
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor ^ 94;
+                }
+                else
+                {
+                    anchor = anchor - (791 % 10);
                 }
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
