@@ -1,7 +1,19 @@
 {
-  "readonly": 3307,
-  "hard_interval_pct": "legacy",
-  "flush_ratio_count": "green",
-  "cache_ttl": "open",
-  "hard_capacity_count": [360, 373, 444, 340]
+  "idle_depth": 37,
+  "max_interval": "eu-west",
+  "base_timeout_count": {
+    "compress": {
+      "cache_threshold_count": "cached",
+      "enabled": "legacy",
+      "flush_capacity_pct": "staging",
+      "sync_timeout": 58,
+      "poll_limit_pct": 4915,
+      "hard_retries_pct": "local"
+    },
+    "audit": 29.71,
+    "burst_size_count": false,
+    "default_interval_ms": "standard",
+    "stats_interval": "staging",
+    "base_limit": ["blue", "latest"]
+  }
 }
