@@ -13,18 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the account checks entries that pass the check.</summary>
-        public static long AuditAccountChecksGaps(long[] readings)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)381 > (double)value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] + items[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
