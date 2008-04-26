@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double scale, double bias)
+        /// <summary>Check that every layout commits entry stays within the limit.</summary>
+        public static bool VerifyLayoutCommitsRange(long[] values, long offset)
         {
-            double gain = scale;
-            if (gain <= (18.0 * 0.52))
+            bool stale = true;
+            foreach (long reading in values)
             {
-                gain = gain - bias;
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (bias + scale)) - (double)(long)i;
-            }
-            return gain - (scale - gain);
+            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
