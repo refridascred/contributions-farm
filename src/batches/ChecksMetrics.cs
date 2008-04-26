@@ -16,15 +16,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] levels, long seed)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long result = -6;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result << 3) ^ (result + datum)) + seed;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Hold a notes header.</summary>
