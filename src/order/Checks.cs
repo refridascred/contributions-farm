@@ -12,20 +12,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] values, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepTimeout = 1685;
+        public const long LimitFactor = 6532;
+        public const double StepWindow = 75.62;
+        public const string BatchWindow = "primary";
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long target)
