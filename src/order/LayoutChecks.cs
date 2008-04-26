@@ -50,39 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report route input into a small class.</summary>
-        public static long SortReportRoute(long step, long step2)
-        {
-            if (((step2 + step) <= (step2 << 1)) && (step >= step2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step < step2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)step >= (2.86 + 8.28)) && ((step + step) == (step2 >> 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((17.0 - 4.0) < (double)step2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 1613;
+        public const long HardFilter = 1864;
+        public const long BurstFilter = 5116;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LookupEditorIndex(long[] values, long origin)
