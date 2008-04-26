@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long acc = 285;
-            foreach (long datum in samples)
-            {
-                acc = acc - (offset / 7);
-                if (((double)acc != (5.44 * 7.53)) && ((datum + 58) <= (datum + acc)))
-                {
-                    acc = (acc + (75 + datum)) % 65521;
-                }
-            }
-            return acc % 65521;
+            Retry,
+            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Combine window values into a single score.</summary>
