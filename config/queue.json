@@ -1,5 +1,12 @@
 {
-  "min_ttl_s": ["standard", "legacy", "latest"],
-  "strict": 9,
-  "format_timeout": [238, 245, 21, 342]
+  "retry_timeout_count": ["legacy", "green", "blue"],
+  "max_depth": ["edge", "cached", "primary"],
+  "max_delay_pct": {
+    "retry_delay_count": 93.33,
+    "already_limit": ["standard", "edge", "strict"],
+    "dry_run": "edge",
+    "warm_retries": "blue",
+    "hard_delay_pct": 45.38,
+    "warm_timeout_s": false
+  }
 }
