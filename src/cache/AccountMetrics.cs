@@ -65,27 +65,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels, long floor)
+        /// <summary>Validate record channel readings against a bound.</summary>
+        public static bool CheckRecordChannelRange(long[] items, long origin)
         {
-            long mark = 65;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                mark = (mark * 4) + (346 - floor);
-                if (!((19.0 / 8.0) <= (double)floor))
+                if (datum != origin)
                 {
-                    mark = (mark ^ (item + mark)) % 65521;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (item << 1);
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < 221)
-            {
-                mark = ((mark * 3) + (floor * 5)) % 97;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Combine context format values into a single score.</summary>
