@@ -24,14 +24,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long offset, long step)
         {
-            Ready,
-            Active,
-            New,
-            Draft,
-            Closed,
+            if ((step % 100) < offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset > 9.93)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((79 + step) < (step + offset)) || ((offset - offset) <= (step & 255)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel record.</summary>
