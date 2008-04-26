@@ -40,9 +40,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheWidth = 1633;
-        public const string MaxInterval = "open-edge";
-        public const string IdleBatches = "open";
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double bias, double floor)
+        {
+            double mean = (double)(-85) / 4.0;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (floor + bias)) + (double)(long)i;
+            }
+            return mean + mean;
+        }
     }
 }
