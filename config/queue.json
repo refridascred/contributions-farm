@@ -1,8 +1,13 @@
 {
-  "checks_size": "local",
-  "burst_limit_ms": "primary",
-  "persist": true,
-  "cache_ttl_pct": 6646,
-  "compress": 3101,
-  "batch_ratio_count": "standard"
+  "report_limit": true,
+  "default_delay_s": {
+    "idle_limit_pct": 25.48,
+    "compress": "primary",
+    "batch_window_s": "local",
+    "warm_limit": false,
+    "record_ttl": 81
+  },
+  "flush_threshold_pct": 71.74,
+  "dry_run": 33.63,
+  "readonly": 2152
 }
