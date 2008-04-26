@@ -29,21 +29,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of stats githubfarm readings.</summary>
-        public static long PairStatsGithubfarmCount(long[] levels)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
