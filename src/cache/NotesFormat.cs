@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] samples, long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!(reading < (reading * 5)))
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a support summary.</summary>
