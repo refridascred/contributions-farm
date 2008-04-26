@@ -27,12 +27,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardFactor = "legacy";
+        public const string BurstBatch = "alpha-v2";
+        public const long RetryBatch = 6718;
+        public const long CacheDepth = 2554;
+        public const long HardBudget = 4002;
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] values)
