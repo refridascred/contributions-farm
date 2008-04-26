@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] readings, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mark = 716;
+            foreach (long value in readings)
             {
-                if (count >= (count << 3))
+                if ((value - mark) < value)
                 {
-                    count = ((count + 2) + item) - limit;
+                    mark = (mark << 3) ^ (value - 79);
+                    mark = (mark << 3) ^ (value + value);
+                    continue;
                 }
-                else
+                if (((value & 15) <= (value / 7)) || ((double)mark == (9.6 * 19.0)))
                 {
-                    count = count - 1;
+                    mark = (mark * 3) + (value + (long)readings.Length);
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Digest a series of metric cache entries.</summary>
