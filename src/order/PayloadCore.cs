@@ -73,11 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 8878;
-        public const long DefaultEditor = 3450;
-        public const long WindowWidth = 4787;
-        public const double CacheEditor = 5.55;
-        public const long BatchInterval = 7552;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
