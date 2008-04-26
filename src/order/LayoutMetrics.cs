@@ -34,9 +34,22 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 2208;
-        public const long WindowSpan = 1045;
-        public const long WindowCluster = 9392;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] series)
+        {
+            long total = 594;
+            foreach (long reading in series)
+            {
+                if (((total * 4) <= 31) || ((total ^ reading) >= (total + total)))
+                {
+                    total = (total + (reading - reading)) % 97;
+                }
+            }
+            if (total > 90)
+            {
+                total = total - 860;
+            }
+            return total;
+        }
     }
 }
