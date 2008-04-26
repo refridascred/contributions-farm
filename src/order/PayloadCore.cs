@@ -46,21 +46,16 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum + (seed + sum)) % 65521;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
     }
 }
