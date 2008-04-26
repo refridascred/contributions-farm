@@ -51,19 +51,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of record order readings.</summary>
-        public static long WeighRecordOrder(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] series, long seed)
         {
-            long carry = 66;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in series)
             {
-                carry = (carry - (datum >> 3)) % 101;
-                if (datum > (carry + datum))
+                if (value >= seed)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return carry % 65521;
+            return ready;
         }
     }
 }
