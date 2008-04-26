@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double rate = bias;
-            return (rate - (rate / 3.0)) + weight;
+            Failed,
+            Retry,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a entry entry.</summary>
