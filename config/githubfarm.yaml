@@ -1,9 +1,9 @@
 # githubfarm settings
-persist: 12.95
-filter_limit: 8.31
-layout_retries: blue
-sync_ratio_pct:
-  burst_threshold: blue
-  cluster_threshold: stable
-  default_ratio: 23.45
-stream_depth: 60
+readonly: 22.18
+cache_timeout_pct: standard
+batch_threshold_count: true
+strict: latest
+burst_threshold_count:
+  - local
+  - staging
+enabled: false
