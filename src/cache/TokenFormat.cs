@@ -26,21 +26,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)81 + (1.0 * 11.0);
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = ((gain + (offset - gain)) + (double)(long)i) - rate;
             }
-            return hits;
+            return gain - offset;
         }
     }
 }
