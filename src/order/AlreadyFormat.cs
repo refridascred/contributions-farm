@@ -68,15 +68,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Measure how many window stream samples are out of range.</summary>
+        public static long TallyWindowStreamGaps(long[] items)
         {
-            long result = 55;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                result = (((result * 4) + (result % 97)) % 1000) + cell;
+                if (matches >= datum)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
