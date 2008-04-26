@@ -65,22 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks command readings against a rule.</summary>
-        public static long TallyChecksCommandGaps(long[] values, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (((double)entry != (8.0 * 7.43)) && !((step ^ 700) > matches))
+                if (datum < limit)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Accumulate batch samples.</summary>
