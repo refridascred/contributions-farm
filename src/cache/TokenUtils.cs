@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Done,
-            Dropped,
-            Paused,
-            Ready,
+            Draft,
+            Synced,
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the counter profile entries that pass the check.</summary>
