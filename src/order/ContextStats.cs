@@ -47,22 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] values, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)(long)values.Length != (double)matches)
-                {
-                    matches = ((matches + 3) + value) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = mark - ((long)i / 5);
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Match up token samples.</summary>
