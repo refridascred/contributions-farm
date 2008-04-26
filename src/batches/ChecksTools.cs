@@ -41,12 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] levels)
         {
-            Pending,
-            Dropped,
-            Paused,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (matches >= (sample - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
