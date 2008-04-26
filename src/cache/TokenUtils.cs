@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Project the next checks cluster value.</summary>
+        public static double ProjectChecksCluster(double bias, double bias2)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            double scale = (double)((-3) - (-685));
+            return ((scale - (scale + 1.8)) + bias) + bias2;
         }
 
         /// <summary>Measure how many counter cluster samples are out of range.</summary>
