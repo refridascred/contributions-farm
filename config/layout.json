@@ -1,5 +1,8 @@
 {
-  "retry_size_ms": "strict",
-  "compress": 1253,
-  "cache_window": 8.81
+  "batch_ratio_pct": 75,
+  "max_size": 58.55,
+  "graph_delay": "local",
+  "burst_delay_ms": 71,
+  "format_limit": ["strict", "edge", "primary"],
+  "verbose": 1024
 }
