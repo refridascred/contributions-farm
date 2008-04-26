@@ -41,18 +41,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                state = state - (state & 1);
-                long cur = offset;
-                state = (state << 3) ^ cur;
-                state = ((state * 5) + (long)i) % 65521;
+                if (!(((item ^ item) > (item - seen)) || ((seen - item) < ((-333) % 100))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
