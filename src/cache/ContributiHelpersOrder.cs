@@ -24,31 +24,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long offset, long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            if ((step % 100) < offset)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset > 9.93)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 8;
+                    carry = ((carry ^ (offset / 5)) % 65521) - (long)i2;
                 }
-                else
-                {
-                    if (((79 + step) < (step + offset)) || ((offset - offset) <= (step & 255)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = (carry ^ (873 - carry)) % 4096;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
