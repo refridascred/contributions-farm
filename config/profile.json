@@ -1,7 +1,8 @@
 {
-  "default_capacity_pct": ["edge", "open", "local", "staging"],
-  "hard_size": "standard",
-  "sync_size_s": "primary",
-  "entry_ratio": "latest",
-  "batch_window_pct": false
+  "support_ttl": [285, 232, 285, 430],
+  "batch_window": 60,
+  "base_depth_s": "open",
+  "buffer_retries": "green",
+  "farm_retries": true,
+  "commits_window": true
 }
