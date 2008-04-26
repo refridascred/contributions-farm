@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Failed,
-            Done,
-            New,
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
