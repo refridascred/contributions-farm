@@ -1,8 +1,9 @@
-id,label,owner,active
-1,strict,6.59,green
-2,650,75.81,361
-3,strict,32.21,legacy
-4,39.8,195,local
-5,130,878,fallback
-6,88.77,stable,eu-west
-7,447,729,14.84
+id,label,state,count
+1,640,548,19.66
+2,edge,34.03,105
+3,0,661,874
+4,529,912,450
+5,strict,70.59,996
+6,edge,675,strict
+7,365,415,318
+8,94.79,91.55,233
