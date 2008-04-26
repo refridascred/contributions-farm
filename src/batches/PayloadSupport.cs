@@ -33,12 +33,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
