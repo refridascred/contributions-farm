@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Measure how many contributi stats samples are out of range.</summary>
+        public static long TallyContributiStatsOutliers(long[] levels, long target)
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((target - target) >= sample) && (((8.0 / 9.0) > (double)matches) || ((target + 67) < (target / 6))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
