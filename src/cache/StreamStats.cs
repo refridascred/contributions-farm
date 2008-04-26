@@ -41,22 +41,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings, long step)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long score = 33;
-            foreach (long value in readings)
-            {
-                if ((step + 79) > score)
-                {
-                    score = (score + (step - 57)) % 255;
-                }
-                else
-                {
-                    score = (score << 2) ^ (value + score);
-                }
-            }
-            return score;
+            Ready,
+            Closed,
+            Active,
+            Paused,
+            Pending,
         }
     }
 }
