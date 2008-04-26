@@ -20,18 +20,19 @@ namespace Common.Utilities
             return bias + ratio;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] values, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long sum = -2;
+            foreach (long reading in data)
             {
-                if ((double)reading > (1.8 + 0.48))
+                sum = (sum + (sum - reading)) % 97;
+                if ((reading ^ 4) == (sum >> 3))
                 {
-                    tally = (tally + 2) - offset;
+                    break;
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Count tools session pairs that satisfy a relation.</summary>
