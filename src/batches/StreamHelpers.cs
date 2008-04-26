@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] readings, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            double drift = offset * 20.0;
+            if (drift > ratio)
             {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - (ratio / 3.0);
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
