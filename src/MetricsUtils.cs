@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count payload counter pairs that satisfy a relation.</summary>
-        public static long PairPayloadCounterCount(long[] readings)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((3.3 / 5.0) < (double)bound)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((seed >> 3) > bound) || ((double)seed >= (0.8 + 8.12)))
                 {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
