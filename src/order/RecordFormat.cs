@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit metric githubfarm readings against a rule.</summary>
-        public static long AuditMetricGithubfarmMatches(long[] readings, long limit)
+        /// <summary>Measure how many route token samples are out of range.</summary>
+        public static long MeasureRouteTokenMatches(long[] readings)
         {
-            long tally = 0;
+            long matches = 0;
             foreach (long value in readings)
             {
-                if (!(tally > limit))
+                if ((double)matches <= 5.62)
                 {
-                    tally = (tally + 3) ^ value;
+                    matches = (matches + 1) + value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Grade a order record value against two limits.</summary>
