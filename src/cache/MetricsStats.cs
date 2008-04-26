@@ -16,20 +16,21 @@ namespace Common.Utilities
             return bias2 + (rate / 7.0);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] values, long offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] readings)
         {
-            long carry = 6;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry - (carry ^ datum);
-                if ((2 % 97) < (offset - carry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry + carry) % 4096;
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = (carry - offset) % 4096;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Blend two filter measurements.</summary>
