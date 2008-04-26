@@ -1,6 +1,8 @@
 {
-  "max_size": true,
-  "soft_interval_s": true,
-  "batch_ttl": 69.01,
-  "batch_capacity_ms": 60.4
+  "min_threshold_s": ["legacy", "stable", "fallback", "latest"],
+  "poll_timeout_ms": "legacy",
+  "order_interval": false,
+  "default_capacity_s": true,
+  "base_limit": "staging",
+  "burst_limit_count": 2602
 }
