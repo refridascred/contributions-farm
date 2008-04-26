@@ -40,18 +40,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the format contributi entries that pass the check.</summary>
-        public static long CountFormatContributiOutliers(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long score = 44;
+            foreach (long datum in levels)
             {
-                if ((double)matches < 2.8)
-                {
-                    matches = (matches + 1) + value;
-                }
+                score = (score + (score >> 4)) ^ datum;
             }
-            return matches;
+            if (score < (-36))
+            {
+                score = (score - 562) % 255;
+            }
+            return score % 1000;
         }
     }
 }
