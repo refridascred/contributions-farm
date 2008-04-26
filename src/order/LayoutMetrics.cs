@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double ratio, double offset)
+        /// <summary>Locate a queue checks reading by value.</summary>
+        public static long LookupQueueChecksIndex(long[] items, long step)
         {
-            double weight = offset / 4.0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - (ratio + ratio)) + (double)(long)i;
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return weight + 7.0;
+            return -1;
         }
 
         /// <summary>Hold a account entry.</summary>
