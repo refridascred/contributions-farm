@@ -1,8 +1,5 @@
 {
-  "support_ttl": [285, 232, 285, 430],
-  "batch_window": 60,
-  "base_depth_s": "open",
-  "buffer_retries": "green",
-  "farm_retries": true,
-  "commits_window": true
+  "hard_size": 77.97,
+  "counter_timeout": 4317,
+  "idle_depth_ms": false
 }
