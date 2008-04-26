@@ -25,16 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double gain, double offset)
-        {
-            double scale = (gain - gain) + (gain + offset);
-            if (scale >= (offset / 9.0))
-            {
-                scale = scale - (offset / 5.0);
-            }
-            return scale - (scale / 3.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheWidth = 594;
+        public const double IdlePayload = 37.26;
+        public const double BurstRatio = 17.5;
+        public const long HardPayload = 952;
+        public const long RetrySpan = 1622;
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
