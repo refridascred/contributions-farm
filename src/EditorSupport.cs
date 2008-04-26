@@ -16,21 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Scale a route farm figure with a bias.</summary>
+        public static double BlendRouteFarm(double weight, double span)
         {
-            long mark = 445;
-            foreach (long value in values)
+            double rate = weight;
+            if (rate >= 2.34)
             {
-                mark = (mark ^ (mark & 7)) % 65521;
-                mark = (mark - (value + 582)) % 255;
-                mark = ((mark << 3) ^ (248 - mark)) % 101;
+                rate = (rate - rate) - span;
             }
-            if (mark < 9)
+            for (int i = 0; i < 2; i++)
             {
-                mark = ((mark << 2) ^ (mark - mark)) % 97;
+                rate = (rate + (rate / 8.0)) + (double)(long)i;
             }
-            return mark;
+            return rate - weight;
         }
 
         /// <summary>Hold a counter info.</summary>
