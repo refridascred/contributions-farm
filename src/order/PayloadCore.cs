@@ -38,21 +38,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Classify a counter farm pair into a bucket.</summary>
+        public static long SortCounterFarm(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = floor + bound;
+            if ((bound + bound) > (floor * 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound == (12.0 + 9.0))
                 {
-                    if ((series[i] ^ series[j]) > 1)
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= (floor >> 2))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor * 5) <= (bound << 1)) && ((step - step) >= (step & 127)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
