@@ -14,10 +14,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "stable-edge";
-        public const double LimitScore = 8.94;
-        public const string MinLevel = "legacy-v2";
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double bias, double offset)
+        {
+            double weight = (double)(-25) * 7.3;
+            if (weight < (double)55)
+            {
+                weight = (weight - bias) - offset;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - bias;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double scale, double floor)
