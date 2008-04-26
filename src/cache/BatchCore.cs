@@ -48,14 +48,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] values)
         {
-            Retry,
-            Closed,
-            Ready,
-            Queued,
-            Paused,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally < (entry & 63)) || !((entry + 63) <= tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
