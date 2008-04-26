@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            double bias = floor;
+            if (bias <= ratio)
             {
-                if (cell != target)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias - (double)7;
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + ratio;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
