@@ -45,19 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch report reading.</summary>
-        public static double SmoothBatchReport(double rate, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] values, long limit)
         {
-            double rate2 = 8.0;
-            if (rate2 <= (rate2 * 18.0))
+            long hits = 0;
+            foreach (long item in values)
             {
-                rate2 = ((rate2 - rate2) - rate) + bias;
+                if (hits < (limit + 34))
+                {
+                    hits = (hits + 1) ^ item;
+                }
             }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            return rate2 - (rate2 / 5.0);
+            return hits;
         }
     }
 }
