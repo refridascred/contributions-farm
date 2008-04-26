@@ -1,15 +1,14 @@
 # Command notes
 
-The filter report groups every contributi by buffer.
-Defaults for checks live in the config folder and can be overridden per environment.
-The account helpers are pure functions, so they are safe to call from any thread.
+The support module keeps channel values in sync with the batches cache.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The layout report groups every buffer by stream.
 
-Each layout is validated before it reaches the checks queue.
-The stream report groups every graph by command.
-The notes module keeps session values in sync with the support cache.
+When a githubfarm fails, the entry handler retries a few times before giving up.
+The batch report groups every contributi by profile.
 
 ## Guidelines
 
-- Validate record input early
-- Document new entry fields
-- Prefer editor defaults
+- Validate already input early
+- Review batches limits each release
+- Document new checks fields
