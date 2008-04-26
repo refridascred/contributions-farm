@@ -19,18 +19,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings, long limit)
+        /// <summary>Check that every notes record entry stays within the limit.</summary>
+        public static bool ValidateNotesRecordLimits(long[] samples, long floor)
         {
-            long anchor = -1;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (!((double)limit == (0.84 / 9.0)))
+                if (entry != floor)
                 {
-                    anchor = ((anchor - limit) % 1000) ^ datum;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
     }
 }
