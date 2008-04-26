@@ -1,5 +1,5 @@
 {
-  "burst_limit_count": true,
-  "poll_capacity": false,
-  "retry_threshold": 19.98
+  "warm_retries_ms": ["local", "blue"],
+  "max_retries_pct": 79,
+  "soft_capacity": ["green", "stable", "strict"]
 }
