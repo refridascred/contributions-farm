@@ -14,13 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] series, long seed)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of order route readings.</summary>
