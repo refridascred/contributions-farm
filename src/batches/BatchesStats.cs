@@ -27,11 +27,38 @@ namespace Common.Utilities
             return scale + (offset * 9.0);
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long bound, long target)
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
+            if ((double)target <= (5.05 + 13.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound / 5) > (bound << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound % 24) < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (18.0 >= (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already class values.</summary>
