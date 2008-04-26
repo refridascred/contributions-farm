@@ -31,15 +31,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] values, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] readings, long limit)
         {
-            long total = 18;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                total = (((total - (total / 7)) % 65521) ^ value) - seed;
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Count the format commits entries that pass the check.</summary>
