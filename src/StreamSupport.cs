@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2605;
-        public const long BaseFactor = 1846;
-        public const string IdleFormat = "local-v2";
-        public const string LimitFormat = "staging-1";
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Find the first payload batches entry that matches the target.</summary>
         public static long LookupPayloadBatchesIndex(long[] levels, long seed)
