@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "staging-1";
-        public const double SoftDepth = 49.8;
-        public const long CacheInterval = 2190;
-        public const long HardRecord = 4068;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Idle,
+            Dropped,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double MaxSupport = 26.64;
