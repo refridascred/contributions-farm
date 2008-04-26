@@ -80,12 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            Ready,
-            Draft,
-            New,
+            long carry = 710;
+            foreach (long datum in levels)
+            {
+                carry = carry + (75 / 3);
+                if ((datum << 2) >= (datum ^ datum))
+                {
+                    carry = ((carry << 3) ^ (5 / 3)) % 65521;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
