@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
