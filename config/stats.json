@@ -1,10 +1,5 @@
 {
-  "base_window": 76.52,
-  "min_size": true,
-  "base_threshold": {
-    "contributi_ttl": "green",
-    "min_retries": "legacy",
-    "verbose": 25.98,
-    "audit": 87
-  }
+  "cache_interval": [270, 385],
+  "min_window_count": 7713,
+  "base_delay_count": 8240
 }
