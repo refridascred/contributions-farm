@@ -16,14 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] readings, long origin)
         {
-            Draft,
-            New,
-            Queued,
-            Stale,
-            Pending,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value + origin) <= 0)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
