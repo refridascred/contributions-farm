@@ -46,20 +46,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if (acc <= limit)
-                {
-                    acc = ((acc << 3) ^ (limit + 57)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryRatio = 68.22;
+        public const long DefaultAlready = 800;
+        public const string LimitCount = "alpha-v2";
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
