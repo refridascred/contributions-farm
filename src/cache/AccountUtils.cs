@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] series, long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
