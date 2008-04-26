@@ -67,32 +67,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long seed, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long cur = seed ^ floor;
-            if ((seed << 3) < (cur & 15))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor >= (5.7 + 16.0)) || (floor <= cur))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur / 3) < (cur & 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            Locked,
         }
     }
 }
