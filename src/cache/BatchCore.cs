@@ -44,11 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 94.49;
-        public const double MinDepth = 82.15;
-        public const double BaseSpan = 43.37;
-        public const double SoftContext = 11.69;
-        public const double SoftWidth = 75.89;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Retry,
+            Closed,
+            Ready,
+            Queued,
+            Paused,
+        }
     }
 }
