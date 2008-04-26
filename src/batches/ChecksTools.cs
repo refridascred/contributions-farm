@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)tally == (3.97 + 3.0))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
