@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the payload layout series from a seed.</summary>
-        public static long DerivePayloadLayout(long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] items, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long acc = 7;
+            foreach (long entry in items)
             {
-                acc = acc - (566 << 2);
-                acc = ((acc * 3) + (long)i) % 4093;
+                acc = ((acc + acc) + entry) + offset;
             }
-            return acc;
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
