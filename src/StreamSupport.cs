@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a checks metric reading by value.</summary>
-        public static long LocateChecksMetricIndex(long[] items, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (items[i] >= floor)
+                if (cell != origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a order summary.</summary>
