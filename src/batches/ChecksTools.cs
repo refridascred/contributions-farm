@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double bias, double floor)
-        {
-            double scale = floor;
-            if (scale <= (scale + scale))
-            {
-                scale = (scale + (double)75) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (double)40) + (double)(long)i;
-            }
-            return scale + (double)9;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 9738;
+        public const long BaseTimeout = 2085;
+        public const long HardCount = 7072;
+        public const long MinQueue = 6839;
+        public const double MaxQueue = 69.81;
 
         /// <summary>Blend two session schema measurements.</summary>
         public static double ScaleSessionSchema(double rate, double span)
