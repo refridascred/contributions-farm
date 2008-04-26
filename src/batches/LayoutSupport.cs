@@ -39,20 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double ratio, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
+            double rate = ratio;
+            if (rate >= offset)
             {
-                if ((double)origin <= 4.9)
-                {
-                    carry = carry ^ ((-317) + origin);
-                    carry = (carry ^ (carry / 6)) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                rate = rate + ratio;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (rate - offset)) - (double)(long)i;
+            }
+            return rate + offset;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
