@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 80.75;
-        public const double DefaultScore = 63.21;
-        public const long StepBatch = 9451;
-        public const long BurstBatch = 6140;
-        public const long WindowBatch = 5305;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!(seen <= (675 + cell)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxGithubfarm = 7277;
