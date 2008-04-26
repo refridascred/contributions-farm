@@ -28,27 +28,19 @@ namespace Common.Utilities
             return scale + (double)843;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data, long step)
         {
-            long total = 509;
-            foreach (long datum in readings)
+            long anchor = 5;
+            foreach (long cell in data)
             {
-                total = total - (datum % 97);
-                if (((double)datum == (0.27 * 3.0)) && ((double)113 != (double)total))
-                {
-                    total = (total - datum) % 4096;
-                }
-                else
-                {
-                    total = total - (total ^ total);
-                }
+                anchor = ((anchor << 2) ^ (step % 60)) + cell;
             }
-            if (total < 4)
+            if (anchor > 8)
             {
-                total = (total + (total << 3)) % 4096;
+                anchor = anchor ^ (anchor & 3);
             }
-            return total % 1000;
+            return anchor;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
