@@ -21,17 +21,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a tools account reading by value.</summary>
-        public static long LocateToolsAccountIndex(long[] series, long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long limit, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((step <= (limit >> 1)) || ((limit & 63) == (limit / 6)))
             {
-                if (series[i] >= step)
+                return 6;
+            }
+            else
+            {
+                if (1.0 > (double)limit)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
