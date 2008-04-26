@@ -43,14 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            Ready,
-            Closed,
-            Active,
-            Paused,
-            Pending,
+            long mark = 563;
+            foreach (long entry in readings)
+            {
+                if ((entry > (mark * 3)) && ((mark & 127) < entry))
+                {
+                    mark = (mark ^ (entry - mark)) % 255;
+                }
+                else
+                {
+                    mark = mark - (mark / 7);
+                }
+            }
+            return mark;
         }
     }
 }
