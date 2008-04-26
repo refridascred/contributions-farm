@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            long state = 94;
+            foreach (long datum in samples)
+            {
+                if ((double)datum != (3.7 / 4.0))
+                {
+                    state = ((state * 5) + (datum + (-54))) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
