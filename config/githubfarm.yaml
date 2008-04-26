@@ -1,5 +1,31 @@
 # githubfarm settings
-idle_delay: 4609
-readonly: false
-retry_ratio_pct: 500
-flush_delay_count: true
+poll_ratio: 500
+max_threshold:
+  - 391
+  - 342
+  - 474
+  - 397
+hard_ratio_s: 250
+compress:
+  burst_threshold_s: 30
+  counter_size: legacy
+  token_interval: staging
+  token_ratio:
+    metrics_retries:
+      - eu-west
+      - cached
+      - cached
+      - local
+    dry_run: primary
+    verbose:
+      - stable
+      - primary
+      - latest
+    burst_capacity_count: staging
+    hard_capacity: staging
+    compress: false
+  idle_size_ms: legacy
+batch_capacity:
+  cache_timeout: 92.21
+  soft_ttl: edge
+  min_delay_s: true
