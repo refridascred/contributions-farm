@@ -30,18 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] readings)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = 691;
+            foreach (long entry in readings)
             {
-                if ((tally + tally) >= (tally - tally))
-                {
-                    tally = (tally + 3) + sample;
-                }
+                mark = (((mark - (mark + (-938))) % 1000) ^ entry) - floor;
+                mark = (mark - (mark + 43)) % 4096;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
