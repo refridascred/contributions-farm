@@ -33,21 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state ^ 42;
-                if (!(state < offset))
+                if (levels[i] < bound)
                 {
-                    state = state ^ (long)i;
+                    return (long)i;
                 }
-                state = (state ^ (state + 90)) % 255;
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
