@@ -30,12 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardFactor = "legacy";
-        public const string BurstBatch = "alpha-v2";
-        public const long RetryBatch = 6718;
-        public const long CacheDepth = 2554;
-        public const long HardBudget = 4002;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally + tally) >= (tally - tally))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double MaxContext = 94.49;
