@@ -19,12 +19,21 @@ namespace Common.Utilities
             return ((scale + 18.0) + rate) + bias;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Compare every pair of contributi queue readings.</summary>
+        public static long MatchContributiQueueCount(long[] data)
         {
-            Retry,
-            Locked,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
