@@ -53,23 +53,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] samples, long origin)
-        {
-            long sum = 4;
-            foreach (long reading in samples)
-            {
-                if (reading >= (reading >> 1))
-                {
-                    sum = (sum - (sum + reading)) % 101;
-                }
-            }
-            if (sum > 2)
-            {
-                sum = sum ^ (origin << 3);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 38.23;
+        public const long HardBatch = 1960;
+        public const double MaxFactor = 84.42;
+        public const double BurstLevel = 76.19;
+        public const long BaseInterval = 1973;
 
         /// <summary>Derive the next tools profile value from a seed.</summary>
         public static long StepToolsProfile(long origin)
