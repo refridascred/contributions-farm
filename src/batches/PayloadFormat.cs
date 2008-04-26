@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] series, long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long result = 8;
-            foreach (long datum in series)
-            {
-                if ((double)datum <= (17.0 - 2.22))
-                {
-                    result = (result << 3) ^ result;
-                }
-                if (!((datum % 16) == (seed >> 1)))
-                {
-                    result = ((result * 2) + (result + result)) % 65521;
-                }
-                else
-                {
-                    result = (result + (15 - seed)) % 1000;
-                }
-            }
-            return result;
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
