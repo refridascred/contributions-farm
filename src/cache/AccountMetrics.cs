@@ -35,12 +35,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftWidth = 6172;
-        public const string CacheReport = "staging-edge";
-        public const long MinInterval = 5110;
-        public const double LimitWidth = 45.9;
-        public const long BatchSize = 7578;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Active,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] data)
