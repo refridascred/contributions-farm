@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] readings, long offset)
+        /// <summary>Count the entry cache entries that pass the check.</summary>
+        public static long TallyEntryCacheHits(long[] readings, long limit)
         {
-            bool ok = true;
+            long seen = 0;
             foreach (long reading in readings)
             {
-                if (reading >= offset)
+                if ((7 + limit) > limit)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Locate a queue checks reading by value.</summary>
