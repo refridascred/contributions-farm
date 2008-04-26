@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 3) + (floor & 31)) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleLevel = 436;
+        public const string CacheCount = "alpha-v2";
+        public const double IdleSpan = 17.43;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
