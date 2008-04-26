@@ -38,17 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route queue sample.</summary>
-        public static long SeekRouteQueueIndex(long[] samples, long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (samples[i] >= seed)
+                if (cell != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a command record.</summary>
