@@ -28,21 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 396;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell % 8) != (cell << 2))
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score << 2) ^ (cell + score);
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
