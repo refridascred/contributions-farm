@@ -1,6 +1,6 @@
 {
-  "enabled": "local",
-  "token_timeout": "edge",
-  "batch_window_s": 3528,
-  "contributi_retries": 43.5
+  "farm_ratio": "stable",
+  "verbose": [401, 182],
+  "flush_capacity_ms": [95, 116],
+  "min_limit": 96.49
 }
