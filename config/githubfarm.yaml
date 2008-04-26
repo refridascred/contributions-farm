@@ -1,9 +1,15 @@
 # githubfarm settings
-readonly: 22.18
-cache_timeout_pct: standard
-batch_threshold_count: true
-strict: latest
-burst_threshold_count:
-  - local
-  - staging
-enabled: false
+hard_ratio_s:
+  - standard
+  - standard
+  - open
+batch_window: false
+verbose:
+  - 440
+  - 184
+  - 457
+dry_run:
+  - blue
+  - eu-west
+  - eu-west
+  - latest
