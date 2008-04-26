@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mean + (mean / 9.0);
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] readings)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double weight2 = (weight - weight) * 7.73;
+            if (weight2 < (double)259)
             {
-                if ((7 / 2) != (item ^ count))
-                {
-                    count = count + 3;
-                }
+                weight2 = weight2 - floor;
             }
-            return count;
+            else
+            {
+                weight2 = weight2 + weight;
+            }
+            return weight2 - floor;
         }
 
         /// <summary>Fold a list of editor metrics readings.</summary>
