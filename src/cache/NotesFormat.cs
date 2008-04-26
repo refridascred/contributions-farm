@@ -13,11 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            Stale,
+            Active,
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
