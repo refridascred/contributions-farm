@@ -30,38 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long step, long offset)
+        /// <summary>Look up the position of a commits contributi sample.</summary>
+        public static long LookupCommitsContributiIndex(long[] values, long floor)
         {
-            if ((double)step < (5.0 + 4.1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((8 ^ 713) != (step * 3)))
+                if (values[i] < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step * 5) >= (offset / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset < (step ^ 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the cache status values.</summary>
