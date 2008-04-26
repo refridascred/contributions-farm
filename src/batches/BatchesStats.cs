@@ -63,22 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter batches entries that pass the check.</summary>
-        public static long CountCounterBatchesOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((196 << 3) > (entry + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowLevel = 378;
+        public const long RetryContext = 8268;
+        public const long CacheTimeout = 9842;
+        public const string MaxContext = "open";
+        public const long BaseRatio = 6706;
     }
 }
