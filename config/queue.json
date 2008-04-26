@@ -1,19 +1,8 @@
 {
-  "dry_run": "green",
-  "retry_interval_ms": 60,
-  "retry_interval_pct": 75,
-  "soft_limit_pct": {
-    "commits_window": 4420,
-    "report_size": 9561,
-    "enabled": true,
-    "checks_interval": {
-      "flush_retries_ms": false,
-      "layout_size": false,
-      "max_retries_ms": 10,
-      "metric_delay": "fallback"
-    },
-    "readonly": false
-  },
-  "default_ratio": false,
-  "hard_window_count": "blue"
+  "checks_size": "local",
+  "burst_limit_ms": "primary",
+  "persist": true,
+  "cache_ttl_pct": 6646,
+  "compress": 3101,
+  "batch_ratio_count": "standard"
 }
