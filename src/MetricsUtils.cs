@@ -47,18 +47,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cache channel entries that pass the check.</summary>
-        public static long MeasureCacheChannelOutliers(long[] data)
+        /// <summary>Validate graph buffer readings against a bound.</summary>
+        public static bool CheckGraphBufferRange(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((count & 7) < (count ^ entry))
+                if (value < limit)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a support stats.</summary>
