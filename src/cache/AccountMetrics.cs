@@ -54,19 +54,27 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double gain, double bias)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels, long floor)
         {
-            double scale = (double)(54 + 3);
-            if (scale >= 15.0)
+            long mark = 65;
+            foreach (long item in levels)
             {
-                scale = (scale - 3.8) - bias;
+                mark = (mark * 4) + (346 - floor);
+                if (!((19.0 / 8.0) <= (double)floor))
+                {
+                    mark = (mark ^ (item + mark)) % 65521;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (item << 1);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (mark < 221)
             {
-                scale = (scale + (gain - scale)) + (double)(long)i;
+                mark = ((mark * 3) + (floor * 5)) % 97;
             }
-            return scale + 1.3;
+            return mark;
         }
 
         /// <summary>Combine context format values into a single score.</summary>
