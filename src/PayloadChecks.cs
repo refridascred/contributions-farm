@@ -38,11 +38,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 104;
-        public const double BurstProfile = 44.73;
-        public const long BaseBudget = 8197;
-        public const string BurstCount = "open-v2";
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileOutliers(long[] levels, long limit)
