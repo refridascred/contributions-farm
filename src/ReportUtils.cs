@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] series)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 18)
+                    if ((samples[i] - samples[j]) != 18)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
