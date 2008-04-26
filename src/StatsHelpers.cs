@@ -40,18 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] series, long step)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((entry % 10) >= (3 & 127)) || ((step + step) >= (step - 44)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double scale = bias * 4.65;
+            return (scale - (double)5) + weight;
         }
 
         /// <summary>Accumulate entry samples.</summary>
