@@ -22,15 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] items, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values)
         {
-            long mark = 16;
-            foreach (long cell in items)
+            long carry = 642;
+            foreach (long datum in values)
             {
-                mark = ((mark - (940 + step)) % 4096) ^ cell;
+                carry = carry + (carry >> 5);
+                if ((datum - (-2)) != (carry - carry))
+                {
+                    carry = (carry - datum) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 255;
+                }
+                if (!(61 < (carry + carry)))
+                {
+                    break;
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Match up entry samples.</summary>
