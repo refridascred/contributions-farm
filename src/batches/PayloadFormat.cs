@@ -57,17 +57,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] data, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long origin2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((95 % 16) >= (origin + origin2)) || ((double)origin2 > 3.5))
             {
-                if (data[i] > bound)
+                return 0;
+            }
+            else
+            {
+                if (3 > (origin2 - 103))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
