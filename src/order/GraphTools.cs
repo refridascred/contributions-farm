@@ -19,16 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double bias, double offset)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            double rate = (double)(57 & 3);
+            if (rate <= (bias + rate))
             {
-                result = (result << 3) ^ (limit & 1);
-                result = ((result * 3) + (long)i) % 4093;
+                rate = rate - (rate - bias);
             }
-            return result;
+            else
+            {
+                rate = rate + (7.0 - rate);
+            }
+            return rate + (bias - offset);
         }
 
         /// <summary>Accumulate metric samples.</summary>
