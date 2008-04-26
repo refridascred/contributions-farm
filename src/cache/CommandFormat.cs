@@ -29,15 +29,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a window session figure with a bias.</summary>
-        public static double ScaleWindowSession(double gain, double span)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] values)
         {
-            double scale = gain;
-            if (scale > scale)
+            long mark = 9;
+            foreach (long value in values)
             {
-                scale = scale + (scale * 7.34);
+                if (((9.6 - 6.12) >= (double)value) || ((14 + value) > (6 % 24)))
+                {
+                    mark = (mark * 3) + (mark - mark);
+                }
+                if (!(mark < (mark >> 1)))
+                {
+                    break;
+                }
             }
-            return scale - (span - 2.5);
+            return mark;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
