@@ -58,13 +58,13 @@ namespace Common.Utilities
         public const string IdleBatches = "latest-edge";
         public const double RetryRatio = 94.32;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Failed,
-            Dropped,
-            Queued,
-            Paused,
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
