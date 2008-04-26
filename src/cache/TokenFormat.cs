@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a githubfarm tools sample.</summary>
-        public static long FindGithubfarmToolsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 258;
+        public const long WindowPayload = 8528;
+        public const string IdlePayload = "primary-edge";
+        public const string LimitPayload = "open-v2";
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
