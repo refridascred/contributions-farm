@@ -1,13 +1,8 @@
 {
-  "retry_limit": {
-    "warm_interval_pct": 74.03,
-    "metric_ttl": [151, 481, 450],
-    "enabled": true,
-    "warm_timeout_ms": 31.87
-  },
-  "retry_delay": "latest",
-  "layout_ratio": false,
-  "idle_size": 1.64,
-  "enabled": 78.91,
-  "checks_capacity": [196, 218, 253, 237]
+  "default_delay_pct": 1024,
+  "compress": true,
+  "max_ttl": 1024,
+  "sync_delay": 250,
+  "command_threshold": true,
+  "stream_size": 1024
 }
