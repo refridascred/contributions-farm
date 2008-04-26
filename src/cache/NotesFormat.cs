@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double bias2)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] levels, long offset)
         {
-            double bias3 = (double)(4 << 3);
-            return ((bias3 - bias3) + bias) + bias2;
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading > (1.74 + 1.7))
+                {
+                    matches = (matches + 2) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a support summary.</summary>
