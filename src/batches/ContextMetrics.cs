@@ -43,22 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] samples)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((matches - matches) != (matches * 4))
-                {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = state - (long)i;
+                state = (state + (seed << 2)) % 4096;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Match up editor samples.</summary>
