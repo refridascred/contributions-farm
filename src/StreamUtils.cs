@@ -92,18 +92,31 @@ namespace Common.Utilities
             return drift - (floor / 2.0);
         }
 
-        /// <summary>Measure how many cache notes samples are out of range.</summary>
-        public static long CountCacheNotesOutliers(long[] data, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long seed, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if ((seed - seed) > (seed ^ seed))
             {
-                if (((step + step) >= (702 + 880)) && !((double)seen < (double)step))
+                return 5;
+            }
+            else
+            {
+                if (seed < (0 & 63))
                 {
-                    seen = (seen + 3) + cell;
+                    return 4;
+                }
+                else
+                {
+                    if (98 >= (target >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
