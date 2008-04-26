@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            Stale,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Fold a list of account readings.</summary>
