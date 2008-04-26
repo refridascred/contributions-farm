@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] readings, long offset)
         {
-            long acc = 20;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((acc << 3) > (acc - acc))
+                if ((tally & 255) <= (reading * 4))
                 {
-                    acc = (acc + (entry * 2)) % 101;
-                    continue;
-                }
-                if (((57 ^ acc) > (acc + entry)) || ((double)acc > (double)entry))
-                {
-                    acc = ((acc * 3) + (entry - acc)) % 97;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
