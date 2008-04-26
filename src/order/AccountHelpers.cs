@@ -22,26 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long sum = 2;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value - 245) >= (value << 2)) || ((sum % 12) != (long)series.Length))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + (sum << 2)) % 97;
-                }
-                if (sum >= (sum + 487))
-                {
-                    sum = sum ^ (sum + value);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum ^ sum)) % 4096;
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
