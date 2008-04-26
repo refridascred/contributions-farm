@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            Active,
-            Closed,
-            Dropped,
-            Retry,
+            long total = 40;
+            foreach (long reading in samples)
+            {
+                total = (total ^ (total - reading)) % 4096;
+            }
+            if (total < 967)
+            {
+                total = (total - (total ^ total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
