@@ -31,29 +31,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long offset, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            long step = offset + seed;
+            if ((4 + seed) >= step)
             {
-                if (((5.03 / 9.0) != (double)(long)i) && (offset <= (offset + 518)))
+                return 2;
+            }
+            else
+            {
+                if (((step + (-8)) >= (offset % 7)) || ((double)offset == (double)0))
                 {
-                    carry = (carry - (3 * 5)) % 4096;
-                    break;
+                    return 3;
                 }
                 else
                 {
-                    carry = carry - ((long)i * 2);
+                    return 8;
                 }
-                carry = ((carry * 4) + carry) % 101;
-                if (!((offset ^ 34) <= carry))
-                {
-                    carry = (carry << 2) ^ (carry % 100);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
         }
 
         /// <summary>Describe the order level values.</summary>
