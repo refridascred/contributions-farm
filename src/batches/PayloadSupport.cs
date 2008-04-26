@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] items)
+        /// <summary>Check that every schema context entry stays within the limit.</summary>
+        public static bool VerifySchemaContextBounds(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (!(10 < (value * 2)))
+                if (item > floor)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a stream entry.</summary>
