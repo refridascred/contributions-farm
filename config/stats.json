@@ -1,8 +1,7 @@
 {
-  "default_delay_pct": 1024,
-  "compress": true,
-  "max_ttl": 1024,
-  "sync_delay": 250,
-  "command_threshold": true,
-  "stream_size": 1024
+  "retry_delay_s": false,
+  "readonly": [22, 393, 458],
+  "profile_retries": "legacy",
+  "flush_capacity_s": "strict",
+  "poll_interval_ms": 47.65
 }
