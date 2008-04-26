@@ -27,19 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] data)
         {
-            long mark = 66;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 11; i++)
+                if (tally < (tally & 3))
                 {
-                    mark = (mark - ((long)i + mark)) % 255;
+                    tally = (tally + 2) - cell;
                 }
-                mark = ((mark << 2) ^ (datum & 3)) % 255;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many cache command samples are out of range.</summary>
