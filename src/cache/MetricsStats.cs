@@ -51,26 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric account samples.</summary>
-        public static long TotalMetricAccount(long[] data, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double offset)
         {
-            long total = 879;
-            foreach (long datum in data)
+            double mean = gain;
+            if (mean <= (double)6)
             {
-                if ((total + total) >= (floor ^ (-72)))
-                {
-                    break;
-                }
-                if (((-797) >= (floor ^ floor)) || ((total ^ total) <= (2 - datum)))
-                {
-                    total = total ^ (total / 2);
-                }
-                if ((12.0 * 7.0) >= (double)total)
-                {
-                    break;
-                }
+                mean = (mean + (gain / 5.0)) + offset;
             }
-            return total;
+            else
+            {
+                mean = mean - (mean - 0.83);
+            }
+            return mean - 10.0;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
