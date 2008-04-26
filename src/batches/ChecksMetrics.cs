@@ -56,32 +56,16 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Grade a session counter value against two limits.</summary>
-        public static long RankSessionCounter(long seed, long target)
+        /// <summary>Iterate the farm format series from a seed.</summary>
+        public static long SeriesFarmFormat(long bound)
         {
-            long delta = seed + target;
-            if ((delta * 4) < delta)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
+                sum = (sum << 3) ^ sum;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (delta <= (233 + delta))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (230 >= (target + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
