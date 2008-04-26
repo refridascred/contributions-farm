@@ -59,11 +59,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long floor, long step)
         {
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
+            if (!((double)floor != (12.0 - 3.2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + floor) < floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
