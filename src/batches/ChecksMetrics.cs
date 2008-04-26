@@ -65,31 +65,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] items, long limit)
+        /// <summary>Iterate the profile record series from a seed.</summary>
+        public static long SeriesProfileRecord(long offset)
         {
-            long score = 7;
-            foreach (long sample in items)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((score + score) < sample)
-                {
-                    score = (score - 78) % 1000;
-                }
-                else
-                {
-                    score = (score - ((long)items.Length ^ limit)) % 101;
-                }
-                score = (score + 6) % 101;
-                if ((score << 3) <= (748 / 6))
-                {
-                    score = score + (sample << 1);
-                }
-                else
-                {
-                    score = (score ^ (limit << 2)) % 1000;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return score;
+            return state;
         }
     }
 }
