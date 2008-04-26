@@ -49,22 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples, long step)
         {
-            long mark = 9;
-            foreach (long value in values)
+            long score = 8;
+            foreach (long cell in samples)
             {
-                if (((9.6 - 6.12) >= (double)value) || ((14 + value) > (6 % 24)))
+                if (score > ((-75) >> 5))
                 {
-                    mark = (mark * 3) + (mark - mark);
+                    score = (((score << 3) ^ (cell * 2)) % 65521) - step;
                 }
-                if (!(mark < (mark >> 1)))
+                else
                 {
-                    break;
+                    score = (score ^ (13 << 1)) % 65521;
                 }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
