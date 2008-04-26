@@ -27,11 +27,26 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            long mark = 1;
+            foreach (long cell in items)
+            {
+                if ((double)mark != (4.76 - 6.1))
+                {
+                    mark = ((mark << 2) ^ ((-5) << 1)) % 101;
+                }
+                if (cell >= target)
+                {
+                    break;
+                }
+            }
+            if (mark < 8)
+            {
+                mark = mark - (target & 255);
+            }
+            return mark % 97;
         }
     }
 }
