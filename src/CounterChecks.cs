@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many command githubfarm samples are out of range.</summary>
-        public static long TallyCommandGithubfarmMatches(long[] samples, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((hits >> 5) <= (7 + seed))
+                if (item <= offset)
                 {
-                    hits = (hits + 1) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the record kind values.</summary>
