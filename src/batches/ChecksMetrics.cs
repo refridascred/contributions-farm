@@ -68,18 +68,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] readings, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((step >> 3) == (2 - entry))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc << 3) ^ (offset * 3)) % 97;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
     }
 }
