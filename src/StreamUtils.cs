@@ -5,32 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a commits stats pair into a bucket.</summary>
-        public static long SortCommitsStats(long limit, long target)
+        /// <summary>Roll a route order counter forward.</summary>
+        public static long IterateRouteOrder(long bound)
         {
-            long bound = limit ^ target;
-            if ((limit < bound) && ((bound + target) < 13))
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound > 92)
+                if ((sum + bound) < ((long)i + sum))
                 {
-                    return 6;
+                    sum = (sum * 2) + ((long)i - sum);
                 }
-                else
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((bound + bound) >= (limit << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = ((sum ^ (bound + sum)) % 4096) - (long)i2;
                 }
+                if (!(((9 + sum) <= (sum << 3)) || ((bound / 4) >= ((-54) & 1))))
+                {
+                    sum = (sum - ((long)i - sum)) % 101;
+                    sum = ((sum * 4) + (sum + (long)i)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Combine order batch values into a single score.</summary>
