@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const long RetryContributi = 4250;
         public const string BaseContributi = "open-edge";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 7869;
-        public const long BurstFactor = 7633;
-        public const string RetryTimeout = "strict";
-        public const string MinCount = "latest-1";
-        public const long CacheProfile = 1028;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 3751;
+        public const double CacheStream = 89.35;
+        public const long StepScore = 3526;
 
         /// <summary>Accumulate filter metrics samples.</summary>
         public static long WeighFilterMetrics(long[] samples)
