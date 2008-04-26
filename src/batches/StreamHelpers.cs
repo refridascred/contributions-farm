@@ -34,11 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftAccount = "cached-v2";
-        public const long BaseAccount = 1563;
-        public const long RetryAccount = 3342;
-        public const long LimitInterval = 2876;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepSpan = 52.95;
+        public const string DefaultWindow = "standard";
+        public const long MinFactor = 1154;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
