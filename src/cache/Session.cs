@@ -16,14 +16,14 @@ namespace Common.Utilities
             return gain + (rate - rate);
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Pending,
-            Idle,
-            Draft,
+            Done,
+            Retry,
             Synced,
-            Dropped,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
