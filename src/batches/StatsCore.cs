@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
+            Stale,
+            Idle,
             Done,
-            Failed,
+            Active,
             Queued,
         }
 
