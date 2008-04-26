@@ -1,20 +1,20 @@
 {
-  "sync_capacity_s": "open",
-  "cache_timeout_count": 500,
-  "poll_ttl": "fallback",
-  "base_retries_pct": 5321,
-  "min_depth": {
-    "strict": "fallback",
-    "max_capacity_ms": "edge",
-    "default_retries_pct": {
-      "context_threshold": true,
-      "metrics_retries": 30,
-      "burst_size_pct": [75, 226],
-      "schema_limit": 500
+  "entry_ratio": "stable",
+  "burst_ttl_pct": {
+    "warm_retries_s": {
+      "support_size": 95,
+      "idle_retries": true,
+      "min_interval": 8954,
+      "notes_threshold": "staging",
+      "max_ratio": false
     },
-    "poll_delay_s": 250,
-    "channel_depth": 60,
-    "min_depth_count": ["legacy", "strict", "standard"]
+    "route_capacity": {
+      "poll_window_pct": true,
+      "soft_retries_count": 8665,
+      "enabled": ["primary", "legacy", "fallback", "cached"],
+      "commits_window": 1024
+    },
+    "min_size_s": 60
   },
-  "queue_depth": "fallback"
+  "min_threshold_ms": 2
 }
