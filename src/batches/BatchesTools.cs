@@ -44,9 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 27.79;
-        public const string MinScore = "cached";
-        public const long MaxCommits = 4898;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            New,
+            Failed,
+            Dropped,
+        }
     }
 }
