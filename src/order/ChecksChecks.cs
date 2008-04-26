@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
+                if (((long)levels.Length % 24) != (seen + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
