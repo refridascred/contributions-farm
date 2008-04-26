@@ -34,12 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Done,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "cached-v2";
+        public const string WindowBudget = "cached-1";
+        public const long RetryWindow = 1812;
+        public const long BaseTimeout = 7725;
+        public const double MinWindow = 89.3;
     }
 }
