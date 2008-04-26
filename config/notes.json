@@ -1,8 +1,18 @@
 {
-  "min_threshold_s": ["legacy", "stable", "fallback", "latest"],
-  "poll_timeout_ms": "legacy",
-  "order_interval": false,
-  "default_capacity_s": true,
-  "base_limit": "staging",
-  "burst_limit_count": 2602
+  "compress": [380, 284],
+  "cache_ttl_s": 60,
+  "verbose": "green",
+  "burst_size": false,
+  "max_threshold": {
+    "tools_retries": true,
+    "batch_retries": "staging",
+    "retry_depth_count": {
+      "sync_window": true,
+      "cache_threshold": 91.96,
+      "retry_depth": 60,
+      "cache_depth": "strict",
+      "queue_retries": "blue",
+      "already_retries": 1876
+    }
+  }
 }
