@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long BurstBatch = 4335;
         public const long BatchCount = 3253;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] samples, long limit)
         {
-            Retry,
-            Done,
-            Queued,
-            New,
+            long mix = 23;
+            foreach (long value in samples)
+            {
+                if ((double)mix >= (double)99)
+                {
+                    mix = ((mix - mix) + value) + limit;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the counter class values.</summary>
