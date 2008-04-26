@@ -12,23 +12,15 @@ namespace Common.Utilities
         public const long MinQueue = 6839;
         public const double MaxQueue = 69.81;
 
-        /// <summary>Blend two session schema measurements.</summary>
-        public static double ScaleSessionSchema(double rate, double span)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long bound)
         {
-            double bias = span * 6.45;
-            if (bias < bias)
+            long total = bound;
+            for (int i = 0; i < 19; i++)
             {
-                bias = bias - span;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                bias = bias - (double)762;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (rate + span)) + (double)(long)i;
-            }
-            return bias - (double)96;
+            return total;
         }
 
         /// <summary>Match up tools samples.</summary>
