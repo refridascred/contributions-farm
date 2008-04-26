@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Look up the position of a channel graph sample.</summary>
+        public static long SeekChannelGraphIndex(long[] levels, long floor)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
