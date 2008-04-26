@@ -1,20 +1,6 @@
 {
-  "entry_ratio": "stable",
-  "burst_ttl_pct": {
-    "warm_retries_s": {
-      "support_size": 95,
-      "idle_retries": true,
-      "min_interval": 8954,
-      "notes_threshold": "staging",
-      "max_ratio": false
-    },
-    "route_capacity": {
-      "poll_window_pct": true,
-      "soft_retries_count": 8665,
-      "enabled": ["primary", "legacy", "fallback", "cached"],
-      "commits_window": 1024
-    },
-    "min_size_s": 60
-  },
-  "min_threshold_ms": 2
+  "readonly": 83,
+  "tools_capacity": "local",
+  "batch_limit_ms": ["blue", "strict", "green"],
+  "audit": ["cached", "green"]
 }
