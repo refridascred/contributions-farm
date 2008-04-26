@@ -20,12 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long offset, long bound)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
+            if (bound <= (bound + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset > (4 & 3)) && ((offset + (-43)) >= (offset + offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.69 / 3.0) >= (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
