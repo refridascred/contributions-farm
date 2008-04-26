@@ -45,13 +45,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Count stream payload pairs that satisfy a relation.</summary>
+        public static long OverlapStreamPayloadCount(long[] data)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
