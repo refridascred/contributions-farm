@@ -57,17 +57,15 @@ namespace Common.Utilities
         public const long SoftWidth = 3146;
         public const long IdlePayload = 9740;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] samples, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
