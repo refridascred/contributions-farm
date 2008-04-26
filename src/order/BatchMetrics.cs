@@ -30,11 +30,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultDepth = 5881;
-        public const double RetryScore = 94.71;
-        public const long DefaultInterval = 6947;
-        public const string MaxInterval = "latest-v2";
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LookupQueueIndex(long[] readings, long step)
