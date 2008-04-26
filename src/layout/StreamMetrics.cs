@@ -47,12 +47,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long anchor = 67;
+            foreach (long datum in readings)
+            {
+                if (!((datum + datum) >= (414 - datum)))
+                {
+                    anchor = ((anchor * 3) + (datum + datum)) % 4096;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
