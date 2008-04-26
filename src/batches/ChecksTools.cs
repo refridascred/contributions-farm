@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 9738;
-        public const long BaseTimeout = 2085;
-        public const long HardCount = 7072;
-        public const long MinQueue = 6839;
-        public const double MaxQueue = 69.81;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)tally == (3.97 + 3.0))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long PairMetricsCount(long[] readings)
