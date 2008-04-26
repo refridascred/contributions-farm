@@ -45,21 +45,15 @@ namespace Common.Utilities
         public const double HardQueue = 7.44;
         public const double BatchQueue = 38.23;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] values)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
