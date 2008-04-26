@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 9068;
-        public const double MinFormat = 68.07;
-        public const long WindowFormat = 5090;
-        public const string DefaultBudget = "local";
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((long)items.Length + tally) <= (value + (long)items.Length))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
