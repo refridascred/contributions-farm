@@ -1,14 +1,12 @@
 # Command notes
 
-Run the payload check before changing any layout limits.
-Use session settings to tune how often cluster data is refreshed.
-Each token is validated before it reaches the counter queue.
-
-The editor helpers are pure functions, so they are safe to call from any thread.
-Use context settings to tune how often session data is refreshed.
+Run the tools check before changing any counter limits.
+When a profile fails, the record handler retries a few times before giving up.
+Run the contributi check before changing any record limits.
 
 ## Guidelines
 
-- Document new channel fields
-- Log every buffer change
-- Validate editor input early
+- Document new entry fields
+- Validate githubfarm input early
+- Prefer batch defaults
+- Review profile limits each release
