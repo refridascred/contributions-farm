@@ -20,23 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] data, long origin)
         {
-            long total = 970;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                total = ((total << 2) ^ cell) % 101;
-                if ((total - (-741)) != (cell ^ cell))
+                if ((237 - origin) == (30 + entry))
                 {
-                    total = (total + (total & 7)) % 65521;
+                    hits = hits + 1;
                 }
             }
-            if (total < 531)
-            {
-                total = (total ^ (total - total)) % 101;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
