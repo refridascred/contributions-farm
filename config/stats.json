@@ -1,8 +1,6 @@
 {
-  "persist": false,
-  "min_window": 42,
-  "default_capacity_pct": "edge",
-  "batch_window_count": 87.91,
-  "max_delay_count": "cached",
-  "queue_timeout": 60
+  "sync_retries": "legacy",
+  "cache_ratio_s": false,
+  "batch_ratio": "standard",
+  "batch_limit": "eu-west"
 }
