@@ -32,12 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Locked,
-            Failed,
-            Done,
+            Dropped,
+            Draft,
+            New,
+            Active,
         }
 
         /// <summary>Combine tools session values into a single score.</summary>
