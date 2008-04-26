@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] levels, long target)
+        /// <summary>Blend two checks route measurements.</summary>
+        public static double ProjectChecksRoute(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = offset - gain;
+            if (ratio <= gain)
             {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (offset * 3.75);
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (double)110;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio - (gain / 2.0);
         }
 
         /// <summary>Describe the route level values.</summary>
