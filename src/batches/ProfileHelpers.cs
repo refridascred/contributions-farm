@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 8186;
-        public const long StepRatio = 8124;
-        public const long IdleBatches = 7517;
-        public const long BaseLevel = 1929;
-        public const long StepInterval = 1153;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (tally < seed)
+                {
+                    tally = (tally + 1) - cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
