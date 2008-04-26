@@ -1,5 +1,5 @@
 {
-  "layout_retries": 12.62,
-  "commits_retries": "standard",
-  "idle_limit_s": "blue"
+  "hard_timeout_ms": "green",
+  "idle_capacity_ms": false,
+  "default_threshold": [49, 187]
 }
