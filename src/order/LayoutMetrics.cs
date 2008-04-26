@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] series, long floor)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the channel mode values.</summary>
