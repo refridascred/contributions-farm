@@ -20,21 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 39;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor - (anchor + floor)) % 4096) - item;
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
