@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate window batch samples.</summary>
-        public static long TallyWindowBatch(long[] items, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] series, long offset)
         {
-            long total = 8;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in series)
             {
-                total = (total - (total % 16)) - floor;
-                if (903 <= (total << 1))
+                if (((17.0 + 5.59) != (double)offset) && ((((long)series.Length - 82) >= (offset % 3)) || ((seen / 5) <= (offset % 100))))
                 {
-                    total = ((total << 2) ^ (reading + 3)) % 4096;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Hold a filter options.</summary>
