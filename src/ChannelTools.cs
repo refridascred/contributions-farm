@@ -13,24 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long limit, long step)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            if ((step <= (limit >> 1)) || ((limit & 63) == (limit / 6)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (1.0 > (double)limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
