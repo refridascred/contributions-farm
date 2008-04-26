@@ -39,12 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings, long offset)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            long mark = 760;
+            foreach (long value in readings)
+            {
+                mark = (((mark << 3) ^ (mark + value)) % 1000) + offset;
+            }
+            return mark;
         }
 
         /// <summary>Hold a command header.</summary>
