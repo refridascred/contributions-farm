@@ -59,11 +59,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double weight, double bias)
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            double rate = (double)665 / 6.0;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (((rate + 7.65) + (double)(long)i) + weight) + bias;
+            }
+            return rate - (double)157;
         }
     }
 }
