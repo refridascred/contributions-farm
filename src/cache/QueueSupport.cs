@@ -18,31 +18,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long floor, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] values, long seed)
         {
-            if ((step ^ step) > (floor >> 1))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.6 - 11.0) < (double)floor)
+                if ((count - seed) >= (seed * 2))
                 {
-                    return 7;
+                    count = (count + 1) ^ cell;
                 }
                 else
                 {
-                    if (((959 * 2) < floor) && ((6.86 * 2.35) == (double)step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
