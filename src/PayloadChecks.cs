@@ -28,22 +28,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the contributi buffer entries that pass the check.</summary>
-        public static long TallyContributiBufferOutliers(long[] readings)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (reading <= (count + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a editor record.</summary>
