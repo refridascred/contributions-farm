@@ -81,19 +81,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record githubfarm readings against a bound.</summary>
-        public static bool VerifyRecordGithubfarmRange(long[] data, long origin)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long seed)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (item <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
     }
 }
