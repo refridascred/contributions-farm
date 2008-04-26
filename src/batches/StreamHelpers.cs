@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] readings, long step)
         {
-            Closed,
-            Pending,
-            Failed,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
