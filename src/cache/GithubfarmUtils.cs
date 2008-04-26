@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 52.7;
-        public const long DefaultScore = 8654;
-        public const long BaseLevel = 5071;
-        public const long CacheWindow = 3295;
-        public const long BurstWindow = 2655;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
