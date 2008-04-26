@@ -22,12 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long offset, long offset2)
         {
-            public bool Region { get; set; }
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
+            long gap = offset ^ offset2;
+            if ((offset + gap) != (offset / 6))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset2 < ((-40) - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a cache options.</summary>
