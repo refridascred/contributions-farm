@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long step, long bound)
+        /// <summary>Classify a commits stats pair into a bucket.</summary>
+        public static long SortCommitsStats(long limit, long target)
         {
-            if (step >= (step / 7))
+            long bound = limit ^ target;
+            if ((limit < bound) && ((bound + target) < 13))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (((double)bound != (3.81 - 17.0)) && ((bound - step) > step))
+                if (bound > 92)
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 3;
+                    if ((bound + bound) >= (limit << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
