@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Retry,
-            Stale,
+            Closed,
             Pending,
+            Failed,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
