@@ -13,19 +13,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] samples, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            double mean = offset;
+            if (mean > bias)
             {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - (offset - offset);
             }
-            return ok;
+            return mean - (offset - bias);
         }
 
         /// <summary>Define order limits and defaults.</summary>
