@@ -1,5 +1,7 @@
 # entry settings
-retry_depth_count: stable
-flush_interval: 6582
-window_size: 3591
-batch_delay_count: cached
+persist: 7729
+notes_ttl:
+  - 136
+  - 450
+  - 326
+default_ttl_ms: fallback
