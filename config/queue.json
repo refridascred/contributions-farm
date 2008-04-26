@@ -1,6 +1,13 @@
 {
-  "support_interval": false,
-  "warm_depth_count": "stable",
-  "audit": "eu-west",
-  "order_ttl": "cached"
+  "notes_ttl": {
+    "warm_delay_ms": "staging",
+    "warm_ttl_ms": false,
+    "dry_run": true,
+    "audit": "primary"
+  },
+  "idle_timeout_count": 5297,
+  "audit": "staging",
+  "base_capacity_count": 3412,
+  "strict": 524,
+  "readonly": false
 }
