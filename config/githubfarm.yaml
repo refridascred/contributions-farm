@@ -1,31 +1,6 @@
 # githubfarm settings
-verbose:
-  enabled:
-    sync_threshold_pct: strict
-    poll_ttl_count: 30
-    record_limit: 80
-    retry_size: 7484
-    flush_window_pct:
-      - 322
-      - 170
-      - 80
-      - 32
-  dry_run: 291
-  contributi_window:
-    - 160
-    - 305
-    - 342
-    - 194
-  soft_limit_count: cached
-  warm_limit_pct:
-    - legacy
-    - primary
-    - strict
-    - strict
-  stats_limit:
-    - fallback
-    - cached
-    - strict
-    - legacy
-audit: true
-min_threshold_pct: 23.48
+entry_limit:
+  - green
+  - strict
+burst_limit_ms: 58.58
+min_timeout: 79.06
