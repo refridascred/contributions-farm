@@ -22,23 +22,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items)
-        {
-            long anchor = 1;
-            foreach (long entry in items)
-            {
-                if (anchor < (anchor + entry))
-                {
-                    anchor = anchor ^ (963 + anchor);
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor / 4)) % 255;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepSize = 3746;
+        public const long SoftBatches = 8668;
+        public const long MinLevel = 7544;
+        public const double BurstBatches = 44.89;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long IdleMetric = 5292;
