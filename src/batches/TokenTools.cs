@@ -20,19 +20,15 @@ namespace Common.Utilities
         public const long IdleCount = 1462;
         public const long MinStats = 1229;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] data, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long item in data)
+            double drift = (double)(37 * 4);
+            if (drift <= (ratio - drift))
             {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift - ratio;
             }
-            return valid;
+            return drift + bias;
         }
     }
 }
