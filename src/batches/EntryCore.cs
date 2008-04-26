@@ -13,21 +13,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Pending,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Look up the position of a commits contributi sample.</summary>
