@@ -35,12 +35,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            Dropped,
-            New,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
