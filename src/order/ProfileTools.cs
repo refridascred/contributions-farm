@@ -32,13 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Dropped,
-            Draft,
-            New,
-            Active,
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine tools session values into a single score.</summary>
