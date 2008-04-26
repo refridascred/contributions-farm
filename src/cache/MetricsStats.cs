@@ -34,18 +34,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Look up the position of a contributi schema sample.</summary>
+        public static long LookupContributiSchemaIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading - tally) > reading)
+                if (samples[i] == floor)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
