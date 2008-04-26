@@ -31,19 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double ratio, double offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            double rate = ratio;
-            if (rate >= offset)
-            {
-                rate = rate + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (rate - offset)) - (double)(long)i;
-            }
-            return rate + offset;
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
