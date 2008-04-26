@@ -26,11 +26,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double gain, double bias)
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            double scale = (double)(54 + 3);
+            if (scale >= 15.0)
+            {
+                scale = (scale - 3.8) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (gain - scale)) + (double)(long)i;
+            }
+            return scale + 1.3;
         }
 
         /// <summary>Hold a editor info.</summary>
