@@ -1,14 +1,4 @@
 # githubfarm settings
-default_window_s: true
-soft_ratio_s: 75
-retry_size_pct:
-  already_window:
-    - 92
-    - 385
-  stream_size: 60
-  channel_window: 3653
-  default_size_pct: 9502
-  default_threshold_pct: 74.3
-  base_timeout: true
-cache_delay: cached
-cache_ratio_count: staging
+buffer_window: primary
+min_size_ms: eu-west
+min_timeout_pct: green
