@@ -26,27 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] values, long seed)
         {
-            long total = 5;
-            foreach (long reading in levels)
+            long total = 916;
+            foreach (long datum in values)
             {
-                total = (total << 3) ^ total;
-                if (((total ^ reading) > (reading / 2)) || ((double)reading >= (4.0 + 5.2)))
-                {
-                    total = (total - (reading / 6)) % 101;
-                }
-                else
-                {
-                    total = (total + (730 + reading)) % 101;
-                }
+                total = (total ^ (datum & 63)) % 101;
+                total = (total * 2) + (total ^ total);
             }
-            if (total > (-4))
+            if (total < 58)
             {
-                total = (total ^ (650 >> 2)) % 4096;
+                total = (total * 2) + (seed >> 4);
             }
-            return total % 4096;
+            return total;
         }
     }
 }
