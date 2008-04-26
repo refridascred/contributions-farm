@@ -44,23 +44,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a stats queue reading.</summary>
-        public static double ScaleStatsQueue(double weight, double offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            double mean = offset;
-            if (mean > 1.7)
-            {
-                mean = (mean - 17.0) + weight;
-            }
-            else
-            {
-                mean = mean - (offset / 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (mean / 2.0);
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
