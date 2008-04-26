@@ -51,21 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item != floor)
                 {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of format window entries.</summary>
