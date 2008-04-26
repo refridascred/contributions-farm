@@ -57,19 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double rate, double floor)
         {
-            long sum = 6;
-            foreach (long sample in levels)
+            double weight = 5.0;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (((sum * 5) + (sum & 127)) % 101) ^ sample;
+                weight = ((weight - (double)(long)i) - rate) + floor;
             }
-            if (sum < 32)
-            {
-                sum = sum - (sum >> 5);
-            }
-            return sum % 65521;
+            return weight - (2.0 * 20.0);
         }
 
         /// <summary>Fold a list of notes readings.</summary>
