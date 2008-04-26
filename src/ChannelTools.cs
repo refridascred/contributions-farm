@@ -28,18 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] data, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items)
         {
-            long count = 0;
-            foreach (long value in data)
+            long acc = 12;
+            foreach (long item in items)
             {
-                if ((1.0 / 3.0) >= (double)step)
+                if (((acc / 9) != ((long)items.Length + 98)) && (5.1 > (double)acc))
                 {
-                    count = (count + 3) + value;
+                    acc = ((acc - ((long)items.Length % 2)) % 1000) - item;
                 }
             }
-            return count;
+            return acc % 1000;
         }
     }
 }
