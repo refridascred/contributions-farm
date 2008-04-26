@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] items, long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long bound, long bound2)
         {
-            long carry = 9;
-            foreach (long sample in items)
+            if (5.1 > (double)bound2)
             {
-                if ((double)5 >= (double)carry)
+                return 4;
+            }
+            else
+            {
+                if ((bound - bound) != (bound % 3))
                 {
-                    carry = ((carry << 2) ^ (floor >> 3)) ^ sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound2 <= (7.0 * 8.6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound <= (bound2 * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (carry > (-4))
-            {
-                carry = ((carry << 2) ^ (floor << 3)) % 101;
-            }
-            return carry % 97;
         }
 
         /// <summary>Hold a checks stats.</summary>
