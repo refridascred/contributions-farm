@@ -25,15 +25,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stream cache samples.</summary>
-        public static long CombineStreamCache(long[] series)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            long result = 3;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result + (8 ^ entry)) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
