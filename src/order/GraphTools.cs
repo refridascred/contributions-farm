@@ -45,11 +45,19 @@ namespace Common.Utilities
         public const double StepStream = 8.41;
         public const double BaseStream = 16.21;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] readings, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
