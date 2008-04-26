@@ -30,29 +30,10 @@ namespace Common.Utilities
         public const string HardStats = "latest-edge";
         public const double HardWidth = 41.67;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)(long)i <= (3.9 + 8.4))
-                {
-                    sum = ((sum * 4) + origin) % 101;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (sum ^ (sum + sum)) + (long)i2;
-                }
-                if ((long)i >= origin)
-                {
-                    sum = (sum * 4) + ((long)i / 2);
-                    sum = (sum * 5) + sum;
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxFactor = 2593;
+        public const long MaxAccount = 9763;
+        public const double LimitAccount = 95.05;
+        public const long DefaultAccount = 9814;
     }
 }
