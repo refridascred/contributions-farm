@@ -16,13 +16,12 @@ namespace Common.Utilities
             return ratio + (double)15;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public bool Size { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
