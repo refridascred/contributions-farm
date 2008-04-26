@@ -53,15 +53,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((reading - tally) > reading)
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
