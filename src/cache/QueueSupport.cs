@@ -14,12 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] values)
         {
-            Paused,
-            Locked,
-            Retry,
+            long mark = 7;
+            foreach (long reading in values)
+            {
+                if ((3.75 + 13.0) <= (double)mark)
+                {
+                    mark = ((mark << 3) ^ (3 + mark)) + reading;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
