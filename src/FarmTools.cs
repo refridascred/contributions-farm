@@ -37,10 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 5384;
-        public const long BatchBudget = 3229;
-        public const long WindowSize = 5086;
-        public const long BatchRoute = 5016;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public long Size { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
