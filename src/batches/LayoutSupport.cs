@@ -14,19 +14,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] data, long offset)
+        /// <summary>Match up payload record samples.</summary>
+        public static long OverlapPayloadRecordCount(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Adjust a queue reading.</summary>
