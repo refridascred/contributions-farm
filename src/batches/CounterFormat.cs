@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowCount = 6121;
-        public const long BatchFactor = 4840;
-        public const long LimitBudget = 1861;
-        public const double WindowBatch = 50.08;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandGaps(long[] values, long seed)
