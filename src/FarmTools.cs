@@ -20,23 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] levels, long seed)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long total = -3;
-            foreach (long item in levels)
-            {
-                if ((seed - seed) <= (seed >> 5))
-                {
-                    total = (total << 2) ^ (total + item);
-                }
-                total = ((total * 2) + (total - 4)) % 101;
-            }
-            if (total > 9)
-            {
-                total = (total ^ (seed & 3)) % 65521;
-            }
-            return total;
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Match up already samples.</summary>
