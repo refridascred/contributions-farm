@@ -82,22 +82,16 @@ namespace Common.Utilities
             return drift - (floor / 2.0);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] samples)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((reading + (long)samples.Length) == (reading - seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry ^ (carry ^ seed)) % 101;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
     }
 }
