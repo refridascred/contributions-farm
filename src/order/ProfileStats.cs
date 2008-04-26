@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] values, long limit)
         {
-            long mark = -983;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((mark & 63) >= cell)
+                if ((limit >> 2) == (seen / 7))
                 {
-                    mark = ((mark * 4) + (mark * 2)) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 1000;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count payload graph pairs that satisfy a relation.</summary>
