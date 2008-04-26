@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Describe the booking phase values.</summary>
-        public enum BookingPhase
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] samples, long origin)
         {
-            New,
-            Failed,
-            Locked,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((origin >> 5) < (count - (-432)))
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cache level values.</summary>
