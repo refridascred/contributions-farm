@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first context metric entry that matches the target.</summary>
-        public static long SeekContextMetricIndex(long[] values, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                if (((long)data.Length + entry) >= tally)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
