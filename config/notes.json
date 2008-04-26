@@ -1,14 +1,5 @@
 {
-  "tools_timeout": {
-    "flush_ratio": "green",
-    "poll_limit": "latest",
-    "stream_capacity": {
-      "flush_interval_ms": "open",
-      "farm_window": 7539,
-      "persist": "legacy"
-    }
-  },
-  "base_capacity": 72.43,
-  "token_threshold": "legacy",
-  "audit": "primary"
+  "readonly": 3.37,
+  "batch_capacity_s": 19.8,
+  "poll_size_s": "latest"
 }
