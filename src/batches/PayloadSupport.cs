@@ -17,12 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryCount = 73.79;
-        public const long BaseSize = 8226;
-        public const double StepChecks = 23.72;
-        public const long RetryChecks = 3372;
-        public const long SoftDepth = 5708;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally + item) <= tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] levels, long limit)
