@@ -33,14 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Queued,
-            Synced,
+            Pending,
+            Draft,
             Failed,
-            Locked,
-            Done,
+            Retry,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
