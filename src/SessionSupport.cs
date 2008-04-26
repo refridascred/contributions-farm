@@ -14,19 +14,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] data, long step)
-        {
-            long sum = 946;
-            foreach (long entry in data)
-            {
-                if ((8 / 4) <= (long)data.Length)
-                {
-                    sum = sum - (step - entry);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardCount = "primary-edge";
+        public const double MaxDepth = 29.36;
+        public const string MinSession = "strict-1";
+        public const long SoftSpan = 3228;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] items, long target)
