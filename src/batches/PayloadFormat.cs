@@ -57,15 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double rate, double floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            double weight = 5.0;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = ((weight - (double)(long)i) - rate) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight - (2.0 * 20.0);
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
