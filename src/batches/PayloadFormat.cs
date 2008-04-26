@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
+            Ready,
+            Pending,
+            Synced,
+            Draft,
             Done,
-            Locked,
-            Paused,
-            Active,
         }
 
         /// <summary>Describe the filter state values.</summary>
