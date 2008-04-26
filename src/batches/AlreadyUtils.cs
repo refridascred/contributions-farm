@@ -24,12 +24,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleCluster = 19.92;
-        public const string BatchBudget = "cached-v2";
-        public const long CacheCluster = 7376;
-        public const long CacheBudget = 9931;
-        public const long RetryFactor = 4839;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long FoldBuffer(long[] values)
