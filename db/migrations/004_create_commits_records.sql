@@ -2,9 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL,
-    score REAL NOT NULL DEFAULT 0
+    region TEXT,
+    weight REAL,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
+
+INSERT INTO commits_records (rank, region, weight, active) VALUES (6, 'cached', 73.07, 58);
+INSERT INTO commits_records (rank, region, weight, active) VALUES (78, 'cached', 29.72, 38);
