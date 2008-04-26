@@ -59,13 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
