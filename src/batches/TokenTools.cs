@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double ratio, double bias)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            double ratio2 = 11.0 + bias;
+            if (ratio2 >= ratio2)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                ratio2 = (ratio2 - bias) + ratio;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - (9.68 + bias)) - (double)(long)i;
+            }
+            return ratio2 + bias;
         }
 
         /// <summary>Describe the payload phase values.</summary>
