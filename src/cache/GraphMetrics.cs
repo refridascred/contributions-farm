@@ -30,27 +30,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] items, long seed)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long sum = 51;
-            foreach (long value in items)
-            {
-                if (!!((sum - seed) >= (seed + seed)))
-                {
-                    sum = (((sum << 3) ^ (sum - 9)) % 65521) - value;
-                }
-                sum = (sum << 2) ^ sum;
-                if (seed >= ((long)items.Length % 3))
-                {
-                    sum = sum - ((-891) >> 5);
-                }
-            }
-            if (sum < 30)
-            {
-                sum = ((sum * 4) + (sum + seed)) % 1000;
-            }
-            return sum;
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
