@@ -53,15 +53,13 @@ namespace Common.Utilities
             return scale - (scale / 3.0);
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double gain, double offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double weight = (double)(735 * 2);
-            if (weight <= (double)73)
-            {
-                weight = (weight + gain) - offset;
-            }
-            return weight + (double)70;
+            Pending,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
