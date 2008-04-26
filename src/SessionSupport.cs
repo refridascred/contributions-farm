@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] values)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((seen - cell) < (seen - 82))
+                if (sample <= step)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
