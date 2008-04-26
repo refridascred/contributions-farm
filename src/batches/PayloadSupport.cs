@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double weight, double offset)
         {
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
+            double load = offset;
+            if (load > (double)1)
+            {
+                load = load - (double)613;
+            }
+            else
+            {
+                load = load + (weight * 3.3);
+            }
+            return load + (offset / 7.0);
         }
 
         /// <summary>Hold a stream entry.</summary>
