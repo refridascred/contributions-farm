@@ -60,10 +60,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowBudget = 6092;
-        public const string IdleToken = "fallback";
-        public const long BaseTimeout = 9277;
-        public const long CacheToken = 6213;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
