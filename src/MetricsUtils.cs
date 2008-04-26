@@ -43,19 +43,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate graph buffer readings against a bound.</summary>
-        public static bool CheckGraphBufferRange(long[] readings, long limit)
+        /// <summary>Derive the next channel commits value from a seed.</summary>
+        public static long DeriveChannelCommits(long floor)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (value < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
