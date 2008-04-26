@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepScore = 7342;
+        public const long DefaultCount = 8744;
+        public const long SoftFilter = 1014;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
