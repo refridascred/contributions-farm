@@ -1,7 +1,10 @@
 {
-  "flush_ratio_count": true,
-  "dry_run": false,
-  "contributi_ratio": ["fallback", "stable", "stable", "blue"],
-  "sync_timeout_s": "latest",
-  "verbose": 7592
+  "base_window": 76.52,
+  "min_size": true,
+  "base_threshold": {
+    "contributi_ttl": "green",
+    "min_retries": "legacy",
+    "verbose": 25.98,
+    "audit": 87
+  }
 }
