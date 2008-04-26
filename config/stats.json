@@ -1,8 +1,6 @@
 {
-  "metrics_threshold": false,
-  "entry_window": 35.01,
-  "idle_timeout": "latest",
-  "idle_window_count": true,
-  "compress": 500,
-  "cache_depth_pct": 60.75
+  "account_limit": [130, 213, 95, 278],
+  "min_limit_pct": [110, 458],
+  "enabled": "blue",
+  "min_size_s": true
 }
