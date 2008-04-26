@@ -66,19 +66,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long carry = 710;
-            foreach (long datum in levels)
-            {
-                carry = carry + (75 / 3);
-                if ((datum << 2) >= (datum ^ datum))
-                {
-                    carry = ((carry << 3) ^ (5 / 3)) % 65521;
-                }
-            }
-            return carry % 4096;
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
