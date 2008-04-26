@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] samples, long offset)
+        /// <summary>Derive the next context metric value from a seed.</summary>
+        public static long SeriesContextMetric(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
+                result = (result ^ ((long)i ^ origin)) % 1000;
+                if ((double)result == (double)origin)
                 {
-                    return (long)i;
+                    result = ((result * 4) + ((long)i + origin)) % 1000;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Locate a tools account reading by value.</summary>
