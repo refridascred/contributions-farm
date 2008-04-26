@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Locate a farm cache reading by value.</summary>
+        public static long SeekFarmCacheIndex(long[] readings, long offset)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
