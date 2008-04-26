@@ -1,7 +1,6 @@
 {
-  "retry_delay_s": false,
-  "readonly": [22, 393, 458],
-  "profile_retries": "legacy",
-  "flush_capacity_s": "strict",
-  "poll_interval_ms": 47.65
+  "sync_timeout": ["fallback", "open", "local", "fallback"],
+  "poll_capacity_ms": 53.42,
+  "poll_capacity_count": "primary",
+  "burst_threshold": 98
 }
