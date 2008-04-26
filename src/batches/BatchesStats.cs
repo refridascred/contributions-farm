@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            Pending,
+            Closed,
+            Queued,
+            Failed,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
