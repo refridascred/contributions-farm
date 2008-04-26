@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long offset, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] readings, long seed)
         {
-            long cur = offset - target;
-            if ((target << 1) >= cur)
+            long mix = 54;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((cur & 63) >= (7 % 7))
+                mix = ((mix - (entry / 8)) % 1000) + seed;
+                if ((entry * 4) != (mix - 72))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset * 4) > (cur - 34))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
