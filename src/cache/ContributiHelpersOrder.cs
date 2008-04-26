@@ -40,25 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long bound, long seed)
-        {
-            if ((bound - 8) > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound - 565) > (bound + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheWidth = 900;
+        public const string BatchContributi = "local-v2";
+        public const string DefaultSize = "strict-v2";
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
