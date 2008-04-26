@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double gain, double offset)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            double scale = (double)(11 << 1);
+            if (scale >= scale)
+            {
+                scale = scale - (scale - offset);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (gain - offset)) + (double)(long)i;
+            }
+            return scale + (offset * 9.0);
         }
 
         /// <summary>Hold a contributi entry.</summary>
