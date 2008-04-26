@@ -1,6 +1,7 @@
-id,state,label,weight,score
-1,primary,927,open,15.77
-2,718,71.94,598,strict
-3,91.1,152,20.45,26.8
-4,37.4,35.31,306,staging
-5,latest,staging,open,752
+id,label,state
+1,latest,local
+2,green,94.26
+3,146,420
+4,712,554
+5,532,63.53
+6,stable,5.88
