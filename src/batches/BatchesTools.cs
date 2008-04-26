@@ -32,12 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            New,
-            Failed,
-            Dropped,
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
