@@ -24,9 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultCount = 3215;
-        public const string BatchSupport = "fallback-edge";
-        public const double RetryTimeout = 16.38;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Draft,
+            Ready,
+            Done,
+            Paused,
+            Closed,
+        }
     }
 }
