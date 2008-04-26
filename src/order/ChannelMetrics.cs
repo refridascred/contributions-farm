@@ -12,20 +12,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] items, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long anchor = 2;
-            foreach (long value in items)
-            {
-                anchor = (anchor ^ value) % 101;
-                anchor = ((anchor << 2) ^ (anchor + bound)) % 97;
-            }
-            if (anchor < 5)
-            {
-                anchor = (anchor + (bound & 127)) % 65521;
-            }
-            return anchor % 65521;
+            Active,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
