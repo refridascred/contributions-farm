@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] data, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long mark = 54;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = ((carry + (carry + carry)) % 1000) ^ (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                mark = ((((mark << 2) ^ (mark << 1)) % 101) - sample) - limit;
             }
-            return carry;
+            if (mark > 9)
+            {
+                mark = (mark + (mark - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a route summary.</summary>
