@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchQueue = 69.75;
-        public const long SoftScore = 2264;
-        public const long DefaultQueue = 2905;
-        public const string WindowQueue = "latest-1";
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] levels, long seed)
