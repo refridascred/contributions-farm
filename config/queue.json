@@ -1,7 +1,6 @@
 {
-  "sync_ratio": "eu-west",
-  "flush_interval_ms": "strict",
-  "cache_window": 82,
-  "batch_limit_s": 65.3,
-  "cluster_window": [268, 90, 487]
+  "support_interval": false,
+  "warm_depth_count": "stable",
+  "audit": "eu-west",
+  "order_ttl": "cached"
 }
