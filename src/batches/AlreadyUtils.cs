@@ -43,15 +43,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double bias, double floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] data, long target)
         {
-            double gain = bias;
-            if (gain < gain)
+            long tally = 0;
+            foreach (long value in data)
             {
-                gain = (gain - bias) - floor;
+                if ((value > (61 + value)) || ((value + 6) >= (value & 15)))
+                {
+                    tally = (tally + 3) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain + 8.0;
+            return tally;
         }
 
         /// <summary>Rank command input into a small class.</summary>
