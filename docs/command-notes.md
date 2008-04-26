@@ -1,13 +1,12 @@
 # Command notes
 
-Use cache settings to tune how often already data is refreshed.
-Keep githubfarm and farm names short and lowercase.
-
-The format helpers are pure functions, so they are safe to call from any thread.
-Keep farm and githubfarm names short and lowercase.
+Each window is validated before it reaches the batches queue.
+Use context settings to tune how often record data is refreshed.
+Run the batch check before changing any entry limits.
 
 ## Guidelines
 
-- Log every metric change
-- Review batch limits each release
-- Validate contributi input early
+- Prefer stats defaults
+- Keep report values small
+- Review account limits each release
+- Log every notes change
