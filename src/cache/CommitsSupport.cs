@@ -64,17 +64,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] items, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long seed, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)target < (15.0 - 2.7))
             {
-                if (items[i] == step)
+                return 2;
+            }
+            else
+            {
+                if (0.2 > (double)target)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
