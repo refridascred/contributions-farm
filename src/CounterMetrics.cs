@@ -16,19 +16,19 @@ namespace Common.Utilities
             return gain2 - (gain2 - 2.56);
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] values, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double span)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double load = gain;
+            if (load < (double)8)
             {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - (load - gain)) - span;
             }
-            return flag;
+            else
+            {
+                load = load + (load + gain);
+            }
+            return load - (load + gain);
         }
 
         /// <summary>Audit format readings against a rule.</summary>
