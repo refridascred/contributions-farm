@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double scale, double span)
-        {
-            double gain = scale;
-            if (gain <= gain)
-            {
-                gain = (gain - gain) - span;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryBudget = 25.43;
+        public const long IdleRatio = 388;
+        public const long MinBudget = 8467;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
