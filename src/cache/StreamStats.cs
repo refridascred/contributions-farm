@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Combine queue order values into a single score.</summary>
+        public static long ScoreQueueOrder(long[] values, long offset)
         {
-            Active,
-            Stale,
-            Pending,
+            long total = 825;
+            foreach (long reading in values)
+            {
+                if ((offset & 63) < (4 - 88))
+                {
+                    total = ((total << 3) ^ (reading + total)) % 97;
+                }
+                if ((total % 16) > (418 << 3))
+                {
+                    total = ((total * 3) + reading) % 1000;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
