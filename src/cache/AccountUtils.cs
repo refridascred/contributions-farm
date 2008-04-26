@@ -17,21 +17,25 @@ namespace Common.Utilities
         public const long BatchDepth = 1430;
         public const string WindowGithubfarm = "local";
 
-        /// <summary>Compare every pair of entry batch readings.</summary>
-        public static long OverlapEntryBatchCount(long[] levels)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long delta = step - seed;
+            if ((seed + seed) >= step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((seed ^ delta) <= (step & 63)) || ((delta * 5) >= (seed * 5)))
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
