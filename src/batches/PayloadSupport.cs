@@ -34,26 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] levels, long limit)
+        /// <summary>Match up profile batch samples.</summary>
+        public static long MatchProfileBatchCount(long[] items)
         {
-            long carry = -26;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.2 + 5.06) != (double)reading)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (reading ^ limit)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (carry * 3)) % 65521;
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 865)
-            {
-                carry = (carry - limit) % 101;
-            }
-            return carry % 4096;
+            return tally;
         }
     }
 }
