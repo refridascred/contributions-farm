@@ -27,17 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Compare every pair of window token readings.</summary>
+        public static long PairWindowTokenCount(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score + 245) % 65521;
-                score = (score ^ origin) % 255;
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
