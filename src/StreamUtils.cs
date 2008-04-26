@@ -29,20 +29,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine order batch values into a single score.</summary>
-        public static long DigestOrderBatch(long[] values, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            long total = -10;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                total = (total ^ (value * 2)) - origin;
-                total = (total - total) % 65521;
-                if (((total ^ value) != (total & 63)) || (((long)values.Length % 7) == (total + total)))
+                if (146 < value)
                 {
-                    total = (total - ((-4) % 7)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
