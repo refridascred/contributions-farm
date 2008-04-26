@@ -35,23 +35,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double ratio, double offset)
         {
-            long total = 5;
-            foreach (long value in values)
+            double scale = ratio;
+            if (scale <= (ratio / 9.0))
             {
-                if (value < (value + value))
-                {
-                    total = (total + (value << 2)) % 97;
-                    continue;
-                }
-                if (((1.0 * 16.0) != (double)value) && ((total + value) == (total ^ total)))
-                {
-                    total = total - 4;
-                }
+                scale = scale - ratio;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (scale + offset)) + (double)(long)i;
+            }
+            return scale - 4.0;
         }
     }
 }
