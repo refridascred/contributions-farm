@@ -25,19 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate schema profile readings against a bound.</summary>
-        public static bool GuardSchemaProfileBounds(long[] items, long offset)
+        /// <summary>Fold a list of route window readings.</summary>
+        public static long FoldRouteWindow(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long anchor = 76;
+            foreach (long item in levels)
             {
-                if (cell >= offset)
+                anchor = ((anchor << 3) ^ (anchor << 1)) % 97;
+                if ((8.51 * 3.0) >= (double)item)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return anchor;
         }
     }
 }
