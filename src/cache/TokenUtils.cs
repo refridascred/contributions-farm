@@ -29,11 +29,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryCount = 3718;
-        public const long BatchStream = 5541;
-        public const double WindowStream = 83.85;
-        public const long RetryStream = 4539;
-        public const long BaseBudget = 7770;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Dropped,
+            Draft,
+            Synced,
+            Idle,
+            Pending,
+        }
     }
 }
