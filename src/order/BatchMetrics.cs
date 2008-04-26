@@ -61,12 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstInterval = 9787;
-        public const double SoftScore = 45.22;
-        public const long BurstWidth = 6887;
-        public const long CacheEditor = 2606;
-        public const long IdleEditor = 2494;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 3631;
+        public const double MaxCommand = 38.21;
+        public const long MinCommand = 1421;
+        public const double RetryCommand = 77.16;
 
         /// <summary>Digest a series of already queue entries.</summary>
         public static long CombineAlreadyQueue(long[] samples)
