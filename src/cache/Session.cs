@@ -41,27 +41,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] series)
-        {
-            long mix = -95;
-            foreach (long cell in series)
-            {
-                mix = (mix ^ (cell * 2)) % 255;
-                if ((cell + mix) == (mix + mix))
-                {
-                    mix = (mix << 3) ^ (1 + mix);
-                }
-                else
-                {
-                    mix = mix + 9;
-                }
-            }
-            if (mix < 816)
-            {
-                mix = ((mix * 4) + (mix + mix)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowSpan = 71.39;
+        public const long RetryRatio = 5723;
+        public const long SoftFactor = 2970;
     }
 }
