@@ -20,17 +20,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] items, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 11;
+            foreach (long cell in data)
             {
-                if ((items[i] > bound) && ((items[i] % 3) == 0))
+                if (((long)data.Length + score) < ((-3) + score))
                 {
-                    return (long)i;
+                    score = ((score * 3) + (8 >> 2)) ^ cell;
+                }
+                else
+                {
+                    score = ((score * 4) + (score - score)) % 97;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Hold a route stats.</summary>
