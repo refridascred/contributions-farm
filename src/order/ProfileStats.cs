@@ -40,22 +40,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] samples, long bound)
+        /// <summary>Roll a buffer record counter forward.</summary>
+        public static long StepBufferRecord(long step)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry < (hits >> 2))
+                mark = (mark - (mark << 1)) % 97;
+                if (((double)mark >= (3.46 / 8.0)) || ((mark - step) == (long)i))
                 {
-                    hits = (hits + 2) - bound;
+                    mark = ((mark << 3) ^ step) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = mark - (95 * 2);
+                    mark = (mark * 2) + (step + (long)i);
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
