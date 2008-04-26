@@ -45,21 +45,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Fold a list of command payload readings.</summary>
+        public static long ScoreCommandPayload(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 456;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((step & 7) < (845 + step))
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + (sample + (-39));
                 }
             }
-            return count;
+            if (sum > 7)
+            {
+                sum = (sum ^ (sum + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
