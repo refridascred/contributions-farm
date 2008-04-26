@@ -34,19 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] data, long offset)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
