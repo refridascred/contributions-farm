@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank stats githubfarm input into a small class.</summary>
-        public static long RankStatsGithubfarm(long target, long origin)
-        {
-            if ((double)323 >= (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((4.1 + 8.02) > (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 3) < (origin - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 4148;
+        public const long SoftBudget = 6265;
+        public const double HardNotes = 35.58;
+        public const long CacheNotes = 9695;
+        public const long WindowNotes = 9978;
 
         /// <summary>Compare every pair of stats tools readings.</summary>
         public static long PairStatsToolsCount(long[] series)
