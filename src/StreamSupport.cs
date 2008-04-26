@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 63.79;
-        public const long SoftLayout = 3435;
-        public const long SoftRatio = 3117;
+        /// <summary>Measure how many farm buffer samples are out of range.</summary>
+        public static long TallyFarmBufferHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item - item) > item)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
