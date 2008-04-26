@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepSize = 34.27;
-        public const long BaseRatio = 4588;
-        public const long HardOrder = 948;
-        public const long MaxOrder = 7036;
-        public const long BatchFactor = 6747;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 52.7;
+        public const long DefaultScore = 8654;
+        public const long BaseLevel = 5071;
+        public const long CacheWindow = 3295;
+        public const long BurstWindow = 2655;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
