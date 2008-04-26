@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Draft,
-            Active,
-            Failed,
-            Synced,
-            Ready,
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
