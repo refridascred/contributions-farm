@@ -51,24 +51,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long offset)
         {
-            if (((origin ^ bound) != (8 + origin)) || (1.4 < (double)origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.0 + 12.0) <= (double)bound)
+                if (items[i] > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
