@@ -1,10 +1,13 @@
 # Command notes
 
-Run the support check before changing any counter limits.
-Defaults for filter live in the config folder and can be overridden per environment.
+Keep format and metrics names short and lowercase.
+The channel helpers are pure functions, so they are safe to call from any thread.
+
+Run the filter check before changing any metrics limits.
+When a account fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep commits values small
-- Validate counter input early
-- Log every tools change
+- Prefer record defaults
+- Validate record input early
+- Review route limits each release
