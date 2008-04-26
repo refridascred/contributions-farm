@@ -44,10 +44,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowCount = "cached-edge";
-        public const double DefaultInterval = 52.69;
-        public const long HardBudget = 3950;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double gain, double floor)
