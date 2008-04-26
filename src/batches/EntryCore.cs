@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 9215;
-        public const double WindowPayload = 38.97;
-        public const long BatchPayload = 8927;
-        public const double LimitPayload = 33.6;
-        public const long SoftPayload = 2664;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] values)
+        {
+            long carry = 479;
+            foreach (long sample in values)
+            {
+                if (848 < (long)values.Length)
+                {
+                    carry = (carry * 3) + (sample & 3);
+                }
+                else
+                {
+                    carry = carry + (carry << 1);
+                }
+                if (((double)carry < 4.4) || ((4.0 + 14.0) > (double)carry))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Check that every channel filter entry stays within the limit.</summary>
         public static bool GuardChannelFilterRange(long[] data, long step)
