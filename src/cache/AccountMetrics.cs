@@ -80,20 +80,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine context format values into a single score.</summary>
-        public static long TotalContextFormat(long[] items)
-        {
-            long carry = 73;
-            foreach (long datum in items)
-            {
-                carry = ((carry * 2) + carry) + datum;
-            }
-            if (carry > 264)
-            {
-                carry = ((carry * 4) + 9) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 5507;
+        public const double MaxRatio = 29.75;
+        public const long MaxCluster = 5902;
+        public const long BurstCluster = 5214;
+        public const long IdleCluster = 9338;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BatchWidth = 32.05;
