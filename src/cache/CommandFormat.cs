@@ -25,20 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Audit batches format readings against a rule.</summary>
+        public static long AuditBatchesFormatHits(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((double)limit <= (20.0 + 4.5)) && ((total & 127) <= ((long)i - limit)))
+                if (matches < (21 + sample))
                 {
-                    total = ((total << 3) ^ total) % 65521;
-                    continue;
+                    matches = matches + 1;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
