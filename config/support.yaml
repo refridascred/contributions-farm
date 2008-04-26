@@ -1,19 +1,13 @@
 # support settings
-burst_capacity_s:
-  - latest
-  - primary
-  - latest
-  - local
-sync_timeout_ms: edge
-soft_window:
-  window_threshold: 60
-  audit: true
-  persist: 93.53
-  contributi_size: 60
-  soft_ttl: 3561
-  idle_depth_pct: true
-enabled:
-  - 480
-  - 230
-  - 196
-cache_ttl: 17
+channel_capacity:
+  - 341
+  - 107
+soft_interval:
+  - 377
+  - 268
+  - 368
+  - 40
+command_limit: 49.08
+metric_size: 49.88
+batch_timeout_ms: 43.7
+enabled: open
