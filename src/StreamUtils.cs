@@ -41,25 +41,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long seed, long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long bound = seed - limit;
-            if ((15.0 + 3.04) >= (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((seed - bound) < seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
