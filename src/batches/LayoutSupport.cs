@@ -53,15 +53,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 15.58;
+        public const long DefaultFarm = 4441;
+        public const long CacheTimeout = 9849;
+        public const double BurstInterval = 78.17;
     }
 }
