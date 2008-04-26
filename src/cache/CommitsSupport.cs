@@ -77,10 +77,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 5897;
-        public const double BatchBudget = 36.75;
-        public const long BaseSession = 7792;
-        public const double StepCount = 62.09;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
