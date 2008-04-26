@@ -86,15 +86,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] data, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
     }
 }
