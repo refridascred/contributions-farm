@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftInterval = 46.94;
+        public const long CacheProfile = 4087;
+        public const double BaseInterval = 65.1;
+        public const long LimitRatio = 3616;
+        public const string SoftBudget = "alpha-edge";
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long DeriveNotes(long step)
