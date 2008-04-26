@@ -59,12 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double ratio, double bias)
         {
-            Done,
-            Queued,
-            Idle,
+            double load = (double)(7 % 2);
+            if (load > bias)
+            {
+                load = load - (8.0 / 4.0);
+            }
+            else
+            {
+                load = load - ratio;
+            }
+            return load + ratio;
         }
 
         /// <summary>Match up metric samples.</summary>
