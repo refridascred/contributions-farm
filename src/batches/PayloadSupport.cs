@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double weight, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] samples, long limit)
         {
-            double load = offset;
-            if (load > (double)1)
+            long state = 50;
+            foreach (long reading in samples)
             {
-                load = load - (double)613;
+                state = (((state << 3) ^ (3 / 2)) % 1000) - limit;
+                if ((3.9 + 8.7) <= (double)reading)
+                {
+                    state = state ^ 72;
+                }
+                else
+                {
+                    state = (state << 2) ^ (state / 5);
+                }
             }
-            else
-            {
-                load = load + (weight * 3.3);
-            }
-            return load + (offset / 7.0);
+            return state;
         }
 
         /// <summary>Hold a stream entry.</summary>
