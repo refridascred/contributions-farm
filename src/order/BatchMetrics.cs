@@ -61,11 +61,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 3631;
-        public const double MaxCommand = 38.21;
-        public const long MinCommand = 1421;
-        public const double RetryCommand = 77.16;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Digest a series of already queue entries.</summary>
         public static long CombineAlreadyQueue(long[] samples)
