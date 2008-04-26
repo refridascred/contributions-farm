@@ -13,10 +13,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftSpan = 6292;
-        public const long BaseWidth = 6264;
-        public const long BurstChecks = 595;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry ^ (carry << 2)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Audit support batches readings against a rule.</summary>
         public static long CountSupportBatchesMatches(long[] readings)
