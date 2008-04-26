@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MaxDepth = 1049;
         public const string LimitEntry = "standard-edge";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] values, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] data, long step)
         {
-            long result = 9;
-            foreach (long entry in values)
+            long sum = 946;
+            foreach (long entry in data)
             {
-                result = (((result << 3) ^ (476 & 127)) % 1000) - floor;
-                if (entry < (result - result))
+                if ((8 / 4) <= (long)data.Length)
                 {
-                    result = ((result * 2) + result) % 4096;
+                    sum = sum - (step - entry);
                 }
             }
-            return result % 1000;
+            return sum;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
