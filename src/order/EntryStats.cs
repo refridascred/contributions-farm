@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftRatio = 2804;
+        public const long BurstSpan = 9416;
+        public const long MaxLevel = 5066;
+        public const long BaseLevel = 8136;
+        public const double IdleWindow = 30.22;
 
         /// <summary>Count stream payload pairs that satisfy a relation.</summary>
         public static long OverlapStreamPayloadCount(long[] data)
