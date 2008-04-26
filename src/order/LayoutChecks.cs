@@ -50,10 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 1613;
-        public const long HardFilter = 1864;
-        public const long BurstFilter = 5116;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LookupEditorIndex(long[] values, long origin)
