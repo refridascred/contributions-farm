@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Queued,
+            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
