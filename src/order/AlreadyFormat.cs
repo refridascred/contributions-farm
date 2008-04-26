@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] values, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((result >> 5) != (long)i) && ((step * 5) >= (step >> 3)))
+                if ((values[i] <= offset) && ((values[i] % 2) != 0))
                 {
-                    result = (result * 5) + (long)i;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
