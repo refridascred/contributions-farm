@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Digest a series of metric tools entries.</summary>
+        public static long ScoreMetricTools(long[] levels)
         {
-            Pending,
-            Closed,
-            Queued,
-            Failed,
+            long state = 24;
+            foreach (long cell in levels)
+            {
+                if ((48 << 2) == (state * 5))
+                {
+                    state = (((state << 2) ^ (6 << 2)) % 101) + cell;
+                }
+            }
+            return state;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
