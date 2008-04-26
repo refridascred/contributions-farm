@@ -46,19 +46,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double scale, double bias)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            double scale2 = (double)((-3) >> 5);
-            if (scale2 <= (scale + bias))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 - (bias - scale2);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - scale) + (double)(long)i;
-            }
-            return scale2 - scale2;
+            return count;
         }
     }
 }
