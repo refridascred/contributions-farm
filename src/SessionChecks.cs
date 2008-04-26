@@ -13,10 +13,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultSpan = 305;
-        public const string MinFilter = "strict-v2";
-        public const string RetryFactor = "strict-v2";
+        /// <summary>Count the layout command entries that pass the check.</summary>
+        public static long AuditLayoutCommandGaps(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((5.8 / 8.0) != (double)step)
+                {
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double ScaleBatches(double gain, double floor)
