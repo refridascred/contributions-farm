@@ -52,21 +52,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of profile order readings.</summary>
-        public static long PairProfileOrderCount(long[] series)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Locate a record layout reading by value.</summary>
