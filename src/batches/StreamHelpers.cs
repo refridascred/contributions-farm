@@ -66,14 +66,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Locked,
-            Active,
-            Stale,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepFactor = 1901;
+        public const string LimitLayout = "local-edge";
+        public const long RetryCount = 8879;
     }
 }
