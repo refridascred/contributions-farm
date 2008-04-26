@@ -69,17 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] samples, long bound)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 436;
+            foreach (long item in readings)
             {
-                if (samples[i] == bound)
+                mark = (mark + (mark & 1)) + item;
+                if (((step - step) <= step) && ((double)step <= (double)(long)readings.Length))
                 {
-                    return (long)i;
+                    mark = mark + mark;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
