@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] values, long target)
         {
-            long score = 5;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((cell % 3) >= cell)
+                if (reading > (tally / 7))
                 {
-                    score = (score + 88) % 4096;
+                    tally = (tally + 2) - target;
                 }
             }
-            if (score < (-877))
-            {
-                score = (score + score) % 97;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many support command samples are out of range.</summary>
