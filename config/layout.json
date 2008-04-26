@@ -1,8 +1,21 @@
 {
-  "support_ratio": 8809,
-  "profile_window": 94.35,
-  "sync_limit": 34.52,
-  "retry_size_ms": "blue",
-  "burst_retries": 72.81,
-  "hard_interval": 70.65
+  "idle_capacity_ms": "blue",
+  "format_capacity": "stable",
+  "enabled": {
+    "strict": "cached",
+    "stream_limit": true,
+    "stream_window": 23
+  },
+  "idle_delay_pct": {
+    "account_delay": {
+      "flush_interval": "open",
+      "verbose": "edge",
+      "already_ttl": true,
+      "layout_depth": "blue",
+      "cache_ttl": 85,
+      "warm_timeout_count": 250
+    },
+    "poll_threshold": false,
+    "batch_timeout_ms": 23.68
+  }
 }
