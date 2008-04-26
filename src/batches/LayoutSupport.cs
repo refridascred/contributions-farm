@@ -64,19 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] data, long limit)
+        /// <summary>Count the format contributi entries that pass the check.</summary>
+        public static long CountFormatContributiOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (reading < limit)
+                if ((double)matches < 2.8)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) + value;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
