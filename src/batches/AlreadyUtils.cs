@@ -48,17 +48,27 @@ namespace Common.Utilities
             return gain + 8.0;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] series, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 687;
+            foreach (long item in readings)
             {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
+                sum = sum ^ item;
+                if ((47 - 580) < sum)
                 {
-                    return (long)i;
+                    sum = ((sum * 5) + item) % 1000;
+                }
+                if (sum <= (item >> 4))
+                {
+                    sum = (sum + (6 * 2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - (sum - sum)) % 1000;
                 }
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
