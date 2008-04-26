@@ -30,20 +30,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxTimeout = 5;
+        public const double StepStream = 8.41;
+        public const double BaseStream = 16.21;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
