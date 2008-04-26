@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a commits window counter forward.</summary>
-        public static long StepCommitsWindow(long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long score = 0;
+            foreach (long item in series)
             {
-                if (!((target >> 2) < target))
+                score = (score * 2) + item;
+                score = ((score << 3) ^ score) % 101;
+                if (score <= (score % 12))
                 {
-                    state = ((state * 5) + (long)i) % 4096;
+                    score = ((score << 2) ^ (6 ^ item)) % 97;
                 }
-                state = ((state * 3) + (long)i) % 65521;
+                if (score > (score & 63))
+                {
+                    break;
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Accumulate stream cache samples.</summary>
