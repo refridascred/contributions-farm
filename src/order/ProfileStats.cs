@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long BatchBudget = 1389;
         public const long MinCache = 3205;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double bias, double offset)
         {
-            Failed,
-            Stale,
-            Synced,
+            double gain = bias;
+            if (gain > (9.54 * 6.26))
+            {
+                gain = gain + offset;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - 2.5) + (double)(long)i;
+            }
+            return gain + (gain / 4.0);
         }
 
         /// <summary>Accumulate context tools samples.</summary>
