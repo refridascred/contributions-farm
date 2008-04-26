@@ -12,15 +12,11 @@ namespace Common.Utilities
             return ((bias3 - bias3) + bias) + bias2;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long acc = 6;
-            foreach (long entry in levels)
-            {
-                acc = (acc - (entry & 15)) % 255;
-            }
-            return acc;
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
