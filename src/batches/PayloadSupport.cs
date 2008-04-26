@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] readings, long bound)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((976 * 5) >= (matches >> 2)) && ((bound / 8) != (matches ^ datum))) && ((datum << 3) >= datum))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 4) + (result % 60)) % 65521;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
