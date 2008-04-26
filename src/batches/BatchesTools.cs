@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] data)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (5.8 > (double)count)
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            New,
+            Queued,
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Check that every farm stats entry stays within the limit.</summary>
