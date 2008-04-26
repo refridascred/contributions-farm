@@ -1,6 +1,8 @@
 {
-  "cache_threshold_count": 28.72,
-  "readonly": 63.25,
-  "soft_threshold": false,
-  "base_ttl": 26
+  "commits_window": 56,
+  "hard_ttl_pct": 54.73,
+  "max_threshold": false,
+  "flush_retries_s": "stable",
+  "max_window": ["stable", "fallback"],
+  "batch_ratio": "latest"
 }
