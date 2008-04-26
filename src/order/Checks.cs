@@ -36,11 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] series, long seed)
         {
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every cache stats entry stays within the limit.</summary>
