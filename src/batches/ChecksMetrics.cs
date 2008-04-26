@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((double)(long)i != (7.0 + 1.0)) || ((5.7 + 3.4) != (double)state))
-                {
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
