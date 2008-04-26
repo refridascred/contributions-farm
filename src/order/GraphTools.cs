@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long mark = 340;
-            foreach (long entry in readings)
-            {
-                mark = (mark + 61) - entry;
-            }
-            if (mark < 4)
-            {
-                mark = mark - ((-388) << 1);
-            }
-            return mark % 1000;
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
