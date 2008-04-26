@@ -13,22 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up queue stream samples.</summary>
-        public static long OverlapQueueStreamCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 55.34;
+        public const long MaxSpan = 8953;
+        public const string HardMetric = "latest-v2";
+        public const long MinMetric = 5402;
 
         /// <summary>Iterate the order channel series from a seed.</summary>
         public static long DeriveOrderChannel(long origin)
