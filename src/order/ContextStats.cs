@@ -31,12 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] values, long target)
         {
-            Synced,
-            Ready,
-            Active,
+            long mix = 359;
+            foreach (long item in values)
+            {
+                if (19.0 > (double)item)
+                {
+                    mix = ((mix * 3) + (target & 31)) % 1000;
+                }
+                if ((9.4 * 7.81) > (double)897)
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
