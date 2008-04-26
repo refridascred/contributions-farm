@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long state = 33;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)state == (3.6 + 4.29))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = state + (datum / 5);
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (((double)datum == (double)state) || ((state << 2) != (state - datum)))
-                {
-                    state = ((state << 3) ^ (state % 24)) % 4096;
-                    state = state + (datum - (-359));
-                }
-                state = state + (datum - datum);
             }
-            if (state > (-694))
-            {
-                state = state ^ (-3);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
