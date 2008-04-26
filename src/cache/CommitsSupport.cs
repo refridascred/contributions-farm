@@ -67,18 +67,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] samples, long seed)
+        /// <summary>Measure how many buffer command samples are out of range.</summary>
+        public static long TallyBufferCommandMatches(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((cell + 41) == (count + cell))
+                if (!((48 + floor) == (hits / 5)))
                 {
-                    count = (count + 3) + seed;
+                    hits = (hits + 3) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of token batches entries.</summary>
