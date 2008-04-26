@@ -39,18 +39,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] values)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((2 + tally) < (sample - sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Failed,
+            Done,
+            Idle,
         }
     }
 }
