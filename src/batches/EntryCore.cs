@@ -14,18 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit format queue readings against a rule.</summary>
-        public static long TallyFormatQueueGaps(long[] items, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long sum = 6;
+            foreach (long datum in levels)
             {
-                if (!((2.0 * 8.9) <= (double)count))
+                if ((double)datum < 1.02)
                 {
-                    count = ((count + 3) + cell) + seed;
+                    sum = ((sum * 3) + 36) - target;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
