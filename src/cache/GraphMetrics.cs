@@ -42,23 +42,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] readings)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            long anchor = 8;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - anchor) % 65521;
-                if (((item + 47) == (479 - anchor)) || (anchor < item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 798)
-            {
-                anchor = (anchor << 3) ^ (anchor >> 3);
-            }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
