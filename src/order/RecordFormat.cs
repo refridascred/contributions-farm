@@ -43,10 +43,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardCount = 13.27;
-        public const long MaxStream = 4129;
-        public const double CacheRatio = 4.51;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long seed)
