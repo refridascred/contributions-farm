@@ -20,15 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cache buffer samples are out of range.</summary>
-        public static long MeasureCacheBufferGaps(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long value in series)
+            foreach (long value in readings)
             {
-                if ((((value << 1) < (matches + value)) && ((matches - matches) > value)) || ((matches < (matches - 3)) && (value >= matches)))
+                if (matches <= (matches + (-748)))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 3) + value;
                 }
             }
             return matches;
