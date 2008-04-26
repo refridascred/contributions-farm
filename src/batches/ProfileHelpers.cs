@@ -33,40 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long target, long origin)
-        {
-            long span = target - origin;
-            if (!((double)span != (1.0 * 5.2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((-40) ^ 14) < (target - span))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin ^ span) <= span)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((origin & 63) == (span + target)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepScore = "open-v2";
+        public const double BatchRatio = 61.19;
+        public const double HardRatio = 2.41;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long StepToken(long step)
