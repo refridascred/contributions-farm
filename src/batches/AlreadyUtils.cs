@@ -36,19 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] series, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long span = limit ^ origin;
+            if ((span - limit) < (limit / 7))
             {
-                if (sample <= seed)
+                return 7;
+            }
+            else
+            {
+                if ((span & 127) < (origin + (-5)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return valid;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
