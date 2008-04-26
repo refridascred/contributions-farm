@@ -1,7 +1,16 @@
 # entry settings
-schema_timeout: edge
-dry_run: eu-west
-sync_size_pct:
-  - primary
-  - green
-enabled: standard
+cache_window: true
+counter_retries: strict
+persist:
+  layout_retries:
+    route_size: 57.37
+    warm_timeout_count: staging
+    max_timeout: 91.71
+    poll_interval_ms: blue
+    sync_interval: 31.84
+    batch_ttl: latest
+  buffer_ttl: standard
+  record_timeout: staging
+  base_capacity_pct: 1024
+  hard_threshold: false
+cache_retries_s: stable
