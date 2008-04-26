@@ -21,18 +21,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result + seed) % 97;
-                result = (result * 5) + (long)i;
-                result = ((result * 5) + (seed ^ result)) % 255;
-                result = ((result * 3) + (long)i) % 4093;
+                if (((double)limit <= (20.0 + 4.5)) && ((total & 127) <= ((long)i - limit)))
+                {
+                    total = ((total << 3) ^ total) % 65521;
+                    continue;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
