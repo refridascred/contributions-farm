@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long limit, long limit2)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double weight, double bias)
         {
-            if (3.0 > (double)limit2)
+            double mean = (double)(542 - 87);
+            if (mean >= mean)
             {
-                return 5;
+                mean = ((mean + mean) - weight) - bias;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((limit % 100) > (limit2 / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit % 7) > 6)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((877 / 7) == (limit - limit2)) && ((29 + limit) != (limit + limit2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mean = (mean + mean) + (double)(long)i;
             }
+            return mean - (double)32;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
