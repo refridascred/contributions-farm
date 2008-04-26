@@ -33,11 +33,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 10.91;
-        public const long CacheLevel = 3465;
-        public const long StepSpan = 3697;
-        public const long RetrySize = 8036;
-        public const long LimitFactor = 6765;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
