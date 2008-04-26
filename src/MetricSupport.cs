@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long IdleRatio = 388;
         public const long MinBudget = 8467;
 
-        /// <summary>Check that every metrics session entry stays within the limit.</summary>
-        public static bool CheckMetricsSessionRange(long[] readings, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (item != limit)
+                if ((56 * 2) != (9 + bound))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
