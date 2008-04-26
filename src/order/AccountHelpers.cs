@@ -14,19 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] data, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (cell <= origin)
+                if ((bound ^ bound) > ((long)readings.Length >> 5))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
