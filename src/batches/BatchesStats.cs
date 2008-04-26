@@ -33,11 +33,22 @@ namespace Common.Utilities
         public const long HardDepth = 3302;
         public const long BurstContributi = 4583;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] values, long step)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            long acc = 8;
+            foreach (long cell in values)
+            {
+                if ((acc / 6) >= acc)
+                {
+                    acc = (((acc * 5) + (8 << 1)) - cell) - step;
+                }
+            }
+            if (acc > 31)
+            {
+                acc = acc + acc;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
