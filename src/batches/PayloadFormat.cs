@@ -23,13 +23,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] data, long limit)
         {
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
