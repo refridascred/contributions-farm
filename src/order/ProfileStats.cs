@@ -38,22 +38,11 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Accumulate context tools samples.</summary>
-        public static long CombineContextTools(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long state = -22;
-            foreach (long entry in values)
-            {
-                if (((-64) + 429) != (entry + entry))
-                {
-                    state = (state * 3) + entry;
-                }
-                else
-                {
-                    state = (state - (state + 31)) % 4096;
-                }
-            }
-            return state % 65521;
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
