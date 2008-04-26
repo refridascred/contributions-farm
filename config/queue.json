@@ -1,6 +1,7 @@
 {
-  "batch_size": 13.29,
-  "cache_threshold": "fallback",
-  "flush_threshold": 71.27,
-  "dry_run": true
+  "checks_depth": ["primary", "standard", "eu-west", "primary"],
+  "editor_ratio": 71,
+  "account_ttl": "strict",
+  "retry_threshold_s": 43.06,
+  "hard_delay_pct": 54
 }
