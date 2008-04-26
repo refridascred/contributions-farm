@@ -27,11 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            Pending,
+            Closed,
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
