@@ -47,12 +47,17 @@ namespace Common.Utilities
             return weight + (double)70;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] samples, long step)
         {
-            Retry,
-            Ready,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
