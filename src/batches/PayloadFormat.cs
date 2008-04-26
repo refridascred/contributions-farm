@@ -19,39 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mix = 9;
-            foreach (long reading in series)
-            {
-                mix = (mix + mix) % 1000;
-                if ((double)reading != (double)mix)
-                {
-                    mix = ((mix * 3) + (reading ^ mix)) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (7 / 3)) % 97;
-                }
-                if ((mix << 1) < (reading / 5))
-                {
-                    mix = (mix - reading) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ mix) % 1000;
-                }
-                if ((double)mix > (5.0 / 8.0))
-                {
-                    break;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = ((mix << 2) ^ mix) % 1000;
-            }
-            return mix % 65521;
+            Ready,
+            New,
+            Stale,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
