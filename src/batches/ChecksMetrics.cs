@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a channel graph sample.</summary>
-        public static long SeekChannelGraphIndex(long[] levels, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = -6;
+            foreach (long datum in levels)
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                result = ((result << 3) ^ (result + datum)) + seed;
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
