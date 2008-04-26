@@ -39,18 +39,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] levels, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((79 - bound) > (hits + entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
