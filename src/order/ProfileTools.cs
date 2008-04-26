@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] readings, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (!((seen / 6) <= (seen % 10)) || (((floor + seen) > 153) || ((double)item <= 2.06)))
+                if ((double)hits <= (4.51 / 7.0))
                 {
-                    seen = seen + 3;
+                    hits = ((hits + 2) - entry) - origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the payload level values.</summary>
