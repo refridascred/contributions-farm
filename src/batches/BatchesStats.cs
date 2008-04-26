@@ -63,14 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the counter batches entries that pass the check.</summary>
+        public static long CountCounterBatchesOutliers(long[] series)
         {
-            Stale,
-            Closed,
-            Draft,
-            Ready,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((196 << 3) > (entry + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
