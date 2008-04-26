@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long step, long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] series, long offset)
         {
-            long lane = step ^ limit;
-            if (6.05 >= (double)limit)
+            bool found = true;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane / 2) > lane)
+                if (value > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)lane != (11.0 + 19.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(3.82 < (double)step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a account counter forward.</summary>
