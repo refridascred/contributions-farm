@@ -66,18 +66,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] samples, long origin)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((hits % 24) >= ((-1) << 3)))
-                {
-                    hits = ((hits + 1) + cell) - origin;
-                }
+                sum = ((sum * 2) + (limit - sum)) % 4096;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
     }
 }
