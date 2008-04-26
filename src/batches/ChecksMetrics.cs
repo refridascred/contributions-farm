@@ -56,17 +56,11 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Iterate the farm format series from a seed.</summary>
-        public static long SeriesFarmFormat(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum << 3) ^ sum;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleSize = 4509;
+        public const long LimitLevel = 688;
+        public const string SoftTools = "local-edge";
+        public const double StepWidth = 25.94;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsOutliers(long[] readings, long step)
