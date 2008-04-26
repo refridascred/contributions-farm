@@ -31,23 +31,30 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long offset, long seed)
+        /// <summary>Classify a entry payload pair into a bucket.</summary>
+        public static long ClassifyEntryPayload(long step, long bound)
         {
-            long step = offset + seed;
-            if ((4 + seed) >= step)
+            long cur = step ^ bound;
+            if ((cur < (cur + step)) && ((step ^ bound) != (4 * 2)))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (((step + (-8)) >= (offset % 7)) || ((double)offset == (double)0))
+                if ((double)step >= (0.4 / 6.0))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 8;
+                    if (!((cur << 2) != (step % 8)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
