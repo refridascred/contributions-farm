@@ -27,25 +27,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long step, long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long span = step ^ seed;
-            if ((double)span != (4.7 + 19.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(step <= 143))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Blend two contributi measurements.</summary>
