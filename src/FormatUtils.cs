@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long floor, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if ((floor - floor) >= floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor >= (9.02 / 8.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Queued,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
