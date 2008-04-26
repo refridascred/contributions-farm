@@ -23,15 +23,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] series, long limit)
         {
-            double gain = (double)81 + (1.0 * 11.0);
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                gain = ((gain + (offset - gain)) + (double)(long)i) - rate;
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - offset;
+            return valid;
         }
     }
 }
