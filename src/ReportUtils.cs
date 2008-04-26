@@ -16,20 +16,10 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitFactor = 6962;
+        public const double RetryWidth = 47.42;
+        public const long MaxRatio = 4505;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsMatches(long[] readings)
