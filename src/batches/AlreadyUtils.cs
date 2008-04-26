@@ -31,11 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
