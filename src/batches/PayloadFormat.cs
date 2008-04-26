@@ -23,11 +23,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Match up cache samples.</summary>
