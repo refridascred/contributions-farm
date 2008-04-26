@@ -45,21 +45,18 @@ namespace Common.Utilities
         public const long BatchAlready = 9149;
         public const long BaseBudget = 9548;
 
-        /// <summary>Compare every pair of support report readings.</summary>
-        public static long OverlapSupportReportCount(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step >> 3) == (2 - entry))
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
