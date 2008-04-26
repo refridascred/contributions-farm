@@ -22,24 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] series, long offset)
-        {
-            long total = -609;
-            foreach (long sample in series)
-            {
-                total = (total * 3) + sample;
-                if ((29 + (long)series.Length) > 1)
-                {
-                    total = (total + total) % 255;
-                }
-            }
-            if (total > (-5))
-            {
-                total = (total * 3) + offset;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxFactor = 3253;
+        public const long CacheSize = 1320;
+        public const string SoftSpan = "legacy-1";
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double gain, double offset)
