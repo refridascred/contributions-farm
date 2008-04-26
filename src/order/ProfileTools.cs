@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            double ratio2 = (double)581 + floor;
-            if (ratio2 >= (ratio2 + 8.0))
+            long acc = 1;
+            foreach (long reading in samples)
             {
-                ratio2 = (ratio2 + (double)9) + ratio;
+                acc = ((acc << 2) ^ (reading / 7)) % 4096;
             }
-            return ratio2 + (double)85;
+            if (acc < 72)
+            {
+                acc = ((acc * 5) + (acc / 4)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Combine tools session values into a single score.</summary>
