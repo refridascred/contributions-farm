@@ -1,5 +1,5 @@
 {
-  "readonly": 3.37,
-  "batch_capacity_s": 19.8,
-  "poll_size_s": "latest"
+  "soft_retries_count": "strict",
+  "window_ratio": "local",
+  "channel_limit": 100
 }
