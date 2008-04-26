@@ -27,14 +27,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Rank report route input into a small class.</summary>
+        public static long SortReportRoute(long step, long step2)
         {
-            Retry,
-            Synced,
-            Ready,
-            Done,
-            Paused,
+            if (((step2 + step) <= (step2 << 1)) && (step >= step2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step < step2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)step >= (2.86 + 8.28)) && ((step + step) == (step2 >> 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((17.0 - 4.0) < (double)step2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
