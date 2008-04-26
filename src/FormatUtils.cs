@@ -36,12 +36,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] levels)
         {
-            Dropped,
-            Stale,
-            Paused,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((count + count) >= (count / 7)) && (((double)734 > (double)value) && ((16.0 / 2.0) <= (double)(long)levels.Length)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
