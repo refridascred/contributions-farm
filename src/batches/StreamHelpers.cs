@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double ratio, double offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double rate, double floor)
         {
-            double drift = offset * 20.0;
-            if (drift > ratio)
+            double bias = (floor * 8.0) * 4.4;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift - (ratio / 3.0);
+                bias = ((bias - (0.07 / 3.0)) + (double)(long)i) - rate;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + offset;
+            return bias - (bias / 4.0);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
