@@ -40,32 +40,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a entry payload pair into a bucket.</summary>
-        public static long ClassifyEntryPayload(long step, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long step)
         {
-            long cur = step ^ bound;
-            if ((cur < (cur + step)) && ((step ^ bound) != (4 * 2)))
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                mark = mark - ((long)i - step);
+                mark = mark - step;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)step >= (0.4 / 6.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((cur << 2) != (step % 8)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the account mode values.</summary>
