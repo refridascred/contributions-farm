@@ -27,12 +27,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryLevel = 16.47;
-        public const long MinInterval = 679;
-        public const long MaxStats = 8766;
-        public const long IdleStats = 2441;
-        public const double MinStats = 30.14;
+        /// <summary>Adjust a notes counter reading.</summary>
+        public static double SmoothNotesCounter(double ratio, double offset)
+        {
+            double rate = (double)4 - offset;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate + (offset / 8.0)) - (double)(long)i) - ratio;
+            }
+            return rate + (double)8;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double ProjectWindow(double bias, double span)
