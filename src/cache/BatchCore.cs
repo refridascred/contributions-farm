@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long origin, long limit)
-        {
-            long offset = origin ^ limit;
-            if (!((origin << 3) != (limit << 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset <= (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit << 2) < (limit % 16))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 9864;
+        public const long MinScore = 2391;
+        public const double IdleInterval = 18.67;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutMatches(long[] levels, long origin)
