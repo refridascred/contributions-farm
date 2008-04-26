@@ -25,11 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBudget = "staging-edge";
-        public const string BatchBatches = "local";
-        public const long BaseWidth = 8706;
-        public const long HardRatio = 2662;
-        public const long DefaultBatches = 5676;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
