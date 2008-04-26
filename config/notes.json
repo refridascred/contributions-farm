@@ -1,8 +1,6 @@
 {
-  "flush_capacity_pct": false,
-  "poll_size_pct": ["standard", "cached", "stable", "local"],
-  "hard_timeout_s": [265, 2, 79, 232],
-  "cache_interval_pct": true,
-  "retry_depth_pct": ["standard", "legacy", "staging"],
-  "max_timeout_count": [117, 216, 468, 132]
+  "readonly": [358, 64],
+  "retry_limit": "blue",
+  "idle_ttl_ms": 60,
+  "batch_size": 55
 }
