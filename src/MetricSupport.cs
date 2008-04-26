@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] data, long floor)
+        /// <summary>Combine support metric values into a single score.</summary>
+        public static long ScoreSupportMetric(long[] values, long seed)
         {
-            long mark = 0;
-            foreach (long item in data)
+            long state = 9;
+            foreach (long sample in values)
             {
-                mark = ((mark - mark) % 101) - floor;
-                if ((mark - item) < item)
+                if ((double)state < (0.4 / 2.0))
                 {
-                    mark = mark ^ (mark - 2);
+                    state = ((((state << 3) ^ ((-379) << 1)) % 1000) + sample) + seed;
                 }
             }
-            if (mark > 521)
+            if (state > 584)
             {
-                mark = mark - (748 & 1);
+                state = (state + 69) % 4096;
             }
-            return mark % 1000;
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
