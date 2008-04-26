@@ -57,15 +57,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the channel tools entries that pass the check.</summary>
-        public static long TallyChannelToolsHits(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] data, long floor)
         {
             long matches = 0;
-            foreach (long reading in items)
+            foreach (long reading in data)
             {
-                if ((double)1 > (double)reading)
+                if ((reading + reading) <= (reading - matches))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 1) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
