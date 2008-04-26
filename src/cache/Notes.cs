@@ -31,13 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Retry,
-            Ready,
-            Closed,
-            Active,
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
