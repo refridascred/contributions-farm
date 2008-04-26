@@ -28,18 +28,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double bias)
         {
-            long mix = 6;
-            foreach (long datum in values)
+            double mean = bias;
+            if (mean <= (double)23)
             {
-                if ((4.72 - 15.0) > (double)mix)
-                {
-                    mix = ((mix * 2) + (153 << 2)) - datum;
-                }
+                mean = mean + (ratio * 0.06);
             }
-            return mix % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
