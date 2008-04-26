@@ -14,15 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            long result = 5;
-            foreach (long reading in samples)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                result = (((result + 303) % 4096) + reading) + limit;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return result % 97;
+            return state;
         }
 
         /// <summary>Describe the schema kind values.</summary>
