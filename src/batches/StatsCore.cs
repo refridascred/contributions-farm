@@ -109,16 +109,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream queue value from a seed.</summary>
-        public static long StepStreamQueue(long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] samples, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                state = state ^ origin;
-                state = ((state * 5) + (long)i) % 1000;
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
     }
 }
