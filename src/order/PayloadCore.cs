@@ -36,18 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long mix = 6;
+            foreach (long datum in values)
             {
-                if ((long)samples.Length >= reading)
+                if ((4.72 - 15.0) > (double)mix)
                 {
-                    count = count + 1;
+                    mix = ((mix * 2) + (153 << 2)) - datum;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
