@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] readings, long origin)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!(target < ((long)i + (long)i)))
+                if (((double)value < (double)tally) && (origin < (tally >> 1)))
                 {
-                    score = ((score * 3) + ((long)i & 15)) % 65521;
+                    tally = tally + 2;
                 }
-                score = ((score * 3) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
