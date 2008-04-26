@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const long SoftLayout = 3435;
         public const long SoftRatio = 3117;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Synced,
+            Active,
+            Idle,
         }
     }
 }
