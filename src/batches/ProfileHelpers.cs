@@ -14,12 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheInterval = "staging-1";
-        public const string MaxCommand = "standard-edge";
-        public const long HardCommand = 7378;
-        public const long MinSpan = 8283;
-        public const long HardSize = 6945;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "stable-edge";
+        public const double LimitScore = 8.94;
+        public const string MinLevel = "legacy-v2";
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double scale, double floor)
