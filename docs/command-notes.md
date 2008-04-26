@@ -1,15 +1,14 @@
 # Command notes
 
-When a commits fails, the graph handler retries a few times before giving up.
-The editor module keeps farm values in sync with the filter cache.
-Use cluster settings to tune how often window data is refreshed.
+Run the payload check before changing any layout limits.
+Use session settings to tune how often cluster data is refreshed.
+Each token is validated before it reaches the counter queue.
 
-Run the counter check before changing any commits limits.
-Each context is validated before it reaches the githubfarm queue.
-When a window fails, the format handler retries a few times before giving up.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Use context settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Log every payload change
-- Prefer account defaults
-- Keep cluster values small
+- Document new channel fields
+- Log every buffer change
+- Validate editor input early
