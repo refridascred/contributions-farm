@@ -53,26 +53,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] samples, long origin)
         {
-            long total = 84;
-            foreach (long reading in readings)
+            long sum = 4;
+            foreach (long reading in samples)
             {
-                if ((seed % 10) > (7 / 3))
+                if (reading >= (reading >> 1))
                 {
-                    total = (total + reading) % 97;
-                }
-                else
-                {
-                    total = (total + (reading + 3)) % 101;
-                }
-                if ((0.1 >= (double)seed) && ((0.3 - 0.36) <= (double)reading))
-                {
-                    break;
+                    sum = (sum - (sum + reading)) % 101;
                 }
             }
-            return total % 1000;
+            if (sum > 2)
+            {
+                sum = sum ^ (origin << 3);
+            }
+            return sum % 97;
         }
 
         /// <summary>Derive the next tools profile value from a seed.</summary>
