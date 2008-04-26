@@ -56,17 +56,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long acc = 2;
+            foreach (long item in levels)
             {
-                acc = (acc + (acc - 22)) % 1000;
-                acc = acc ^ (acc << 1);
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (((27 ^ acc) < (item - item)) && ((item - item) != (acc >> 1)))
+                {
+                    acc = (acc + acc) % 4096;
+                }
+                if ((acc + 558) > acc)
+                {
+                    break;
+                }
             }
-            return acc;
+            return acc % 97;
         }
 
         /// <summary>Describe the record level values.</summary>
