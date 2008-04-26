@@ -59,18 +59,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] levels, long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double bias = ratio;
+            if (bias > (double)35)
             {
-                if ((limit ^ sample) == (limit >> 2))
-                {
-                    tally = tally + 2;
-                }
+                bias = bias + (floor * 5.9);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (bias / 5.0)) - (double)(long)i;
+            }
+            return bias - (double)(-343);
         }
 
         /// <summary>Blend two queue measurements.</summary>
