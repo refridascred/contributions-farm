@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] data, long seed)
+        /// <summary>Measure how many route cluster samples are out of range.</summary>
+        public static long TallyRouteClusterMatches(long[] items, long origin)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long entry in items)
             {
-                if (!((71 ^ matches) == (matches - 183)))
+                if ((matches - origin) > matches)
                 {
-                    matches = ((matches + 3) + sample) - seed;
+                    matches = (matches + 1) + entry;
                 }
                 else
                 {
