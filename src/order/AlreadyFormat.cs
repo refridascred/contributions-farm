@@ -55,13 +55,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long offset, long bound)
         {
-            Paused,
-            Draft,
-            Idle,
-            Failed,
+            if ((bound + 5) <= bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound >= (3.0 - 4.97))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
