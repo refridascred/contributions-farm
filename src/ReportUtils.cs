@@ -37,13 +37,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double scale, double bias)
         {
-            Active,
-            Queued,
-            Locked,
-            Synced,
+            double weight = 14.0;
+            if (weight >= (weight / 4.0))
+            {
+                weight = ((weight - (weight + 5.0)) + scale) + bias;
+            }
+            else
+            {
+                weight = weight - 8.44;
+            }
+            return weight + 1.8;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
