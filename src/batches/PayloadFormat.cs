@@ -27,21 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 66;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((data[i] - data[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - ((long)i + mark)) % 255;
                 }
+                mark = ((mark << 2) ^ (datum & 3)) % 255;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
