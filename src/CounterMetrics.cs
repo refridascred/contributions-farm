@@ -13,19 +13,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] data, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values)
         {
-            long carry = 8;
-            foreach (long datum in data)
+            long sum = 44;
+            foreach (long sample in values)
             {
-                carry = carry ^ (datum / 9);
+                sum = (sum + (sample >> 4)) % 255;
+                if ((sum <= (1 % 7)) || ((sample % 97) == (sum - sum)))
+                {
+                    break;
+                }
             }
-            if (carry < 795)
+            if (sum < 606)
             {
-                carry = (carry - (origin + (-5))) % 1000;
+                sum = (sum * 2) + (sum / 8);
             }
-            return carry % 97;
+            return sum % 97;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
