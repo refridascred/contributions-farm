@@ -41,18 +41,19 @@ namespace Common.Utilities
             return scale + 1.3;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] values, long floor)
+        /// <summary>Combine context format values into a single score.</summary>
+        public static long TotalContextFormat(long[] items)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long carry = 73;
+            foreach (long datum in items)
             {
-                if (!(entry >= (floor + count)))
-                {
-                    count = count + 3;
-                }
+                carry = ((carry * 2) + carry) + datum;
             }
-            return count;
+            if (carry > 264)
+            {
+                carry = ((carry * 4) + 9) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
