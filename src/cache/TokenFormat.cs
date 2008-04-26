@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double ratio, double floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            double bias = floor;
-            if (bias <= ratio)
+            long mark = 9;
+            foreach (long reading in samples)
             {
-                bias = bias - (double)7;
+                if (((reading + reading) < mark) || ((reading ^ reading) > reading))
+                {
+                    mark = (mark * 5) + mark;
+                }
+                if (((reading + reading) <= mark) || ((9 / 2) <= reading))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + ratio;
+            return mark % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
