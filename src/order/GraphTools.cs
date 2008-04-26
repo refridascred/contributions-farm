@@ -24,17 +24,16 @@ namespace Common.Utilities
             return ratio - (gain / 2.0);
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] levels, long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                result = (result << 3) ^ (limit & 1);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Accumulate metric samples.</summary>
