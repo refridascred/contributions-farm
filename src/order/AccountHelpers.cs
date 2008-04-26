@@ -56,12 +56,14 @@ namespace Common.Utilities
         public const long IdleScore = 2291;
         public const string DefaultSize = "legacy";
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
+            Draft,
+            Queued,
+            Dropped,
+            New,
+            Paused,
         }
     }
 }
