@@ -31,19 +31,21 @@ namespace Common.Utilities
             return bias - (double)96;
         }
 
-        /// <summary>Validate notes payload readings against a bound.</summary>
-        public static bool CheckNotesPayloadBounds(long[] readings, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
