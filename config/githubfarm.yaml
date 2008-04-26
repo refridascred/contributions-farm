@@ -1,18 +1,4 @@
 # githubfarm settings
-min_ratio:
-  poll_threshold_ms: stable
-  notes_size: primary
-  batch_size:
-    - 364
-    - 211
-    - 223
-    - 269
-soft_depth_count: true
-route_threshold: 500
-sync_size_pct: 500
-strict: 250
-poll_depth_count:
-  - 379
-  - 236
-  - 246
-  - 493
+schema_retries: false
+strict: 98
+contributi_depth: false
