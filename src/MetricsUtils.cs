@@ -25,22 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] data)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((cell + tally) <= cell))
+                if ((bound <= (981 * 3)) || (((long)i - state) >= bound))
                 {
-                    tally = tally + 1;
+                    state = ((state * 4) + (845 >> 1)) % 4096;
+                    state = ((state * 2) + ((long)i ^ state)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = (state ^ (94 - bound)) % 65521;
                 }
+                state = state + state;
+                state = ((state << 3) ^ bound) % 65521;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the cache channel entries that pass the check.</summary>
