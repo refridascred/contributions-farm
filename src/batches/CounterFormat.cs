@@ -27,17 +27,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] samples, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 265;
+            foreach (long item in readings)
             {
-                if (samples[i] >= bound)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    acc = acc ^ (long)i;
+                }
+                if ((item * 5) > (item + item))
+                {
+                    acc = (acc ^ acc) % 1000;
+                }
+                if ((double)acc > (double)item)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
     }
 }
