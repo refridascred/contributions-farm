@@ -34,13 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 4743;
+        public const double HardQueue = 7.44;
+        public const double BatchQueue = 38.23;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LocateRecordIndex(long[] levels, long target)
