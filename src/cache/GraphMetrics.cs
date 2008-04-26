@@ -42,13 +42,31 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long seed, long target)
         {
-            Synced,
-            Idle,
-            Pending,
-            Locked,
+            if (((1.0 + 8.44) > (1.84 - 5.05)) && (seed < (seed % 100)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed > (seed + 95))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed * 3) < (435 + 752))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two entry measurements.</summary>
