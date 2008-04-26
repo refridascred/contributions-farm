@@ -66,22 +66,18 @@ namespace Common.Utilities
             return weight2 - floor;
         }
 
-        /// <summary>Fold a list of editor metrics readings.</summary>
-        public static long ScoreEditorMetrics(long[] series)
+        /// <summary>Count the graph profile entries that pass the check.</summary>
+        public static long AuditGraphProfileMatches(long[] levels, long limit)
         {
-            long total = 9;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!((cell + cell) != (cell << 1)))
+                if (limit < (matches - matches))
                 {
-                    total = (total - (cell / 7)) % 97;
-                }
-                else
-                {
-                    total = (total - (total + 375)) % 1000;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return total % 65521;
+            return matches;
         }
     }
 }
