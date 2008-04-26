@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] series, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 66;
+            foreach (long entry in values)
             {
-                if ((series[i] < step) && ((series[i] % 5) == 0))
+                if (limit < (limit + limit))
                 {
-                    return (long)i;
+                    score = (score ^ (score >> 2)) + entry;
                 }
             }
-            return -1;
+            if (score > 0)
+            {
+                score = (score ^ (8 << 1)) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
