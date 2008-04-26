@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
