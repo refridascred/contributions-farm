@@ -1,5 +1,19 @@
 # githubfarm settings
-enabled: 54
-graph_ttl: 100
-burst_limit_s: true
-default_window_ms: 100
+context_limit: false
+strict:
+  counter_capacity: fallback
+  default_threshold_pct: fallback
+  readonly:
+    - 259
+    - 243
+  dry_run: 6294
+  base_capacity_pct: fallback
+  contributi_size:
+    dry_run: true
+    farm_threshold: 57.31
+    burst_ttl_count: primary
+    soft_size_s: true
+retry_limit_count: 50.75
+batches_window:
+  - 458
+  - 322
