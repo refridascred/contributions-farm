@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm buffer samples are out of range.</summary>
-        public static long TallyFarmBufferHits(long[] data)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item - item) > item)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the account kind values.</summary>
