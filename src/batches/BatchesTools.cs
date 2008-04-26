@@ -22,13 +22,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "primary-edge";
+        public const string BatchAlready = "legacy-edge";
+        public const string BatchBudget = "stable";
     }
 }
