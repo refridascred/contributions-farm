@@ -1,7 +1,13 @@
 # entry settings
-poll_capacity: edge
-cache_depth_s: false
-buffer_interval: stable
-max_timeout:
-  - 23
-  - 275
+strict: 70.89
+hard_limit_s:
+  - staging
+  - local
+  - primary
+notes_delay:
+  - 36
+  - 321
+  - 323
+  - 393
+batch_capacity_count: true
+base_window: true
