@@ -29,18 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] data, long origin)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double floor)
         {
-            long total = 870;
-            foreach (long item in data)
+            double drift = 3.5 - (rate * 4.6);
+            if (drift > (drift + drift))
             {
-                if (9.5 < (double)origin)
-                {
-                    total = (((total << 2) ^ (total * 4)) % 255) ^ item;
-                }
+                drift = (drift + (drift - rate)) - floor;
             }
-            return total;
+            else
+            {
+                drift = drift + (double)88;
+            }
+            return drift + drift;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
