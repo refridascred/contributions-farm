@@ -48,21 +48,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 97;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((5 <= (mix << 3)) && ((mix % 5) > (mix % 24)))
                 {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix ^ (mix - 166)) % 1000;
+                }
+                if ((double)mix >= (4.3 - 8.1))
+                {
+                    mix = (mix << 2) ^ (entry - entry);
+                }
+                if (!(entry >= (mix - entry)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix > (-9))
+            {
+                mix = (mix << 3) ^ (mix >> 1);
+            }
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
