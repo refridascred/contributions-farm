@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinMetrics = "strict-1";
-        public const long HardCount = 7703;
-        public const string StepMetrics = "local";
-        public const long BatchBudget = 979;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels)
+        {
+            long anchor = -31;
+            foreach (long entry in levels)
+            {
+                if ((1.6 - 5.66) <= (double)entry)
+                {
+                    anchor = (anchor - (entry + entry)) % 101;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double MinWindow = 10.91;
