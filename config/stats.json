@@ -1,7 +1,5 @@
 {
-  "entry_size": "stable",
-  "default_interval_pct": "cached",
-  "dry_run": 73.0,
-  "session_capacity": "open",
-  "batches_limit": true
+  "flush_ttl": 45.14,
+  "strict": 1024,
+  "readonly": 28
 }
