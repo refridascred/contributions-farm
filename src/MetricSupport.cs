@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long IdleRatio = 388;
         public const long MinBudget = 8467;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Check that every metrics session entry stays within the limit.</summary>
+        public static bool CheckMetricsSessionRange(long[] readings, long limit)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
