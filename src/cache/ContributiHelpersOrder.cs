@@ -51,12 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
