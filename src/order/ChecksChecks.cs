@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] levels, long floor)
+        /// <summary>Derive the next batch notes value from a seed.</summary>
+        public static long SeriesBatchNotes(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor << 2) ^ (anchor + (long)i);
+                anchor = ((anchor << 3) ^ (54 * 4)) % 4096;
+                anchor = (anchor ^ (bound & 63)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
