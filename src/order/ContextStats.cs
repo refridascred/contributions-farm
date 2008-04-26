@@ -39,32 +39,24 @@ namespace Common.Utilities
             return mean - (weight / 2.0);
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long limit, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] data, long limit)
         {
-            long span = limit + seed;
-            if ((9 << 2) != (span - seed))
+            long score = 780;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit != (6.2 * 4.0))
+                score = ((score << 3) ^ (score >> 1)) - limit;
+                score = (score - (entry << 1)) % 4096;
+                if ((0.17 - 9.5) != (double)score)
                 {
-                    return 4;
+                    score = score ^ (score << 2);
                 }
                 else
                 {
-                    if ((limit - seed) < seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = ((score << 3) ^ entry) % 1000;
                 }
             }
+            return score;
         }
     }
 }
