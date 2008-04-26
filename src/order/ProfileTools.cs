@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] values, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (((count + (-6)) <= (value >> 2)) || ((value % 10) != (floor * 2)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry ^ (limit / 5)) % 255;
+                carry = (carry - (carry & 3)) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Combine already values into a single score.</summary>
