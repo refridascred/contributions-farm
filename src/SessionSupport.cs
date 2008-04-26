@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] data, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 86;
+            foreach (long value in series)
             {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
+                total = (((total * 3) + (total + 509)) % 255) - value;
             }
-            return -1;
+            if (total < 6)
+            {
+                total = (total * 5) + (total ^ total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
