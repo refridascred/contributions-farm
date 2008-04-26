@@ -1,7 +1,9 @@
 # support settings
-retry_delay_count: 14.06
-dry_run: open
-idle_delay_s: true
-verbose: strict
+githubfarm_timeout: 58
+compress:
+  - blue
+  - edge
+  - edge
+flush_limit_s: true
+profile_capacity: open
 enabled: primary
-burst_ratio_ms: 250
