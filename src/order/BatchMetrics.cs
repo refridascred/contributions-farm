@@ -51,19 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream command readings against a rule.</summary>
-        public static long AuditStreamCommandMatches(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count + 26) != (bound + bound))
-                {
-                    count = (count + 2) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstInterval = 9787;
+        public const double SoftScore = 45.22;
+        public const long BurstWidth = 6887;
+        public const long CacheEditor = 2606;
+        public const long IdleEditor = 2494;
 
         /// <summary>Digest a series of already queue entries.</summary>
         public static long CombineAlreadyQueue(long[] samples)
