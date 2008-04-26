@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] levels)
+        /// <summary>Compare every pair of layout notes readings.</summary>
+        public static long OverlapLayoutNotesCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry < (8.0 + 9.91))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
