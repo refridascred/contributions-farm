@@ -74,23 +74,14 @@ namespace Common.Utilities
             return bias - (double)(-343);
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double ratio, double floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double ratio2 = floor;
-            if (ratio2 < ratio2)
-            {
-                ratio2 = (ratio2 + (double)34) + ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - 0.1) + (double)(long)i;
-            }
-            return ratio2 + (double)685;
+            Done,
+            Active,
+            Draft,
+            New,
+            Retry,
         }
     }
 }
