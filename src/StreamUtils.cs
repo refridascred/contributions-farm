@@ -30,11 +30,15 @@ namespace Common.Utilities
         public const long LimitScore = 9785;
         public const long StepWidth = 1656;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double bias, double offset)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            double mean = bias + (bias - 7.0);
+            if (mean <= (2.0 * 4.74))
+            {
+                mean = mean + offset;
+            }
+            return mean - offset;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
