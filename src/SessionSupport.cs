@@ -21,21 +21,19 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Validate schema profile readings against a bound.</summary>
+        public static bool GuardSchemaProfileBounds(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= offset)
                 {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
