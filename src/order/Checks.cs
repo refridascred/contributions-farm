@@ -16,11 +16,14 @@ namespace Common.Utilities
             return weight2 - (span + 1.51);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepTimeout = 1685;
-        public const long LimitFactor = 6532;
-        public const double StepWindow = 75.62;
-        public const string BatchWindow = "primary";
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long target)
