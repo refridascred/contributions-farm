@@ -16,13 +16,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] data, long seed)
         {
-            Active,
-            Paused,
-            New,
-            Pending,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum >= (2.0 - 0.76))
+                {
+                    hits = (hits + 3) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
