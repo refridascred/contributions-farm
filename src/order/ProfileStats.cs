@@ -14,15 +14,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double gain, double floor)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double scale = gain;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = ((scale + gain) + (double)(long)i) + floor;
-            }
-            return scale + (double)843;
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
