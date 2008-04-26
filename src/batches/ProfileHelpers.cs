@@ -57,15 +57,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] levels, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] values)
         {
-            long acc = 37;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                acc = ((acc ^ (limit / 4)) % 97) - reading;
+                if ((((2.0 + 9.32) == (double)matches) || (matches < (matches + matches))) && ((long)values.Length != (sample << 3)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
