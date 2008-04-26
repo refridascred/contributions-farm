@@ -68,12 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] samples, long step)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
