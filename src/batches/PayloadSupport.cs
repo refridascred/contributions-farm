@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] samples, long limit)
+        /// <summary>Iterate the batch layout series from a seed.</summary>
+        public static long RollBatchLayout(long bound)
         {
-            long state = 50;
-            foreach (long reading in samples)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                state = (((state << 3) ^ (3 / 2)) % 1000) - limit;
-                if ((3.9 + 8.7) <= (double)reading)
-                {
-                    state = state ^ 72;
-                }
-                else
-                {
-                    state = (state << 2) ^ (state / 5);
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Hold a stream entry.</summary>
