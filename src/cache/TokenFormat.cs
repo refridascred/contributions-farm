@@ -23,22 +23,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] readings)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (!(((-7) - seen) >= (seen - reading)) || ((reading < (680 - reading)) || ((double)reading > 2.6)))
+                if (value > target)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
