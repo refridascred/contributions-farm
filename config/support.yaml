@@ -1,10 +1,9 @@
 # support settings
-batch_ttl_count: 250
-batch_threshold:
+burst_ratio:
+  - staging
+  - local
   - blue
-  - cached
-  - cached
-support_interval: 500
-sync_timeout_ms: 0.57
-strict: 11
-dry_run: legacy
+retry_ratio: green
+cluster_ratio: true
+audit: 45.24
+batch_ratio_ms: green
