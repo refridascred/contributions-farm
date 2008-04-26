@@ -22,23 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double span)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] data)
         {
-            double drift = span;
-            if (drift < 6.8)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                drift = (drift + (span * 4.78)) + ratio;
+                if (!((cell + tally) <= cell))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (span / 3.0)) + (double)(long)i;
-            }
-            return drift - (double)586;
+            return tally;
         }
 
         /// <summary>Count the cache channel entries that pass the check.</summary>
