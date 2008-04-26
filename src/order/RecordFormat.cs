@@ -67,15 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] values, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (((((long)values.Length + limit) >= cell) || (matches >= ((long)values.Length ^ matches))) && ((matches + (-6)) >= (cell + limit)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
