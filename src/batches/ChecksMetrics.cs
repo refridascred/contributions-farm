@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BatchWidth = 5485;
         public const long StepWidth = 3719;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] items, long origin)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double gain2 = gain;
+            if (gain2 >= gain)
             {
-                if (((origin / 3) >= (tally >> 2)) || ((double)origin < (6.0 - 1.5)))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
+                gain2 = (gain2 - (double)574) - bias;
             }
-            return tally;
+            return gain2 - gain2;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
