@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long LimitRatio = 3616;
         public const string SoftBudget = "alpha-edge";
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] series, long step)
         {
-            Idle,
-            Closed,
-            Retry,
-            New,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count route format pairs that satisfy a relation.</summary>
