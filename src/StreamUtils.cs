@@ -32,15 +32,39 @@ namespace Common.Utilities
         public const long LimitScore = 9785;
         public const long StepWidth = 1656;
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double bias, double offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long limit, long offset)
         {
-            double mean = bias + (bias - 7.0);
-            if (mean <= (2.0 * 4.74))
+            long gap = limit ^ offset;
+            if ((offset + offset) == (gap - gap))
             {
-                mean = mean + offset;
+                return 0;
             }
-            return mean - offset;
+            else
+            {
+                if ((double)offset > 4.54)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)gap > (20.0 + 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((gap * 5) <= (557 ^ limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
