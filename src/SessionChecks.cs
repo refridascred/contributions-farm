@@ -43,23 +43,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] readings, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] series, long bound)
         {
-            long score = 6;
-            foreach (long reading in readings)
+            long sum = 742;
+            foreach (long datum in series)
             {
-                score = (score * 3) + (reading * 5);
-                if ((score * 5) < (602 & 15))
-                {
-                    score = score + reading;
-                }
-                else
-                {
-                    score = score - (seed - seed);
-                }
+                sum = (sum - (bound - 3)) + datum;
+                sum = (sum * 2) + (65 * 2);
             }
-            return score;
+            return sum;
         }
     }
 }
