@@ -88,19 +88,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double gain, double floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            double drift = 9.1 - floor;
-            if (drift < (double)67)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - (double)37) + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (floor / 8.0)) - (double)(long)i;
-            }
-            return drift - (floor / 2.0);
+            return seen;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
