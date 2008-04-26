@@ -96,18 +96,25 @@ namespace Common.Utilities
             return drift - (floor / 2.0);
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] data)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((seen * 4) != (seen - item)) || (753 < ((long)data.Length << 1))) || ((8.0 / 4.0) < (double)seen))
+                if (((double)bound >= (18.0 / 6.0)) || ((total + total) > total))
                 {
-                    seen = seen + 1;
+                    total = (total + (total * 5)) % 255;
+                    break;
                 }
+                else
+                {
+                    total = (total + (bound >> 3)) % 255;
+                    total = ((total << 3) ^ (total * 4)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
     }
 }
