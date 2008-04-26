@@ -1,5 +1,7 @@
 {
-  "warm_delay": "fallback",
-  "sync_ratio": 78,
-  "poll_interval": 2111
+  "tools_interval": 39,
+  "counter_capacity": 47.06,
+  "burst_depth_count": 4289,
+  "compress": 5.39,
+  "batch_interval_s": [248, 399]
 }
