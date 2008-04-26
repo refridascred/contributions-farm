@@ -26,11 +26,22 @@ namespace Common.Utilities
         public const long WindowSession = 6828;
         public const long HardSession = 6304;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchScore = 2959;
-        public const double RetryContext = 10.0;
-        public const string WindowContext = "alpha";
-        public const double BurstInterval = 11.38;
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenHits(long[] samples)
