@@ -31,13 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] data)
         {
-            Stale,
-            Paused,
-            Queued,
-            Retry,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((seen - 6) < (270 + 931)))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up commits samples.</summary>
