@@ -13,18 +13,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] items)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long bound, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long diff = bound + step;
+            if ((bound >> 4) <= (diff * 5))
             {
-                if ((710 << 1) >= datum)
+                return 5;
+            }
+            else
+            {
+                if ((diff >= (diff * 2)) || (diff <= bound))
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((7.94 * 3.2) < (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (12.0 >= (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
