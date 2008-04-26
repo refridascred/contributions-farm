@@ -41,12 +41,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 38.23;
-        public const long HardBatch = 1960;
-        public const double MaxFactor = 84.42;
-        public const double BurstLevel = 76.19;
-        public const long BaseInterval = 1973;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Done,
+            Stale,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long WindowBudget = 6092;
