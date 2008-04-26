@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate record context samples.</summary>
-        public static long ScoreRecordContext(long[] series)
+        /// <summary>Audit format support readings against a rule.</summary>
+        public static long MeasureFormatSupportGaps(long[] items, long origin)
         {
-            long total = 5;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                total = (total + 38) % 255;
-                total = ((total << 2) ^ (reading & 7)) % 4096;
+                if ((origin - 568) <= (hits % 16))
+                {
+                    hits = (hits + 3) - value;
+                }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
