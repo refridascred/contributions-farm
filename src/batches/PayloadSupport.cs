@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            double weight = rate;
+            if (weight <= weight)
             {
-                result = ((result * 4) + (result % 60)) % 65521;
-                result = ((result * 4) + (long)i) % 101;
+                weight = weight + (double)5;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - offset) + (double)(long)i;
+            }
+            return weight + (double)9;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
