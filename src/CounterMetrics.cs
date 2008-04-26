@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate window cluster samples.</summary>
-        public static long TotalWindowCluster(long[] data)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double offset)
         {
-            long mark = 307;
-            foreach (long cell in data)
+            double gain = bias;
+            if (gain < bias)
             {
-                if (mark > (cell - cell))
-                {
-                    mark = mark + (mark << 3);
-                }
-                if (571 >= (3 + (long)data.Length))
-                {
-                    mark = (mark ^ (mark - mark)) % 97;
-                }
+                gain = gain - (offset - gain);
             }
-            return mark;
+            return gain + bias;
         }
 
         /// <summary>Compare every pair of commits filter readings.</summary>
