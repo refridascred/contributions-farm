@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long LimitRatio = 3616;
         public const string SoftBudget = "alpha-edge";
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] series, long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
+            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count route format pairs that satisfy a relation.</summary>
