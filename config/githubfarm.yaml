@@ -1,17 +1,7 @@
 # githubfarm settings
-batch_threshold_ms:
-  idle_ttl: primary
-  poll_ttl: 86.77
-  retry_ttl:
-    burst_size: 16.89
-    layout_size: 2124
-    min_ratio_ms: false
-    record_capacity:
-      - 480
-      - 234
-      - 63
-    base_depth_ms: 40.34
-    strict: 22.69
-  min_depth_ms: true
-retry_depth_count: 88
-dry_run: 9
+flush_delay: eu-west
+dry_run: open
+enabled: 86.24
+poll_threshold_s: green
+min_timeout_pct: stable
+batch_threshold_pct: true
