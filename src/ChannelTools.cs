@@ -23,18 +23,24 @@ namespace Common.Utilities
             return ((scale + 18.0) + rate) + bias;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] readings)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if (((8 / 9) > (step + 57)) || ((step << 3) > floor))
             {
-                if (((seen + seen) >= item) && ((seen << 2) <= (long)readings.Length))
+                return 1;
+            }
+            else
+            {
+                if (floor >= step)
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
