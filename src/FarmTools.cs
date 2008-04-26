@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] readings, long seed)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] values, long floor)
         {
-            long mix = 54;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix - (entry / 8)) % 1000) + seed;
-                if ((entry * 4) != (mix - 72))
+                if (values[i] == floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
