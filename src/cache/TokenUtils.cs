@@ -28,15 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] readings, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] items)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((sample >> 4) < (matches + matches)) && (((double)sample >= 5.75) || ((origin * 3) > (sample * 4))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
