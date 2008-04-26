@@ -59,12 +59,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Locate a record layout reading by value.</summary>
+        public static long FindRecordLayoutIndex(long[] readings, long floor)
         {
-            Idle,
-            Draft,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
