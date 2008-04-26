@@ -1,7 +1,6 @@
 {
-  "dry_run": "standard",
-  "base_timeout_count": 250,
-  "sync_capacity_pct": "cached",
-  "default_window_pct": 3862,
-  "batch_size_ms": "green"
+  "strict": false,
+  "persist": true,
+  "cluster_retries": 30.78,
+  "compress": false
 }
