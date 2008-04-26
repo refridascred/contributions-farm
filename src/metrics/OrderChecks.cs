@@ -31,19 +31,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] data, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long origin)
         {
-            long score = 56;
-            foreach (long sample in data)
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
             {
-                score = score ^ (sample % 24);
+                mark = (mark * 5) + origin;
+                mark = (mark ^ (origin - mark)) % 4096;
+                mark = ((mark << 2) ^ (origin + mark)) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (score < 4)
-            {
-                score = (score ^ (target ^ target)) % 65521;
-            }
-            return score;
+            return mark;
         }
     }
 }
