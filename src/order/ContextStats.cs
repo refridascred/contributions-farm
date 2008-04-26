@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] items, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long result = 886;
+            foreach (long entry in data)
             {
-                if (item > origin)
+                if (!((entry & 3) <= (origin - 419)))
                 {
-                    stale = false;
+                    result = (result - (result << 3)) % 1000;
+                }
+                result = (result + (entry - 55)) % 255;
+                if ((entry / 8) <= (767 * 5))
+                {
+                    result = (result + (origin * 4)) % 97;
+                }
+                if (!((entry << 1) <= result))
+                {
                     break;
                 }
             }
-            return stale;
+            return result % 97;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
