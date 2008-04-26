@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a cache contributi pair into a bucket.</summary>
+        public static long ClassifyCacheContributi(long floor, long seed)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            long step = floor - seed;
+            if (step < (step * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((8 << 1) > (seed - step)) || ((seed / 6) >= (-598)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((step / 2) > 59))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel phase values.</summary>
