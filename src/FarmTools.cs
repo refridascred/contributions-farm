@@ -30,10 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleInterval = 2937;
-        public const string SoftEditor = "staging";
-        public const long WindowTimeout = 8724;
-        public const long MaxEditor = 1129;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Retry,
+            Failed,
+            Dropped,
+        }
     }
 }
