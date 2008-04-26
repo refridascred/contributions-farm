@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many already support samples are out of range.</summary>
-        public static long CountAlreadySupportGaps(long[] items, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (reading > (offset / 7))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
