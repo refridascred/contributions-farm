@@ -29,19 +29,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metrics session measurements.</summary>
-        public static double BlendMetricsSession(double scale, double floor)
-        {
-            double mean = 0.16 * 5.74;
-            if (mean > scale)
-            {
-                mean = mean + (2.0 / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (mean + scale)) - (double)(long)i;
-            }
-            return mean + (floor - mean);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSpan = 6825;
+        public const long DefaultTimeout = 4789;
+        public const long LimitSpan = 1682;
     }
 }
