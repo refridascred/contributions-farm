@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)seen == (double)47)
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 5835;
+        public const long BurstEditor = 2688;
+        public const string HardEditor = "staging-1";
 
         /// <summary>Compare every pair of channel route readings.</summary>
         public static long MatchChannelRouteCount(long[] samples)
