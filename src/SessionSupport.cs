@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many already metrics samples are out of range.</summary>
+        public static long TallyAlreadyMetricsOutliers(long[] levels, long limit)
         {
-            Pending,
-            Stale,
-            New,
-            Synced,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (limit < matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next cache metric value.</summary>
