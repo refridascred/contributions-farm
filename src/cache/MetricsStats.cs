@@ -53,14 +53,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long origin)
         {
-            Locked,
-            Pending,
-            Idle,
-            Active,
-            Paused,
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
