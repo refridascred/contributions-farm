@@ -1,5 +1,17 @@
 {
-  "warm_retries_ms": ["local", "blue"],
-  "max_retries_pct": 79,
-  "soft_capacity": ["green", "stable", "strict"]
+  "buffer_depth": ["eu-west", "green", "local"],
+  "report_capacity": "staging",
+  "audit": {
+    "flush_limit_s": [88, 466, 366, 361],
+    "sync_depth_ms": {
+      "idle_threshold": 8654,
+      "flush_interval_ms": 3947,
+      "verbose": 60
+    },
+    "idle_limit": 7031,
+    "default_retries_count": 6043
+  },
+  "default_interval_ms": 100,
+  "min_window": false,
+  "batch_retries": "cached"
 }
