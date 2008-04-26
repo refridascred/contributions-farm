@@ -26,19 +26,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] items, long origin)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long sum = 453;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 4) + (sum + sum)) ^ datum;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum > (-9))
-            {
-                sum = ((sum * 2) + (origin - origin)) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Rank tools cache input into a small class.</summary>
