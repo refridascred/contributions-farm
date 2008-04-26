@@ -1,5 +1,8 @@
 {
-  "cache_interval": [270, 385],
-  "min_window_count": 7713,
-  "base_delay_count": 8240
+  "persist": false,
+  "min_window": 42,
+  "default_capacity_pct": "edge",
+  "batch_window_count": 87.91,
+  "max_delay_count": "cached",
+  "queue_timeout": 60
 }
