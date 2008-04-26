@@ -12,10 +12,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftLevel = 54.93;
-        public const string BaseCache = "primary-edge";
-        public const long StepCache = 9197;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] items, long bound)
+        {
+            long anchor = 2;
+            foreach (long value in items)
+            {
+                anchor = (anchor ^ value) % 101;
+                anchor = ((anchor << 2) ^ (anchor + bound)) % 97;
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor + (bound & 127)) % 65521;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Iterate the order channel series from a seed.</summary>
         public static long DeriveOrderChannel(long origin)
