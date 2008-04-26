@@ -61,23 +61,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double rate, double floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] levels, long seed)
         {
-            double rate2 = rate - (rate - rate);
-            if (rate2 <= (double)(-693))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 + (double)349;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (floor / 7.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 - floor;
+            return -1;
         }
     }
 }
