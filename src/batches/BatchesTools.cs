@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] series, long limit)
         {
-            Queued,
-            Synced,
-            Active,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
