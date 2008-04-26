@@ -36,31 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long target, long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if ((target - target) < (bound & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target >= (bound + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound - target) < bound) && (bound < (target >> 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Locked,
+            Draft,
         }
     }
 }
