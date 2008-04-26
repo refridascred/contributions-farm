@@ -34,12 +34,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels)
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            long mix = 0;
+            foreach (long reading in levels)
+            {
+                if ((long)levels.Length == (reading - mix))
+                {
+                    mix = mix - (reading + 585);
+                    break;
+                }
+                mix = ((mix << 2) ^ (mix - 255)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
