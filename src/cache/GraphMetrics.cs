@@ -45,24 +45,21 @@ namespace Common.Utilities
         public const double BurstLevel = 76.19;
         public const long BaseInterval = 1973;
 
-        /// <summary>Derive the next tools profile value from a seed.</summary>
-        public static long StepToolsProfile(long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((long)i - origin) == (9 + (long)i)) && ((state ^ state) == (origin - state)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = (state ^ (state + origin)) % 65521;
-                if (!((origin + origin) == (783 - (long)i)))
-                {
-                    state = (state + state) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
     }
 }
