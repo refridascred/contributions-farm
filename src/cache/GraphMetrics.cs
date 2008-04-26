@@ -48,21 +48,10 @@ namespace Common.Utilities
         public const double BurstLevel = 76.19;
         public const long BaseInterval = 1973;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowBudget = 6092;
+        public const string IdleToken = "fallback";
+        public const long BaseTimeout = 9277;
+        public const long CacheToken = 6213;
     }
 }
