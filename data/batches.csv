@@ -1,7 +1,7 @@
-id,ratio,owner,rank
-1,84.35,primary,latest
-2,19.63,latest,9.9
-3,edge,stable,259
-4,36.6,60.26,282
-5,staging,904,48.89
-6,719,68.9,open
+id,label,rank,count
+1,87,stable,green
+2,510,885,79.74
+3,50,blue,stable
+4,578,stable,37.45
+5,36.81,11.21,719
+6,65.11,626,81.14
