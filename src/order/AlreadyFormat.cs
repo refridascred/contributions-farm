@@ -40,20 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double bias, double bias2)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            double mean = (double)63 / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((9.0 + 3.3) != (double)(long)i)
-                {
-                    state = state ^ (seed + seed);
-                    state = ((state << 3) ^ (state + state)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 97;
+                mean = ((mean + (6.8 + bias2)) + (double)(long)i) - bias;
             }
-            return state;
+            return mean - (mean * 6.6);
         }
 
         /// <summary>Describe the counter level values.</summary>
