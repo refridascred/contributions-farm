@@ -38,21 +38,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Digest a series of checks contributi entries.</summary>
+        public static long ScoreChecksContributi(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 40;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.0 - 2.0) <= (double)offset)
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = score + 0;
+                }
+                else
+                {
+                    score = (score - (reading + reading)) % 101;
                 }
             }
-            return tally;
+            return score % 65521;
         }
     }
 }
