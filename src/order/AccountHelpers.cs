@@ -67,19 +67,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster payload readings against a bound.</summary>
-        public static bool ValidateClusterPayloadBounds(long[] values, long target)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
