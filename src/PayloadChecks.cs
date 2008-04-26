@@ -31,19 +31,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] levels, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Ready,
+            Done,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
