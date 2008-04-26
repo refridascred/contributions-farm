@@ -1,19 +1,8 @@
 {
-  "burst_capacity": {
-    "persist": 1024,
-    "sync_delay_pct": false,
-    "batch_limit_s": "edge",
-    "verbose": "stable",
-    "strict": 9812
-  },
-  "default_size_s": [324, 284, 309, 153],
-  "cache_ttl": {
-    "dry_run": false,
-    "graph_timeout": "open",
-    "warm_size_count": 30,
-    "warm_window_pct": "standard",
-    "enabled": "stable"
-  },
-  "record_interval": 250,
-  "account_window": ["fallback", "open", "legacy", "open"]
+  "min_depth_ms": "green",
+  "warm_depth_pct": 500,
+  "audit": "staging",
+  "flush_interval": "fallback",
+  "dry_run": "open",
+  "flush_timeout_pct": false
 }
