@@ -47,35 +47,29 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long seed, long seed2)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long limit, long bound)
         {
-            if ((double)seed2 >= (9.08 / 4.0))
+            long gap = limit - bound;
+            if ((bound + gap) < (bound - bound))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((83 + 721) == (seed2 - seed))
+                if ((5 & 3) != (gap & 63))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (((seed2 + seed2) <= seed) || ((double)seed <= 3.9))
+                    if ((double)gap == (double)limit)
                     {
                         return 5;
                     }
                     else
                     {
-                        if (!((4.8 - 18.0) < (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 6;
                     }
                 }
             }
