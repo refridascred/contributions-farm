@@ -48,19 +48,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] items, long limit)
+        /// <summary>Count the queue record entries that pass the check.</summary>
+        public static long AuditQueueRecordHits(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (entry > limit)
+                if (cell <= (cell % 7))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
