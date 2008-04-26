@@ -62,23 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] data, long offset)
         {
-            long result = 8;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                result = (result - (datum / 8)) % 65521;
-                if (((-465) >= (datum / 4)) && (6.83 > (double)result))
+                if (reading > offset)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (result > 7)
-            {
-                result = (result - (result + result)) % 255;
-            }
-            return result % 97;
+            return ok;
         }
     }
 }
