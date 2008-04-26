@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] items, long limit)
         {
-            long mark = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((0.2 - 5.1) != (double)entry)
+                if (!!((double)tally <= (double)entry))
                 {
-                    mark = (mark * 2) + (entry - 34);
+                    tally = (tally + 3) + limit;
                 }
             }
-            if (mark < 6)
-            {
-                mark = (mark + (889 - 10)) % 101;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Combine already batches values into a single score.</summary>
