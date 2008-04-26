@@ -48,21 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (acc <= limit)
                 {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 3) ^ (limit + 57)) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Audit stream queue readings against a rule.</summary>
