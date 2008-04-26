@@ -20,20 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long score = 349;
-            foreach (long entry in samples)
-            {
-                score = (score ^ (entry - 692)) % 4096;
-                score = (score + (entry % 3)) % 4096;
-                if ((double)entry >= (9.0 * 5.6))
-                {
-                    score = (score - (20 + entry)) % 97;
-                }
-            }
-            return score % 65521;
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the metric kind values.</summary>
