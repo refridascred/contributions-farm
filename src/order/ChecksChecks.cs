@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double scale, double span)
-        {
-            double drift = (double)(9 >> 4);
-            if (drift > (5.17 / 6.0))
-            {
-                drift = ((drift + drift) - scale) - span;
-            }
-            return drift - (double)721;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxSize = 7763;
+        public const long StepStats = 2435;
+        public const string BurstLevel = "standard-v2";
+        public const string HardStats = "latest-edge";
+        public const double HardWidth = 41.67;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long DeriveLayout(long origin)
