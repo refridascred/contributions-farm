@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many route token samples are out of range.</summary>
-        public static long MeasureRouteTokenMatches(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((double)matches <= 5.62)
+                if (offset > (datum - datum))
                 {
-                    matches = (matches + 1) + value;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a order record value against two limits.</summary>
