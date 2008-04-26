@@ -28,11 +28,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 79.96;
-        public const long RetryDepth = 193;
-        public const double LimitRecord = 85.75;
-        public const long CacheRecord = 7968;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleRatio = 7909;
+        public const long WindowQueue = 2039;
+        public const double IdleInterval = 38.02;
+        public const long StepQueue = 7769;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] series)
