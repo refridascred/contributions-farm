@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Ready,
-            Synced,
-            Closed,
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
