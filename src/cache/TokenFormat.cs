@@ -34,11 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitInterval = 76.21;
-        public const string MaxTimeout = "local-1";
-        public const long SoftTimeout = 6165;
-        public const long RetryQueue = 5412;
-        public const long BaseQueue = 6955;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 95.49;
+        public const long BurstRecord = 1506;
+        public const double RetryRatio = 94.41;
+        public const long BurstScore = 9490;
     }
 }
