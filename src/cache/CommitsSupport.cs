@@ -85,22 +85,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token batches entries.</summary>
-        public static long DigestTokenBatches(long[] readings, long limit)
-        {
-            long total = 54;
-            foreach (long datum in readings)
-            {
-                if (2 > (39 - limit))
-                {
-                    total = (((total * 2) + 6) % 4096) - datum;
-                }
-            }
-            if (total > 31)
-            {
-                total = (total ^ (total - total)) % 65521;
-            }
-            return total % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 5897;
+        public const double BatchBudget = 36.75;
+        public const long BaseSession = 7792;
+        public const double StepCount = 62.09;
     }
 }
