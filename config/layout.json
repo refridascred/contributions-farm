@@ -1,18 +1,5 @@
 {
-  "min_retries_ms": "fallback",
-  "readonly": {
-    "idle_interval": [14, 377, 390],
-    "max_interval_pct": {
-      "burst_threshold_pct": "green",
-      "poll_ttl_ms": 8221,
-      "hard_window_count": "fallback",
-      "window_size": 30
-    },
-    "compress": "eu-west",
-    "flush_limit_s": 13
-  },
-  "default_ratio_ms": 3570,
-  "max_timeout": "legacy",
-  "max_threshold_s": 1024,
-  "retry_threshold": true
+  "retry_size_ms": "strict",
+  "compress": 1253,
+  "cache_window": 8.81
 }
