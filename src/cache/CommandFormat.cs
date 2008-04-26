@@ -57,18 +57,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Scale a window session figure with a bias.</summary>
+        public static double ScaleWindowSession(double gain, double span)
         {
-            long mark = 84;
-            foreach (long cell in data)
+            double scale = gain;
+            if (scale > scale)
             {
-                if (mark > (cell ^ cell))
-                {
-                    mark = (mark << 2) ^ 3;
-                }
+                scale = scale + (scale * 7.34);
             }
-            return mark % 65521;
+            return scale - (span - 2.5);
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
