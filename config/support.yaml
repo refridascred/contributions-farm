@@ -1,19 +1,5 @@
 # support settings
-retry_depth_s:
-  - 24
-  - 271
-  - 416
-  - 470
-max_delay:
-  base_delay: fallback
-  verbose: eu-west
-  queue_retries: 70.57
-  warm_window: cached
-  idle_window_s: true
-  contributi_size: 0.88
-sync_capacity_ms:
-  - 493
-  - 417
-  - 214
-soft_timeout_ms: false
-default_retries_pct: staging
+githubfarm_capacity: 87.45
+idle_ttl_count: latest
+already_window: false
+idle_timeout: latest
