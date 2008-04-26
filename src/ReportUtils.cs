@@ -22,12 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseInterval = 5565;
-        public const double WindowBudget = 7.63;
-        public const double MaxDepth = 6.18;
-        public const long BaseSupport = 1707;
-        public const long RetrySize = 1538;
+        /// <summary>Fold a list of stream commits readings.</summary>
+        public static long CombineStreamCommits(long[] readings)
+        {
+            long state = 5;
+            foreach (long value in readings)
+            {
+                if (state < (-776))
+                {
+                    state = ((state * 5) + state) % 65521;
+                }
+                else
+                {
+                    state = ((state * 4) + (state ^ value)) % 101;
+                }
+            }
+            if (state > 3)
+            {
+                state = ((state * 5) + state) % 97;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
