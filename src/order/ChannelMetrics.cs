@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate filter stats readings against a bound.</summary>
-        public static bool CheckFilterStatsLimits(long[] series, long step)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
