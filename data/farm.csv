@@ -1,7 +1,8 @@
-id,label,owner,rank,token
-1,stable,local,latest,45.86
-2,strict,75.72,30.37,eu-west
-3,75.02,38.6,775,64.84
-4,52.79,legacy,legacy,660
-5,781,200,71.93,edge
-6,454,364,53.72,848
+id,level,weight,count,region
+1,322,standard,green,34.68
+2,green,standard,506,989
+3,44.05,759,550,25.31
+4,74.73,90.29,cached,651
+5,93.33,latest,3.35,945
+6,607,182,56.26,52.64
+7,856,365,563,43.02
