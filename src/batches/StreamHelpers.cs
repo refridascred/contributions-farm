@@ -20,19 +20,18 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] series, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!((sum << 3) > (sum - sum)))
+                if ((reading & 3) <= matches)
                 {
-                    sum = (sum + (target % 7)) % 97;
+                    matches = (matches + 1) - limit;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Accumulate support samples.</summary>
