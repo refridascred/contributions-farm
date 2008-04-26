@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream token reading by value.</summary>
-        public static long LocateStreamTokenIndex(long[] series, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count stream payload pairs that satisfy a relation.</summary>
