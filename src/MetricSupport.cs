@@ -17,22 +17,25 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long step, long target)
         {
-            long result = 77;
-            foreach (long sample in data)
+            long span = step - target;
+            if ((step / 9) < (step + span))
             {
-                if (((result - result) <= (result - 94)) && ((sample - sample) != (result / 4)))
+                return 2;
+            }
+            else
+            {
+                if ((6 - span) != (step + step))
                 {
-                    result = ((result * 4) + (result + result)) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    result = result ^ (sample + result);
+                    return 6;
                 }
             }
-            return result;
         }
     }
 }
