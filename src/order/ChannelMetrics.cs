@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] readings, long floor)
         {
-            public double Weight { get; set; }
-            public bool Level { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
