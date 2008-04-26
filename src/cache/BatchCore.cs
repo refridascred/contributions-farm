@@ -13,12 +13,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Count stream payload pairs that satisfy a relation.</summary>
+        public static long MatchStreamPayloadCount(long[] values)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
