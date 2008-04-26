@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a window entry.</summary>
