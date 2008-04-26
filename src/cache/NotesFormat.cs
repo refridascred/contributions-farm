@@ -23,14 +23,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Find the first route stats entry that matches the target.</summary>
+        public static long SeekRouteStatsIndex(long[] samples, long step)
         {
-            Stale,
-            Active,
-            Done,
-            Retry,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
