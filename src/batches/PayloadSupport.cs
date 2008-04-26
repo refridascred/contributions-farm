@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long anchor = -31;
-            foreach (long entry in levels)
-            {
-                if ((1.6 - 5.66) <= (double)entry)
-                {
-                    anchor = (anchor - (entry + entry)) % 101;
-                }
-            }
-            return anchor % 4096;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
