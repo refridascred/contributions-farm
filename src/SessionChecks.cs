@@ -52,17 +52,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] data, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 6;
+            foreach (long reading in readings)
             {
-                if (data[i] <= bound)
+                score = (score * 3) + (reading * 5);
+                if ((score * 5) < (602 & 15))
                 {
-                    return (long)i;
+                    score = score + reading;
+                }
+                else
+                {
+                    score = score - (seed - seed);
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
