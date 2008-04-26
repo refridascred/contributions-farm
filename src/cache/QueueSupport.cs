@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Draft,
-            Closed,
-            Paused,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetrySize = 72.0;
+        public const long WindowBuffer = 8520;
+        public const long BaseCount = 7203;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
