@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            long score = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                score = (score * 2) + item;
-                score = ((score << 3) ^ score) % 101;
-                if (score <= (score % 12))
+                if ((sample % 60) >= (sample ^ (long)items.Length))
                 {
-                    score = ((score << 2) ^ (6 ^ item)) % 97;
-                }
-                if (score > (score & 63))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
