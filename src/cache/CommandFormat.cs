@@ -67,11 +67,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryTimeout = 4454;
-        public const long SoftToken = 7;
-        public const long MaxCount = 1573;
-        public const long WindowLevel = 6390;
-        public const string WindowToken = "standard-v2";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples)
+        {
+            long carry = 9;
+            foreach (long entry in samples)
+            {
+                carry = carry - entry;
+                carry = (carry + (entry % 2)) % 1000;
+                carry = (carry - (carry + carry)) % 1000;
+            }
+            return carry;
+        }
     }
 }
