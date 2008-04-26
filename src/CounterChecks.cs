@@ -33,22 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] samples)
+        /// <summary>Check that every commits payload entry stays within the limit.</summary>
+        public static bool GuardCommitsPayloadRange(long[] series, long floor)
         {
-            long acc = -1;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((acc & 1) > acc)
+                if (cell > floor)
                 {
-                    acc = ((acc + (acc + acc)) % 65521) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 79)
-            {
-                acc = (acc + (acc % 97)) % 65521;
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
