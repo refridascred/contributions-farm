@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinRatio = 6082;
-        public const long LimitStats = 6128;
-        public const string StepBudget = "staging";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!((71 ^ matches) == (matches - 183)))
+                {
+                    matches = ((matches + 3) + sample) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
