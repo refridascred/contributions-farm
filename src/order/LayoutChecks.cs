@@ -59,18 +59,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 7307;
+        public const double RetryFilter = 68.98;
+        public const long StepFilter = 9498;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] readings, long origin)
