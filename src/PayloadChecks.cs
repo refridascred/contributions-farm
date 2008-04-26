@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            double gain = 8.8;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = ((gain - gain) - (double)(long)i) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - ratio;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
