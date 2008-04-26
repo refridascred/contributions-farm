@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in strict cached latest; do
+for item in local edge blue; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=145
+RECORD_LIMIT=241
 log "limit is ${RECORD_LIMIT}"
