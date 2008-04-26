@@ -22,24 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] values, long bound)
         {
-            if ((double)origin == (double)limit)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) >= limit)
+                if ((bound + reading) >= (bound + 169))
                 {
-                    return 0;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
