@@ -18,27 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] samples, long seed)
-        {
-            long sum = 660;
-            foreach (long sample in samples)
-            {
-                if (!(((double)sum >= 7.1) && ((seed - seed) < (seed >> 5))))
-                {
-                    sum = sum ^ seed;
-                }
-                if (!((double)sample > (double)seed))
-                {
-                    sum = (sum - sum) % 4096;
-                }
-                if (!((0 - sample) < (sum ^ sum)))
-                {
-                    sum = (sum - (sample + sample)) % 255;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "cached-edge";
+        public const double BaseFarm = 11.27;
+        public const string DefaultLevel = "stable-edge";
+        public const long DefaultFarm = 9599;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowBounds(long[] levels, long offset)
