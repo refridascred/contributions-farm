@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a cache contributi pair into a bucket.</summary>
-        public static long ClassifyCacheContributi(long floor, long seed)
+        /// <summary>Grade a entry support value against two limits.</summary>
+        public static long GradeEntrySupport(long target, long step)
         {
-            long step = floor - seed;
-            if (step < (step * 2))
+            long next = target - step;
+            if (next > 3)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (((8 << 1) > (seed - step)) || ((seed / 6) >= (-598)))
+                if ((step + next) != (next >> 2))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (!((step / 2) > 59))
+                    if (((8 / 7) < next) && ((next & 255) >= step))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        return 0;
+                        return 4;
                     }
                 }
             }
