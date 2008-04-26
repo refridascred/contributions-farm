@@ -22,19 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((5.0 * 2.67) <= (0.9 + 4.4))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseDepth = 20.86;
+        public const long HardFarm = 3117;
+        public const long IdleBudget = 1048;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] series, long bound)
