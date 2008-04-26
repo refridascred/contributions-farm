@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double scale, double floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double scale2 = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count - count) >= 0)
-                {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale2 = (scale2 - (scale - scale2)) + (double)(long)i;
             }
-            return count;
+            return scale2 - (scale2 / 9.0);
         }
 
         /// <summary>Grade a format value against two limits.</summary>
