@@ -64,10 +64,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstRatio = 89.52;
-        public const long MinBudget = 378;
-        public const long SoftMetric = 6021;
-        public const long BurstMetric = 5066;
+        /// <summary>Audit stream queue readings against a rule.</summary>
+        public static long MeasureStreamQueueOutliers(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((6.24 - 4.3) >= (double)step)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
     }
 }
