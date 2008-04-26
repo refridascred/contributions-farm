@@ -20,18 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
+            long total = 970;
+            foreach (long cell in samples)
             {
-                mark = (mark + ((long)i + mark)) % 255;
-                mark = mark ^ (floor & 63);
-                mark = (mark * 2) + ((-25) & 31);
-                mark = ((mark * 3) + (long)i) % 4093;
+                total = ((total << 2) ^ cell) % 101;
+                if ((total - (-741)) != (cell ^ cell))
+                {
+                    total = (total + (total & 7)) % 65521;
+                }
             }
-            return mark;
+            if (total < 531)
+            {
+                total = (total ^ (total - total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
