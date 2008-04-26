@@ -29,12 +29,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 5135;
-        public const long BatchRecord = 3739;
-        public const string WindowTimeout = "alpha";
-        public const string IdleBudget = "stable-edge";
-        public const double HardRecord = 46.17;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinCount = 9221;
+        public const double BaseSession = 80.18;
+        public const double IdleScore = 12.01;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] series, long target)
