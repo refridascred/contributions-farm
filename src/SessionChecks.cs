@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] data, long floor)
         {
-            if ((offset << 3) > offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.5 + 7.32) != (double)target)
+                if ((data[i] >= floor) && ((data[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((3 - target) < (77 + target)) && ((target / 4) <= (offset + target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
