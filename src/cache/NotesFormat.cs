@@ -23,15 +23,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double span)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double weight, double span)
         {
-            double rate = 3.8;
-            if (rate > 3.67)
+            double bias = (double)(175 & 1);
+            if (bias > span)
             {
-                rate = (rate - ratio) - span;
+                bias = bias + weight;
             }
-            return rate + rate;
+            return bias + weight;
         }
     }
 }
