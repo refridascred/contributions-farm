@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate route already samples.</summary>
-        public static long TallyRouteAlready(long[] series)
-        {
-            long result = 630;
-            foreach (long sample in series)
-            {
-                result = result - (sample + 578);
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheLevel = "open";
+        public const long LimitInterval = 4930;
+        public const long BatchCount = 106;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long ClassifyTools(long limit, long target)
