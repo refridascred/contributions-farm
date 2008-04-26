@@ -12,18 +12,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] series)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (3.05 >= (double)value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double rate = bias;
+            return (rate - (rate / 3.0)) + weight;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
