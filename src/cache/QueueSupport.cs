@@ -26,39 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long origin, long origin2)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            long lane = origin + origin2;
-            if ((origin2 > origin) || ((lane % 2) < (origin2 ^ 84)))
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin2 > 8.97)
+                if ((state & 15) > (target - (long)i))
                 {
-                    return 6;
+                    state = state ^ state;
                 }
-                else
-                {
-                    if ((origin + origin2) == (lane % 64))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((((-736) / 3) < (origin2 + 740)) && (lane < (lane << 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
+            return state;
         }
     }
 }
