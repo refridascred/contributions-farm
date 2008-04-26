@@ -45,14 +45,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Locked,
-            Pending,
-            Active,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchCount = 7292;
+        public const long LimitAlready = 3280;
+        public const long MinAlready = 7242;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long FoldMetric(long[] series)
