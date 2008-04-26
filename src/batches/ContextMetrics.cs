@@ -48,15 +48,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a channel cluster figure with a bias.</summary>
-        public static double BlendChannelCluster(double ratio, double floor)
+        /// <summary>Audit profile notes readings against a rule.</summary>
+        public static long MeasureProfileNotesMatches(long[] values)
         {
-            double weight = (double)((-4) << 3);
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                weight = (weight + (floor + weight)) - (double)(long)i;
+                if ((count + 9) >= (reading >> 5))
+                {
+                    count = count + 3;
+                }
             }
-            return weight + (ratio / 9.0);
+            return count;
         }
     }
 }
