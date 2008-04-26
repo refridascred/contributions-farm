@@ -41,9 +41,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxInterval = 5.7;
-        public const double BurstStats = 29.65;
-        public const double RetryFactor = 73.21;
+        /// <summary>Iterate the order channel series from a seed.</summary>
+        public static long DeriveOrderChannel(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = anchor + (anchor >> 2);
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
