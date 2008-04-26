@@ -19,19 +19,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long total = -609;
+            foreach (long sample in series)
             {
-                if (datum >= floor)
+                total = (total * 3) + sample;
+                if ((29 + (long)series.Length) > 1)
                 {
-                    ok = false;
-                    break;
+                    total = (total + total) % 255;
                 }
             }
-            return ok;
+            if (total > (-5))
+            {
+                total = (total * 3) + offset;
+            }
+            return total;
         }
 
         /// <summary>Blend two filter measurements.</summary>
