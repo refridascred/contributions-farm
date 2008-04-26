@@ -61,16 +61,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc << 3) ^ (offset * 3)) % 97;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Queued,
+            Retry,
+            Failed,
         }
     }
 }
