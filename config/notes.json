@@ -1,6 +1,5 @@
 {
-  "cache_capacity_pct": 76,
-  "audit": "fallback",
-  "cache_depth_s": 87.73,
-  "flush_interval": [10, 27, 217, 99]
+  "retry_threshold": ["eu-west", "standard"],
+  "min_ttl": 9107,
+  "compress": false
 }
