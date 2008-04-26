@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((469 + 87) == (reading & 15))
+                if (reading >= offset)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Blend two notes measurements.</summary>
