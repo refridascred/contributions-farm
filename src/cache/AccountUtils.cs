@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] values)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((7.0 * 1.2) <= (double)hits)
+                if (entry <= floor)
                 {
-                    hits = (hits + 3) + item;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Fold a list of support readings.</summary>
