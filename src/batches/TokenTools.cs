@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "staging";
-        public const string DefaultWidth = "cached";
-        public const double MinOrder = 80.56;
-        public const long MaxOrder = 5556;
+        /// <summary>Check that every commits profile entry stays within the limit.</summary>
+        public static bool CheckCommitsProfileBounds(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
