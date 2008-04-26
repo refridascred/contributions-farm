@@ -62,19 +62,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double ratio, double bias)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] series, long floor)
         {
-            double load = (double)(7 % 2);
-            if (load > bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - (8.0 / 4.0);
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - ratio;
-            }
-            return load + ratio;
+            return -1;
         }
 
         /// <summary>Describe the queue class values.</summary>
