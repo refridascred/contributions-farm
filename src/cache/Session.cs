@@ -41,9 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowSpan = 71.39;
-        public const long RetryRatio = 5723;
-        public const long SoftFactor = 2970;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
