@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] levels, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Failed,
+            Ready,
+            Queued,
+            Paused,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
