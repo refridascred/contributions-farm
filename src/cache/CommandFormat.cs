@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)hits == (1.9 - 17.0)) && (((hits >> 3) <= (seed >> 3)) || ((hits & 15) != (hits - seed))))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
