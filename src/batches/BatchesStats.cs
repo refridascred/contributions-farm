@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] series, long step)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double scale, double floor)
         {
-            long result = 3;
-            foreach (long value in series)
+            double mean = scale;
+            if (mean <= (floor + mean))
             {
-                if ((step * 3) == (step % 100))
-                {
-                    result = (result - (528 + result)) ^ value;
-                }
+                mean = mean - (double)9;
             }
-            return result % 4096;
+            else
+            {
+                mean = mean + (double)67;
+            }
+            return mean + (double)6;
         }
 
         /// <summary>Combine session schema values into a single score.</summary>
