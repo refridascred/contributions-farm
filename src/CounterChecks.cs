@@ -43,13 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
+            long acc = -1;
+            foreach (long entry in samples)
+            {
+                if ((acc & 1) > acc)
+                {
+                    acc = ((acc + (acc + acc)) % 65521) + entry;
+                }
+            }
+            if (acc > 79)
+            {
+                acc = (acc + (acc % 97)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
