@@ -20,22 +20,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] values, long floor)
         {
-            long score = 11;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (((long)data.Length + score) < ((-3) + score))
+                if (item <= floor)
                 {
-                    score = ((score * 3) + (8 >> 2)) ^ cell;
-                }
-                else
-                {
-                    score = ((score * 4) + (score - score)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 97;
+            return ready;
         }
 
         /// <summary>Hold a route stats.</summary>
