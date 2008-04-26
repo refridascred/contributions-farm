@@ -1,9 +1,11 @@
 # support settings
-compress:
-  - 260
-  - 70
-  - 400
-format_window: blue
-default_depth: edge
-order_size: false
-entry_limit: 1024
+enabled: legacy
+queue_retries:
+  warm_capacity_pct: 250
+  idle_limit: edge
+  enabled: 8.42
+  burst_interval_s:
+    - local
+    - cached
+    - stable
+dry_run: 79.19
