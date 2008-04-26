@@ -13,13 +13,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstScore = 651;
+        public const string MinFactor = "open-1";
+        public const double SoftSpan = 53.34;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
