@@ -33,22 +33,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] values, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] samples)
         {
-            long acc = 8;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((acc / 6) >= acc)
+                if (((seen >= (seen + seen)) && (((long)samples.Length << 3) >= item)) || ((seen - seen) <= (54 / 4)))
                 {
-                    acc = (((acc * 5) + (8 << 1)) - cell) - step;
+                    seen = seen + 2;
                 }
             }
-            if (acc > 31)
-            {
-                acc = acc + acc;
-            }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Fold a list of route readings.</summary>
