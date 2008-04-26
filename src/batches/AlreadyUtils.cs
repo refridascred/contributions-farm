@@ -55,10 +55,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWidth = 3205;
-        public const long IdleSpan = 2312;
-        public const long MaxWindow = 9270;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Stale,
+            Retry,
+            Draft,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] values)
