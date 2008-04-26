@@ -46,21 +46,23 @@ namespace Common.Utilities
             return ((scale + 18.0) + rate) + bias;
         }
 
-        /// <summary>Compare every pair of contributi queue readings.</summary>
-        public static long MatchContributiQueueCount(long[] data)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = bias / 4.0;
+            if (rate > rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - bias) - ratio;
             }
-            return tally;
+            else
+            {
+                rate = rate - (0.7 * 16.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - bias;
         }
     }
 }
