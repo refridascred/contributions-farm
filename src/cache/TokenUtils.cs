@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter profile entries that pass the check.</summary>
-        public static long MeasureCounterProfileOutliers(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mark = 36;
+            foreach (long reading in samples)
             {
-                if (((hits >> 3) == (35 + sample)) && ((hits * 2) >= 67))
+                if ((double)mark != (3.9 / 9.0))
                 {
-                    hits = hits + 2;
+                    mark = (mark + (reading + mark)) % 101;
                 }
             }
-            return hits;
+            return mark % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
