@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] series, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (value > offset)
+                if ((limit - matches) > (limit << 1))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + item;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the commits phase values.</summary>
