@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                long offset = (carry << 3) - (limit + (long)i);
-                if (!(offset >= (limit >> 4)))
+                if (2.2 >= (double)hits)
                 {
-                    carry = carry - (limit - limit);
-                    carry = (carry ^ (6 / 4)) % 97;
+                    hits = (hits + 2) + reading;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
