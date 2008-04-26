@@ -67,11 +67,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 95.86;
-        public const long HardSpan = 1137;
-        public const long SoftEntry = 9441;
-        public const long HardBudget = 8090;
-        public const long BatchEntry = 1091;
+        /// <summary>Roll a metric cache counter forward.</summary>
+        public static long SeriesMetricCache(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+                total = (total - (long)i) % 4096;
+                total = (total * 3) + (total & 15);
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
