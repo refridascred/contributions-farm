@@ -40,19 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] items)
+        /// <summary>Measure how many payload window samples are out of range.</summary>
+        public static long MeasurePayloadWindowOutliers(long[] values, long bound)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long value in values)
             {
-                if ((4.16 / 6.0) < (double)datum)
+                if (value > (seen % 24))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) - bound;
                 }
             }
             return seen;
