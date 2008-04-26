@@ -28,18 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] samples, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (((18.0 - 3.0) >= (double)item) || (floor < (695 << 3)))
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
