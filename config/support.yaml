@@ -1,11 +1,10 @@
 # support settings
-enabled:
-  checks_limit: 100
-  cache_depth_count: 3.14
-  persist: true
-batch_retries_ms: blue
-retry_retries:
-  retry_retries_pct: 33
-  default_ratio_count: true
-  poll_depth_count: 48.95
-readonly: 60
+batch_ttl_count: 250
+batch_threshold:
+  - blue
+  - cached
+  - cached
+support_interval: 500
+sync_timeout_ms: 0.57
+strict: 11
+dry_run: legacy
