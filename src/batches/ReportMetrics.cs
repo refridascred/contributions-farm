@@ -36,11 +36,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            double drift = span;
-            return (drift - span) + gain;
+            long result = 8;
+            foreach (long entry in series)
+            {
+                if (!((entry >> 1) >= result))
+                {
+                    result = ((result * 3) + result) % 255;
+                }
+                if ((entry ^ 421) < (entry >> 2))
+                {
+                    result = result ^ (long)series.Length;
+                }
+                else
+                {
+                    result = ((result * 4) + 34) % 255;
+                }
+            }
+            if (result > 72)
+            {
+                result = result - result;
+            }
+            return result;
         }
     }
 }
