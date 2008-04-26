@@ -13,13 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Roll a order checks counter forward.</summary>
+        public static long DeriveOrderChecks(long step)
         {
-            Ready,
-            Stale,
-            Locked,
-            Synced,
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many payload window samples are out of range.</summary>
