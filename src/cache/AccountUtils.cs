@@ -24,19 +24,21 @@ namespace Common.Utilities
         public const long BatchDepth = 1430;
         public const string WindowGithubfarm = "local";
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] data, long seed)
+        /// <summary>Compare every pair of entry batch readings.</summary>
+        public static long OverlapEntryBatchCount(long[] levels)
         {
-            long mix = 9;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix << 2) ^ seed) - (long)i;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = (mix * 5) + (cell + 408);
             }
-            return mix;
+            return hits;
         }
     }
 }
