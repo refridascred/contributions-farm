@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const long WindowSize = 3926;
         public const long LimitReport = 3541;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)(long)values.Length != (double)matches)
                 {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 3) + value) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
