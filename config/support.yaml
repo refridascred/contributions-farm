@@ -1,16 +1,33 @@
 # support settings
-warm_capacity: 1024
-profile_threshold:
-  base_interval:
-    soft_ttl_pct: false
-    compress: 44.64
-    cache_interval: blue
-  retry_ratio_ms: 44
-  cache_capacity_count: cached
-  dry_run: 70.5
-poll_timeout_count: false
-audit: latest
-base_threshold:
-  - cached
-  - primary
-  - staging
+already_size: 8435
+retry_ratio_pct:
+  sync_size_ms: 32
+  strict: 500
+  tools_window: 66.85
+  compress: blue
+retry_interval: false
+audit:
+  soft_delay: false
+  metrics_limit:
+    - stable
+    - eu-west
+    - strict
+  batch_capacity_count: legacy
+cache_ttl: green
+base_delay_pct:
+  cache_retries_count:
+    flush_threshold: green
+    compress: false
+    min_ratio_pct: 96.26
+    retry_size: local
+  batch_ttl:
+    dry_run: 39.62
+    idle_capacity_pct: standard
+    poll_limit: 86.65
+  audit:
+    min_window_count: stable
+    audit: 16.88
+    base_capacity_ms:
+      - 345
+      - 347
+  flush_ttl_ms: 100
