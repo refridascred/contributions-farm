@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitSize = 1492;
-        public const double SoftEditor = 47.27;
-        public const string CacheScore = "local";
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Pending,
+            Failed,
+            Done,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsGaps(long[] levels, long origin)
