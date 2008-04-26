@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            Paused,
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
