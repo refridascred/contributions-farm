@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] items, long floor)
+        /// <summary>Validate window metric readings against a bound.</summary>
+        public static bool GuardWindowMetricLimits(long[] data, long limit)
         {
-            long sum = 632;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((floor - floor) < (floor % 5))
+                if (datum > limit)
                 {
-                    sum = ((sum - floor) % 1000) ^ reading;
+                    valid = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return valid;
         }
 
         /// <summary>Hold a stats summary.</summary>
