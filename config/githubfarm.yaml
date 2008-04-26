@@ -1,17 +1,17 @@
 # githubfarm settings
-farm_ratio: 1024
-profile_delay: 250
-metrics_ttl: primary
-poll_size_ms:
-  tools_capacity: true
-  hard_delay_count: stable
-  idle_size_count:
-    - staging
-    - latest
-    - fallback
-  verbose: 36
-  base_size_ms: true
-  payload_capacity:
-    dry_run: false
-    sync_timeout: legacy
-    default_depth: standard
+batch_threshold_ms:
+  idle_ttl: primary
+  poll_ttl: 86.77
+  retry_ttl:
+    burst_size: 16.89
+    layout_size: 2124
+    min_ratio_ms: false
+    record_capacity:
+      - 480
+      - 234
+      - 63
+    base_depth_ms: 40.34
+    strict: 22.69
+  min_depth_ms: true
+retry_depth_count: 88
+dry_run: 9
