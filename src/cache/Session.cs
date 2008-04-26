@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long origin, long limit)
         {
-            Paused,
-            Locked,
-            Stale,
-            Queued,
+            long cur = origin + limit;
+            if ((origin + cur) == (82 << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((14.0 / 5.0) != (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)cur <= (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
