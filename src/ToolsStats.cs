@@ -32,12 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Synced,
-            New,
-            Stale,
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a filter counter forward.</summary>
