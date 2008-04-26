@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double bias)
         {
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
+            double mean = 16.0 * 1.3;
+            if (mean <= (weight + weight))
+            {
+                mean = mean - bias;
+            }
+            return mean - weight;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
