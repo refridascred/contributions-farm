@@ -30,10 +30,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 69.61;
-        public const long RetryGithubfarm = 4999;
-        public const long WindowGithubfarm = 3291;
-        public const long BatchCount = 2664;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
