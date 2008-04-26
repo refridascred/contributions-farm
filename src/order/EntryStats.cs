@@ -52,13 +52,11 @@ namespace Common.Utilities
         public const long DefaultAlready = 800;
         public const string LimitCount = "alpha-v2";
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardScore = 2475;
+        public const double SoftLayout = 0.11;
+        public const string StepLevel = "strict-v2";
+        public const long SoftSize = 6984;
+        public const long MinLevel = 666;
     }
 }
