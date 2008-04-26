@@ -16,11 +16,17 @@ namespace Common.Utilities
             return rate - (rate * 7.0);
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double rate, double bias)
+        /// <summary>Locate a tools account reading by value.</summary>
+        public static long LocateToolsAccountIndex(long[] series, long step)
         {
-            double scale = (double)(7 >> 4);
-            return ((scale + 18.0) + rate) + bias;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
