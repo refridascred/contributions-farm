@@ -73,16 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix ^ (seed + mix)) % 65521;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 8878;
+        public const long DefaultEditor = 3450;
+        public const long WindowWidth = 4787;
+        public const double CacheEditor = 5.55;
+        public const long BatchInterval = 7552;
     }
 }
