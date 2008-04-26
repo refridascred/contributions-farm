@@ -41,9 +41,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleDepth = 3713;
-        public const double LimitEditor = 89.24;
-        public const double WindowScore = 64.59;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                state = state - (state & 1);
+                long cur = offset;
+                state = (state << 3) ^ cur;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
