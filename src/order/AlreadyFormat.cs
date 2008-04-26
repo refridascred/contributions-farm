@@ -74,11 +74,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 9088;
-        public const double CacheFactor = 66.37;
-        public const double LimitCommits = 8.4;
-        public const long IdleCommits = 6673;
-        public const string MaxCommits = "strict-v2";
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings)
+        {
+            long result = 55;
+            foreach (long cell in readings)
+            {
+                result = (((result * 4) + (result % 97)) % 1000) + cell;
+            }
+            return result;
+        }
     }
 }
