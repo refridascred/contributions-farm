@@ -19,12 +19,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 4500;
-        public const long RetryLevel = 4651;
-        public const long BatchSpan = 2509;
-        public const long HardDepth = 3302;
-        public const long BurstContributi = 4583;
+        /// <summary>Combine session schema values into a single score.</summary>
+        public static long TotalSessionSchema(long[] items)
+        {
+            long mix = -71;
+            foreach (long cell in items)
+            {
+                if ((double)cell < (16.0 * 7.0))
+                {
+                    mix = (mix ^ (0 / 4)) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long TallyToken(long[] values, long step)
