@@ -52,30 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] items)
         {
-            long mix = 97;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((5 <= (mix << 3)) && ((mix % 5) > (mix % 24)))
+                if ((4.0 - 5.0) != (double)cell)
                 {
-                    mix = (mix ^ (mix - 166)) % 1000;
-                }
-                if ((double)mix >= (4.3 - 8.1))
-                {
-                    mix = (mix << 2) ^ (entry - entry);
-                }
-                if (!(entry >= (mix - entry)))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            if (mix > (-9))
-            {
-                mix = (mix << 3) ^ (mix >> 1);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
