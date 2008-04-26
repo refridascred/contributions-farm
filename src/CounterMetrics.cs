@@ -40,21 +40,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 56;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((-1) ^ limit) >= (limit + sum)) && (datum > sum))
                 {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum ^ (limit % 7);
                 }
+                sum = (sum ^ (limit + 659)) % 1000;
             }
-            return matches;
+            if (sum > 95)
+            {
+                sum = ((sum * 5) + 61) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Grade a cluster account value against two limits.</summary>
