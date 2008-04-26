@@ -1,11 +1,4 @@
 # githubfarm settings
-persist: green
-idle_retries_pct: local
-dry_run: 5399
-retry_timeout_pct:
-  - fallback
-  - local
-  - edge
-  - strict
-batch_timeout_s: true
-poll_ttl: green
+already_interval: 5305
+cache_ttl_count: staging
+default_ratio_s: latest
