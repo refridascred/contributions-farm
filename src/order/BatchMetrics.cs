@@ -62,13 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleLevel = 3382;
+        public const long BurstCounter = 1336;
+        public const long IdleCounter = 1420;
+        public const long BatchCounter = 2023;
 
         /// <summary>Digest a series of already queue entries.</summary>
         public static long CombineAlreadyQueue(long[] samples)
