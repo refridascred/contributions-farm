@@ -40,15 +40,18 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] samples)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((item & 255) < matches)
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
