@@ -28,19 +28,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (!((count * 4) > (count & 1)))
-                {
-                    count = ((count + 2) + sample) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 79.96;
+        public const long RetryDepth = 193;
+        public const double LimitRecord = 85.75;
+        public const long CacheRecord = 7968;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] series)
