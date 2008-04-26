@@ -26,13 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Synced,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryLevel = 16.47;
+        public const long MinInterval = 679;
+        public const long MaxStats = 8766;
+        public const long IdleStats = 2441;
+        public const double MinStats = 30.14;
 
         /// <summary>Adjust a window reading.</summary>
         public static double ProjectWindow(double bias, double span)
