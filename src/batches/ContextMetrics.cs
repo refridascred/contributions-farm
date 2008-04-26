@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long BurstBatch = 4335;
         public const long BatchCount = 3253;
 
-        /// <summary>Check that every stream profile entry stays within the limit.</summary>
-        public static bool GuardStreamProfileLimits(long[] items, long offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the counter class values.</summary>
