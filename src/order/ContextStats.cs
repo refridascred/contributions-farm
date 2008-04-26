@@ -47,16 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = mark - ((long)i / 5);
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
