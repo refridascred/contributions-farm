@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] samples, long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (offset > (datum - datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
