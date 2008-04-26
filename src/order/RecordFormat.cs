@@ -47,19 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)seen == (8.4 + 3.2))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 2957;
+        public const long BurstScore = 2070;
+        public const string MinRoute = "legacy-1";
+        public const double LimitRoute = 70.82;
+        public const long MaxRoute = 3261;
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
