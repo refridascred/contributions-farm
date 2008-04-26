@@ -75,14 +75,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            Closed,
-            Done,
-            Synced,
-            Stale,
-            Queued,
+            long total = step;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
