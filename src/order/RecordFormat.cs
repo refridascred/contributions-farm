@@ -43,12 +43,25 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 2957;
-        public const long BurstScore = 2070;
-        public const string MinRoute = "legacy-1";
-        public const double LimitRoute = 70.82;
-        public const long MaxRoute = 3261;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long step, long bound)
+        {
+            if ((step < (step ^ 59)) || ((6 / 9) >= (step + bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(step > ((-38) * 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long ScoreChecks(long[] readings)
