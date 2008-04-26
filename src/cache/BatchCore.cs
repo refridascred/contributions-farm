@@ -49,18 +49,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] readings, long limit)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.4 / 3.0) >= (double)count)
+                if (levels[i] <= target)
                 {
-                    count = ((count + 3) + reading) - limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
