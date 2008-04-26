@@ -46,12 +46,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "strict-v2";
-        public const double WindowScore = 37.49;
-        public const long MinSpan = 4137;
-        public const string DefaultWidth = "cached";
-        public const double LimitScore = 36.05;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public bool Region { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long offset, long seed)
