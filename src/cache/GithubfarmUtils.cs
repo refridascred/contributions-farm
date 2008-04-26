@@ -34,15 +34,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] readings, long floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long carry = 82;
-            foreach (long datum in readings)
-            {
-                carry = ((((carry << 2) ^ (-193)) % 101) - datum) - floor;
-            }
-            return carry;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
