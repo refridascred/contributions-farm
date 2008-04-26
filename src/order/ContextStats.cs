@@ -59,21 +59,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long limit, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = limit + seed;
+            if ((9 << 2) != (span - seed))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)limit != (6.2 * 4.0))
                 {
-                    if ((samples[i] ^ samples[j]) > 17)
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - seed) < seed)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
     }
 }
