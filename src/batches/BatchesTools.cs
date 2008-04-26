@@ -48,9 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "primary-edge";
-        public const string BatchAlready = "legacy-edge";
-        public const string BatchBudget = "stable";
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
