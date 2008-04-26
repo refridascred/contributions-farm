@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] values, long bound)
         {
-            Locked,
-            Synced,
-            New,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count + datum) > (count & 31))
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
