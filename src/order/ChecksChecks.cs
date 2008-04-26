@@ -19,16 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch support counter forward.</summary>
-        public static long IterateBatchSupport(long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                mix = mix ^ 296;
-                mix = ((mix * 2) + (long)i) % 101;
+                anchor = anchor - ((long)i + anchor);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
