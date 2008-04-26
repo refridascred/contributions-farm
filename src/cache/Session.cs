@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double rate, double bias)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] levels, long target)
         {
-            double gain = bias;
-            if (gain > (4.1 / 4.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - rate;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (rate - rate);
+            return -1;
         }
 
         /// <summary>Describe the buffer level values.</summary>
