@@ -52,17 +52,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor - target) % 65521;
-                anchor = (anchor - (anchor % 3)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseWidth = 5557;
+        public const double BurstTools = 54.05;
+        public const long MinDepth = 1426;
     }
 }
