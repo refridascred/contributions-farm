@@ -15,13 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
             public long Flag { get; set; }
-            public double Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count stats contributi pairs that satisfy a relation.</summary>
