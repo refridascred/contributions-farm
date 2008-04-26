@@ -20,15 +20,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
