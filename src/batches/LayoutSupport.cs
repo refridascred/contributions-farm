@@ -39,22 +39,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((hits > (entry + hits)) && ((hits >> 1) == (entry + 60)))
+                total = (total ^ (total / 5)) % 4096;
+                if (((double)origin < 5.6) && ((double)total <= (13.0 + 7.35)))
                 {
-                    hits = hits + 3;
+                    total = total + (total + (long)i);
                 }
-                else
+                if (((long)i + 4) >= (origin * 3))
                 {
-                    hits = hits - 1;
+                    total = (total * 2) + (origin << 3);
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the format contributi entries that pass the check.</summary>
