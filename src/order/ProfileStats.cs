@@ -54,18 +54,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)seen != (17.0 * 5.1))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheBudget = 45.89;
+        public const long MaxTimeout = 5505;
+        public const long LimitToken = 7805;
+        public const long DefaultToken = 4823;
+        public const string StepBudget = "strict";
     }
 }
