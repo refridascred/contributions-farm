@@ -1,6 +1,16 @@
 {
-  "sync_timeout": ["fallback", "open", "local", "fallback"],
-  "poll_capacity_ms": 53.42,
-  "poll_capacity_count": "primary",
-  "burst_threshold": 98
+  "githubfarm_depth": "eu-west",
+  "token_interval": {
+    "burst_window_ms": {
+      "window_depth": [369, 215, 490, 45],
+      "soft_timeout_ms": 54,
+      "farm_delay": "local"
+    },
+    "strict": "stable",
+    "readonly": "standard",
+    "warm_ttl": 500,
+    "warm_size_s": 500,
+    "min_size_s": "local"
+  },
+  "format_limit": 59
 }
