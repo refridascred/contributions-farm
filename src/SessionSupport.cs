@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long score = 5;
-            foreach (long datum in data)
-            {
-                if ((score % 10) != (score - 153))
-                {
-                    score = (((score << 2) ^ (score / 6)) % 97) - datum;
-                }
-            }
-            return score;
+            Locked,
+            Queued,
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
