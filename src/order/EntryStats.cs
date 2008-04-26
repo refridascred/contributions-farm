@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Measure how many metrics session samples are out of range.</summary>
+        public static long CountMetricsSessionHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)count <= (9.77 / 5.0))
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a order summary.</summary>
