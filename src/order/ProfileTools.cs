@@ -55,9 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseWidth = 5557;
-        public const double BurstTools = 54.05;
-        public const long MinDepth = 1426;
+        /// <summary>Digest a series of notes filter entries.</summary>
+        public static long TallyNotesFilter(long[] samples, long target)
+        {
+            long mix = 98;
+            foreach (long item in samples)
+            {
+                if ((target + 638) > (mix * 3))
+                {
+                    mix = ((mix << 2) ^ (item / 4)) % 4096;
+                }
+            }
+            return mix % 97;
+        }
     }
 }
