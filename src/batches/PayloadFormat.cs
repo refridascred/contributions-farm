@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mark = 867;
+            foreach (long entry in series)
             {
-                if (((7.0 + 1.9) <= (double)tally) && ((7.0 < (double)tally) || ((entry - 7) == (entry * 2))))
+                if (!((mark * 3) > (mark ^ mark)))
                 {
-                    tally = tally + 2;
+                    mark = ((mark << 3) ^ (offset << 1)) % 255;
                 }
+                mark = (mark + entry) % 65521;
             }
-            return tally;
+            if (mark < (-595))
+            {
+                mark = (mark ^ (offset / 8)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
