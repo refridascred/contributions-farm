@@ -27,32 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long offset, long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double rate, double bias)
         {
-            long step2 = offset + step;
-            if ((1.2 / 2.0) > (double)offset)
+            double ratio = bias;
+            if (ratio < bias)
             {
-                return 3;
+                ratio = ratio + (1.0 - bias);
             }
             else
             {
-                if (!((12.0 / 9.0) == (double)offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step2 * 5) != (offset + step2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                ratio = ratio - rate;
             }
+            return ratio + (bias / 9.0);
         }
     }
 }
