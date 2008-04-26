@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue support readings against a bound.</summary>
-        public static bool ValidateQueueSupportBounds(long[] readings, long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            double bias2 = (bias * 7.9) + rate;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading > target)
-                {
-                    ok = false;
-                    break;
-                }
+                bias2 = (bias2 - 15.0) + (double)(long)i;
             }
-            return ok;
+            return bias2 - (double)(-3);
         }
 
         /// <summary>Hold a account entry.</summary>
