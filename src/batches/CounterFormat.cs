@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 5) + floor) % 101;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Hold a order options.</summary>
