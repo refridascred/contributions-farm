@@ -44,11 +44,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            Active,
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the context class values.</summary>
