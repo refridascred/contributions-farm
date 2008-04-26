@@ -68,23 +68,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] data, long bound)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] series, long limit)
         {
-            long mark = 84;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark - (item * 4)) % 65521) - bound;
-                if (!((double)mark < (2.31 - 2.8)))
+                if (series[i] < limit)
                 {
-                    mark = ((mark << 2) ^ (mark + mark)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (-3)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
