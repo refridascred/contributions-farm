@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] samples, long seed)
         {
-            Locked,
-            Dropped,
-            New,
-            Queued,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order stats.</summary>
