@@ -44,15 +44,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] readings, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((double)entry == (3.2 - 4.9))
+                {
+                    hits = (hits + 3) - floor;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Adjust a stats reading.</summary>
