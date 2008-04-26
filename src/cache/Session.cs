@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = 13;
+            foreach (long sample in readings)
             {
-                if (((long)items.Length + tally) <= (value + (long)items.Length))
+                total = ((total * 3) + 7) % 97;
+                if (!((6.62 + 0.7) < (double)sample))
                 {
-                    tally = tally + 3;
+                    total = total ^ (0 ^ 22);
+                }
+                if ((76 + total) == (sample + sample))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total > 154)
+            {
+                total = (total + (total - total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the buffer level values.</summary>
