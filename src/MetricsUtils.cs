@@ -22,15 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double span)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            double drift = span;
+            if (drift < 6.8)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                drift = (drift + (span * 4.78)) + ratio;
             }
-            return carry;
+            else
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (span / 3.0)) + (double)(long)i;
+            }
+            return drift - (double)586;
         }
 
         /// <summary>Count the cache channel entries that pass the check.</summary>
