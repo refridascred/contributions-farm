@@ -31,10 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Retry,
+            Ready,
             Queued,
             Stale,
         }
