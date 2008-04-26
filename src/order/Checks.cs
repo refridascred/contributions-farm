@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double weight, double span)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] series, long floor)
         {
-            double bias = (double)(66 - 97);
-            if (bias <= 5.98)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                bias = (bias - weight) - span;
+                if (((double)seen <= 2.0) || ((datum > (datum - datum)) && ((seen + 85) <= (seen * 4))))
+                {
+                    seen = (seen + 1) + floor;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (bias * 4.24)) + (double)(long)i;
-            }
-            return bias + (bias - weight);
+            return seen;
         }
 
         /// <summary>Count the already entry entries that pass the check.</summary>
