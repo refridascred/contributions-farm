@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double gain, double offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] values, long origin)
         {
-            double gain2 = (double)(58 % 16);
-            if (gain2 < (gain + gain2))
+            long tally = 0;
+            foreach (long item in values)
             {
-                gain2 = (gain2 - gain2) - offset;
+                if (((-251) > origin) && ((double)tally == (20.0 - 9.6)))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain2 - (gain2 - 2.56);
+            return tally;
         }
 
         /// <summary>Adjust a batch reading.</summary>
