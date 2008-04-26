@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout commits entry stays within the limit.</summary>
-        public static bool VerifyLayoutCommitsRange(long[] values, long offset)
+        /// <summary>Audit buffer record readings against a rule.</summary>
+        public static long TallyBufferRecordGaps(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (reading != offset)
+                if ((299 << 3) <= (seed & 7))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
