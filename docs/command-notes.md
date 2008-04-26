@@ -1,13 +1,15 @@
 # Command notes
 
-A account that stays idle for too long is moved to the buffer list.
-The cache helpers are pure functions, so they are safe to call from any thread.
+The support module keeps layout values in sync with the channel cache.
+Run the metrics check before changing any metric limits.
+A batches that stays idle for too long is moved to the metric list.
 
-Run the counter check before changing any command limits.
-A cluster that stays idle for too long is moved to the tools list.
+Use metric settings to tune how often entry data is refreshed.
+The notes module keeps token values in sync with the metrics cache.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep filter values small
-- Document new already fields
-- Validate channel input early
+- Validate support input early
+- Keep metrics values small
+- Log every buffer change
