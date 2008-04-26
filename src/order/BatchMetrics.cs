@@ -14,15 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate editor channel samples.</summary>
-        public static long WeighEditorChannel(long[] readings, long limit)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long mark = 66;
-            foreach (long item in readings)
-            {
-                mark = mark - (limit - item);
-            }
-            return mark % 1000;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of order route readings.</summary>
