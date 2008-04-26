@@ -36,21 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Scale a payload route figure with a bias.</summary>
+        public static double SmoothPayloadRoute(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = (double)217 - (double)0;
+            if (bias < scale)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias - (double)29) - span;
             }
-            return count;
+            return bias - (double)805;
         }
     }
 }
