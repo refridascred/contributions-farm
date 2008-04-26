@@ -15,31 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long limit, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] values)
         {
-            if (((step + limit) <= limit) && ((double)8 < (double)limit))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit < (8 + step))
+                if ((double)matches > (3.0 + 2.1))
                 {
-                    return 2;
+                    matches = (matches + 3) + cell;
                 }
                 else
                 {
-                    if (((double)3 > (double)step) && ((step + step) > limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
