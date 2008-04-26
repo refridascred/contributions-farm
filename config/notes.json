@@ -1,5 +1,5 @@
 {
-  "enabled": true,
-  "soft_depth_s": 1684,
-  "burst_timeout_pct": ["eu-west", "edge"]
+  "strict": "legacy",
+  "audit": 8327,
+  "verbose": ["fallback", "fallback", "local"]
 }
