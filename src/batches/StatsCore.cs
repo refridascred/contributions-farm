@@ -19,39 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long bound, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] data)
         {
-            long diff = bound + step;
-            if ((bound >> 4) <= (diff * 5))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((diff >= (diff * 2)) || (diff <= bound))
+                if (((datum - datum) > (datum % 24)) && ((datum + matches) != (550 + matches)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.94 * 3.2) < (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (12.0 >= (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a token record.</summary>
