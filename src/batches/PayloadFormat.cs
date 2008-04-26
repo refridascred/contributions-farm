@@ -23,19 +23,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] samples, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (cell <= limit)
+                if (datum <= floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
