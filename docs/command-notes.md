@@ -1,13 +1,12 @@
 # Command notes
 
-Keep format and metrics names short and lowercase.
-The channel helpers are pure functions, so they are safe to call from any thread.
-
-Run the filter check before changing any metrics limits.
-When a account fails, the githubfarm handler retries a few times before giving up.
+A counter that stays idle for too long is moved to the notes list.
+Use tools settings to tune how often batches data is refreshed.
+Each notes is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Prefer record defaults
-- Validate record input early
-- Review route limits each release
+- Log every cluster change
+- Prefer token defaults
+- Validate context input early
+- Document new commits fields
