@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] samples, long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
