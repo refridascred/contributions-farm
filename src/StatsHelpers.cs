@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first order session entry that matches the target.</summary>
-        public static long LocateOrderSessionIndex(long[] data, long offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
