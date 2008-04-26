@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mean + (double)6;
         }
 
-        /// <summary>Combine session schema values into a single score.</summary>
-        public static long TotalSessionSchema(long[] items)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] readings, long target)
         {
-            long mix = -71;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell < (16.0 * 7.0))
+                if (readings[i] > target)
                 {
-                    mix = (mix ^ (0 / 4)) % 101;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
