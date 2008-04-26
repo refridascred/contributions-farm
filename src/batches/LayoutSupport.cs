@@ -73,10 +73,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 15.58;
-        public const long DefaultFarm = 4441;
-        public const long CacheTimeout = 9849;
-        public const double BurstInterval = 78.17;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
