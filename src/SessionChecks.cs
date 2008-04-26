@@ -35,21 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = floor;
+            if (bias2 > (double)243)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 + bias;
             }
-            return seen;
+            return bias2 + floor;
         }
 
         /// <summary>Fold a list of already readings.</summary>
