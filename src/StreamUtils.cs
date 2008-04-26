@@ -60,39 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long limit, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] series, long bound)
         {
-            long gap = limit ^ offset;
-            if ((offset + offset) == (gap - gap))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset > 4.54)
+                if (((bound ^ item) >= (bound * 2)) && ((double)item == (1.1 * 7.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)gap > (20.0 + 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((gap * 5) <= (557 ^ limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
