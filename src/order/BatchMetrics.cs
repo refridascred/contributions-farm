@@ -26,39 +26,12 @@ namespace Common.Utilities
         public const long HardSession = 5176;
         public const double RetryInterval = 73.92;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long target, long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long gap = target - seed;
-            if ((target & 255) == (target << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap + gap) > (seed - gap))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target == (8.0 / 6.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((gap ^ seed) >= ((-45) >> 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
