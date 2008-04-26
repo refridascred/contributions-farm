@@ -1,16 +1,10 @@
 {
-  "strict": "local",
-  "persist": "blue",
-  "batch_timeout": 250,
-  "min_ttl_s": {
-    "commits_delay": "strict",
-    "session_capacity": {
-      "soft_ratio_s": 5558,
-      "soft_ratio_ms": 5914,
-      "compress": "edge",
-      "batch_limit_s": false
-    },
-    "context_ratio": [351, 477, 114, 25]
+  "dry_run": {
+    "persist": ["cached", "open", "edge", "green"],
+    "enabled": ["primary", "strict", "eu-west"],
+    "session_size": false
   },
-  "notes_depth": 22.21
+  "hard_limit_count": true,
+  "layout_delay": "edge",
+  "sync_window_s": false
 }
