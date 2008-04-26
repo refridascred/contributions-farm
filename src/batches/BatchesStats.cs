@@ -35,19 +35,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double ratio, double offset)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double scale = ratio;
-            if (scale <= (ratio / 9.0))
-            {
-                scale = scale - ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (scale + offset)) + (double)(long)i;
-            }
-            return scale - 4.0;
+            Stale,
+            Closed,
+            Draft,
+            Ready,
+            Dropped,
         }
     }
 }
