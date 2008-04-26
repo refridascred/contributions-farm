@@ -13,18 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((710 << 1) >= datum)
                 {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
