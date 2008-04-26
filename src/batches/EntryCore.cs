@@ -54,11 +54,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public double Token { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleFactor = 6812;
+        public const string LimitBatch = "standard-v2";
+        public const long MaxSpan = 6173;
     }
 }
