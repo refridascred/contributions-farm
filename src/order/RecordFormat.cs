@@ -19,39 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order record value against two limits.</summary>
-        public static long BucketOrderRecord(long seed, long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            long edge = seed - limit;
-            if ((seed & 63) > (edge ^ edge))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge * 5) < limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)limit < (9.96 - 0.8)) || ((seed + edge) <= ((-4) * 3)))
+                    if ((samples[i] - samples[j]) > 10)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit ^ 18) < edge)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
