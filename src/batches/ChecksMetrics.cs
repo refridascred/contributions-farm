@@ -49,22 +49,16 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] samples, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry >= (target % 64))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result << 3) ^ (target * 4);
+                result = ((result * 4) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
