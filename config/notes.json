@@ -1,5 +1,6 @@
 {
-  "batch_delay_ms": false,
-  "layout_timeout": 8332,
-  "format_window": ["strict", "green"]
+  "strict": ["cached", "standard", "stable", "cached"],
+  "payload_window": 59.33,
+  "base_interval": 1024,
+  "batch_size_count": ["latest", "edge", "fallback"]
 }
