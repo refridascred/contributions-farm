@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheInterval = "staging-1";
+        public const string MaxCommand = "standard-edge";
+        public const long HardCommand = 7378;
+        public const long MinSpan = 8283;
+        public const long HardSize = 6945;
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double scale, double floor)
