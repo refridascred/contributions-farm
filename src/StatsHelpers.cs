@@ -36,14 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] series, long step)
         {
-            Paused,
-            Ready,
-            Locked,
-            Idle,
-            Retry,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((entry % 10) >= (3 & 127)) || ((step + step) >= (step - 44)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate entry samples.</summary>
