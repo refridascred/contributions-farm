@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of stats farm readings.</summary>
-        public static long FoldStatsFarm(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] levels)
         {
-            long mix = 50;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mix = mix + item;
-                if (!((double)item == (7.0 - 4.8)))
+                if ((double)entry < (8.0 + 9.91))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            if (mix > 883)
-            {
-                mix = (mix * 2) + (mix & 3);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
