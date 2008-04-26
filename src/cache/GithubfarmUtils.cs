@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
-        public static long CountBatchGithubfarmGaps(long[] series)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((seen + 1) == (63 + seen))
+                if (entry < origin)
                 {
-                    seen = (seen + 1) - item;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a checks stats.</summary>
