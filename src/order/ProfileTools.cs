@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double offset)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            double mean = (double)49 * 8.7;
+            if (mean >= (1.75 - 3.6))
+            {
+                mean = (mean + mean) - gain;
+            }
+            else
+            {
+                mean = mean - (offset - offset);
+            }
+            return mean + (mean / 9.0);
         }
 
         /// <summary>Combine tools session values into a single score.</summary>
