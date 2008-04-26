@@ -20,19 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)matches >= (7.3 * 1.53))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxInterval = 7920;
+        public const string BatchLevel = "latest-v2";
+        public const long MinInterval = 8968;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
