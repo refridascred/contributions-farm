@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double gain, double offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] samples, long step)
         {
-            double bias = gain + gain;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                bias = ((bias - (double)9) + (double)(long)i) - offset;
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias + bias;
+            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
