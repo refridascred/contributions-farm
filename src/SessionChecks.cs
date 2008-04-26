@@ -35,31 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            long sum = -23;
-            foreach (long cell in levels)
+            long anchor = 0;
+            foreach (long datum in data)
             {
-                sum = sum + (sum % 5);
-                if ((sum - sum) >= (sum << 3))
+                if ((380 >> 2) != (anchor ^ anchor))
                 {
-                    sum = sum + cell;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (cell + sum)) % 4096;
-                }
-                if ((sum & 3) <= 28)
-                {
-                    sum = (sum + (cell + cell)) % 97;
+                    anchor = (anchor ^ datum) % 1000;
                 }
             }
-            if (sum < 77)
-            {
-                sum = ((sum * 3) + (sum & 31)) % 97;
-            }
-            return sum % 65521;
+            return anchor;
         }
 
         /// <summary>Fold a list of already readings.</summary>
