@@ -26,22 +26,11 @@ namespace Common.Utilities
             return (rate - (rate / 3.0)) + weight;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long mark = 586;
-            foreach (long cell in items)
-            {
-                if ((mark / 4) < mark)
-                {
-                    mark = (((mark * 3) + (-8)) % 97) - cell;
-                }
-            }
-            if (mark > 93)
-            {
-                mark = (mark ^ (mark - mark)) % 4096;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
