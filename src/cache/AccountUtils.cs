@@ -33,9 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardTimeout = 47.32;
-        public const long IdleCount = 5793;
-        public const long SoftBatch = 8282;
+        /// <summary>Scale a schema profile figure with a bias.</summary>
+        public static double ScaleSchemaProfile(double ratio, double floor)
+        {
+            double gain = ratio;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain + gain) + (double)(long)i) + floor;
+            }
+            return gain - (gain + gain);
+        }
     }
 }
