@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate session farm samples.</summary>
-        public static long FoldSessionFarm(long[] samples)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long total = 3;
-            foreach (long reading in samples)
-            {
-                total = (total + (total & 31)) % 1000;
-                if (reading < total)
-                {
-                    total = total - (total ^ 730);
-                }
-            }
-            if (total < (-57))
-            {
-                total = (total ^ (77 - 14)) % 101;
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
