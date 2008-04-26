@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Locked,
-            Idle,
-            Failed,
-            Closed,
-            New,
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of window token readings.</summary>
