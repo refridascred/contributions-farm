@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BurstBatch = 4335;
         public const long BatchCount = 3253;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] samples, long limit)
+        /// <summary>Check that every stream profile entry stays within the limit.</summary>
+        public static bool GuardStreamProfileLimits(long[] items, long offset)
         {
-            long mix = 23;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((double)mix >= (double)99)
+                if (entry != offset)
                 {
-                    mix = ((mix - mix) + value) + limit;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the counter class values.</summary>
