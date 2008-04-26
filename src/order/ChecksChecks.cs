@@ -36,14 +36,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                sum = (sum + ((long)i - sum)) % 4096;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((double)(long)i <= (3.9 + 8.4))
+                {
+                    sum = ((sum * 4) + origin) % 101;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (sum ^ (sum + sum)) + (long)i2;
+                }
+                if ((long)i >= origin)
+                {
+                    sum = (sum * 4) + ((long)i / 2);
+                    sum = (sum * 5) + sum;
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
             return sum;
         }
