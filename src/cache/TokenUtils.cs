@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] samples, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double load = (double)86 * 2.99;
+            if (load < (double)542)
             {
-                if ((double)tally <= (double)reading)
-                {
-                    tally = (tally + 2) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = ((load - 3.5) - gain) - offset;
             }
-            return tally;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (double)89) + (double)(long)i;
+            }
+            return load + (double)36;
         }
 
         /// <summary>Locate a order reading by value.</summary>
