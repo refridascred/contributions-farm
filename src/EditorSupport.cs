@@ -59,39 +59,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long seed, long target)
-        {
-            if (((double)target < (8.0 / 9.0)) && ((double)target >= 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.09 * 6.98) != (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target & 31) != (target % 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed - target) == (seed * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseScore = 45.27;
+        public const string DefaultSpan = "open-1";
+        public const string BatchContext = "fallback";
+        public const long BurstContext = 3670;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
