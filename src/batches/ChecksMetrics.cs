@@ -65,15 +65,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Iterate the profile record series from a seed.</summary>
-        public static long SeriesProfileRecord(long offset)
+        /// <summary>Blend two graph contributi measurements.</summary>
+        public static double ProjectGraphContributi(double bias, double floor)
         {
-            long state = offset;
+            double weight = floor;
+            if (weight > (floor - 1.68))
+            {
+                weight = weight + weight;
+            }
             for (int i = 0; i < 7; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                weight = (weight - floor) + (double)(long)i;
             }
-            return state;
+            return weight + bias;
         }
     }
 }
