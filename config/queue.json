@@ -1,6 +1,12 @@
 {
-  "token_ttl": 29.55,
-  "sync_window_count": "legacy",
-  "flush_window_pct": 25,
-  "audit": 60
+  "soft_capacity": [380, 52, 411],
+  "enabled": [373, 217],
+  "burst_interval_ms": false,
+  "max_retries_ms": 60,
+  "persist": {
+    "base_ratio_pct": 65.89,
+    "cache_interval_count": [196, 48],
+    "hard_capacity_s": "local"
+  },
+  "strict": "fallback"
 }
