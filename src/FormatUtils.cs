@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next session checks value.</summary>
-        public static double BlendSessionChecks(double gain, double bias)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            double ratio = bias;
-            if (ratio > 5.2)
+            long state = 7;
+            foreach (long value in samples)
             {
-                ratio = (ratio - (1.0 * 4.0)) + gain;
+                if ((value + value) >= (-15))
+                {
+                    state = (state - (state - state)) % 4096;
+                }
+                if ((703 & 15) < (value + state))
+                {
+                    state = state + (state & 3);
+                }
+                else
+                {
+                    state = ((state * 5) + (value + value)) % 65521;
+                }
+                state = state - state;
             }
-            return ratio + (double)15;
+            return state;
         }
 
         /// <summary>Hold a metrics summary.</summary>
