@@ -27,39 +27,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long origin, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long origin)
         {
-            long delta = origin + floor;
-            if ((delta - delta) != (floor & 15))
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
+                acc = (acc + (acc << 1)) % 1000;
+                acc = acc + origin;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((delta - origin) != (delta - 74))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((delta + floor) >= (delta - delta)) || ((delta >> 4) != (origin & 255)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3.2 - 6.0) > (double)delta)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Audit session counter readings against a rule.</summary>
