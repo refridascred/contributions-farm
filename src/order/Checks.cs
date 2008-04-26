@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double weight, double span)
         {
-            Paused,
-            Synced,
-            New,
-            Stale,
+            double bias = (double)(66 - 97);
+            if (bias <= 5.98)
+            {
+                bias = (bias - weight) - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (bias * 4.24)) + (double)(long)i;
+            }
+            return bias + (bias - weight);
         }
 
         /// <summary>Hold a entry entry.</summary>
