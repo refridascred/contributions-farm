@@ -37,13 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Queued,
-            Active,
-            Retry,
+            Locked,
             Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a support stats.</summary>
