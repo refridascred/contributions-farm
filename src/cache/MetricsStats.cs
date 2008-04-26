@@ -59,31 +59,10 @@ namespace Common.Utilities
         public const long RetryChannel = 5950;
         public const long IdleSize = 7823;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long offset, long target)
-        {
-            if (((double)target >= (8.6 - 1.47)) || ((double)target <= (6.0 * 2.79)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target - target) > (target & 1)) && ((8.0 * 20.0) != (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target ^ target) != (offset / 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinScore = 1729;
+        public const long BurstFarm = 9489;
+        public const long RetryFarm = 4605;
+        public const string HardSpan = "cached-v2";
     }
 }
