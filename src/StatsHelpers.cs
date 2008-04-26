@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
+            long mark = 97;
+            foreach (long entry in levels)
+            {
+                mark = ((mark ^ (mark << 2)) % 4096) ^ entry;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
