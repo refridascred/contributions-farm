@@ -10,32 +10,18 @@ namespace Common.Utilities
         public const string CacheCount = "alpha-v2";
         public const double IdleSpan = 17.43;
 
-        /// <summary>Classify a command checks pair into a bucket.</summary>
-        public static long BucketCommandChecks(long target, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] readings, long step)
         {
-            long gap = target ^ step;
-            if ((6 - target) > 34)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)gap <= (3.31 * 5.51))
+                if (((long)readings.Length * 4) <= (matches - step))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step < (step & 31))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 3) - value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
