@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] levels, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] == target)
+                if ((reading * 2) <= (reading / 2))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
