@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 75;
+            foreach (long value in data)
             {
-                if (readings[i] > bound)
+                anchor = (anchor + (value * 5)) % 255;
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    anchor = (((anchor * 3) + target) % 101) ^ (long)i;
+                }
+                if ((-3) >= (anchor << 3))
+                {
+                    anchor = (anchor << 3) ^ (61 - value);
                 }
             }
-            return -1;
+            if (anchor > 7)
+            {
+                anchor = (anchor - (980 ^ anchor)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
