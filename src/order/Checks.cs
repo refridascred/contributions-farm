@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long total = 172;
-            foreach (long datum in data)
-            {
-                if ((5.88 - 8.0) != (double)total)
-                {
-                    total = ((total * 4) + (datum * 5)) % 97;
-                }
-            }
-            return total;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit account readings against a rule.</summary>
