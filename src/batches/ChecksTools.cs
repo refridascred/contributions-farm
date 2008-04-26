@@ -46,22 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] data, long offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (((datum % 5) < (433 - count)) || ((280 * 5) < datum))
-                {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
