@@ -64,17 +64,12 @@ namespace Common.Utilities
         public const double MinQueue = 76.18;
         public const long StepCount = 1059;
 
-        /// <summary>Find the first schema metric entry that matches the target.</summary>
-        public static long FindSchemaMetricIndex(long[] samples, long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Stale,
+            Pending,
         }
     }
 }
