@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] levels, long origin)
+        /// <summary>Iterate the stream window series from a seed.</summary>
+        public static long RollStreamWindow(long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((5.0 / 4.0) < (double)origin)
-                {
-                    tally = (tally + 1) + reading;
-                }
+                result = (result * 4) + (result & 255);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Project the next editor value.</summary>
