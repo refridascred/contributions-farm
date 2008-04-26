@@ -1,16 +1,12 @@
 # Command notes
 
-Keep githubfarm and commits names short and lowercase.
-The format report groups every support by payload.
-The account module keeps cache values in sync with the commits cache.
-
-Keep stream and batches names short and lowercase.
-Defaults for stats live in the config folder and can be overridden per environment.
-When a support fails, the contributi handler retries a few times before giving up.
+Defaults for route live in the config folder and can be overridden per environment.
+Defaults for stream live in the config folder and can be overridden per environment.
+The schema module keeps stats values in sync with the window cache.
 
 ## Guidelines
 
-- Prefer token defaults
-- Document new session fields
-- Keep commits values small
-- Validate schema input early
+- Prefer command defaults
+- Log every contributi change
+- Validate queue input early
+- Review contributi limits each release
