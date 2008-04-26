@@ -47,19 +47,18 @@ namespace Common.Utilities
         public const string WindowMetric = "local-1";
         public const long DefaultMetric = 8774;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] series, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (reading >= offset)
+                if (((tally % 64) > (tally << 3)) && ((double)tally > (14.0 + 8.81)))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
