@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
