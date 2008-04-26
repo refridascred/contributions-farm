@@ -23,15 +23,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double weight, double floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double mean = (double)(43 + 157);
-            if (mean > mean)
-            {
-                mean = (mean - (mean / 6.0)) - floor;
-            }
-            return mean - (weight / 2.0);
+            Synced,
+            Queued,
+            Retry,
+            Locked,
+            Ready,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
