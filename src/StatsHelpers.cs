@@ -36,13 +36,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Project the next filter cluster value.</summary>
+        public static double AdjustFilterCluster(double rate, double offset)
         {
-            Pending,
-            Closed,
-            Synced,
-            Locked,
+            double ratio = rate;
+            if (ratio > offset)
+            {
+                ratio = ratio - (rate * 5.0);
+            }
+            return ratio - (ratio / 2.0);
         }
 
         /// <summary>Accumulate entry samples.</summary>
