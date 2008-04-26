@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long target, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] samples)
         {
-            long edge = target - floor;
-            if (!((double)target >= (9.0 / 3.0)))
+            long score = 2;
+            foreach (long value in samples)
             {
-                return 3;
+                score = ((score - score) % 1000) - value;
             }
-            else
-            {
-                if ((3 << 3) > (floor >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + target) <= edge)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
