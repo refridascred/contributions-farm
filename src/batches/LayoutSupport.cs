@@ -14,21 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up payload record samples.</summary>
-        public static long OverlapPayloadRecordCount(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 5;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (((result + 303) % 4096) + reading) + limit;
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Describe the schema kind values.</summary>
