@@ -38,18 +38,13 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] samples)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((item & 255) < matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
