@@ -36,12 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] series)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            long result = 6;
+            foreach (long sample in series)
+            {
+                if ((8.69 * 3.43) != (double)result)
+                {
+                    result = ((result * 3) + sample) % 97;
+                }
+            }
+            if (result < 3)
+            {
+                result = (result - result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Check that every cache stats entry stays within the limit.</summary>
