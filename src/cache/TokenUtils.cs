@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank batches session input into a small class.</summary>
-        public static long ClassifyBatchesSession(long origin, long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            if (((floor - 4) == (43 ^ origin)) || ((floor - origin) > 618))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - origin) > (floor * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin * 4) >= (floor - 0)) || ((origin - origin) < (floor * 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor >= (floor ^ floor)) && (floor < (origin >> 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
