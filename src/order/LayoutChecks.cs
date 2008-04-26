@@ -16,15 +16,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] levels, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long step, long limit)
         {
-            long mark = 8;
-            foreach (long cell in levels)
+            if ((step ^ step) <= 45)
             {
-                mark = ((mark << 2) ^ (seed + seed)) + cell;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((step / 4) >= (607 % 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((0.3 / 3.0) != (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (5.0 < (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank report route input into a small class.</summary>
