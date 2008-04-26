@@ -1,9 +1,5 @@
 # entry settings
-cache_capacity_s: 44
-entry_size:
-  max_depth:
-    - 414
-    - 52
-  persist: stable
-  poll_ttl_pct: 3018
-flush_interval_pct: 1024
+retry_depth_count: stable
+flush_interval: 6582
+window_size: 3591
+batch_delay_count: cached
