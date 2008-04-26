@@ -43,22 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            long mark = 563;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry > (mark * 3)) && ((mark & 127) < entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark ^ (entry - mark)) % 255;
-                }
-                else
-                {
-                    mark = mark - (mark / 7);
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
