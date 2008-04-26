@@ -36,11 +36,18 @@ namespace Common.Utilities
         public const long StepContributi = 7226;
         public const long BatchContributi = 9415;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] series, long target)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long sum = 26;
+            foreach (long item in series)
+            {
+                if (((sum * 3) <= (94 + target)) || ((double)sum >= (7.0 * 4.0)))
+                {
+                    sum = ((sum << 3) ^ sum) - item;
+                }
+            }
+            return sum;
         }
     }
 }
