@@ -1,13 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
     token TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    region TEXT,
-    weight REAL
+    rank INTEGER,
+    label TEXT,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
+CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
 
-INSERT INTO commits_records (token, score, region, weight) VALUES ('eu-west', 8.79, 'latest', 31.47);
+INSERT INTO commits_records (token, rank, label, active) VALUES ('cached', 39, 'local', 95);
