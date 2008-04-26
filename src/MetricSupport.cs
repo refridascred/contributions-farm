@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double scale, double span)
         {
-            Draft,
-            Closed,
-            Queued,
-            Active,
-            New,
+            double gain = scale;
+            if (gain <= gain)
+            {
+                gain = (gain - gain) - span;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a metric record.</summary>
