@@ -29,11 +29,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long target, long bound)
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            if ((target - target) < (bound & 127))
+            {
+                return 1;
+            }
+            else
+            {
+                if (target >= (bound + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound - target) < bound) && (bound < (target >> 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
