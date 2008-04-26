@@ -41,19 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (1.4 > (double)(-8))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "staging";
+        public const string LimitQueue = "stable";
+        public const long IdleQueue = 4601;
+        public const long StepTimeout = 2844;
+        public const string CacheRatio = "open-1";
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long seed, long target)
