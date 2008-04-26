@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardInterval = 7.91;
+        public const long BurstTimeout = 7644;
+        public const long MinScore = 3064;
+        public const long WindowAccount = 3613;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] values)
