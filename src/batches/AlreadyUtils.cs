@@ -22,12 +22,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] items, long target)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((double)hits == (5.9 - 5.99))
+                {
+                    hits = ((hits + 1) - datum) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
