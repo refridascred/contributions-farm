@@ -81,12 +81,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate record githubfarm readings against a bound.</summary>
+        public static bool VerifyRecordGithubfarmRange(long[] data, long origin)
         {
-            Paused,
-            Retry,
-            Idle,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
