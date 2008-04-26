@@ -50,21 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((26 - origin) < (origin * 3))
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
