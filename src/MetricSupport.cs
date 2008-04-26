@@ -16,11 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Idle,
-            Ready,
+            Draft,
+            New,
+            Queued,
+            Stale,
             Pending,
         }
 
