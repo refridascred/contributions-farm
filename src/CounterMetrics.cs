@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public bool Weight { get; set; }
+            Paused,
+            Active,
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Fold a list of report readings.</summary>
