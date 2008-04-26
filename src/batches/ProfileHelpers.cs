@@ -23,21 +23,39 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count githubfarm context pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmContextCount(long[] series)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long span = target - origin;
+            if (!((double)span != (1.0 * 5.2)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((-40) ^ 14) < (target - span))
                 {
-                    if ((series[i] - series[j]) != 3)
+                    return 7;
+                }
+                else
+                {
+                    if ((origin ^ span) <= span)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((origin & 63) == (span + target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
