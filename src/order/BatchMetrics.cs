@@ -20,11 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinBudget = 1400;
-        public const string DefaultWidth = "primary-1";
-        public const long HardSession = 5176;
-        public const double RetryInterval = 73.92;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Idle,
+            Synced,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
