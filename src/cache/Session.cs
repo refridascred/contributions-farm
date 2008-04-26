@@ -29,13 +29,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            Stale,
+            Ready,
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Digest a series of checks contributi entries.</summary>
