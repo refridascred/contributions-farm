@@ -48,13 +48,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
