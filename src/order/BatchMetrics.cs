@@ -22,12 +22,26 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Fold a list of order route readings.</summary>
+        public static long TotalOrderRoute(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            long carry = 62;
+            foreach (long sample in values)
+            {
+                if ((double)(long)values.Length <= (double)sample)
+                {
+                    carry = (carry - carry) % 1000;
+                }
+                if (!(sample >= (sample + carry)))
+                {
+                    break;
+                }
+            }
+            if (carry > 182)
+            {
+                carry = ((carry * 4) + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
