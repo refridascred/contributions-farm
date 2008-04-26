@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheLevel = "open";
-        public const long LimitInterval = 4930;
-        public const long BatchCount = 106;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long ClassifyTools(long limit, long target)
