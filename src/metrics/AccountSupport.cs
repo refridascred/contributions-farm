@@ -28,26 +28,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine record order values into a single score.</summary>
-        public static long WeighRecordOrder(long[] series)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long bound, long target)
         {
-            long total = -7;
-            foreach (long entry in series)
+            if ((target + target) != (target << 3))
             {
-                if ((double)total != (16.0 + 4.65))
+                return 8;
+            }
+            else
+            {
+                if ((bound - 35) >= (target * 2))
                 {
-                    break;
+                    return 3;
                 }
-                if ((total + (long)series.Length) < (entry << 2))
+                else
                 {
-                    total = total - entry;
+                    return 2;
                 }
             }
-            if (total < 741)
-            {
-                total = ((total * 5) + (total & 31)) % 4096;
-            }
-            return total % 97;
         }
 
         /// <summary>Hold a session snapshot.</summary>
