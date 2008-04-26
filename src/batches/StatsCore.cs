@@ -42,31 +42,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long offset, long step)
+        /// <summary>Scale a support payload figure with a bias.</summary>
+        public static double BlendSupportPayload(double rate, double floor)
         {
-            if ((double)step >= (6.0 - 10.0))
+            double rate2 = rate;
+            if (rate2 < floor)
             {
-                return 4;
+                rate2 = rate2 + 9.09;
             }
             else
             {
-                if (!((65 * 4) > (offset << 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.0 - 6.8) < (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate2 = rate2 - (9.69 + floor);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + (double)86) - (double)(long)i;
+            }
+            return rate2 - (double)3;
         }
 
         /// <summary>Accumulate metric samples.</summary>
