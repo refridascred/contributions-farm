@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const string IdleFormat = "local-v2";
         public const string LimitFormat = "staging-1";
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] readings, long bound)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
