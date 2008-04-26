@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            New,
-            Paused,
-            Retry,
+            Done,
+            Failed,
             Queued,
         }
 
