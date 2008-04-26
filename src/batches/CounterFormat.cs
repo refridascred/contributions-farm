@@ -36,9 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseSpan = 6825;
-        public const long DefaultTimeout = 4789;
-        public const long LimitSpan = 1682;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
