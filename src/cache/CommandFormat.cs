@@ -35,12 +35,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepDepth = "strict-1";
+        public const long SoftWidth = 3146;
+        public const long IdlePayload = 9740;
 
         /// <summary>Scale a token metrics figure with a bias.</summary>
         public static double ProjectTokenMetrics(double ratio, double offset)
