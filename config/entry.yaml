@@ -1,10 +1,9 @@
 # entry settings
-batch_window: strict
-default_ttl: true
-batch_capacity_pct: true
-dry_run: primary
-profile_timeout:
-  - strict
-  - legacy
-  - legacy
-  - open
+cache_capacity_s: 44
+entry_size:
+  max_depth:
+    - 414
+    - 52
+  persist: stable
+  poll_ttl_pct: 3018
+flush_interval_pct: 1024
