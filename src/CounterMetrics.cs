@@ -40,19 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double offset)
+        /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
+        public static long LocateGithubfarmMetricIndex(long[] levels, long seed)
         {
-            double ratio = (scale * 17.0) * 6.14;
-            if (ratio < scale)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + (offset * 8.5);
+                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + (double)3;
+            return -1;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
