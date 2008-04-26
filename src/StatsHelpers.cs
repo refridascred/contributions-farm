@@ -42,19 +42,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] data, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long seed)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (value != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 5) + (total % 12)) % 4096;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Accumulate entry samples.</summary>
