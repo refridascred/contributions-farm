@@ -25,12 +25,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstDepth = "cached-v2";
-        public const long SoftTimeout = 3414;
-        public const long BaseMetric = 5350;
-        public const long LimitScore = 9785;
-        public const long StepWidth = 1656;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long floor, long origin)
+        {
+            long cur = floor - origin;
+            if (cur <= (floor * 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor >= (floor * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin > 98) && (origin > floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((11.0 * 8.23) <= (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long GradeRecord(long limit, long offset)
