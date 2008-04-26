@@ -59,24 +59,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long floor, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            if (!((double)floor != (12.0 - 3.2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step + floor) < floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
