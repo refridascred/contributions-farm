@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const double BaseLevel = 60.23;
         public const long BatchDepth = 1148;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(sum >= (long)i))
                 {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum - (sum % 100)) % 1000;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
