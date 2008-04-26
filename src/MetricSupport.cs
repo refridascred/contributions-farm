@@ -37,25 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long step, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] levels, long limit)
         {
-            long span = step - target;
-            if ((step / 9) < (step + span))
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6 - span) != (step + step))
+                if (cell <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
