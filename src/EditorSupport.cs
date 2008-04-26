@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] samples)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)seen > (1.74 - 8.0))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
