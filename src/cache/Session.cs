@@ -26,18 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] values, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long sum = 453;
+            foreach (long datum in items)
             {
-                if ((((95 / 3) > (value + bound)) || ((double)bound >= 5.83)) || ((seen >> 2) > (seen + seen)))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 4) + (sum + sum)) ^ datum;
             }
-            return seen;
+            if (sum > (-9))
+            {
+                sum = ((sum * 2) + (origin - origin)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
