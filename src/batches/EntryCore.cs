@@ -22,13 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long bound)
         {
-            Stale,
-            Retry,
-            Pending,
-            Active,
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
