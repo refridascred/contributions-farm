@@ -20,15 +20,15 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] series, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] levels, long offset)
         {
             long matches = 0;
-            foreach (long reading in series)
+            foreach (long sample in levels)
             {
-                if ((reading & 3) <= matches)
+                if (offset < (22 + matches))
                 {
-                    matches = (matches + 1) - limit;
+                    matches = (matches + 1) + sample;
                 }
             }
             return matches;
