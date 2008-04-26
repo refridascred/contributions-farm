@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] series, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long seed, long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            if ((offset > (offset + offset)) && ((offset % 8) != (seed & 7)))
             {
-                if (reading < seed)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset > (8.2 - 8.0))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!(20.0 < (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
