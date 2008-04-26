@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 8)
+                    if ((levels[i] - levels[j]) < 12)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a checks options.</summary>
