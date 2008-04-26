@@ -41,11 +41,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchFactor = 6501;
-        public const double MaxGraph = 80.31;
-        public const long SoftCount = 6936;
-        public const string IdleSize = "latest";
-        public const double BurstRatio = 98.28;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] levels, long offset)
+        {
+            long acc = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample >= (7.0 / 7.0))
+                {
+                    acc = (acc << 2) ^ (acc + 55);
+                }
+                else
+                {
+                    acc = acc ^ 9;
+                }
+                if (offset <= (offset + 0))
+                {
+                    break;
+                }
+            }
+            if (acc > 7)
+            {
+                acc = (acc ^ (acc << 2)) % 4096;
+            }
+            return acc;
+        }
     }
 }
