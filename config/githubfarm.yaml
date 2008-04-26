@@ -1,30 +1,5 @@
 # githubfarm settings
-burst_interval_ms:
-  min_limit:
-    - 122
-    - 136
-    - 500
-    - 220
-  cache_limit: 100
-  burst_threshold_count:
-    - primary
-    - eu-west
-    - eu-west
-  base_depth: primary
-  base_interval: 1024
-  warm_size_count: true
-flush_interval_pct:
-  cache_retries: true
-  window_window:
-    retry_capacity:
-      - eu-west
-      - staging
-      - fallback
-      - latest
-    warm_ttl_count: 38
-    support_window: blue
-    base_interval_ms: open
-    min_capacity_s: 74.26
-  compress: local
-  cache_window_s: 60
-hard_depth_ms: local
+enabled: 54
+graph_ttl: 100
+burst_limit_s: true
+default_window_ms: 100
