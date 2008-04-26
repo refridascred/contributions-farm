@@ -21,10 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 5127;
-        public const long LimitFactor = 2851;
-        public const long BatchFactor = 634;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFactor = 4332;
+        public const long LimitFactor = 3941;
+        public const long BurstFormat = 9179;
+        public const long CacheScore = 1528;
+        public const double DefaultFormat = 14.05;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsLimits(long[] items, long bound)
