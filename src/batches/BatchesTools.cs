@@ -15,19 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every farm stats entry stays within the limit.</summary>
-        public static bool GuardFarmStatsRange(long[] series, long bound)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
