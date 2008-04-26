@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((origin - (long)i) < (long)i)
                 {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix * 5) + ((long)i + mix)) % 65521;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
