@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] readings)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((tally + (long)readings.Length) < (-74)) || !((0.3 - 6.0) >= (double)reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
