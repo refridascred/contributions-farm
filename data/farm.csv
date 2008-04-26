@@ -1,6 +1,7 @@
-id,token,owner
-1,cached,541
-2,255,278
-3,123,334
-4,95.02,38.57
-5,918,46.62
+id,label,owner,rank,token
+1,stable,local,latest,45.86
+2,strict,75.72,30.37,eu-west
+3,75.02,38.6,775,64.84
+4,52.79,legacy,legacy,660
+5,781,200,71.93,edge
+6,454,364,53.72,848
