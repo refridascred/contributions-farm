@@ -24,14 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            Draft,
-            Ready,
-            Done,
-            Paused,
-            Closed,
+            double drift = span;
+            return (drift - span) + gain;
         }
     }
 }
