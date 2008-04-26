@@ -1,7 +1,13 @@
 {
-  "idle_timeout": 67.08,
-  "audit": 2.4,
-  "cache_delay": 71.1,
-  "warm_timeout": false,
-  "idle_retries_count": "primary"
+  "cache_size": false,
+  "warm_limit_ms": 8256,
+  "report_limit": ["legacy", "strict", "fallback"],
+  "schema_ratio": {
+    "batch_capacity": 0.38,
+    "soft_retries": ["edge", "legacy", "blue"],
+    "cache_limit_s": false,
+    "checks_threshold": "eu-west",
+    "flush_window_ms": "staging",
+    "strict": "strict"
+  }
 }
