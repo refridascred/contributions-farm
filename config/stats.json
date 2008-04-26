@@ -1,8 +1,7 @@
 {
-  "commits_window": 56,
-  "hard_ttl_pct": 54.73,
-  "max_threshold": false,
-  "flush_retries_s": "stable",
-  "max_window": ["stable", "fallback"],
-  "batch_ratio": "latest"
+  "poll_depth_count": "cached",
+  "soft_depth_s": 98,
+  "batch_capacity": "local",
+  "base_limit_s": 6108,
+  "token_timeout": "legacy"
 }
