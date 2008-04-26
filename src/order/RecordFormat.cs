@@ -86,39 +86,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long step, long origin)
+        /// <summary>Find the first schema metric entry that matches the target.</summary>
+        public static long FindSchemaMetricIndex(long[] samples, long limit)
         {
-            long offset = step + origin;
-            if ((47 & 127) == (origin % 24))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.2 * 12.0) < (double)origin)
+                if (samples[i] == limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset & 1) >= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)5 < (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
