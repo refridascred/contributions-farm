@@ -49,12 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Draft,
+            Dropped,
+            Done,
         }
     }
 }
