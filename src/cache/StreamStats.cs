@@ -32,11 +32,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count route format pairs that satisfy a relation.</summary>
+        public static long PairRouteFormatCount(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine command values into a single score.</summary>
