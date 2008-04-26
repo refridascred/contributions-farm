@@ -59,18 +59,38 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] samples, long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long seed, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if (((double)target < (8.0 / 9.0)) && ((double)target >= 9.0))
             {
-                if (entry > (tally - limit))
+                return 4;
+            }
+            else
+            {
+                if ((7.09 * 6.98) != (double)target)
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((target & 31) != (target % 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed - target) == (seed * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a buffer info.</summary>
