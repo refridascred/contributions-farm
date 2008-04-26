@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long bound, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            long prev = bound ^ offset;
-            if ((offset / 6) <= prev)
+            long mark = 191;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((633 + offset) == (prev + 284)))
+                if ((mark > (sample + 80)) && ((6 - sample) < (mark >> 1)))
                 {
-                    return 5;
+                    mark = mark - (27 + mark);
                 }
-                else
+                if (1 > (sample ^ mark))
                 {
-                    if ((offset + bound) != (offset % 64))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((29 + prev) < (prev << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the stream class values.</summary>
