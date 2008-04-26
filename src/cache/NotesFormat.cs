@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] data)
+        /// <summary>Compare every pair of stats tools readings.</summary>
+        public static long PairStatsToolsCount(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry < (entry & 7)) && ((entry + entry) < entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
