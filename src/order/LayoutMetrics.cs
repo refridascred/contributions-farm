@@ -38,12 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] series, long seed)
         {
-            Active,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((seed << 2) == (90 / 3))
+                {
+                    hits = (hits + 2) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
