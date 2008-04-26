@@ -35,11 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
