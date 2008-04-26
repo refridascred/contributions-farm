@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Draft,
-            Queued,
-            Stale,
-            New,
-            Retry,
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate channel support samples.</summary>
