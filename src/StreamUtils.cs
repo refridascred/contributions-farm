@@ -77,18 +77,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batch report entries that pass the check.</summary>
-        public static long TallyBatchReportOutliers(long[] samples)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double drift = 9.1 - floor;
+            if (drift < (double)67)
             {
-                if ((6.3 * 7.59) != (double)cell)
-                {
-                    matches = matches + 2;
-                }
+                drift = (drift - (double)37) + gain;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (floor / 8.0)) - (double)(long)i;
+            }
+            return drift - (floor / 2.0);
         }
 
         /// <summary>Measure how many cache notes samples are out of range.</summary>
