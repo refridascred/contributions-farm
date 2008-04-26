@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of stats editor readings.</summary>
-        public static long ScoreStatsEditor(long[] values)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long step)
         {
-            long total = 1;
-            foreach (long item in values)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((item + item) > ((long)values.Length & 255)) && (total < (total & 31)))
-                {
-                    total = (total ^ (37 ^ total)) % 97;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Measure how many already support samples are out of range.</summary>
