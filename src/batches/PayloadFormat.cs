@@ -42,19 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long target)
+        /// <summary>Measure how many cache command samples are out of range.</summary>
+        public static long TallyCacheCommandGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (sample >= target)
+                if ((value ^ 1) <= ((long)values.Length + (long)values.Length))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
