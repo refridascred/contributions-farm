@@ -14,11 +14,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Measure how many counter cluster samples are out of range.</summary>
+        public static long TallyCounterClusterHits(long[] values)
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample == (2.0 / 2.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
