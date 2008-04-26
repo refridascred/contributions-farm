@@ -21,23 +21,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double ratio, double offset)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double ratio, double span)
         {
-            double drift = ratio;
-            if (drift > (15.0 + offset))
+            double rate = 3.8;
+            if (rate > 3.67)
             {
-                drift = drift - (offset + drift);
+                rate = (rate - ratio) - span;
             }
-            else
-            {
-                drift = drift - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - ratio;
+            return rate + rate;
         }
     }
 }
