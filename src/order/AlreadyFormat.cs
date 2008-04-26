@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] items, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] series)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = 5;
+            foreach (long reading in series)
             {
-                if (((count + 878) >= (bound << 3)) || ((8 % 8) > (count + value)))
+                if ((3.0 + 3.44) > (double)reading)
                 {
-                    count = count + 2;
+                    anchor = anchor - (reading * 2);
                 }
             }
-            return count;
+            if (anchor < (-218))
+            {
+                anchor = (anchor + (5 & 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
