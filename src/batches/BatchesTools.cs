@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a entry support value against two limits.</summary>
-        public static long GradeEntrySupport(long target, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] data)
         {
-            long next = target - step;
-            if (next > 3)
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + next) != (next >> 2))
+                if (5.8 > (double)count)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((8 / 7) < next) && ((next & 255) >= step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = (count + 2) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every farm stats entry stays within the limit.</summary>
