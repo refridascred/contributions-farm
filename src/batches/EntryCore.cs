@@ -42,11 +42,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the format commits entries that pass the check.</summary>
+        public static long MeasureFormatCommitsHits(long[] readings)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen - reading) >= reading)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of report entries.</summary>
