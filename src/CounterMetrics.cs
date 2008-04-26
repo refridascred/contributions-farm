@@ -23,18 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] series, long step)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((13.0 - 8.27) >= (double)count)
-                {
-                    count = ((count + 2) - datum) - step;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the entry kind values.</summary>
