@@ -58,14 +58,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            Closed,
-            Retry,
-            Dropped,
-            Queued,
-            Paused,
+            long result = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                result = result ^ (result * 5);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
