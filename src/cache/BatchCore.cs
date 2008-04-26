@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] levels, long origin)
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen - 0) > seen)
+                {
+                    seen = ((seen + 1) ^ datum) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
