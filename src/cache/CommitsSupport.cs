@@ -16,18 +16,19 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] series, long floor)
         {
-            long mix = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((7 + 205) >= (mix + mix))
+                if (reading >= floor)
                 {
-                    mix = ((mix << 3) ^ (entry % 60)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return flag;
         }
 
         /// <summary>Hold a route stats.</summary>
