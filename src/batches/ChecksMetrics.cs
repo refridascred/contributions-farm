@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const long BatchWidth = 5485;
         public const long StepWidth = 3719;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstCount = 6554;
-        public const long MinContributi = 4423;
-        public const long MaxContributi = 3288;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Draft,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
