@@ -1,13 +1,7 @@
 {
-  "compress": 46.64,
-  "idle_window_s": ["edge", "edge", "standard", "local"],
-  "githubfarm_delay": {
-    "hard_capacity_ms": true,
-    "persist": 9761,
-    "flush_depth": 500,
-    "report_window": 500,
-    "dry_run": "primary"
-  },
-  "flush_size_count": 30,
-  "base_capacity": 83.39
+  "warm_ratio_count": true,
+  "warm_limit_s": 5267,
+  "retry_capacity": false,
+  "hard_interval_s": false,
+  "report_size": 49.94
 }
