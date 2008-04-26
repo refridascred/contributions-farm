@@ -25,24 +25,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long floor, long seed)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((seed * 2) < floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor << 3) == (seed ^ 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
