@@ -19,13 +19,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
+            Dropped,
+            Draft,
+            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
