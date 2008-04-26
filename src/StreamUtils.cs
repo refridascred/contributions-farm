@@ -62,20 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowCount = "cached-edge";
+        public const double DefaultInterval = 52.69;
+        public const long HardBudget = 3950;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ProjectStats(double gain, double floor)
