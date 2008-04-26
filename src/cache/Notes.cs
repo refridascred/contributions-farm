@@ -64,12 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
+            Retry,
+            Idle,
+            Active,
             Locked,
-            Synced,
-            Dropped,
         }
     }
 }
