@@ -31,12 +31,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] items, long bound)
         {
-            Draft,
-            Done,
-            Paused,
+            long result = 114;
+            foreach (long cell in items)
+            {
+                if ((bound - result) <= (result % 5))
+                {
+                    result = (result + (80 * 3)) - cell;
+                }
+                else
+                {
+                    result = (result ^ 448) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the batch state values.</summary>
