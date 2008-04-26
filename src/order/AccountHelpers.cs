@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the tools checks entries that pass the check.</summary>
-        public static long TallyToolsChecksHits(long[] series)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 4) <= ((long)series.Length - (long)series.Length))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
