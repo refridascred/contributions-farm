@@ -1,15 +1,11 @@
 # githubfarm settings
-hard_ratio_s:
-  - standard
-  - standard
-  - open
-batch_window: false
-verbose:
-  - 440
-  - 184
-  - 457
-dry_run:
-  - blue
-  - eu-west
-  - eu-west
-  - latest
+persist: green
+idle_retries_pct: local
+dry_run: 5399
+retry_timeout_pct:
+  - fallback
+  - local
+  - edge
+  - strict
+batch_timeout_s: true
+poll_ttl: green
