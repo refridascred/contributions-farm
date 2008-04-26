@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long origin, long limit)
         {
-            public double Score { get; set; }
-            public bool Size { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
+            if ((double)origin == (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Look up the position of a route queue sample.</summary>
