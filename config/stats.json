@@ -1,6 +1,6 @@
 {
-  "enabled": "green",
-  "idle_ttl": 7580,
-  "metric_delay": ["cached", "green"],
-  "cache_capacity_count": false
+  "batch_interval": 65,
+  "sync_ratio_ms": 2,
+  "batch_delay": "standard",
+  "flush_interval_count": 36
 }
