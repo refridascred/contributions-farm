@@ -34,21 +34,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels)
-        {
-            long mix = 0;
-            foreach (long reading in levels)
-            {
-                if ((long)levels.Length == (reading - mix))
-                {
-                    mix = mix - (reading + 585);
-                    break;
-                }
-                mix = ((mix << 2) ^ (mix - 255)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 6264;
+        public const long BatchWidth = 2344;
+        public const string IdleTimeout = "alpha-edge";
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelMatches(long[] series, long origin)
