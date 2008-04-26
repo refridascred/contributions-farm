@@ -51,19 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] readings, long floor)
+        /// <summary>Audit checks command readings against a rule.</summary>
+        public static long TallyChecksCommandGaps(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (item != floor)
+                if (((double)entry != (8.0 * 7.43)) && !((step ^ 700) > matches))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Digest a series of format window entries.</summary>
