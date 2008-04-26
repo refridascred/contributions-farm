@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=271
+CHANNEL_LIMIT=357
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in cached open strict; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
