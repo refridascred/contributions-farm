@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] levels, long bound)
+        /// <summary>Accumulate stats report samples.</summary>
+        public static long CombineStatsReport(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long score = 704;
+            foreach (long reading in values)
             {
-                if (entry >= bound)
+                if ((score + 4) <= reading)
                 {
-                    valid = false;
-                    break;
+                    score = ((score * 2) + (reading - score)) % 97;
                 }
             }
-            return valid;
+            return score % 65521;
         }
 
         /// <summary>Classify a counter farm pair into a bucket.</summary>
