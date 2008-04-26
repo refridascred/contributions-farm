@@ -1,14 +1,7 @@
 {
-  "buffer_delay": false,
-  "metric_delay": {
-    "hard_capacity_s": 5576,
-    "retry_depth_count": 5,
-    "idle_limit_pct": 601,
-    "batch_limit_s": true,
-    "commits_ttl": 100,
-    "batch_ratio_pct": 30
-  },
-  "entry_capacity": 7433,
-  "base_interval_s": "legacy",
-  "strict": ["strict", "edge"]
+  "burst_timeout_pct": ["stable", "standard"],
+  "warm_depth_s": 68,
+  "sync_limit": "primary",
+  "min_ratio_s": 28.95,
+  "batch_window_pct": "eu-west"
 }
