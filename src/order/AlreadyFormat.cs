@@ -40,15 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double bias, double bias2)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] levels, long target)
         {
-            double mean = (double)63 / 8.0;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                mean = ((mean + (6.8 + bias2)) + (double)(long)i) - bias;
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - (mean * 6.6);
+            return stale;
         }
 
         /// <summary>Describe the counter level values.</summary>
