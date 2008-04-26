@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] levels)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
+            long mark = 0;
+            foreach (long sample in levels)
+            {
+                mark = ((mark << 3) ^ (2 + sample)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
