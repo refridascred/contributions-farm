@@ -15,23 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] data)
         {
-            long sum = 44;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                sum = (sum + (sample >> 4)) % 255;
-                if ((sum <= (1 % 7)) || ((sample % 97) == (sum - sum)))
+                if ((7.22 + 7.78) <= (double)value)
                 {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (sum < 606)
-            {
-                sum = (sum * 2) + (sum / 8);
-            }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
