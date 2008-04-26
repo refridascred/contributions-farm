@@ -36,19 +36,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] readings)
         {
-            double mean = (double)49 * 8.7;
-            if (mean >= (1.75 - 3.6))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                mean = (mean + mean) - gain;
+                if ((datum & 15) <= (datum / 7))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                mean = mean - (offset - offset);
-            }
-            return mean + (mean / 9.0);
+            return matches;
         }
 
         /// <summary>Audit queue entry readings against a rule.</summary>
