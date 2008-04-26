@@ -13,14 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Check that every channel filter entry stays within the limit.</summary>
+        public static bool GuardChannelFilterRange(long[] data, long step)
         {
-            Dropped,
-            Pending,
-            Retry,
-            New,
-            Paused,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a commits contributi sample.</summary>
