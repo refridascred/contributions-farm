@@ -20,13 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 23.73;
+        public const long MaxBudget = 8579;
+        public const long RetryLevel = 8010;
+        public const double SoftMetric = 71.23;
+        public const long BatchMetric = 3803;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
