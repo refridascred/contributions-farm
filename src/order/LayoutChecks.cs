@@ -64,17 +64,24 @@ namespace Common.Utilities
         public const double RetryFilter = 68.98;
         public const long StepFilter = 9498;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] readings, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long origin, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin - 19) > (6 - step))
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((-5) >= step)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
