@@ -19,17 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a queue checks reading by value.</summary>
-        public static long LookupQueueChecksIndex(long[] items, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = (double)(59 & 15);
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                rate2 = ((rate2 + rate) + (double)(long)i) + bias;
             }
-            return -1;
+            return rate2 - (rate2 / 2.0);
         }
 
         /// <summary>Hold a account entry.</summary>
