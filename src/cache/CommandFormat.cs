@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long CacheInterval = 2190;
         public const long HardRecord = 4068;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] items)
-        {
-            long total = 67;
-            foreach (long reading in items)
-            {
-                if ((reading + reading) < reading)
-                {
-                    total = (total ^ (reading * 4)) % 97;
-                }
-                if ((reading <= (total - total)) || ((total * 3) >= (reading * 2)))
-                {
-                    total = ((total << 3) ^ total) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 26.64;
+        public const string HardCount = "local-1";
+        public const long DefaultDepth = 4027;
+        public const long SoftSupport = 2323;
+        public const long MaxTimeout = 8029;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] values)
