@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double weight, double bias)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] items, long floor)
         {
-            double mean = (double)(542 - 87);
-            if (mean >= mean)
+            long score = 3;
+            foreach (long cell in items)
             {
-                mean = ((mean + mean) - weight) - bias;
+                if (5 >= (floor + floor))
+                {
+                    score = (score + (102 ^ floor)) + cell;
+                }
+                else
+                {
+                    score = (score ^ floor) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (score > 11)
             {
-                mean = (mean + mean) + (double)(long)i;
+                score = (score ^ (935 * 3)) % 97;
             }
-            return mean - (double)32;
+            return score % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
