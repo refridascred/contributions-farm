@@ -67,18 +67,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] items, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (((datum >> 2) > (tally + datum)) || (((datum & 31) <= datum) && ((double)datum >= 4.9)))
-                {
-                    tally = (tally + 3) + limit;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
