@@ -12,19 +12,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] readings, long floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= floor)
+                if (levels[i] <= target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
