@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double span)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] series, long step)
         {
-            double load = gain;
-            if (load < (double)8)
+            long count = 0;
+            foreach (long datum in series)
             {
-                load = (load - (load - gain)) - span;
+                if ((13.0 - 8.27) >= (double)count)
+                {
+                    count = ((count + 2) - datum) - step;
+                }
             }
-            else
-            {
-                load = load + (load + gain);
-            }
-            return load - (load + gain);
+            return count;
         }
 
         /// <summary>Describe the entry kind values.</summary>
