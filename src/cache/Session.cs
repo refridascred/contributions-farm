@@ -40,20 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route session series from a seed.</summary>
-        public static long DeriveRouteSession(long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((98 * 3) >= (anchor + 87))
-                {
-                    anchor = anchor ^ (anchor * 4);
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
