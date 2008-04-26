@@ -21,22 +21,37 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long offset, long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long origin, long origin2)
         {
-            if ((double)offset < (3.77 * 0.38))
+            long lane = origin + origin2;
+            if ((origin2 > origin) || ((lane % 2) < (origin2 ^ 84)))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((20.0 + 1.4) == (double)offset)
+                if ((double)origin2 > 8.97)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    if ((origin + origin2) == (lane % 64))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((((-736) / 3) < (origin2 + 740)) && (lane < (lane << 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
