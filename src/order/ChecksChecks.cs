@@ -36,10 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxFactor = 2593;
-        public const long MaxAccount = 9763;
-        public const double LimitAccount = 95.05;
-        public const long DefaultAccount = 9814;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Dropped,
+            Stale,
+            Closed,
+        }
     }
 }
