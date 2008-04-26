@@ -57,10 +57,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 6957;
-        public const long SoftBatch = 2762;
-        public const long WindowDepth = 1779;
-        public const string StepWidth = "alpha-v2";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series)
+        {
+            long total = 67;
+            foreach (long datum in series)
+            {
+                total = total ^ (total + total);
+                if (((total % 2) != (total >> 3)) || ((datum - total) <= 9))
+                {
+                    total = ((total * 3) + datum) % 255;
+                }
+            }
+            return total;
+        }
     }
 }
