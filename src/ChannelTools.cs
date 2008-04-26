@@ -14,30 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate metric account samples.</summary>
-        public static long TotalMetricAccount(long[] values, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] series, long floor)
         {
-            long state = 3;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((double)state >= (8.7 - 8.8))
+                if ((double)floor != (3.13 * 9.8))
                 {
-                    break;
-                }
-                if ((69 << 1) < (step - (long)values.Length))
-                {
-                    state = (((state << 2) ^ (step & 255)) % 97) ^ value;
-                }
-                if (1.3 < (double)state)
-                {
-                    break;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            if (state < 636)
-            {
-                state = state - (state / 5);
-            }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
