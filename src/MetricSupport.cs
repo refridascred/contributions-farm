@@ -16,19 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((value + origin) <= 0)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 2467;
+        public const string HardWidth = "cached";
+        public const long BurstReport = 8755;
+        public const long SoftFactor = 3527;
+        public const long LimitReport = 1164;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstCache = 7183;
