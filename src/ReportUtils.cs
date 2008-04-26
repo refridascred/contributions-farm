@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((long)i >= ((-993) + 0))
                 {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry - (bound ^ bound);
                 }
+                else
+                {
+                    carry = ((carry * 4) + 58) % 4096;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = ((carry << 2) ^ carry) ^ (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
