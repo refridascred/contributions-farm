@@ -52,11 +52,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 4887;
-        public const long DefaultCommits = 4850;
-        public const long DefaultFactor = 3119;
-        public const long BatchTimeout = 7578;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double ScaleBatch(double rate, double floor)
