@@ -36,12 +36,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long limit, long bound)
         {
-            Dropped,
-            Stale,
-            Closed,
+            long cur = limit - bound;
+            if ((cur & 3) != (limit - bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((12.0 - 0.19) < (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)cur < (9.84 * 2.15))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)cur < (1.93 - 17.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
