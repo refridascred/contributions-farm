@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string BurstChannel = "fallback-edge";
         public const string IdleChannel = "cached-1";
 
-        /// <summary>Validate farm editor readings against a bound.</summary>
-        public static bool VerifyFarmEditorRange(long[] readings, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long state = 82;
+            foreach (long sample in samples)
             {
-                if (datum != seed)
+                if ((sample & 127) > (34 * 4))
                 {
-                    found = false;
-                    break;
+                    state = (state + state) % 65521;
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
