@@ -68,19 +68,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double bias, double offset)
-        {
-            double mean = (double)((-924) - 4);
-            if (mean >= 19.0)
-            {
-                mean = (mean - (double)6) + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (bias / 4.0)) + (double)(long)i;
-            }
-            return mean + (double)2;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 74.12;
+        public const string BurstFarm = "standard-edge";
+        public const string RetryLevel = "local-edge";
     }
 }
