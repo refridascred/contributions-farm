@@ -1,9 +1,7 @@
-id,level,active,region
-1,98.3,local,33.72
-2,212,81.71,55.35
-3,374,stable,eu-west
-4,local,284,38.88
-5,764,legacy,57.69
-6,46.93,27.57,98.82
-7,456,45.17,66.81
-8,edge,staging,edge
+id,level,region,rank
+1,184,49.62,725
+2,latest,983,770
+3,10.45,standard,824
+4,125,local,149
+5,24.2,41.05,62.88
+6,682,open,fallback
