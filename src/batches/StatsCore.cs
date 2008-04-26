@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] levels)
         {
-            Stale,
-            Idle,
-            Done,
-            Active,
-            Queued,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count - count) >= 0)
+                {
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
