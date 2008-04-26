@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] data, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] values, long target)
         {
-            long mark = 54;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                mark = ((((mark << 2) ^ (mark << 1)) % 101) - sample) - limit;
+                if (((20.0 + 3.61) < (double)(long)values.Length) || ((double)target > (7.4 + 1.0)))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mark > 9)
-            {
-                mark = (mark + (mark - mark)) % 65521;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Project the next batch context value.</summary>
