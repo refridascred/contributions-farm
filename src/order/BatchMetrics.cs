@@ -55,14 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            Done,
-            Stale,
-            Active,
-            Pending,
-            Closed,
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
