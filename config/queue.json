@@ -1,7 +1,15 @@
 {
-  "checks_depth": ["primary", "standard", "eu-west", "primary"],
-  "editor_ratio": 71,
-  "account_ttl": "strict",
-  "retry_threshold_s": 43.06,
-  "hard_delay_pct": 54
+  "channel_ttl": "eu-west",
+  "already_delay": {
+    "audit": 48.36,
+    "max_limit": {
+      "soft_capacity_s": true,
+      "sync_limit_count": 93,
+      "format_retries": "cached"
+    },
+    "farm_retries": false,
+    "counter_capacity": ["green", "standard", "local", "staging"]
+  },
+  "persist": 1024,
+  "sync_depth_pct": false
 }
