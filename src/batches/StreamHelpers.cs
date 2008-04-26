@@ -34,19 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] series)
-        {
-            long score = 396;
-            foreach (long cell in series)
-            {
-                if ((cell % 8) != (cell << 2))
-                {
-                    score = (score << 2) ^ (cell + score);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "cached-v2";
+        public const long BaseAccount = 1563;
+        public const long RetryAccount = 3342;
+        public const long LimitInterval = 2876;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
