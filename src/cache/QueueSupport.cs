@@ -28,22 +28,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
-        public static long AuditFilterGithubfarmGaps(long[] readings)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits >> 1) > (67 + hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
