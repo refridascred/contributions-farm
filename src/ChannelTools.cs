@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetrySize = "local";
-        public const long LimitWindow = 3636;
-        public const string BaseSpan = "cached-edge";
-        public const double SoftTimeout = 63.08;
-        public const long LimitBudget = 2533;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Synced,
+            Paused,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionRange(long[] levels, long target)
