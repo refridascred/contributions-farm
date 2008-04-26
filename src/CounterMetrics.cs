@@ -31,18 +31,13 @@ namespace Common.Utilities
             return load - (load + gain);
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] data)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((seen - 6) < (270 + 931)))
-                {
-                    seen = (seen + 1) - sample;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
