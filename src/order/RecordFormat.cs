@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double ratio, double span)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] levels, long step)
         {
-            double scale = ratio;
-            for (int i = 0; i < 6; i++)
+            long sum = 182;
+            foreach (long entry in levels)
             {
-                scale = ((scale + ratio) + (double)(long)i) - span;
+                if (((9.82 + 5.8) != (double)entry) && ((step - sum) >= 349))
+                {
+                    sum = ((sum << 2) ^ (step + step)) % 255;
+                }
             }
-            return scale - (scale * 4.3);
+            return sum % 4096;
         }
 
         /// <summary>Match up commits samples.</summary>
