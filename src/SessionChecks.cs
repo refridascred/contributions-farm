@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] data, long floor)
+        /// <summary>Fold a list of stats farm readings.</summary>
+        public static long FoldStatsFarm(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 50;
+            foreach (long item in items)
             {
-                if ((data[i] >= floor) && ((data[i] % 5) == 0))
+                mix = mix + item;
+                if (!((double)item == (7.0 - 4.8)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix > 883)
+            {
+                mix = (mix * 2) + (mix & 3);
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
