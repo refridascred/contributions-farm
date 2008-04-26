@@ -1,13 +1,15 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-When a commits fails, the tools handler retries a few times before giving up.
+Use record settings to tune how often graph data is refreshed.
+The token report groups every context by metrics.
+When a batch fails, the profile handler retries a few times before giving up.
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-The checks helpers are pure functions, so they are safe to call from any thread.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+The context module keeps batch values in sync with the tools cache.
+Keep entry and order names short and lowercase.
 
 ## Guidelines
 
-- Validate layout input early
-- Log every support change
-- Prefer channel defaults
+- Log every metric change
+- Document new report fields
+- Validate command input early
