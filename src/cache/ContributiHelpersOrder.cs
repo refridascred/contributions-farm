@@ -13,16 +13,28 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate support token samples.</summary>
-        public static long DigestSupportToken(long[] samples)
+        /// <summary>Fold a list of command layout readings.</summary>
+        public static long TotalCommandLayout(long[] values)
         {
-            long result = 5;
-            foreach (long reading in samples)
+            long result = 498;
+            foreach (long entry in values)
             {
-                result = (result - (reading >> 4)) % 97;
-                if (reading < (86 - 762))
+                double ratio = (double)result + (9.7 - 5.7);
+                if (((ratio * 1.41) <= (13.0 - 0.9)) || ((entry & 7) >= 519))
                 {
-                    result = (result << 2) ^ (reading / 6);
+                    result = result - (result + result);
+                }
+                else
+                {
+                    result = (result << 2) ^ (result + entry);
+                }
+                if ((result & 1) == (result - entry))
+                {
+                    result = (result * 2) + result;
+                }
+                else
+                {
+                    result = (result ^ ((-607) / 8)) % 101;
                 }
             }
             return result;
