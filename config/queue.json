@@ -1,13 +1,17 @@
 {
-  "commits_window": {
-    "poll_ttl": "strict",
-    "tools_retries": 84,
-    "min_capacity": 47.58,
-    "max_limit": 35.46
+  "compress": "local",
+  "idle_size_s": "stable",
+  "filter_capacity": {
+    "idle_capacity_s": "open",
+    "max_ratio_ms": "green",
+    "buffer_retries": {
+      "compress": "local",
+      "order_interval": true,
+      "sync_threshold": ["staging", "eu-west", "strict", "green"]
+    },
+    "default_window": true,
+    "notes_threshold": true
   },
-  "hard_size": 13.04,
-  "session_ttl": 93,
-  "strict": "cached",
-  "batch_interval": 341,
-  "warm_capacity_s": 37.03
+  "flush_ttl_s": 2490,
+  "warm_ttl": "staging"
 }
