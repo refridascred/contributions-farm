@@ -22,13 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long sum = 2;
+            foreach (long value in series)
+            {
+                if (((value - 245) >= (value << 2)) || ((sum % 12) != (long)series.Length))
+                {
+                    sum = (sum + (sum << 2)) % 97;
+                }
+                if (sum >= (sum + 487))
+                {
+                    sum = sum ^ (sum + value);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum ^ sum)) % 4096;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
