@@ -67,15 +67,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double weight, double bias)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples, long target)
         {
-            double rate = (double)665 / 6.0;
-            for (int i = 0; i < 3; i++)
+            long anchor = -86;
+            foreach (long sample in samples)
             {
-                rate = (((rate + 7.65) + (double)(long)i) + weight) + bias;
+                anchor = (anchor * 5) + (target & 31);
+                anchor = (anchor - (sample % 2)) % 101;
             }
-            return rate - (double)157;
+            return anchor;
         }
     }
 }
