@@ -1,6 +1,6 @@
 {
-  "batch_interval": 65,
-  "sync_ratio_ms": 2,
-  "batch_delay": "standard",
-  "flush_interval_count": 36
+  "base_window_s": 5142,
+  "metric_timeout": 74.16,
+  "enabled": "staging",
+  "batch_depth": 60
 }
