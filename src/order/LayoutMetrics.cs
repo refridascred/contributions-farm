@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
             Active,
-            Draft,
-            Dropped,
-            Pending,
-            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Project the next batch context value.</summary>
