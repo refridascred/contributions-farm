@@ -1,5 +1,12 @@
 {
-  "strict": "legacy",
-  "audit": 8327,
-  "verbose": ["fallback", "fallback", "local"]
+  "max_delay_ms": "latest",
+  "soft_ttl_count": ["latest", "legacy"],
+  "window_ttl": 51,
+  "poll_interval": {
+    "compress": "standard",
+    "githubfarm_threshold": ["local", "legacy"],
+    "token_limit": 401,
+    "burst_threshold_ms": ["edge", "green", "standard"]
+  },
+  "strict": false
 }
