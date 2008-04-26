@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((2 + 586) != (reading & 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
