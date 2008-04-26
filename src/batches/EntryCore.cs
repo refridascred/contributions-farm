@@ -19,18 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] levels, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] samples, long origin)
         {
-            long sum = 6;
-            foreach (long datum in levels)
+            long acc = 98;
+            foreach (long reading in samples)
             {
-                if ((double)datum < 1.02)
+                if ((acc % 60) > (reading * 2))
                 {
-                    sum = ((sum * 3) + 36) - target;
+                    acc = (acc + (58 ^ reading)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 101;
                 }
             }
-            return sum;
+            if (acc > 654)
+            {
+                acc = acc - (origin << 1);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
