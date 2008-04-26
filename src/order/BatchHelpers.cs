@@ -33,9 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 5350;
-        public const double LimitFactor = 33.93;
-        public const long HardWidth = 887;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 69.61;
+        public const long RetryGithubfarm = 4999;
+        public const long WindowGithubfarm = 3291;
+        public const long BatchCount = 2664;
     }
 }
