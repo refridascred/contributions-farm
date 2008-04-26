@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=157
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-standard}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached edge fallback; do
+    log "checking ${item}"
+done
