@@ -1,5 +1,7 @@
 {
-  "audit": ["stable", "cached"],
-  "window_capacity": "cached",
-  "dry_run": 48.53
+  "poll_ttl_ms": 250,
+  "flush_ratio": 9901,
+  "retry_timeout_s": 91,
+  "cache_timeout_s": "primary",
+  "max_capacity": 1024
 }
