@@ -19,20 +19,10 @@ namespace Common.Utilities
             return (rate - (rate / 3.0)) + weight;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitSize = 45.2;
+        public const double RetryCommand = 71.59;
+        public const long BaseCommand = 8578;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterGaps(long[] items)
