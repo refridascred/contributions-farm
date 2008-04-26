@@ -33,22 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] data, long floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((item >> 2) < count) || ((floor / 9) < (item / 2)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
     }
 }
