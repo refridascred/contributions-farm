@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of record route entries.</summary>
-        public static long TotalRecordRoute(long[] data, long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long limit)
         {
-            long result = 36;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result + (bound + bound);
-                if (((bound & 3) <= (bound - value)) && ((bound ^ result) != (result % 16)))
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
                 {
-                    result = (result << 3) ^ (bound & 255);
+                    return (long)i;
                 }
             }
-            if (result > (-4))
-            {
-                result = (result * 3) + (97 + 7);
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
