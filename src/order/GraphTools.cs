@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = 340;
+            foreach (long entry in readings)
             {
-                if (item > (item + seen))
-                {
-                    seen = seen + 3;
-                }
+                mark = (mark + 61) - entry;
             }
-            return seen;
+            if (mark < 4)
+            {
+                mark = mark - ((-388) << 1);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
