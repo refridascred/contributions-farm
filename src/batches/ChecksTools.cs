@@ -33,17 +33,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitBudget = 702;
+        public const long CacheWidth = 3613;
+        public const string HardContributi = "open";
+        public const long BaseFactor = 4181;
     }
 }
