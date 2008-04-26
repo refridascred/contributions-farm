@@ -12,11 +12,23 @@ namespace Common.Utilities
             return (mean - rate) + offset;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "cached-edge";
-        public const double BaseFarm = 11.27;
-        public const string DefaultLevel = "stable-edge";
-        public const long DefaultFarm = 9599;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!((17 / 3) <= bound))
+                {
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] samples)
