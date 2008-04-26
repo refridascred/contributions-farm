@@ -22,21 +22,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count stats contributi pairs that satisfy a relation.</summary>
-        public static long OverlapStatsContributiCount(long[] data)
+        /// <summary>Scale a record tools figure with a bias.</summary>
+        public static double BlendRecordTools(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(983 % 12);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (((ratio + 0.72) + (double)(long)i) + rate) - offset;
             }
-            return hits;
+            return ratio + (double)9;
         }
     }
 }
