@@ -31,19 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double bias)
+        /// <summary>Adjust a editor profile reading.</summary>
+        public static double AdjustEditorProfile(double rate, double bias)
         {
-            double mean = bias;
-            if (mean <= (double)23)
+            double rate2 = (rate + bias) - rate;
+            if (rate2 >= (double)984)
             {
-                mean = mean + (ratio * 0.06);
+                rate2 = rate2 + rate2;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean - mean) + (double)(long)i;
+                rate2 = (rate2 - (5.95 - bias)) + (double)(long)i;
             }
-            return mean + mean;
+            return rate2 - rate;
         }
 
         /// <summary>Match up command samples.</summary>
