@@ -60,15 +60,12 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Project the next support record value.</summary>
-        public static double SmoothSupportRecord(double ratio, double offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double drift = (double)(45 - 46);
-            if (drift > (double)(-292))
-            {
-                drift = ((drift + (0.76 / 8.0)) + ratio) - offset;
-            }
-            return drift - drift;
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Blend two graph contributi measurements.</summary>
