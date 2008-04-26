@@ -31,22 +31,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long result = -184;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result % 2) > (75 / 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result - (9 ^ result)) % 4096;
-                }
-                if (result < entry)
-                {
-                    result = ((result * 5) + (entry / 2)) % 65521;
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
