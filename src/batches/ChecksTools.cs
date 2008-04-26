@@ -13,17 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] levels, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (levels[i] <= step)
+                if (item < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
