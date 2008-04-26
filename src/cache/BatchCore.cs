@@ -19,21 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Measure how many already support samples are out of range.</summary>
+        public static long CountAlreadySupportGaps(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading > (offset / 7))
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of support entries.</summary>
