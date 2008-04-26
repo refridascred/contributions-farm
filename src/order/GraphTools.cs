@@ -52,32 +52,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long limit, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values, long seed)
         {
-            long gap = limit - bound;
-            if ((bound + gap) < (bound - bound))
+            long result = 42;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5 & 3) != (gap & 63))
+                if ((115 + reading) != (result % 7))
                 {
-                    return 4;
+                    result = (result + ((long)values.Length + 492)) % 1000;
                 }
                 else
                 {
-                    if ((double)gap == (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result << 2) ^ (seed & 63);
+                }
+                if ((6.52 / 9.0) != (double)result)
+                {
+                    break;
                 }
             }
+            return result;
         }
     }
 }
