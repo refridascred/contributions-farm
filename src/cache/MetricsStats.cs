@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long limit, long limit2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (3.0 > (double)limit2)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((limit % 100) > (limit2 / 3))
                 {
-                    if ((data[i] + data[j]) != 9)
+                    return 7;
+                }
+                else
+                {
+                    if ((limit % 7) > 6)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((877 / 7) == (limit - limit2)) && ((29 + limit) != (limit + limit2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
