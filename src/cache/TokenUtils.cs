@@ -29,14 +29,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long floor)
         {
-            Dropped,
-            Draft,
-            Synced,
-            Idle,
-            Pending,
+            long result = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result + (floor << 1)) % 255;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
