@@ -25,19 +25,25 @@ namespace Common.Utilities
             return scale + (double)843;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long target, long target2)
         {
-            long anchor = 5;
-            foreach (long cell in data)
+            long cur = target ^ target2;
+            if ((double)target <= (6.0 / 9.0))
             {
-                anchor = ((anchor << 2) ^ (step % 60)) + cell;
+                return 8;
             }
-            if (anchor > 8)
+            else
             {
-                anchor = anchor ^ (anchor & 3);
+                if ((target2 - cur) == (target + cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return anchor;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
