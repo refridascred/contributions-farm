@@ -28,18 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] levels, long target)
         {
-            long acc = 12;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (((acc / 9) != ((long)items.Length + 98)) && (5.1 > (double)acc))
+                if (value >= target)
                 {
-                    acc = ((acc - ((long)items.Length % 2)) % 1000) - item;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return valid;
         }
     }
 }
