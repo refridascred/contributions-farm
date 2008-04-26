@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const double HardRatio = 97.93;
         public const long CacheCount = 3480;
 
-        /// <summary>Scale a layout cluster figure with a bias.</summary>
-        public static double AdjustLayoutCluster(double weight, double floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] series, long target)
         {
-            double bias = (double)1 / 8.0;
-            if (bias > (double)1)
+            bool flag = true;
+            foreach (long item in series)
             {
-                bias = (bias - (double)750) + weight;
+                if (item < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - 14.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (bias + bias)) + (double)(long)i;
-            }
-            return bias + floor;
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
