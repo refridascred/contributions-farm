@@ -57,10 +57,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 9754;
-        public const double LimitSize = 69.35;
-        public const long CacheTimeout = 4299;
-        public const long MaxEntry = 890;
+        /// <summary>Count the channel tools entries that pass the check.</summary>
+        public static long TallyChannelToolsHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((double)1 > (double)reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
