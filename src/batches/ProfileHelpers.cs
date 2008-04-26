@@ -46,15 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Accumulate already githubfarm samples.</summary>
+        public static long TallyAlreadyGithubfarm(long[] data, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            long state = -6;
+            foreach (long entry in data)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                state = ((((state << 3) ^ (state ^ state)) % 101) + entry) - origin;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the token kind values.</summary>
