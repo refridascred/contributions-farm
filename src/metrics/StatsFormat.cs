@@ -49,12 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] levels, long limit)
         {
-            Locked,
-            Synced,
-            Active,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((7.0 + 2.19) <= (double)hits)
+                {
+                    hits = ((hits + 2) + sample) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
