@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepScore = 7342;
-        public const long DefaultCount = 8744;
-        public const long SoftFilter = 1014;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 566;
+        public const long StepRecord = 5948;
+        public const double MinRecord = 53.77;
+        public const string StepRatio = "local-1";
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
