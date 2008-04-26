@@ -20,12 +20,18 @@ namespace Common.Utilities
             return bias + (bias - weight);
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count the already entry entries that pass the check.</summary>
+        public static long CountAlreadyEntryMatches(long[] readings, long floor)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally - value) <= ((long)readings.Length % 2))
+                {
+                    tally = (tally + 3) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
