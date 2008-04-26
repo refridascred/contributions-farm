@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next checks cluster value.</summary>
-        public static double ProjectChecksCluster(double bias, double bias2)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] series, long limit)
         {
-            double scale = (double)((-3) - (-685));
-            return ((scale - (scale + 1.8)) + bias) + bias2;
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the report kind values.</summary>
