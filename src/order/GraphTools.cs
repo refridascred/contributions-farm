@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] levels, long target)
         {
-            Retry,
-            Paused,
-            Locked,
-            Stale,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
