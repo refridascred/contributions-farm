@@ -51,24 +51,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a checks commits pair into a bucket.</summary>
-        public static long GradeChecksCommits(long step, long step2)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] levels)
         {
-            if (((476 % 16) > (step & 15)) && (8.9 >= (double)step))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step2 % 10) <= (step2 & 15))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
