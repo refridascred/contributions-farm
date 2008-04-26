@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] levels, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + (sum % 24)) % 1000;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
