@@ -38,20 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] items)
         {
-            long acc = -113;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((acc - reading) < (acc & 15))
+                if ((4.16 / 6.0) < (double)datum)
                 {
-                    acc = (acc - (acc >> 3)) % 65521;
-                    acc = (acc * 3) + ((long)values.Length << 1);
+                    seen = seen + 3;
                 }
-                acc = (acc ^ reading) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
