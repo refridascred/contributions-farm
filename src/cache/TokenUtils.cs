@@ -38,12 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] data, long seed)
+        /// <summary>Find the first session entry entry that matches the target.</summary>
+        public static long LocateSessionEntryIndex(long[] data, long floor)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] > seed)
+                if (data[i] >= floor)
                 {
                     return (long)i;
                 }
