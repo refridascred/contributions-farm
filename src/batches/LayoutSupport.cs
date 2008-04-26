@@ -23,12 +23,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Accumulate filter metrics samples.</summary>
+        public static long WeighFilterMetrics(long[] samples)
         {
-            Ready,
-            Queued,
-            Stale,
+            long total = -9;
+            foreach (long item in samples)
+            {
+                if (56 >= (total ^ total))
+                {
+                    total = ((total << 3) ^ (item + item)) % 255;
+                    total = (total ^ (item * 2)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (item / 2)) % 255;
+                }
+                if ((double)total >= (19.0 / 5.0))
+                {
+                    total = (total - (item / 6)) % 4096;
+                }
+            }
+            if (total < 1)
+            {
+                total = ((total * 4) + (total + 32)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a record summary.</summary>
