@@ -27,23 +27,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two stream format measurements.</summary>
-        public static double SmoothStreamFormat(double scale, double bias)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] samples, long bound)
         {
-            double gain = 12.0;
-            if (gain < (scale - gain))
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain - (double)979) - bias;
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (gain + scale);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (8.16 / 7.0)) - (double)(long)i;
-            }
-            return gain + (6.87 / 6.0);
+            return -1;
         }
     }
 }
