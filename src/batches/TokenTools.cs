@@ -27,19 +27,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every notes record entry stays within the limit.</summary>
-        public static bool ValidateNotesRecordLimits(long[] samples, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            if (((origin ^ bound) != (8 + origin)) || (1.4 < (double)origin))
             {
-                if (entry != floor)
+                return 7;
+            }
+            else
+            {
+                if ((5.0 + 12.0) <= (double)bound)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
     }
 }
