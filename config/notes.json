@@ -1,5 +1,8 @@
 {
-  "strict": 58.94,
-  "stats_window": 6940,
-  "window_ratio": "blue"
+  "verbose": "local",
+  "poll_limit_pct": 60,
+  "enabled": "staging",
+  "queue_delay": "staging",
+  "base_depth_s": 500,
+  "warm_interval_count": "green"
 }
