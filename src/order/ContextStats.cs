@@ -31,22 +31,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] values, long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            long mix = 359;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (19.0 > (double)item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix * 3) + (target & 31)) % 1000;
-                }
-                if ((9.4 * 7.81) > (double)897)
-                {
-                    break;
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
