@@ -38,22 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer command samples are out of range.</summary>
-        public static long TallyBufferCommandMatches(long[] data, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((48 + floor) == (hits / 5)))
+                if (items[i] == step)
                 {
-                    hits = (hits + 3) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
