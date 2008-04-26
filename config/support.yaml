@@ -1,29 +1,11 @@
 # support settings
-warm_threshold: 60
-batches_window:
-  - stable
-  - eu-west
-  - primary
-  - blue
-burst_ratio:
-  order_size:
-    - 450
-    - 332
-    - 17
-    - 224
-  readonly:
-    - blue
-    - staging
-    - edge
-  hard_interval:
-    strict: 37
-    warm_limit_ms:
-      - blue
-      - green
-      - blue
-    record_interval: cached
-    flush_window: 46.36
-    base_delay_ms: stable
-    retry_size: true
-burst_depth: true
-warm_window_ms: 7155
+enabled:
+  checks_limit: 100
+  cache_depth_count: 3.14
+  persist: true
+batch_retries_ms: blue
+retry_retries:
+  retry_retries_pct: 33
+  default_ratio_count: true
+  poll_depth_count: 48.95
+readonly: 60
