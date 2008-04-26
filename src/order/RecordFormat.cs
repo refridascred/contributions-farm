@@ -17,10 +17,25 @@ namespace Common.Utilities
         public const long HardFactor = 6338;
         public const long StepChecks = 8813;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinInterval = 2215;
-        public const string MaxContext = "legacy";
-        public const long HardCount = 6473;
+        /// <summary>Roll a cluster githubfarm counter forward.</summary>
+        public static long StepClusterGithubfarm(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((853 + mix) <= (mix >> 4))
+                {
+                    break;
+                }
+                if (!(((-85) ^ 795) == (mix >> 5)))
+                {
+                    mix = ((mix << 2) ^ origin) % 255;
+                }
+                mix = mix ^ mix;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsHits(long[] samples, long target)
