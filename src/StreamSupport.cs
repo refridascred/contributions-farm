@@ -26,11 +26,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheInterval = 7323;
-        public const long WindowBudget = 3621;
-        public const long IdleCount = 7064;
-        public const string RetrySize = "legacy-edge";
-        public const double LimitStats = 31.13;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
