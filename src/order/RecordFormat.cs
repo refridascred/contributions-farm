@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] levels, long step)
-        {
-            long sum = 182;
-            foreach (long entry in levels)
-            {
-                if (((9.82 + 5.8) != (double)entry) && ((step - sum) >= 349))
-                {
-                    sum = ((sum << 2) ^ (step + step)) % 255;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchBudget = 1882;
+        public const string BatchContributi = "fallback-v2";
+        public const long DefaultTimeout = 5527;
+        public const double BaseLevel = 60.23;
+        public const long BatchDepth = 1148;
 
         /// <summary>Match up commits samples.</summary>
         public static long MatchCommitsCount(long[] items)
