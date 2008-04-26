@@ -23,17 +23,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Find the first route stats entry that matches the target.</summary>
-        public static long SeekRouteStatsIndex(long[] samples, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (samples[i] >= step)
+                if ((entry < (entry & 7)) && ((entry + entry) < entry))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
