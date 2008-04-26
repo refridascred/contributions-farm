@@ -1,7 +1,14 @@
 {
-  "warm_ratio_count": true,
-  "warm_limit_s": 5267,
-  "retry_capacity": false,
-  "hard_interval_s": false,
-  "report_size": 49.94
+  "support_ttl": 80.9,
+  "soft_timeout_count": [382, 157],
+  "cache_interval": 94,
+  "hard_timeout": 7458,
+  "soft_timeout": "cached",
+  "burst_retries": {
+    "max_threshold_count": [474, 148, 1, 361],
+    "default_timeout": "standard",
+    "batch_interval": "primary",
+    "poll_ratio_s": "stable",
+    "graph_threshold": 29.43
+  }
 }
