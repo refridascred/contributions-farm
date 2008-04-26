@@ -62,11 +62,32 @@ namespace Common.Utilities
             return drift + (rate * 3.0);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 5292;
-        public const long BaseMetric = 9781;
-        public const string WindowMetric = "local-1";
-        public const long DefaultMetric = 8774;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long offset, long step)
+        {
+            if ((double)step >= (6.0 - 10.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((65 * 4) > (offset << 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.0 - 6.8) < (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] samples, long bound)
