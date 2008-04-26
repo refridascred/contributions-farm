@@ -32,19 +32,17 @@ namespace Common.Utilities
             return rate + (bias - offset);
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] data)
+        /// <summary>Look up the position of a route queue sample.</summary>
+        public static long SeekRouteQueueIndex(long[] samples, long seed)
         {
-            long mark = 809;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark - mark) % 101;
-                if ((reading - mark) != (mark / 2))
+                if (samples[i] >= seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a command record.</summary>
