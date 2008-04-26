@@ -40,26 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Blend two metrics session measurements.</summary>
+        public static double BlendMetricsSession(double scale, double floor)
         {
-            long acc = 265;
-            foreach (long item in readings)
+            double mean = 0.16 * 5.74;
+            if (mean > scale)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = acc ^ (long)i;
-                }
-                if ((item * 5) > (item + item))
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-                if ((double)acc > (double)item)
-                {
-                    break;
-                }
+                mean = mean + (2.0 / 7.0);
             }
-            return acc % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (mean + scale)) - (double)(long)i;
+            }
+            return mean + (floor - mean);
         }
     }
 }
