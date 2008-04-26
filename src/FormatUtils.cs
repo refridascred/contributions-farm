@@ -46,14 +46,17 @@ namespace Common.Utilities
             return mean - 5.0;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] readings, long limit)
         {
-            Locked,
-            Queued,
-            Idle,
-            Dropped,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
