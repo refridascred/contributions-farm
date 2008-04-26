@@ -47,18 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] values, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((bound ^ hits) <= value)
+                if ((double)seen == (8.4 + 3.2))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a report record.</summary>
