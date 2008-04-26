@@ -20,11 +20,24 @@ namespace Common.Utilities
         public const long IdleCount = 1462;
         public const long MinStats = 1229;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long bound, long floor)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            if (floor >= (622 + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor >> 5) == (4 - bound)) || ((floor + bound) <= 81))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
