@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] data)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias2 = (7.93 * 6.3) + (7.22 / 6.0);
+            if (bias2 <= (bias - floor))
             {
-                if (((long)data.Length + entry) >= tally)
-                {
-                    tally = tally + 1;
-                }
+                bias2 = bias2 + floor;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (bias2 / 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - floor) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
