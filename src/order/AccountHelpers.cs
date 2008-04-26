@@ -56,11 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] data, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)item < (3.0 + 1.84))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate batch samples.</summary>
