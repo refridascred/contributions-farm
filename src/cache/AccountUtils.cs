@@ -57,12 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Adjust a batch report reading.</summary>
+        public static double SmoothBatchReport(double rate, double bias)
         {
-            Active,
-            Retry,
-            Stale,
+            double rate2 = 8.0;
+            if (rate2 <= (rate2 * 18.0))
+            {
+                rate2 = ((rate2 - rate2) - rate) + bias;
+            }
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 - (rate2 / 5.0);
         }
     }
 }
