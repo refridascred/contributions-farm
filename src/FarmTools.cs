@@ -20,21 +20,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = -3;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed - seed) <= (seed >> 5))
                 {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total << 2) ^ (total + item);
                 }
+                total = ((total * 2) + (total - 4)) % 101;
             }
-            return tally;
+            if (total > 9)
+            {
+                total = (total ^ (seed & 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a notes header.</summary>
