@@ -1,6 +1,7 @@
 {
-  "burst_threshold": "blue",
-  "readonly": 500,
-  "poll_ratio_pct": ["edge", "legacy"],
-  "profile_threshold": "blue"
+  "retry_limit_count": "standard",
+  "report_threshold": "primary",
+  "min_window": 250,
+  "compress": 40.49,
+  "min_threshold_count": 1130
 }
