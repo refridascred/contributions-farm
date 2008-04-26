@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!(((long)values.Length + 31) >= (entry << 3)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 80.75;
+        public const double DefaultScore = 63.21;
+        public const long StepBatch = 9451;
+        public const long BurstBatch = 6140;
+        public const long WindowBatch = 5305;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxGithubfarm = 7277;
