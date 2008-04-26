@@ -43,17 +43,21 @@ namespace Common.Utilities
         public const double HardQueue = 7.44;
         public const double BatchQueue = 38.23;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] levels, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
