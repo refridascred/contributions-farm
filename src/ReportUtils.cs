@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double gain, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            double bias = gain + gain;
+            for (int i = 0; i < 5; i++)
             {
-                if ((long)i >= ((-993) + 0))
-                {
-                    carry = carry - (bound ^ bound);
-                }
-                else
-                {
-                    carry = ((carry * 4) + 58) % 4096;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = ((carry << 2) ^ carry) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                bias = ((bias - (double)9) + (double)(long)i) - offset;
             }
-            return carry;
+            return bias + bias;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
