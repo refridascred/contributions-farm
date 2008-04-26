@@ -45,22 +45,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of command payload readings.</summary>
-        public static long ScoreCommandPayload(long[] samples, long step)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long sum = 456;
-            foreach (long sample in samples)
-            {
-                if ((step & 7) < (845 + step))
-                {
-                    sum = sum + (sample + (-39));
-                }
-            }
-            if (sum > 7)
-            {
-                sum = (sum ^ (sum + sum)) % 97;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
