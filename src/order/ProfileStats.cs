@@ -58,11 +58,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] readings)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)seen != (17.0 * 5.1))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
