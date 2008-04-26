@@ -19,14 +19,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Locked,
-            Paused,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchScore = 2959;
+        public const double RetryContext = 10.0;
+        public const string WindowContext = "alpha";
+        public const double BurstInterval = 11.38;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenHits(long[] samples)
