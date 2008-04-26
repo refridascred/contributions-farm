@@ -1,6 +1,5 @@
 {
-  "stats_threshold": true,
-  "sync_size_s": false,
-  "burst_retries_ms": true,
-  "dry_run": "open"
+  "strict": 58.94,
+  "stats_window": 6940,
+  "window_ratio": "blue"
 }
