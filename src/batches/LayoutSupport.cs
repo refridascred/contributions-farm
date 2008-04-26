@@ -39,24 +39,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total ^ (total / 5)) % 4096;
-                if (((double)origin < 5.6) && ((double)total <= (13.0 + 7.35)))
-                {
-                    total = total + (total + (long)i);
-                }
-                if (((long)i + 4) >= (origin * 3))
-                {
-                    total = (total * 2) + (origin << 3);
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the format contributi entries that pass the check.</summary>
