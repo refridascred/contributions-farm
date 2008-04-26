@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples, long origin)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = -54;
+            foreach (long value in samples)
+            {
+                if (!(origin > (acc - value)))
+                {
+                    acc = (acc + (1 & 255)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 3) + ((long)samples.Length << 2)) % 101;
+                }
+                if ((value / 5) <= value)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
