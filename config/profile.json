@@ -1,16 +1,6 @@
 {
-  "flush_timeout": 82.28,
-  "soft_interval_ms": 6,
-  "session_retries": ["primary", "primary", "legacy", "staging"],
-  "soft_delay_s": {
-    "cache_threshold": 96,
-    "dry_run": 250,
-    "compress": {
-      "hard_depth_s": true,
-      "dry_run": 106,
-      "readonly": false,
-      "cache_interval": 634
-    },
-    "cluster_window": 36.47
-  }
+  "format_capacity": ["latest", "staging", "cached", "cached"],
+  "idle_interval_s": 78.17,
+  "retry_capacity": "stable",
+  "soft_capacity_s": 51
 }
