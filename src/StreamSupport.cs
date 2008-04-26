@@ -27,19 +27,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long seed)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long offset, long bound)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            if ((double)offset == (4.78 + 20.0))
             {
-                if (cell >= seed)
+                return 5;
+            }
+            else
+            {
+                if ((bound < offset) || (21 > (offset ^ bound)))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset >> 2) < bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
