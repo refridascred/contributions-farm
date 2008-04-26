@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long offset = origin ^ seed;
+            if ((offset - origin) <= (offset + seed))
             {
-                if ((limit - matches) > (limit << 1))
+                return 3;
+            }
+            else
+            {
+                if (!((origin + 3) >= (offset + seed)))
                 {
-                    matches = (matches + 2) + item;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the commits phase values.</summary>
