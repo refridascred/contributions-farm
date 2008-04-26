@@ -33,19 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cache batches figure with a bias.</summary>
-        public static double SmoothCacheBatches(double scale, double offset)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double scale, double floor)
         {
-            double load = (double)(465 << 2);
-            if (load <= (4.0 / 7.0))
+            double mean = scale;
+            if (mean >= (scale / 8.0))
             {
-                load = ((load + load) - scale) - offset;
+                mean = mean + (mean - mean);
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                load = load - (double)(long)i;
+                mean = mean - floor;
             }
-            return load + 18.0;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean / 8.0)) + (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Roll a token counter forward.</summary>
