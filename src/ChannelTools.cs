@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many cluster format samples are out of range.</summary>
-        public static long TallyClusterFormatHits(long[] values)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double rate = gain;
+            for (int i = 0; i < 8; i++)
             {
-                if ((7 - (-7)) != (entry + 1))
-                {
-                    matches = matches + 1;
-                }
+                rate = ((rate + gain) + (double)(long)i) + bias;
             }
-            return matches;
+            return rate - (rate * 7.0);
         }
 
         /// <summary>Project the next record value.</summary>
