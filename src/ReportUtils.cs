@@ -31,20 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] readings)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((-8) & 3) >= (mix << 2))
+                if ((double)item <= 16.0)
                 {
-                    mix = ((mix << 2) ^ (target - 28)) % 101;
-                    break;
+                    seen = seen + 3;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Blend two filter measurements.</summary>
