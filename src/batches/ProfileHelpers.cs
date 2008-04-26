@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Project the next session value.</summary>
