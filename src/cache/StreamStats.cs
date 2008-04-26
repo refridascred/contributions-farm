@@ -31,10 +31,22 @@ namespace Common.Utilities
         public const double DefaultSize = 5.45;
         public const long BurstWindow = 2405;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstFactor = "legacy-edge";
-        public const string CacheTimeout = "strict-edge";
-        public const long DefaultCluster = 5383;
-        public const double BaseCluster = 80.74;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((-87) + cell) > (hits - 6))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
