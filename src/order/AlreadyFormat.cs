@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 4301;
-        public const double IdleQueue = 78.65;
-        public const double BaseInterval = 2.88;
+        /// <summary>Iterate the tools context series from a seed.</summary>
+        public static long SeriesToolsContext(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum + (sum >> 2)) % 97;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] readings)
