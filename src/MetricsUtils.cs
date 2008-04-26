@@ -72,19 +72,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] samples, long limit)
         {
-            long anchor = -2;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor + anchor) % 255) ^ item;
+                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 85)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
