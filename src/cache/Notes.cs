@@ -51,13 +51,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Classify a checks commits pair into a bucket.</summary>
+        public static long GradeChecksCommits(long step, long step2)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
+            if (((476 % 16) > (step & 15)) && (8.9 >= (double)step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step2 % 10) <= (step2 & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
