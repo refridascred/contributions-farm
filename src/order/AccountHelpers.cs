@@ -37,11 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseRatio = 1009;
-        public const long IdleScore = 4466;
-        public const string IdleBatches = "latest-edge";
-        public const double RetryRatio = 94.32;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((79 - bound) > (hits + entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterGaps(long[] items)
