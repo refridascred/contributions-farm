@@ -49,15 +49,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] series, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] items, long offset)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long value in items)
             {
-                if (((bound ^ item) >= (bound * 2)) && ((double)item == (1.1 * 7.0)))
+                if ((((offset * 5) >= 3) && ((value & 15) == (value % 5))) || !(value <= (tally % 5)))
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
