@@ -29,11 +29,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit stats filter readings against a rule.</summary>
+        public static long MeasureStatsFilterMatches(long[] readings)
         {
-            public double Level { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading != (double)hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
