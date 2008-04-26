@@ -41,18 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] levels)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell != (18.0 / 6.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
