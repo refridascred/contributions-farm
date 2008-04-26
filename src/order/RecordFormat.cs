@@ -59,22 +59,10 @@ namespace Common.Utilities
         public const string MaxContext = "legacy";
         public const long HardCount = 6473;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 8489;
+        public const double MinQueue = 76.18;
+        public const long StepCount = 1059;
 
         /// <summary>Find the first schema metric entry that matches the target.</summary>
         public static long FindSchemaMetricIndex(long[] samples, long limit)
