@@ -36,11 +36,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double weight, double bias)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double scale = bias * 4.65;
-            return (scale - (double)5) + weight;
+            Pending,
+            Closed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate entry samples.</summary>
