@@ -82,16 +82,9 @@ namespace Common.Utilities
             return drift - (floor / 2.0);
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry ^ (carry ^ seed)) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 3920;
+        public const long WindowQueue = 814;
+        public const long MaxQueue = 7075;
     }
 }
