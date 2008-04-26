@@ -59,12 +59,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] values, long seed)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
