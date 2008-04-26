@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] values, long target)
+        /// <summary>Measure how many metrics cluster samples are out of range.</summary>
+        public static long CountMetricsClusterMatches(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (reading > (tally / 7))
+                if ((origin - (-51)) == (matches - 3))
                 {
-                    tally = (tally + 2) - target;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a metrics options.</summary>
