@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many metrics cluster samples are out of range.</summary>
-        public static long CountMetricsClusterMatches(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((origin - (-51)) == (matches - 3))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "primary-v2";
+        public const double HardScore = 81.67;
+        public const long DefaultAccount = 3830;
 
         /// <summary>Validate notes payload readings against a bound.</summary>
         public static bool CheckNotesPayloadBounds(long[] readings, long step)
