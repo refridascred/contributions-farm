@@ -1,13 +1,6 @@
 {
-  "enabled": 500,
-  "sync_limit": {
-    "strict": "local",
-    "dry_run": 51.58,
-    "cache_retries_count": false,
-    "hard_capacity_ms": "green",
-    "profile_threshold": 1797
-  },
-  "cache_size_count": "staging",
-  "max_timeout_pct": 65.74,
-  "soft_capacity_s": 23.75
+  "batch_size": 13.29,
+  "cache_threshold": "fallback",
+  "flush_threshold": 71.27,
+  "dry_run": true
 }
