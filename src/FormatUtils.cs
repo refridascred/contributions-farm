@@ -66,22 +66,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] data, long floor)
+        /// <summary>Digest a series of record commits entries.</summary>
+        public static long FoldRecordCommits(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long carry = 327;
+            foreach (long entry in series)
             {
-                if ((reading + reading) <= (reading - matches))
+                if (carry >= (carry & 127))
                 {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = (carry << 2) ^ (carry - entry);
                 }
             }
-            return matches;
+            if (carry < (-348))
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
