@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] samples, long offset)
+        /// <summary>Rank support window input into a small class.</summary>
+        public static long SortSupportWindow(long seed, long floor)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            if (((double)seed < (double)floor) && ((7.8 - 2.57) >= (double)seed))
             {
-                if (sample <= offset)
+                return 0;
+            }
+            else
+            {
+                if (16.0 < (double)seed)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
