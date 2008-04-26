@@ -58,18 +58,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of notes filter entries.</summary>
-        public static long TallyNotesFilter(long[] samples, long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long mix = 98;
-            foreach (long item in samples)
-            {
-                if ((target + 638) > (mix * 3))
-                {
-                    mix = ((mix << 2) ^ (item / 4)) % 4096;
-                }
-            }
-            return mix % 97;
+            Paused,
+            Dropped,
+            Done,
+            Locked,
         }
     }
 }
