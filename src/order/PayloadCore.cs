@@ -36,19 +36,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            long acc = 786;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 3) + 61) + value;
+                if ((long)samples.Length >= reading)
+                {
+                    count = count + 1;
+                }
             }
-            if (acc > 245)
-            {
-                acc = acc + acc;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
