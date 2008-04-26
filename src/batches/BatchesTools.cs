@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Check that every farm stats entry stays within the limit.</summary>
+        public static bool GuardFarmStatsRange(long[] series, long bound)
         {
-            New,
-            Closed,
-            Pending,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
