@@ -49,18 +49,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] series)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading <= 5.72)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
