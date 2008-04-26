@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long floor)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 5) + floor) % 101;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a order options.</summary>
