@@ -69,11 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Audit session counter readings against a rule.</summary>
+        public static long CountSessionCounterHits(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((hits + entry) != (hits - 562)) && (((hits + 41) >= 8) && ((entry + hits) <= (entry >> 3))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
