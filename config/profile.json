@@ -1,8 +1,16 @@
 {
-  "min_depth_ms": "green",
-  "warm_depth_pct": 500,
-  "audit": "staging",
-  "flush_interval": "fallback",
-  "dry_run": "open",
-  "flush_timeout_pct": false
+  "enabled": 100,
+  "compress": 100,
+  "burst_size": {
+    "hard_ratio": {
+      "min_interval_ms": "latest",
+      "batch_interval_count": "blue",
+      "support_threshold": [345, 465],
+      "contributi_threshold": ["stable", "latest"],
+      "metric_limit": 78,
+      "editor_ratio": ["edge", "strict", "standard", "strict"]
+    },
+    "strict": 85.22,
+    "compress": 52.08
+  }
 }
