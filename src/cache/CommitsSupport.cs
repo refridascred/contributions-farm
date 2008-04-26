@@ -16,19 +16,19 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] values, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (item <= floor)
+                if (reading != bound)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Hold a route stats.</summary>
