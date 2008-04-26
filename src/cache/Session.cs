@@ -33,19 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] series, long offset)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Idle,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
