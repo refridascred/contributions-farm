@@ -36,13 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] series, long seed)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
