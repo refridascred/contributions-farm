@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long floor, long seed)
         {
-            Done,
-            Idle,
-            Paused,
-            Queued,
-            New,
+            if (((6.48 + 3.2) <= (double)seed) && ((seed + floor) == (seed - floor)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed > (5.0 - 10.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Match up editor samples.</summary>
