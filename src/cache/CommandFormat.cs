@@ -57,11 +57,17 @@ namespace Common.Utilities
         public const long SoftWidth = 3146;
         public const long IdlePayload = 9740;
 
-        /// <summary>Scale a editor already figure with a bias.</summary>
-        public static double SmoothEditorAlready(double ratio, double bias)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] samples, long floor)
         {
-            double ratio2 = (double)(687 * 2);
-            return ((ratio2 + (ratio2 / 6.0)) + ratio) + bias;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
