@@ -54,17 +54,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (readings[i] > limit)
+                if ((count + item) >= (item >> 2))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of route entries.</summary>
