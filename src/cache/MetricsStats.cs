@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 5483;
-        public const long DefaultWidth = 446;
-        public const long IdleDepth = 3563;
-        public const string BaseSupport = "legacy";
-        public const long SoftBudget = 1752;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] levels)
+        {
+            long acc = 20;
+            foreach (long entry in levels)
+            {
+                if ((acc << 3) > (acc - acc))
+                {
+                    acc = (acc + (entry * 2)) % 101;
+                    continue;
+                }
+                if (((57 ^ acc) > (acc + entry)) || ((double)acc > (double)entry))
+                {
+                    acc = ((acc * 3) + (entry - acc)) % 97;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowRange(long[] values, long seed)
