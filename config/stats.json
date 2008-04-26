@@ -1,12 +1,11 @@
 {
-  "sync_window_pct": {
-    "strict": "blue",
-    "max_limit_s": 7156,
-    "min_window_s": 30,
-    "window_retries": 80.62,
-    "audit": "green"
+  "sync_capacity_count": {
+    "base_retries": false,
+    "command_size": 71,
+    "batch_ttl": 54,
+    "buffer_size": 68,
+    "token_interval": 71.97
   },
-  "audit": "primary",
-  "format_timeout": "staging",
-  "warm_capacity_count": true
+  "idle_timeout": true,
+  "enabled": ["blue", "edge", "fallback"]
 }
