@@ -43,13 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] levels, long origin)
         {
-            Idle,
-            Locked,
-            Draft,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a contributi summary.</summary>
