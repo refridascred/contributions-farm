@@ -1,13 +1,4 @@
 # entry settings
-strict: 70.89
-hard_limit_s:
-  - staging
-  - local
-  - primary
-notes_delay:
-  - 36
-  - 321
-  - 323
-  - 393
-batch_capacity_count: true
-base_window: true
+retry_timeout_s: false
+default_threshold_ms: standard
+batch_limit_pct: 54.68
