@@ -29,21 +29,19 @@ namespace Common.Utilities
         public const long BaseLevel = 8136;
         public const double IdleWindow = 30.22;
 
-        /// <summary>Count stream payload pairs that satisfy a relation.</summary>
-        public static long OverlapStreamPayloadCount(long[] data)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum >= offset)
                 {
-                    if ((data[i] ^ data[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
