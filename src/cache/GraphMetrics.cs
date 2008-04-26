@@ -42,31 +42,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long target)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            if (((1.0 + 8.44) > (1.84 - 5.05)) && (seed < (seed % 100)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed > (seed + 95))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed * 3) < (435 + 752))
+                    if ((values[i] + values[j]) != 20)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two entry measurements.</summary>
