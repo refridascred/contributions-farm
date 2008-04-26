@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 1245;
-        public const long StepRatio = 3672;
-        public const double BaseGraph = 98.35;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 9215;
+        public const double WindowPayload = 38.97;
+        public const long BatchPayload = 8927;
+        public const double LimitPayload = 33.6;
+        public const long SoftPayload = 2664;
 
         /// <summary>Check that every channel filter entry stays within the limit.</summary>
         public static bool GuardChannelFilterRange(long[] data, long step)
