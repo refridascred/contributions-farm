@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const long BaseSupport = 1707;
         public const long RetrySize = 1538;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] samples, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
