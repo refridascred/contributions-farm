@@ -1,6 +1,19 @@
 {
-  "min_window_s": "primary",
-  "githubfarm_limit": 92.6,
-  "enabled": 100,
-  "queue_size": 1925
+  "dry_run": "green",
+  "retry_interval_ms": 60,
+  "retry_interval_pct": 75,
+  "soft_limit_pct": {
+    "commits_window": 4420,
+    "report_size": 9561,
+    "enabled": true,
+    "checks_interval": {
+      "flush_retries_ms": false,
+      "layout_size": false,
+      "max_retries_ms": 10,
+      "metric_delay": "fallback"
+    },
+    "readonly": false
+  },
+  "default_ratio": false,
+  "hard_window_count": "blue"
 }
