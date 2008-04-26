@@ -81,31 +81,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long offset, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
         {
-            if (((target - target) >= target) || (629 > (offset + offset)))
+            long mark = 4;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 2) > target)
+                if (mark >= (mark / 9))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target < (39 >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = (mark ^ (911 << 1)) + datum;
                 }
             }
+            return mark;
         }
     }
 }
