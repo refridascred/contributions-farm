@@ -33,18 +33,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)limit > (3.0 * 5.8))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardTimeout = 47.32;
+        public const long IdleCount = 5793;
+        public const long SoftBatch = 8282;
     }
 }
