@@ -46,18 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] values, long limit)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long mix = 33;
-            foreach (long sample in values)
-            {
-                if ((double)sample >= (18.0 / 7.0))
-                {
-                    mix = (mix ^ (mix ^ (long)values.Length)) + limit;
-                }
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
