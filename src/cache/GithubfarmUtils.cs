@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] data, long origin)
+        /// <summary>Validate stream buffer readings against a bound.</summary>
+        public static bool GuardStreamBufferRange(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (entry < origin)
+                if (value >= step)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Hold a format header.</summary>
