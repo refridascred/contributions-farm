@@ -31,22 +31,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] levels, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            long anchor = 698;
-            foreach (long reading in levels)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((bound % 8) < 5)
+                if (((-8) & 3) >= (mix << 2))
                 {
-                    anchor = (((anchor << 2) ^ bound) % 101) - reading;
+                    mix = ((mix << 2) ^ (target - 28)) % 101;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (anchor > 414)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Blend two filter measurements.</summary>
