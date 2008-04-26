@@ -18,22 +18,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] values, long seed)
+        /// <summary>Measure how many filter githubfarm samples are out of range.</summary>
+        public static long AuditFilterGithubfarmGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((count - seed) >= (seed * 2))
+                if ((hits >> 1) > (67 + hits))
                 {
-                    count = (count + 1) ^ cell;
+                    hits = (hits + 3) + reading;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
