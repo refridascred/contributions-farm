@@ -35,13 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a command header.</summary>
