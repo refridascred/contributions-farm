@@ -46,13 +46,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Draft,
-            Failed,
-            Done,
-            Idle,
+            Paused,
+            Closed,
+            Locked,
+            Ready,
         }
     }
 }
