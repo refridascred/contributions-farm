@@ -30,22 +30,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheTimeout = "alpha";
+        public const long DefaultSupport = 9391;
+        public const long SoftSpan = 8077;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long target)
