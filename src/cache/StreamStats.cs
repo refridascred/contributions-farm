@@ -26,10 +26,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultLevel = 10.23;
-        public const double DefaultSize = 5.45;
-        public const long BurstWindow = 2405;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Locked,
+            Active,
+            Queued,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesOutliers(long[] levels)
