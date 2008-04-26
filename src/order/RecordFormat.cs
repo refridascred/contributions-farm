@@ -59,10 +59,19 @@ namespace Common.Utilities
         public const string MaxContext = "legacy";
         public const long HardCount = 6473;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 8489;
-        public const double MinQueue = 76.18;
-        public const long StepCount = 1059;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((target >> 2) < (target << 1))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
