@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a entry batch reading by value.</summary>
-        public static long SeekEntryBatchIndex(long[] items, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (items[i] == floor)
+                if (((7.0 + 1.9) <= (double)tally) && ((7.0 < (double)tally) || ((entry - 7) == (entry * 2))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
