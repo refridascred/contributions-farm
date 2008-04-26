@@ -1,8 +1,5 @@
 {
-  "verbose": "local",
-  "poll_limit_pct": 60,
-  "enabled": "staging",
-  "queue_delay": "staging",
-  "base_depth_s": 500,
-  "warm_interval_count": "green"
+  "session_window": "eu-west",
+  "flush_ratio_count": true,
+  "min_capacity_pct": 5437
 }
