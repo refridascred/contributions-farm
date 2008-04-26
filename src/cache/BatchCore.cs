@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] data, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long carry = 7;
+            foreach (long sample in samples)
             {
-                if (item != target)
+                if ((offset * 2) > offset)
                 {
-                    ready = false;
-                    break;
+                    carry = (((carry << 2) ^ (carry << 3)) % 1000) + sample;
+                }
+                else
+                {
+                    carry = (carry + offset) % 4096;
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Measure how many already support samples are out of range.</summary>
