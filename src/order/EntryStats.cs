@@ -61,18 +61,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit stream queue readings against a rule.</summary>
-        public static long MeasureStreamQueueOutliers(long[] samples, long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((6.24 - 4.3) >= (double)step)
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
         }
     }
 }
