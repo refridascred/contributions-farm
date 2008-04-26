@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double scale, double floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double mean = scale;
-            if (mean <= (floor + mean))
-            {
-                mean = mean - (double)9;
-            }
-            else
-            {
-                mean = mean + (double)67;
-            }
-            return mean + (double)6;
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a channel entry.</summary>
