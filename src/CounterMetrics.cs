@@ -25,15 +25,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of metric cache entries.</summary>
-        public static long DigestMetricCache(long[] samples)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] data, long origin)
         {
-            long mark = 72;
-            foreach (long sample in samples)
+            long carry = 8;
+            foreach (long datum in data)
             {
-                mark = (mark + mark) + sample;
+                carry = carry ^ (datum / 9);
             }
-            return mark % 1000;
+            if (carry < 795)
+            {
+                carry = (carry - (origin + (-5))) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
