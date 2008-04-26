@@ -1,13 +1,5 @@
 {
-  "notes_ttl": {
-    "warm_delay_ms": "staging",
-    "warm_ttl_ms": false,
-    "dry_run": true,
-    "audit": "primary"
-  },
-  "idle_timeout_count": 5297,
-  "audit": "staging",
-  "base_capacity_count": 3412,
-  "strict": 524,
-  "readonly": false
+  "warm_retries_s": 69.08,
+  "base_window": 506,
+  "flush_window_pct": 250
 }
