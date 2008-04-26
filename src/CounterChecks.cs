@@ -29,17 +29,21 @@ namespace Common.Utilities
         public const long MaxCluster = 9849;
         public const long HardTimeout = 4724;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc + (acc << 1)) % 1000;
-                acc = acc + origin;
-                acc = ((acc * 2) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit editor notes readings against a rule.</summary>
