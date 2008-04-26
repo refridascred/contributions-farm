@@ -81,18 +81,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long mark = 4;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mark >= (mark / 9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark ^ (911 << 1)) + datum;
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
