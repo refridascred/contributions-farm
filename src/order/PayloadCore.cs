@@ -44,11 +44,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = (mix ^ (seed + mix)) % 65521;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
