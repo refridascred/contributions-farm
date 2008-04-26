@@ -20,31 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long offset, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] series)
         {
-            if (bound <= (bound + offset))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset > (4 & 3)) && ((offset + (-43)) >= (offset + offset)))
+                if ((double)matches >= (7.3 * 1.53))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.69 / 3.0) >= (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = (matches + 2) ^ sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a entry info.</summary>
