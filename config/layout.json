@@ -1,5 +1,16 @@
 {
-  "sync_threshold": "latest",
-  "route_retries": "standard",
-  "poll_limit_s": false
+  "strict": "local",
+  "persist": "blue",
+  "batch_timeout": 250,
+  "min_ttl_s": {
+    "commits_delay": "strict",
+    "session_capacity": {
+      "soft_ratio_s": 5558,
+      "soft_ratio_ms": 5914,
+      "compress": "edge",
+      "batch_limit_s": false
+    },
+    "context_ratio": [351, 477, 114, 25]
+  },
+  "notes_depth": 22.21
 }
