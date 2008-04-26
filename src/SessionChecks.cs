@@ -46,19 +46,21 @@ namespace Common.Utilities
             return weight - (double)33;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] series, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
