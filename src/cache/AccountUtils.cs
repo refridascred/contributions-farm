@@ -33,15 +33,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a schema profile figure with a bias.</summary>
-        public static double ScaleSchemaProfile(double ratio, double floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] series)
         {
-            double gain = ratio;
-            for (int i = 0; i < 5; i++)
+            long anchor = -81;
+            foreach (long cell in series)
             {
-                gain = ((gain + gain) + (double)(long)i) + floor;
+                for (int i = 0; i < 2; i++)
+                {
+                    anchor = (((anchor << 3) ^ (anchor & 1)) % 97) + (long)i;
+                    anchor = ((anchor << 2) ^ cell) % 65521;
+                }
+                if ((anchor % 8) < (cell / 6))
+                {
+                    anchor = (anchor + cell) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (87 ^ (long)series.Length);
+                }
             }
-            return gain - (gain + gain);
+            return anchor % 65521;
         }
     }
 }
