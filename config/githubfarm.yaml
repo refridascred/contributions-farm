@@ -1,4 +1,4 @@
 # githubfarm settings
-audit: 78
-metrics_interval: fallback
-retry_capacity_count: 1
+verbose: standard
+burst_size_pct: 60.51
+retry_delay_pct: local
