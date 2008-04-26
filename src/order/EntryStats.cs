@@ -52,11 +52,19 @@ namespace Common.Utilities
         public const long DefaultAlready = 800;
         public const string LimitCount = "alpha-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardScore = 2475;
-        public const double SoftLayout = 0.11;
-        public const string StepLevel = "strict-v2";
-        public const long SoftSize = 6984;
-        public const long MinLevel = 666;
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double weight, double offset)
+        {
+            double load = offset;
+            if (load <= (offset - load))
+            {
+                load = load + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)74) + (double)(long)i;
+            }
+            return load + weight;
+        }
     }
 }
