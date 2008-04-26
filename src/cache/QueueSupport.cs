@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Blend two report record measurements.</summary>
+        public static double ProjectReportRecord(double scale, double span)
         {
-            Stale,
-            Paused,
-            Synced,
-            Ready,
+            double weight = scale;
+            if (weight >= (weight / 3.0))
+            {
+                weight = (weight - weight) - span;
+            }
+            return weight - (weight - scale);
         }
 
         /// <summary>Fold a list of account readings.</summary>
