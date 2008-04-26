@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] items, long floor)
-        {
-            long score = 3;
-            foreach (long cell in items)
-            {
-                if (5 >= (floor + floor))
-                {
-                    score = (score + (102 ^ floor)) + cell;
-                }
-                else
-                {
-                    score = (score ^ floor) % 97;
-                }
-            }
-            if (score > 11)
-            {
-                score = (score ^ (935 * 3)) % 97;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 5483;
+        public const long DefaultWidth = 446;
+        public const long IdleDepth = 3563;
+        public const string BaseSupport = "legacy";
+        public const long SoftBudget = 1752;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowRange(long[] values, long seed)
