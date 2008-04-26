@@ -1,6 +1,12 @@
 {
-  "cache_timeout": "green",
-  "dry_run": false,
-  "warm_capacity": true,
-  "notes_interval": 1024
+  "sync_retries_pct": 70.62,
+  "support_interval": "fallback",
+  "batch_ratio": {
+    "cache_limit": 73,
+    "batch_retries": true,
+    "warm_window": "stable"
+  },
+  "min_retries": "green",
+  "retry_interval": ["cached", "fallback"],
+  "strict": "edge"
 }
