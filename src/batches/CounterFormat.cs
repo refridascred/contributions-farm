@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] items, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (!((step + 66) > (step & 3)))
+                if (sample < origin)
                 {
-                    carry = (carry - ((long)i << 2)) % 101;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry ^ (carry ^ step)) % 4096;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (((carry * 4) + 395) % 4096) - (long)i2;
-                }
-                carry = (carry ^ ((long)i & 63)) % 101;
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
