@@ -1,7 +1,10 @@
-id,level,label,score
-1,stable,42.47,817
-2,178,blue,740
-3,open,17,47
-4,984,97.45,fallback
-5,local,primary,475
-6,279,320,standard
+id,ratio,token,count,region
+1,39.03,32.86,292,638
+2,latest,staging,822,fallback
+3,542,87.79,440,88.96
+4,fallback,71.15,74.21,991
+5,strict,115,open,fallback
+6,37,692,strict,36.3
+7,63.53,29.71,426,7.04
+8,448,eu-west,118,strict
+9,128,fallback,primary,cached
