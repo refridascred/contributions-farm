@@ -34,12 +34,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Active,
-            Idle,
-            Paused,
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a editor info.</summary>
