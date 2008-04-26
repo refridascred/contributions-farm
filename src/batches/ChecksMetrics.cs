@@ -43,10 +43,33 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "standard";
-        public const long BatchAlready = 9149;
-        public const long BaseBudget = 9548;
+        /// <summary>Grade a session counter value against two limits.</summary>
+        public static long RankSessionCounter(long seed, long target)
+        {
+            long delta = seed + target;
+            if ((delta * 4) < delta)
+            {
+                return 7;
+            }
+            else
+            {
+                if (delta <= (233 + delta))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (230 >= (target + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsOutliers(long[] readings, long step)
