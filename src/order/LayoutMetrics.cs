@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Active,
-            New,
-            Idle,
+            Locked,
+            Draft,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Project the next batch context value.</summary>
