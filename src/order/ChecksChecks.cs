@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank support window input into a small class.</summary>
-        public static long SortSupportWindow(long seed, long floor)
+        /// <summary>Adjust a stream token reading.</summary>
+        public static double SmoothStreamToken(double ratio, double bias)
         {
-            if (((double)seed < (double)floor) && ((7.8 - 2.57) >= (double)seed))
+            double drift = ratio;
+            if (drift >= (double)334)
             {
-                return 0;
+                drift = drift + ratio;
             }
-            else
-            {
-                if (16.0 < (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return drift - bias;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
