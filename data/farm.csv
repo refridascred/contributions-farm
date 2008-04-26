@@ -1,8 +1,9 @@
-id,level,weight,count,region
-1,322,standard,green,34.68
-2,green,standard,506,989
-3,44.05,759,550,25.31
-4,74.73,90.29,cached,651
-5,93.33,latest,3.35,945
-6,607,182,56.26,52.64
-7,856,365,563,43.02
+id,token,level,rank
+1,985,eu-west,85.06
+2,primary,strict,42
+3,green,45.36,89.72
+4,standard,911,836
+5,76.53,78.29,390
+6,79.4,664,strict
+7,452,26.92,220
+8,580,61.78,60.14
