@@ -36,19 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] data, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long target)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum + ((long)i - sum)) % 4096;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
     }
 }
