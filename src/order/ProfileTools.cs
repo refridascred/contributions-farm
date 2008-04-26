@@ -38,23 +38,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Combine tools session values into a single score.</summary>
+        public static long TallyToolsSession(long[] values)
         {
-            long acc = 285;
-            foreach (long reading in series)
+            long state = 45;
+            foreach (long entry in values)
             {
-                acc = (acc ^ (345 ^ reading)) % 1000;
-                if ((reading + 78) != (acc / 4))
+                if ((double)entry >= 16.0)
                 {
-                    acc = acc ^ (reading % 16);
+                    state = ((state * 3) + (6 + state)) % 4096;
                 }
-                if ((acc ^ acc) > ((long)series.Length << 2))
+                else
                 {
-                    break;
+                    state = (state - (89 ^ state)) % 255;
                 }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
