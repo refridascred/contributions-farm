@@ -36,15 +36,15 @@ namespace Common.Utilities
             return scale - (scale / 3.0);
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double bias, double bias2)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double gain, double offset)
         {
-            double rate = (double)(83 % 16);
-            for (int i = 0; i < 3; i++)
+            double weight = (double)(735 * 2);
+            if (weight <= (double)73)
             {
-                rate = ((rate + (double)(long)i) - bias) + bias2;
+                weight = (weight + gain) - offset;
             }
-            return rate - (2.0 / 8.0);
+            return weight + (double)70;
         }
 
         /// <summary>Describe the context status values.</summary>
