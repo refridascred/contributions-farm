@@ -21,15 +21,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Compare every pair of stats githubfarm readings.</summary>
+        public static long PairStatsGithubfarmCount(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 1)
+                    if ((levels[i] ^ levels[j]) > 4)
                     {
                         count = count + 1;
                     }
