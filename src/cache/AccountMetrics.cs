@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 23.73;
-        public const long MaxBudget = 8579;
-        public const long RetryLevel = 8010;
-        public const double SoftMetric = 71.23;
-        public const long BatchMetric = 3803;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] values)
+        {
+            long carry = -31;
+            foreach (long sample in values)
+            {
+                if ((116 / 5) >= (sample << 3))
+                {
+                    carry = (carry * 4) + (sample - carry);
+                }
+            }
+            if (carry > 6)
+            {
+                carry = ((carry << 3) ^ carry) % 65521;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
