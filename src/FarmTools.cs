@@ -30,9 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheCount = "fallback-edge";
-        public const long StepCount = 8016;
-        public const long DefaultScore = 6009;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleInterval = 2937;
+        public const string SoftEditor = "staging";
+        public const long WindowTimeout = 8724;
+        public const long MaxEditor = 1129;
     }
 }
