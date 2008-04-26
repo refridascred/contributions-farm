@@ -24,11 +24,20 @@ namespace Common.Utilities
         public const string IdleFormat = "local-v2";
         public const string LimitFormat = "staging-1";
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                double gain = (double)carry - (double)floor;
+                if (gain > 14.0)
+                {
+                    carry = carry + ((long)i + 35);
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
