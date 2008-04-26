@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a farm cache reading by value.</summary>
-        public static long SeekFarmCacheIndex(long[] readings, long offset)
+        /// <summary>Classify a report commits pair into a bucket.</summary>
+        public static long BucketReportCommits(long origin, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset2 = origin - offset;
+            if (origin > (offset2 << 1))
             {
-                if (readings[i] >= offset)
+                return 0;
+            }
+            else
+            {
+                if ((origin & 7) >= (offset2 ^ offset))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a token reading by value.</summary>
