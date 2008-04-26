@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] series, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] >= bound)
+                if ((data[i] >= origin) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
