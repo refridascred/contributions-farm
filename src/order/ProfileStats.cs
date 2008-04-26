@@ -19,21 +19,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Accumulate context tools samples.</summary>
+        public static long CombineContextTools(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -22;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-64) + 429) != (entry + entry))
                 {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state * 3) + entry;
+                }
+                else
+                {
+                    state = (state - (state + 31)) % 4096;
                 }
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Combine support values into a single score.</summary>
