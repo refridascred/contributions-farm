@@ -38,10 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 76.49;
-        public const long HardLevel = 5006;
-        public const long BatchStats = 4295;
+        /// <summary>Project the next cluster metric value.</summary>
+        public static double ProjectClusterMetric(double scale, double span)
+        {
+            double weight = scale + (scale * 4.0);
+            return (weight - scale) + span;
+        }
 
         /// <summary>Accumulate filter batches samples.</summary>
         public static long ScoreFilterBatches(long[] values, long target)
