@@ -74,17 +74,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] values, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 0;
+            foreach (long datum in items)
             {
-                if (values[i] == origin)
+                total = ((total << 2) ^ (datum >> 2)) % 97;
+                if (bound <= (total >> 2))
                 {
-                    return (long)i;
+                    total = (total * 2) + datum;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
