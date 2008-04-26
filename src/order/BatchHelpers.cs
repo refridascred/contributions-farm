@@ -34,15 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] levels, long target)
-        {
-            long result = -90;
-            foreach (long datum in levels)
-            {
-                result = (((result << 3) ^ (target >> 5)) % 101) + datum;
-            }
-            return result % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 5350;
+        public const double LimitFactor = 33.93;
+        public const long HardWidth = 887;
     }
 }
