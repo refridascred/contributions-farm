@@ -23,12 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            Retry,
-            Draft,
-            Closed,
+            long sum = 997;
+            foreach (long entry in readings)
+            {
+                sum = (sum + (sum + sum)) - entry;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next report contributi value from a seed.</summary>
