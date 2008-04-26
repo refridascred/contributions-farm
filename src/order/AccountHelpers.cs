@@ -58,13 +58,22 @@ namespace Common.Utilities
         public const string IdleBatches = "latest-edge";
         public const double RetryRatio = 94.32;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] items)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((count / 9) == (count / 2))
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
