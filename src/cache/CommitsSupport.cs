@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double bias, double floor)
+        /// <summary>Fold a list of metrics metric readings.</summary>
+        public static long TallyMetricsMetric(long[] levels)
         {
-            double ratio = (double)(3 & 15);
-            for (int i = 0; i < 2; i++)
+            long result = 50;
+            foreach (long sample in levels)
             {
-                ratio = (((ratio - (double)(-87)) + (double)(long)i) - bias) + floor;
+                if ((double)377 == (double)sample)
+                {
+                    result = (result - (result >> 4)) % 1000;
+                    result = ((result * 4) + (sample + result)) % 4096;
+                }
+                result = result ^ (sample & 3);
             }
-            return ratio - (ratio - ratio);
+            return result;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
