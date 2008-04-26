@@ -30,12 +30,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleWidth = 8334;
+        public const long DefaultStream = 4811;
+        public const long BaseWidth = 9355;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LookupQueueIndex(long[] readings, long step)
