@@ -1,12 +1,13 @@
 {
-  "retry_timeout_count": ["legacy", "green", "blue"],
-  "max_depth": ["edge", "cached", "primary"],
-  "max_delay_pct": {
-    "retry_delay_count": 93.33,
-    "already_limit": ["standard", "edge", "strict"],
-    "dry_run": "edge",
-    "warm_retries": "blue",
-    "hard_delay_pct": 45.38,
-    "warm_timeout_s": false
-  }
+  "commits_window": {
+    "poll_ttl": "strict",
+    "tools_retries": 84,
+    "min_capacity": 47.58,
+    "max_limit": 35.46
+  },
+  "hard_size": 13.04,
+  "session_ttl": 93,
+  "strict": "cached",
+  "batch_interval": 341,
+  "warm_capacity_s": 37.03
 }
