@@ -16,19 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] readings, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long mark = 445;
+            foreach (long value in values)
             {
-                if (cell < offset)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark ^ (mark & 7)) % 65521;
+                mark = (mark - (value + 582)) % 255;
+                mark = ((mark << 3) ^ (248 - mark)) % 101;
             }
-            return found;
+            if (mark < 9)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a counter info.</summary>
