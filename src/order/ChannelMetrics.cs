@@ -19,22 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue payload pairs that satisfy a relation.</summary>
-        public static long CompareQueuePayloadCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchFactor = 5853;
+        public const double CacheAlready = 1.68;
+        public const string BurstTimeout = "local";
+        public const string StepAlready = "stable";
+        public const long IdleAlready = 1894;
 
         /// <summary>Iterate the order channel series from a seed.</summary>
         public static long DeriveOrderChannel(long origin)
