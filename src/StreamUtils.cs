@@ -33,39 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long floor, long origin)
+        /// <summary>Combine order batch values into a single score.</summary>
+        public static long DigestOrderBatch(long[] values, long origin)
         {
-            long cur = floor - origin;
-            if (cur <= (floor * 2))
+            long total = -10;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor >= (floor * 4))
+                total = (total ^ (value * 2)) - origin;
+                total = (total - total) % 65521;
+                if (((total ^ value) != (total & 63)) || (((long)values.Length % 7) == (total + total)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin > 98) && (origin > floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((11.0 * 8.23) <= (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = (total - ((-4) % 7)) % 255;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
