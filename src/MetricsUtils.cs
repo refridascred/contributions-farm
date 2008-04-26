@@ -62,12 +62,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] data, long bound)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            long mark = 84;
+            foreach (long item in data)
+            {
+                mark = ((mark - (item * 4)) % 65521) - bound;
+                if (!((double)mark < (2.31 - 2.8)))
+                {
+                    mark = ((mark << 2) ^ (mark + mark)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (-3)) % 1000;
+                }
+            }
+            return mark;
         }
     }
 }
