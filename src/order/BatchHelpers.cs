@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the schema metrics entries that pass the check.</summary>
-        public static long MeasureSchemaMetricsMatches(long[] values, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((((double)sample != (7.9 + 9.1)) && ((double)sample < 0.2)) && ((target % 16) >= (target * 3)))
+                if (((tally + (long)readings.Length) < (-74)) || !((0.3 - 6.0) >= (double)reading))
                 {
-                    hits = hits + 3;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
