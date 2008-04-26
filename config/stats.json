@@ -1,11 +1,12 @@
 {
-  "sync_capacity_count": {
-    "base_retries": false,
-    "command_size": 71,
-    "batch_ttl": 54,
-    "buffer_size": 68,
-    "token_interval": 71.97
+  "command_size": "fallback",
+  "audit": "primary",
+  "verbose": {
+    "filter_timeout": "stable",
+    "max_ttl_count": 2900,
+    "cache_size_ms": 82.26,
+    "report_threshold": 63
   },
-  "idle_timeout": true,
-  "enabled": ["blue", "edge", "fallback"]
+  "enabled": 98,
+  "sync_window_pct": 90.4
 }
