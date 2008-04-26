@@ -53,11 +53,15 @@ namespace Common.Utilities
             return mean - 10.0;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 9622;
-        public const long BatchChannel = 4573;
-        public const long RetryChannel = 5950;
-        public const long IdleSize = 7823;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Locked,
+            Pending,
+            Idle,
+            Active,
+            Paused,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinScore = 1729;
