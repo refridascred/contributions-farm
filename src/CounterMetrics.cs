@@ -23,11 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Compare every pair of commits filter readings.</summary>
+        public static long PairCommitsFilterCount(long[] data)
         {
-            public double Offset { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry kind values.</summary>
