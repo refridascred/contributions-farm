@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the batch layout series from a seed.</summary>
-        public static long RollBatchLayout(long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long anchor = -9;
+            foreach (long value in items)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                long prev = (anchor & 1) + value;
+                anchor = ((anchor * 3) + (prev ^ value)) % 97;
+                anchor = anchor ^ (value - 380);
             }
-            return acc;
+            if (anchor > 92)
+            {
+                anchor = anchor ^ (anchor << 3);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many queue context samples are out of range.</summary>
