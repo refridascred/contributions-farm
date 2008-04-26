@@ -67,18 +67,17 @@ namespace Common.Utilities
         public const string WindowMetric = "local-1";
         public const long DefaultMetric = 8774;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] data)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((tally % 64) > (tally << 3)) && ((double)tally > (14.0 + 8.81)))
+                if (samples[i] == bound)
                 {
-                    tally = (tally + 3) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
