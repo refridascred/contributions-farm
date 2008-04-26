@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two report record measurements.</summary>
-        public static double ProjectReportRecord(double scale, double span)
+        /// <summary>Fold a list of metric window readings.</summary>
+        public static long TallyMetricWindow(long[] items, long offset)
         {
-            double weight = scale;
-            if (weight >= (weight / 3.0))
+            long mix = 49;
+            foreach (long reading in items)
             {
-                weight = (weight - weight) - span;
+                mix = ((mix ^ ((long)items.Length & 31)) + reading) - offset;
+                mix = mix ^ mix;
+                mix = (mix + mix) % 65521;
             }
-            return weight - (weight - scale);
+            return mix;
         }
 
         /// <summary>Describe the order class values.</summary>
