@@ -16,18 +16,13 @@ namespace Common.Utilities
             return weight - (weight - scale);
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] values, long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long state = 30;
-            foreach (long reading in values)
-            {
-                if ((5 > (reading * 4)) && ((state - reading) > floor))
-                {
-                    state = (state + (state + reading)) % 255;
-                }
-            }
-            return state % 4096;
+            Retry,
+            Paused,
+            Ready,
+            Active,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
