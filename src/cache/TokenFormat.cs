@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a channel route counter forward.</summary>
-        public static long SeriesChannelRoute(long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((sum << 1) > (sum / 5))
-                {
-                    sum = (sum << 3) ^ ((long)i - sum);
-                    break;
-                }
-                if ((origin / 9) >= origin)
-                {
-                    sum = (sum + (origin + 140)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Locked,
+            Draft,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a graph record.</summary>
