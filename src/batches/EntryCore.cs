@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double span)
+        /// <summary>Count the buffer stats entries that pass the check.</summary>
+        public static long AuditBufferStatsGaps(long[] series, long floor)
         {
-            double gain = (bias / 4.0) - (9.2 / 8.0);
-            if (gain >= gain)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                gain = gain - (gain * 3.16);
+                if ((floor * 2) <= floor)
+                {
+                    seen = (seen + 3) - entry;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + span;
+            return seen;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
