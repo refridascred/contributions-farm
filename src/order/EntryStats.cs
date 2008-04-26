@@ -33,16 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph channel value from a seed.</summary>
-        public static long RollGraphChannel(long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] items, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long total = 518;
+            foreach (long value in items)
             {
-                carry = (carry + ((long)i + 629)) % 1000;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (2.49 <= (double)value)
+                {
+                    total = (total ^ (total * 2)) + target;
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
