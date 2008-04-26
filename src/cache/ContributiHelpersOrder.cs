@@ -51,19 +51,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheWidth = 1633;
+        public const string MaxInterval = "open-edge";
+        public const string IdleBatches = "open";
     }
 }
