@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next notes command value.</summary>
-        public static double SmoothNotesCommand(double ratio, double offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double scale = 9.0;
-            return (scale - (offset * 6.0)) + ratio;
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a tools channel counter forward.</summary>
