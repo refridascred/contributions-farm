@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of stats tools readings.</summary>
-        public static long PairStatsToolsCount(long[] series)
+        /// <summary>Accumulate window batch samples.</summary>
+        public static long TallyWindowBatch(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 8;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = (total - (total % 16)) - floor;
+                if (903 <= (total << 1))
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 2) ^ (reading + 3)) % 4096;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
