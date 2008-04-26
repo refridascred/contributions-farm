@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] series, long step)
         {
-            long sum = 2;
-            foreach (long entry in levels)
+            long result = 3;
+            foreach (long value in series)
             {
-                if ((seed >> 4) >= (entry + seed))
+                if ((step * 3) == (step % 100))
                 {
-                    sum = (sum - (entry * 5)) % 65521;
+                    result = (result - (528 + result)) ^ value;
                 }
             }
-            if (sum > (-23))
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum % 4096;
+            return result % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
