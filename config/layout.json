@@ -1,6 +1,8 @@
 {
-  "idle_limit": 3.62,
-  "hard_size_s": 1024,
-  "context_timeout": 30,
-  "cache_limit_ms": "standard"
+  "cache_ttl_s": "standard",
+  "audit": "strict",
+  "enabled": 250,
+  "counter_window": false,
+  "warm_delay_count": 59.1,
+  "min_limit": 21.77
 }
