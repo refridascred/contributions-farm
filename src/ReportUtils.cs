@@ -58,13 +58,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Active,
-            Paused,
             Closed,
-            Pending,
+            Retry,
+            Dropped,
+            Queued,
+            Paused,
         }
     }
 }
