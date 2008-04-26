@@ -37,13 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the cache channel entries that pass the check.</summary>
+        public static long MeasureCacheChannelOutliers(long[] data)
         {
-            Locked,
-            Done,
-            Paused,
-            Retry,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count & 7) < (count ^ entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a support stats.</summary>
