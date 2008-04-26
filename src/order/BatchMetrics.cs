@@ -49,21 +49,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up buffer tools samples.</summary>
-        public static long OverlapBufferToolsCount(long[] values)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] >= origin)
                 {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
