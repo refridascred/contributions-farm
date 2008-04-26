@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
