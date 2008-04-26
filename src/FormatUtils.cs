@@ -43,18 +43,14 @@ namespace Common.Utilities
             return mean - 5.0;
         }
 
-        /// <summary>Measure how many checks context samples are out of range.</summary>
-        public static long MeasureChecksContextMatches(long[] levels, long step)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (0 > (reading & 15))
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
+            Locked,
+            Queued,
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
