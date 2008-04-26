@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] values, long limit)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long score = 66;
-            foreach (long entry in values)
-            {
-                if (limit < (limit + limit))
-                {
-                    score = (score ^ (score >> 2)) + entry;
-                }
-            }
-            if (score > 0)
-            {
-                score = (score ^ (8 << 1)) % 1000;
-            }
-            return score % 1000;
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
