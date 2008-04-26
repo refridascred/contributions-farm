@@ -22,11 +22,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowRatio = "primary-1";
-        public const double DefaultDepth = 89.49;
-        public const long LimitMetrics = 236;
-        public const long BatchMetrics = 7634;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] levels)
+        {
+            long sum = 6;
+            foreach (long sample in levels)
+            {
+                sum = (((sum * 5) + (sum & 127)) % 101) ^ sample;
+            }
+            if (sum < 32)
+            {
+                sum = sum - (sum >> 5);
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string MinRatio = "standard-edge";
