@@ -14,16 +14,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double gain, double floor)
-        {
-            double gain2 = floor;
-            if (gain2 <= floor)
-            {
-                gain2 = gain2 + (gain * 17.0);
-            }
-            return gain2 - (double)1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6546;
+        public const double MinProfile = 54.69;
+        public const long BaseDepth = 3674;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long SeriesRoute(long offset)
