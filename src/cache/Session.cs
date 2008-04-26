@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 9068;
+        public const double MinFormat = 68.07;
+        public const long WindowFormat = 5090;
+        public const string DefaultBudget = "local";
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
