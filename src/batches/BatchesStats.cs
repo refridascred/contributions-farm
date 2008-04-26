@@ -40,15 +40,38 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long limit)
         {
-            double rate = weight;
-            for (int i = 0; i < 3; i++)
+            if ((limit & 3) < 333)
             {
-                rate = ((rate + (weight / 7.0)) + (double)(long)i) - bias;
+                return 7;
             }
-            return rate - rate;
+            else
+            {
+                if ((limit >> 1) <= 7)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((6.46 * 3.8) == (double)bound) && ((7.9 / 3.0) <= (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit > bound) && ((1 ^ limit) != (823 & 255)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
