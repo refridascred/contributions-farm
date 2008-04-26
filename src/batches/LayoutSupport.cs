@@ -37,21 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count record profile pairs that satisfy a relation.</summary>
-        public static long CompareRecordProfileCount(long[] readings)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample < origin)
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the farm phase values.</summary>
