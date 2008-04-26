@@ -44,11 +44,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Retry,
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
