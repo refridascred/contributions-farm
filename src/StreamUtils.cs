@@ -77,21 +77,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 205;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value + mark) < (value & 1))
                 {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (((mark << 2) ^ ((long)series.Length + value)) % 97) - origin;
                 }
             }
-            return seen;
+            return mark % 97;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
