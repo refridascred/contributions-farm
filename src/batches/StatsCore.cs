@@ -109,24 +109,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long step, long limit)
+        /// <summary>Derive the next stream queue value from a seed.</summary>
+        public static long StepStreamQueue(long origin)
         {
-            if ((limit > (848 % 64)) || ((2 - limit) != (limit + limit)))
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
+                state = state ^ origin;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (2.0 < (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
     }
 }
