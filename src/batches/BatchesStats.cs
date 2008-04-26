@@ -26,15 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Failed,
-            Retry,
-            Done,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 4500;
+        public const long RetryLevel = 4651;
+        public const long BatchSpan = 2509;
+        public const long HardDepth = 3302;
+        public const long BurstContributi = 4583;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
