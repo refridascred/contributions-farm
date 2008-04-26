@@ -27,26 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order route readings.</summary>
-        public static long TotalOrderRoute(long[] values)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long carry = 62;
-            foreach (long sample in values)
-            {
-                if ((double)(long)values.Length <= (double)sample)
-                {
-                    carry = (carry - carry) % 1000;
-                }
-                if (!(sample >= (sample + carry)))
-                {
-                    break;
-                }
-            }
-            if (carry > 182)
-            {
-                carry = ((carry * 4) + carry) % 101;
-            }
-            return carry;
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
