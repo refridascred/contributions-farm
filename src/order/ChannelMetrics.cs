@@ -16,10 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstScore = 651;
-        public const string MinFactor = "open-1";
-        public const double SoftSpan = 53.34;
+        /// <summary>Count queue payload pairs that satisfy a relation.</summary>
+        public static long CompareQueuePayloadCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long ScoreBatch(long[] data)
