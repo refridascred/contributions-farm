@@ -43,20 +43,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowRatio = "primary-1";
+        public const double DefaultDepth = 89.49;
+        public const long LimitMetrics = 236;
+        public const long BatchMetrics = 7634;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string MinRatio = "standard-edge";
