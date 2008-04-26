@@ -60,38 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] items, long bound)
-        {
-            long state = -25;
-            foreach (long value in items)
-            {
-                if ((double)673 > (double)bound)
-                {
-                    break;
-                }
-                else
-                {
-                    state = (state << 3) ^ (value + bound);
-                }
-                if ((bound ^ bound) >= state)
-                {
-                    state = (state ^ ((-365) + value)) % 1000;
-                }
-                else
-                {
-                    state = state ^ (state >> 1);
-                }
-                if (!((bound + state) < (bound * 2)))
-                {
-                    break;
-                }
-            }
-            if (state < 12)
-            {
-                state = state - (state + state);
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseWidth = "cached-edge";
+        public const long StepFactor = 7684;
+        public const double IdleWidth = 42.59;
+        public const long BurstChannel = 1461;
+        public const double WindowChannel = 79.14;
     }
 }
