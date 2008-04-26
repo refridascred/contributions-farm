@@ -1,6 +1,21 @@
 {
-  "payload_window": false,
-  "notes_size": true,
-  "min_limit_ms": false,
-  "default_interval": ["stable", "latest", "legacy", "stable"]
+  "checks_depth": {
+    "default_window": 95,
+    "poll_capacity_count": {
+      "schema_timeout": 24.3,
+      "readonly": 1.96,
+      "audit": 46.44,
+      "dry_run": 70.34
+    },
+    "cache_ratio": [366, 434],
+    "batch_ratio_count": "fallback",
+    "farm_size": {
+      "enabled": "legacy",
+      "retry_delay_s": false,
+      "min_delay_s": 8
+    },
+    "sync_threshold_ms": false
+  },
+  "enabled": 6403,
+  "batch_ttl": 46
 }
