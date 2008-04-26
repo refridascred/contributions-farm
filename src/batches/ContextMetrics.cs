@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Active,
-            Locked,
-            Draft,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinBudget = 2295;
+        public const long WindowScore = 2375;
+        public const long MaxAccount = 7608;
+        public const long BurstWidth = 6622;
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
