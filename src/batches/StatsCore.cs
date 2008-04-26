@@ -13,13 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the account checks entries that pass the check.</summary>
+        public static long AuditAccountChecksGaps(long[] readings)
         {
-            Stale,
-            Failed,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((double)381 > (double)value)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
