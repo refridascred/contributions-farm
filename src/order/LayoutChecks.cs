@@ -50,19 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] items, long target)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Draft,
+            Synced,
+            Ready,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
