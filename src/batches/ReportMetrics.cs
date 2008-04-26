@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of buffer route readings.</summary>
-        public static long ScoreBufferRoute(long[] items, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] data)
         {
-            long total = -89;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                total = total + value;
-                if (((75 + total) > (limit << 1)) || ((total & 7) <= (limit + limit)))
+                if ((double)seen == (double)47)
                 {
-                    break;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total < 109)
-            {
-                total = total ^ limit;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
