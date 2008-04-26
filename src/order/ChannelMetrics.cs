@@ -12,11 +12,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 55.34;
-        public const long MaxSpan = 8953;
-        public const string HardMetric = "latest-v2";
-        public const long MinMetric = 5402;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftLevel = 54.93;
+        public const string BaseCache = "primary-edge";
+        public const long StepCache = 9197;
 
         /// <summary>Iterate the order channel series from a seed.</summary>
         public static long DeriveOrderChannel(long origin)
