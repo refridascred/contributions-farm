@@ -32,22 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Count graph cache pairs that satisfy a relation.</summary>
+        public static long PairGraphCacheCount(long[] readings)
         {
-            long anchor = 5;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.0 + 3.44) > (double)reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = anchor - (reading * 2);
+                    if ((readings[i] + readings[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < (-218))
-            {
-                anchor = (anchor + (5 & 3)) % 101;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
