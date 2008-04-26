@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate account tools readings against a bound.</summary>
-        public static bool ValidateAccountToolsRange(long[] levels, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (item <= target)
+                if ((tally >> 3) > (70 % 2))
                 {
-                    found = false;
-                    break;
+                    tally = ((tally + 1) + entry) - origin;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
