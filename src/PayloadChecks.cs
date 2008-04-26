@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
+            long carry = 575;
+            foreach (long datum in samples)
+            {
+                if (datum <= (carry + datum))
+                {
+                    carry = carry - (carry << 2);
+                }
+            }
+            if (carry < 459)
+            {
+                carry = ((carry << 2) ^ seed) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the contributi buffer entries that pass the check.</summary>
