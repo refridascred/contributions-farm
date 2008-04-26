@@ -37,19 +37,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((target >> 2) < (target << 1))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardCount = 13.27;
+        public const long MaxStream = 4129;
+        public const double CacheRatio = 4.51;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long seed)
