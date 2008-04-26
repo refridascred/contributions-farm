@@ -22,15 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a tools channel counter forward.</summary>
-        public static long RollToolsChannel(long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
