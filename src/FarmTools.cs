@@ -13,14 +13,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Failed,
-            Closed,
-            Locked,
-            Dropped,
-            Stale,
+            public double Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
