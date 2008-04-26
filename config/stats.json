@@ -1,17 +1,7 @@
 {
-  "record_timeout": {
-    "idle_limit_pct": true,
-    "compress": false,
-    "schema_depth": 79,
-    "min_ttl_count": "staging",
-    "default_retries_count": 41.67
-  },
-  "sync_depth_count": false,
-  "sync_ratio": 26,
-  "idle_size_ms": {
-    "default_delay_count": [44, 423, 169, 129],
-    "compress": 17.9,
-    "hard_delay_count": 94
-  },
-  "min_timeout_count": "stable"
+  "entry_size": "stable",
+  "default_interval_pct": "cached",
+  "dry_run": 73.0,
+  "session_capacity": "open",
+  "batches_limit": true
 }
