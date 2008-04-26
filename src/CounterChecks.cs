@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up schema channel samples.</summary>
-        public static long CompareSchemaChannelCount(long[] values)
+        /// <summary>Measure how many command githubfarm samples are out of range.</summary>
+        public static long TallyCommandGithubfarmMatches(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits >> 5) <= (7 + seed))
                 {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
