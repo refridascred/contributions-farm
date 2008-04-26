@@ -36,22 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] items)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((-243) >= (cell * 5))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
