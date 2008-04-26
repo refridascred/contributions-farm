@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] items, long offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] levels, long origin)
         {
-            long acc = 7;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc + acc) + entry) + offset;
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
