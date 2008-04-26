@@ -35,14 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Closed,
-            Retry,
-            Queued,
-            Active,
-            Pending,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 9802;
+        public const string MaxGraph = "staging-1";
+        public const string MinWidth = "legacy";
+        public const long RetryGraph = 6405;
     }
 }
