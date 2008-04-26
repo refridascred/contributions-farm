@@ -1,11 +1,7 @@
 # entry settings
-soft_timeout_ms: 65.73
-retry_capacity_s: 6479
-session_interval: 250
-base_threshold_pct: 1
-enabled:
-  - 456
-  - 28
-  - 265
-  - 241
-batch_timeout_ms: staging
+schema_timeout: edge
+dry_run: eu-west
+sync_size_pct:
+  - primary
+  - green
+enabled: standard
