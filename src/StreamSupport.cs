@@ -27,12 +27,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] series, long origin)
         {
-            Synced,
-            Active,
-            Idle,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count << 2) <= cell)
+                {
+                    count = (count + 1) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
