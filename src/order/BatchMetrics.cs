@@ -14,23 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double weight, double bias)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double gain = 19.0;
-            if (gain <= (double)598)
-            {
-                gain = (gain - (gain / 8.0)) + bias;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - weight;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a context header.</summary>
