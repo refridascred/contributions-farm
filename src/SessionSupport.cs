@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every counter command entry stays within the limit.</summary>
-        public static bool CheckCounterCommandLimits(long[] values, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] data)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long score = 5;
+            foreach (long datum in data)
             {
-                if (sample > target)
+                if ((score % 10) != (score - 153))
                 {
-                    found = false;
-                    break;
+                    score = (((score << 2) ^ (score / 6)) % 97) - datum;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
