@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] data, long target)
-        {
-            long anchor = 75;
-            foreach (long value in data)
-            {
-                anchor = (anchor + (value * 5)) % 255;
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = (((anchor * 3) + target) % 101) ^ (long)i;
-                }
-                if ((-3) >= (anchor << 3))
-                {
-                    anchor = (anchor << 3) ^ (61 - value);
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = (anchor - (980 ^ anchor)) % 65521;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 69.75;
+        public const long SoftScore = 2264;
+        public const long DefaultQueue = 2905;
+        public const string WindowQueue = "latest-1";
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] levels, long seed)
