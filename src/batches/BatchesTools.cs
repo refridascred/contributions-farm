@@ -48,11 +48,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] samples, long step)
         {
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (!(67 < (step << 3)))
+                {
+                    hits = (hits + 3) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
