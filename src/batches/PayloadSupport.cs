@@ -16,19 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every session record entry stays within the limit.</summary>
-        public static bool ValidateSessionRecordLimits(long[] levels, long step)
+        /// <summary>Measure how many queue context samples are out of range.</summary>
+        public static long AuditQueueContextHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (cell != step)
+                if ((entry + 994) != (entry % 3))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
