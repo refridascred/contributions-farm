@@ -40,26 +40,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long total = 551;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    total = (total + (6 - sample)) ^ (long)i;
-                }
-                if (((total + 948) == (total ^ total)) || ((4.18 * 15.0) > (double)(long)data.Length))
-                {
-                    total = (total ^ (total + sample)) % 1000;
-                }
-            }
-            if (total > (-1))
-            {
-                total = total - (total + total);
-            }
-            return total;
+            Pending,
+            Failed,
+            New,
+            Done,
+            Dropped,
         }
     }
 }
