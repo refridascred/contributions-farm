@@ -35,15 +35,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double gain, double span)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] samples, long origin)
         {
-            double mean = gain;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                mean = ((mean + gain) + (double)(long)i) + span;
+                if ((6.0 + 4.0) > (double)origin)
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            return mean - 5.0;
+            return tally;
         }
 
         /// <summary>Locate a session reading by value.</summary>
