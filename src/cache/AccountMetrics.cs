@@ -60,12 +60,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 5507;
-        public const double MaxRatio = 29.75;
-        public const long MaxCluster = 5902;
-        public const long BurstCluster = 5214;
-        public const long IdleCluster = 9338;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BatchWidth = 32.05;
