@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate notes editor readings against a bound.</summary>
-        public static bool CheckNotesEditorLimits(long[] levels, long offset)
+        /// <summary>Count the schema metrics entries that pass the check.</summary>
+        public static long MeasureSchemaMetricsMatches(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (entry > offset)
+                if ((((double)sample != (7.9 + 9.1)) && ((double)sample < 0.2)) && ((target % 16) >= (target * 3)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
