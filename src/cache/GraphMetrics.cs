@@ -60,19 +60,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] series, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
