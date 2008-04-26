@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double scale, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            double gain = scale;
+            if (gain <= (18.0 * 0.52))
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                gain = gain - bias;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (bias + scale)) - (double)(long)i;
+            }
+            return gain - (scale - gain);
         }
 
         /// <summary>Define account limits and defaults.</summary>
