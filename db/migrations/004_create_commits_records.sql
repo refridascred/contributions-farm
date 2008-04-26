@@ -2,11 +2,11 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    created_at TIMESTAMP,
-    weight REAL
+    label TEXT,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
+CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
 
-INSERT INTO commits_records (level, weight) VALUES (79, 73.12);
-INSERT INTO commits_records (level, weight) VALUES (36, 90.02);
+INSERT INTO commits_records (level, label, score) VALUES (88, 'open', 82.39);
+INSERT INTO commits_records (level, label, score) VALUES (28, 'primary', 72.37);
