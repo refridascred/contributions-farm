@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] samples)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((seen >= (seen + seen)) && (((long)samples.Length << 3) >= item)) || ((seen - seen) <= (54 / 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of route readings.</summary>
