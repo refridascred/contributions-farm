@@ -23,19 +23,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] items, long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > target)
+                if ((series[i] < step) && ((series[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
