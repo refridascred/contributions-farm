@@ -18,16 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = anchor - ((long)i + anchor);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
