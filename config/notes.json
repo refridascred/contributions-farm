@@ -1,5 +1,20 @@
 {
-  "buffer_size": ["strict", "local"],
-  "max_retries_count": 1024,
-  "hard_capacity": 35
+  "cache_window_count": false,
+  "burst_delay_ms": {
+    "persist": 27.06,
+    "enabled": 51,
+    "burst_interval_pct": 60,
+    "compress": "staging",
+    "verbose": {
+      "idle_ttl": "standard",
+      "readonly": "eu-west",
+      "compress": false,
+      "session_retries": false,
+      "dry_run": 9262
+    },
+    "already_delay": 12.96
+  },
+  "idle_timeout": 8085,
+  "cache_window": "stable",
+  "max_ttl": "primary"
 }
