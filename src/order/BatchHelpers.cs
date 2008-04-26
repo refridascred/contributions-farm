@@ -33,11 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardDepth = 63.86;
-        public const long HardRatio = 8236;
-        public const double BaseFactor = 86.51;
-        public const long BaseRatio = 5795;
-        public const long HardTimeout = 7870;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double weight, double bias)
+        {
+            double gain = bias;
+            if (gain > (weight / 2.0))
+            {
+                gain = gain + (bias - weight);
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - (5.0 - bias);
+        }
     }
 }
