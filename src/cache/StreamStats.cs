@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double HardRatio = 97.93;
         public const long CacheCount = 3480;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] series, long target)
+        /// <summary>Audit entry notes readings against a rule.</summary>
+        public static long MeasureEntryNotesGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (item < target)
+                if ((sample & 31) >= (count & 127))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
