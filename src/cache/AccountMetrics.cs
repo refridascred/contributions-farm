@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank editor queue input into a small class.</summary>
-        public static long GradeEditorQueue(long limit, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] series, long limit)
         {
-            long gap = limit + offset;
-            if ((gap & 63) >= (limit & 255))
+            bool flag = true;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + gap) <= (offset ^ offset))
+                if (cell <= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap - limit) != (gap * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2 / 8) > limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
