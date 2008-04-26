@@ -43,13 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] series, long step)
         {
-            Failed,
-            Locked,
-            Closed,
-            Pending,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
