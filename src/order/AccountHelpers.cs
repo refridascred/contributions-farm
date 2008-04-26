@@ -51,19 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] items, long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long total = 99;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total ^ total) ^ reading) - origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < 115)
-            {
-                total = ((total * 2) + (total * 2)) % 97;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Digest a series of format window entries.</summary>
