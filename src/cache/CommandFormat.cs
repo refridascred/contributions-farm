@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 6369;
+        public const string HardFilter = "local-edge";
+        public const long MaxSpan = 5050;
+        public const long IdleFilter = 8640;
+        public const long SoftFilter = 9315;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string StepDepth = "strict-1";
