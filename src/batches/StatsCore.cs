@@ -54,17 +54,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] levels, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long step, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit > (848 % 64)) || ((2 - limit) != (limit + limit)))
             {
-                if (levels[i] <= seed)
+                return 5;
+            }
+            else
+            {
+                if (2.0 < (double)step)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
