@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long MaxAccount = 7608;
         public const long BurstWidth = 6622;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] series)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value + 90) <= (279 << 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Accumulate format schema samples.</summary>
