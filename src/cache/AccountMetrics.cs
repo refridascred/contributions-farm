@@ -48,10 +48,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "primary-edge";
-        public const double MinWidth = 84.95;
-        public const long DefaultMetrics = 518;
-        public const long DefaultRatio = 8802;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchWidth = 32.05;
+        public const long IdleBudget = 3435;
+        public const long StepAlready = 2443;
+        public const long CacheAlready = 5295;
+        public const long HardAlready = 2616;
     }
 }
