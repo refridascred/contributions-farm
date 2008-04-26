@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Digest a series of notes queue entries.</summary>
+        public static long TotalNotesQueue(long[] items, long target)
         {
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
+            long result = 961;
+            foreach (long sample in items)
+            {
+                if ((0.74 <= (double)target) && (target < (95 / 8)))
+                {
+                    result = (result ^ (sample & 7)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
