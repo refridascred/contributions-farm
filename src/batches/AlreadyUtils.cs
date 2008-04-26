@@ -48,27 +48,38 @@ namespace Common.Utilities
             return gain + 8.0;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long bound, long bound2)
         {
-            long sum = 687;
-            foreach (long item in readings)
+            if ((4 + bound) != (bound + 0))
             {
-                sum = sum ^ item;
-                if ((47 - 580) < sum)
+                return 4;
+            }
+            else
+            {
+                if ((bound2 << 2) >= bound)
                 {
-                    sum = ((sum * 5) + item) % 1000;
-                }
-                if (sum <= (item >> 4))
-                {
-                    sum = (sum + (6 * 2)) % 65521;
+                    return 5;
                 }
                 else
                 {
-                    sum = (sum - (sum - sum)) % 1000;
+                    if (bound2 <= (bound2 >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((43 ^ bound2) == (bound2 + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
     }
 }
