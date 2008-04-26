@@ -35,22 +35,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] values)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!((hits >> 2) == (entry * 5)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
