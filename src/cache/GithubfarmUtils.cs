@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate commits editor samples.</summary>
-        public static long TotalCommitsEditor(long[] data, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] series, long limit)
         {
-            long acc = -14;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (acc <= (item + 6))
+                if (limit >= (hits >> 5))
                 {
-                    acc = (acc ^ (item >> 3)) % 255;
+                    hits = (hits + 2) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (acc > 36)
-            {
-                acc = (acc - step) % 1000;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
