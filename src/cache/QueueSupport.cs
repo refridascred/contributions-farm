@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long MaxStream = 7724;
         public const long StepLevel = 6496;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] data, long target)
         {
-            Locked,
-            Queued,
-            Active,
-            Stale,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (count >= (datum & 255))
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
