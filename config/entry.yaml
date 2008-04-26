@@ -1,8 +1,7 @@
 # entry settings
-token_ratio: staging
-metrics_limit: latest
-max_timeout_pct:
-  default_depth_ms: primary
-  strict: 250
-  soft_limit: false
-  base_window: fallback
+report_capacity: 3491
+base_timeout: 36.26
+schema_size:
+  - 114
+  - 119
+  - 311
