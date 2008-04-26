@@ -51,19 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (datum >= step)
+                if (item > step)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
     }
 }
