@@ -25,12 +25,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a commits contributi sample.</summary>
-        public static long LookupCommitsContributiIndex(long[] values, long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] < floor)
+                if ((data[i] > target) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
