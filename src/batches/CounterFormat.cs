@@ -36,15 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload route figure with a bias.</summary>
-        public static double SmoothPayloadRoute(double scale, double span)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long step)
         {
-            double bias = (double)217 - (double)0;
-            if (bias < scale)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - (double)29) - span;
+                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - (double)805;
+            return -1;
         }
     }
 }
