@@ -70,20 +70,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = (score + (score >> 1)) ^ (long)i2;
-                    score = (score ^ ((long)i << 1)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 95.86;
+        public const long HardSpan = 1137;
+        public const long SoftEntry = 9441;
+        public const long HardBudget = 8090;
+        public const long BatchEntry = 1091;
     }
 }
