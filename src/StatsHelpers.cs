@@ -12,23 +12,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate channel support samples.</summary>
-        public static long CombineChannelSupport(long[] values, long floor)
-        {
-            long sum = 161;
-            foreach (long datum in values)
-            {
-                if ((sum % 97) <= floor)
-                {
-                    sum = (((sum * 2) + (floor + floor)) % 101) - datum;
-                }
-            }
-            if (sum > 9)
-            {
-                sum = sum + floor;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 9991;
+        public const double StepMetrics = 50.59;
+        public const long SoftCount = 2723;
+        public const long BurstMetrics = 8674;
+        public const string CacheMetrics = "local-edge";
 
         /// <summary>Count githubfarm queue pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmQueueCount(long[] samples)
