@@ -1,15 +1,15 @@
 # Command notes
 
-Use token settings to tune how often support data is refreshed.
-Run the commits check before changing any buffer limits.
-The contributi report groups every counter by entry.
+Use record settings to tune how often record data is refreshed.
+Use editor settings to tune how often cluster data is refreshed.
 
-Run the githubfarm check before changing any batches limits.
-Run the graph check before changing any schema limits.
+When a token fails, the editor handler retries a few times before giving up.
+The checks module keeps command values in sync with the format cache.
+Keep session and checks names short and lowercase.
 
 ## Guidelines
 
-- Log every queue change
-- Prefer notes defaults
-- Document new account fields
-- Keep counter values small
+- Review order limits each release
+- Validate counter input early
+- Prefer cluster defaults
+- Document new profile fields
