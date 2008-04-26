@@ -61,18 +61,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] readings)
+        /// <summary>Fold a list of editor metrics readings.</summary>
+        public static long ScoreEditorMetrics(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long total = 9;
+            foreach (long cell in series)
             {
-                if (count > ((long)readings.Length * 5))
+                if (!((cell + cell) != (cell << 1)))
                 {
-                    count = (count + 1) + value;
+                    total = (total - (cell / 7)) % 97;
+                }
+                else
+                {
+                    total = (total - (total + 375)) % 1000;
                 }
             }
-            return count;
+            return total % 65521;
         }
     }
 }
