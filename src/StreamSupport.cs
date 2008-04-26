@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi stats samples are out of range.</summary>
-        public static long TallyContributiStatsOutliers(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((target - target) >= sample) && (((8.0 / 9.0) > (double)matches) || ((target + 67) < (target / 6))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 63.79;
+        public const long SoftLayout = 3435;
+        public const long SoftRatio = 3117;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
