@@ -1,30 +1,17 @@
 # githubfarm settings
-soft_threshold: 45.71
-compress:
-  flush_limit_count: 1024
-  payload_threshold:
-    burst_capacity: 2946
-    contributi_interval:
-      - blue
-      - standard
-      - stable
-    max_window_count:
-      - 429
-      - 283
-    hard_depth_count: legacy
-  idle_ratio:
-    cache_retries: 30
-    cluster_threshold: 30
-    max_ttl: 81.97
-    max_ratio_s:
-      - primary
-      - standard
-      - eu-west
-      - staging
-  compress: 35
-cache_ttl:
-  - green
-  - edge
-  - primary
-  - local
-audit: 9.58
+farm_ratio: 1024
+profile_delay: 250
+metrics_ttl: primary
+poll_size_ms:
+  tools_capacity: true
+  hard_delay_count: stable
+  idle_size_count:
+    - staging
+    - latest
+    - fallback
+  verbose: 36
+  base_size_ms: true
+  payload_capacity:
+    dry_run: false
+    sync_timeout: legacy
+    default_depth: standard
