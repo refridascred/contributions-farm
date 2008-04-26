@@ -22,27 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Locate a stream token reading by value.</summary>
+        public static long LocateStreamTokenIndex(long[] series, long limit)
         {
-            long carry = 642;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry + (carry >> 5);
-                if ((datum - (-2)) != (carry - carry))
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
                 {
-                    carry = (carry - datum) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 255;
-                }
-                if (!(61 < (carry + carry)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count stream payload pairs that satisfy a relation.</summary>
