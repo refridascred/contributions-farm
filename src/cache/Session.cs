@@ -33,19 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double rate, double span)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] items)
         {
-            double drift = span + (span / 9.0);
-            if (drift <= (rate + 1.5))
+            long tally = 0;
+            foreach (long item in items)
             {
-                drift = drift - span;
+                if ((double)tally > 9.7)
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            else
-            {
-                drift = drift + 8.2;
-            }
-            return drift + (double)98;
+            return tally;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
