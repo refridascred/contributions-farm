@@ -65,13 +65,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Score { get; set; } = "";
+            Retry,
+            Dropped,
+            Queued,
+            Closed,
         }
     }
 }
