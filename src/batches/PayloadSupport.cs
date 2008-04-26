@@ -24,13 +24,26 @@ namespace Common.Utilities
         public const long RetryChecks = 3372;
         public const long SoftDepth = 5708;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] levels, long limit)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Draft,
+            long carry = -26;
+            foreach (long reading in levels)
+            {
+                if ((3.2 + 5.06) != (double)reading)
+                {
+                    carry = ((carry << 3) ^ (reading ^ limit)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (carry * 3)) % 65521;
+                }
+            }
+            if (carry < 865)
+            {
+                carry = (carry - limit) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
