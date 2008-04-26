@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many format context samples are out of range.</summary>
-        public static long MeasureFormatContextMatches(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((double)hits >= (3.3 * 15.0))
+                if ((double)tally <= (double)reading)
                 {
-                    hits = (hits + 2) - item;
+                    tally = (tally + 2) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the report kind values.</summary>
