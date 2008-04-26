@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long offset, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long cur = offset - target;
+            if ((target << 1) >= cur)
             {
-                if (((cell >> 4) < (70 * 3)) || ((cell / 4) == (cell + seen)))
+                return 7;
+            }
+            else
+            {
+                if ((cur & 63) >= (7 % 7))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset * 4) > (cur - 34))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
