@@ -60,15 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double rate, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double drift = rate;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (floor * 9.07)) + (double)(long)i;
-            }
-            return drift + (rate * 3.0);
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
