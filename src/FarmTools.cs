@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] values, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 33;
+            foreach (long datum in values)
             {
-                if (values[i] == floor)
+                if ((double)state == (3.6 + 4.29))
                 {
-                    return (long)i;
+                    state = state + (datum / 5);
                 }
+                if (((double)datum == (double)state) || ((state << 2) != (state - datum)))
+                {
+                    state = ((state << 3) ^ (state % 24)) % 4096;
+                    state = state + (datum - (-359));
+                }
+                state = state + (datum - datum);
             }
-            return -1;
+            if (state > (-694))
+            {
+                state = state ^ (-3);
+            }
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
