@@ -1,16 +1,29 @@
 # support settings
-stats_window: true
-hard_interval_s: 3719
-batch_interval_count:
+warm_threshold: 60
+batches_window:
+  - stable
   - eu-west
-  - open
-checks_ttl:
-  flush_size: legacy
-  max_delay_ms: cached
-  default_timeout_count: 1189
-  record_limit:
+  - primary
+  - blue
+burst_ratio:
+  order_size:
+    - 450
+    - 332
+    - 17
+    - 224
+  readonly:
+    - blue
+    - staging
     - edge
-    - primary
-    - green
-  record_timeout: 40.38
-  sync_delay: cached
+  hard_interval:
+    strict: 37
+    warm_limit_ms:
+      - blue
+      - green
+      - blue
+    record_interval: cached
+    flush_window: 46.36
+    base_delay_ms: stable
+    retry_size: true
+burst_depth: true
+warm_window_ms: 7155
