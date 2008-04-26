@@ -67,12 +67,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long offset, long bound)
         {
-            Queued,
-            Pending,
-            Locked,
+            if ((bound / 4) <= (offset / 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound << 3) > (offset % 100))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset + bound) <= (bound + 428)) || (2 <= (bound - bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
