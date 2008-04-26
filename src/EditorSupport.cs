@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)seen > (1.74 - 8.0))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
