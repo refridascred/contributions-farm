@@ -13,22 +13,31 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] data, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long bound, long bound2)
         {
-            long acc = 5;
-            foreach (long value in data)
+            if ((bound2 + bound) > (bound / 3))
             {
-                if ((46 << 3) < value)
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ bound2) > bound2)
                 {
-                    acc = (acc + (value + acc)) + floor;
+                    return 5;
                 }
                 else
                 {
-                    acc = (acc - (6 / 3)) % 97;
+                    if ((bound2 - bound2) < 76)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the cache class values.</summary>
