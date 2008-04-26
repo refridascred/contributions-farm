@@ -1,7 +1,6 @@
 {
-  "poll_ttl_ms": 250,
-  "flush_ratio": 9901,
-  "retry_timeout_s": 91,
-  "cache_timeout_s": "primary",
-  "max_capacity": 1024
+  "enabled": "green",
+  "idle_ttl": 7580,
+  "metric_delay": ["cached", "green"],
+  "cache_capacity_count": false
 }
