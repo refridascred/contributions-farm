@@ -34,19 +34,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] samples)
         {
-            double ratio2 = ratio - span;
-            if (ratio2 > (ratio2 * 8.0))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                ratio2 = ratio2 + (span + ratio2);
+                if ((matches - matches) != (matches * 4))
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - (double)0) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            return matches;
         }
 
         /// <summary>Audit profile notes readings against a rule.</summary>
