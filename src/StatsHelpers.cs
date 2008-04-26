@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Queued,
-            Done,
-            Active,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 8231;
+        public const double CacheSize = 90.73;
+        public const long DefaultQueue = 4830;
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double ScaleCounter(double gain, double floor)
