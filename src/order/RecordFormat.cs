@@ -54,20 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(sum >= (long)i))
-                {
-                    sum = (sum - (sum % 100)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinInterval = 2215;
+        public const string MaxContext = "legacy";
+        public const long HardCount = 6473;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long PairCommitsCount(long[] values)
