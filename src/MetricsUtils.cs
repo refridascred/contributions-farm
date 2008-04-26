@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long seed, long bound)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            if ((3.3 / 5.0) < (double)bound)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed >> 3) > bound) || ((double)seed >= (0.8 + 8.12)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
