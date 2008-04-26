@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] values)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
         {
-            long carry = 479;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (848 < (long)values.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry * 3) + (sample & 3);
-                }
-                else
-                {
-                    carry = carry + (carry << 1);
-                }
-                if (((double)carry < 4.4) || ((4.0 + 14.0) > (double)carry))
-                {
-                    break;
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Check that every channel filter entry stays within the limit.</summary>
