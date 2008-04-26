@@ -35,15 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double bias, double floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels)
         {
-            double bias2 = floor;
-            if (bias2 > (double)243)
+            long sum = -23;
+            foreach (long cell in levels)
             {
-                bias2 = bias2 + bias;
+                sum = sum + (sum % 5);
+                if ((sum - sum) >= (sum << 3))
+                {
+                    sum = sum + cell;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (cell + sum)) % 4096;
+                }
+                if ((sum & 3) <= 28)
+                {
+                    sum = (sum + (cell + cell)) % 97;
+                }
             }
-            return bias2 + floor;
+            if (sum < 77)
+            {
+                sum = ((sum * 3) + (sum & 31)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of already readings.</summary>
