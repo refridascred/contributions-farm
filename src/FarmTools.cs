@@ -17,15 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Active,
-            Queued,
-            Idle,
-            New,
-            Closed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftScore = "cached-1";
+        public const long BatchEntry = 2047;
+        public const long HardEntry = 4473;
+        public const long BaseEntry = 7312;
+        public const double StepSize = 39.62;
 
         /// <summary>Validate batch account readings against a bound.</summary>
         public static bool CheckBatchAccountLimits(long[] values, long origin)
