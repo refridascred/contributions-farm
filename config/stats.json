@@ -1,7 +1,6 @@
 {
-  "retry_limit_count": "standard",
-  "report_threshold": "primary",
-  "min_window": 250,
-  "compress": 40.49,
-  "min_threshold_count": 1130
+  "cache_timeout": "green",
+  "dry_run": false,
+  "warm_capacity": true,
+  "notes_interval": 1024
 }
