@@ -34,16 +34,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next report contributi value from a seed.</summary>
-        public static long SeriesReportContributi(long seed)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total << 2) ^ (total * 5);
-                total = ((total * 5) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the entry class values.</summary>
