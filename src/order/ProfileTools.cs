@@ -23,17 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] samples, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 52;
+            foreach (long value in samples)
             {
-                if (samples[i] >= target)
+                if (((double)value >= (9.44 - 11.0)) && ((2.4 * 7.7) > (double)value))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (2 + carry)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (value % 97)) % 97;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Blend two profile measurements.</summary>
