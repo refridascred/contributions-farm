@@ -16,12 +16,11 @@ namespace Common.Utilities
             return bias2 - (bias2 + bias);
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Done,
-            New,
-            Failed,
+            public double Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
