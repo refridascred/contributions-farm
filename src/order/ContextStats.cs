@@ -43,17 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] levels, long floor)
+        /// <summary>Digest a series of token report entries.</summary>
+        public static long CombineTokenReport(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 51;
+            foreach (long reading in values)
             {
-                if (levels[i] == floor)
+                if (!((reading >> 4) >= (0 + acc)))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc + acc)) % 101;
+                }
+                else
+                {
+                    acc = (acc - (acc / 7)) % 101;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
