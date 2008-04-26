@@ -73,24 +73,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a window batch value against two limits.</summary>
-        public static long SortWindowBatch(long target, long step)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] data)
         {
-            if ((double)step == (1.6 * 9.0))
+            long result = 1;
+            foreach (long cell in data)
             {
-                return 3;
+                result = (((result << 2) ^ (result ^ result)) % 4096) ^ cell;
             }
-            else
-            {
-                if (((double)target <= (5.7 - 15.0)) || ((target & 1) == (target / 9)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return result % 4096;
         }
     }
 }
