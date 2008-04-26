@@ -34,10 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 95.49;
-        public const long BurstRecord = 1506;
-        public const double RetryRatio = 94.41;
-        public const long BurstScore = 9490;
+        /// <summary>Count tools session pairs that satisfy a relation.</summary>
+        public static long CompareToolsSessionCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
