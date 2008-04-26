@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
