@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double bias, double floor)
         {
-            long carry = 6;
-            foreach (long cell in samples)
+            double ratio = (double)(3 & 15);
+            for (int i = 0; i < 2; i++)
             {
-                carry = ((carry << 2) ^ cell) % 4096;
-                if ((-6) < (carry % 5))
-                {
-                    carry = (carry + (cell / 8)) % 4096;
-                }
+                ratio = (((ratio - (double)(-87)) + (double)(long)i) - bias) + floor;
             }
-            return carry % 4096;
+            return ratio - (ratio - ratio);
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
