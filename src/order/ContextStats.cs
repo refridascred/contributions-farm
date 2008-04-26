@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] readings, long seed)
         {
-            long score = 5;
-            foreach (long reading in data)
+            long anchor = 1;
+            foreach (long entry in readings)
             {
-                score = (score + (reading + score)) % 65521;
+                anchor = ((anchor + ((long)readings.Length - seed)) % 65521) - entry;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Match up commits samples.</summary>
