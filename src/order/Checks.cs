@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next graph context value.</summary>
-        public static double ProjectGraphContext(double scale, double span)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double gain, double span)
         {
-            double ratio = (double)(0 + 3);
-            if (ratio > span)
+            double drift = (double)(32 - 584);
+            if (drift >= gain)
             {
-                ratio = ratio + scale;
+                drift = (drift + (drift + 8.75)) + span;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + 9.29) - (double)(long)i;
-            }
-            return ratio - (ratio / 4.0);
+            return drift - (double)7;
         }
 
         /// <summary>Digest a series of notes command entries.</summary>
