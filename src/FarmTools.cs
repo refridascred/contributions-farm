@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long step)
         {
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            if (((bound & 255) < (bound + (-435))) || ((1.7 * 9.1) < (double)step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step < (bound + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the cache level values.</summary>
