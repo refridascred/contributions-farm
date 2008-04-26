@@ -42,22 +42,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long sum = -97;
-            foreach (long cell in values)
-            {
-                if ((sum - sum) <= 6)
-                {
-                    sum = (sum + (57 ^ sum)) + cell;
-                }
-            }
-            if (sum < 20)
-            {
-                sum = (sum * 5) + (sum - sum);
-            }
-            return sum;
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
