@@ -51,13 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools format entries that pass the check.</summary>
-        public static long CountToolsFormatHits(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] readings, long bound)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long datum in readings)
             {
-                if ((double)item != (3.84 - 7.2))
+                if (datum <= (bound % 2))
                 {
                     hits = hits + 1;
                 }
