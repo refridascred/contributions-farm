@@ -28,12 +28,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] levels, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a editor record.</summary>
