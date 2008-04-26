@@ -29,21 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count route format pairs that satisfy a relation.</summary>
-        public static long PairRouteFormatCount(long[] values)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally <= (tally - entry)) || ((double)tally >= (14.0 / 6.0)))
                 {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
