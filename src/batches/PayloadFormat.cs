@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 8;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(total < (total * 2)))
                 {
-                    if ((values[i] - values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total * 4) + (value >> 5)) % 97;
                 }
             }
-            return matches;
+            if (total > 289)
+            {
+                total = (total * 4) + (floor * 4);
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a contributi record.</summary>
