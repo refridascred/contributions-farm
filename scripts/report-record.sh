@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable eu-west legacy local; do
+for item in fallback cached; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-RECORD_LIMIT=30
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
