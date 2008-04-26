@@ -73,9 +73,38 @@ namespace Common.Utilities
             return drift - (floor / 2.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 3920;
-        public const long WindowQueue = 814;
-        public const long MaxQueue = 7075;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long target)
+        {
+            if ((double)seed == (3.65 - 15.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((735 + seed) <= seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target - 476) != (seed + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target ^ target) <= (1 ^ target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
