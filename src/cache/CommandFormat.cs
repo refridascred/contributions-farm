@@ -67,17 +67,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] values, long offset)
         {
-            long carry = 9;
-            foreach (long entry in samples)
+            long state = -57;
+            foreach (long cell in values)
             {
-                carry = carry - entry;
-                carry = (carry + (entry % 2)) % 1000;
-                carry = (carry - (carry + carry)) % 1000;
+                if ((double)cell < (3.0 - 4.1))
+                {
+                    state = (state - (state - state)) % 97;
+                }
             }
-            return carry;
+            if (state > 1)
+            {
+                state = state + offset;
+            }
+            return state;
         }
     }
 }
