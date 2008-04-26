@@ -20,18 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] series, long origin)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits <= (4.51 / 7.0))
+                if (samples[i] >= target)
                 {
-                    hits = ((hits + 2) - entry) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next stream value.</summary>
