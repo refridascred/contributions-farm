@@ -1,6 +1,12 @@
 {
-  "sync_retries": "legacy",
-  "cache_ratio_s": false,
-  "batch_ratio": "standard",
-  "batch_limit": "eu-west"
+  "sync_window_pct": {
+    "idle_capacity_ms": 21,
+    "queue_capacity": ["open", "primary"],
+    "batch_window": 3320
+  },
+  "cache_ttl_s": [293, 283, 51, 99],
+  "account_ratio": "green",
+  "max_timeout": 53.88,
+  "idle_interval_count": "blue",
+  "idle_window_pct": "green"
 }
