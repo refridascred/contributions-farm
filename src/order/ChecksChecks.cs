@@ -19,21 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up contributi githubfarm samples.</summary>
-        public static long PairContributiGithubfarmCount(long[] values)
+        /// <summary>Roll a batch support counter forward.</summary>
+        public static long IterateBatchSupport(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = mix ^ 296;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
