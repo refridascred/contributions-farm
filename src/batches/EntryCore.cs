@@ -59,19 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] data, long offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Pending,
+            Done,
+            Draft,
         }
     }
 }
