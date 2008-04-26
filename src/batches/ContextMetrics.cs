@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 5054;
-        public const double LimitInterval = 55.73;
-        public const long LimitFilter = 8898;
-        public const long BatchLevel = 3857;
-        public const long CacheFilter = 7488;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySize = "open";
+        public const double BurstRatio = 15.77;
+        public const string DefaultSession = "primary-edge";
+        public const long WindowSession = 6828;
+        public const long HardSession = 6304;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchScore = 2959;
