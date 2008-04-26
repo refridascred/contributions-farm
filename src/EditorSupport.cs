@@ -40,21 +40,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
