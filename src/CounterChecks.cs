@@ -19,25 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long offset, long offset2)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] samples, long step)
         {
-            long gap = offset ^ offset2;
-            if ((offset + gap) != (offset / 6))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset2 < ((-40) - offset))
+                if ((8.4 - 18.0) != (double)(long)samples.Length)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    hits = ((hits + 3) ^ entry) + step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
