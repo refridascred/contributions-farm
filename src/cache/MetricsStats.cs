@@ -34,13 +34,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
+        public static long OverlapCacheBatchesCount(long[] data)
         {
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi schema sample.</summary>
