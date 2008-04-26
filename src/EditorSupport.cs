@@ -57,20 +57,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] samples, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            long mark = 9;
+            foreach (long entry in samples)
             {
-                if ((8.6 + 1.77) > (double)seed)
-                {
-                    mix = mix + (seed + seed);
-                }
-                mix = (mix - (mix >> 5)) % 101;
-                mix = ((mix * 2) + (long)i) % 1000;
+                mark = ((mark ^ mark) % 97) - step;
+                mark = ((mark << 2) ^ (entry << 2)) % 1000;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a buffer info.</summary>
