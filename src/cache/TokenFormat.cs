@@ -23,11 +23,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 746;
-        public const string MaxScore = "legacy-1";
-        public const long LimitOrder = 9732;
-        public const long StepOrder = 722;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((-7) - seen) >= (seen - reading)) || ((reading < (680 - reading)) || ((double)reading > 2.6)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count tools session pairs that satisfy a relation.</summary>
         public static long CompareToolsSessionCount(long[] items)
