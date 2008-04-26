@@ -54,18 +54,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] readings)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            if ((seed ^ seed) >= (offset * 3))
             {
-                if ((hits - 50) < datum)
+                return 3;
+            }
+            else
+            {
+                if (!((3 + offset) <= (offset >> 3)))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((7.0 / 4.0) <= (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((80 & 7) <= (seed % 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
