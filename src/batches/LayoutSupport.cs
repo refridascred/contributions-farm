@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long floor, long seed)
+        /// <summary>Look up the position of a schema cluster sample.</summary>
+        public static long SeekSchemaClusterIndex(long[] values, long seed)
         {
-            if (((6.48 + 3.2) <= (double)seed) && ((seed + floor) == (seed - floor)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed > (5.0 - 10.0))
+                if (values[i] == seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up editor samples.</summary>
