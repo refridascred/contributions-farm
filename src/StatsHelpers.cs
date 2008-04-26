@@ -48,22 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of tools cluster entries.</summary>
-        public static long CombineToolsCluster(long[] series, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] data, long limit)
         {
-            long state = 7;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (!((seed % 2) == (entry - entry)))
+                if (value != limit)
                 {
-                    state = (state - (10 + entry)) % 1000;
-                }
-                else
-                {
-                    state = (state << 2) ^ (323 << 1);
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Accumulate entry samples.</summary>
