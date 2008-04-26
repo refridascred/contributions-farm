@@ -1,5 +1,6 @@
 {
-  "retry_depth": 78,
-  "persist": "strict",
-  "strict": "cached"
+  "token_ttl": 29.55,
+  "sync_window_count": "legacy",
+  "flush_window_pct": 25,
+  "audit": 60
 }
