@@ -29,10 +29,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinCount = 9221;
-        public const double BaseSession = 80.18;
-        public const double IdleScore = 12.01;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long offset)
+        {
+            long acc = 285;
+            foreach (long datum in samples)
+            {
+                acc = acc - (offset / 7);
+                if (((double)acc != (5.44 * 7.53)) && ((datum + 58) <= (datum + acc)))
+                {
+                    acc = (acc + (75 + datum)) % 65521;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] series, long target)
