@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the stream window series from a seed.</summary>
-        public static long RollStreamWindow(long step)
+        /// <summary>Look up the position of a batch already sample.</summary>
+        public static long FindBatchAlreadyIndex(long[] series, long target)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result * 4) + (result & 255);
-                result = ((result * 5) + (long)i) % 65521;
+                if ((series[i] > target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a checks stats.</summary>
