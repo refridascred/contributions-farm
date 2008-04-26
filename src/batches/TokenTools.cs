@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 3596;
+        public const long DefaultTimeout = 9232;
+        public const long CacheCount = 6251;
+        public const long BurstBudget = 1492;
+        public const string CacheInterval = "latest-edge";
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
