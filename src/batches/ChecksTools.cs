@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double bias, double floor)
         {
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            double scale = floor;
+            if (scale <= (scale + scale))
+            {
+                scale = (scale + (double)75) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (double)40) + (double)(long)i;
+            }
+            return scale + (double)9;
         }
 
         /// <summary>Blend two session schema measurements.</summary>
