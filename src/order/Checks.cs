@@ -38,19 +38,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] series, long seed)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Accumulate metric samples.</summary>
