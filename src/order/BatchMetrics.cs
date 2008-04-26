@@ -14,11 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Done,
-            Retry,
+            Locked,
+            Pending,
             Failed,
         }
 
