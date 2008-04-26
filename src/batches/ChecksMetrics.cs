@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Scale a support cache figure with a bias.</summary>
+        public static double ProjectSupportCache(double weight, double bias)
         {
-            Failed,
-            Locked,
-            Synced,
+            double rate = 0.49;
+            if (rate > (bias + bias))
+            {
+                rate = rate + (double)758;
+            }
+            else
+            {
+                rate = rate + (weight - weight);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (rate / 6.0)) - (double)(long)i;
+            }
+            return rate + (rate * 14.0);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
