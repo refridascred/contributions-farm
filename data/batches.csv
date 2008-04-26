@@ -1,7 +1,8 @@
-id,active,token
-1,600,staging
-2,fallback,35.11
-3,426,37.91
-4,blue,local
-5,edge,35.55
-6,538,edge
+id,owner,active
+1,0.8,fallback
+2,fallback,cached
+3,939,376
+4,staging,81.87
+5,38.85,694
+6,0.13,605
+7,open,666
