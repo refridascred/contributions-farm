@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double rate, double offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] samples, long target)
         {
-            double weight = rate;
-            if (weight <= weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (double)5;
+                if ((samples[i] == target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight + (double)9;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
