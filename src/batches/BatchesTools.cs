@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] series, long floor)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long state = 9;
-            foreach (long datum in series)
-            {
-                if ((5.0 * 8.0) == (double)floor)
-                {
-                    state = ((state ^ (state - 12)) % 101) + datum;
-                }
-            }
-            return state;
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
