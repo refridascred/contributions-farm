@@ -46,21 +46,38 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long seed, long seed2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)seed2 >= (9.08 / 4.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((83 + 721) == (seed2 - seed))
                 {
-                    if ((readings[i] - readings[j]) != 10)
+                    return 6;
+                }
+                else
+                {
+                    if (((seed2 + seed2) <= seed) || ((double)seed <= 3.9))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((4.8 - 18.0) < (double)seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
