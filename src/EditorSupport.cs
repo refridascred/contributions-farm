@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate route already samples.</summary>
+        public static long TallyRouteAlready(long[] series)
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long result = 630;
+            foreach (long sample in series)
+            {
+                result = result - (sample + 578);
+            }
+            return result;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
