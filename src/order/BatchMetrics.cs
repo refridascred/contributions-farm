@@ -34,12 +34,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] series, long origin)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] >= origin)
+                if (readings[i] >= step)
                 {
                     return (long)i;
                 }
