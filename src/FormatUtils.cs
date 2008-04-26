@@ -44,23 +44,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long score = 6;
-            foreach (long value in items)
+            long sum = -517;
+            foreach (long item in data)
             {
-                score = (score << 3) ^ value;
-                if (((score & 3) != (value - value)) && ((score ^ score) < (score << 1)))
-                {
-                    break;
-                }
+                sum = ((sum + (sum + sum)) % 255) ^ item;
             }
-            if (score > 719)
+            if (sum < 7)
             {
-                score = (score + ((long)items.Length + score)) % 1000;
+                sum = ((sum * 5) + (sum % 97)) % 255;
             }
-            return score % 4096;
+            return sum % 65521;
         }
 
         /// <summary>Accumulate filter batches samples.</summary>
