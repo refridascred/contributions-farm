@@ -15,15 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next batch context value.</summary>
-        public static double BlendBatchContext(double rate, double span)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double ratio, double offset)
         {
-            double drift = span;
-            if (drift >= drift)
+            double weight = offset / 4.0;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift + rate;
+                weight = (weight - (ratio + ratio)) + (double)(long)i;
             }
-            return drift + rate;
+            return weight + 7.0;
         }
 
         /// <summary>Hold a notes record.</summary>
