@@ -33,19 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits payload entry stays within the limit.</summary>
-        public static bool GuardCommitsPayloadRange(long[] series, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long sum = 770;
+            foreach (long reading in levels)
             {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 5) + (target % 3)) + reading;
             }
-            return ready;
+            if (sum < 940)
+            {
+                sum = sum - (target << 2);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
