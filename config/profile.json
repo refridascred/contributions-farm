@@ -1,17 +1,8 @@
 {
-  "buffer_depth": ["eu-west", "green", "local"],
-  "report_capacity": "staging",
-  "audit": {
-    "flush_limit_s": [88, 466, 366, 361],
-    "sync_depth_ms": {
-      "idle_threshold": 8654,
-      "flush_interval_ms": 3947,
-      "verbose": 60
-    },
-    "idle_limit": 7031,
-    "default_retries_count": 6043
-  },
-  "default_interval_ms": 100,
-  "min_window": false,
-  "batch_retries": "cached"
+  "retry_retries_count": "staging",
+  "poll_delay": 6682,
+  "flush_retries_s": 6954,
+  "base_retries_pct": 83,
+  "default_ttl_ms": "latest",
+  "dry_run": ["cached", "primary"]
 }
