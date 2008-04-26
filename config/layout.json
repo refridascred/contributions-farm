@@ -1,17 +1,9 @@
 {
-  "readonly": {
-    "batch_depth": "blue",
-    "base_window_s": "local",
-    "sync_delay": "legacy",
-    "poll_delay_count": true
+  "persist": "staging",
+  "metrics_timeout": {
+    "poll_window": 100,
+    "farm_capacity": 87,
+    "persist": "primary"
   },
-  "default_limit_s": {
-    "enabled": "eu-west",
-    "soft_retries": 81.6,
-    "default_retries": "local"
-  },
-  "idle_size": 4288,
-  "soft_timeout_count": "green",
-  "idle_window_pct": ["latest", "stable", "green"],
-  "min_depth_count": "latest"
+  "dry_run": "legacy"
 }
