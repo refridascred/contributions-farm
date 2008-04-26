@@ -1,8 +1,7 @@
 # entry settings
-report_size: 98
-idle_capacity: 26.95
-strict:
-  - standard
-  - fallback
-  - blue
-batches_delay: 250
+poll_capacity: edge
+cache_depth_s: false
+buffer_interval: stable
+max_timeout:
+  - 23
+  - 275
