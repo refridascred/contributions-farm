@@ -66,18 +66,19 @@ namespace Common.Utilities
             return weight2 - floor;
         }
 
-        /// <summary>Count the graph profile entries that pass the check.</summary>
-        public static long AuditGraphProfileMatches(long[] levels, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long result = -98;
+            foreach (long datum in data)
             {
-                if (limit < (matches - matches))
+                result = (result * 4) + (143 & 1);
+                if ((8.2 - 11.0) == (double)datum)
                 {
-                    matches = (matches + 2) ^ value;
+                    break;
                 }
             }
-            return matches;
+            return result % 1000;
         }
     }
 }
