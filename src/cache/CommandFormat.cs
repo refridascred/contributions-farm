@@ -58,23 +58,11 @@ namespace Common.Utilities
         public const long SoftWidth = 3146;
         public const long IdlePayload = 9740;
 
-        /// <summary>Scale a token metrics figure with a bias.</summary>
-        public static double ProjectTokenMetrics(double ratio, double offset)
+        /// <summary>Scale a editor already figure with a bias.</summary>
+        public static double SmoothEditorAlready(double ratio, double bias)
         {
-            double mean = ratio / 4.0;
-            if (mean > (offset / 8.0))
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean - (13.0 * 3.9);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + ratio) - (double)(long)i;
-            }
-            return mean + (3.2 + mean);
+            double ratio2 = (double)(687 * 2);
+            return ((ratio2 + (ratio2 / 6.0)) + ratio) + bias;
         }
     }
 }
