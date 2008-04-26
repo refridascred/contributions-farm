@@ -16,12 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 2467;
-        public const string HardWidth = "cached";
-        public const long BurstReport = 8755;
-        public const long SoftFactor = 3527;
-        public const long LimitReport = 1164;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowRatio = 70.55;
+        public const long BaseGithubfarm = 5805;
+        public const string StepLevel = "strict";
+        public const long StepGithubfarm = 7719;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstCache = 7183;
