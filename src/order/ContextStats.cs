@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] samples, long target)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Dropped,
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a order stats.</summary>
