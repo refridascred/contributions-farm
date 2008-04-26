@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const double LimitWidth = 45.9;
         public const long BatchSize = 7578;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long score = 6;
+            foreach (long value in data)
+            {
+                score = ((score * 2) + (long)data.Length) % 255;
+                if (((double)value == (12.0 - 6.0)) && ((double)value != (14.0 * 2.0)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a counter header.</summary>
