@@ -49,13 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Retry,
-            Draft,
-            Dropped,
-            Done,
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
