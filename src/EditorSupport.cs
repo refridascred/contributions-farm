@@ -40,11 +40,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseScore = 45.27;
-        public const string DefaultSpan = "open-1";
-        public const string BatchContext = "fallback";
-        public const long BurstContext = 3670;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
