@@ -49,17 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] readings, long limit)
+        /// <summary>Accumulate filter batches samples.</summary>
+        public static long ScoreFilterBatches(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 5;
+            foreach (long datum in values)
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix + (datum + datum)) % 255) - target;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
