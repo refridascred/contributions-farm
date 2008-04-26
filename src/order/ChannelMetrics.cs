@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] values, long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count + datum) > (count & 31))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
