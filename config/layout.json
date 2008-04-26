@@ -1,7 +1,16 @@
 {
-  "burst_timeout_pct": ["stable", "standard"],
-  "warm_depth_s": 68,
-  "sync_limit": "primary",
-  "min_ratio_s": 28.95,
-  "batch_window_pct": "eu-west"
+  "idle_depth": {
+    "base_ratio": {
+      "checks_timeout": true,
+      "enabled": "open",
+      "idle_depth_pct": "fallback",
+      "sync_limit_ms": "local"
+    },
+    "strict": [474, 389, 212],
+    "enabled": 250,
+    "default_depth_pct": 451
+  },
+  "counter_ratio": 250,
+  "max_retries_pct": 62.34,
+  "sync_limit_count": 3
 }
