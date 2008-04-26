@@ -65,22 +65,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many window stream samples are out of range.</summary>
-        public static long TallyWindowStreamGaps(long[] items)
+        /// <summary>Measure how many support context samples are out of range.</summary>
+        public static long CountSupportContextOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (matches >= datum)
+                if ((reading - reading) < (count << 3))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
