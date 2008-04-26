@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchInterval = "local-edge";
-        public const string HardScore = "staging";
-        public const double DefaultInterval = 2.61;
-        public const long SoftAlready = 7612;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long offset)
+        {
+            if ((offset << 3) > offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1.5 + 7.32) != (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((3 - target) < (77 + target)) && ((target / 4) <= (offset + target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the layout command entries that pass the check.</summary>
         public static long AuditLayoutCommandGaps(long[] values, long step)
