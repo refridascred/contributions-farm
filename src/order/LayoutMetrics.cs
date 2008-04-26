@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] values, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((20.0 + 3.61) < (double)(long)values.Length) || ((double)target > (7.4 + 1.0)))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Dropped,
+            Pending,
+            Locked,
         }
 
         /// <summary>Project the next batch context value.</summary>
