@@ -31,11 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = ((score << 3) ^ (target >> 1)) - (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Blend two filter measurements.</summary>
