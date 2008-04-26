@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double scale, double floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double weight = scale;
-            if (weight >= scale)
-            {
-                weight = weight + (floor * 1.18);
-            }
-            return weight - (floor - floor);
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the payload phase values.</summary>
