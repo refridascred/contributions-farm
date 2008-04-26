@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] values, long step)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
