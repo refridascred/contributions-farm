@@ -38,17 +38,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] series, long limit)
+        /// <summary>Roll a commits batches counter forward.</summary>
+        public static long RollCommitsBatches(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
