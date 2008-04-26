@@ -33,11 +33,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long floor, long step)
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            if ((step ^ step) > (floor >> 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7.6 - 11.0) < (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((959 * 2) < floor) && ((6.86 * 2.35) == (double)step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
