@@ -1,15 +1,14 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the batches list.
-Run the stats check before changing any order limits.
+Each account is validated before it reaches the commits queue.
+Keep queue and order names short and lowercase.
 
-The report report groups every token by session.
-The token module keeps filter values in sync with the batch cache.
-A order that stays idle for too long is moved to the format list.
+When a stats fails, the cluster handler retries a few times before giving up.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every token change
-- Validate channel input early
-- Document new cache fields
+- Prefer profile defaults
+- Keep batch values small
+- Validate filter input early
+- Review metric limits each release
