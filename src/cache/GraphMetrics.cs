@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] values)
         {
-            long sum = 19;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                sum = (sum - sum) ^ value;
+                if (((seen < (seen >> 2)) && ((value >> 1) < seen)) || (seen < (value & 255)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
