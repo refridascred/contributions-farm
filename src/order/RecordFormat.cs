@@ -63,20 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] items, long limit)
         {
-            long score = 97;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                score = (score - (812 - (-85))) + cell;
-                score = (score ^ score) % 1000;
+                if (((datum >> 2) > (tally + datum)) || (((datum & 31) <= datum) && ((double)datum >= 4.9)))
+                {
+                    tally = (tally + 3) + limit;
+                }
             }
-            if (score < 9)
-            {
-                score = (score - score) % 1000;
-            }
-            return score;
+            return tally;
         }
     }
 }
