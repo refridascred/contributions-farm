@@ -59,16 +59,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] samples, long step)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long mark = 9;
-            foreach (long entry in samples)
-            {
-                mark = ((mark ^ mark) % 97) - step;
-                mark = ((mark << 2) ^ (entry << 2)) % 1000;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
