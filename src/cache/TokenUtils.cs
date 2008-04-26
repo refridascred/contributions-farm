@@ -12,11 +12,12 @@ namespace Common.Utilities
             return ((scale - (scale + 1.8)) + bias) + bias2;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double weight, double floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            double weight2 = (weight * 7.0) * 1.0;
-            return (weight2 + (double)130) + floor;
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
