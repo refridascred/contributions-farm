@@ -61,11 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
