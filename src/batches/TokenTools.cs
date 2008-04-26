@@ -14,10 +14,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "strict-1";
-        public const long IdleCount = 1462;
-        public const long MinStats = 1229;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long bound, long floor)
