@@ -20,22 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] samples, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long carry = 575;
-            foreach (long datum in samples)
-            {
-                if (datum <= (carry + datum))
-                {
-                    carry = carry - (carry << 2);
-                }
-            }
-            if (carry < 459)
-            {
-                carry = ((carry << 2) ^ seed) % 255;
-            }
-            return carry % 97;
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Count the contributi buffer entries that pass the check.</summary>
