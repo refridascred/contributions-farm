@@ -24,17 +24,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first contributi report entry that matches the target.</summary>
-        public static long SeekContributiReportIndex(long[] samples, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Project the next order value.</summary>
