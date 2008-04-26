@@ -53,15 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
