@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxTimeout = 7965;
-        public const long StepSize = 5095;
-        public const double MinDepth = 43.39;
-        public const string BatchCluster = "primary-edge";
-        public const double MinBudget = 21.71;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long SeriesSession(long seed)
