@@ -15,13 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
+            double gain2 = floor;
+            if (gain2 <= floor)
+            {
+                gain2 = gain2 + (gain * 17.0);
+            }
+            return gain2 - (double)1;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
