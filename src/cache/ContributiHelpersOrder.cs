@@ -34,13 +34,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
             public bool Owner { get; set; }
-            public double Count { get; set; }
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
     }
 }
