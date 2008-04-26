@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 1860;
-        public const long BurstBatch = 4335;
-        public const long BatchCount = 3253;
+        /// <summary>Accumulate record context samples.</summary>
+        public static long ScoreRecordContext(long[] series)
+        {
+            long total = 5;
+            foreach (long reading in series)
+            {
+                total = (total + 38) % 255;
+                total = ((total << 2) ^ (reading & 7)) % 4096;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
