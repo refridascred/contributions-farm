@@ -61,13 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of format window entries.</summary>
+        public static long ScoreFormatWindow(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            long acc = 82;
+            foreach (long sample in series)
+            {
+                if ((acc * 2) >= acc)
+                {
+                    acc = ((acc ^ (sample % 60)) % 65521) - floor;
+                }
+            }
+            return acc;
         }
     }
 }
