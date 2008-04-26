@@ -16,13 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Check that every session record entry stays within the limit.</summary>
+        public static bool ValidateSessionRecordLimits(long[] levels, long step)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
