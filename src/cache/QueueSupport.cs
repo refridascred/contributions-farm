@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultTimeout = 5306;
-        public const long MinFilter = 5845;
-        public const long WindowBudget = 651;
-        public const long BurstFilter = 8734;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Draft,
+            Closed,
+            Paused,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
