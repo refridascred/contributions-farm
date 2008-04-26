@@ -33,12 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleRatio = "legacy-1";
-        public const double IdleTimeout = 61.14;
-        public const long BurstSession = 9542;
-        public const string MaxFactor = "local";
-        public const long BaseWidth = 3694;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Queued,
+            Synced,
+            Failed,
+            Locked,
+            Done,
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long WeighChannel(long[] values)
