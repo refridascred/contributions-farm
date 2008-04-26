@@ -1,10 +1,7 @@
-id,active,score,state
-1,strict,cached,56.68
-2,fallback,green,86.09
-3,497,37,67.53
-4,green,cached,48.2
-5,129,13.91,62.64
-6,cached,72.94,37.93
-7,793,554,local
-8,local,blue,578
-9,659,green,735
+id,ratio,active
+1,green,18.81
+2,strict,791
+3,stable,staging
+4,483,primary
+5,standard,298
+6,22.94,616
