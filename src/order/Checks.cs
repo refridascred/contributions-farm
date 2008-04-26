@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long target, long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long offset = target - seed;
-            if ((1.0 * 2.79) == (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((22 << 2) >= target) && ((0.7 + 0.8) > (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((67 - target) < (target * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a entry entry.</summary>
