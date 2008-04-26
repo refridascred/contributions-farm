@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((reading >> 5) > (6 + 4))
+                if (!(cell > (floor >> 4)))
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
