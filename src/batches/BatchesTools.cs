@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many metrics queue samples are out of range.</summary>
+        public static long AuditMetricsQueueHits(long[] items, long step)
         {
-            Failed,
-            Idle,
-            Stale,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (((item % 64) <= (hits ^ hits)) || (item > (2 * 3)))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
