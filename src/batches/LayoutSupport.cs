@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 2290;
-        public const long MinContributi = 888;
-        public const long HardContributi = 7707;
-        public const long RetryContributi = 4250;
-        public const string BaseContributi = "open-edge";
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long WindowStream = 3751;
