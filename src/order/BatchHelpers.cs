@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] data, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((237 - origin) == (30 + entry))
-                {
-                    hits = hits + 1;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
