@@ -48,18 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)tally > 9.7)
+                if ((((95 / 3) > (value + bound)) || ((double)bound >= 5.83)) || ((seen >> 2) > (seen + seen)))
                 {
-                    tally = (tally + 3) + item;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
