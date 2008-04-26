@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const long BurstSpan = 9048;
         public const long StepCommits = 6884;
 
-        /// <summary>Look up the position of a record account sample.</summary>
-        public static long FindRecordAccountIndex(long[] data, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long origin, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)origin <= (8.1 / 9.0))
             {
-                if (data[i] >= seed)
+                return 7;
+            }
+            else
+            {
+                if ((31 ^ origin) <= (-8))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((origin - bound) <= bound) || ((origin + bound) >= origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
