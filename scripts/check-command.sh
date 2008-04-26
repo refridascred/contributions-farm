@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=413
-log "limit is ${COMMAND_LIMIT}"
+for item in local open edge standard; do
+    log "checking ${item}"
+done
 
-mode="${1:-strict}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=482
+log "limit is ${COMMAND_LIMIT}"
