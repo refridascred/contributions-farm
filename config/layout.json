@@ -1,10 +1,8 @@
 {
-  "dry_run": {
-    "persist": ["cached", "open", "edge", "green"],
-    "enabled": ["primary", "strict", "eu-west"],
-    "session_size": false
-  },
-  "hard_limit_count": true,
-  "layout_delay": "edge",
-  "sync_window_s": false
+  "support_ratio": 8809,
+  "profile_window": 94.35,
+  "sync_limit": 34.52,
+  "retry_size_ms": "blue",
+  "burst_retries": 72.81,
+  "hard_interval": 70.65
 }
