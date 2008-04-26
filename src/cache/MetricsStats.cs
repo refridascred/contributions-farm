@@ -52,10 +52,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinScore = 1729;
-        public const long BurstFarm = 9489;
-        public const long RetryFarm = 4605;
-        public const string HardSpan = "cached-v2";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
