@@ -43,11 +43,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] data, long floor)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
