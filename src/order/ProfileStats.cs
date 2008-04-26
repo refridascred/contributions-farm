@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((limit >> 2) == (seen / 7))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 1473;
+        public const long BatchBudget = 1389;
+        public const long MinCache = 3205;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
