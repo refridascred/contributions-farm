@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] values)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)matches > (3.0 + 2.1))
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Accumulate metric samples.</summary>
