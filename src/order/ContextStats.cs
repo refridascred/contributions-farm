@@ -20,10 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxInterval = 7920;
-        public const string BatchLevel = "latest-v2";
-        public const long MinInterval = 8968;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double weight, double floor)
