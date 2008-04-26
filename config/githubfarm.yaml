@@ -1,4 +1,16 @@
 # githubfarm settings
-schema_retries: false
-strict: 98
-contributi_depth: false
+burst_delay_pct:
+  retry_depth_count:
+    max_ratio_pct: true
+    min_limit_count: fallback
+    sync_size_pct: 100
+    burst_limit: 31.33
+    hard_ratio_ms: primary
+    verbose: 9579
+  poll_capacity_ms: 8278
+  warm_ttl_s: 100
+  cache_window_pct: false
+  checks_limit: 28.68
+  base_ttl_count: 94
+retry_interval_ms: 55.72
+flush_threshold_pct: true
