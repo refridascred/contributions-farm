@@ -1,7 +1,7 @@
 # entry settings
-persist: 7729
-notes_ttl:
-  - 136
-  - 450
-  - 326
-default_ttl_ms: fallback
+base_threshold_s: 60
+sync_depth_ms:
+  - 295
+  - 317
+  - 96
+batch_window_ms: eu-west
