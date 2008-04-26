@@ -23,14 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
+            Synced,
             New,
             Stale,
-            Done,
-            Failed,
-            Pending,
         }
 
         /// <summary>Describe the filter class values.</summary>
