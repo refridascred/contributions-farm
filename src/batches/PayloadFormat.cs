@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] levels)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((3.84 - 2.21) <= (double)count) && ((double)count != (20.0 + 11.0)))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the filter state values.</summary>
