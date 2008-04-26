@@ -25,25 +25,21 @@ namespace Common.Utilities
             return scale + (double)843;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long target, long target2)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            long cur = target ^ target2;
-            if ((double)target <= (6.0 / 9.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target2 - cur) == (target + cur))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
