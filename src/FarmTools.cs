@@ -14,10 +14,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 1820;
-        public const double BatchRatio = 98.24;
-        public const string BaseRecord = "stable-edge";
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Active,
+            Queued,
+            Idle,
+            New,
+            Closed,
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] samples, long origin)
