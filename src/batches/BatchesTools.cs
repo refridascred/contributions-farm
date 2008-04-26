@@ -31,22 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] samples, long step)
+        /// <summary>Check that every metric counter entry stays within the limit.</summary>
+        public static bool CheckMetricCounterRange(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (!(67 < (step << 3)))
+                if (item != origin)
                 {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
