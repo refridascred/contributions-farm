@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] values, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-251) > origin) && ((double)tally == (20.0 - 9.6)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Compare every pair of commits filter readings.</summary>
