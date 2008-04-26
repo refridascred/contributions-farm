@@ -14,12 +14,40 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 26.64;
-        public const string HardCount = "local-1";
-        public const long DefaultDepth = 4027;
-        public const long SoftSupport = 2323;
-        public const long MaxTimeout = 8029;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long bound, long offset)
+        {
+            long offset2 = bound + offset;
+            if ((double)offset2 <= (4.1 * 6.4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset <= (offset << 1)) || (offset >= (bound << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset2 << 2) > (offset / 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((45 % 97) < offset2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] values)
