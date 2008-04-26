@@ -27,18 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support command samples are out of range.</summary>
-        public static long AuditSupportCommandOutliers(long[] readings)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (count < (sample / 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
