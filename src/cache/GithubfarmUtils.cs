@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] items, long floor)
         {
-            Idle,
-            Dropped,
-            Ready,
-            Draft,
-            Queued,
+            long carry = 9;
+            foreach (long sample in items)
+            {
+                if ((double)5 >= (double)carry)
+                {
+                    carry = ((carry << 2) ^ (floor >> 3)) ^ sample;
+                }
+            }
+            if (carry > (-4))
+            {
+                carry = ((carry << 2) ^ (floor << 3)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a checks stats.</summary>
