@@ -64,13 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] items, long floor)
         {
-            Retry,
-            New,
-            Pending,
-            Active,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)item <= (2.0 / 2.0))
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a support entry.</summary>
