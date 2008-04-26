@@ -1,6 +1,8 @@
-id,score,label,region
-1,edge,52.03,green
-2,332,eu-west,18.18
-3,726,latest,867
-4,latest,95.39,484
-5,130,660,599
+id,active,weight,count
+1,52.78,75,792
+2,cached,902,staging
+3,42.69,edge,297
+4,9.1,824,7
+5,stable,419,710
+6,581,617,397
+7,38.17,25.56,eu-west
