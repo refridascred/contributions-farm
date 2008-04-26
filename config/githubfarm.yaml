@@ -1,7 +1,19 @@
 # githubfarm settings
-flush_delay: eu-west
-dry_run: open
-enabled: 86.24
-poll_threshold_s: green
-min_timeout_pct: stable
-batch_threshold_pct: true
+stream_delay: false
+min_ratio_s:
+  - open
+  - local
+  - stable
+  - blue
+batch_depth:
+  - stable
+  - edge
+  - eu-west
+max_size_s:
+  compress: local
+  stream_ttl: true
+  persist: true
+  poll_interval_count: 32.56
+  base_depth: 578
+base_timeout: true
+payload_retries: 60
