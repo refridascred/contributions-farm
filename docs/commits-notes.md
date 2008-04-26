@@ -1,15 +1,11 @@
 # Commits notes
 
-Run the stream check before changing any commits limits.
-Use metric settings to tune how often counter data is refreshed.
-Keep commits and order names short and lowercase.
-
-Use record settings to tune how often format data is refreshed.
-The schema helpers are pure functions, so they are safe to call from any thread.
-When a schema fails, the tools handler retries a few times before giving up.
+A record that stays idle for too long is moved to the stream list.
+Keep support and commits names short and lowercase.
 
 ## Guidelines
 
-- Keep route values small
-- Validate schema input early
-- Prefer queue defaults
+- Document new payload fields
+- Validate buffer input early
+- Log every already change
+- Review payload limits each release
