@@ -20,16 +20,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate format schema samples.</summary>
-        public static long FoldFormatSchema(long[] items, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long carry = 91;
-            foreach (long datum in items)
-            {
-                carry = (((carry ^ (carry % 8)) % 4096) - datum) + floor;
-                carry = ((carry << 3) ^ 2) % 65521;
-            }
-            return carry;
+            Locked,
+            Paused,
+            Queued,
+            Retry,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
