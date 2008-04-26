@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long MinQueue = 6839;
         public const double MaxQueue = 69.81;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public double Region { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
