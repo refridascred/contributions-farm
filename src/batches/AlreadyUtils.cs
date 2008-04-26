@@ -23,18 +23,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] items, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)hits == (5.9 - 5.99))
-                {
-                    hits = ((hits + 1) - datum) - target;
-                }
-            }
-            return hits;
+            Dropped,
+            New,
+            Paused,
         }
 
         /// <summary>Blend two batches measurements.</summary>
