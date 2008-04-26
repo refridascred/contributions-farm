@@ -34,18 +34,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] levels, long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double ratio, double span)
         {
-            long acc = 2;
-            foreach (long sample in levels)
+            double ratio2 = ratio - span;
+            if (ratio2 > (ratio2 * 8.0))
             {
-                if ((65 - bound) != (bound / 2))
-                {
-                    acc = (((acc << 3) ^ (acc ^ bound)) % 65521) ^ sample;
-                }
+                ratio2 = ratio2 + (span + ratio2);
             }
-            return acc % 65521;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 - (double)0) + (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Audit profile notes readings against a rule.</summary>
