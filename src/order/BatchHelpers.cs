@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] values)
+        /// <summary>Locate a batch graph reading by value.</summary>
+        public static long LookupBatchGraphIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (2.2 >= (double)hits)
+                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
                 {
-                    hits = (hits + 2) + reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
