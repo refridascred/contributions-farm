@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long step)
         {
-            long mark = 28;
-            foreach (long value in samples)
+            long carry = step;
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark - mark) % 1000;
-                if (((93 % 7) <= mark) && (value > (666 % 16)))
+                if (!((step + 66) > (step & 3)))
                 {
-                    break;
+                    carry = (carry - ((long)i << 2)) % 101;
                 }
+                else
+                {
+                    carry = (carry ^ (carry ^ step)) % 4096;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = (((carry * 4) + 395) % 4096) - (long)i2;
+                }
+                carry = (carry ^ ((long)i & 63)) % 101;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mark % 1000;
+            return carry;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
