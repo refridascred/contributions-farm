@@ -1,8 +1,9 @@
-id,level,state
-1,stable,22.83
-2,894,13.13
-3,blue,cached
-4,40,18.15
-5,standard,480
-6,884,14.19
-7,563,30.62
+id,owner,state,token
+1,485,staging,84.3
+2,81.69,60.81,83.34
+3,51.46,57.83,422
+4,825,90,edge
+5,703,415,364
+6,legacy,local,20.81
+7,7.53,staging,fallback
+8,latest,62.21,green
