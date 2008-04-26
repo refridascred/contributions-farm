@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] values, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits << 3) <= datum)
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a stats reading.</summary>
