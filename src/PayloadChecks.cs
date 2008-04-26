@@ -58,19 +58,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] values, long origin)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            double ratio2 = floor;
+            if (ratio2 < ratio2)
             {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio2 = (ratio2 + (double)34) + ratio;
             }
-            return stale;
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - 0.1) + (double)(long)i;
+            }
+            return ratio2 + (double)685;
         }
     }
 }
