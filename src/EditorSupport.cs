@@ -31,18 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many record counter samples are out of range.</summary>
-        public static long MeasureRecordCounterHits(long[] series)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((seen & 63) >= item) || ((seen % 16) <= (item + seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
