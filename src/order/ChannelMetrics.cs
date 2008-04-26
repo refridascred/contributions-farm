@@ -24,17 +24,17 @@ namespace Common.Utilities
         public const string MinFactor = "open-1";
         public const double SoftSpan = 53.34;
 
-        /// <summary>Find the first commits format entry that matches the target.</summary>
-        public static long SeekCommitsFormatIndex(long[] levels, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 96;
+            foreach (long value in data)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result << 2) ^ (result & 127);
+                result = result + result;
+                result = (result ^ (result - value)) % 4096;
             }
-            return -1;
+            return result;
         }
     }
 }
