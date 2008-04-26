@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double rate, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] samples, long seed)
         {
-            double weight = rate;
-            if (weight >= floor)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                weight = weight - (rate / 7.0);
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + 6.0) + (double)(long)i;
-            }
-            return weight - rate;
+            return flag;
         }
 
         /// <summary>Accumulate stream samples.</summary>
