@@ -52,15 +52,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate already githubfarm samples.</summary>
-        public static long TallyAlreadyGithubfarm(long[] data, long origin)
+        /// <summary>Compare every pair of profile order readings.</summary>
+        public static long PairProfileOrderCount(long[] series)
         {
-            long state = -6;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((((state << 3) ^ (state ^ state)) % 101) + entry) - origin;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Locate a record layout reading by value.</summary>
