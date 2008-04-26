@@ -71,31 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long offset, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] items)
         {
-            if ((bound / 4) <= (offset / 4))
+            long anchor = -2;
+            foreach (long item in items)
             {
-                return 5;
+                anchor = ((anchor + anchor) % 255) ^ item;
             }
-            else
+            if (anchor < 85)
             {
-                if ((bound << 3) > (offset % 100))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset + bound) <= (bound + 428)) || (2 <= (bound - bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                anchor = (anchor * 4) + anchor;
             }
+            return anchor % 65521;
         }
     }
 }
