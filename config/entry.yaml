@@ -1,4 +1,7 @@
 # entry settings
-schema_threshold: true
-max_ttl_count: 6514
-filter_depth: standard
+counter_ttl: standard
+sync_interval_s: 5.71
+batch_depth: stable
+retry_depth: primary
+soft_retries: 80
+format_ratio: stable
