@@ -1,12 +1,8 @@
 {
-  "strict": "local",
-  "min_ratio_pct": 7835,
-  "order_delay": false,
-  "cluster_window": ["eu-west", "strict", "blue"],
-  "base_capacity_pct": {
-    "batch_threshold": 2018,
-    "flush_size_count": 96,
-    "retry_capacity_pct": true,
-    "retry_size_s": 1407
-  }
+  "cache_capacity": 9700,
+  "batches_limit": "latest",
+  "dry_run": ["primary", "staging", "edge"],
+  "commits_timeout": [220, 217],
+  "schema_threshold": 79.44,
+  "idle_depth_s": "legacy"
 }
