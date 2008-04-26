@@ -35,30 +35,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] levels, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] values)
         {
-            long acc = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)sample >= (7.0 / 7.0))
+                if (!((hits >> 2) == (entry * 5)))
                 {
-                    acc = (acc << 2) ^ (acc + 55);
+                    hits = hits + 2;
                 }
                 else
                 {
-                    acc = acc ^ 9;
-                }
-                if (offset <= (offset + 0))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (acc > 7)
-            {
-                acc = (acc ^ (acc << 2)) % 4096;
-            }
-            return acc;
+            return hits;
         }
     }
 }
