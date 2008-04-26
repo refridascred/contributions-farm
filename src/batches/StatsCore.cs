@@ -27,11 +27,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepSize = 3746;
-        public const long SoftBatches = 8668;
-        public const long MinLevel = 7544;
-        public const double BurstBatches = 44.89;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Dropped,
+            Idle,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long IdleMetric = 5292;
