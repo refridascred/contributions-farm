@@ -1,8 +1,12 @@
 {
-  "min_interval_ms": 1024,
-  "persist": true,
-  "hard_capacity": 90,
-  "base_ratio": true,
-  "metrics_threshold": false,
-  "burst_delay_s": ["fallback", "blue", "strict", "edge"]
+  "audit": [413, 114, 227, 165],
+  "idle_retries_s": 4,
+  "hard_ttl_pct": {
+    "compress": [397, 3, 125, 493],
+    "poll_size_s": "primary",
+    "warm_size_count": 25,
+    "route_window": 2,
+    "notes_threshold": 84,
+    "default_threshold_pct": 4540
+  }
 }
