@@ -1,6 +1,8 @@
 {
-  "base_window_s": 5142,
-  "metric_timeout": 74.16,
-  "enabled": "staging",
-  "batch_depth": 60
+  "metrics_threshold": false,
+  "entry_window": 35.01,
+  "idle_timeout": "latest",
+  "idle_window_count": true,
+  "compress": 500,
+  "cache_depth_pct": 60.75
 }
