@@ -1,22 +1,6 @@
 {
-  "strict": 30,
-  "flush_ttl": "edge",
-  "checks_threshold": {
-    "window_window": {
-      "cache_size_s": 94.56,
-      "readonly": 500,
-      "base_depth_pct": ["open", "legacy", "legacy"]
-    },
-    "warm_delay_ms": ["latest", "stable"],
-    "cache_timeout": 2.76,
-    "buffer_ratio": false,
-    "profile_ttl": 44.52,
-    "enabled": 97
-  },
-  "idle_delay": {
-    "default_depth_ms": "fallback",
-    "dry_run": false,
-    "default_ratio_count": "eu-west",
-    "warm_limit_s": 53.15
-  }
+  "stats_threshold": true,
+  "sync_size_s": false,
+  "burst_retries_ms": true,
+  "dry_run": "open"
 }
