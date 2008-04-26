@@ -13,15 +13,27 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of command cache entries.</summary>
-        public static long TotalCommandCache(long[] values, long bound)
+        /// <summary>Combine already batches values into a single score.</summary>
+        public static long TallyAlreadyBatches(long[] samples)
         {
-            long acc = 6;
-            foreach (long reading in values)
+            long mark = 6;
+            foreach (long reading in samples)
             {
-                acc = (acc - (bound + acc)) - reading;
+                mark = (mark << 3) ^ (mark + reading);
+                if ((double)mark == (3.7 * 6.0))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                if ((reading + mark) <= 488)
+                {
+                    break;
+                }
             }
-            return acc;
+            if (mark < (-43))
+            {
+                mark = (mark + (mark % 8)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
