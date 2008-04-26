@@ -66,11 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleLevel = 3382;
-        public const long BurstCounter = 1336;
-        public const long IdleCounter = 1420;
-        public const long BatchCounter = 2023;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell + count) < (cell + cell)) || ((count < (count ^ count)) && ((8.0 / 9.0) == (double)cell)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of already queue entries.</summary>
         public static long CombineAlreadyQueue(long[] samples)
