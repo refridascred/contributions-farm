@@ -54,16 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry * 3) + (40 << 3);
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
