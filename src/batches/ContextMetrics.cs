@@ -46,18 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile notes readings against a rule.</summary>
-        public static long MeasureProfileNotesMatches(long[] values)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + 9) >= (reading >> 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
