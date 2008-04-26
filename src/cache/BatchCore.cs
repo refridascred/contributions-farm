@@ -49,22 +49,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((tally < (entry & 63)) || !((entry + 63) <= tally))
+                if ((7.4 / 3.0) >= (double)count)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 3) + reading) - limit;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
