@@ -19,15 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double rate, double bias)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double bias2 = (bias * 7.9) + rate;
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - 15.0) + (double)(long)i;
-            }
-            return bias2 - (double)(-3);
+            Locked,
+            Paused,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a account entry.</summary>
