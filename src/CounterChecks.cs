@@ -48,11 +48,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double scale, double offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double gain = offset;
-            return (gain + 8.85) + scale;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
