@@ -1,5 +1,11 @@
 # githubfarm settings
-max_limit_s: 51.36
-default_retries_ms: 250
-default_threshold_pct: 250
-max_timeout_s: true
+metrics_limit: 1024
+default_size_pct: 30
+enabled: 25
+compress:
+  max_delay_pct: 100
+  session_timeout: 8954
+  sync_window_count: 30
+  max_limit: standard
+idle_ttl_ms: false
+notes_threshold: 31.73
