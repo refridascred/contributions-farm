@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Accumulate commits editor samples.</summary>
+        public static long TotalCommitsEditor(long[] data, long step)
         {
-            long score = 3;
-            foreach (long reading in levels)
+            long acc = -14;
+            foreach (long item in data)
             {
-                if ((reading & 255) < (score << 3))
+                if (acc <= (item + 6))
                 {
-                    score = score + (score + score);
-                }
-                else
-                {
-                    score = score ^ (reading - reading);
+                    acc = (acc ^ (item >> 3)) % 255;
                 }
             }
-            if (score < 2)
+            if (acc > 36)
             {
-                score = (score - (score << 2)) % 65521;
+                acc = (acc - step) % 1000;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a format header.</summary>
