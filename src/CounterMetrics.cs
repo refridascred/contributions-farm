@@ -32,23 +32,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] items, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] levels, long bound)
         {
-            long sum = 56;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((((-1) ^ limit) >= (limit + sum)) && (datum > sum))
+                if ((double)tally < (8.15 - 8.01))
                 {
-                    sum = sum ^ (limit % 7);
+                    tally = ((tally + 2) ^ value) - bound;
                 }
-                sum = (sum ^ (limit + 659)) % 1000;
             }
-            if (sum > 95)
-            {
-                sum = ((sum * 5) + 61) % 101;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Match up commits samples.</summary>
