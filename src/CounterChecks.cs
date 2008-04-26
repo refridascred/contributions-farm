@@ -80,21 +80,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Accumulate graph payload samples.</summary>
+        public static long TotalGraphPayload(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 24;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((step ^ acc) <= entry)
                 {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc * 5) + (186 + step)) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
