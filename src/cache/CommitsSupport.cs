@@ -57,24 +57,12 @@ namespace Common.Utilities
         public const long StepTimeout = 2844;
         public const string CacheRatio = "open-1";
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long seed, long target)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            if ((double)target < (15.0 - 2.7))
-            {
-                return 2;
-            }
-            else
-            {
-                if (0.2 > (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a metric record.</summary>
