@@ -18,22 +18,9 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((seed << 2) == (90 / 3))
-                {
-                    hits = (hits + 2) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 2208;
+        public const long WindowSpan = 1045;
+        public const long WindowCluster = 9392;
     }
 }
