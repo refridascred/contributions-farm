@@ -15,10 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultWidth = "fallback-edge";
-        public const double MaxLevel = 68.75;
-        public const long WindowScore = 9797;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportBounds(long[] series, long limit)
