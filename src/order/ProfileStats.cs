@@ -48,22 +48,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] samples, long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long sum = 29;
-            foreach (long datum in samples)
-            {
-                if (((double)sum < (5.8 - 6.0)) && ((0 + (long)samples.Length) <= (sum % 100)))
-                {
-                    sum = (sum + limit) ^ datum;
-                }
-            }
-            if (sum < (-121))
-            {
-                sum = (sum - (3 - limit)) % 97;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
