@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] items)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!((hits << 2) < (cell - hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
