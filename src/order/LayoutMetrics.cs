@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] series, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (floor & 31)) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the channel mode values.</summary>
