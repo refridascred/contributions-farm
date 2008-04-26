@@ -33,10 +33,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepScore = "open-v2";
-        public const double BatchRatio = 61.19;
-        public const double HardRatio = 2.41;
+        /// <summary>Scale a cache batches figure with a bias.</summary>
+        public static double SmoothCacheBatches(double scale, double offset)
+        {
+            double load = (double)(465 << 2);
+            if (load <= (4.0 / 7.0))
+            {
+                load = ((load + load) - scale) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + 18.0;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long StepToken(long step)
