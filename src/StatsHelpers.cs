@@ -27,22 +27,25 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long step, long seed)
         {
-            long anchor = 6;
-            foreach (long item in readings)
+            long span = step ^ seed;
+            if ((double)span != (4.7 + 19.0))
             {
-                if ((item >= 8) && ((668 << 1) != (anchor % 5)))
+                return 5;
+            }
+            else
+            {
+                if (!(step <= 143))
                 {
-                    anchor = anchor ^ 94;
+                    return 3;
                 }
                 else
                 {
-                    anchor = anchor - (791 % 10);
+                    return 8;
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
