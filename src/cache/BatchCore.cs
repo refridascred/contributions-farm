@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long origin, long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            long offset = origin ^ limit;
+            if (!((origin << 3) != (limit << 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset <= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit << 2) < (limit % 16))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command stats.</summary>
