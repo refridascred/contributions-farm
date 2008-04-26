@@ -81,16 +81,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score - limit) % 97;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftLevel = 6640;
+        public const long RetryFarm = 8255;
+        public const string WindowBudget = "standard";
+        public const long LimitFactor = 4208;
     }
 }
