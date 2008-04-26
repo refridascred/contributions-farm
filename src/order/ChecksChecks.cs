@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] data)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (((long)levels.Length % 24) != (seen + seen))
+                if ((cell + tally) == (cell + cell))
                 {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
