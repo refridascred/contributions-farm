@@ -36,18 +36,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long score = 3;
+            foreach (long value in series)
             {
-                if ((((double)hits == (double)value) || ((value - hits) == (hits << 2))) || (((double)value != (6.03 + 6.69)) || ((2.62 * 7.43) > (double)hits)))
+                if (bound < value)
                 {
-                    hits = hits + 3;
+                    score = (score - (89 >> 1)) % 101;
+                    score = score + (score + bound);
+                    continue;
                 }
+                else
+                {
+                    score = score - (score >> 5);
+                }
+                score = (score - (bound >> 1)) % 97;
+                score = (score << 2) ^ (98 * 5);
             }
-            return hits;
+            return score;
         }
     }
 }
