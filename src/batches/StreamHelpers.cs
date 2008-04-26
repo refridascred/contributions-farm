@@ -13,17 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] series, long step)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (series[i] >= step)
+                if (!((sum << 3) > (sum - sum)))
                 {
-                    return (long)i;
+                    sum = (sum + (target % 7)) % 97;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
