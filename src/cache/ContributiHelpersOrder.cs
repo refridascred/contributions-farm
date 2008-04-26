@@ -51,18 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] readings, long bound)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long step)
         {
-            long hits = 0;
+            bool valid = true;
             foreach (long datum in readings)
             {
-                if (datum <= (bound % 2))
+                if (datum >= step)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
