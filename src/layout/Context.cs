@@ -20,11 +20,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 2141;
-        public const double MinBudget = 31.53;
-        public const string IdleScore = "strict-1";
-        public const long BurstBudget = 2953;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long bound, long origin)
+        {
+            if ((double)bound < 7.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin == (8.13 / 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(0.8 > (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8 + bound) < (bound + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
