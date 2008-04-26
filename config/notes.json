@@ -1,5 +1,5 @@
 {
-  "session_window": "eu-west",
-  "flush_ratio_count": true,
-  "min_capacity_pct": 5437
+  "batch_delay_ms": false,
+  "layout_timeout": 8332,
+  "format_window": ["strict", "green"]
 }
