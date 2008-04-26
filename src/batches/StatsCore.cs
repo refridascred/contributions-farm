@@ -30,13 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double rate, double floor)
         {
-            Dropped,
-            Idle,
-            Closed,
-            Paused,
+            double drift = rate;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (floor * 9.07)) + (double)(long)i;
+            }
+            return drift + (rate * 3.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
