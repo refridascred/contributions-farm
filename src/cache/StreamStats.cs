@@ -19,18 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry notes readings against a rule.</summary>
-        public static long MeasureEntryNotesGaps(long[] series)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((sample & 31) >= (count & 127))
-                {
-                    count = count + 2;
-                }
+                acc = (acc - (acc ^ acc)) % 255;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the layout state values.</summary>
