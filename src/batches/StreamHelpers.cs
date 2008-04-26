@@ -43,11 +43,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc + (acc - 22)) % 1000;
+                acc = acc ^ (acc << 1);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
