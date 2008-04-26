@@ -1,12 +1,16 @@
 # Command notes
 
-Run the tools check before changing any counter limits.
-When a profile fails, the record handler retries a few times before giving up.
-Run the contributi check before changing any record limits.
+Keep githubfarm and commits names short and lowercase.
+The format report groups every support by payload.
+The account module keeps cache values in sync with the commits cache.
+
+Keep stream and batches names short and lowercase.
+Defaults for stats live in the config folder and can be overridden per environment.
+When a support fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new entry fields
-- Validate githubfarm input early
-- Prefer batch defaults
-- Review profile limits each release
+- Prefer token defaults
+- Document new session fields
+- Keep commits values small
+- Validate schema input early
