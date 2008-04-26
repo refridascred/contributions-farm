@@ -1,8 +1,8 @@
 {
-  "verbose": "latest",
-  "poll_limit": true,
-  "min_timeout": true,
-  "batches_threshold": 66.59,
-  "base_ttl_ms": "staging",
-  "enabled": 69
+  "min_threshold_pct": "latest",
+  "max_threshold": ["latest", "edge", "strict", "strict"],
+  "max_window": true,
+  "batch_timeout": 41,
+  "sync_threshold": "legacy",
+  "compress": false
 }
