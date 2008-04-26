@@ -31,12 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxWidth = 9363;
-        public const long SoftRecord = 8265;
-        public const string RetryRecord = "stable-1";
-        public const double MinRecord = 53.58;
-        public const long WindowRecord = 1735;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Synced,
+            Ready,
+            Active,
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] levels, long floor)
