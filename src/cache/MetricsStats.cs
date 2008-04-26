@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] data)
-        {
-            long sum = 0;
-            foreach (long sample in data)
-            {
-                if ((sample ^ 24) <= (237 + sample))
-                {
-                    sum = (sum - sum) % 255;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 41.9;
+        public const double MaxAccount = 97.35;
+        public const long BatchAccount = 615;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] series, long offset)
