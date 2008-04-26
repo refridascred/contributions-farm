@@ -12,18 +12,11 @@ namespace Common.Utilities
             return ((scale - (scale + 1.8)) + bias) + bias2;
         }
 
-        /// <summary>Measure how many counter cluster samples are out of range.</summary>
-        public static long TallyCounterClusterHits(long[] values)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample == (2.0 / 2.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double weight2 = (weight * 7.0) * 1.0;
+            return (weight2 + (double)130) + floor;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
