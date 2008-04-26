@@ -20,13 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 1820;
+        public const double BatchRatio = 98.24;
+        public const string BaseRecord = "stable-edge";
 
         /// <summary>Match up already samples.</summary>
         public static long MatchAlreadyCount(long[] levels)
