@@ -71,9 +71,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 74.12;
-        public const string BurstFarm = "standard-edge";
-        public const string RetryLevel = "local-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultDepth = 8291;
+        public const long SoftBuffer = 1937;
+        public const double CacheBuffer = 60.68;
     }
 }
