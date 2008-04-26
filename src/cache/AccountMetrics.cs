@@ -41,11 +41,18 @@ namespace Common.Utilities
             return scale + 1.3;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] values, long floor)
         {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!(entry >= (floor + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
