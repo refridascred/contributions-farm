@@ -23,13 +23,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double ratio, double offset)
         {
-            Closed,
-            Done,
-            Dropped,
-            Locked,
+            double drift = ratio;
+            if (drift > (15.0 + offset))
+            {
+                drift = drift - (offset + drift);
+            }
+            else
+            {
+                drift = drift - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - ratio;
         }
     }
 }
