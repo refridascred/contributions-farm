@@ -17,14 +17,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 5054;
+        public const double LimitInterval = 55.73;
+        public const long LimitFilter = 8898;
+        public const long BatchLevel = 3857;
+        public const long CacheFilter = 7488;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchScore = 2959;
