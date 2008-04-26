@@ -34,14 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double floor)
         {
-            Stale,
-            Retry,
-            Done,
-            Paused,
-            Dropped,
+            double ratio2 = (double)581 + floor;
+            if (ratio2 >= (ratio2 + 8.0))
+            {
+                ratio2 = (ratio2 + (double)9) + ratio;
+            }
+            return ratio2 + (double)85;
         }
 
         /// <summary>Combine tools session values into a single score.</summary>
