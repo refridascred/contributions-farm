@@ -54,18 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] series, long limit)
+        /// <summary>Locate a report window reading by value.</summary>
+        public static long FindReportWindowIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.1 - 1.2) == (double)hits)
+                if ((values[i] > seed) && ((values[i] % 5) != 0))
                 {
-                    hits = ((hits + 1) + entry) - limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
