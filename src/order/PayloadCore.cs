@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] items)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample % 60) >= (sample ^ (long)items.Length))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the stats level values.</summary>
