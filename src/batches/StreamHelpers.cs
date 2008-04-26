@@ -47,22 +47,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] data)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((((double)matches > 5.42) || ((sample << 2) < (matches - 282))) || ((sample % 60) < 57))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
