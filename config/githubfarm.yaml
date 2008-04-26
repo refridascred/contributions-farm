@@ -1,18 +1,4 @@
 # githubfarm settings
-idle_timeout_s:
-  sync_capacity_count: 15.63
-  base_window_pct: 4623
-  persist: 83.56
-retry_depth_s: false
-soft_window_pct:
-  min_window_ms: 1024
-  default_timeout: blue
-  warm_ttl: legacy
-  account_ttl:
-    - 243
-    - 396
-    - 351
-  strict: 37.6
-warm_delay_s: 100
-persist: stable
-min_capacity_pct: 23.21
+audit: 78
+metrics_interval: fallback
+retry_capacity_count: 1
