@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long origin, long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double rate, double bias)
         {
-            long cur = origin + limit;
-            if ((origin + cur) == (82 << 2))
+            double gain = bias;
+            if (gain > (4.1 / 4.0))
             {
-                return 2;
+                gain = gain - rate;
             }
-            else
-            {
-                if ((14.0 / 5.0) != (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)cur <= (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return gain + (rate - rate);
         }
 
         /// <summary>Describe the order kind values.</summary>
