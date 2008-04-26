@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support cache readings against a rule.</summary>
-        public static long MeasureSupportCacheGaps(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((seen / 7) >= (value << 1))
+                if ((7.0 * 1.2) <= (double)hits)
                 {
-                    seen = seen + 3;
+                    hits = (hits + 3) + item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of support readings.</summary>
