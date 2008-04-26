@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell >> 4) < (70 * 3)) || ((cell / 4) == (cell + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
