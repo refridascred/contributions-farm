@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 5835;
-        public const long BurstEditor = 2688;
-        public const string HardEditor = "staging-1";
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Compare every pair of channel route readings.</summary>
         public static long MatchChannelRouteCount(long[] samples)
