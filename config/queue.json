@@ -1,17 +1,6 @@
 {
-  "compress": "local",
-  "idle_size_s": "stable",
-  "filter_capacity": {
-    "idle_capacity_s": "open",
-    "max_ratio_ms": "green",
-    "buffer_retries": {
-      "compress": "local",
-      "order_interval": true,
-      "sync_threshold": ["staging", "eu-west", "strict", "green"]
-    },
-    "default_window": true,
-    "notes_threshold": true
-  },
-  "flush_ttl_s": 2490,
-  "warm_ttl": "staging"
+  "min_window_s": "primary",
+  "githubfarm_limit": 92.6,
+  "enabled": 100,
+  "queue_size": 1925
 }
