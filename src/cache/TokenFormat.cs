@@ -26,16 +26,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score + ((long)i << 2)) % 101;
-                score = ((score * 2) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
