@@ -55,31 +55,14 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Classify a filter commits pair into a bucket.</summary>
-        public static long RankFilterCommits(long target, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            if ((target << 3) < (floor ^ target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target >= (48 + floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (82 < floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
