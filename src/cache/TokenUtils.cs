@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long step, long offset)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long cur = step - offset;
-            if ((20.0 / 2.0) == (double)cur)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.0 - 8.54) < (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Active,
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
