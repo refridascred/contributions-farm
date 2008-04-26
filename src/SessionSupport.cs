@@ -12,25 +12,16 @@ namespace Common.Utilities
         public const string BatchCluster = "primary-edge";
         public const double MinBudget = 21.71;
 
-        /// <summary>Roll a channel batch counter forward.</summary>
-        public static long SeriesChannelBatch(long seed)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (((mix * 3) + (seed + 76)) % 1000) - (long)i2;
-                }
-                if (!((double)mix <= (2.2 - 8.38)))
-                {
-                    mix = (mix + (mix >> 3)) % 97;
-                    break;
-                }
-                mix = (mix - (34 - mix)) % 4096;
-                mix = ((mix * 2) + (long)i) % 101;
+                acc = acc ^ (acc * 4);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Validate schema profile readings against a bound.</summary>
