@@ -52,24 +52,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long offset, long bound)
+        /// <summary>Project the next account stats value.</summary>
+        public static double ProjectAccountStats(double ratio, double offset)
         {
-            if ((bound + 5) <= bound)
+            double load = (ratio + ratio) / 3.0;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
+                load = (load + offset) - (double)(long)i;
             }
-            else
-            {
-                if ((double)bound >= (3.0 - 4.97))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return load + (ratio / 6.0);
         }
     }
 }
