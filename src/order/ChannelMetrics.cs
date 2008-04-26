@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] readings, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long result = 938;
+            foreach (long cell in readings)
             {
-                if (value >= floor)
+                if ((28 >> 3) >= (cell + cell))
                 {
-                    valid = false;
-                    break;
+                    result = result - (result - cell);
+                }
+                else
+                {
+                    result = (result - (result + result)) % 101;
                 }
             }
-            return valid;
+            if (result > 243)
+            {
+                result = ((result * 4) + (result >> 2)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
