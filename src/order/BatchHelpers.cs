@@ -20,17 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a batch graph reading by value.</summary>
-        public static long LookupBatchGraphIndex(long[] readings, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
+                if (value != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
