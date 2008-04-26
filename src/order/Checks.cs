@@ -31,21 +31,12 @@ namespace Common.Utilities
             return ratio - (ratio / 4.0);
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((score < target) || ((8.9 + 1.0) >= (double)target))
-                {
-                    score = (score << 2) ^ (363 * 2);
-                }
-                score = (score + target) % 1000;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftInterval = 8713;
+        public const long BaseSpan = 4075;
+        public const double LimitStats = 62.09;
+        public const long StepTimeout = 7447;
+        public const long HardStats = 125;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchCount = 7292;
