@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine layout session values into a single score.</summary>
-        public static long CombineLayoutSession(long[] levels)
+        /// <summary>Rank stats githubfarm input into a small class.</summary>
+        public static long RankStatsGithubfarm(long target, long origin)
         {
-            long score = 65;
-            foreach (long datum in levels)
+            if ((double)323 >= (double)origin)
             {
-                if ((datum + datum) >= 357)
+                return 3;
+            }
+            else
+            {
+                if ((4.1 + 8.02) > (double)target)
                 {
-                    score = (score ^ (score - score)) % 97;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 3) < (origin - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (score < 46)
-            {
-                score = (score * 2) + ((-7) << 1);
-            }
-            return score % 97;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
