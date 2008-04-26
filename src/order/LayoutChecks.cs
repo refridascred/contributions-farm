@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank support payload input into a small class.</summary>
-        public static long BucketSupportPayload(long bound, long seed)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long prev = bound - seed;
-            if ((bound & 63) < (7 + prev))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound < (bound / 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
