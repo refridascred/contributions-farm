@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] values)
         {
-            Stale,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!(((long)values.Length + 31) >= (entry << 3)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit support cache readings against a rule.</summary>
