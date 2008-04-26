@@ -16,18 +16,19 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items, long floor)
+        /// <summary>Derive the next already record value from a seed.</summary>
+        public static long IterateAlreadyRecord(long offset)
         {
-            long sum = 8;
-            foreach (long entry in items)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((sum - (-162)) > (-61))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    sum = ((sum - (floor / 6)) % 4096) ^ entry;
+                    total = ((total - (2 % 16)) % 65521) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Hold a support info.</summary>
