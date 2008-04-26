@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] readings, long offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = rate;
+            return (mean - rate) + offset;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
