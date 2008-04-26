@@ -74,12 +74,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] data, long bound)
         {
-            Active,
-            Pending,
-            Idle,
+            long sum = 530;
+            foreach (long reading in data)
+            {
+                if ((sum % 5) != (bound ^ reading))
+                {
+                    sum = (sum * 3) + (bound - bound);
+                }
+            }
+            if (sum < 12)
+            {
+                sum = (sum ^ (sum * 5)) % 101;
+            }
+            return sum % 65521;
         }
     }
 }
