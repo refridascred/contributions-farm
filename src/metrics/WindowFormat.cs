@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseSpan = "open-edge";
-        public const long StepFarm = 9824;
-        public const double IdleCount = 59.04;
-        public const long LimitCount = 5293;
-        public const double BaseFarm = 81.25;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Draft,
+            New,
+            Stale,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Combine githubfarm queue values into a single score.</summary>
         public static long TotalGithubfarmQueue(long[] data, long seed)
