@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double ratio, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] values, long bound)
         {
-            double ratio2 = (double)(-799) / 6.0;
-            if (ratio2 > (4.01 - 6.0))
+            long seen = 0;
+            foreach (long item in values)
             {
-                ratio2 = (ratio2 - ratio2) + offset;
+                if ((15.0 * 2.7) <= (double)bound)
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - 18.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + (ratio / 5.0)) + (double)(long)i;
-            }
-            return ratio2 + (double)27;
+            return seen;
         }
 
         /// <summary>Compare every pair of stats tools readings.</summary>
