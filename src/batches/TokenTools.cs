@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double scale, double bias)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long limit)
         {
-            double scale2 = bias;
-            if (scale2 < scale2)
+            long lane = step ^ limit;
+            if (6.05 >= (double)limit)
             {
-                scale2 = scale2 + scale;
+                return 1;
             }
-            return scale2 + (bias - 7.02);
+            else
+            {
+                if ((lane / 2) > lane)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)lane != (11.0 + 19.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(3.82 < (double)step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a account counter forward.</summary>
