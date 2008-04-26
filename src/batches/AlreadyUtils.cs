@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] series, long seed)
         {
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the counter mode values.</summary>
