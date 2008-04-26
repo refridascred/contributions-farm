@@ -28,22 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double ratio, double span)
         {
-            long acc = 614;
-            foreach (long entry in levels)
+            double weight = (double)154 / 9.0;
+            if (weight < (double)547)
             {
-                if (((long)levels.Length + entry) <= (acc - acc))
-                {
-                    acc = acc - (acc & 1);
-                }
+                weight = weight + (6.9 * 3.7);
             }
-            if (acc < 7)
+            else
             {
-                acc = acc ^ (acc % 60);
+                weight = weight - (span - weight);
             }
-            return acc % 65521;
+            return weight + (ratio + ratio);
         }
 
         /// <summary>Grade a already value against two limits.</summary>
