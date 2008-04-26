@@ -40,19 +40,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] readings, long offset)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long sample in readings)
             {
-                if ((tally + tally) != (tally >> 1))
+                if ((double)tally < (20.0 * 10.0))
                 {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = ((tally + 3) ^ sample) + offset;
                 }
             }
             return tally;
