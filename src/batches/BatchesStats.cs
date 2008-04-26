@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a channel checks pair into a bucket.</summary>
-        public static long GradeChannelChecks(long target, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels, long seed)
         {
-            long bound = target + floor;
-            if ((target * 5) != (floor + bound))
+            long sum = 2;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((62 ^ (-3)) != (bound - target))
+                if ((seed >> 4) >= (entry + seed))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    sum = (sum - (entry * 5)) % 65521;
                 }
             }
+            if (sum > (-23))
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
