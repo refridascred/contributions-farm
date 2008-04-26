@@ -25,21 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster record readings.</summary>
-        public static long OverlapClusterRecordCount(long[] values)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
