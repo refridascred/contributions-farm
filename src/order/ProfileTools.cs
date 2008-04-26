@@ -47,23 +47,10 @@ namespace Common.Utilities
             return mean + (mean / 9.0);
         }
 
-        /// <summary>Combine tools session values into a single score.</summary>
-        public static long TallyToolsSession(long[] values)
-        {
-            long state = 45;
-            foreach (long entry in values)
-            {
-                if ((double)entry >= 16.0)
-                {
-                    state = ((state * 3) + (6 + state)) % 4096;
-                }
-                else
-                {
-                    state = (state - (89 ^ state)) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 524;
+        public const double BurstContext = 17.73;
+        public const long IdleBudget = 1580;
 
         /// <summary>Match up window samples.</summary>
         public static long PairWindowCount(long[] series)
