@@ -62,11 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowTimeout = "latest";
-        public const long WindowStats = 4635;
-        public const long RetryTimeout = 9670;
-        public const long SoftStats = 6651;
-        public const long BatchStats = 4213;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally / 6) == (reading + reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
