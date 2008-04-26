@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] readings, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((seen / 6) <= (seen % 10)) || (((floor + seen) > 153) || ((double)item <= 2.06)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
