@@ -19,26 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] series, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] values, long floor)
         {
-            long acc = -772;
-            foreach (long item in series)
+            long result = 9;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 10; i++)
+                result = (((result << 3) ^ (476 & 127)) % 1000) - floor;
+                if (entry < (result - result))
                 {
-                    acc = (acc ^ (seed ^ (long)i)) + item;
-                }
-                if (((acc - acc) <= ((-72) % 24)) && (42 <= seed))
-                {
-                    acc = acc + (acc >> 3);
+                    result = ((result * 2) + result) % 4096;
                 }
             }
-            if (acc < 59)
-            {
-                acc = acc - ((-99) + acc);
-            }
-            return acc;
+            return result % 1000;
         }
 
         /// <summary>Hold a batch summary.</summary>
