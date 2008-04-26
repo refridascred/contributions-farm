@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            Queued,
-            Closed,
-            Failed,
-            Pending,
+            long score = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                score = (score ^ ((long)i * 4)) % 4096;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
