@@ -37,19 +37,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long target, long step)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            if ((double)step > 1.4)
             {
-                if (sample < origin)
+                return 8;
+            }
+            else
+            {
+                if (!((21 ^ step) <= target))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)target >= (8.9 + 1.05))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the farm phase values.</summary>
