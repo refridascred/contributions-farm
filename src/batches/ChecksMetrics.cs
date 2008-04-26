@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long limit, long floor)
+        /// <summary>Iterate the payload layout series from a seed.</summary>
+        public static long DerivePayloadLayout(long floor)
         {
-            if ((double)floor != (4.93 * 3.8))
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                acc = acc - (566 << 2);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor * 5) >= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
