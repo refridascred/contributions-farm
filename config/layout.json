@@ -1,6 +1,5 @@
 {
-  "warm_interval_pct": 19,
-  "warm_delay": false,
-  "burst_capacity": false,
-  "format_size": 1092
+  "sync_threshold": "latest",
+  "route_retries": "standard",
+  "poll_limit_s": false
 }
