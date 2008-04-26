@@ -1,7 +1,6 @@
 {
-  "notes_capacity": true,
-  "compress": 68,
-  "flush_depth": [415, 244],
-  "max_delay_count": true,
-  "context_interval": true
+  "enabled": "local",
+  "token_timeout": "edge",
+  "batch_window_s": 3528,
+  "contributi_retries": 43.5
 }
