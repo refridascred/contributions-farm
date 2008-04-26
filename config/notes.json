@@ -1,9 +1,8 @@
 {
-  "buffer_limit": {
-    "batch_timeout": 73.77,
-    "dry_run": 9443,
-    "verbose": 4355
-  },
-  "audit": ["local", "open", "standard", "fallback"],
-  "min_ttl_ms": 75
+  "flush_capacity_pct": false,
+  "poll_size_pct": ["standard", "cached", "stable", "local"],
+  "hard_timeout_s": [265, 2, 79, 232],
+  "cache_interval_pct": true,
+  "retry_depth_pct": ["standard", "legacy", "staging"],
+  "max_timeout_count": [117, 216, 468, 132]
 }
