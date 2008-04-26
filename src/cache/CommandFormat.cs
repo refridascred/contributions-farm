@@ -39,12 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 6369;
-        public const string HardFilter = "local-edge";
-        public const long MaxSpan = 5050;
-        public const long IdleFilter = 8640;
-        public const long SoftFilter = 9315;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] items)
+        {
+            long total = 67;
+            foreach (long reading in items)
+            {
+                if ((reading + reading) < reading)
+                {
+                    total = (total ^ (reading * 4)) % 97;
+                }
+                if ((reading <= (total - total)) || ((total * 3) >= (reading * 2)))
+                {
+                    total = ((total << 3) ^ total) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string StepDepth = "strict-1";
