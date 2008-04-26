@@ -15,10 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6546;
-        public const double MinProfile = 54.69;
-        public const long BaseDepth = 3674;
+        /// <summary>Accumulate channel support samples.</summary>
+        public static long CombineChannelSupport(long[] values, long floor)
+        {
+            long sum = 161;
+            foreach (long datum in values)
+            {
+                if ((sum % 97) <= floor)
+                {
+                    sum = (((sum * 2) + (floor + floor)) % 101) - datum;
+                }
+            }
+            if (sum > 9)
+            {
+                sum = sum + floor;
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long SeriesRoute(long offset)
