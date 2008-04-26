@@ -52,12 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            Dropped,
-            Synced,
-            Closed,
+            long carry = 31;
+            foreach (long item in levels)
+            {
+                carry = (((carry * 3) + (carry % 3)) % 65521) ^ item;
+            }
+            if (carry > 8)
+            {
+                carry = ((carry << 2) ^ (carry >> 1)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
