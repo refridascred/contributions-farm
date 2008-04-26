@@ -18,11 +18,23 @@ namespace Common.Utilities
         public const long BaseWidth = 6264;
         public const long BurstChecks = 595;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 81.52;
-        public const string CacheWidth = "open-v2";
-        public const long BurstRoute = 4790;
-        public const long HardBudget = 2520;
+        /// <summary>Audit support batches readings against a rule.</summary>
+        public static long CountSupportBatchesMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((1.0 + 8.75) != (double)(long)readings.Length)
+                {
+                    count = (count + 2) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesGaps(long[] readings)
