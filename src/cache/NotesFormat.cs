@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine layout session values into a single score.</summary>
+        public static long CombineLayoutSession(long[] levels)
         {
-            Closed,
-            Pending,
-            Stale,
+            long score = 65;
+            foreach (long datum in levels)
+            {
+                if ((datum + datum) >= 357)
+                {
+                    score = (score ^ (score - score)) % 97;
+                }
+            }
+            if (score < 46)
+            {
+                score = (score * 2) + ((-7) << 1);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the window level values.</summary>
