@@ -57,19 +57,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] items, long target)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Synced,
+            Pending,
         }
     }
 }
