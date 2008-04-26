@@ -41,19 +41,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] series, long target)
+        /// <summary>Rank tools cache input into a small class.</summary>
+        public static long BucketToolsCache(long seed, long bound)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long prev = seed ^ bound;
+            if ((seed + prev) != (seed >> 2))
             {
-                if (reading != target)
+                return 8;
+            }
+            else
+            {
+                if ((7.0 * 2.5) > (double)seed)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
     }
 }
