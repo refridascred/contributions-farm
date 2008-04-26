@@ -31,14 +31,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long floor, long seed)
         {
-            Locked,
-            Active,
-            Queued,
-            Retry,
-            Stale,
+            if ((seed * 2) < floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor << 3) == (seed ^ 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
