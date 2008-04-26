@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Accumulate window cluster samples.</summary>
+        public static long TotalWindowCluster(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 307;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (mark > (cell - cell))
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark + (mark << 3);
+                }
+                if (571 >= (3 + (long)data.Length))
+                {
+                    mark = (mark ^ (mark - mark)) % 97;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Compare every pair of commits filter readings.</summary>
