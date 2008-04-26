@@ -23,14 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] data)
         {
-            Paused,
-            Locked,
-            Done,
-            Pending,
-            Idle,
+            long result = 3;
+            foreach (long value in data)
+            {
+                if (value > result)
+                {
+                    result = ((result << 3) ^ result) % 255;
+                }
+                else
+                {
+                    result = (result * 3) + value;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
