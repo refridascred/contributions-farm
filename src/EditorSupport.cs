@@ -20,38 +20,19 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long limit, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] readings, long offset)
         {
-            if ((target ^ target) <= (806 << 1))
+            bool found = true;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + limit) < (target << 3))
+                if (cell < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (14.0 < (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target * 3) != (7 * 4)) || ((limit + 68) != (target * 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a counter options.</summary>
