@@ -51,18 +51,18 @@ namespace Common.Utilities
         public const long StepTimeout = 2844;
         public const string CacheRatio = "open-1";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] series, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((step % 5) != ((long)series.Length % 16))
+                if ((bound % 16) >= (value - count))
                 {
-                    matches = (matches + 2) ^ entry;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a metric record.</summary>
