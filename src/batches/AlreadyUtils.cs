@@ -37,25 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long limit, long origin)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double bias, double floor)
         {
-            long span = limit ^ origin;
-            if ((span - limit) < (limit / 7))
+            double gain = bias;
+            if (gain < gain)
             {
-                return 7;
+                gain = (gain - bias) - floor;
             }
-            else
-            {
-                if ((span & 127) < (origin + (-5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return gain + 8.0;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
