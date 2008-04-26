@@ -62,18 +62,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally / 6) == (reading + reading))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstRatio = 89.52;
+        public const long MinBudget = 378;
+        public const long SoftMetric = 6021;
+        public const long BurstMetric = 5066;
     }
 }
