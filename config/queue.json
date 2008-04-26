@@ -1,13 +1,8 @@
 {
-  "report_limit": true,
-  "default_delay_s": {
-    "idle_limit_pct": 25.48,
-    "compress": "primary",
-    "batch_window_s": "local",
-    "warm_limit": false,
-    "record_ttl": 81
-  },
-  "flush_threshold_pct": 71.74,
-  "dry_run": 33.63,
-  "readonly": 2152
+  "min_interval_ms": 1024,
+  "persist": true,
+  "hard_capacity": 90,
+  "base_ratio": true,
+  "metrics_threshold": false,
+  "burst_delay_s": ["fallback", "blue", "strict", "edge"]
 }
