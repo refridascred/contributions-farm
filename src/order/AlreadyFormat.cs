@@ -30,10 +30,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheTimeout = "alpha";
-        public const long DefaultSupport = 9391;
-        public const long SoftSpan = 8077;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long target)
