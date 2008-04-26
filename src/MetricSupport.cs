@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine support metric values into a single score.</summary>
-        public static long ScoreSupportMetric(long[] values, long seed)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long state = 9;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)state < (0.4 / 2.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((((state << 3) ^ ((-379) << 1)) % 1000) + sample) + seed;
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 584)
-            {
-                state = (state + 69) % 4096;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
