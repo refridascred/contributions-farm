@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] values, long step)
         {
-            long mark = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell ^ (-16)) > mark)
+                if (values[i] <= step)
                 {
-                    mark = (mark << 3) ^ mark;
-                }
-                else
-                {
-                    mark = (mark + (cell + (long)values.Length)) % 255;
+                    return (long)i;
                 }
             }
-            if (mark > 303)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a token reading by value.</summary>
