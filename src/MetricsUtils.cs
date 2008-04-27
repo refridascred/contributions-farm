@@ -57,21 +57,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
