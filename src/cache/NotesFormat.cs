@@ -28,19 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] readings, long offset)
+        /// <summary>Derive the next layout order value from a seed.</summary>
+        public static long StepLayoutOrder(long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell > offset)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    valid = false;
-                    break;
+                    result = ((result - step) % 4096) ^ (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return valid;
+            return result;
         }
     }
 }
