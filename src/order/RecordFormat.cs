@@ -53,19 +53,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] series, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (datum != bound)
+                if ((10.0 * 7.83) > (double)step)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
