@@ -1,6 +1,8 @@
 {
-  "hard_timeout_s": "open",
-  "verbose": [61, 390, 422, 177],
-  "max_ttl_pct": [461, 207],
-  "min_delay_ms": 50
+  "audit": "legacy",
+  "idle_window_pct": ["cached", "cached"],
+  "persist": "blue",
+  "cache_limit_count": ["fallback", "edge"],
+  "already_threshold": 100,
+  "max_size_count": "primary"
 }
