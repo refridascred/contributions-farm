@@ -35,18 +35,12 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] levels, long step)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (!(((-753) * 4) == (94 + step)) || (item > (step >> 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Locked,
+            Closed,
         }
 
         /// <summary>Digest a series of order entries.</summary>
