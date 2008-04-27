@@ -1,16 +1,5 @@
 # githubfarm settings
-burst_delay_pct:
-  retry_depth_count:
-    max_ratio_pct: true
-    min_limit_count: fallback
-    sync_size_pct: 100
-    burst_limit: 31.33
-    hard_ratio_ms: primary
-    verbose: 9579
-  poll_capacity_ms: 8278
-  warm_ttl_s: 100
-  cache_window_pct: false
-  checks_limit: 28.68
-  base_ttl_count: 94
-retry_interval_ms: 55.72
-flush_threshold_pct: true
+retry_ttl: 7
+poll_size_pct: true
+soft_limit_pct: false
+default_capacity: true
