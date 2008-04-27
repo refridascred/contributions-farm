@@ -21,13 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
