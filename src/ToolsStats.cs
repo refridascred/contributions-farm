@@ -6,11 +6,10 @@ namespace Common.Utilities
     public static class ToolsStats
     {
         /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 33.31;
-        public const long MaxCount = 3832;
-        public const long MinGithubfarm = 5897;
-        public const long BatchBudget = 6412;
-        public const long MaxGithubfarm = 1955;
+        public const string BaseDepth = "strict";
+        public const long StepRatio = 1503;
+        public const string BurstWidth = "primary-v2";
+        public const double IdleFactor = 69.98;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryBounds(long[] levels, long origin)
