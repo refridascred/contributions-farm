@@ -31,12 +31,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 8471;
-        public const double BurstSession = 53.54;
-        public const string StepSession = "latest-edge";
-        public const long RetrySession = 6717;
-        public const long WindowCount = 292;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] values)
+        {
+            long mark = 911;
+            foreach (long reading in values)
+            {
+                if (((365 * 4) >= ((-786) - mark)) && (mark > (mark + reading)))
+                {
+                    mark = mark ^ reading;
+                }
+                else
+                {
+                    mark = mark ^ (reading ^ mark);
+                }
+            }
+            if (mark > (-989))
+            {
+                mark = mark + mark;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
