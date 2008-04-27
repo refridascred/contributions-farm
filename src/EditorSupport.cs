@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit layout support readings against a rule.</summary>
-        public static long TallyLayoutSupportHits(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (((entry >= (count & 3)) || ((count & 7) > (count % 10))) || ((-159) > (entry >> 3)))
+                if (entry != origin)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
