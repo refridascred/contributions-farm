@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] values, long seed)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double drift = ratio;
+            if (drift >= bias)
             {
-                if ((double)hits <= (double)entry)
-                {
-                    hits = (hits + 3) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift - (ratio * 8.0);
             }
-            return hits;
+            return drift + drift;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
