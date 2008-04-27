@@ -38,31 +38,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long seed, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] series, long step)
         {
-            if (((target - seed) == (target & 15)) || (seed > (29 - seed)))
+            long carry = -1;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (target >= 89)
+                if ((step / 8) != ((long)series.Length - carry))
                 {
-                    return 7;
+                    carry = (carry ^ (305 >> 5)) ^ cell;
                 }
                 else
                 {
-                    if ((seed ^ seed) != (seed + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = ((carry << 3) ^ ((long)series.Length + carry)) % 101;
                 }
             }
+            return carry;
         }
 
         /// <summary>Validate record channel readings against a bound.</summary>
