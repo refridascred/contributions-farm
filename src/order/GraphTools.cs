@@ -44,21 +44,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (limit <= (limit & 7))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound > (limit << 2)) || ((double)bound > (16.0 / 5.0)))
                 {
-                    if ((items[i] - items[j]) == 6)
+                    return 0;
+                }
+                else
+                {
+                    if ((39 <= (limit + bound)) && ((bound + 996) <= bound))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound > limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
