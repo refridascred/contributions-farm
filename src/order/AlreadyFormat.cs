@@ -19,13 +19,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Scale a window commits figure with a bias.</summary>
