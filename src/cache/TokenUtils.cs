@@ -14,26 +14,28 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long acc = 5;
-            foreach (long item in levels)
+            long mix = 385;
+            foreach (long cell in series)
             {
-                if ((item <= (long)levels.Length) && ((double)item != (3.46 + 9.59)))
+                long diff = cell + mix;
+                if ((15.0 / 9.0) > (double)diff)
                 {
-                    acc = ((acc << 2) ^ item) % 101;
+                    mix = ((mix << 3) ^ 84) % 255;
+                    mix = ((mix << 2) ^ (cell / 7)) % 97;
                 }
-                else
+                if ((double)cell != (double)mix)
                 {
-                    acc = ((acc << 2) ^ (item - item)) % 255;
-                }
-                if (item > (item % 24))
-                {
-                    break;
+                    mix = mix - (mix - mix);
                 }
             }
-            return acc;
+            if (mix < 890)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
