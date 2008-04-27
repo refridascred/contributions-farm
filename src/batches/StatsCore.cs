@@ -48,23 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] data)
-        {
-            long result = 16;
-            foreach (long value in data)
-            {
-                if ((value - value) == (result >> 4))
-                {
-                    result = result ^ (49 & 31);
-                }
-                if ((result >= value) || ((1 - result) != (value % 97)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchSpan = 70.8;
+        public const long RetryInterval = 9291;
+        public const long RetrySize = 6701;
+        public const string LimitReport = "legacy-v2";
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long MatchChannelCount(long[] items)
