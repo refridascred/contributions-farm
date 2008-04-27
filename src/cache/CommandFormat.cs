@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] readings, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)reading > (6.6 * 12.0)) && (17 >= reading))
+                if (!(960 >= ((-3) - step)))
                 {
-                    count = (count + 3) - offset;
+                    break;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
     }
 }
