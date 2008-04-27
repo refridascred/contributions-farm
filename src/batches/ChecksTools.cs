@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] data, long step)
+        /// <summary>Iterate the filter farm series from a seed.</summary>
+        public static long DeriveFilterFarm(long limit)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell < step)
+                acc = (acc * 2) + limit;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    found = false;
-                    break;
+                    acc = ((acc ^ (acc / 4)) % 101) - (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
