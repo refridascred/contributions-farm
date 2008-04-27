@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long seed, long limit)
         {
-            Paused,
-            Pending,
-            New,
+            if (limit < (939 << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) < 4)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit - seed) <= (43 - limit)) || ((limit + seed) == (778 + 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + seed) < 85)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
