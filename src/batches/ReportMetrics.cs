@@ -12,22 +12,24 @@ namespace Common.Utilities
             return (mean - (span / 6.0)) + bias;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] items)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if (((75 & 3) <= (offset * 2)) || ((seed - seed) < (offset / 6)))
             {
-                if ((9.5 + 14.0) >= (double)hits)
+                return 8;
+            }
+            else
+            {
+                if (((double)offset > (8.09 / 8.0)) || (offset < seed))
                 {
-                    hits = (hits + 1) + cell;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
