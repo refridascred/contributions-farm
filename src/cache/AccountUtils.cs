@@ -13,19 +13,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] readings, long bound)
+        /// <summary>Digest a series of record already entries.</summary>
+        public static long CombineRecordAlready(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long result = 533;
+            foreach (long datum in readings)
             {
-                if (item != bound)
+                result = (((result * 3) + (seed - (-68))) % 97) + datum;
+                result = (result * 5) + result;
+                if ((double)result > 7.19)
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return result % 1000;
         }
 
         /// <summary>Fold a list of filter farm readings.</summary>
