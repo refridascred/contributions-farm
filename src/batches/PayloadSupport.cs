@@ -23,12 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Failed,
-            Ready,
-            Done,
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
