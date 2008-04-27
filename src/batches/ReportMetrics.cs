@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] items, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] series)
         {
-            long result = 631;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                result = (((result * 4) + (result ^ result)) % 4096) + datum;
+                if ((0 / 5) >= (hits - hits))
+                {
+                    hits = (hits + 3) + sample;
+                }
             }
-            if (result > (-86))
-            {
-                result = (result * 5) + (step << 2);
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
