@@ -31,10 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardTimeout = 92.04;
-        public const double BaseFactor = 10.1;
-        public const long BaseScore = 2234;
-        public const double MinTimeout = 22.43;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Done,
+            Synced,
+            Ready,
+            Active,
+        }
     }
 }
