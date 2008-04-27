@@ -1,11 +1,7 @@
 {
-  "strict": 1024,
-  "token_ratio": {
-    "persist": "open",
-    "contributi_window": "local",
-    "strict": true
-  },
-  "max_window_s": 37,
-  "retry_ratio_count": 8567,
-  "retry_depth_count": 81
+  "editor_retries": 8146,
+  "contributi_threshold": [438, 262, 320],
+  "burst_window_pct": 2919,
+  "burst_size_count": "standard",
+  "enabled": 96
 }
