@@ -1,9 +1,5 @@
 # entry settings
-warm_capacity:
-  - primary
-  - edge
-  - fallback
-strict: eu-west
-contributi_capacity: stable
-min_interval: false
-soft_retries_s: edge
+hard_depth_count: 67.67
+idle_timeout_ms: true
+strict: 97.7
+soft_threshold_pct: 250
