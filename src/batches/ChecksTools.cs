@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] data, long step)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Failed,
-            Pending,
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
