@@ -33,12 +33,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] values, long origin)
+        /// <summary>Find the first report route entry that matches the target.</summary>
+        public static long LookupReportRouteIndex(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) != 0))
+                if (data[i] == target)
                 {
                     return (long)i;
                 }
