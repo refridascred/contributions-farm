@@ -52,21 +52,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Iterate the checks entry series from a seed.</summary>
+        public static long IterateChecksEntry(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (((anchor * 4) + anchor) % 97) + (long)i2;
                 }
+                if (((-452) & 31) > limit)
+                {
+                    anchor = (anchor ^ anchor) % 4096;
+                }
+                anchor = anchor ^ ((-31) * 3);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
