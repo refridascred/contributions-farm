@@ -80,13 +80,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftMetric = "staging";
+        public const double MinMetric = 54.03;
+        public const long DefaultMetric = 1042;
+        public const long MaxLevel = 575;
     }
 }
