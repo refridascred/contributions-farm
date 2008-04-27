@@ -24,17 +24,11 @@ namespace Common.Utilities
             return drift - (span * 5.4);
         }
 
-        /// <summary>Locate a tools queue reading by value.</summary>
-        public static long SeekToolsQueueIndex(long[] readings, long target)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
