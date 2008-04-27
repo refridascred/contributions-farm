@@ -57,25 +57,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long offset2)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long delta = offset + offset2;
-            if (offset <= (660 << 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((delta - offset) > offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
