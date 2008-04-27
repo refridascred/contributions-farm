@@ -60,18 +60,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] series, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long mark = 9;
+            foreach (long sample in samples)
             {
-                if (((double)tally > (3.84 * 11.0)) && !((12.0 - 6.0) <= (double)sample))
+                mark = mark + (sample % 10);
+                mark = ((mark << 2) ^ (mark / 6)) % 101;
+                if (!((sample / 3) <= (46 * 5)))
                 {
-                    tally = (tally + 2) + bound;
+                    mark = (mark - (9 + sample)) % 4096;
                 }
             }
-            return tally;
+            if (mark > 72)
+            {
+                mark = (mark + (mark * 4)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Blend two session measurements.</summary>
