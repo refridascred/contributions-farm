@@ -12,14 +12,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Retry,
-            Closed,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseMetric = "alpha-1";
+        public const double StepMetric = 9.54;
+        public const long HardMetric = 8202;
+        public const long CacheSpan = 8381;
+        public const long IdleCount = 2620;
 
         /// <summary>Compare every pair of channel batch readings.</summary>
         public static long PairChannelBatchCount(long[] samples)
