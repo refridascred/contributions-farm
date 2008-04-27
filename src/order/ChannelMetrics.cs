@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a stats profile pair into a bucket.</summary>
-        public static long ClassifyStatsProfile(long limit, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            long offset = limit ^ bound;
-            if ((double)offset <= (8.5 * 12.0))
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (limit > (limit - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-63) * 5) <= (limit + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((655 * 4) <= offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
