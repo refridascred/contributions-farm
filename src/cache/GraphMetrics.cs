@@ -46,9 +46,11 @@ namespace Common.Utilities
         public const long StepNotes = 9447;
         public const long StepTimeout = 2841;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryTimeout = 5114;
-        public const long RetryFilter = 4218;
-        public const long BatchFilter = 8555;
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double rate, double floor)
+        {
+            double gain = 7.04;
+            return ((gain - (gain * 7.4)) + rate) + floor;
+        }
     }
 }
