@@ -60,17 +60,18 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                if (((double)tally > (3.84 * 11.0)) && !((12.0 - 6.0) <= (double)sample))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Blend two graph contributi measurements.</summary>
