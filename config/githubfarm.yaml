@@ -1,4 +1,9 @@
 # githubfarm settings
-default_interval_count: 100
-graph_timeout: 580
-idle_capacity_pct: 6067
+batch_size_s: false
+hard_capacity_pct: 30
+default_capacity_ms: false
+readonly: false
+max_ratio_s: eu-west
+audit:
+  - local
+  - green
