@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] items, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 36;
+            foreach (long sample in items)
             {
-                if (items[i] < offset)
+                if ((sample + sample) < 50)
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (47 % 10);
+                }
+                if (!((bound + sample) >= (324 - bound)))
+                {
+                    sum = sum + (sample - sample);
+                }
+                if ((bound + 70) <= sum)
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Roll a token counter forward.</summary>
