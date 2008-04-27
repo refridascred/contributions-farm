@@ -1,27 +1,6 @@
 # githubfarm settings
-readonly:
-  - cached
-  - primary
-flush_size_s:
-  stream_timeout:
-    - 112
-    - 310
-    - 241
-  dry_run:
-    buffer_ratio: 30
-    verbose: false
-    route_timeout: 50.95
-    min_retries_ms: local
-    notes_window: standard
-    compress: 23
-  sync_interval_s:
-    compress: false
-    cache_ratio: false
-    base_size_ms: true
-    hard_timeout_s: open
-  default_interval: strict
-profile_ttl: 6078
-batch_retries_s:
-  - stable
-  - open
-batches_capacity: local
+token_size: 7254
+base_depth: 57.84
+batch_ttl: legacy
+dry_run: 60
+format_interval: 88.66
