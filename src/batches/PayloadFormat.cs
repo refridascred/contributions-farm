@@ -59,24 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long origin2)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if (((95 % 16) >= (origin + origin2)) || ((double)origin2 > 3.5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (3 > (origin2 - 103))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
