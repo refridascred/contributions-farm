@@ -33,39 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits counter pair into a bucket.</summary>
-        public static long ClassifyCommitsCounter(long origin, long origin2)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long offset = origin + origin2;
-            if ((double)offset <= (6.06 + 5.9))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset > origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset & 3) <= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2.8 >= (double)origin2) && ((32 & 31) >= (origin + origin)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
