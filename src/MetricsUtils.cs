@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine stream counter values into a single score.</summary>
-        public static long CombineStreamCounter(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            long mark = 160;
-            foreach (long reading in samples)
+            long total = 12;
+            foreach (long datum in series)
             {
-                if (((reading / 6) >= (mark % 2)) && (((long)samples.Length - reading) >= mark))
+                if ((datum - datum) > datum)
                 {
-                    mark = ((mark * 3) + mark) % 255;
+                    total = (total ^ (total << 2)) % 101;
                 }
             }
-            if (mark < 7)
+            if (total < 35)
             {
-                mark = ((mark << 2) ^ mark) % 65521;
+                total = (total << 2) ^ (total + total);
             }
-            return mark;
+            return total % 65521;
         }
 
         /// <summary>Grade a notes farm value against two limits.</summary>
