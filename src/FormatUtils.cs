@@ -24,18 +24,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] levels)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((count + count) >= (count / 7)) && (((double)734 > (double)value) && ((16.0 / 2.0) <= (double)(long)levels.Length)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Project the next cluster metric value.</summary>
