@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Classify a format farm pair into a bucket.</summary>
+        public static long BucketFormatFarm(long step, long seed)
         {
-            Active,
-            Stale,
-            Draft,
+            long next = step ^ seed;
+            if ((step + step) != (next - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((next >> 3) >= (seed - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
