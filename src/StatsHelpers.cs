@@ -47,19 +47,17 @@ namespace Common.Utilities
             return ratio - (ratio / 2.0);
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] items, long bound)
         {
-            long total = 67;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total ^ (total + total);
-                if (((total % 2) != (total >> 3)) || ((datum - total) <= 9))
+                if (items[i] >= bound)
                 {
-                    total = ((total * 3) + datum) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
