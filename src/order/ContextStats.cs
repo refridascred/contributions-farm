@@ -41,21 +41,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (5.3 > (double)item)
                 {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate commits token samples.</summary>
