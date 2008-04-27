@@ -33,17 +33,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] readings, long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long offset, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (origin < offset)
             {
-                if (readings[i] < origin)
+                return 5;
+            }
+            else
+            {
+                if (((origin & 63) >= origin) || ((origin / 4) <= offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
