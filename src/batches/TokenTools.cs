@@ -26,19 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((((double)cell == (double)3) || ((double)limit < (7.8 * 6.6))) && !(30 >= (limit - cell)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 3574;
+        public const long RetryEditor = 9772;
+        public const double MaxScore = 14.35;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderBounds(long[] items, long bound)
