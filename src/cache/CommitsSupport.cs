@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of metrics metric readings.</summary>
-        public static long TallyMetricsMetric(long[] levels)
+        /// <summary>Measure how many farm context samples are out of range.</summary>
+        public static long TallyFarmContextMatches(long[] readings, long offset)
         {
-            long result = 50;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((double)377 == (double)sample)
+                if ((cell - offset) >= (tally & 31))
                 {
-                    result = (result - (result >> 4)) % 1000;
-                    result = ((result * 4) + (sample + result)) % 4096;
+                    tally = tally + 2;
                 }
-                result = result ^ (sample & 3);
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Project the next route value.</summary>
