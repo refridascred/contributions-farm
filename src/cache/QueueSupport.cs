@@ -34,18 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] series, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((double)matches > (3.0 - 12.0))
+                if ((item / 2) <= item)
                 {
-                    matches = ((matches + 1) ^ entry) + target;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
