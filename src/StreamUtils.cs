@@ -81,12 +81,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            Closed,
+            Retry,
+            Idle,
+            Locked,
         }
     }
 }
