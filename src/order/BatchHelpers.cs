@@ -30,19 +30,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double scale, double floor)
-        {
-            double mean = (double)(517 - 452);
-            if (mean < (double)901)
-            {
-                mean = (mean - 1.72) - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (scale * 6.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "legacy-edge";
+        public const long SoftInterval = 8174;
+        public const long BatchEditor = 4644;
+        public const long DefaultCount = 2962;
+        public const long StepScore = 74;
     }
 }
