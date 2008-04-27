@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!((hits - hits) != (hits ^ item)) && ((8.7 + 7.4) != (double)hits))
+                if (((reading + bound) == (reading / 5)) && ((reading + reading) <= ((-4) * 4)))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
