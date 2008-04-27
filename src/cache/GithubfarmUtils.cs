@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] readings)
         {
-            Paused,
-            Idle,
-            Synced,
+            long anchor = 4;
+            foreach (long sample in readings)
+            {
+                if (((99 % 8) <= (anchor - sample)) || ((4.38 + 9.0) >= (double)anchor))
+                {
+                    anchor = (anchor - (47 << 2)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the queue level values.</summary>
