@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double gain, double floor)
         {
-            long mix = -62;
-            foreach (long sample in series)
+            double weight = (15.0 / 5.0) * 15.0;
+            if (weight > (weight + 19.0))
             {
-                mix = ((mix + (27 + mix)) % 4096) - sample;
+                weight = (weight - weight) + gain;
             }
-            if (mix > 70)
+            for (int i = 0; i < 8; i++)
             {
-                mix = mix - mix;
+                weight = weight - (double)(long)i;
             }
-            return mix;
+            return weight - (weight - floor);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
