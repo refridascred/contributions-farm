@@ -27,19 +27,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] data, long target)
-        {
-            long mark = 30;
-            foreach (long reading in data)
-            {
-                mark = (mark ^ (target % 60)) + reading;
-            }
-            if (mark < (-46))
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "alpha-1";
+        public const long BatchBudget = 9703;
+        public const string BatchNotes = "stable-edge";
     }
 }
