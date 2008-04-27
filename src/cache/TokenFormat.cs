@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
+            public long Region { get; set; }
+            public long Ratio { get; set; }
             public bool Size { get; set; }
-            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next notes route value.</summary>
