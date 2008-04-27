@@ -35,24 +35,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double rate, double span)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            double load = rate;
+            if (load > (rate + span))
             {
-                if ((long)i <= 97)
-                {
-                    result = (result ^ step) % 101;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = (result + (long)i2) % 4096;
-                }
-                result = (result ^ (25 / 4)) % 97;
-                result = ((result * 5) + (long)i) % 65521;
+                load = load + (double)622;
             }
-            return result;
+            return load + span;
         }
     }
 }
