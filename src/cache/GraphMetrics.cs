@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window metric readings against a bound.</summary>
-        public static bool GuardWindowMetricLimits(long[] data, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (datum > limit)
+                if ((count / 4) > 410)
                 {
-                    valid = false;
-                    break;
+                    count = ((count + 1) ^ sample) + limit;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
