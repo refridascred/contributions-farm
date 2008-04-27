@@ -36,12 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Retry,
-            Draft,
-            Synced,
+            New,
             Stale,
             Pending,
         }
