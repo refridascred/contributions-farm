@@ -37,19 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] items, long bound)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Retry,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a filter record.</summary>
