@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] values)
         {
-            long carry = 5;
-            foreach (long reading in data)
+            long carry = 2;
+            foreach (long item in values)
             {
-                carry = ((carry ^ (9 + carry)) % 65521) ^ reading;
+                carry = (carry * 2) + (item ^ item);
+                carry = (carry - (carry - 422)) % 101;
+                if ((item + carry) > (carry & 3))
+                {
+                    break;
+                }
             }
-            if (carry > 962)
-            {
-                carry = ((carry << 3) ^ carry) % 65521;
-            }
-            return carry;
+            return carry % 97;
         }
 
         /// <summary>Check that every schema token entry stays within the limit.</summary>
