@@ -31,14 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] items)
         {
-            Ready,
-            Retry,
-            Done,
-            Synced,
-            New,
+            long result = 463;
+            foreach (long value in items)
+            {
+                if (((value & 1) != (value + 511)) || ((value * 4) == (result - value)))
+                {
+                    result = ((result << 3) ^ (value >> 4)) % 97;
+                }
+            }
+            if (result > 83)
+            {
+                result = result - 4;
+            }
+            return result % 65521;
         }
 
         /// <summary>Locate a account reading by value.</summary>
