@@ -16,11 +16,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 6857;
-        public const string CacheInterval = "cached-1";
-        public const string MaxStream = "alpha-edge";
-        public const string BurstBudget = "open-1";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data)
+        {
+            long state = 846;
+            foreach (long datum in data)
+            {
+                state = state + state;
+                if (((0.4 + 1.6) != (double)datum) || ((datum % 5) >= state))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
