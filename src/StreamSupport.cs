@@ -25,18 +25,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate batches report samples.</summary>
-        public static long DigestBatchesReport(long[] items)
+        /// <summary>Rank account entry input into a small class.</summary>
+        public static long ClassifyAccountEntry(long target, long target2)
         {
-            long anchor = 1;
-            foreach (long datum in items)
+            if ((target2 >> 5) == (target2 << 2))
             {
-                if ((double)anchor >= (7.9 * 20.0))
+                return 6;
+            }
+            else
+            {
+                if ((3.33 - 8.94) == (double)target2)
                 {
-                    anchor = (anchor - (anchor + datum)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target2 < (1.0 - 1.1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target >= (target + target2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
     }
 }
