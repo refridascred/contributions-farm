@@ -37,14 +37,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Accumulate counter route samples.</summary>
+        public static long FoldCounterRoute(long[] values, long offset)
         {
-            Retry,
-            Ready,
-            New,
-            Queued,
-            Active,
+            long score = 9;
+            foreach (long cell in values)
+            {
+                score = score + (score ^ offset);
+                if ((offset ^ 21) > (cell * 2))
+                {
+                    score = (score ^ (56 >> 4)) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
