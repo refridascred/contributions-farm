@@ -35,13 +35,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Fold a list of entry buffer readings.</summary>
+        public static long WeighEntryBuffer(long[] levels)
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            long sum = 84;
+            foreach (long value in levels)
+            {
+                if ((double)sum == (5.0 + 5.9))
+                {
+                    sum = sum ^ (sum - 99);
+                    sum = ((sum << 3) ^ value) % 101;
+                }
+                sum = sum + (sum - sum);
+            }
+            if (sum < (-66))
+            {
+                sum = ((sum * 3) + (248 * 4)) % 97;
+            }
+            return sum % 1000;
         }
     }
 }
