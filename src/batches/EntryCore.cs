@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many payload route samples are out of range.</summary>
-        public static long MeasurePayloadRouteMatches(long[] series)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value - 4) > (25 ^ seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
