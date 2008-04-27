@@ -30,10 +30,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleWidth = 8334;
-        public const long DefaultStream = 4811;
-        public const long BaseWidth = 9355;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally ^ bound) >= (tally & 15))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LookupQueueIndex(long[] readings, long step)
