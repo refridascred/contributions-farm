@@ -35,15 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long total = 7;
+            foreach (long item in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                total = (total ^ ((long)items.Length & 63)) - item;
             }
-            return anchor;
+            if (total > 0)
+            {
+                total = ((total << 3) ^ 636) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Adjust a profile editor reading.</summary>
