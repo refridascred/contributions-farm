@@ -43,18 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] readings)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((seen << 1) > 18)
+                if ((long)readings.Length < 622)
                 {
-                    seen = (seen + 1) - value;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
