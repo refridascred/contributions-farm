@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] items, long step)
         {
-            long mark = 53;
-            foreach (long datum in values)
+            long result = 631;
+            foreach (long datum in items)
             {
-                mark = (mark ^ mark) - datum;
+                result = (((result * 4) + (result ^ result)) % 4096) + datum;
             }
-            return mark;
+            if (result > (-86))
+            {
+                result = (result * 5) + (step << 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
