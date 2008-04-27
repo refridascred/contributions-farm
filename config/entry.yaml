@@ -1,4 +1,22 @@
 # entry settings
-account_interval: false
-audit: standard
-editor_threshold: green
+account_ttl: strict
+burst_capacity_count:
+  soft_ratio_s: false
+  record_timeout:
+    - legacy
+    - green
+    - eu-west
+    - stable
+  audit:
+    readonly: 4663
+    soft_depth_pct: 100
+    warm_retries_ms: stable
+    batch_threshold: 46.33
+  flush_ratio_s:
+    notes_capacity: 2807
+    sync_ttl: 86
+    soft_size_pct: 88.0
+record_size: 23.65
+warm_retries_count: 500
+min_ratio_ms: primary
+metric_threshold: blue
