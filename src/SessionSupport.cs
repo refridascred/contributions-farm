@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] series, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                acc = acc ^ (acc * 4);
-                acc = ((acc * 5) + (long)i) % 101;
+                if (((tally / 4) <= (25 + origin)) && (origin >= (origin * 3)))
+                {
+                    tally = (tally + 1) + cell;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
