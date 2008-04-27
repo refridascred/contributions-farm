@@ -30,36 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits farm readings.</summary>
-        public static long TotalCommitsFarm(long[] samples)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] items, long target)
         {
-            long carry = 44;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((62 >= cell) && ((cell + cell) < 57))
+                if (sample < target)
                 {
-                    carry = ((carry << 3) ^ cell) % 65521;
-                    carry = (carry - cell) % 101;
+                    ready = false;
                     break;
                 }
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry + (2 << 3)) % 255) - (long)i;
-                }
-                if ((carry * 2) < (cell & 3))
-                {
-                    carry = (carry << 3) ^ (cell + cell);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry & 127)) % 1000;
-                }
             }
-            if (carry > 14)
-            {
-                carry = ((carry << 2) ^ (carry - 0)) % 97;
-            }
-            return carry % 97;
+            return ready;
         }
     }
 }
