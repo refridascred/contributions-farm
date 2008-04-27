@@ -35,19 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of notes schema readings.</summary>
-        public static long TallyNotesSchema(long[] samples, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long score = 476;
-            foreach (long sample in samples)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score - origin) % 255) - sample;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (score < 49)
-            {
-                score = ((score << 2) ^ (0 & 15)) % 65521;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
