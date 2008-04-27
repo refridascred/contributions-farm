@@ -31,22 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks report samples are out of range.</summary>
-        public static long TallyChecksReportHits(long[] values, long origin)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((double)origin >= (6.7 * 6.75))
-                {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Draft,
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
