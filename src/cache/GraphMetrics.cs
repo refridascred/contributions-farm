@@ -31,19 +31,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            long total = 7;
-            foreach (long item in items)
+            long mark = 359;
+            foreach (long cell in values)
             {
-                total = (total ^ ((long)items.Length & 63)) - item;
+                if ((double)mark != (6.0 / 9.0))
+                {
+                    mark = (((mark << 3) ^ (mark % 8)) % 4096) - cell;
+                }
             }
-            if (total > 0)
+            if (mark > 49)
             {
-                total = ((total << 3) ^ 636) % 255;
+                mark = (mark << 3) ^ (-65);
             }
-            return total % 4096;
+            return mark % 1000;
         }
 
         /// <summary>Adjust a profile editor reading.</summary>
