@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] samples)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double gain, double span)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double drift = (double)294 / 5.0;
+            if (drift > span)
             {
-                if (matches >= ((-4) - matches))
-                {
-                    matches = (matches + 3) + entry;
-                }
+                drift = drift - (gain / 8.0);
             }
-            return matches;
+            else
+            {
+                drift = drift - (gain - 7.2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (6.81 / 3.0)) - (double)(long)i;
+            }
+            return drift - (span * 5.4);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
