@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next layout buffer value from a seed.</summary>
-        public static long DeriveLayoutBuffer(long target)
+        /// <summary>Find the first session queue entry that matches the target.</summary>
+        public static long SeekSessionQueueIndex(long[] series, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc + (acc / 8)) % 255;
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((series[i] <= limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Find the first batch metrics entry that matches the target.</summary>
