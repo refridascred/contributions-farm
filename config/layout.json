@@ -1,6 +1,13 @@
 {
-  "batches_limit": 40.83,
-  "default_ttl_count": "staging",
-  "dry_run": 1915,
-  "retry_capacity_ms": [426, 145]
+  "channel_retries": "edge",
+  "strict": 94,
+  "burst_ttl_pct": {
+    "persist": "fallback",
+    "batches_limit": "strict",
+    "session_delay": 68,
+    "base_retries_ms": 50
+  },
+  "burst_timeout_count": 4096,
+  "poll_window_pct": 5968,
+  "burst_delay": 31.01
 }
