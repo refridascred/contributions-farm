@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double gain, double floor)
+        /// <summary>Grade a batches batch value against two limits.</summary>
+        public static long ClassifyBatchesBatch(long origin, long target)
         {
-            double weight = (15.0 / 5.0) * 15.0;
-            if (weight > (weight + 19.0))
+            if ((double)origin == (4.52 - 15.0))
             {
-                weight = (weight - weight) + gain;
+                return 3;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = weight - (double)(long)i;
+                if (origin > (target - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return weight - (weight - floor);
         }
 
         /// <summary>Grade a support window value against two limits.</summary>
