@@ -74,15 +74,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double bias, double bias2)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] readings, long target)
         {
-            double ratio = (double)99 * 7.2;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                ratio = (((ratio + (12.0 * 0.7)) + (double)(long)i) - bias) - bias2;
+                if (sample < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio + (double)3;
+            return stale;
         }
     }
 }
