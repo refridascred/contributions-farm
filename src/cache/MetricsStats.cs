@@ -28,10 +28,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 1370;
-        public const string BatchWidth = "local-v2";
-        public const long HardSchema = 3595;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 8750;
+        public const double BatchWidth = 81.53;
+        public const long MaxSize = 7471;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
