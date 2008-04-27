@@ -34,12 +34,14 @@ namespace Common.Utilities
         public const long HardToken = 4585;
         public const double BaseToken = 63.28;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            Active,
+            Idle,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Accumulate schema samples.</summary>
