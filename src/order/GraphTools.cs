@@ -40,19 +40,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] readings, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (datum <= origin)
+                if ((double)seen != (double)reading)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) - seed;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
