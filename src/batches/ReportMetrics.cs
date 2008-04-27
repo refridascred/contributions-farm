@@ -20,17 +20,24 @@ namespace Common.Utilities
             return drift - (9.7 + floor);
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] levels, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor >= (origin << 3)) && ((double)origin > 4.5))
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (14 <= floor)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
