@@ -12,39 +12,14 @@ namespace Common.Utilities
         public const string RetryPayload = "cached-edge";
         public const string BatchSpan = "legacy-1";
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long step, long seed)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long next = step + seed;
-            if (!((next + step) < (next ^ next)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed / 7) != (seed >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step <= 1.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (double)step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a contributi entry.</summary>
