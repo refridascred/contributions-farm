@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many tools queue samples are out of range.</summary>
+        public static long AuditToolsQueueOutliers(long[] items)
         {
-            Retry,
-            Stale,
-            Synced,
-            Queued,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((446 << 1) <= hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
