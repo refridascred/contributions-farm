@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const long BaseEntry = 7312;
         public const double StepSize = 39.62;
 
-        /// <summary>Validate batch account readings against a bound.</summary>
-        public static bool CheckBatchAccountLimits(long[] values, long origin)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
