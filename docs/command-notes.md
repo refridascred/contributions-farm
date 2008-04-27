@@ -1,10 +1,11 @@
 # Command notes
 
-Use queue settings to tune how often profile data is refreshed.
-Use schema settings to tune how often checks data is refreshed.
+Run the metrics check before changing any githubfarm limits.
+A format that stays idle for too long is moved to the stream list.
+Use support settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every already change
-- Document new buffer fields
+- Log every batch change
+- Review token limits each release
+- Document new contributi fields
