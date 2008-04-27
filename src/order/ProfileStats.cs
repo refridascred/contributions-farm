@@ -48,14 +48,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Active,
-            Failed,
-            Retry,
+            Paused,
+            Ready,
+            Dropped,
+            Draft,
             New,
-            Pending,
         }
     }
 }
