@@ -14,22 +14,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double gain, double span)
         {
-            long acc = 6;
-            foreach (long sample in series)
+            double rate = span;
+            if (rate >= rate)
             {
-                if ((acc ^ sample) < (sample % 64))
-                {
-                    acc = acc + sample;
-                }
-                if ((double)sample >= (double)11)
-                {
-                    break;
-                }
+                rate = rate + (gain / 4.0);
             }
-            return acc % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (7.0 - gain)) + (double)(long)i;
+            }
+            return rate + 4.0;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
