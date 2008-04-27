@@ -38,12 +38,22 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] values, long offset)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((241 + seen) < offset)
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate metrics already samples.</summary>
