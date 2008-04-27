@@ -35,11 +35,20 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchBudget = 6670;
-        public const long LimitCommits = 3471;
-        public const long BatchCommits = 1945;
-        public const long StepCommits = 611;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] data, long seed)
