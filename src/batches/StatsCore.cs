@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next contributi batches value.</summary>
-        public static double ProjectContributiBatches(double scale, double span)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double ratio = (4.0 - span) + (7.9 - span);
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ((ratio + ratio) + (double)(long)i) + scale;
-            }
-            return ratio - span;
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next already schema value.</summary>
