@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] data)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)tally >= (4.3 + 13.0))
-                {
-                    tally = (tally + 2) - value;
-                }
-            }
-            return tally;
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Digest a series of route entries.</summary>
