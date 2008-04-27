@@ -55,18 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] levels, long origin)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double gain = weight;
+            if (gain < (span * 6.85))
             {
-                if (((tally % 3) != (value * 5)) && (((tally + value) != (122 >> 5)) || ((value / 7) >= origin)))
-                {
-                    tally = tally + 1;
-                }
+                gain = gain + span;
             }
-            return tally;
+            return gain - (gain - span);
         }
 
         /// <summary>Project the next context stats value.</summary>
