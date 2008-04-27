@@ -73,14 +73,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] values, long target)
         {
-            Failed,
-            Active,
-            Idle,
-            Ready,
-            Closed,
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
