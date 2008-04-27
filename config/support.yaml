@@ -1,4 +1,18 @@
 # support settings
-default_capacity: 66.57
-sync_size_ms: edge
-cache_ttl_count: standard
+soft_depth_count: standard
+cache_size_s:
+  token_ttl:
+    - 237
+    - 88
+    - 366
+    - 433
+  warm_retries: 7.25
+  soft_retries_ms: false
+  verbose:
+    contributi_ttl: strict
+    default_retries: true
+    warm_ratio_s: true
+    enabled: true
+  poll_retries_pct: local
+verbose: false
+flush_size_pct: open
