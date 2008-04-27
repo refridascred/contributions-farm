@@ -14,11 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheRatio = 8898;
-        public const string SoftSpan = "open-edge";
-        public const long MaxProfile = 7206;
-        public const long HardProfile = 9147;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!((double)seen >= (3.6 * 2.0)) && ((seen + seen) == (seen * 4)))
+                {
+                    seen = ((seen + 2) + datum) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
