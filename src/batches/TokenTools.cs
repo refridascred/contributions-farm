@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many tools queue samples are out of range.</summary>
-        public static long AuditToolsQueueOutliers(long[] items)
+        /// <summary>Measure how many farm stats samples are out of range.</summary>
+        public static long MeasureFarmStatsHits(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((446 << 1) <= hits)
+                if ((datum ^ tally) != (tally / 8))
                 {
-                    hits = (hits + 1) + entry;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
