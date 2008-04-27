@@ -23,18 +23,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many command cache samples are out of range.</summary>
-        public static long TallyCommandCacheMatches(long[] data, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mix = 1;
+            foreach (long cell in samples)
             {
-                if ((seen - seen) == (715 % 12))
+                if ((mix ^ cell) == (cell << 3))
                 {
-                    seen = ((seen + 3) + item) + seed;
+                    mix = mix - cell;
                 }
             }
-            return seen;
+            if (mix > 94)
+            {
+                mix = (mix - (mix * 5)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
