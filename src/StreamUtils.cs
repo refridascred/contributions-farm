@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] data, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 1;
+            foreach (long item in samples)
             {
-                if ((data[i] >= floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((((score * 2) + (75 + 0)) % 4096) ^ item) - bound;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit filter report readings against a rule.</summary>
