@@ -31,14 +31,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Check that every booking entry stays within the limit.</summary>
+        public static bool ValidateBookingLimits(long[] values, long floor)
         {
-            Retry,
-            New,
-            Locked,
-            Dropped,
-            Idle,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
