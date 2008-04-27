@@ -40,13 +40,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Pending,
+            Done,
             Retry,
-            Queued,
-            Closed,
+            Ready,
         }
 
         /// <summary>Hold a filter record.</summary>
