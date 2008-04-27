@@ -29,19 +29,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] samples, long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Locate a order reading by value.</summary>
