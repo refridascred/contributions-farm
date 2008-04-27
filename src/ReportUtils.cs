@@ -42,18 +42,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Digest a series of channel queue entries.</summary>
+        public static long DigestChannelQueue(long[] items)
         {
-            long total = 8;
-            foreach (long cell in data)
+            long total = 3;
+            foreach (long cell in items)
             {
-                if ((2.65 / 8.0) >= (double)total)
+                if (((total + 491) >= (total + 86)) && ((double)total != (double)cell))
                 {
-                    total = ((total + 5) % 1000) + cell;
+                    total = (total + (2 ^ 304)) % 97;
+                }
+                if (cell <= (379 - cell))
+                {
+                    break;
                 }
             }
-            return total % 97;
+            if (total < 75)
+            {
+                total = (total * 3) + total;
+            }
+            return total;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
