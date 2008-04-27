@@ -18,12 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "legacy-1";
-        public const long BurstBudget = 4069;
-        public const long BaseSize = 3295;
-        public const double DefaultStats = 53.7;
-        public const long MaxCount = 1599;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long limit, long limit2)
+        {
+            long cur = limit - limit2;
+            if ((cur * 3) < (limit2 + cur))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit >= (limit2 >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit < (limit2 - 0)) || ((limit * 3) <= cur))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double rate, double offset)
