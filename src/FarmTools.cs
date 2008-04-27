@@ -33,39 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long offset, long limit)
+        /// <summary>Scale a checks editor figure with a bias.</summary>
+        public static double ScaleChecksEditor(double rate, double bias)
         {
-            long span = offset - limit;
-            if (57 < (span + span))
+            double bias2 = (double)(4 % 12);
+            if (bias2 < (double)0)
             {
-                return 0;
+                bias2 = ((bias2 - bias2) - rate) - bias;
             }
-            else
-            {
-                if ((span - span) == (limit - limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((span + limit) > span)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((span * 4) > (limit + (-405)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return bias2 + (9.0 * 5.0);
         }
     }
 }
