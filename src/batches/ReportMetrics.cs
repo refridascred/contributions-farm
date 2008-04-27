@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] items, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] readings)
         {
             long hits = 0;
-            foreach (long value in items)
+            foreach (long reading in readings)
             {
-                if ((hits ^ limit) >= (limit ^ limit))
+                if (((hits - hits) < (reading / 7)) || ((reading & 15) > (reading << 1)))
                 {
-                    hits = (hits + 3) ^ value;
+                    hits = hits + 2;
                 }
             }
             return hits;
