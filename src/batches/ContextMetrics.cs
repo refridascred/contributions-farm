@@ -63,21 +63,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheInterval = 1492;
+        public const double BaseCache = 73.11;
+        public const long SoftSize = 8861;
+        public const long LimitCache = 4744;
     }
 }
