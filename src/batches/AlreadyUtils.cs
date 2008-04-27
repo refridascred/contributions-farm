@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] series, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long state = 924;
+            foreach (long entry in data)
             {
-                if (item != origin)
+                state = (((state << 2) ^ (844 / 5)) % 255) - entry;
+                if ((state <= (state >> 5)) || ((state << 3) >= (state - state)))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
