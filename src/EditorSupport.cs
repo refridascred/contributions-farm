@@ -48,19 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] values, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (sample > origin)
+                if (((5.1 + 8.3) != (double)entry) && ((seen * 5) < (entry * 5)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Project the next already batches value.</summary>
