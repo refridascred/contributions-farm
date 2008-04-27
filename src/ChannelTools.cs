@@ -26,22 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Find the first batch metrics entry that matches the target.</summary>
+        public static long LookupBatchMetricsIndex(long[] data, long bound)
         {
-            long mark = 20;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading - reading) <= ((long)levels.Length + mark))
+                if (data[i] > bound)
                 {
-                    mark = ((mark * 3) + mark) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (reading - reading)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
