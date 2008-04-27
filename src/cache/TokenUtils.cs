@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] data, long floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample * 2) != (26 - sample))
-                {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
