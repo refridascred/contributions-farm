@@ -20,25 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long target, long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long diff = target ^ offset;
-            if (((675 % 8) <= offset) && (5.98 >= (double)offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - diff) > diff)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every stream farm entry stays within the limit.</summary>
