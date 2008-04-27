@@ -47,17 +47,18 @@ namespace Common.Utilities
             return ratio - (ratio / 2.0);
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] items, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (items[i] >= bound)
+                if (reading <= count)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
