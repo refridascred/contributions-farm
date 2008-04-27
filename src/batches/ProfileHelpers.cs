@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowCount = 8748;
-        public const long WindowSize = 5264;
-        public const long RetryReport = 2212;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double BlendCommand(double bias, double offset)
