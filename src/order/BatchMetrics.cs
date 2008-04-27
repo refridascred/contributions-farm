@@ -52,21 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Iterate the stream record series from a seed.</summary>
+        public static long RollStreamRecord(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = acc ^ (limit & 255);
+                acc = (acc ^ limit) % 4096;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
