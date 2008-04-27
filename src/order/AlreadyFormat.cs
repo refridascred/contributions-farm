@@ -19,17 +19,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the tools context series from a seed.</summary>
-        public static long SeriesToolsContext(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum + (sum >> 2)) % 97;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "local-v2";
+        public const long DefaultWidth = 2436;
+        public const long StepCount = 9011;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
