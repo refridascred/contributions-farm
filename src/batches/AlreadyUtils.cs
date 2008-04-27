@@ -72,11 +72,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((6.4 + 0.89) == (double)floor))
+                {
+                    score = (score - (floor * 5)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
