@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((17 / 3) <= bound))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 5541;
+        public const double DefaultRecord = 54.84;
+        public const long StepRatio = 5785;
+        public const long SoftRecord = 5081;
+        public const double WindowRecord = 73.24;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftWidth = 8120;
