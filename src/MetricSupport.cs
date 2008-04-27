@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
