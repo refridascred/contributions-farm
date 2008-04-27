@@ -1,5 +1,19 @@
 {
-  "layout_timeout": "edge",
-  "order_capacity": true,
-  "context_interval": "fallback"
+  "idle_window": {
+    "audit": "legacy",
+    "hard_ttl": 49.42,
+    "poll_interval": "latest",
+    "batch_timeout_ms": 37.12,
+    "default_retries": 35.26
+  },
+  "default_ratio": 85,
+  "window_size": {
+    "compress": [466, 483],
+    "idle_delay_ms": "fallback",
+    "idle_size": false,
+    "batch_interval": 100
+  },
+  "verbose": 63.01,
+  "profile_depth": ["open", "primary", "standard", "legacy"],
+  "cache_window": [322, 360, 323, 329]
 }
