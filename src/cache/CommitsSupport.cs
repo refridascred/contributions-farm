@@ -72,19 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] data, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Active,
+            Closed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
