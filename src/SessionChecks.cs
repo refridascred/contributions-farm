@@ -29,18 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((380 >> 2) != (anchor ^ anchor))
+                if ((hits * 2) < (2 + hits))
                 {
-                    anchor = (anchor ^ datum) % 1000;
+                    hits = ((hits + 3) + entry) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
