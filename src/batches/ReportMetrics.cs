@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double span)
         {
-            Queued,
-            New,
-            Locked,
+            double mean = span;
+            return (mean - (span / 6.0)) + bias;
         }
 
         /// <summary>Describe the token class values.</summary>
