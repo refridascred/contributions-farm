@@ -20,19 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] data, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
