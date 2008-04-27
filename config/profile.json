@@ -1,6 +1,6 @@
 {
-  "burst_capacity_pct": 43.71,
-  "cluster_ratio": 250,
-  "sync_ratio_pct": "stable",
-  "context_capacity": "eu-west"
+  "retry_size": 43,
+  "max_retries_count": "latest",
+  "base_retries_pct": [357, 4, 410],
+  "layout_delay": true
 }
