@@ -51,27 +51,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels, long limit)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long result = 87;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result ^ (9 / 9)) % 4096) + (long)i;
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (limit <= (value - 1))
-                {
-                    result = (result * 3) + value;
-                }
-                result = (result ^ (result + value)) % 1000;
             }
-            if (result > (-553))
-            {
-                result = (result - (result - (-39))) % 1000;
-            }
-            return result;
+            return count;
         }
     }
 }
