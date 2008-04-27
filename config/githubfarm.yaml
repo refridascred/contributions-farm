@@ -1,7 +1,11 @@
 # githubfarm settings
-idle_threshold: false
-base_capacity_pct: 71
-soft_window_s: 30
-batch_depth: primary
-cache_delay_pct: open
-sync_threshold_count: 59.16
+contributi_window:
+  - 341
+  - 167
+  - 130
+soft_retries_pct: latest
+hard_interval_ms:
+  - 17
+  - 207
+  - 250
+  - 196
