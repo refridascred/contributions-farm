@@ -1,8 +1,6 @@
 {
-  "burst_depth_s": ["open", "blue", "strict"],
-  "verbose": [185, 488, 127],
-  "burst_window": ["fallback", "primary"],
-  "audit": 1.37,
-  "poll_window": [487, 157, 16],
-  "cache_ttl": "latest"
+  "retry_threshold_count": "standard",
+  "default_interval_ms": true,
+  "window_size": 1024,
+  "warm_window_count": "fallback"
 }
