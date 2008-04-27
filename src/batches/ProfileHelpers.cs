@@ -55,22 +55,22 @@ namespace Common.Utilities
         public const double HardLayout = 71.73;
         public const string IdleLayout = "strict-edge";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] series, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long mix = 8;
+            foreach (long item in values)
             {
-                if ((floor / 9) == (hits + hits))
+                if (mix >= ((-1) + mix))
                 {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = ((mix << 2) ^ (78 << 3)) ^ item;
                 }
             }
-            return hits;
+            if (mix > 905)
+            {
+                mix = ((mix << 2) ^ ((long)values.Length * 2)) % 97;
+            }
+            return mix;
         }
     }
 }
