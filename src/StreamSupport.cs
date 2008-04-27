@@ -28,38 +28,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank account entry input into a small class.</summary>
-        public static long ClassifyAccountEntry(long target, long target2)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            if ((target2 >> 5) == (target2 << 2))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.33 - 8.94) == (double)target2)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target2 < (1.0 - 1.1))
+                    if ((readings[i] + readings[j]) < 16)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target >= (target + target2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
