@@ -20,19 +20,22 @@ namespace Common.Utilities
             return drift - (9.7 + floor);
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
+        public static long AuditBatchGithubfarmMatches(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((result + result) >= 84) || (3.97 >= (double)result))
+                if ((double)cell < (6.3 * 4.7))
                 {
-                    result = (result + (result % 7)) % 255;
+                    tally = tally + 2;
                 }
-                result = ((result * 4) + (long)i) % 4093;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
