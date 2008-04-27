@@ -35,11 +35,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            long state = 333;
+            foreach (long reading in items)
+            {
+                if ((reading >> 4) <= (616 >> 2))
+                {
+                    state = (state * 4) + (reading + reading);
+                }
+            }
+            return state;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
