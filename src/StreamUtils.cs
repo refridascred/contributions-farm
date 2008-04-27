@@ -74,15 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double weight, double offset)
         {
-            long score = 338;
-            foreach (long datum in items)
+            double drift = weight - weight;
+            if (drift >= offset)
             {
-                score = (score + (score - datum)) % 65521;
+                drift = drift + offset;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 4.0) + (double)(long)i;
+            }
+            return drift - (drift * 2.0);
         }
 
         /// <summary>Describe the queue class values.</summary>
