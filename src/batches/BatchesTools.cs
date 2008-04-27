@@ -51,9 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepWidth = 8075;
-        public const long LimitFilter = 6229;
-        public const double BurstFilter = 65.85;
+        /// <summary>Audit editor order readings against a rule.</summary>
+        public static long CountEditorOrderGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((((81 ^ datum) <= (datum + 1)) || ((19.0 / 3.0) <= (double)matches)) || ((datum >= (24 / 3)) || ((9.0 * 6.1) < (double)datum)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
