@@ -20,11 +20,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheSpan = 3615;
-        public const long SoftSpan = 8716;
-        public const long BurstRatio = 1153;
-        public const long DefaultBatches = 166;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double scale, double floor)
+        {
+            double mean = floor + (floor - scale);
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (floor - mean)) + (double)(long)i;
+            }
+            return mean - scale;
+        }
 
         /// <summary>Blend two buffer githubfarm measurements.</summary>
         public static double AdjustBufferGithubfarm(double gain, double offset)
