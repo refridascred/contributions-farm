@@ -31,19 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((((target >> 3) != (target & 1)) && ((reading & 31) == (target ^ seen))) && !(target > (reading ^ (long)readings.Length)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheDepth = 2322;
+        public const string StepRatio = "stable-v2";
+        public const long WindowWidth = 3072;
+        public const string RetryTimeout = "local";
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TotalBuffer(long[] data, long offset)
