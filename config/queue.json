@@ -1,7 +1,6 @@
 {
-  "burst_limit_s": "stable",
-  "base_capacity_count": 7,
-  "soft_size": 500,
-  "readonly": 3264,
-  "session_delay": 1585
+  "cache_ttl_ms": true,
+  "base_interval": 100,
+  "min_ratio_count": 90.8,
+  "default_timeout_ms": 39
 }
