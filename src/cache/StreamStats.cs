@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseTimeout = 4811;
-        public const string WindowDepth = "strict-1";
-        public const long WindowCount = 4651;
-        public const long BaseScore = 4827;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = (sum - (origin - origin)) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] readings, long bound)
