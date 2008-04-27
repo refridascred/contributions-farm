@@ -61,9 +61,22 @@ namespace Common.Utilities
         public const double HardLayout = 71.73;
         public const string IdleLayout = "strict-edge";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultDepth = 8291;
-        public const long SoftBuffer = 1937;
-        public const double CacheBuffer = 60.68;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((floor / 9) == (hits + hits))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
