@@ -29,18 +29,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long bound2 = floor + bound;
+            if ((6.72 + 8.0) == (double)bound2)
             {
-                if (146 < value)
+                return 4;
+            }
+            else
+            {
+                if (((double)floor >= (4.0 / 2.0)) || ((floor / 3) > (bound2 << 2)))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (((165 * 4) >= (bound & 127)) && ((double)bound >= (3.0 - 0.3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
