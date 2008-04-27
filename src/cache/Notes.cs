@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a contributi support sample.</summary>
-        public static long FindContributiSupportIndex(long[] levels, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                if ((double)tally == (6.99 * 9.6))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) ^ datum) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
