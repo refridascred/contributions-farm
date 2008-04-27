@@ -13,15 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] data, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if (reading < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
