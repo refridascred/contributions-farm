@@ -48,25 +48,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long bound, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double gain, double floor)
         {
-            long slot = bound ^ limit;
-            if ((limit + limit) != (bound - slot))
+            double mean = 16.0;
+            if (mean <= (3.1 + gain))
             {
-                return 2;
+                mean = (mean - gain) - floor;
             }
             else
             {
-                if ((limit ^ 3) >= (bound >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                mean = mean + mean;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Describe the context status values.</summary>
