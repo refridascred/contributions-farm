@@ -35,27 +35,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] values)
-        {
-            long mark = 911;
-            foreach (long reading in values)
-            {
-                if (((365 * 4) >= ((-786) - mark)) && (mark > (mark + reading)))
-                {
-                    mark = mark ^ reading;
-                }
-                else
-                {
-                    mark = mark ^ (reading ^ mark);
-                }
-            }
-            if (mark > (-989))
-            {
-                mark = mark + mark;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepTimeout = 2690;
+        public const double BatchSize = 17.72;
+        public const long BurstCache = 7555;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
