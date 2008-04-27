@@ -39,16 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry - (carry - floor)) % 1000;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Audit editor order readings against a rule.</summary>
