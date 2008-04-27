@@ -1,14 +1,16 @@
 {
-  "token_depth": {
-    "batch_window_count": false,
-    "enabled": 60,
-    "graph_capacity": "standard",
-    "metrics_window": true,
-    "audit": [278, 352, 375]
-  },
-  "hard_threshold_count": [217, 304, 157],
-  "batch_threshold": 58.06,
-  "hard_ttl": ["latest", "open"],
-  "flush_depth_pct": 9063,
-  "persist": 85.95
+  "default_retries": 100,
+  "strict": [229, 158, 57, 317],
+  "warm_window_s": {
+    "idle_timeout_s": [398, 109],
+    "hard_limit_ms": false,
+    "hard_delay_count": ["blue", "eu-west", "legacy"],
+    "dry_run": false,
+    "verbose": {
+      "audit": "fallback",
+      "warm_depth_ms": true,
+      "strict": 250
+    },
+    "max_limit": "legacy"
+  }
 }
