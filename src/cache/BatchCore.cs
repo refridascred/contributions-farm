@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const long StepInterval = 5924;
         public const double BaseSpan = 32.99;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double gain, double offset)
         {
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
+            double scale = 4.2 * 8.1;
+            if (scale > (0.9 / 2.0))
+            {
+                scale = ((scale - (scale - scale)) - gain) + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale + (6.5 * 9.1);
         }
 
         /// <summary>Fold a list of batches metric readings.</summary>
