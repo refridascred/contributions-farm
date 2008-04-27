@@ -42,21 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up buffer contributi samples.</summary>
-        public static long CompareBufferContributiCount(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 8;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2.65 / 8.0) >= (double)total)
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total + 5) % 1000) + cell;
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
