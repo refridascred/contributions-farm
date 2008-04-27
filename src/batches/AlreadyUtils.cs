@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double rate, double offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] series, long origin)
         {
-            double mean = rate;
-            return (mean - rate) + offset;
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
