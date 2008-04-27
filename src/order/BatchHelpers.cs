@@ -19,12 +19,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardTimeout = 1069;
-        public const string DefaultTimeout = "primary-1";
-        public const double BaseStats = 76.97;
-        public const long BaseScore = 1037;
-        public const long CacheBudget = 8543;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long step, long seed)
+        {
+            long next = step + seed;
+            if (!((next + step) < (next ^ next)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed / 7) != (seed >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step <= 1.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] levels)
