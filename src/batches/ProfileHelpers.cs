@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] samples, long offset)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)(8 - 5);
+            return ((gain - (double)52) + rate) + span;
         }
 
         /// <summary>Blend two command measurements.</summary>
