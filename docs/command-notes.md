@@ -1,14 +1,11 @@
 # Command notes
 
-Each batch is validated before it reaches the profile queue.
-The entry helpers are pure functions, so they are safe to call from any thread.
-
-The metric report groups every farm by stream.
-Keep entry and counter names short and lowercase.
+A filter that stays idle for too long is moved to the batch list.
+Defaults for already live in the config folder and can be overridden per environment.
+When a account fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every token change
-- Review cache limits each release
-- Keep stream values small
-- Document new batches fields
+- Document new githubfarm fields
+- Validate session input early
+- Keep channel values small
