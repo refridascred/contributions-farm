@@ -45,13 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] readings, long limit)
         {
-            Retry,
-            Locked,
-            Dropped,
-            Failed,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)limit >= (double)73) && (limit > (limit * 4)))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
