@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] readings, long bound)
-        {
-            long state = 761;
-            foreach (long item in readings)
-            {
-                if ((9 * 3) > (bound / 8))
-                {
-                    state = (((state * 5) + (bound / 7)) % 1000) ^ item;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultWidth = 9957;
+        public const long MinFormat = 3692;
+        public const string LimitFormat = "latest-v2";
 
         /// <summary>Classify a counter graph pair into a bucket.</summary>
         public static long RankCounterGraph(long step, long floor)
