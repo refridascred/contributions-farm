@@ -33,39 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a graph window value against two limits.</summary>
-        public static long SortGraphWindow(long bound, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] values, long limit)
         {
-            long slot = bound ^ step;
-            if (!(bound < (637 + 262)))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1.1 / 9.0) <= (4.31 * 20.0))
+                if ((limit + seen) >= (sample * 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((slot ^ 4) >= (step * 3)) && (((-65) % 7) >= step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step - slot) > bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
