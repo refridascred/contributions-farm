@@ -49,19 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics token readings.</summary>
-        public static long FoldMetricsToken(long[] data, long target)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long state = 81;
-            foreach (long cell in data)
-            {
-                state = ((state * 4) + (target << 2)) + cell;
-            }
-            if (state < 289)
-            {
-                state = ((state << 3) ^ (target / 9)) % 65521;
-            }
-            return state % 65521;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
