@@ -64,11 +64,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Compare every pair of filter window readings.</summary>
+        public static long CompareFilterWindowCount(long[] items)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
