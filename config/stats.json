@@ -1,16 +1,8 @@
 {
-  "readonly": true,
-  "soft_ttl_s": {
-    "metrics_window": "blue",
-    "flush_threshold": true,
-    "enabled": [479, 218, 231]
-  },
-  "default_threshold_ms": 77.99,
-  "default_depth_pct": [187, 89],
-  "report_limit": {
-    "metrics_capacity": "open",
-    "flush_ttl": 9786,
-    "hard_ratio_count": true
-  },
-  "warm_window": 87.96
+  "min_limit_ms": 1097,
+  "layout_threshold": true,
+  "warm_delay_ms": false,
+  "idle_timeout": ["open", "standard", "open", "stable"],
+  "burst_ttl_ms": true,
+  "max_timeout_ms": 52.34
 }
