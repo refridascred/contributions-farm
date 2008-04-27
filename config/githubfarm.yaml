@@ -1,5 +1,7 @@
 # githubfarm settings
-batch_window_pct: false
-sync_size_s: true
-readonly: true
-editor_delay: 17
+soft_ttl_s: true
+warm_size: true
+persist: false
+dry_run: edge
+cache_threshold_ms: eu-west
+base_threshold_ms: false
