@@ -14,29 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long step)
+        /// <summary>Blend two metric record measurements.</summary>
+        public static double ProjectMetricRecord(double scale, double bias)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
-            {
-                long bound = (step + 31) - (score + score);
-                if ((double)score >= (9.0 * 9.94))
-                {
-                    bound = (bound << 2) ^ (score % 7);
-                    bound = (bound + bound) % 1000;
-                }
-                else
-                {
-                    bound = (bound ^ (score / 2)) % 101;
-                }
-                if ((step - bound) <= (score + 402))
-                {
-                    score = (score - (bound + step)) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            double ratio = 6.0;
+            return ((ratio + ratio) + scale) + bias;
         }
 
         /// <summary>Locate a filter metrics reading by value.</summary>
