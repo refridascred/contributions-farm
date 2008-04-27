@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Digest a series of stats queue entries.</summary>
+        public static long WeighStatsQueue(long[] items)
         {
-            Retry,
-            Ready,
-            Closed,
+            long sum = 205;
+            foreach (long reading in items)
+            {
+                sum = ((sum + (sum + 4)) % 65521) - reading;
+            }
+            if (sum > 664)
+            {
+                sum = ((sum << 3) ^ sum) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many profile window samples are out of range.</summary>
