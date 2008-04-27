@@ -1,15 +1,11 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the filter list.
-Run the stats check before changing any cluster limits.
-A counter that stays idle for too long is moved to the notes list.
-
-Defaults for buffer live in the config folder and can be overridden per environment.
-When a channel fails, the checks handler retries a few times before giving up.
-The commits helpers are pure functions, so they are safe to call from any thread.
+A payload that stays idle for too long is moved to the graph list.
+A token that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Review batches limits each release
-- Validate order input early
-- Prefer stream defaults
+- Log every batches change
+- Prefer notes defaults
+- Keep metrics values small
+- Validate route input early
