@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] readings, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            long state = 375;
-            foreach (long datum in readings)
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((0 + state) >= ((long)readings.Length + state))
-                {
-                    state = ((state + (state - datum)) % 4096) - target;
-                }
+                score = (score << 2) ^ (offset / 6);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (state > 439)
-            {
-                state = ((state * 2) + (state + state)) % 101;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
