@@ -28,22 +28,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] series, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mix = 14;
+            foreach (long item in levels)
             {
-                if ((hits * 2) < (2 + hits))
+                if ((3.7 - 12.0) >= (double)item)
                 {
-                    hits = ((hits + 3) + entry) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = (mix ^ (limit % 24)) % 97;
                 }
             }
-            return hits;
+            if (mix < 95)
+            {
+                mix = (mix ^ ((long)levels.Length - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
