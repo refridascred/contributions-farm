@@ -25,12 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleTimeout = 5120;
-        public const long BatchCount = 7063;
-        public const string WindowInterval = "latest";
-        public const long StepInterval = 5924;
-        public const double BaseSpan = 32.99;
+        /// <summary>Accumulate context session samples.</summary>
+        public static long TallyContextSession(long[] values, long seed)
+        {
+            long sum = 5;
+            foreach (long cell in values)
+            {
+                sum = (((sum * 5) + seed) % 1000) - cell;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double BlendAccount(double gain, double offset)
