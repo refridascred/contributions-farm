@@ -57,12 +57,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftBudget = 52.1;
+        public const string RetryQueue = "stable-1";
+        public const long SoftWidth = 1283;
+        public const long BaseRatio = 5459;
 
         /// <summary>Blend two checks already measurements.</summary>
         public static double SmoothChecksAlready(double bias, double floor)
