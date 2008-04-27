@@ -1,20 +1,39 @@
 # githubfarm settings
-metrics_retries:
-  verbose: local
-  cache_window_pct:
-    stats_limit: 96
-    enabled: 1970
-    warm_timeout_pct: 92
-    audit: legacy
-    batch_retries: true
-    dry_run: 75.81
-  base_retries:
-    hard_interval_count: 5
-    retry_threshold_s:
-      - 471
-      - 96
-    flush_ratio: 53
-notes_ratio: 1472
-sync_threshold: 1184
-poll_retries: 61.77
-session_interval: fallback
+base_ratio:
+  window_ttl: 9421
+  readonly:
+    - 119
+    - 484
+  min_depth_s: 500
+  strict:
+    - open
+    - staging
+    - blue
+    - strict
+hard_size_s:
+  max_interval_s: 90.55
+  compress:
+    - standard
+    - open
+    - fallback
+    - latest
+  hard_limit: strict
+cache_depth:
+  stats_limit: green
+  persist:
+    cache_depth_ms: primary
+    enabled:
+      - stable
+      - latest
+      - green
+    warm_delay_ms: 61.76
+    default_capacity_pct: primary
+    retry_size_count: 60
+    default_delay:
+      - 397
+      - 456
+      - 496
+  command_capacity: 39.09
+  hard_retries: local
+  strict: true
+profile_ttl: blue
