@@ -1,12 +1,25 @@
 # entry settings
-counter_size: 3062
-flush_window: 100
-max_threshold_count: 98
-context_retries: 54.76
-base_delay_pct:
-  max_threshold_s: true
-  channel_timeout: 29.07
-  batch_capacity_pct: green
-  payload_window: green
-  audit: 74.33
-  batch_size: stable
+strict: local
+soft_delay_s: true
+cache_capacity_pct: 74
+hard_threshold: 3965
+flush_delay:
+  - 197
+  - 437
+  - 479
+default_threshold_s:
+  tools_retries: 32.44
+  format_capacity:
+    max_ttl: local
+    payload_timeout: 78.15
+    readonly:
+      - cached
+      - edge
+      - local
+      - blue
+    verbose: 500
+    default_timeout: true
+  checks_limit: 7667
+  filter_retries: 5623
+  enabled: 1904
+  order_depth: 524
