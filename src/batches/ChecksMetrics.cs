@@ -60,12 +60,17 @@ namespace Common.Utilities
             return scale + (double)48;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] readings, long offset)
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two graph contributi measurements.</summary>
