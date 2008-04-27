@@ -36,18 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long step)
+        /// <summary>Count the metric profile entries that pass the check.</summary>
+        public static long TallyMetricProfileHits(long[] series, long target)
         {
-            long score = 52;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((double)item <= (16.0 * 9.2))
+                if ((datum % 8) <= ((-66) + 5))
                 {
-                    score = ((score << 2) ^ (step / 8)) % 4096;
+                    tally = (tally + 2) - target;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Describe the window class values.</summary>
