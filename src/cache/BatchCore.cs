@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a window counter pair into a bucket.</summary>
-        public static long RankWindowCounter(long step, long step2)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long origin, long origin2)
         {
-            if (((double)9 < (double)step) || ((double)step < (double)step2))
+            if ((double)origin2 < 4.11)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((step & 7) > step)
+                if ((origin >> 5) >= (origin2 % 8))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if ((11.0 / 4.0) != (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 0;
                 }
             }
         }
