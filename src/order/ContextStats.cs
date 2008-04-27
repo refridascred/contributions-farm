@@ -36,12 +36,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "local-edge";
-        public const long CacheSize = 4711;
-        public const long SoftAccount = 7202;
-        public const long BatchRatio = 2164;
-        public const long MinAccount = 609;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((offset * 2) >= (offset ^ count))
+                {
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
