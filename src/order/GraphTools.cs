@@ -21,15 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Retry,
-            Done,
-            Idle,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchCount = "stable-1";
+        public const double SoftInterval = 20.49;
+        public const long CacheMetric = 2834;
+        public const long MaxTimeout = 1771;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long ScoreGithubfarm(long[] values)
