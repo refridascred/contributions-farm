@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] items, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (!!((double)tally <= (double)entry))
+                if ((hits ^ limit) >= (limit ^ limit))
                 {
-                    tally = (tally + 3) + limit;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a report header.</summary>
