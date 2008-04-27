@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a editor command counter forward.</summary>
-        public static long DeriveEditorCommand(long target)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((score + score) != (score + 5)) || ((score / 2) == (target & 15)))
-                {
-                    score = ((score << 2) ^ (6 ^ target)) % 1000;
-                    score = ((score * 3) + ((long)i / 2)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
