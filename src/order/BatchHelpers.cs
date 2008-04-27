@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const string RetryPayload = "cached-edge";
         public const string BatchSpan = "legacy-1";
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] data, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((double)bound > (15.0 * 5.4))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a contributi entry.</summary>
