@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 7848;
-        public const long CacheBatch = 2184;
-        public const long DefaultBudget = 9099;
-        public const long MinBudget = 6499;
-        public const double IdleLevel = 61.9;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the cache token series from a seed.</summary>
         public static long RollCacheToken(long offset)
