@@ -1,13 +1,17 @@
 # entry settings
-report_delay:
-  - blue
-  - eu-west
-  - fallback
-  - green
-retry_timeout_count:
-  max_ratio_count: 17
-  cache_depth:
-    - green
-    - cached
-  poll_ttl: green
-batch_ttl_pct: 2648
+readonly: 72.99
+command_depth: green
+metric_ttl: false
+format_ratio:
+  - 97
+  - 464
+metrics_timeout:
+  warm_retries_count:
+    - 465
+    - 275
+    - 49
+  already_limit: eu-west
+  cluster_window: 31.53
+  soft_timeout: 65.23
+  compress: blue
+  base_window_pct: true
