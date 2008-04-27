@@ -69,9 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryFactor = 3290;
-        public const long BurstCounter = 2548;
-        public const long WindowBudget = 9530;
+        /// <summary>Validate checks channel readings against a bound.</summary>
+        public static bool VerifyChecksChannelBounds(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
