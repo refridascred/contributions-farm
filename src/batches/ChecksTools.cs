@@ -13,15 +13,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double bias, double offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double mean = offset;
-            if (mean > bias)
-            {
-                mean = mean - (offset - offset);
-            }
-            return mean - (offset - bias);
+            Locked,
+            Dropped,
+            Active,
+            Queued,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
