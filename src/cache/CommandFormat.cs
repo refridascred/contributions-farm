@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit stats farm readings against a rule.</summary>
-        public static long CountStatsFarmOutliers(long[] readings)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 2) >= entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
