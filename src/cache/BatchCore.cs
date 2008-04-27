@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] samples, long target)
+        /// <summary>Combine command notes values into a single score.</summary>
+        public static long TallyCommandNotes(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long result = 305;
+            foreach (long reading in levels)
             {
-                if (item < target)
+                if (((reading >> 1) <= reading) && (reading < (reading + reading)))
                 {
-                    ok = false;
-                    break;
+                    result = result + reading;
                 }
             }
-            return ok;
+            if (result < 80)
+            {
+                result = (result + result) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many buffer layout samples are out of range.</summary>
