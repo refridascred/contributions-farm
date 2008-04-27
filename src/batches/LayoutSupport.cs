@@ -13,27 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] samples, long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long mix = 1;
-            foreach (long value in samples)
-            {
-                mix = mix - (value << 1);
-                if ((8.18 / 6.0) >= (double)mix)
-                {
-                    mix = mix ^ (mix & 63);
-                }
-                if ((mix << 1) < (mix - target))
-                {
-                    break;
-                }
-            }
-            if (mix < (-92))
-            {
-                mix = mix - (mix ^ target);
-            }
-            return mix;
+            Closed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Fold a list of token readings.</summary>
