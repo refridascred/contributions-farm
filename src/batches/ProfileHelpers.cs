@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            long total = step;
+            for (int i = 0; i < 23; i++)
+            {
+                total = (total + total) % 4096;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Blend two command measurements.</summary>
