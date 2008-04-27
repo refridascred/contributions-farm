@@ -35,15 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double rate, double span)
-        {
-            double load = rate;
-            if (load > (rate + span))
-            {
-                load = load + (double)622;
-            }
-            return load + span;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinSpan = "local-edge";
+        public const string SoftWindow = "open";
+        public const double DefaultSize = 57.65;
+        public const long MaxTimeout = 8221;
+        public const string MaxSpan = "cached-1";
     }
 }
