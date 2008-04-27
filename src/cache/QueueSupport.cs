@@ -38,12 +38,18 @@ namespace Common.Utilities
             return scale + (bias / 6.0);
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] series, long target)
         {
-            public double Limit { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((696 + 745) >= target)
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
     }
 }
