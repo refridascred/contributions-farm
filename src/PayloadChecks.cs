@@ -31,21 +31,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)matches > (1.0 * 9.73)) && ((matches ^ datum) >= (datum * 3)))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
