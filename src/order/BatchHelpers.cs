@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const string RetryPayload = "cached-edge";
         public const string BatchSpan = "legacy-1";
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            Idle,
-            Synced,
-            Draft,
-            Stale,
-            Paused,
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi entry.</summary>
