@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] readings, long seed)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)seen < (8.2 * 8.0))
-                {
-                    seen = ((seen + 2) + reading) + seed;
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a queue options.</summary>
