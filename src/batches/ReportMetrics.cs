@@ -12,24 +12,18 @@ namespace Common.Utilities
             return (mean - (span / 6.0)) + bias;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long seed, long offset)
+        /// <summary>Measure how many order payload samples are out of range.</summary>
+        public static long CountOrderPayloadOutliers(long[] levels)
         {
-            if (((75 & 3) <= (offset * 2)) || ((seed - seed) < (offset / 6)))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset > (8.09 / 8.0)) || (offset < seed))
+                if ((double)matches >= (0.1 / 5.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 3) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
