@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "stable-1";
-        public const double StepSchema = 50.34;
-        public const long WindowSchema = 8291;
-        public const long MinSchema = 9229;
-        public const long BurstSchema = 9374;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Closed,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
