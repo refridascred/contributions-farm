@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Dropped,
-            Paused,
-            Closed,
-            Queued,
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate checks samples.</summary>
