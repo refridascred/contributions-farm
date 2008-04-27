@@ -14,38 +14,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long limit)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            if (limit > offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((614 - 7) > (offset ^ offset)) || (limit > (offset - limit)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit % 60) < (offset >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7 - limit) < (184 % 24))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
