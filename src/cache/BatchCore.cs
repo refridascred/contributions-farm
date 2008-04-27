@@ -29,13 +29,34 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate account layout samples.</summary>
+        public static long TallyAccountLayout(long[] readings, long offset)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            long result = 66;
+            foreach (long reading in readings)
+            {
+                if (6.88 < (double)offset)
+                {
+                    result = ((result * 5) + offset) % 101;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    result = ((result ^ reading) % 4096) ^ (long)i;
+                }
+                if ((offset >= ((long)readings.Length / 2)) || ((double)reading > (14.0 - 3.37)))
+                {
+                    result = result + (reading + result);
+                }
+                else
+                {
+                    result = (result << 2) ^ (reading << 2);
+                }
+                if ((result + offset) > (result % 64))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate counter route samples.</summary>
