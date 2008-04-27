@@ -34,10 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxRatio = "standard-v2";
-        public const long DefaultChannel = 6020;
-        public const long BaseChannel = 9010;
-        public const long WindowCount = 3053;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] series, long bound)
+        {
+            long result = 82;
+            foreach (long value in series)
+            {
+                result = (result - value) - bound;
+            }
+            return result % 97;
+        }
     }
 }
