@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double bias, double floor)
         {
-            Retry,
-            Paused,
-            Done,
-            Dropped,
+            double drift = bias;
+            if (drift >= drift)
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - (9.7 + floor);
         }
 
         /// <summary>Match up already farm samples.</summary>
