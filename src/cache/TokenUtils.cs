@@ -14,19 +14,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] data, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long acc = 5;
+            foreach (long item in levels)
             {
-                if (entry >= floor)
+                if ((item <= (long)levels.Length) && ((double)item != (3.46 + 9.59)))
                 {
-                    ready = false;
+                    acc = ((acc << 2) ^ item) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (item - item)) % 255;
+                }
+                if (item > (item % 24))
+                {
                     break;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Hold a graph summary.</summary>
