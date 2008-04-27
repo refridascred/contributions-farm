@@ -49,9 +49,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 3127;
-        public const string BatchStats = "strict-1";
-        public const long MaxLevel = 6707;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 3169;
+        public const string SoftFilter = "stable";
+        public const long BatchBudget = 7974;
     }
 }
