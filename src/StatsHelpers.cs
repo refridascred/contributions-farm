@@ -44,19 +44,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] values, long offset)
+        /// <summary>Validate tools route readings against a bound.</summary>
+        public static bool VerifyToolsRouteLimits(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (cell < offset)
+                if (entry > step)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
