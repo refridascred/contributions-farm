@@ -69,13 +69,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
-        {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 6188;
+        public const long RetryScore = 4367;
+        public const long StepBatches = 9121;
+        public const string CacheRatio = "strict-v2";
     }
 }
