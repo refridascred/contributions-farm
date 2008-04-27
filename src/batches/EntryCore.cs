@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] samples, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] >= origin)
+                if (data[i] < step)
                 {
                     return (long)i;
                 }
