@@ -1,6 +1,10 @@
-id,rank,label,token
-1,30.14,219,legacy
-2,legacy,891,667
-3,59.14,776,3.86
-4,507,9.86,757
-5,39.6,421,66.02
+id,weight,owner
+1,309,legacy
+2,794,121
+3,open,green
+4,755,legacy
+5,592,standard
+6,blue,green
+7,547,3.06
+8,green,692
+9,114,primary
