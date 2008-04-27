@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Active,
-            Done,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBatches = "local";
+        public const string DefaultSpan = "standard-edge";
+        public const long BatchBatches = 3250;
+        public const long RetryCount = 7211;
+        public const double WindowBatches = 17.06;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long step, long seed)
