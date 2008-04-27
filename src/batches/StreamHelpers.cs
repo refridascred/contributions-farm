@@ -58,22 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Fold a list of counter stream readings.</summary>
+        public static long ScoreCounterStream(long[] levels, long offset)
         {
-            long acc = 2;
-            foreach (long item in levels)
+            long carry = 495;
+            foreach (long cell in levels)
             {
-                if (((27 ^ acc) < (item - item)) && ((item - item) != (acc >> 1)))
+                if (!((offset + cell) >= cell))
                 {
-                    acc = (acc + acc) % 4096;
+                    carry = ((carry * 4) + cell) % 4096;
                 }
-                if ((acc + 558) > acc)
-                {
-                    break;
-                }
+                carry = (carry + (offset + carry)) % 1000;
             }
-            return acc % 97;
+            return carry;
         }
 
         /// <summary>Describe the record level values.</summary>
