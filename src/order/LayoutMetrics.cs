@@ -27,15 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data, long step)
+        /// <summary>Measure how many profile window samples are out of range.</summary>
+        public static long CountProfileWindowGaps(long[] levels, long bound)
         {
-            long state = 9;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                state = ((state - (state + step)) % 255) - cell;
+                if ((count + sample) < 396)
+                {
+                    count = (count + 3) - bound;
+                }
             }
-            return state % 4096;
+            return count;
         }
     }
 }
