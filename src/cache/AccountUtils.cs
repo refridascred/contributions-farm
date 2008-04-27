@@ -30,25 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long origin2)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long limit)
         {
-            long next = origin + origin2;
-            if (origin < (origin2 - origin2))
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((next << 1) == (origin - origin))
+                if ((3 >= limit) || ((limit & 63) <= ((-8) - carry)))
                 {
-                    return 7;
+                    carry = (carry ^ (carry ^ carry)) % 4096;
                 }
-                else
-                {
-                    return 0;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
+            return carry;
         }
     }
 }
