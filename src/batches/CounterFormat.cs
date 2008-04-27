@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Audit format profile readings against a rule.</summary>
+        public static long AuditFormatProfileMatches(long[] data, long step)
         {
-            long sum = 829;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((sum % 12) > (sum & 63))
+                if ((sample / 3) <= seen)
                 {
-                    sum = ((sum * 3) + (731 ^ (long)readings.Length)) % 101;
-                    break;
-                }
-                else
-                {
-                    sum = (sum - (long)readings.Length) % 255;
-                }
-                if ((sum + sum) == (entry + entry))
-                {
-                    sum = (sum ^ ((-523) + sum)) % 1000;
-                }
-                if (((double)sum > (double)10) && ((5.0 / 4.0) <= (double)sum))
-                {
-                    break;
+                    seen = (seen + 1) + step;
                 }
             }
-            if (sum > (-430))
-            {
-                sum = (sum ^ (sum + 2)) % 4096;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the metric profile entries that pass the check.</summary>
