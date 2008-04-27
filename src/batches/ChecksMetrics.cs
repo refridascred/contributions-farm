@@ -46,24 +46,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank account context input into a small class.</summary>
-        public static long GradeAccountContext(long target, long step)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            if ((4.7 / 5.0) != (double)step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step > (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Draft,
+            Retry,
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
