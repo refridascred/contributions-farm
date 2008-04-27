@@ -21,19 +21,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] series, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            double gain = scale;
+            if (gain >= (13.0 * 9.9))
             {
-                if (reading >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (double)5) + span;
             }
-            return flag;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (20.0 * 9.67)) + (double)(long)i;
+            }
+            return gain + (gain / 3.0);
         }
 
         /// <summary>Hold a route stats.</summary>
