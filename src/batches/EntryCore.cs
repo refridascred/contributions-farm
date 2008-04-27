@@ -54,13 +54,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Accumulate route already samples.</summary>
+        public static long DigestRouteAlready(long[] series)
         {
-            Locked,
-            Pending,
-            Done,
-            Draft,
+            long anchor = 24;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = ((anchor - (entry * 2)) % 65521) - (long)i;
+                }
+                if ((3.07 / 9.0) <= (double)entry)
+                {
+                    anchor = (anchor - ((-9) >> 4)) % 101;
+                }
+            }
+            return anchor;
         }
     }
 }
