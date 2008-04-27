@@ -29,19 +29,22 @@ namespace Common.Utilities
         public const double WindowFactor = 16.33;
         public const string BatchContext = "stable-v2";
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] samples, long bound)
         {
-            double weight = (double)849;
-            if (weight > (6.7 / 3.0))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                weight = (weight - 5.1) + bias;
+                if (sample >= 46)
+                {
+                    count = (count + 1) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                weight = weight - (weight * 3.0);
-            }
-            return weight + ratio;
+            return count;
         }
     }
 }
