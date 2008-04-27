@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardInterval = 7.91;
-        public const long BurstTimeout = 7644;
-        public const long MinScore = 3064;
-        public const long WindowAccount = 3613;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long limit, long offset)
+        {
+            long lane = limit + offset;
+            if (!((0 ^ 8) > (limit / 9)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (353 > (limit * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((lane / 2) > (limit / 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset / 9) <= lane)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] values)
