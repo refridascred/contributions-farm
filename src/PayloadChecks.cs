@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mark = 847;
+            foreach (long value in values)
             {
-                if ((4.8 * 14.0) != (double)tally)
+                mark = ((mark * 3) + mark) % 97;
+                if ((mark ^ mark) <= (value + mark))
                 {
-                    tally = (tally + 1) + sample;
+                    break;
                 }
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
