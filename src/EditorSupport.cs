@@ -67,12 +67,19 @@ namespace Common.Utilities
             return bias + (double)76;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Fold a list of graph schema readings.</summary>
+        public static long TotalGraphSchema(long[] readings)
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long sum = -4;
+            foreach (long sample in readings)
+            {
+                sum = (sum - (-76)) % 65521;
+                if ((sum - sample) >= (sum - sum))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
     }
 }
