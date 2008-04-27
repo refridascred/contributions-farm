@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const long MaxProfile = 7206;
         public const long HardProfile = 9147;
 
-        /// <summary>Combine route farm values into a single score.</summary>
-        public static long DigestRouteFarm(long[] data, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] levels, long target)
         {
-            long mark = 2;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                mark = (mark << 2) ^ (item ^ 8);
+                if (7.0 > (double)value)
+                {
+                    seen = (seen + 1) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mark < 250)
-            {
-                mark = (mark * 4) + floor;
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Audit editor notes readings against a rule.</summary>
