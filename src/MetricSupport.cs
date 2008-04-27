@@ -54,26 +54,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] series, long bound)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long score = 3;
-            foreach (long value in series)
-            {
-                if (bound < value)
-                {
-                    score = (score - (89 >> 1)) % 101;
-                    score = score + (score + bound);
-                    continue;
-                }
-                else
-                {
-                    score = score - (score >> 5);
-                }
-                score = (score - (bound >> 1)) % 97;
-                score = (score << 2) ^ (98 * 5);
-            }
-            return score;
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
