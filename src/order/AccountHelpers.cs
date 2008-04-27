@@ -54,19 +54,15 @@ namespace Common.Utilities
         public const long IdleScore = 2291;
         public const string DefaultSize = "legacy";
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] series, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            double ratio = weight * 2.0;
+            if (ratio <= (bias * 2.6))
             {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio - (bias / 4.0);
             }
-            return valid;
+            return ratio - (double)564;
         }
     }
 }
