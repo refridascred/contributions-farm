@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] readings, long bound)
+        /// <summary>Accumulate channel command samples.</summary>
+        public static long TotalChannelCommand(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -7;
+            foreach (long cell in items)
             {
-                if (readings[i] <= bound)
+                if ((double)cell == (14.0 / 9.0))
                 {
-                    return (long)i;
+                    acc = (acc + (bound * 3)) % 97;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
