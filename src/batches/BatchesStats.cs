@@ -19,11 +19,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 4274;
-        public const long LimitSpan = 3511;
-        public const double StepDepth = 25.97;
-        public const long HardBudget = 2053;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long seed, long target)
+        {
+            long lane = seed ^ target;
+            if (!((target - lane) > (seed % 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target + lane) == (7 + lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long RollMetrics(long limit)
