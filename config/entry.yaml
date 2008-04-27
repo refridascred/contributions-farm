@@ -1,6 +1,4 @@
 # entry settings
-dry_run: local
-editor_timeout: true
-readonly: primary
-persist: 19.38
-batch_delay: green
+batch_delay: primary
+report_timeout: 30
+flush_ttl_count: 98.42
