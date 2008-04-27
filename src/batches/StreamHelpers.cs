@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] levels, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] items, long bound)
         {
-            long sum = 98;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (sum >= (sum & 255))
+                if (((reading + count) > (reading & 63)) || ((count << 1) >= (reading % 100)))
                 {
-                    sum = (((sum << 3) ^ (sum << 3)) % 65521) + bound;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ 10;
-                }
-                if ((148 % 2) != (item * 2))
-                {
-                    break;
+                    count = (count + 3) + bound;
                 }
             }
-            if (sum > 2)
-            {
-                sum = sum - (sum * 4);
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Fold a list of cache batch readings.</summary>
