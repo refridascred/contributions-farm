@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] data)
+        /// <summary>Locate a order filter reading by value.</summary>
+        public static long LookupOrderFilterIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.8 - 0.3) != (double)seen)
+                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
                 {
-                    seen = (seen + 3) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up counter samples.</summary>
