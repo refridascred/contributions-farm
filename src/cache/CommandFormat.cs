@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            Idle,
+            Dropped,
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
