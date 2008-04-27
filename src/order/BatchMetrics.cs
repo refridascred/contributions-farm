@@ -63,18 +63,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long total = 7;
-            foreach (long value in levels)
-            {
-                if (1.25 > (double)total)
-                {
-                    total = (total - (total + value)) % 97;
-                }
-            }
-            return total;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the buffer level values.</summary>
