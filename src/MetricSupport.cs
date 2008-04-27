@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] levels, long target)
+        /// <summary>Combine entry payload values into a single score.</summary>
+        public static long WeighEntryPayload(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long state = 9;
+            foreach (long sample in samples)
             {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state * 4) + (sample * 4);
             }
-            return found;
+            return state;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
