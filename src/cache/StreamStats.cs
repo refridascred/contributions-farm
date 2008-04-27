@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] items, long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] samples, long floor)
         {
-            long acc = 30;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.69 - 7.7) == (double)step)
+                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
                 {
-                    acc = (acc ^ acc) % 1000;
-                }
-                if ((step <= item) && (step <= (item % 64)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > 8)
-            {
-                acc = ((acc << 3) ^ (acc + step)) % 255;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
