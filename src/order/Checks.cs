@@ -47,27 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches tools values into a single score.</summary>
-        public static long FoldBatchesTools(long[] readings, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] series)
         {
-            long carry = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)target == (1.14 / 7.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry ^ (target + target)) % 65521) ^ item;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((743 / 4) < (target / 8))
-                {
-                    carry = ((carry << 2) ^ (carry % 100)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (carry << 1)) % 101;
-                }
-                carry = carry ^ (carry - target);
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
