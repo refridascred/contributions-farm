@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            long mark = 700;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark << 3) ^ (cell << 1);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mark > 16)
-            {
-                mark = (mark * 3) + (mark + mark);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a profile info.</summary>
