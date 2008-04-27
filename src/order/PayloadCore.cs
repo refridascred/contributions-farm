@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinDepth = 6718;
-        public const double HardPayload = 41.53;
-        public const long SoftPayload = 9443;
-        public const double MinSize = 24.85;
-        public const long BurstPayload = 6863;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 217;
+        public const double WindowTimeout = 46.2;
+        public const long LimitTools = 4287;
+        public const long CacheScore = 2720;
+        public const long DefaultTools = 533;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long MatchOrderCount(long[] levels)
