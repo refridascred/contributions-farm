@@ -19,26 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] samples, long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long seed)
         {
-            long acc = 98;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((acc % 60) > (reading * 2))
+                if (value <= seed)
                 {
-                    acc = (acc + (58 ^ reading)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 654)
-            {
-                acc = acc - (origin << 1);
-            }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Adjust a cache token reading.</summary>
