@@ -88,22 +88,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] data, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry / 6) >= seed)
+                if (levels[i] == limit)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
