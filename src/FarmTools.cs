@@ -20,15 +20,11 @@ namespace Common.Utilities
         public const double WindowFactor = 16.33;
         public const string BatchContext = "stable-v2";
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseScore = "strict-v2";
+        public const long MaxLevel = 1980;
+        public const double CacheFormat = 92.06;
+        public const string BatchTimeout = "strict";
+        public const long MaxWidth = 9169;
     }
 }
