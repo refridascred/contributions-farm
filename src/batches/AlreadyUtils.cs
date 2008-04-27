@@ -44,24 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the checks entry series from a seed.</summary>
-        public static long IterateChecksEntry(long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (values[i] > bound)
                 {
-                    anchor = (((anchor * 4) + anchor) % 97) + (long)i2;
+                    return (long)i;
                 }
-                if (((-452) & 31) > limit)
-                {
-                    anchor = (anchor ^ anchor) % 4096;
-                }
-                anchor = anchor ^ ((-31) * 3);
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
