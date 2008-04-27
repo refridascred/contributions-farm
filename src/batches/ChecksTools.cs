@@ -13,13 +13,24 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            Locked,
-            Dropped,
-            Active,
-            Queued,
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (sum > (origin + (long)i))
+                {
+                    sum = sum - ((long)i ^ 44);
+                    break;
+                }
+                if ((sum & 255) > origin)
+                {
+                    sum = sum - (origin - (long)i);
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
