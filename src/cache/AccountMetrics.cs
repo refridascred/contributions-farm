@@ -70,19 +70,14 @@ namespace Common.Utilities
             return bias3 - 16.0;
         }
 
-        /// <summary>Digest a series of token filter entries.</summary>
-        public static long TotalTokenFilter(long[] levels, long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long carry = 420;
-            foreach (long cell in levels)
-            {
-                carry = ((carry + carry) + cell) + origin;
-            }
-            if (carry > 345)
-            {
-                carry = ((carry * 5) + (carry % 16)) % 1000;
-            }
-            return carry % 97;
+            Queued,
+            Synced,
+            Retry,
+            Ready,
+            Active,
         }
 
         /// <summary>Define already limits and defaults.</summary>
