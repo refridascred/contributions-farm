@@ -53,19 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] data, long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
