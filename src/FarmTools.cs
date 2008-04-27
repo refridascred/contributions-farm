@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const double WindowFactor = 16.33;
         public const string BatchContext = "stable-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseScore = "strict-v2";
-        public const long MaxLevel = 1980;
-        public const double CacheFormat = 92.06;
-        public const string BatchTimeout = "strict";
-        public const long MaxWidth = 9169;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double ratio, double bias)
+        {
+            double weight = (double)849;
+            if (weight > (6.7 / 3.0))
+            {
+                weight = (weight - 5.1) + bias;
+            }
+            else
+            {
+                weight = weight - (weight * 3.0);
+            }
+            return weight + ratio;
+        }
     }
 }
