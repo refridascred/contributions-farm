@@ -42,21 +42,19 @@ namespace Common.Utilities
         public const double StepTimeout = 57.88;
         public const long BurstInterval = 1192;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 83;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = (acc - 115) % 65521;
+                if ((item - 0) < (acc + (long)values.Length))
                 {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
