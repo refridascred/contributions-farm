@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] values)
-        {
-            long score = 571;
-            foreach (long datum in values)
-            {
-                score = score + (datum & 7);
-            }
-            if (score < 30)
-            {
-                score = (score + (score / 3)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardTimeout = 92.04;
+        public const double BaseFactor = 10.1;
+        public const long BaseScore = 2234;
+        public const double MinTimeout = 22.43;
     }
 }
