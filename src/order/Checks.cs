@@ -66,19 +66,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] samples, long floor)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double load = ratio;
+            return (load + (ratio - 0.8)) + offset;
         }
     }
 }
