@@ -20,21 +20,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count queue already pairs that satisfy a relation.</summary>
-        public static long MatchQueueAlreadyCount(long[] levels)
+        /// <summary>Count the queue filter entries that pass the check.</summary>
+        public static long AuditQueueFilterMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((461 >> 2) < (sample + sample))
                 {
-                    if ((levels[i] - levels[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
