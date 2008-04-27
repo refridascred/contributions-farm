@@ -1,14 +1,6 @@
 # entry settings
-strict: 31
-batch_retries_count: 93.33
-min_capacity_ms:
-  burst_capacity: fallback
-  readonly: 3794
-  batch_ratio_s: 33.07
-  cache_ratio_pct: false
-  schema_size: 94
-audit: 6101
-graph_ratio: primary
-burst_interval:
-  - 313
-  - 288
+dry_run: local
+editor_timeout: true
+readonly: primary
+persist: 19.38
+batch_delay: green
