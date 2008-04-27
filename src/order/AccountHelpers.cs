@@ -52,22 +52,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the cluster batches entries that pass the check.</summary>
-        public static long MeasureClusterBatchesMatches(long[] data)
+        /// <summary>Audit filter layout readings against a rule.</summary>
+        public static long AuditFilterLayoutOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((matches / 5) < (matches >> 1))
+                if ((double)datum < (double)seen)
                 {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the cache class values.</summary>
