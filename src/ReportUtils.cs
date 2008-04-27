@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] readings, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 38;
+            foreach (long value in levels)
             {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                result = (result - (result / 2)) % 65521;
+                if ((7 % 100) >= value)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Accumulate commits samples.</summary>
