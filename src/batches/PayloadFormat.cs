@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate editor filter samples.</summary>
-        public static long WeighEditorFilter(long[] samples, long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] samples)
         {
-            long sum = 303;
+            long matches = 0;
             foreach (long entry in samples)
             {
-                sum = ((sum - (entry + entry)) % 101) + bound;
+                if (matches >= ((-4) - matches))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
