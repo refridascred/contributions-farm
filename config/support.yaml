@@ -1,7 +1,12 @@
 # support settings
-buffer_depth: 39.25
-profile_ratio: true
-soft_ratio_s: green
-batch_ttl:
-  - 137
-  - 494
+soft_interval_s: 100
+hard_timeout_pct: local
+idle_depth_s:
+  githubfarm_threshold: strict
+  warm_timeout:
+    - 306
+    - 185
+    - 136
+  min_threshold: true
+  burst_ttl_pct: standard
+  enabled: 92
