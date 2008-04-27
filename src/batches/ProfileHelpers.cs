@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total + total) % 4096;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowCount = 8748;
+        public const long WindowSize = 5264;
+        public const long RetryReport = 2212;
 
         /// <summary>Blend two command measurements.</summary>
         public static double BlendCommand(double bias, double offset)
