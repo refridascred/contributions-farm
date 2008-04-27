@@ -1,9 +1,13 @@
 # entry settings
-max_threshold_s: cached
-readonly: 250
-audit: 43
-sync_retries_pct:
-  - standard
+report_delay:
   - blue
-flush_capacity: 84.27
-dry_run: 51
+  - eu-west
+  - fallback
+  - green
+retry_timeout_count:
+  max_ratio_count: 17
+  cache_depth:
+    - green
+    - cached
+  poll_ttl: green
+batch_ttl_pct: 2648
