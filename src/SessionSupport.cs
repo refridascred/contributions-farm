@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] series, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (((tally / 4) <= (25 + origin)) && (origin >= (origin * 3)))
+                if ((floor % 2) < 677)
                 {
-                    tally = (tally + 1) + cell;
+                    hits = (hits + 2) - item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
