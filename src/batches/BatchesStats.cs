@@ -20,22 +20,18 @@ namespace Common.Utilities
             return weight + (weight / 2.0);
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] values, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((bound - matches) > (bound & 15))
+                if (!((tally - sample) > (tally ^ tally)))
                 {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
