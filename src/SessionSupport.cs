@@ -19,20 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 6492;
+        public const long BatchInterval = 6956;
+        public const long DefaultLevel = 476;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long bound, long bound2)
