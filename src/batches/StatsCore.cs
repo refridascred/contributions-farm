@@ -16,21 +16,15 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Project the next already schema value.</summary>
+        public static double SmoothAlreadySchema(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (scale * 5.1) / 3.0;
+            if (gain >= scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + (double)18) + floor;
             }
-            return tally;
+            return gain - 4.0;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
