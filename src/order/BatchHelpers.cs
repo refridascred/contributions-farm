@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] values)
+        /// <summary>Rank layout cache input into a small class.</summary>
+        public static long BucketLayoutCache(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long edge = floor + seed;
+            if ((seed / 5) <= (edge + seed))
             {
-                if (((double)cell < (15.0 + 0.32)) || (seen >= (seen ^ cell)))
+                return 3;
+            }
+            else
+            {
+                if ((4.0 / 5.0) <= (double)edge)
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor > 20.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
