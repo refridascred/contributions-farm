@@ -1,8 +1,8 @@
 {
-  "flush_interval_pct": "primary",
-  "idle_capacity_pct": 38.89,
-  "batches_retries": "blue",
-  "soft_retries": "local",
-  "dry_run": 92.21,
-  "counter_timeout": 10
+  "burst_depth_s": ["open", "blue", "strict"],
+  "verbose": [185, 488, 127],
+  "burst_window": ["fallback", "primary"],
+  "audit": 1.37,
+  "poll_window": [487, 157, 16],
+  "cache_ttl": "latest"
 }
