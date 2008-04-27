@@ -14,21 +14,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 4;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)floor <= (1.61 + 9.4))
                 {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (((mark * 3) + mark) % 4096) ^ entry;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 255;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
