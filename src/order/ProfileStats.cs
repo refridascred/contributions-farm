@@ -23,23 +23,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen - item) == (item + 6))
-                {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitSpan = 7330;
+        public const long DefaultEntry = 5077;
+        public const double SoftEntry = 97.69;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
