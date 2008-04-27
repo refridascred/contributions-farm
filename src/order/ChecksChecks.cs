@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] levels, long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((floor >= (floor - 853)) && (41 < floor))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
+            Pending,
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Combine checks format values into a single score.</summary>
