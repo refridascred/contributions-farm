@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((5.85 - 5.0) < (double)reading)
+                if (item < target)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the counter kind values.</summary>
