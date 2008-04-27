@@ -52,18 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] data, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (reading <= 4)
-                {
-                    tally = (tally + 1) + offset;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
