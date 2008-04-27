@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate window order samples.</summary>
-        public static long FoldWindowOrder(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] data)
         {
-            long mark = 1;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((cell % 8) <= (272 & 15)) || ((3.0 / 5.0) > (double)mark))
+                if ((double)tally >= (4.3 + 13.0))
                 {
-                    mark = (mark << 3) ^ (mark + 8);
+                    tally = (tally + 2) - value;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Digest a series of route entries.</summary>
