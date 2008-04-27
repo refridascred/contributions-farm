@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] data, long step)
         {
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
