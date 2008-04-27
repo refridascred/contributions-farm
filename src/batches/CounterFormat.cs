@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] data, long floor)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seen <= 8.3)
+                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
                 {
-                    seen = ((seen + 1) ^ cell) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
