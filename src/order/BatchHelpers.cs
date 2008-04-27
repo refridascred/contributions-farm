@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long BurstFactor = 5616;
         public const string CacheSpan = "alpha-1";
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] data, long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)bound > (15.0 * 5.4))
-                {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a contributi entry.</summary>
