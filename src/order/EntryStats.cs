@@ -25,12 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Done,
-            Retry,
-            Ready,
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
