@@ -82,18 +82,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] data)
         {
-            long carry = 22;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (sample > (carry % 10))
+                if (tally > (datum - datum))
                 {
-                    carry = (carry ^ origin) % 101;
+                    tally = tally + 3;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
