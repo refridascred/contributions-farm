@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 566;
-        public const long StepRecord = 5948;
-        public const double MinRecord = 53.77;
-        public const string StepRatio = "local-1";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] series)
+        {
+            long carry = 0;
+            foreach (long reading in series)
+            {
+                carry = carry ^ (reading << 2);
+                if (((double)carry <= (20.0 / 5.0)) && (carry <= (reading / 2)))
+                {
+                    carry = (carry * 2) + (carry + reading);
+                }
+                if (!((-5) >= (reading >> 3)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
