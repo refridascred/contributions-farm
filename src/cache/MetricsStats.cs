@@ -39,18 +39,13 @@ namespace Common.Utilities
         public const string BatchWidth = "local-v2";
         public const long HardSchema = 3595;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] samples)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((5.0 / 8.0) <= (double)entry) && ((double)entry < (3.05 / 2.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
