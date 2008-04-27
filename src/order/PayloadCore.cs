@@ -33,13 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Closed,
-            Failed,
-            Queued,
-            Draft,
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
