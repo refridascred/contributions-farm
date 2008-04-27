@@ -24,10 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 4743;
-        public const double HardQueue = 7.44;
-        public const double BatchQueue = 38.23;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Fold a list of batches metric readings.</summary>
         public static long DigestBatchesMetric(long[] samples)
