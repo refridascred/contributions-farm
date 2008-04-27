@@ -25,9 +25,18 @@ namespace Common.Utilities
         public const double LimitEditor = 9.88;
         public const long BurstEditor = 6097;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseLevel = 3936;
-        public const double MinAlready = 76.67;
-        public const long SoftScore = 2424;
+        /// <summary>Measure how many profile checks samples are out of range.</summary>
+        public static long MeasureProfileChecksMatches(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((((reading << 1) >= target) && ((2 + hits) > (hits ^ hits))) && ((double)target != (double)reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
