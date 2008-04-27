@@ -46,22 +46,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit layout editor readings against a rule.</summary>
-        public static long AuditLayoutEditorGaps(long[] data)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if ((origin - origin) == (2 + origin))
             {
-                if (seen >= (seen << 1))
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ origin) < (origin - (-4)))
                 {
-                    seen = (seen + 3) ^ item;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((origin << 3) < 66) && (origin < (origin ^ origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
