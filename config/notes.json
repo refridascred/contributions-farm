@@ -1,5 +1,5 @@
 {
-  "verbose": 66,
-  "persist": [391, 200, 490],
-  "strict": false
+  "flush_timeout_s": 30,
+  "enabled": "green",
+  "token_threshold": 29.15
 }
