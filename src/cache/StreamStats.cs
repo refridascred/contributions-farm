@@ -23,23 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi payload readings.</summary>
-        public static long CombineContributiPayload(long[] items, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples, long bound)
         {
-            long total = 9;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((offset <= (item & 7)) || ((total + total) >= (item ^ (-6))))
+                if ((entry * 3) <= bound)
                 {
-                    total = (total + 2) % 1000;
-                    total = total + item;
-                }
-                if (8.4 > (double)offset)
-                {
-                    total = (total ^ (total + total)) % 255;
+                    tally = tally + 2;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
