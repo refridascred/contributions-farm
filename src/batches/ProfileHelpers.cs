@@ -86,25 +86,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] samples, long seed)
         {
-            long offset2 = step ^ offset;
-            if (!((-531) < (offset * 5)))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 ^ 69) > offset2)
+                if ((92 ^ seed) <= (seed % 8))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 2) - datum;
                 }
             }
+            return count;
         }
     }
 }
