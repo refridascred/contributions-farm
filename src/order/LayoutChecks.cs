@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many report cache samples are out of range.</summary>
-        public static long MeasureReportCacheOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value * 3) >= (hits - 52))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 76.31;
+        public const double RetryDepth = 92.66;
+        public const long StepLevel = 3794;
+        public const long BatchSupport = 364;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 1174;
