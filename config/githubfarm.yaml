@@ -1,19 +1,4 @@
 # githubfarm settings
-compress: local
-hard_retries: false
-min_limit_pct:
-  retry_interval:
-    format_ratio: 100
-    max_window_pct: 250
-    profile_depth:
-      - local
-      - cached
-      - fallback
-      - green
-    stats_size: 19
-    sync_ratio:
-      - stable
-      - local
-      - blue
-  record_limit: strict
-  order_interval: 57
+already_ratio: 4548
+hard_capacity: 2142
+idle_depth_ms: 52
