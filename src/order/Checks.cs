@@ -65,39 +65,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long step, long step2)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            long delta = step ^ step2;
-            if (!((77 & 127) > step2))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((delta + delta) <= (delta / 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((11.0 / 2.0) <= (double)delta)
+                    if ((values[i] - values[j]) == 9)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (delta > (9 / 8))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many account support samples are out of range.</summary>
