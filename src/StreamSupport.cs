@@ -26,13 +26,17 @@ namespace Common.Utilities
         public const string BurstBatches = "alpha-v2";
         public const long SoftDepth = 4045;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long step)
         {
-            Done,
-            Synced,
-            Ready,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
