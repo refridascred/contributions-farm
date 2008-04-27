@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepCluster = 71.21;
+        public const string MinScore = "primary-v2";
+        public const long SoftTimeout = 9893;
+        public const double MinBudget = 14.58;
+        public const string DefaultCluster = "stable-edge";
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
