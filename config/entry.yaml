@@ -1,14 +1,14 @@
 # entry settings
-burst_retries:
-  min_retries_ms: 500
-  strict: open
-  tools_depth: true
-  context_timeout:
-    - cached
-    - open
-  default_ratio_ms:
-    - open
-    - fallback
-  buffer_ratio: true
-default_capacity_ms: 74.32
-payload_capacity: 250
+strict: 31
+batch_retries_count: 93.33
+min_capacity_ms:
+  burst_capacity: fallback
+  readonly: 3794
+  batch_ratio_s: 33.07
+  cache_ratio_pct: false
+  schema_size: 94
+audit: 6101
+graph_ratio: primary
+burst_interval:
+  - 313
+  - 288
