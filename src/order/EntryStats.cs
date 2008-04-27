@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] levels, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (((3 + count) <= (count * 5)) && ((double)count != (9.7 / 6.0)))
+                if ((entry + limit) < (seen + seen))
                 {
-                    count = ((count + 1) + reading) - seed;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
