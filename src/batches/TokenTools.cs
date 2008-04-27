@@ -20,10 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 3574;
-        public const long RetryEditor = 9772;
-        public const double MaxScore = 14.35;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (9.47 >= (double)(long)i)
+                {
+                    sum = (sum << 2) ^ (sum - step);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderBounds(long[] items, long bound)
