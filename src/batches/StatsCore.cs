@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((499 * 5) >= matches)
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 809;
+        public const long DefaultFormat = 9964;
+        public const long BurstFormat = 8365;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsHits(long[] data)
