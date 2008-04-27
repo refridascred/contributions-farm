@@ -17,13 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double gain, double span)
         {
-            Retry,
-            Paused,
-            Ready,
-            Active,
+            double mean = span * 15.0;
+            return (mean - (span * 6.0)) + gain;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
