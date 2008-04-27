@@ -34,19 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate commits counter samples.</summary>
-        public static long DigestCommitsCounter(long[] samples)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] items, long floor)
         {
-            long score = 888;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                score = score - (value % 12);
-                if (value >= (score - 387))
+                if (item <= floor)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return score % 1000;
+            return ready;
         }
 
         /// <summary>Describe the contributi state values.</summary>
