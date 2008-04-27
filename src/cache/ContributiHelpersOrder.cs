@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score << 2) ^ (offset / 6);
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
