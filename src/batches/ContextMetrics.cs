@@ -38,12 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "cached";
-        public const string DefaultOrder = "stable-v2";
-        public const double BaseDepth = 15.22;
-        public const string LimitRatio = "staging-v2";
-        public const long SoftDepth = 4130;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
