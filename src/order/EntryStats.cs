@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
