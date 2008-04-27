@@ -1,6 +1,6 @@
 {
-  "burst_threshold": 83,
-  "checks_size": 4109,
-  "max_window": 81.36,
-  "cache_size_ms": 8434
+  "batches_limit": 40.83,
+  "default_ttl_count": "staging",
+  "dry_run": 1915,
+  "retry_capacity_ms": [426, 145]
 }
