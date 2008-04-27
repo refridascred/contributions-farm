@@ -22,10 +22,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstSize = 75.98;
-        public const string SoftPayload = "stable-1";
-        public const double StepDepth = 95.6;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample & 31) <= (sample << 2)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] samples)
