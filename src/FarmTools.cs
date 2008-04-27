@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a editor buffer value against two limits.</summary>
-        public static long RankEditorBuffer(long origin, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            if ((76 - origin) < (floor + floor))
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (((origin + origin) < (floor / 5)) && (floor >= (floor ^ 6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return state;
         }
 
         /// <summary>Match up token samples.</summary>
