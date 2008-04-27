@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Adjust a filter batches reading.</summary>
+        public static double ProjectFilterBatches(double rate, double offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
+            double scale = rate + 0.93;
+            return (scale + scale) + offset;
         }
 
         /// <summary>Match up token samples.</summary>
