@@ -64,11 +64,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Find the first metrics already entry that matches the target.</summary>
+        public static long SeekMetricsAlreadyIndex(long[] series, long offset)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
