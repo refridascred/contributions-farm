@@ -20,20 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (9.47 >= (double)(long)i)
-                {
-                    sum = (sum << 2) ^ (sum - step);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "stable-1";
+        public const double StepSchema = 50.34;
+        public const long WindowSchema = 8291;
+        public const long MinSchema = 9229;
+        public const long BurstSchema = 9374;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
