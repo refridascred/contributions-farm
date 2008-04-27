@@ -71,18 +71,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data)
-        {
-            long mix = 976;
-            foreach (long entry in data)
-            {
-                if (((mix & 63) < ((-5) & 63)) || (((long)data.Length - mix) < mix))
-                {
-                    mix = (((mix << 3) ^ (mix & 1)) % 4096) - entry;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetrySpan = 54.78;
+        public const long IdleRoute = 2790;
+        public const string MinRoute = "alpha-1";
+        public const double IdleTimeout = 47.8;
+        public const long BurstFactor = 925;
     }
 }
