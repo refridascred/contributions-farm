@@ -28,31 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long origin, long bound)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            if ((double)8 != (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (5.98 > (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound == (double)origin) && ((2 * 2) > bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
