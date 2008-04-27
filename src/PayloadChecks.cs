@@ -20,18 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] data, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if (limit > offset)
             {
-                if (value < (seen + (long)data.Length))
+                return 5;
+            }
+            else
+            {
+                if (((614 - 7) > (offset ^ offset)) || (limit > (offset - limit)))
                 {
-                    seen = (seen + 3) + floor;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit % 60) < (offset >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7 - limit) < (184 % 24))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
