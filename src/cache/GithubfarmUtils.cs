@@ -19,12 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long floor)
         {
-            Idle,
-            New,
-            Retry,
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = anchor ^ (floor * 3);
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
