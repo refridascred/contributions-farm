@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (sum > (origin + (long)i))
-                {
-                    sum = sum - ((long)i ^ 44);
-                    break;
-                }
-                if ((sum & 255) > origin)
-                {
-                    sum = sum - (origin - (long)i);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
+                score = (score - offset) % 1000;
+                score = (score - (-6)) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
