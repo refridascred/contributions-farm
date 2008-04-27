@@ -26,11 +26,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            Synced,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
