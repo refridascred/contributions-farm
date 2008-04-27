@@ -16,18 +16,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context metrics readings against a rule.</summary>
-        public static long AuditContextMetricsGaps(long[] samples)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long step, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long gap = step + offset;
+            if ((double)gap > 3.31)
             {
-                if ((reading + matches) <= reading)
+                return 1;
+            }
+            else
+            {
+                if ((gap + step) < (offset ^ gap))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)gap > (4.3 - 20.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up batches samples.</summary>
