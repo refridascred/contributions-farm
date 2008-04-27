@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 4;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample >> 2) == (sum >> 3))
                 {
-                    if ((items[i] ^ items[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum * 5) + (sum - 11);
                 }
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
