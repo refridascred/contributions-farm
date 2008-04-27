@@ -13,21 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Measure how many support schema samples are out of range.</summary>
+        public static long CountSupportSchemaOutliers(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(71 > (cell >> 1)))
                 {
-                    if ((readings[i] - readings[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) - floor;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
