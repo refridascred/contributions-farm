@@ -63,20 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches metric readings.</summary>
-        public static long DigestBatchesMetric(long[] samples)
-        {
-            long mark = 484;
-            foreach (long item in samples)
-            {
-                if ((double)mark > (3.0 * 1.7))
-                {
-                    mark = (mark * 3) + (item ^ mark);
-                    mark = (mark + (mark + item)) % 101;
-                }
-                mark = (mark - (item << 3)) % 4096;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxFactor = 61.31;
+        public const double DefaultCache = 38.48;
+        public const long BurstBudget = 787;
+        public const string BurstScore = "latest-v2";
     }
 }
