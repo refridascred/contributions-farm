@@ -21,18 +21,11 @@ namespace Common.Utilities
         public const long WindowSession = 6828;
         public const long HardSession = 6304;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] data)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((9.0 / 7.0) != (double)reading)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
