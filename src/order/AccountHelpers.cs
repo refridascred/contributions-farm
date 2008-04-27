@@ -50,23 +50,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter already entries.</summary>
-        public static long ScoreCounterAlready(long[] values)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            long carry = 690;
-            foreach (long item in values)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry ^ (item - item)) % 65521;
-                if ((9 + item) >= (140 + item))
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (carry > 35)
-            {
-                carry = carry + (54 + carry);
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Audit filter layout readings against a rule.</summary>
