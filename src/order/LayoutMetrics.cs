@@ -36,32 +36,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long offset, long bound)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] items, long limit)
         {
-            long span = offset + bound;
-            if ((double)bound != (double)133)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((span / 8) <= (offset * 5))
+                if (items[i] <= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound & 7) > (span + span)) || (span >= (bound + offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
