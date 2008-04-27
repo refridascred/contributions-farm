@@ -31,18 +31,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
-        public static long TallyGithubfarmGraphHits(long[] values)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] series)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long result = 81;
+            foreach (long datum in series)
             {
-                if (((item - item) <= (item + item)) || (((hits << 3) < (hits + hits)) && ((69 * 3) > (hits % 24))))
-                {
-                    hits = hits + 2;
-                }
+                result = (((result << 3) ^ ((-643) / 4)) % 97) ^ datum;
+                result = (result << 3) ^ (29 + result);
             }
-            return hits;
+            if (result < 895)
+            {
+                result = (result - (result - result)) % 101;
+            }
+            return result % 1000;
         }
     }
 }
