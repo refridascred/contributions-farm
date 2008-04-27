@@ -19,21 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Active,
+            Paused,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
