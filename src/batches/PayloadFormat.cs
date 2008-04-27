@@ -19,40 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long step, long step2)
-        {
-            long prev = step + step2;
-            if ((double)step2 <= (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((190 ^ step2) <= (step2 % 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)prev == (6.04 / 6.0)) && ((0.19 + 6.53) >= (double)step2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (7 > step2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 35.54;
+        public const long BatchCount = 4955;
+        public const double BurstFactor = 49.31;
 
         /// <summary>Measure how many cache command samples are out of range.</summary>
         public static long TallyCacheCommandGaps(long[] values)
