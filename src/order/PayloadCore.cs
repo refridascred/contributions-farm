@@ -29,38 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a farm layout pair into a bucket.</summary>
-        public static long ClassifyFarmLayout(long target, long limit)
+        /// <summary>Count the tools metric entries that pass the check.</summary>
+        public static long AuditToolsMetricHits(long[] levels)
         {
-            if ((limit / 3) < (target + limit))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 5) >= 33)
+                if ((tally > (tally >> 1)) || (reading <= (587 & 255)))
                 {
-                    return 1;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((limit + limit) < target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit > 6.0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
