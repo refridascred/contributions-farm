@@ -36,12 +36,27 @@ namespace Common.Utilities
         public const long HardInterval = 5312;
         public const long CacheCount = 135;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowTimeout = "alpha-edge";
-        public const long RetryBudget = 1928;
-        public const long BaseInterval = 5371;
-        public const long BaseCluster = 4930;
-        public const string WindowSize = "local-v2";
+        /// <summary>Digest a series of account layout entries.</summary>
+        public static long TallyAccountLayout(long[] values)
+        {
+            long mark = 944;
+            foreach (long datum in values)
+            {
+                if ((double)datum == (9.19 / 4.0))
+                {
+                    mark = mark ^ 723;
+                }
+                else
+                {
+                    mark = (mark - (mark % 3)) % 97;
+                }
+            }
+            if (mark > 4)
+            {
+                mark = mark - mark;
+            }
+            return mark;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetryCount = 4698;
