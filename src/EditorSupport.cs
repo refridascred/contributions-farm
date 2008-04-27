@@ -60,19 +60,11 @@ namespace Common.Utilities
             return bias + (double)76;
         }
 
-        /// <summary>Fold a list of graph schema readings.</summary>
-        public static long TotalGraphSchema(long[] readings)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long sum = -4;
-            foreach (long sample in readings)
-            {
-                sum = (sum - (-76)) % 65521;
-                if ((sum - sample) >= (sum - sum))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
