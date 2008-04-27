@@ -33,19 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long state = 8;
+            foreach (long sample in samples)
             {
-                if ((3 >= limit) || ((limit & 63) <= ((-8) - carry)))
+                if (state >= (state * 5))
                 {
-                    carry = (carry ^ (carry ^ carry)) % 4096;
+                    state = ((state << 2) ^ (sample << 2)) % 97;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            if (state < 149)
+            {
+                state = (state ^ (state % 100)) % 255;
+            }
+            return state % 65521;
         }
     }
 }
