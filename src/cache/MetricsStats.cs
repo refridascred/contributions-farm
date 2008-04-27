@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double scale, double bias)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            double drift = scale;
+            if (drift > drift)
+            {
+                drift = (drift + (double)98) - bias;
+            }
+            return drift + drift;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
