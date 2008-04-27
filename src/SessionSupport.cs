@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of order stream readings.</summary>
-        public static long TotalOrderStream(long[] samples)
-        {
-            long total = -3;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (((total * 3) + (sample << 1)) % 101) - (long)i;
-                }
-                total = total + ((long)samples.Length - total);
-            }
-            if (total < 431)
-            {
-                total = total + (total * 4);
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 3955;
+        public const double BurstChannel = 48.97;
+        public const long MaxTimeout = 3171;
+        public const long RetryFactor = 8472;
+        public const long BatchDepth = 6553;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphLimits(long[] levels, long step)
