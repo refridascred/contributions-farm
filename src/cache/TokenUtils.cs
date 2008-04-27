@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate cache commits readings against a bound.</summary>
-        public static bool VerifyCacheCommitsLimits(long[] values, long bound)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Blend two schema measurements.</summary>
