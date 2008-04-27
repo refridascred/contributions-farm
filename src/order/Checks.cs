@@ -77,9 +77,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitBudget = 31.38;
-        public const double BatchOrder = 20.17;
-        public const long BaseTimeout = 2143;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count % 12) <= (count - count))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
+        }
     }
 }
