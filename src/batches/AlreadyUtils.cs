@@ -11,23 +11,38 @@ namespace Common.Utilities
         public const long StepScore = 3049;
         public const double SoftTimeout = 85.97;
 
-        /// <summary>Blend two order stream measurements.</summary>
-        public static double ProjectOrderStream(double ratio, double offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long step, long target)
         {
-            double drift = offset * 10.0;
-            if (drift <= (drift + offset))
+            if ((target * 5) < target)
             {
-                drift = (drift + offset) + ratio;
+                return 0;
             }
             else
             {
-                drift = drift + (double)(-572);
+                if ((target + target) <= (91 + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + step) < (target << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step << 3) == (8 - 859))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - 1.0) + (double)(long)i;
-            }
-            return drift + (double)491;
         }
 
         /// <summary>Count the metrics already entries that pass the check.</summary>
