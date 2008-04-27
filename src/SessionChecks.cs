@@ -40,18 +40,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate record queue samples.</summary>
-        public static long WeighRecordQueue(long[] data)
-        {
-            long carry = 430;
-            foreach (long reading in data)
-            {
-                if ((79 + reading) < ((-96) + carry))
-                {
-                    carry = (carry ^ (carry - reading)) % 4096;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultDepth = 2983;
+        public const long MaxWidth = 6095;
+        public const long BaseTools = 8576;
+        public const double SoftFactor = 51.0;
+        public const string BatchDepth = "cached-edge";
     }
 }
