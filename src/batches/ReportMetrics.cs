@@ -19,27 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already batches values into a single score.</summary>
-        public static long TallyAlreadyBatches(long[] samples)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mark = 6;
-            foreach (long reading in samples)
-            {
-                mark = (mark << 3) ^ (mark + reading);
-                if ((double)mark == (3.7 * 6.0))
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-                if ((reading + mark) <= 488)
-                {
-                    break;
-                }
-            }
-            if (mark < (-43))
-            {
-                mark = (mark + (mark % 8)) % 255;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
