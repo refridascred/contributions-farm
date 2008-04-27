@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleCount = "alpha";
-        public const long SoftContext = 9932;
-        public const long DefaultContext = 1134;
-        public const long LimitRatio = 6727;
+        /// <summary>Check that every batch account entry stays within the limit.</summary>
+        public static bool CheckBatchAccountLimits(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the batch graph series from a seed.</summary>
         public static long DeriveBatchGraph(long offset)
