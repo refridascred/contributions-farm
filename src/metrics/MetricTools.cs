@@ -79,11 +79,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinWidth = 90.95;
-        public const string WindowWidth = "staging-1";
-        public const long SoftQueue = 5960;
-        public const string WindowQueue = "fallback-edge";
+        /// <summary>Match up token order samples.</summary>
+        public static long MatchTokenOrderCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelGaps(long[] values, long floor)
