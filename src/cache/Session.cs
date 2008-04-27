@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine layout commits values into a single score.</summary>
-        public static long FoldLayoutCommits(long[] series)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] data)
         {
-            long mark = 67;
-            foreach (long cell in series)
+            long carry = 5;
+            foreach (long reading in data)
             {
-                if ((mark / 5) >= (mark << 1))
-                {
-                    mark = (mark - mark) % 4096;
-                }
-                else
-                {
-                    mark = mark + (mark - cell);
-                }
+                carry = ((carry ^ (9 + carry)) % 65521) ^ reading;
             }
-            if (mark < (-1))
+            if (carry > 962)
             {
-                mark = (mark - (mark % 60)) % 255;
+                carry = ((carry << 3) ^ carry) % 65521;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Check that every schema token entry stays within the limit.</summary>
