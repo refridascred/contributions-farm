@@ -27,19 +27,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] readings, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] series, long target)
         {
-            long acc = 44;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc - (step + acc)) % 101) - datum;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 276)
-            {
-                acc = acc + step;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Classify a route filter pair into a bucket.</summary>
