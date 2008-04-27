@@ -25,39 +25,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long limit, long origin)
+        /// <summary>Accumulate batches report samples.</summary>
+        public static long DigestBatchesReport(long[] items)
         {
-            long prev = limit - origin;
-            if ((origin % 10) >= (limit - origin))
+            long anchor = 1;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit <= (12.0 * 2.5))
+                if ((double)anchor >= (7.9 * 20.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((prev & 31) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin >= (37 + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = (anchor - (anchor + datum)) % 65521;
                 }
             }
+            return anchor;
         }
     }
 }
