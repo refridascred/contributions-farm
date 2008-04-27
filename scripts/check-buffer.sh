@@ -7,10 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=115
+BUFFER_LIMIT=32
 log "limit is ${BUFFER_LIMIT}"
