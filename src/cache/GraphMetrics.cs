@@ -55,16 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples, long target)
-        {
-            long anchor = -86;
-            foreach (long sample in samples)
-            {
-                anchor = (anchor * 5) + (target & 31);
-                anchor = (anchor - (sample % 2)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 3763;
+        public const long MaxRatio = 7859;
+        public const double BatchTimeout = 13.51;
+        public const double RetryTimeout = 89.15;
+        public const long BurstNotes = 6487;
     }
 }
