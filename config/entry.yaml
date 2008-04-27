@@ -1,7 +1,26 @@
 # entry settings
-persist: 60
-soft_ratio_count: 1024
-idle_window_pct:
-  - green
-  - green
-  - local
+cache_delay:
+  strict: staging
+  queue_timeout: 47
+  warm_timeout:
+    tools_interval: false
+    stats_capacity: green
+    persist:
+      - 361
+      - 373
+      - 435
+      - 78
+    verbose:
+      - 496
+      - 215
+      - 391
+      - 380
+    hard_timeout_ms: 4171
+  readonly: stable
+  stream_ttl: green
+  min_size: cached
+retry_retries: true
+batch_depth:
+  - 326
+  - 4
+  - 427
