@@ -1,8 +1,6 @@
 # support settings
-poll_delay_s: 54.04
-audit:
-  - 161
-  - 357
-  - 178
-  - 266
-token_limit: 7523
+hard_ratio_s: 1024
+cache_timeout_count: primary
+batch_ratio_pct: open
+idle_delay_s: staging
+hard_limit: staging
