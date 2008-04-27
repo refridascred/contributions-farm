@@ -59,19 +59,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double bias)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long limit)
         {
-            double bias2 = rate;
-            if (bias2 > 6.95)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                bias2 = bias2 - bias;
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + rate;
-            }
-            return bias2 + (bias / 3.0);
+            return valid;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
