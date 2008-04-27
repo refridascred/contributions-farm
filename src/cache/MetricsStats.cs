@@ -66,12 +66,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] items, long target)
         {
-            Done,
-            New,
-            Dropped,
+            long mix = 318;
+            foreach (long datum in items)
+            {
+                mix = (mix + (datum / 5)) % 101;
+                if ((long)items.Length <= (target + datum))
+                {
+                    mix = ((mix << 2) ^ (datum - datum)) % 4096;
+                }
+            }
+            return mix;
         }
     }
 }
