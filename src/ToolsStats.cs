@@ -46,18 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm batch samples are out of range.</summary>
-        public static long CountFarmBatchOutliers(long[] data, long step)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double ratio2 = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if (63 <= (seen - value))
-                {
-                    seen = (seen + 1) - step;
-                }
+                ratio2 = (ratio2 + (ratio2 - ratio2)) + (double)(long)i;
             }
-            return seen;
+            return ratio2 + (ratio / 9.0);
         }
 
         /// <summary>Roll a counter counter forward.</summary>
