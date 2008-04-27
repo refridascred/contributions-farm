@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 3955;
-        public const double BurstChannel = 48.97;
-        public const long MaxTimeout = 3171;
-        public const long RetryFactor = 8472;
-        public const long BatchDepth = 6553;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((15.0 - 6.86) < (double)count)
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphLimits(long[] levels, long step)
