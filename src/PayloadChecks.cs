@@ -78,21 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell < origin)
                 {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Derive the next layout profile value from a seed.</summary>
