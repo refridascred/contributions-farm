@@ -22,22 +22,14 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long result = 463;
-            foreach (long value in items)
-            {
-                if (((value & 1) != (value + 511)) || ((value * 4) == (result - value)))
-                {
-                    result = ((result << 3) ^ (value >> 4)) % 97;
-                }
-            }
-            if (result > 83)
-            {
-                result = result - 4;
-            }
-            return result % 65521;
+            Locked,
+            New,
+            Pending,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
