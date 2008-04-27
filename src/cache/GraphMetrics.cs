@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const long DefaultBatch = 8454;
         public const string StepSpan = "strict-v2";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)3 < (6.0 - 5.4))
-                {
-                    seen = ((seen + 3) - datum) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 8531;
+        public const double DefaultToken = 11.77;
+        public const long IdleToken = 5170;
+        public const long HardRatio = 8322;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseTimeout = 5831;
