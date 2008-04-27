@@ -54,18 +54,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] values)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((25 > (value - 5)) || ((matches % 60) <= (value ^ value))) && (((value * 5) < value) && (matches > (matches - value))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Dropped,
+            Idle,
         }
     }
 }
