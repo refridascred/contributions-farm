@@ -26,12 +26,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
