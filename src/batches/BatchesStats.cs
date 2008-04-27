@@ -19,20 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double gain, double offset)
-        {
-            double scale = (double)(11 << 1);
-            if (scale >= scale)
-            {
-                scale = scale - (scale - offset);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (gain - offset)) + (double)(long)i;
-            }
-            return scale + (offset * 9.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 4274;
+        public const long LimitSpan = 3511;
+        public const double StepDepth = 25.97;
+        public const long HardBudget = 2053;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long bound, long target)
