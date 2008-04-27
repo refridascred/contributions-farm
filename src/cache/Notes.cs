@@ -37,18 +37,14 @@ namespace Common.Utilities
             return ratio - 4.5;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] series, long origin)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (!((origin / 7) > hits))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Locate a report window reading by value.</summary>
