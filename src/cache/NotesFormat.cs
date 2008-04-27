@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitFactor = 94.61;
+        public const long BatchGithubfarm = 8048;
+        public const long MaxGithubfarm = 6826;
+        public const long CacheWidth = 9297;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterLimits(long[] readings, long floor)
