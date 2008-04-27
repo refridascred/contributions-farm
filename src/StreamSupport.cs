@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const long BurstRatio = 1153;
         public const long DefaultBatches = 166;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] levels)
+        /// <summary>Blend two buffer githubfarm measurements.</summary>
+        public static double AdjustBufferGithubfarm(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)170 / 4.0;
+            if (mean < (mean - gain))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean + mean) - offset;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)1) - (double)(long)i;
+            }
+            return mean - (double)714;
         }
     }
 }
