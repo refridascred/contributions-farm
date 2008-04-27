@@ -42,11 +42,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftWidth = 6741;
-        public const string BatchMetrics = "latest-v2";
-        public const long MaxMetrics = 6251;
-        public const long DefaultMetrics = 2120;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Synced,
+            New,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long ScoreMetric(long[] readings, long step)
