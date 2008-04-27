@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long mix = 16;
+            foreach (long cell in values)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                mix = mix + (cell - cell);
             }
-            return result;
+            if (mix < 44)
+            {
+                mix = mix - bound;
+            }
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
