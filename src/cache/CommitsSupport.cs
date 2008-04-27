@@ -63,11 +63,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            Idle,
+            Paused,
+            Closed,
+            Active,
         }
 
         /// <summary>Define session limits and defaults.</summary>
