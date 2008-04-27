@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the batches class values.</summary>
