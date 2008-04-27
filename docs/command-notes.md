@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The farm helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every buffer by report.
+A tools that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Log every cache change
-- Keep account values small
-- Review farm limits each release
+- Log every context change
+- Review order limits each release
+- Prefer support defaults
+- Keep route values small
