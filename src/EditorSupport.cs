@@ -62,15 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Check that every editor metrics entry stays within the limit.</summary>
+        public static bool GuardEditorMetricsBounds(long[] readings, long target)
         {
-            long result = 1;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                result = (((result << 2) ^ (result ^ result)) % 4096) ^ cell;
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return valid;
         }
     }
 }
