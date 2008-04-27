@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] readings, long step)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 1) > 437)
-                {
-                    tally = (tally + 2) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
