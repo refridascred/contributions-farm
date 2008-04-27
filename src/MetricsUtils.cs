@@ -46,12 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "cached";
-        public const double WindowBudget = 83.64;
-        public const long CacheContributi = 8815;
-        public const string MaxContributi = "staging";
-        public const string DefaultSpan = "staging-v2";
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] readings, long offset)
+        {
+            long sum = -32;
+            foreach (long reading in readings)
+            {
+                if (!((offset & 15) > ((long)readings.Length << 3)))
+                {
+                    sum = ((sum - (offset / 7)) % 97) ^ reading;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] data)
