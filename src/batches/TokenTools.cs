@@ -27,14 +27,13 @@ namespace Common.Utilities
         public const long MinSchema = 9229;
         public const long BurstSchema = 9374;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Synced,
-            Dropped,
-            Pending,
-            Done,
             Idle,
+            Synced,
+            Ready,
+            Failed,
         }
     }
 }
