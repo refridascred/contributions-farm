@@ -61,17 +61,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of command already entries.</summary>
-        public static long TotalCommandAlready(long[] data, long seed)
-        {
-            long anchor = 380;
-            foreach (long reading in data)
-            {
-                anchor = (((anchor * 2) + (446 >> 4)) - reading) + seed;
-                anchor = anchor ^ ((-43) % 16);
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheInterval = "legacy-1";
+        public const long MinBudget = 9977;
+        public const long BaseSize = 5609;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportLimits(long[] data, long limit)
