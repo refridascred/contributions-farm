@@ -25,24 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long target, long limit)
+        /// <summary>Locate a notes channel reading by value.</summary>
+        public static long LocateNotesChannelIndex(long[] samples, long step)
         {
-            if (((target * 4) != (limit & 7)) || ((double)limit != (8.2 + 7.36)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.84 + 4.0) <= (double)limit)
+                if ((samples[i] > step) && ((samples[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a stream options.</summary>
