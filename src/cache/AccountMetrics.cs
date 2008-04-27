@@ -62,9 +62,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCommand = "local";
-        public const long SoftCommand = 506;
-        public const long MinCommand = 6785;
+        /// <summary>Count the order commits entries that pass the check.</summary>
+        public static long AuditOrderCommitsGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((7.25 - 4.0) != (double)value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
