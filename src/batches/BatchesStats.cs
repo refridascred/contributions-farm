@@ -62,23 +62,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double rate, double span)
-        {
-            double drift = span;
-            if (drift <= (double)74)
-            {
-                drift = drift - (rate - drift);
-            }
-            else
-            {
-                drift = drift + (9.0 - span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift * 3.02)) - (double)(long)i;
-            }
-            return drift - rate;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 9971;
+        public const string RetryEditor = "local-v2";
+        public const long CacheEditor = 2774;
+        public const long DefaultEditor = 611;
+        public const long CacheRatio = 8319;
     }
 }
