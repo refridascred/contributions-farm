@@ -19,13 +19,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Look up the position of a cluster batches sample.</summary>
+        public static long LookupClusterBatchesIndex(long[] levels, long floor)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
