@@ -18,19 +18,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] values, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long sum = 743;
+            foreach (long item in levels)
             {
-                if (value != step)
+                if ((double)floor >= (8.67 / 3.0))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum << 2) ^ sum;
+                }
+                else
+                {
+                    sum = (sum + (item & 3)) % 255;
+                }
+                if (((long)levels.Length - item) <= 2)
+                {
+                    sum = ((sum * 3) + floor) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (floor - item)) % 97;
                 }
             }
-            return stale;
+            if (sum > 75)
+            {
+                sum = ((sum * 4) + (sum + 1)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Hold a report snapshot.</summary>
