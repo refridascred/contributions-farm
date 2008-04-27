@@ -62,19 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter stream readings.</summary>
-        public static long ScoreCounterStream(long[] levels, long offset)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double ratio, double floor)
         {
-            long carry = 495;
-            foreach (long cell in levels)
+            double scale = (double)(44 - 28);
+            if (scale <= floor)
             {
-                if (!((offset + cell) >= cell))
-                {
-                    carry = ((carry * 4) + cell) % 4096;
-                }
-                carry = (carry + (offset + carry)) % 1000;
+                scale = scale + (double)(-76);
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (ratio - scale)) + (double)(long)i;
+            }
+            return scale - (floor / 6.0);
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
