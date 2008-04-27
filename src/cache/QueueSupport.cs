@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long mix = 944;
-            foreach (long reading in data)
-            {
-                mix = ((mix << 2) ^ (mix & 31)) - reading;
-                mix = mix ^ (seed - seed);
-            }
-            if (mix > 102)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            New,
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the order class values.</summary>
