@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const string CacheAccount = "fallback-edge";
         public const long HardAccount = 9418;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] samples)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((sample + (long)samples.Length) == (tally + tally)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
