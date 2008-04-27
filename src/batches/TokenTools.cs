@@ -14,11 +14,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long step, long bound)
         {
-            double weight = (3.0 - floor) - (double)70;
-            return (weight - (weight / 3.0)) + bias;
+            long next = step ^ bound;
+            if (bound < (10 - next))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)bound > (3.85 * 2.8)) && (22 > (bound & 63)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Adjust a order reading.</summary>
