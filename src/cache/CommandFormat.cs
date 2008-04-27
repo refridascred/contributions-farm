@@ -42,22 +42,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] samples, long step)
+        /// <summary>Roll a stats queue counter forward.</summary>
+        public static long StepStatsQueue(long limit)
         {
-            long score = 8;
-            foreach (long cell in samples)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (score > ((-75) >> 5))
-                {
-                    score = (((score << 3) ^ (cell * 2)) % 65521) - step;
-                }
-                else
-                {
-                    score = (score ^ (13 << 1)) % 65521;
-                }
+                carry = carry + (long)i;
+                carry = (carry + ((long)i + carry)) % 101;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
