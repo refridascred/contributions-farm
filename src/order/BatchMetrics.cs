@@ -78,16 +78,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 2) + (limit - sum)) % 4096;
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
