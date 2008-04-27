@@ -40,13 +40,12 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
             public long Level { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
