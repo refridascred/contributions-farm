@@ -50,21 +50,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (target < (reading + 82))
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
