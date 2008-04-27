@@ -36,19 +36,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double gain, double offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long origin, long bound)
         {
-            double scale = 4.2 * 8.1;
-            if (scale > (0.9 / 2.0))
+            if ((double)8 != (double)bound)
             {
-                scale = ((scale - (scale - scale)) - gain) + offset;
+                return 3;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale = (scale + scale) - (double)(long)i;
+                if (5.98 > (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound == (double)origin) && ((2 * 2) > bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return scale + (6.5 * 9.1);
         }
 
         /// <summary>Fold a list of batches metric readings.</summary>
