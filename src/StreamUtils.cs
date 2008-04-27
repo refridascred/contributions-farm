@@ -57,19 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry == (3.2 - 4.9))
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "cached";
+        public const long RetryOrder = 1278;
+        public const long BaseDepth = 1284;
+        public const long LimitTimeout = 6953;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long CombineCommits(long[] series, long origin)
