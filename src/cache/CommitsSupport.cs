@@ -56,22 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics already samples.</summary>
-        public static long ScoreMetricsAlready(long[] data, long bound)
+        /// <summary>Validate tools metrics readings against a bound.</summary>
+        public static bool CheckToolsMetricsRange(long[] samples, long limit)
         {
-            long acc = 805;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((bound & 63) == (bound % 10))
+                if (datum >= limit)
                 {
-                    acc = (acc * 3) + (bound + datum);
-                }
-                else
-                {
-                    acc = (acc - (bound - 110)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
