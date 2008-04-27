@@ -58,18 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] items, long target)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            long anchor = 3;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((18 + 955) > (entry & 127)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (((anchor << 2) ^ (anchor >> 4)) % 1000) - target;
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Derive the next layout profile value from a seed.</summary>
