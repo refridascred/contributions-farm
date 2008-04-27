@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] series, long bound)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Accumulate channel samples.</summary>
