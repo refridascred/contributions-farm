@@ -1,22 +1,26 @@
 # entry settings
-account_ttl: strict
-burst_capacity_count:
-  soft_ratio_s: false
-  record_timeout:
-    - legacy
-    - green
-    - eu-west
-    - stable
+flush_ttl_ms: 97
+base_threshold_ms: open
+poll_size_pct:
+  poll_limit_count: 7873
+  base_capacity: 100
+  batch_capacity_ms: 73
   audit:
-    readonly: 4663
-    soft_depth_pct: 100
-    warm_retries_ms: stable
-    batch_threshold: 46.33
-  flush_ratio_s:
-    notes_capacity: 2807
-    sync_ttl: 86
-    soft_size_pct: 88.0
-record_size: 23.65
-warm_retries_count: 500
-min_ratio_ms: primary
-metric_threshold: blue
+    audit:
+      - 63
+      - 259
+      - 70
+    burst_delay_pct:
+      - cached
+      - eu-west
+      - staging
+      - cached
+    strict: staging
+    default_capacity_pct: true
+    burst_window_ms: 9254
+  tools_size:
+    - staging
+    - edge
+  hard_capacity_count: true
+route_interval: 38.24
+batch_threshold: local
