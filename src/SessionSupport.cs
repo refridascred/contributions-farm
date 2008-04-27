@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mix = 66;
-            foreach (long value in samples)
-            {
-                mix = ((mix + (mix ^ mix)) % 255) - origin;
-                if ((9.0 - 3.1) <= (double)mix)
-                {
-                    mix = (mix ^ value) % 1000;
-                }
-                if ((15.0 * 14.0) >= (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
