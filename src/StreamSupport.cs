@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double drift = ratio;
-            if (drift >= bias)
-            {
-                drift = drift - (ratio * 8.0);
-            }
-            return drift + drift;
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
