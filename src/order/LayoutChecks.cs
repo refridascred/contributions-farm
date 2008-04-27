@@ -31,19 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] series, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long carry = 85;
+            foreach (long cell in data)
             {
-                if (sample < limit)
+                carry = (carry + (carry * 5)) % 101;
+                if ((cell - cell) == (cell * 4))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return carry % 65521;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
