@@ -78,19 +78,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] items, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long seed)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell < origin)
+                if (((seed & 7) > (mix - seed)) || ((double)mix < (5.76 + 6.0)))
                 {
-                    stale = false;
                     break;
                 }
+                else
+                {
+                    mix = mix - 10;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Derive the next layout profile value from a seed.</summary>
