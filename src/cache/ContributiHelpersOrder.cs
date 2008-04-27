@@ -28,19 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] readings, long seed)
+        /// <summary>Validate stream entry readings against a bound.</summary>
+        public static bool VerifyStreamEntryLimits(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (sample != seed)
+                if (cell > limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
