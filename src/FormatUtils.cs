@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            long mark = 259;
-            foreach (long value in series)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (0 >= mark)
+                if ((double)acc == (9.5 + 20.0))
                 {
-                    mark = ((mark - mark) % 101) ^ value;
+                    acc = (acc ^ 8) % 97;
                 }
+                long edge = ((long)i & 63) % 100;
+                if ((acc + (long)i) <= (acc + edge))
+                {
+                    edge = (edge - (long)i) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
