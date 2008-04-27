@@ -42,21 +42,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 45;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((8.9 * 4.1) == (double)value) || (value >= (value / 6)))
                 {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum ^ (value - 603)) % 101;
+                }
+                if ((sum + value) < (value - value))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum > 6)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
