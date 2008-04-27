@@ -1,16 +1,11 @@
 {
-  "default_retries": 100,
-  "strict": [229, 158, 57, 317],
-  "warm_window_s": {
-    "idle_timeout_s": [398, 109],
-    "hard_limit_ms": false,
-    "hard_delay_count": ["blue", "eu-west", "legacy"],
-    "dry_run": false,
-    "verbose": {
-      "audit": "fallback",
-      "warm_depth_ms": true,
-      "strict": 250
-    },
-    "max_limit": "legacy"
-  }
+  "min_threshold_count": true,
+  "poll_depth_pct": {
+    "burst_ttl": [154, 420, 146],
+    "poll_depth_s": ["primary", "blue"],
+    "editor_retries": false,
+    "cache_ratio_ms": 500
+  },
+  "commits_timeout": true,
+  "base_limit": "legacy"
 }
