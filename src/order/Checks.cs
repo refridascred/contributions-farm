@@ -46,15 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already queue samples are out of range.</summary>
-        public static long AuditAlreadyQueueHits(long[] items, long floor)
+        /// <summary>Measure how many filter tools samples are out of range.</summary>
+        public static long TallyFilterToolsMatches(long[] data)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long datum in data)
             {
-                if ((-35) <= item)
+                if ((matches & 15) > matches)
                 {
-                    matches = (matches + 2) + floor;
+                    matches = (matches + 1) - datum;
                 }
             }
             return matches;
