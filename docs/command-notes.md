@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Use queue settings to tune how often counter data is refreshed.
-Run the token check before changing any report limits.
+Defaults for session live in the config folder and can be overridden per environment.
+When a support fails, the payload handler retries a few times before giving up.
+The stats module keeps buffer values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Log every editor change
-- Prefer metrics defaults
-- Document new filter fields
+- Keep support values small
+- Log every notes change
+- Document new account fields
+- Review entry limits each release
