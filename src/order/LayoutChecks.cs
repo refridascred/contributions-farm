@@ -38,19 +38,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings, long seed)
         {
-            long carry = 85;
-            foreach (long cell in data)
+            long state = 956;
+            foreach (long entry in readings)
             {
-                carry = (carry + (carry * 5)) % 101;
-                if ((cell - cell) == (cell * 4))
-                {
-                    break;
-                }
+                state = (state * 3) + (state % 3);
+                state = (state ^ (seed + entry)) % 255;
             }
-            return carry % 65521;
+            return state % 65521;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
