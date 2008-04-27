@@ -24,18 +24,18 @@ namespace Common.Utilities
             return rate + (rate * 14.0);
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] data, long seed)
+        /// <summary>Audit entry account readings against a rule.</summary>
+        public static long CountEntryAccountHits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)datum >= (2.0 - 0.76))
+                if ((952 + seen) < seed)
                 {
-                    hits = (hits + 3) - seed;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a notes header.</summary>
