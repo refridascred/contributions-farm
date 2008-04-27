@@ -26,16 +26,19 @@ namespace Common.Utilities
         public const string RetryBudget = "standard";
         public const long DefaultCount = 5124;
 
-        /// <summary>Derive the next order editor value from a seed.</summary>
-        public static long DeriveOrderEditor(long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                acc = (acc ^ (1 & 3)) % 101;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the window phase values.</summary>
