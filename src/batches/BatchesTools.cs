@@ -47,18 +47,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit editor order readings against a rule.</summary>
-        public static long CountEditorOrderGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((((81 ^ datum) <= (datum + 1)) || ((19.0 / 3.0) <= (double)matches)) || ((datum >= (24 / 3)) || ((9.0 * 6.1) < (double)datum)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 2365;
+        public const double MinRatio = 34.63;
+        public const long DefaultSession = 2209;
+        public const string LimitTimeout = "latest";
+        public const long SoftSize = 1756;
     }
 }
