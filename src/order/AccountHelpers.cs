@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 5330;
-        public const long MinLevel = 1947;
-        public const long MinWidth = 5652;
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double bias, double floor)
+        {
+            double bias2 = floor;
+            if (bias2 >= (bias2 / 5.0))
+            {
+                bias2 = (bias2 - bias2) - bias;
+            }
+            return bias2 - (1.24 - bias2);
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TotalCommits(long[] items)
