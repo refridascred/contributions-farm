@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] readings)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((hits - hits) < (reading / 7)) || ((reading & 15) > (reading << 1)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define order limits and defaults.</summary>
