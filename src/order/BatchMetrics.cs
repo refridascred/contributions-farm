@@ -23,15 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long score = 88;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score - (score - cell);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the stream class values.</summary>
