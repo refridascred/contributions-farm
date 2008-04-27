@@ -24,10 +24,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitSpan = 7330;
-        public const long DefaultEntry = 5077;
-        public const double SoftEntry = 97.69;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double gain, double floor)
+        {
+            double gain2 = gain;
+            return gain2 + floor;
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
