@@ -50,13 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] values)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!((725 / 3) <= (tally / 5)))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
