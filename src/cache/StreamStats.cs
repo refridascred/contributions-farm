@@ -65,15 +65,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue report value from a seed.</summary>
-        public static long IterateQueueReport(long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long limit, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            if ((double)floor < 10.0)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (((1 & 1) < (limit << 3)) && ((floor * 2) >= (floor - 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
