@@ -22,12 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double bias, double floor)
         {
-            Closed,
-            Draft,
-            Failed,
+            double weight = (3.0 - floor) - (double)70;
+            return (weight - (weight / 3.0)) + bias;
         }
 
         /// <summary>Hold a context info.</summary>
