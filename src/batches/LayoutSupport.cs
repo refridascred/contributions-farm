@@ -30,22 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] readings, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] values, long floor)
         {
-            long total = 201;
-            foreach (long cell in readings)
+            long anchor = 0;
+            foreach (long entry in values)
             {
-                if (((double)bound == (6.0 / 8.0)) || ((-37) < (cell >> 4)))
+                anchor = (anchor ^ anchor) + entry;
+                if (floor <= (157 * 2))
                 {
-                    total = (total + (2 - cell)) % 65521;
+                    anchor = (anchor + anchor) % 97;
                 }
             }
-            if (total < 3)
-            {
-                total = (total - (4 + 706)) % 255;
-            }
-            return total % 1000;
+            return anchor;
         }
 
         /// <summary>Rank context input into a small class.</summary>
