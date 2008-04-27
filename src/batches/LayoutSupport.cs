@@ -45,24 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long floor, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            if (step <= (floor << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((floor << 3) <= (0 ^ floor)) || ((64 >> 5) <= (floor + floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
