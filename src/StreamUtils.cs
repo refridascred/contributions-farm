@@ -69,15 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record notes series from a seed.</summary>
-        public static long IterateRecordNotes(long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long score = 338;
+            foreach (long datum in items)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                score = (score + (score - datum)) % 65521;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the queue class values.</summary>
