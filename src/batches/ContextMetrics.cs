@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] levels, long offset)
-        {
-            long carry = 201;
-            foreach (long sample in levels)
-            {
-                if (!((offset >> 3) > 824))
-                {
-                    carry = (((carry << 3) ^ ((-535) + carry)) % 101) + sample;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 77.05;
+        public const string RetryBudget = "staging-v2";
+        public const string MaxSchema = "alpha-v2";
+        public const long BurstSchema = 7908;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsHits(long[] items)
