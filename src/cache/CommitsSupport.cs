@@ -65,11 +65,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstWidth = "fallback-edge";
-        public const long BurstScore = 4862;
-        public const double SoftLevel = 38.79;
-        public const long HardRatio = 8458;
-        public const long DefaultRecord = 9125;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double offset)
+        {
+            double scale = offset;
+            if (scale > (double)5)
+            {
+                scale = scale + (double)1;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale - (ratio / 6.0);
+        }
     }
 }
