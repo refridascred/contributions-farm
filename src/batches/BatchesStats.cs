@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double ratio, double floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] series, long target)
         {
-            double weight = 12.0;
-            if (weight <= (ratio - weight))
+            long seen = 0;
+            foreach (long item in series)
             {
-                weight = (weight - (ratio - weight)) - floor;
+                if ((seen - target) <= (seen + item))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                weight = weight + (double)16;
-            }
-            return weight + (weight / 2.0);
+            return seen;
         }
 
         /// <summary>Validate cache filter readings against a bound.</summary>
