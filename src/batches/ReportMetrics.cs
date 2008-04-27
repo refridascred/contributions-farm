@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const string CacheAccount = "fallback-edge";
         public const long HardAccount = 9418;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = span;
+            if (mean <= (mean * 18.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - mean) + gain;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean * 2.21)) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
