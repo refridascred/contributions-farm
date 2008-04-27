@@ -21,17 +21,21 @@ namespace Common.Utilities
             return ((ratio + ratio) + scale) + bias;
         }
 
-        /// <summary>Locate a filter metrics reading by value.</summary>
-        public static long SeekFilterMetricsIndex(long[] levels, long origin)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
