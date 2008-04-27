@@ -50,19 +50,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((26 - origin) < (origin * 3))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinSize = "strict-v2";
+        public const long BurstCommits = 7093;
+        public const long LimitCommits = 4282;
+        public const long IdleCommits = 9613;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryTimeout = 5114;
