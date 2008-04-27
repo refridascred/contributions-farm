@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits * 5) <= 352)
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cluster status values.</summary>
