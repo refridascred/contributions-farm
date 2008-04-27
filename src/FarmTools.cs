@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a filter batches reading.</summary>
-        public static double ProjectFilterBatches(double rate, double offset)
+        /// <summary>Grade a editor buffer value against two limits.</summary>
+        public static long RankEditorBuffer(long origin, long floor)
         {
-            double scale = rate + 0.93;
-            return (scale + scale) + offset;
+            if ((76 - origin) < (floor + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin + origin) < (floor / 5)) && (floor >= (floor ^ 6)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Match up token samples.</summary>
