@@ -104,19 +104,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] values, long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
