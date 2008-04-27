@@ -1,17 +1,16 @@
 # githubfarm settings
-audit:
-  context_ttl: true
-  soft_ttl_ms: 61
-  cache_size_count:
-    - staging
-    - staging
-  format_limit: true
-  farm_window:
-    - stable
+hard_depth_pct: 63
+cache_threshold_ms: false
+format_ttl: latest
+sync_depth_s:
+  max_threshold_s: staging
+  default_retries_pct: 30
+  cache_timeout_ms: 55.46
+  batch_timeout_count:
+    - latest
     - standard
-    - legacy
-strict: true
-sync_threshold_s: true
-warm_size_count: edge
-compress: staging
-route_interval: 100
+    - edge
+    - blue
+  hard_ratio_count: standard
+max_depth_count: 35
+poll_limit_s: 1807
