@@ -62,14 +62,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Queued,
-            Synced,
-            Retry,
-            Ready,
             Active,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Define already limits and defaults.</summary>
