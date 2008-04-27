@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark - (origin + mark)) % 1000;
-                mark = (mark * 5) + mark;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
