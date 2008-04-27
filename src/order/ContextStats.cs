@@ -19,26 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] samples, long floor)
         {
-            long result = 4;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((20.0 - 8.5) < (double)datum)
+                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
                 {
-                    result = (result ^ (25 + datum)) % 101;
-                }
-                else
-                {
-                    result = (result + (datum * 4)) % 255;
+                    return (long)i;
                 }
             }
-            if (result > 1)
-            {
-                result = ((result << 3) ^ (result ^ (long)readings.Length)) % 101;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
