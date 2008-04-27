@@ -56,10 +56,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleCount = 55;
-        public const long RetryTimeout = 621;
-        public const long StepTimeout = 6932;
-        public const long IdleSpan = 392;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchLevel = 4207;
+        public const long SoftLevel = 4750;
+        public const string HardRatio = "staging-edge";
     }
 }
