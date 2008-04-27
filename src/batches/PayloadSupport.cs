@@ -31,13 +31,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            Done,
+            Locked,
+            Synced,
+            Paused,
         }
     }
 }
