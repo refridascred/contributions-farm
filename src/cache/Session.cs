@@ -49,15 +49,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] series, long bound)
-        {
-            long result = 82;
-            foreach (long value in series)
-            {
-                result = (result - value) - bound;
-            }
-            return result % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 3127;
+        public const string BatchStats = "strict-1";
+        public const long MaxLevel = 6707;
     }
 }
