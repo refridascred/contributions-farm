@@ -48,18 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Blend two support batches measurements.</summary>
+        public static double ScaleSupportBatches(double bias, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            double drift = offset + (double)5;
+            if (drift >= (double)(-18))
             {
-                carry = carry - (carry - 78);
-                carry = carry - ((long)i >> 1);
-                carry = carry - (limit - 5);
-                carry = ((carry * 3) + (long)i) % 65521;
+                drift = drift - (9.5 * 14.0);
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (drift - bias)) - (double)(long)i;
+            }
+            return drift + (bias + offset);
         }
     }
 }
