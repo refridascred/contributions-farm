@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double bias, double span)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] items, long limit)
         {
-            double scale = bias - (double)36;
-            if (scale >= (double)429)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                scale = (scale - bias) + span;
+                if ((entry * 5) >= (limit / 8))
+                {
+                    seen = seen + 3;
+                }
             }
-            return scale + (double)88;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
