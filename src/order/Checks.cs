@@ -28,27 +28,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] samples)
         {
-            long total = 20;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((total <= (entry / 9)) && ((entry + total) < (total >> 1)))
+                if (cell >= (6 >> 4))
                 {
-                    total = ((total << 3) ^ (361 & 127)) % 97;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    total = (total + total) % 4096;
-                    total = (total * 3) + entry;
-                }
-                if (0.01 >= (double)entry)
-                {
-                    total = total + entry;
+                    hits = hits - 1;
                 }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many already queue samples are out of range.</summary>
