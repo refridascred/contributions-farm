@@ -46,13 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Locked,
-            Idle,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "cached";
+        public const double WindowBudget = 83.64;
+        public const long CacheContributi = 8815;
+        public const string MaxContributi = "staging";
+        public const string DefaultSpan = "staging-v2";
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] data)
