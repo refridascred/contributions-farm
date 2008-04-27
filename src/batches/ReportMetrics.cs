@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Done,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryLevel = 8912;
+        public const long LimitFilter = 2705;
+        public const string CacheFilter = "latest-v2";
+        public const long DefaultScore = 1240;
+        public const long BaseFilter = 1888;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BatchOrder = 0.09;
