@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryDepth = 4.01;
-        public const double StepBatches = 66.61;
-        public const string WindowLevel = "primary";
-        public const long LimitBatches = 1855;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
