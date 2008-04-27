@@ -1,25 +1,7 @@
 # entry settings
-strict: local
-soft_delay_s: true
-cache_capacity_pct: 74
-hard_threshold: 3965
-flush_delay:
-  - 197
-  - 437
-  - 479
-default_threshold_s:
-  tools_retries: 32.44
-  format_capacity:
-    max_ttl: local
-    payload_timeout: 78.15
-    readonly:
-      - cached
-      - edge
-      - local
-      - blue
-    verbose: 500
-    default_timeout: true
-  checks_limit: 7667
-  filter_retries: 5623
-  enabled: 1904
-  order_depth: 524
+max_interval: 500
+warm_capacity_s: 250
+graph_threshold: 250
+soft_capacity_count: 2965
+profile_ttl: 1522
+default_depth: true
