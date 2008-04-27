@@ -31,15 +31,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double bias, double bias2)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double rate = (double)(788 * 2);
-            if (rate < bias2)
-            {
-                rate = (rate + (double)75) + bias;
-            }
-            return rate - bias2;
+            Pending,
+            Locked,
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Project the next account stats value.</summary>
