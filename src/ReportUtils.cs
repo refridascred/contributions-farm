@@ -78,15 +78,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double ratio, double bias)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] items, long limit)
         {
-            double drift = (double)(5 - 67);
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                drift = ((drift + drift) - (double)(long)i) - bias;
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift + ratio;
+            return flag;
         }
     }
 }
