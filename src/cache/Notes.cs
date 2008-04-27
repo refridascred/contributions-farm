@@ -42,19 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context payload readings against a bound.</summary>
-        public static bool CheckContextPayloadLimits(long[] readings, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Paused,
+            Locked,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
