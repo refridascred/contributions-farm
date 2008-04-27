@@ -47,21 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 289;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (((result << 3) ^ (seed << 1)) % 101) ^ item;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Project the next format command value.</summary>
