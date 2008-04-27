@@ -33,17 +33,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] samples, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long offset, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long span = offset - limit;
+            if (57 < (span + span))
             {
-                if (samples[i] < seed)
+                return 0;
+            }
+            else
+            {
+                if ((span - span) == (limit - limit))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((span + limit) > span)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((span * 4) > (limit + (-405)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
