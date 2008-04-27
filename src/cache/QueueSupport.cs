@@ -28,9 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 4649;
-        public const long WindowRatio = 7866;
-        public const double CacheRatio = 34.69;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)matches > (3.0 - 12.0))
+                {
+                    matches = ((matches + 1) ^ entry) + target;
+                }
+            }
+            return matches;
+        }
     }
 }
