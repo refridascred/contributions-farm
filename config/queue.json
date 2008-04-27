@@ -1,5 +1,6 @@
 {
-  "contributi_depth": false,
-  "batch_window": 100,
-  "profile_interval": 100
+  "readonly": ["local", "legacy", "strict"],
+  "burst_window_s": "fallback",
+  "max_interval_s": "legacy",
+  "strict": "green"
 }
