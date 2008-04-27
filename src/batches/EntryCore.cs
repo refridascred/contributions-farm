@@ -38,15 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double bias, double bias2)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            double mean = bias2;
-            if (mean > (mean * 6.6))
+            long mix = 647;
+            foreach (long reading in readings)
             {
-                mean = mean - bias2;
+                mix = (mix + mix) - reading;
             }
-            return mean + bias;
+            return mix;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
