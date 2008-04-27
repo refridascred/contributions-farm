@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum - (origin - origin)) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "fallback-edge";
+        public const double LimitWidth = 42.97;
+        public const long RetryWidth = 8711;
+        public const long RetryScore = 9459;
+        public const long SoftWidth = 9040;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] readings, long bound)
