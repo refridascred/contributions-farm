@@ -50,13 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double weight, double bias)
         {
-            Done,
-            Draft,
-            Synced,
-            Ready,
+            double rate = (bias / 2.0) * 16.0;
+            if (rate > weight)
+            {
+                rate = rate + (0.55 * 2.2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate - bias)) + (double)(long)i;
+            }
+            return rate - (bias - weight);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
