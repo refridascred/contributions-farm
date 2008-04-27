@@ -1,7 +1,8 @@
-id,token,weight,level
-1,green,93.81,291
-2,960,806,61.6
-3,665,629,595
-4,5.5,fallback,42.84
-5,868,stable,931
-6,cached,stable,492
+id,active,label,state
+1,495,4.08,19.8
+2,3.56,edge,37.33
+3,eu-west,445,25.47
+4,cached,74.7,39
+5,local,802,cached
+6,333,110,edge
+7,267,green,82.93
