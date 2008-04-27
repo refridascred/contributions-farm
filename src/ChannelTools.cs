@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 4501;
-        public const long HardRatio = 563;
-        public const long BatchFarm = 2754;
-        public const long HardFarm = 357;
-        public const long LimitBudget = 3997;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Retry,
+            Synced,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long ScoreRoute(long[] readings, long floor)
