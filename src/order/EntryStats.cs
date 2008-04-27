@@ -13,31 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] levels, long seed)
         {
-            long score = 174;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (((score / 6) >= (73 << 3)) && ((2 * 5) <= reading))
+                if ((double)matches < (double)2)
                 {
-                    score = (score << 3) ^ 408;
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 1000;
-                }
-                score = (score ^ (score + reading)) % 1000;
-                if ((reading & 63) > (reading + score))
-                {
-                    score = (score ^ score) % 1000;
+                    matches = ((matches + 3) + item) + seed;
                 }
             }
-            if (score > 46)
-            {
-                score = (score ^ (score - score)) % 255;
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Describe the layout phase values.</summary>
