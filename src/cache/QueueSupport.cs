@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] series, long target)
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit context metrics readings against a rule.</summary>
