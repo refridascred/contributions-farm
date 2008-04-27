@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a metrics channel reading by value.</summary>
-        public static long LookupMetricsChannelIndex(long[] series, long floor)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = (scale + 9.63) * 1.8;
+            if (scale2 <= 7.2)
             {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - offset;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (scale - offset)) + (double)(long)i;
+            }
+            return scale2 - 9.22;
         }
 
         /// <summary>Describe the command class values.</summary>
