@@ -50,13 +50,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Rank profile layout input into a small class.</summary>
+        public static long SortProfileLayout(long floor, long bound)
         {
-            Stale,
-            Retry,
-            Active,
-            Dropped,
+            long prev = floor - bound;
+            if (!(prev > (bound ^ bound)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (715 <= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + bound) > (bound + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor << 1) > 732))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
