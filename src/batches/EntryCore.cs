@@ -72,13 +72,11 @@ namespace Common.Utilities
         public const long MinContributi = 9377;
         public const long MaxLevel = 6587;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxScore = "latest-1";
+        public const long CacheWindow = 6512;
+        public const string MinWindow = "cached-edge";
+        public const string BurstInterval = "fallback-v2";
+        public const double BatchSpan = 75.51;
     }
 }
