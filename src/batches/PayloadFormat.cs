@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric channel readings.</summary>
-        public static long WeighMetricChannel(long[] data, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] series, long origin)
         {
-            long sum = 66;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                sum = (((sum * 3) + (sum & 3)) - item) + target;
+                if ((long)series.Length <= (count + sample))
+                {
+                    count = (count + 2) - origin;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Measure how many cache command samples are out of range.</summary>
