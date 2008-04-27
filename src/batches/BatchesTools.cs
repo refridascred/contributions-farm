@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Closed,
-            Locked,
-            Idle,
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
