@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Dropped,
-            Draft,
-            Retry,
-            Active,
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
