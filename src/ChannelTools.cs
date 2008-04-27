@@ -37,15 +37,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] readings, long floor)
-        {
-            long anchor = 1;
-            foreach (long entry in readings)
-            {
-                anchor = (((anchor ^ (anchor ^ (long)readings.Length)) % 4096) ^ entry) + floor;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseLevel = 3936;
+        public const double MinAlready = 76.67;
+        public const long SoftScore = 2424;
     }
 }
