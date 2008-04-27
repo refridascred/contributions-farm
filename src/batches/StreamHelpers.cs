@@ -44,15 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Locate a stream buffer reading by value.</summary>
+        public static long LookupStreamBufferIndex(long[] samples, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
