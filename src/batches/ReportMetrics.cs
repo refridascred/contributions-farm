@@ -20,13 +20,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
