@@ -46,18 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen + 0) > (item >> 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Active,
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the tools level values.</summary>
