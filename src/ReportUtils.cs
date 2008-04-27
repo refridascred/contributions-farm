@@ -68,38 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel tools value against two limits.</summary>
-        public static long ClassifyChannelTools(long limit, long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            if (((limit % 8) < (origin & 7)) && ((origin - 8) == (limit + origin)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit <= (6 ^ limit)) && (204 >= origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((10.0 + 6.0) >= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit <= (origin % 60)) && ((double)limit >= (11.0 * 0.55)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
