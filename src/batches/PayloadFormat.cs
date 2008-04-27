@@ -24,10 +24,23 @@ namespace Common.Utilities
             return drift - (span * 5.4);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 35.54;
-        public const long BatchCount = 4955;
-        public const double BurstFactor = 49.31;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)hits <= (14.0 * 10.0))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] series)
