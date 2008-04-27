@@ -37,22 +37,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values)
-        {
-            long sum = -356;
-            foreach (long cell in values)
-            {
-                if (6 > sum)
-                {
-                    sum = (sum ^ (cell & 63)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepScore = "staging";
+        public const long BaseOrder = 8883;
+        public const long CacheInterval = 3805;
     }
 }
