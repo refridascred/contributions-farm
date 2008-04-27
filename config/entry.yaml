@@ -1,4 +1,29 @@
 # entry settings
-channel_ttl: 25
-cluster_limit: 250
-burst_ttl: 30
+audit: true
+idle_depth_count: 6580
+max_interval_count:
+  - 252
+  - 171
+  - 40
+soft_delay_s:
+  - 399
+  - 474
+  - 234
+base_retries_s:
+  hard_capacity_pct: 100
+  metric_delay: strict
+  sync_size_pct: 3828
+  hard_retries:
+    default_capacity_s: green
+    persist:
+      - stable
+      - latest
+      - edge
+      - open
+    warm_ratio: edge
+  enabled: 4592
+  retry_capacity:
+    token_window: false
+    batch_capacity_count: standard
+    entry_window: stable
+    cache_ttl: 20.75
