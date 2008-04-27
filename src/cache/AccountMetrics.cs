@@ -48,11 +48,19 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double scale, double bias)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] values, long offset)
         {
-            double rate = scale;
-            return (rate + (double)443) + bias;
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every entry commits entry stays within the limit.</summary>
