@@ -32,11 +32,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "legacy-edge";
-        public const long SoftInterval = 8174;
-        public const long BatchEditor = 4644;
-        public const long DefaultCount = 2962;
-        public const long StepScore = 74;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] levels)
+        {
+            long sum = -85;
+            foreach (long sample in levels)
+            {
+                if (!(sum < (sample - sample)))
+                {
+                    sum = (sum ^ (sum * 3)) % 4096;
+                }
+            }
+            return sum;
+        }
     }
 }
