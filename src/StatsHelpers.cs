@@ -14,15 +14,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Measure how many metrics cluster samples are out of range.</summary>
+        public static long CountMetricsClusterOutliers(long[] readings)
         {
-            double weight = rate;
-            if (weight > 16.0)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                weight = (weight - (double)2) - offset;
+                if ((double)93 <= (double)count)
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return weight - weight;
+            return count;
         }
 
         /// <summary>Measure how many checks report samples are out of range.</summary>
