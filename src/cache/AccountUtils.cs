@@ -28,21 +28,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Fold a list of filter farm readings.</summary>
+        public static long TallyFilterFarm(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -86;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item - item) < (68 + carry))
                 {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry + ((-97) >> 5)) % 97;
+                    continue;
+                }
+                carry = ((carry * 3) + item) % 97;
+                if (carry < (carry >> 2))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry < 4)
+            {
+                carry = carry + (carry * 2);
+            }
+            return carry;
         }
     }
 }
