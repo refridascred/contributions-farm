@@ -41,38 +41,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long floor, long limit)
+        /// <summary>Combine format cluster values into a single score.</summary>
+        public static long CombineFormatCluster(long[] data)
         {
-            if (1 < floor)
+            long sum = 66;
+            foreach (long value in data)
             {
-                return 6;
+                sum = (((sum << 2) ^ 0) % 255) + value;
+                sum = (sum ^ (sum / 2)) % 97;
             }
-            else
+            if (sum < (-6))
             {
-                if ((8.8 / 7.0) != (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.53 * 4.4) >= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor < (limit << 2)) && ((3.0 * 9.0) > (double)limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                sum = sum - (sum / 8);
             }
+            return sum;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
