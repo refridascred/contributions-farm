@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double bias, double span)
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            double load = (double)(444 - 63);
+            if (load > (span - span))
+            {
+                load = load - bias;
+            }
+            return load - (double)240;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
