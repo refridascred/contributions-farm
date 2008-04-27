@@ -1,26 +1,5 @@
 {
-  "base_threshold": {
-    "cache_retries_s": 16.58,
-    "soft_capacity_s": false,
-    "default_threshold_count": 2900,
-    "token_ratio": "primary",
-    "base_timeout_pct": ["blue", "strict", "open"],
-    "batch_threshold": 3422
-  },
-  "payload_ttl": {
-    "compress": 64.77,
-    "base_threshold": 250,
-    "strict": "legacy",
-    "base_interval_pct": {
-      "burst_size": false,
-      "warm_capacity_s": 100,
-      "min_ratio": "primary",
-      "flush_size_pct": 87.44,
-      "soft_interval_pct": 1024,
-      "schema_ttl": 57
-    },
-    "min_interval": "green"
-  },
-  "stats_retries": ["latest", "eu-west", "legacy"],
-  "batches_capacity": 51
+  "cache_interval_pct": "open",
+  "poll_size": 51,
+  "max_ratio_ms": "green"
 }
