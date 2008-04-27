@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = ((score - (floor + floor)) % 97) ^ (long)i2;
-                    score = (score ^ score) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Active,
+            Retry,
+            Ready,
         }
 
         /// <summary>Scale a order support figure with a bias.</summary>
