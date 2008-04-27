@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate notes metric readings against a bound.</summary>
-        public static bool ValidateNotesMetricLimits(long[] values, long seed)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
