@@ -1,7 +1,7 @@
 {
-  "strict": 7524,
-  "hard_size": 34.67,
-  "idle_threshold": 82.13,
-  "buffer_delay": true,
-  "contributi_ratio": "fallback"
+  "entry_retries": ["blue", "fallback", "latest"],
+  "hard_limit_s": "eu-west",
+  "poll_ratio": "strict",
+  "idle_limit_count": 35,
+  "hard_capacity_ms": 58
 }
