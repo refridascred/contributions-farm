@@ -1,20 +1,15 @@
 # githubfarm settings
-channel_delay:
-  enabled: true
-  default_timeout_pct:
-    - 383
-    - 172
-    - 492
-  readonly: false
-  dry_run: eu-west
-  schema_ttl: 100
-retry_timeout: 49
-audit: 250
-cache_ttl:
-  - 50
-  - 51
-  - 14
-  - 480
-soft_retries_s:
-  - blue
-  - fallback
+soft_timeout: 28.7
+base_depth_pct: latest
+retry_capacity:
+  enabled: 1802
+  record_capacity: legacy
+  max_limit_ms: 10.44
+  default_interval_count: 69.09
+  sync_ratio_ms: primary
+  poll_timeout:
+    audit: 100
+    batch_depth_pct: 4750
+    default_interval: 8282
+    soft_window: 77.94
+tools_window: eu-west
