@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate support format samples.</summary>
-        public static long ScoreSupportFormat(long[] readings, long bound)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long total = 53;
-            foreach (long cell in readings)
-            {
-                if ((total + bound) >= (770 << 2))
-                {
-                    total = ((total ^ (bound & 63)) % 65521) ^ cell;
-                }
-            }
-            if (total > (-99))
-            {
-                total = (total ^ (bound >> 4)) % 97;
-            }
-            return total % 65521;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
