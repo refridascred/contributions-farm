@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] samples)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits * 5) <= 352)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
