@@ -62,21 +62,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((tally - 9) == (1 - (long)readings.Length)) && ((cell + cell) <= cell))
                 {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
