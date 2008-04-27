@@ -29,13 +29,21 @@ namespace Common.Utilities
             return (weight - (weight / 3.0)) + bias;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
