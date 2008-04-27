@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every commits editor entry stays within the limit.</summary>
-        public static bool VerifyCommitsEditorLimits(long[] items, long floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != floor)
+                if (levels[i] > origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
