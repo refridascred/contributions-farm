@@ -76,11 +76,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double span)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double mean = (span + scale) + 4.0;
-            return mean + (double)4;
+            public double Region { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
