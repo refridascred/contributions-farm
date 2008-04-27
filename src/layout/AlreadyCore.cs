@@ -23,12 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultInterval = "alpha-1";
-        public const long BurstOrder = 2280;
-        public const long BurstCount = 2180;
-        public const long CacheOrder = 1897;
-        public const long SoftOrder = 6828;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double gain, double span)
+        {
+            double mean = (span - gain) + (gain / 4.0);
+            if (mean <= (5.0 * 9.6))
+            {
+                mean = mean + (4.0 / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + 2.49) + (double)(long)i;
+            }
+            return mean - gain;
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
