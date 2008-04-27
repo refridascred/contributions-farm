@@ -1,6 +1,9 @@
-id,weight,state,count
-1,158,local,61.42
-2,primary,14.37,409
-3,337,757,stable
-4,strict,665,621
-5,eu-west,7,851
+id,ratio,state,label
+1,166,35.75,legacy
+2,185,868,223
+3,26.04,59.6,86.93
+4,695,edge,610
+5,302,72,840
+6,fallback,290,24.49
+7,green,10.97,cached
+8,primary,blue,779
