@@ -1,18 +1,5 @@
 {
-  "compress": ["eu-west", "standard"],
-  "max_timeout_count": {
-    "persist": 100,
-    "layout_size": 68.73,
-    "enabled": "legacy"
-  },
-  "window_capacity": 8574,
-  "command_depth": {
-    "readonly": 66.27,
-    "max_ttl_count": 35.46,
-    "max_limit": 38.14,
-    "format_ttl": true,
-    "burst_retries_count": "primary",
-    "min_threshold": 1024
-  },
-  "notes_delay": ["edge", "fallback", "strict", "local"]
+  "audit": 694,
+  "verbose": 80,
+  "enabled": "blue"
 }
