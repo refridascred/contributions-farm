@@ -14,12 +14,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySize = "open";
-        public const double BurstRatio = 15.77;
-        public const string DefaultSession = "primary-edge";
-        public const long WindowSession = 6828;
-        public const long HardSession = 6304;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long seed, long floor)
+        {
+            long lane = seed + floor;
+            if (((floor / 6) < (floor % 24)) && ((double)floor > 3.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((5 + lane) > (seed + lane)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Validate batch schema readings against a bound.</summary>
         public static bool VerifyBatchSchemaRange(long[] series, long bound)
