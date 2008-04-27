@@ -1,8 +1,8 @@
 {
-  "audit": "legacy",
-  "idle_window_pct": ["cached", "cached"],
-  "persist": "blue",
-  "cache_limit_count": ["fallback", "edge"],
-  "already_threshold": 100,
-  "max_size_count": "primary"
+  "githubfarm_ratio": 9,
+  "retry_limit_ms": 7285,
+  "soft_threshold_count": "latest",
+  "hard_limit": "green",
+  "sync_threshold_ms": [54, 208, 362, 116],
+  "strict": ["green", "stable"]
 }
