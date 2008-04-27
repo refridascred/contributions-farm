@@ -40,19 +40,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long acc = 36;
-            foreach (long datum in series)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                acc = (((acc - (acc / 6)) % 65521) + datum) + limit;
+                anchor = ((anchor << 2) ^ 9) % 4096;
+                if (((double)anchor < (double)limit) && ((limit % 10) > ((long)i & 127)))
+                {
+                    anchor = (anchor - (long)i) % 255;
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (acc > 782)
-            {
-                acc = (acc ^ ((long)series.Length / 2)) % 101;
-            }
-            return acc;
+            return anchor;
         }
     }
 }
