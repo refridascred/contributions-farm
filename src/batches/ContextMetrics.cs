@@ -45,19 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] series, long offset)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            double bias = 0.1;
+            if (bias <= ratio)
             {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + (floor - floor);
             }
-            return flag;
+            else
+            {
+                bias = bias + ratio;
+            }
+            return bias + (double)0;
         }
     }
 }
