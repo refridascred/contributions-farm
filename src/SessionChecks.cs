@@ -49,17 +49,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
