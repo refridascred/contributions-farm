@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch metrics entry that matches the target.</summary>
-        public static long LookupBatchMetricsIndex(long[] data, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (data[i] > bound)
+                if ((seen % 8) <= 52)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
