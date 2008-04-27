@@ -68,21 +68,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count batch githubfarm pairs that satisfy a relation.</summary>
-        public static long PairBatchGithubfarmCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "primary-1";
+        public const long IdleLayout = 6511;
+        public const long StepRatio = 4501;
     }
 }
