@@ -42,14 +42,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Idle,
-            Queued,
-            Locked,
+            Ready,
+            Synced,
             Pending,
-            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the cluster status values.</summary>
