@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry ^ (limit / 5)) % 255;
-                carry = (carry - (carry & 3)) % 97;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
