@@ -24,13 +24,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples, long bound)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Score { get; set; }
+            long sum = 0;
+            foreach (long sample in samples)
+            {
+                if (((-8) + sum) == (bound << 2))
+                {
+                    sum = (sum ^ (731 / 5)) % 1000;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sample << 1);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every stream farm entry stays within the limit.</summary>
