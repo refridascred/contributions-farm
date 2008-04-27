@@ -1,6 +1,11 @@
-id,ratio,label,region
-1,65.64,58.24,93.73
-2,40.37,46.16,22.19
-3,449,cached,2.0
-4,362,stable,47
-5,12.76,94.55,838
+id,count,ratio,weight
+1,97.91,618,green
+2,93.01,993,primary
+3,cached,899,724
+4,25.49,48.23,65.54
+5,839,edge,primary
+6,191,390,local
+7,standard,159,189
+8,961,776,92.89
+9,latest,496,531
+10,edge,21.71,459
