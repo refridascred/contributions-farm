@@ -72,12 +72,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 944;
-        public const string RetryNotes = "staging-edge";
-        public const string LimitDepth = "standard-v2";
-        public const long IdleScore = 2291;
-        public const string DefaultSize = "legacy";
+        /// <summary>Find the first buffer report entry that matches the target.</summary>
+        public static long FindBufferReportIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double ProjectRoute(double weight, double bias)
