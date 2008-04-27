@@ -22,10 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseDepth = 20.86;
-        public const long HardFarm = 3117;
-        public const long IdleBudget = 1048;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] samples)
+        {
+            long mark = 700;
+            foreach (long cell in samples)
+            {
+                mark = (mark << 3) ^ (cell << 1);
+            }
+            if (mark > 16)
+            {
+                mark = (mark * 3) + (mark + mark);
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] series, long bound)
