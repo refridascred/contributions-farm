@@ -60,11 +60,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 3529;
-        public const string DefaultBudget = "legacy-1";
-        public const long BaseTimeout = 9069;
-        public const double BurstRecord = 35.17;
-        public const double IdleRecord = 32.83;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "stable-edge";
+        public const long IdleFactor = 6924;
+        public const double BatchEditor = 0.86;
     }
 }
