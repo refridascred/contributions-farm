@@ -18,21 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 627;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = (state - state) % 97;
+                if ((state ^ state) >= (value % 24))
                 {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state << 2) ^ (value - state);
+                }
+                else
+                {
+                    state = (state + (state / 3)) % 65521;
                 }
             }
-            return hits;
+            if (state < (-2))
+            {
+                state = ((state << 3) ^ target) % 255;
+            }
+            return state;
         }
 
         /// <summary>Find the first report stats entry that matches the target.</summary>
