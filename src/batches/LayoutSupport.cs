@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Closed,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 37.9;
+        public const long SoftAccount = 3334;
+        public const long HardAccount = 2941;
+        public const long LimitInterval = 5563;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] values, long floor)
