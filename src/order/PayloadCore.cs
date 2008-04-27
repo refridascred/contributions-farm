@@ -16,21 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)seen < (8.2 * 8.0))
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 2) + reading) + seed;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a queue options.</summary>
