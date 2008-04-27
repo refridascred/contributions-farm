@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] samples)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((1.71 * 1.0) != (double)(long)samples.Length)
+                if ((anchor ^ floor) <= floor)
                 {
-                    count = (count + 3) + datum;
+                    anchor = ((anchor << 2) ^ (9 & 31)) % 4096;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
