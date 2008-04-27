@@ -23,13 +23,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public double Score { get; set; }
+            public long Limit { get; set; }
             public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
