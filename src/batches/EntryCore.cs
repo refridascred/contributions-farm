@@ -38,18 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] samples)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!((9.16 * 6.0) != (double)entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
