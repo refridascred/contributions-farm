@@ -1,8 +1,8 @@
 {
-  "tools_threshold": 968,
-  "readonly": "eu-west",
-  "cluster_size": [183, 25, 106, 360],
-  "cache_timeout": 100,
-  "githubfarm_ttl": false,
-  "soft_ratio": true
+  "base_window": 15.92,
+  "verbose": ["fallback", "cached", "blue", "staging"],
+  "warm_ttl_s": "primary",
+  "hard_ratio_s": 16.85,
+  "poll_threshold_ms": 500,
+  "contributi_delay": "edge"
 }
