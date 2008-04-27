@@ -71,17 +71,22 @@ namespace Common.Utilities
             return weight + 1.8;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] data, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) == 0))
+                if ((6.07 >= (double)hits) || !((hits << 3) < (0 >> 3)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
