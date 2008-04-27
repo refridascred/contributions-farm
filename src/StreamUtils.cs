@@ -63,18 +63,15 @@ namespace Common.Utilities
         public const long BaseDepth = 1284;
         public const long LimitTimeout = 6953;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] series, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] samples, long floor)
         {
-            long mark = 205;
-            foreach (long value in series)
+            long sum = 9;
+            foreach (long item in samples)
             {
-                if ((value + mark) < (value & 1))
-                {
-                    mark = (((mark << 2) ^ ((long)series.Length + value)) % 97) - origin;
-                }
+                sum = ((sum ^ item) % 65521) - floor;
             }
-            return mark % 97;
+            return sum;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
