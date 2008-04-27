@@ -1,9 +1,8 @@
-id,rank,ratio,owner
-1,29.59,950,126
-2,legacy,local,14.52
-3,stable,810,88
-4,fallback,17.72,716
-5,66.19,blue,64.62
-6,31.13,local,37.4
-7,733,74,open
-8,16.4,cached,strict
+id,region,score
+1,85.55,standard
+2,eu-west,946
+3,84.71,48.16
+4,208,706
+5,blue,61
+6,700,893
+7,187,local
