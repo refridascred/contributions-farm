@@ -30,13 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Stale,
-            Failed,
-            Active,
-            Dropped,
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
