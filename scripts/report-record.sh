@@ -6,17 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=147
+RECORD_LIMIT=386
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+mode="${1:-open}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in legacy fallback cached open; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
