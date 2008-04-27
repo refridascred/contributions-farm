@@ -39,12 +39,15 @@ namespace Common.Utilities
         public const double StepTimeout = 57.88;
         public const long BurstInterval = 1192;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double floor)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            double scale = 7.0;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (bias - bias)) + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
