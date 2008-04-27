@@ -30,22 +30,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] samples)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long step, long target)
         {
-            long mix = 0;
-            foreach (long item in samples)
+            if (target <= step)
             {
-                if ((double)item <= (1.59 * 7.6))
+                return 7;
+            }
+            else
+            {
+                if ((target << 2) == (7 + target))
                 {
-                    mix = ((mix << 2) ^ item) % 1000;
+                    return 4;
                 }
-                if (item <= (74 % 5))
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Accumulate filter samples.</summary>
