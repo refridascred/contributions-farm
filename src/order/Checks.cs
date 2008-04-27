@@ -22,21 +22,22 @@ namespace Common.Utilities
         public const long CacheWidth = 4713;
         public const long SoftLevel = 8712;
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((double)value != (2.0 / 7.0)) || ((double)tally > (double)value)))
                 {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine batches tools values into a single score.</summary>
