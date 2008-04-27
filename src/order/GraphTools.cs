@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long RetryBatches = 2215;
         public const long HardLevel = 341;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings, long target)
-        {
-            long state = -6;
-            foreach (long value in readings)
-            {
-                if ((128 ^ target) >= state)
-                {
-                    state = ((state ^ target) % 97) - value;
-                }
-            }
-            if (state < 87)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "staging-1";
+        public const double SoftBatch = 73.72;
+        public const long HardBatch = 4724;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long ScoreGithubfarm(long[] values)
