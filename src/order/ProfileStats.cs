@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] items)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)seen > (6.0 / 6.0))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next command value.</summary>
