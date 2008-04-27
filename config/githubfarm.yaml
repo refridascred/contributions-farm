@@ -1,25 +1,4 @@
 # githubfarm settings
-tools_capacity: false
-checks_limit: 1.78
-default_limit_s: 250
-cache_ratio: local
-cache_size_ms:
-  idle_ttl_count: 66.92
-  idle_timeout_s:
-    dry_run:
-      - 482
-      - 139
-      - 425
-    verbose: 27.67
-    max_retries_ms: 2609
-    stream_depth: 86.22
-    batch_capacity_pct: true
-    persist:
-      - 102
-      - 252
-  flush_interval: 88
-  cache_delay: stable
-  burst_interval:
-    - 3
-    - 376
-  min_threshold_ms: 4149
+base_threshold_ms: staging
+burst_limit: true
+compress: legacy
