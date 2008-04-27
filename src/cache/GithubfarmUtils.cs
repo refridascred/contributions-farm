@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 2589;
+        public const long WindowDepth = 526;
+        public const long MinReport = 1646;
+        public const long BurstReport = 1409;
+        public const double BaseReport = 30.07;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] readings, long seed)
