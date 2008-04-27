@@ -1,6 +1,24 @@
 {
+  "sync_interval": {
+    "compress": {
+      "soft_ratio": ["fallback", "strict"],
+      "graph_threshold": 70.43,
+      "cache_retries_ms": "standard",
+      "readonly": [127, 316],
+      "hard_ttl_ms": [293, 500, 136, 285]
+    },
+    "hard_depth": "latest",
+    "metric_threshold": "standard",
+    "flush_size_pct": ["latest", "strict", "edge"],
+    "verbose": "latest",
+    "route_capacity": 63.19
+  },
+  "max_timeout_s": {
+    "audit": 28.26,
+    "max_ratio": 7.44,
+    "checks_retries": true
+  },
+  "batch_delay_s": [222, 353, 157, 69],
   "persist": false,
-  "counter_retries": "green",
-  "warm_window_s": 20,
-  "idle_timeout": false
+  "retry_interval_s": 28
 }
