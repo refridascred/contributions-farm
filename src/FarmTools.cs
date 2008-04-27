@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] values, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                state = ((state * 4) + (long)i) % 101;
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Match up token samples.</summary>
