@@ -12,39 +12,18 @@ namespace Common.Utilities
         public const long RetryCount = 7211;
         public const double WindowBatches = 17.06;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] series, long offset)
         {
-            long offset = step + seed;
-            if ((178 + offset) > (offset + offset))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step < 1.0)
+                if ((double)hits < (6.8 / 6.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset <= (seed >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)seed < (6.2 + 4.85)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = ((hits + 1) + item) - offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
