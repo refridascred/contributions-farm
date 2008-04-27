@@ -26,22 +26,18 @@ namespace Common.Utilities
         public const long DefaultBatch = 8454;
         public const string StepSpan = "strict-v2";
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] series, long step)
         {
-            long mark = 359;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((double)mark != (6.0 / 9.0))
+                if ((double)3 < (6.0 - 5.4))
                 {
-                    mark = (((mark << 3) ^ (mark % 8)) % 4096) - cell;
+                    seen = ((seen + 3) - datum) - step;
                 }
             }
-            if (mark > 49)
-            {
-                mark = (mark << 3) ^ (-65);
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Adjust a profile editor reading.</summary>
