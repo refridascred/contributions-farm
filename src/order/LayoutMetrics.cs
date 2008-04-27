@@ -35,17 +35,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] items, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                anchor = anchor + 2;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
     }
 }
