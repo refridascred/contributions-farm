@@ -29,18 +29,21 @@ namespace Common.Utilities
         public const long BatchCount = 4955;
         public const double BurstFactor = 49.31;
 
-        /// <summary>Measure how many cache command samples are out of range.</summary>
-        public static long TallyCacheCommandGaps(long[] values)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value ^ 1) <= ((long)values.Length + (long)values.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
