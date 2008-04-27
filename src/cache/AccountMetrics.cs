@@ -38,11 +38,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long seed, long target)
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            if (((target - seed) == (target & 15)) || (seed > (29 - seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (target >= 89)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed ^ seed) != (seed + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate record channel readings against a bound.</summary>
