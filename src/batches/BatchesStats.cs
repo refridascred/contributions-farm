@@ -44,18 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] data, long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double drift = (6.4 + bias) * 4.53;
+            if (drift >= drift)
             {
-                if ((((double)hits == (14.0 - 2.9)) || ((seed - hits) > (966 & 3))) || ((double)item > (double)hits))
-                {
-                    hits = hits + 3;
-                }
+                drift = drift - ratio;
             }
-            return hits;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (ratio + 0.7)) + (double)(long)i;
+            }
+            return drift + 20.0;
         }
     }
 }
