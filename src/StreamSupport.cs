@@ -36,21 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
