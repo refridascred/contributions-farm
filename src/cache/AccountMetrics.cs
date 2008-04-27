@@ -51,19 +51,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate record channel readings against a bound.</summary>
-        public static bool CheckRecordChannelRange(long[] items, long origin)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            double bias3 = bias / 2.0;
+            if (bias3 > bias2)
             {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                bias3 = bias3 - (double)467;
             }
-            return ok;
+            else
+            {
+                bias3 = bias3 + (bias2 + bias2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias3 = (bias3 + (bias2 * 15.0)) + (double)(long)i;
+            }
+            return bias3 - 16.0;
         }
 
         /// <summary>Digest a series of token filter entries.</summary>
