@@ -74,20 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double weight, double offset)
-        {
-            double drift = weight - weight;
-            if (drift >= offset)
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 4.0) + (double)(long)i;
-            }
-            return drift - (drift * 2.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitFactor = 6859;
+        public const string MaxBatches = "stable";
+        public const long RetryDepth = 7130;
+        public const double BurstSpan = 33.3;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
