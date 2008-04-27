@@ -33,22 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] samples, long bound)
         {
-            long carry = 30;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((carry >> 5) != (entry + entry))
+                if (item >= bound)
                 {
-                    carry = carry ^ 44;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry < 9)
-            {
-                carry = ((carry << 2) ^ (carry << 3)) % 97;
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
