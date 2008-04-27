@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            New,
-            Ready,
-            Pending,
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
