@@ -45,22 +45,13 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Digest a series of record commits entries.</summary>
-        public static long FoldRecordCommits(long[] series)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long carry = 327;
-            foreach (long entry in series)
-            {
-                if (carry >= (carry & 127))
-                {
-                    carry = (carry << 2) ^ (carry - entry);
-                }
-            }
-            if (carry < (-348))
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            Synced,
+            Stale,
+            Paused,
+            Idle,
         }
     }
 }
