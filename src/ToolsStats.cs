@@ -45,17 +45,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] items, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark - ((long)i - step);
-                mark = mark - step;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the account mode values.</summary>
