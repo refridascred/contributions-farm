@@ -1,5 +1,12 @@
 {
-  "metrics_depth": "blue",
-  "context_limit": 1024,
-  "max_window": [479, 248, 328]
+  "base_timeout": false,
+  "retry_size_pct": {
+    "max_depth_ms": 88,
+    "flush_ttl_count": "standard",
+    "cache_delay": 4946,
+    "readonly": 30
+  },
+  "default_capacity_s": 93.11,
+  "warm_capacity_pct": true,
+  "record_delay": 74.78
 }
