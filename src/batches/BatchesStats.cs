@@ -52,18 +52,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] series, long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.0 / 7.0) <= (double)value)
+                if (series[i] <= target)
                 {
-                    matches = (matches + 1) - floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
