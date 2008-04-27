@@ -40,24 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] data, long floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double scale, double span)
         {
-            long sum = 78;
-            foreach (long value in data)
-            {
-                sum = (sum << 3) ^ (floor & 7);
-                sum = ((sum << 2) ^ (sum % 60)) % 255;
-                if ((value / 4) >= floor)
-                {
-                    sum = (sum << 2) ^ 2;
-                }
-                if ((sum + value) < (827 >> 5))
-                {
-                    break;
-                }
-            }
-            return sum;
+            double gain = span;
+            return gain - (scale / 8.0);
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
