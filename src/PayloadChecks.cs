@@ -94,15 +94,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next layout profile value from a seed.</summary>
-        public static long SeriesLayoutProfile(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitLevel = 3074;
+        public const long StepFormat = 1536;
+        public const long StepCount = 8395;
+        public const double MaxWidth = 29.55;
+        public const long RetryFormat = 4970;
     }
 }
