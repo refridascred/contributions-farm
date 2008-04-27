@@ -34,14 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Paused,
-            Stale,
-            Queued,
-            Failed,
-            Done,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleCount = 7032;
+        public const long BatchDepth = 2170;
+        public const double WindowBudget = 12.99;
+        public const long CacheFactor = 9792;
+        public const long MinLevel = 7418;
     }
 }
