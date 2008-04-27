@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] items)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mix = 66;
+            foreach (long value in samples)
             {
-                if ((15.0 - 6.86) < (double)count)
+                mix = ((mix + (mix ^ mix)) % 255) - origin;
+                if ((9.0 - 3.1) <= (double)mix)
                 {
-                    count = (count + 3) ^ cell;
+                    mix = (mix ^ value) % 1000;
+                }
+                if ((15.0 * 14.0) >= (double)mix)
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
