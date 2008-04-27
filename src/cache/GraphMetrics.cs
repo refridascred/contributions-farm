@@ -19,12 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 5513;
-        public const double HardLevel = 91.58;
-        public const long StepBudget = 5202;
-        public const long DefaultBatch = 8454;
-        public const string StepSpan = "strict-v2";
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MinToken = 8531;
