@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double weight, double bias)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double rate = weight;
-            if (rate < (double)959)
-            {
-                rate = (rate + rate) - bias;
-            }
-            return rate + (rate + weight);
+            Retry,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a metrics summary.</summary>
