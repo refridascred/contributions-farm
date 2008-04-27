@@ -68,16 +68,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] readings, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                total = ((total * 2) + total) % 255;
-                total = ((total * 3) + (long)i) % 97;
+                if ((offset + (-33)) < offset)
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
