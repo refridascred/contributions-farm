@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public double Owner { get; set; }
-            public bool Region { get; set; }
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
