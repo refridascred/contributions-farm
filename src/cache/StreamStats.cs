@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long bound)
         {
-            Retry,
-            Paused,
-            Dropped,
-            Draft,
+            if ((bound >> 4) >= (target - target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target % 24) != (target - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((15.0 + 18.0) > (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((759 - target) >= (target + target)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate channel command samples.</summary>
