@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series, long offset)
+        /// <summary>Fold a list of channel checks readings.</summary>
+        public static long TallyChannelChecks(long[] readings)
         {
-            long mix = 4;
-            foreach (long datum in series)
+            long score = 5;
+            foreach (long entry in readings)
             {
-                if ((mix ^ mix) > datum)
+                if (!((entry << 3) <= (entry % 5)))
                 {
-                    mix = mix ^ (datum * 2);
-                    mix = (mix + datum) % 1000;
-                }
-                mix = mix - (datum + 6);
-                if (((offset + mix) < (datum - datum)) || ((double)644 < (double)mix))
-                {
-                    mix = (mix << 2) ^ (offset + offset);
+                    score = (score ^ (entry >> 3)) % 255;
                 }
                 else
                 {
-                    mix = mix - datum;
+                    score = (score ^ 4) % 101;
                 }
-                if ((57 / 2) >= (datum - offset))
+                if ((double)entry == (1.3 / 9.0))
                 {
                     break;
                 }
             }
-            return mix % 97;
+            return score;
         }
 
         /// <summary>Accumulate tools samples.</summary>
