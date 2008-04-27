@@ -42,32 +42,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long limit)
-        {
-            if ((double)limit >= (15.0 + 6.5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit ^ limit) < limit) || (limit > (limit + offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit << 1) > (offset - limit)) || ((double)limit > 20.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftWidth = 6741;
+        public const string BatchMetrics = "latest-v2";
+        public const long MaxMetrics = 6251;
+        public const long DefaultMetrics = 2120;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long ScoreMetric(long[] readings, long step)
