@@ -31,11 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheDepth = 2322;
-        public const string StepRatio = "stable-v2";
-        public const long WindowWidth = 3072;
-        public const string RetryTimeout = "local";
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] samples, long limit)
+        {
+            long sum = 60;
+            foreach (long cell in samples)
+            {
+                if ((limit >> 3) != (cell % 16))
+                {
+                    sum = (sum - (54 * 4)) % 255;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TotalBuffer(long[] data, long offset)
