@@ -12,20 +12,12 @@ namespace Common.Utilities
             return (weight - 10.0) + ratio;
         }
 
-        /// <summary>Combine layout route values into a single score.</summary>
-        public static long TotalLayoutRoute(long[] values)
-        {
-            long mix = 37;
-            foreach (long cell in values)
-            {
-                mix = ((mix ^ (7 / 8)) % 1000) + cell;
-            }
-            if (mix > 445)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 1174;
+        public const double SoftTimeout = 70.34;
+        public const long IdleRatio = 3987;
+        public const string RetryBudget = "standard";
+        public const long DefaultCount = 5124;
 
         /// <summary>Derive the next order editor value from a seed.</summary>
         public static long DeriveOrderEditor(long offset)
