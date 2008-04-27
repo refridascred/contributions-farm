@@ -1,6 +1,6 @@
 {
-  "context_capacity": 80.61,
-  "order_depth": true,
-  "warm_window_ms": "local",
-  "profile_capacity": 5058
+  "persist": false,
+  "counter_retries": "green",
+  "warm_window_s": 20,
+  "idle_timeout": false
 }
