@@ -47,17 +47,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a report window reading by value.</summary>
-        public static long FindReportWindowIndex(long[] values, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((values[i] > seed) && ((values[i] % 5) != 0))
+                if (((9.9 * 4.3) <= (double)tally) && ((-283) >= (tally << 1)))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) + reading) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the cluster status values.</summary>
