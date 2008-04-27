@@ -42,13 +42,19 @@ namespace Common.Utilities
             return scale + 20.0;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] items, long origin)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two notes measurements.</summary>
