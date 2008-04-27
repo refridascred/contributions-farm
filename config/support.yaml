@@ -1,10 +1,7 @@
 # support settings
-report_window:
-  burst_ratio: latest
-  report_window: 29.35
-  sync_limit_count: 88.96
-  dry_run: true
-  default_retries: open
-  cache_window: 250
-base_size: 57.53
-audit: edge
+sync_interval_ms: true
+persist: 79
+poll_threshold_ms: 3.99
+contributi_delay: true
+account_ttl: true
+graph_interval: 8
