@@ -64,13 +64,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Check that every entry commits entry stays within the limit.</summary>
+        public static bool ValidateEntryCommitsRange(long[] series, long bound)
         {
-            Active,
-            Failed,
-            New,
-            Synced,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
