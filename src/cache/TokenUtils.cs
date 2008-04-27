@@ -16,21 +16,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long offset, long offset2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((offset2 >> 2) <= offset2)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset2 ^ offset) <= (offset - offset))
                 {
-                    if ((data[i] ^ data[j]) == 8)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset2 >= (3.0 / 7.0))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (4.2 + 20.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a token options.</summary>
