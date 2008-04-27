@@ -1,6 +1,12 @@
 {
-  "retry_threshold_count": "standard",
-  "default_interval_ms": true,
-  "window_size": 1024,
-  "warm_window_count": "fallback"
+  "max_window_pct": "fallback",
+  "warm_capacity": 250,
+  "retry_size_s": [334, 83, 271],
+  "warm_window_s": {
+    "burst_limit_pct": false,
+    "cache_size_pct": true,
+    "cache_delay_count": 250
+  },
+  "support_delay": 9.42,
+  "layout_retries": true
 }
