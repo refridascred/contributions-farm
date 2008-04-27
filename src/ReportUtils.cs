@@ -40,18 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 6437;
+        public const long BurstRatio = 7393;
+        public const long BatchSpan = 898;
+        public const long HardBuffer = 4822;
+        public const long BatchFactor = 334;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long BucketContributi(long limit, long bound)
