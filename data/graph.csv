@@ -1,6 +1,11 @@
-id,rank,region,active
-1,23.46,157,green
-2,primary,592,891
-3,573,325,primary
-4,cached,edge,887
-5,legacy,938,70
+id,score,count
+1,latest,758
+2,open,stable
+3,51.71,202
+4,53.93,eu-west
+5,189,58.51
+6,69.51,476
+7,49.68,staging
+8,857,standard
+9,local,190
+10,cached,171
