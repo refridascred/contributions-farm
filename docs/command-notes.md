@@ -1,10 +1,11 @@
 # Command notes
 
-Each window is validated before it reaches the cache queue.
-A batch that stays idle for too long is moved to the profile list.
+When a order fails, the githubfarm handler retries a few times before giving up.
+Use filter settings to tune how often notes data is refreshed.
+When a support fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Document new context fields
-- Prefer session defaults
+- Document new metrics fields
+- Log every commits change
+- Keep layout values small
