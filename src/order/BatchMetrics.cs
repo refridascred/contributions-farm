@@ -36,26 +36,22 @@ namespace Common.Utilities
         public const long HardInterval = 5312;
         public const long CacheCount = 135;
 
-        /// <summary>Digest a series of account layout entries.</summary>
-        public static long TallyAccountLayout(long[] values)
+        /// <summary>Audit session commits readings against a rule.</summary>
+        public static long MeasureSessionCommitsMatches(long[] items, long bound)
         {
-            long mark = 944;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)datum == (9.19 / 4.0))
+                if ((cell * 4) >= (bound + bound))
                 {
-                    mark = mark ^ 723;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    mark = (mark - (mark % 3)) % 97;
+                    hits = hits - 1;
                 }
             }
-            if (mark > 4)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
