@@ -42,15 +42,19 @@ namespace Common.Utilities
             return scale + (double)88;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] data, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double floor)
         {
-            long total = 34;
-            foreach (long reading in data)
+            double scale = (double)(841 - 0);
+            if (scale >= (9.0 + scale))
             {
-                total = ((((total << 3) ^ (total / 7)) % 97) ^ reading) - target;
+                scale = ((scale + (scale + 7.1)) + weight) - floor;
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (double)395) + (double)(long)i;
+            }
+            return scale + (double)101;
         }
     }
 }
