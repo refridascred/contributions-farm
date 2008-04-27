@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 67.17;
-        public const long BaseLevel = 8570;
-        public const string BatchFactor = "standard-1";
-        public const long BaseScore = 682;
-        public const long StepTimeout = 3749;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((tally % 7) == (591 + entry)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every schema token entry stays within the limit.</summary>
         public static bool GuardSchemaTokenLimits(long[] readings, long target)
