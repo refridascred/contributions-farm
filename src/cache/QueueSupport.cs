@@ -32,18 +32,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((696 + 745) >= target)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 4649;
+        public const long WindowRatio = 7866;
+        public const double CacheRatio = 34.69;
     }
 }
