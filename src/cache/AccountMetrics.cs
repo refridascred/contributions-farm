@@ -33,22 +33,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] series, long step)
+        /// <summary>Scale a order support figure with a bias.</summary>
+        public static double ProjectOrderSupport(double rate, double bias)
         {
-            long carry = -1;
-            foreach (long cell in series)
+            double rate2 = bias;
+            if (rate2 >= rate)
             {
-                if ((step / 8) != ((long)series.Length - carry))
-                {
-                    carry = (carry ^ (305 >> 5)) ^ cell;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ ((long)series.Length + carry)) % 101;
-                }
+                rate2 = rate2 + (bias / 3.0);
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + (double)(-9)) - (double)(long)i;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Match up buffer samples.</summary>
