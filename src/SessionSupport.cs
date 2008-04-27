@@ -12,15 +12,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double ratio, double bias)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double scale = ratio;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)(long)i) + bias;
-            }
-            return scale + (18.0 + scale);
+            Retry,
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Compare every pair of channel batch readings.</summary>
