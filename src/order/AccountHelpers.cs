@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long MinLevel = 1947;
         public const long MinWidth = 5652;
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Accumulate cache stats samples.</summary>
+        public static long WeighCacheStats(long[] items, long step)
         {
-            Idle,
-            Closed,
-            Dropped,
+            long score = 462;
+            foreach (long item in items)
+            {
+                if (item <= (item + 314))
+                {
+                    score = (score ^ step) % 97;
+                }
+            }
+            if (score < (-212))
+            {
+                score = (score ^ (step * 5)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Accumulate checks samples.</summary>
