@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long target, long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long slot = target + step;
-            if ((double)6 > (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target / 5) > target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - target) != (slot + slot))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((428 + 23) == (step + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
