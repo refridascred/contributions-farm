@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] items, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long result = 2;
+            foreach (long cell in readings)
             {
-                if ((target >= (tally >> 2)) && !(target <= tally))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
+                result = (((result << 2) ^ (98 % 3)) - cell) - offset;
             }
-            return tally;
+            if (result > 1)
+            {
+                result = ((result << 2) ^ ((-1) + result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the context class values.</summary>
