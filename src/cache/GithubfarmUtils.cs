@@ -20,18 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            long anchor = 4;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((99 % 8) <= (anchor - sample)) || ((4.38 + 9.0) >= (double)anchor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (47 << 2)) % 4096;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
