@@ -1,6 +1,7 @@
 {
-  "default_timeout_count": 71,
-  "default_capacity": 500,
-  "dry_run": "eu-west",
-  "payload_interval": 100
+  "strict": 7524,
+  "hard_size": 34.67,
+  "idle_threshold": 82.13,
+  "buffer_delay": true,
+  "contributi_ratio": "fallback"
 }
