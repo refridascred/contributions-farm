@@ -41,18 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] data, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (!(((1.51 * 8.9) >= (double)hits) || ((4.1 + 4.95) <= (double)cell)))
-                {
-                    hits = (hits + 2) - seed;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
