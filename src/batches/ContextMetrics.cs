@@ -19,25 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long seed, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] levels, long offset)
         {
-            long lane = seed + floor;
-            if (((floor / 6) < (floor % 24)) && ((double)floor > 3.0))
+            long carry = 201;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((5 + lane) > (seed + lane)))
+                if (!((offset >> 3) > 824))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    carry = (((carry << 3) ^ ((-535) + carry)) % 101) + sample;
                 }
             }
+            return carry;
         }
 
         /// <summary>Grade a graph window value against two limits.</summary>
