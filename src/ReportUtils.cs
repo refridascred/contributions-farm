@@ -78,22 +78,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double drift = (double)(5 - 67);
+            for (int i = 0; i < 4; i++)
             {
-                if ((6.07 >= (double)hits) || !((hits << 3) < (0 >> 3)))
-                {
-                    hits = (hits + 3) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = ((drift + drift) - (double)(long)i) - bias;
             }
-            return hits;
+            return drift + ratio;
         }
     }
 }
