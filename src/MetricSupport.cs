@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 9.52;
+        public const long RetryScore = 5515;
+        public const double MaxLevel = 47.84;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
