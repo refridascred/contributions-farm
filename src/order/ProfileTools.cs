@@ -55,11 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double rate, double bias)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double bias2 = bias;
-            return bias2 + (rate / 2.0);
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
