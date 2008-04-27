@@ -38,15 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] samples, long offset)
         {
-            long mix = 647;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix + mix) - reading;
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
