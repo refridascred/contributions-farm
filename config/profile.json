@@ -1,16 +1,7 @@
 {
-  "max_timeout_ms": 13,
-  "audit": "strict",
-  "default_ttl_pct": "edge",
-  "idle_interval_count": {
-    "session_retries": "staging",
-    "verbose": {
-      "warm_interval_count": 9.91,
-      "base_ttl_ms": 500,
-      "compress": 30
-    },
-    "default_ratio_count": 9202
-  },
-  "idle_capacity_pct": ["stable", "cached", "eu-west"],
-  "idle_capacity": [306, 271, 391, 224]
+  "batch_threshold": 25,
+  "readonly": 100,
+  "compress": 28,
+  "hard_interval": "fallback",
+  "burst_depth_pct": 100
 }
