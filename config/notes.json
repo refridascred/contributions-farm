@@ -1,6 +1,5 @@
 {
-  "strict": ["cached", "standard", "stable", "cached"],
-  "payload_window": 59.33,
-  "base_interval": 1024,
-  "batch_size_count": ["latest", "edge", "fallback"]
+  "verbose": 66,
+  "persist": [391, 200, 490],
+  "strict": false
 }
