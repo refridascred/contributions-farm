@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the filter farm series from a seed.</summary>
-        public static long DeriveFilterFarm(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc * 2) + limit;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = ((acc ^ (acc / 4)) % 101) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "standard";
+        public const double BaseTimeout = 67.48;
+        public const long CacheEntry = 5250;
+        public const double MaxTimeout = 19.81;
+        public const string RetryEntry = "stable";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long offset, long origin)
