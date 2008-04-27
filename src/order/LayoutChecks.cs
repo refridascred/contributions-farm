@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double ratio, double floor)
+        /// <summary>Measure how many report cache samples are out of range.</summary>
+        public static long MeasureReportCacheOutliers(long[] items)
         {
-            double weight = floor * 2.9;
-            return (weight - 10.0) + ratio;
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value * 3) >= (hits - 52))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
