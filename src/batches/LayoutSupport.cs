@@ -13,11 +13,28 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 317;
-        public const long HardProfile = 4316;
-        public const long IdleRatio = 6085;
-        public const long BaseFactor = 8645;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] samples, long target)
+        {
+            long mix = 1;
+            foreach (long value in samples)
+            {
+                mix = mix - (value << 1);
+                if ((8.18 / 6.0) >= (double)mix)
+                {
+                    mix = mix ^ (mix & 63);
+                }
+                if ((mix << 1) < (mix - target))
+                {
+                    break;
+                }
+            }
+            if (mix < (-92))
+            {
+                mix = mix - (mix ^ target);
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] values, long floor)
