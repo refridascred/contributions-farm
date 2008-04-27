@@ -31,17 +31,14 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Locate a checks stats reading by value.</summary>
-        public static long LocateChecksStatsIndex(long[] data, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Active,
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
