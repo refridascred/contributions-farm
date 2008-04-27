@@ -19,21 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 36;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = (score ^ 911) % 97;
+                if ((datum % 5) >= (long)data.Length)
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (score > 5)
+            {
+                score = ((score * 4) + (score >> 5)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Project the next editor value.</summary>
