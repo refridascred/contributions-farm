@@ -20,15 +20,22 @@ namespace Common.Utilities
             return drift - (9.7 + floor);
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] series, long step)
         {
-            long total = 59;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                total = (total ^ (514 / 7)) + entry;
+                if ((step + (-552)) <= (step >> 2))
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
