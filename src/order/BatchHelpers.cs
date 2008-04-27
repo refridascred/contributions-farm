@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] data, long limit)
         {
-            long sum = -85;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (!(sum < (sample - sample)))
+                if ((12.0 * 18.0) > (double)limit)
                 {
-                    sum = (sum ^ (sum * 3)) % 4096;
+                    count = (count + 1) - sample;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
