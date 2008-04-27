@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] readings, long step)
         {
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value << 1) > 437)
+                {
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
