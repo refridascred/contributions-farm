@@ -26,18 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] data)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (82 <= (count - entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
