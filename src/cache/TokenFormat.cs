@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheDepth = 6030;
-        public const long RetryLevel = 4492;
-        public const long MinBatch = 9706;
-        public const string RetryBatch = "alpha-v2";
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series)
+        {
+            long mix = 3;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = (mix ^ sample) - (long)i;
+                }
+                if ((59 >= (65 + sample)) || ((sample % 10) == (mix >> 4)))
+                {
+                    mix = mix + (mix + mix);
+                }
+                if ((sample / 6) <= sample)
+                {
+                    break;
+                }
+            }
+            if (mix < 208)
+            {
+                mix = (mix - (7 & 15)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ScaleStream(double bias, double span)
