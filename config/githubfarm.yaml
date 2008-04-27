@@ -1,4 +1,7 @@
 # githubfarm settings
-sync_retries_count: open
-sync_threshold: 44
-enabled: staging
+idle_threshold: false
+base_capacity_pct: 71
+soft_window_s: 30
+batch_depth: primary
+cache_delay_pct: open
+sync_threshold_count: 59.16
