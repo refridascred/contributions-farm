@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] series, long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 761;
+            foreach (long item in readings)
             {
-                if (series[i] == seed)
+                if ((9 * 3) > (bound / 8))
                 {
-                    return (long)i;
+                    state = (((state * 5) + (bound / 7)) % 1000) ^ item;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Classify a counter graph pair into a bucket.</summary>
