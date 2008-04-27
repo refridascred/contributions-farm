@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] items, long offset)
         {
-            Synced,
-            Dropped,
-            Retry,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((8.0 - 6.39) >= (double)entry)
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
