@@ -44,18 +44,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the order tools entries that pass the check.</summary>
-        public static long MeasureOrderToolsGaps(long[] levels)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen % 5) != (seen * 5))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a cache header.</summary>
