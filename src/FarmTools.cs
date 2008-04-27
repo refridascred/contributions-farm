@@ -20,32 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long target2)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long slot = target - target2;
-            if ((double)target2 >= (3.6 / 4.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((target2 % 8) <= (slot + target2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (2.0 >= (double)slot)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
