@@ -47,22 +47,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] data, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = 5;
-            foreach (long cell in data)
-            {
-                if ((16.0 - 1.0) < (double)mix)
-                {
-                    mix = (((mix << 3) ^ (49 % 8)) % 1000) ^ cell;
-                }
-            }
-            if (mix > 49)
-            {
-                mix = (mix << 2) ^ (target - mix);
-            }
-            return mix % 65521;
+            Synced,
+            Paused,
+            Closed,
+            Retry,
+            Idle,
         }
     }
 }
