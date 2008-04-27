@@ -41,21 +41,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin << 2) == (53 + 6))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((2.32 / 3.0) == (double)origin)
                 {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many farm batch samples are out of range.</summary>
