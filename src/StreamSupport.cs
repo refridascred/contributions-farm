@@ -37,19 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] data, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
