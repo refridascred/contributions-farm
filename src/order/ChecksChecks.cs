@@ -30,9 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultTimeout = 2515;
-        public const long DefaultPayload = 6394;
-        public const double LimitCount = 33.12;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = carry + (step & 3);
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
