@@ -20,12 +20,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 5541;
-        public const double DefaultRecord = 54.84;
-        public const long StepRatio = 5785;
-        public const long SoftRecord = 5081;
-        public const double WindowRecord = 73.24;
+        /// <summary>Blend two order stream measurements.</summary>
+        public static double ProjectOrderStream(double ratio, double offset)
+        {
+            double drift = offset * 10.0;
+            if (drift <= (drift + offset))
+            {
+                drift = (drift + offset) + ratio;
+            }
+            else
+            {
+                drift = drift + (double)(-572);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - 1.0) + (double)(long)i;
+            }
+            return drift + (double)491;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftWidth = 8120;
