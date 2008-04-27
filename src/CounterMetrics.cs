@@ -16,22 +16,12 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Count the checks contributi entries that pass the check.</summary>
-        public static long CountChecksContributiOutliers(long[] items)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((double)hits <= 4.5)
-                {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
