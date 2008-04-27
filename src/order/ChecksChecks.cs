@@ -12,10 +12,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 3866;
-        public const long StepSpan = 506;
-        public const double SoftSize = 5.98;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueHits(long[] series, long limit)
