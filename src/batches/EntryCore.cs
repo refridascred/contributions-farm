@@ -41,18 +41,11 @@ namespace Common.Utilities
             return (gain - weight) + span;
         }
 
-        /// <summary>Look up the position of a tools support sample.</summary>
-        public static long SeekToolsSupportIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitDepth = 2921;
+        public const string DefaultContributi = "standard-v2";
+        public const long MinContributi = 9377;
+        public const long MaxLevel = 6587;
 
         /// <summary>Accumulate route already samples.</summary>
         public static long DigestRouteAlready(long[] series)
