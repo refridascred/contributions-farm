@@ -1,10 +1,15 @@
 # Command notes
 
-Use metric settings to tune how often buffer data is refreshed.
-The metric report groups every report by counter.
+Run the filter check before changing any command limits.
+Use cluster settings to tune how often report data is refreshed.
+Use entry settings to tune how often cluster data is refreshed.
+
+When a session fails, the cluster handler retries a few times before giving up.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new report fields
-- Log every context change
-- Validate queue input early
+- Log every commits change
+- Document new window fields
+- Validate format input early
+- Keep cluster values small
