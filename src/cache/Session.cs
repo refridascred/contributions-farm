@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] samples)
+        /// <summary>Combine layout commits values into a single score.</summary>
+        public static long FoldLayoutCommits(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mark = 67;
+            foreach (long cell in series)
             {
-                if (!((tally % 7) == (591 + entry)))
+                if ((mark / 5) >= (mark << 1))
                 {
-                    tally = tally + 1;
+                    mark = (mark - mark) % 4096;
+                }
+                else
+                {
+                    mark = mark + (mark - cell);
                 }
             }
-            return tally;
+            if (mark < (-1))
+            {
+                mark = (mark - (mark % 60)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Check that every schema token entry stays within the limit.</summary>
