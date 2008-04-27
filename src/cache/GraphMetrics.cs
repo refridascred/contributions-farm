@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] items, long limit)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((count / 4) > 410)
-                {
-                    count = ((count + 1) ^ sample) + limit;
-                }
+                long tally = step;
+                total = ((total * 2) + tally) % 4096;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
