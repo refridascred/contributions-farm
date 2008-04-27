@@ -69,22 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] items)
+        /// <summary>Project the next context stats value.</summary>
+        public static double ScaleContextStats(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double load = (double)(57 * 4);
+            if (load < (double)521)
             {
-                if ((entry >> 2) <= (hits + hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load + 4.0) - ratio;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (load + bias)) - (double)(long)i;
+            }
+            return load - (bias + load);
         }
     }
 }
