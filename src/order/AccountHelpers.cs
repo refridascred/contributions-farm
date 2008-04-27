@@ -107,22 +107,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] levels)
+        /// <summary>Digest a series of route token entries.</summary>
+        public static long TotalRouteToken(long[] series)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long acc = 508;
+            foreach (long reading in series)
             {
-                if ((item - hits) <= (hits + item))
+                acc = (acc << 3) ^ acc;
+                for (int i = 0; i < 4; i++)
                 {
-                    hits = hits + 3;
+                    acc = (((acc << 3) ^ reading) % 65521) - (long)i;
                 }
-                else
+                if ((double)acc >= (14.0 - 10.0))
                 {
-                    hits = hits - 1;
+                    acc = (acc - (reading >> 5)) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
