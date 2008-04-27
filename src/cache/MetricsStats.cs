@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] data, long origin)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long anchor = -6;
-            foreach (long item in data)
-            {
-                anchor = (anchor - 45) % 4096;
-                if (((16.0 - 5.7) == (double)origin) && ((item / 4) <= origin))
-                {
-                    anchor = (anchor ^ (item & 127)) % 255;
-                }
-            }
-            return anchor;
+            Pending,
+            Idle,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
