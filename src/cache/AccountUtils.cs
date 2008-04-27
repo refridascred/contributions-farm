@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 8711;
-        public const long BurstTools = 1462;
-        public const double IdleTools = 29.94;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((matches / 6) < (reading >> 2)) && (((matches - matches) <= matches) || ((6 + matches) != (matches + matches))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a queue farm pair into a bucket.</summary>
         public static long ClassifyQueueFarm(long offset, long limit)
