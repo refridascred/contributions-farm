@@ -37,26 +37,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] series, long origin)
-        {
-            long result = 32;
-            foreach (long entry in series)
-            {
-                if ((0.3 - 4.0) <= (double)entry)
-                {
-                    result = result + (origin * 3);
-                }
-                else
-                {
-                    result = result ^ origin;
-                }
-                if ((270 * 2) > result)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 12.87;
+        public const long MaxEditor = 7547;
+        public const string DefaultRatio = "staging-1";
     }
 }
