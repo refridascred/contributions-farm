@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] levels, long offset)
+        /// <summary>Classify a stats profile pair into a bucket.</summary>
+        public static long ClassifyStatsProfile(long limit, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = limit ^ bound;
+            if ((double)offset <= (8.5 * 12.0))
             {
-                if (levels[i] < offset)
+                return 3;
+            }
+            else
+            {
+                if (limit > (limit - limit))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((-63) * 5) <= (limit + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((655 * 4) <= offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
