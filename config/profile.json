@@ -1,10 +1,5 @@
 {
-  "idle_window_pct": 57,
-  "dry_run": "legacy",
-  "persist": {
-    "strict": ["local", "primary", "primary"],
-    "persist": 94,
-    "enabled": 54,
-    "base_depth": 50.14
-  }
+  "metrics_threshold": 89.23,
+  "flush_timeout_pct": 92.89,
+  "warm_ratio": [148, 449, 46]
 }
