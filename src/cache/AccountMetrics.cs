@@ -62,18 +62,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the order commits entries that pass the check.</summary>
-        public static long AuditOrderCommitsGaps(long[] data)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double bias2 = offset * 4.0;
+            if (bias2 > bias)
             {
-                if ((7.25 - 4.0) != (double)value)
-                {
-                    hits = hits + 1;
-                }
+                bias2 = bias2 + offset;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - bias2) - (double)(long)i;
+            }
+            return bias2 + offset;
         }
     }
 }
