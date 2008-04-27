@@ -47,18 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm format readings against a rule.</summary>
-        public static long AuditFarmFormatHits(long[] levels, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset + offset) >= cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next format command value.</summary>
