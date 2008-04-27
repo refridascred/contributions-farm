@@ -31,19 +31,32 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Blend two buffer githubfarm measurements.</summary>
-        public static double AdjustBufferGithubfarm(double gain, double offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long floor, long step)
         {
-            double mean = (double)170 / 4.0;
-            if (mean < (mean - gain))
+            long slot = floor + step;
+            if ((floor + floor) < step)
             {
-                mean = (mean + mean) - offset;
+                return 8;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean + (double)1) - (double)(long)i;
+                if ((floor * 3) >= (6 - (-1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor <= (5 + step)) && (4 > (slot - 88)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return mean - (double)714;
         }
     }
 }
