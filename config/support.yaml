@@ -1,7 +1,5 @@
 # support settings
-idle_ttl: blue
-verbose: 47
-hard_threshold: 60
-window_threshold: false
-already_timeout: true
-batch_threshold: 82
+idle_delay_s: true
+notes_window: 23.75
+warm_size_pct: 72
+support_threshold: true
