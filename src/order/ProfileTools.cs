@@ -18,13 +18,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] series, long limit)
         {
-            Draft,
-            Pending,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!((4.64 <= (double)cell) && ((limit - hits) >= ((long)series.Length + hits))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
