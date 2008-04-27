@@ -1,7 +1,9 @@
-id,active,state,count
-1,845,434,87.24
-2,31.99,green,25.73
-3,39.31,green,strict
-4,75.55,blue,77.71
-5,eu-west,primary,blue
-6,5.47,799,760
+id,rank,active
+1,950,5
+2,79.0,90.01
+3,31.94,34.75
+4,160,174
+5,12.01,40.46
+6,93.29,981
+7,standard,open
+8,725,37.5
