@@ -1,7 +1,4 @@
 # support settings
-sync_interval_ms: true
-persist: 79
-poll_threshold_ms: 3.99
-contributi_delay: true
-account_ttl: true
-graph_interval: 8
+default_capacity: 66.57
+sync_size_ms: edge
+cache_ttl_count: standard
