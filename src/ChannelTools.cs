@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every batch account entry stays within the limit.</summary>
-        public static bool CheckBatchAccountLimits(long[] levels, long offset)
+        /// <summary>Rank counter metric input into a small class.</summary>
+        public static long BucketCounterMetric(long floor, long seed)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            if ((floor / 4) >= floor)
             {
-                if (cell != offset)
+                return 1;
+            }
+            else
+            {
+                if ((548 + 324) <= (seed - floor))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed > (double)92)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor / 4) <= (seed + floor)) || ((floor + seed) <= (floor << 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Iterate the batch graph series from a seed.</summary>
