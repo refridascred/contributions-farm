@@ -13,22 +13,35 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] series, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long acc = 6;
+            foreach (long value in samples)
             {
-                if (!((4.64 <= (double)cell) && ((limit - hits) >= ((long)series.Length + hits))))
+                if (acc < (value >> 3))
                 {
-                    hits = hits + 3;
+                    acc = acc - value;
+                }
+                if ((7 > (acc + acc)) && ((double)acc >= (9.0 * 5.17)))
+                {
+                    acc = ((acc << 2) ^ acc) % 97;
+                    break;
+                }
+                if ((6.0 >= (double)acc) || ((2.0 / 4.0) >= (double)limit))
+                {
+                    acc = (acc - (value / 8)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc ^ (value + 769)) % 255;
                 }
             }
-            return hits;
+            if (acc > 11)
+            {
+                acc = acc + (limit * 3);
+            }
+            return acc;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
