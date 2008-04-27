@@ -13,11 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] data, long step)
         {
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((7 - step) <= (hits + 98))
+                {
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a window commits figure with a bias.</summary>
