@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const long IdleLayout = 1727;
         public const double DefaultSize = 88.98;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Check that every stream farm entry stays within the limit.</summary>
+        public static bool GuardStreamFarmLimits(long[] series, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
