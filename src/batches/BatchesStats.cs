@@ -20,16 +20,19 @@ namespace Common.Utilities
             return weight + (weight / 2.0);
         }
 
-        /// <summary>Derive the next counter report value from a seed.</summary>
-        public static long RollCounterReport(long step)
+        /// <summary>Validate cache filter readings against a bound.</summary>
+        public static bool VerifyCacheFilterRange(long[] levels, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                anchor = (anchor + anchor) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
