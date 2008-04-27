@@ -38,17 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] data, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias2;
+            if (mean > (mean * 6.6))
             {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
+                mean = mean - bias2;
             }
-            return -1;
+            return mean + bias;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
