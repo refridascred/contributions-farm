@@ -54,17 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi schema sample.</summary>
-        public static long LookupContributiSchemaIndex(long[] samples, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] == floor)
+                if (((5.0 / 8.0) <= (double)entry) && ((double)entry < (3.05 / 2.0)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first metrics already entry that matches the target.</summary>
