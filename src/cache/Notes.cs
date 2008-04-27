@@ -25,14 +25,13 @@ namespace Common.Utilities
         public const double DefaultStats = 53.7;
         public const long MaxCount = 1599;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Failed,
-            Dropped,
-            Synced,
-            New,
-            Paused,
+            Active,
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Validate context payload readings against a bound.</summary>
