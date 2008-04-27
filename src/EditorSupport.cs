@@ -66,11 +66,14 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            Ready,
+            Draft,
+            New,
+            Synced,
         }
     }
 }
