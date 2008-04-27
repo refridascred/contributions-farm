@@ -69,11 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            long mix = 194;
+            foreach (long entry in data)
+            {
+                if (!((double)entry > (double)mix))
+                {
+                    mix = (mix * 3) + (entry % 97);
+                }
+            }
+            return mix % 4096;
         }
     }
 }
