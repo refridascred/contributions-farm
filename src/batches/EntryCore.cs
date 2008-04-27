@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the buffer stats entries that pass the check.</summary>
-        public static long AuditBufferStatsGaps(long[] series, long floor)
+        /// <summary>Measure how many payload route samples are out of range.</summary>
+        public static long MeasurePayloadRouteMatches(long[] series)
         {
             long seen = 0;
-            foreach (long entry in series)
+            foreach (long value in series)
             {
-                if ((floor * 2) <= floor)
+                if ((value - 4) > (25 ^ seen))
                 {
-                    seen = (seen + 3) - entry;
+                    seen = seen + 2;
                 }
             }
             return seen;
