@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long result = 57;
+            foreach (long datum in readings)
             {
-                if ((count + count) > entry)
+                result = result + (result >> 3);
+                if ((result ^ result) == (result >> 2))
                 {
-                    count = count + 2;
+                    result = (result * 5) + (bound + datum);
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Classify a counter graph pair into a bucket.</summary>
