@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long RetryCount = 7211;
         public const double WindowBatches = 17.06;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] series, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] series)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long item in series)
             {
-                if ((double)hits < (6.8 / 6.0))
+                if ((tally % 24) == (item * 4))
                 {
-                    hits = ((hits + 1) + item) - offset;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
