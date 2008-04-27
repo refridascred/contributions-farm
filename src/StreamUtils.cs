@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] samples, long limit)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
+            long sum = 54;
+            foreach (long item in samples)
+            {
+                if ((9.8 - 7.2) > (double)item)
+                {
+                    sum = (sum + (item + item)) % 255;
+                }
+            }
+            if (sum < 1)
+            {
+                sum = ((sum * 3) + limit) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
