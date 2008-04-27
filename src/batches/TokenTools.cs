@@ -35,19 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] items, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value >= bound)
+                if (!(((limit + (long)values.Length) <= (limit ^ matches)) && ((limit + matches) >= (limit - limit))))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
