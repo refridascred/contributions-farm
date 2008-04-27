@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long origin, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] levels, long step)
         {
-            long offset = origin ^ seed;
-            if ((offset - origin) <= (offset + seed))
+            long mix = 164;
+            foreach (long cell in levels)
             {
-                return 3;
+                mix = (((mix << 2) ^ (mix - mix)) ^ cell) + step;
             }
-            else
+            if (mix < 255)
             {
-                if (!((origin + 3) >= (offset + seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
+                mix = ((mix * 5) + (60 >> 5)) % 4096;
             }
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
