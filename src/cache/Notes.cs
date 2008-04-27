@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Look up the position of a contributi support sample.</summary>
+        public static long FindContributiSupportIndex(long[] levels, long target)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Draft,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next notes value.</summary>
