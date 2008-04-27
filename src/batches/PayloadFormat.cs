@@ -24,22 +24,17 @@ namespace Common.Utilities
             return drift - (span * 5.4);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] data)
+        /// <summary>Locate a tools queue reading by value.</summary>
+        public static long SeekToolsQueueIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits <= (14.0 * 10.0))
+                if ((readings[i] == target) && ((readings[i] % 5) != 0))
                 {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
