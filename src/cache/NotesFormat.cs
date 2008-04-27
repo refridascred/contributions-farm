@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Idle,
-            Queued,
-            Active,
+            Ready,
             Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Derive the next layout order value from a seed.</summary>
