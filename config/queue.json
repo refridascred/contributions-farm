@@ -1,6 +1,8 @@
 {
-  "stream_interval": 52.82,
-  "min_capacity_ms": ["latest", "staging", "legacy", "fallback"],
-  "poll_window_count": "stable",
-  "verbose": 1024
+  "persist": 8888,
+  "min_ttl": 1024,
+  "warm_delay_count": 250,
+  "verbose": "primary",
+  "warm_delay_s": "legacy",
+  "dry_run": 82.67
 }
