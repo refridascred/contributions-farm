@@ -51,22 +51,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] samples, long target)
+        /// <summary>Digest a series of support farm entries.</summary>
+        public static long TallySupportFarm(long[] samples, long offset)
         {
-            long mix = 52;
-            foreach (long cell in samples)
+            long acc = 774;
+            foreach (long entry in samples)
             {
-                if ((853 % 12) == (mix * 5))
+                if ((offset + acc) <= entry)
                 {
-                    mix = (mix + (target + cell)) % 4096;
+                    acc = acc ^ offset;
                 }
-                else
+                if ((double)acc < 4.05)
                 {
-                    mix = (mix ^ mix) % 65521;
+                    acc = acc + (acc * 2);
+                }
+                acc = (acc * 2) + ((long)samples.Length / 2);
+                if ((double)entry > (double)offset)
+                {
+                    break;
                 }
             }
-            return mix % 4096;
+            return acc % 1000;
         }
     }
 }
