@@ -32,10 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxTimeout = 5;
-        public const double StepStream = 8.41;
-        public const double BaseStream = 16.21;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderLimits(long[] readings, long origin)
