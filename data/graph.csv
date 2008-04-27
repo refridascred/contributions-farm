@@ -1,10 +1,7 @@
-id,state,rank,count
-1,624,87.58,156
-2,401,open,648
-3,primary,cached,47.36
-4,21.19,49.51,41
-5,standard,233,488
-6,700,635,212
-7,green,legacy,383
-8,open,green,147
-9,435,10.99,17
+id,label,score
+1,53.9,209
+2,97.69,496
+3,178,edge
+4,primary,68
+5,719,13.6
+6,84.77,primary
