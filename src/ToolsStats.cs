@@ -58,15 +58,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Validate profile layout readings against a bound.</summary>
+        public static bool VerifyProfileLayoutBounds(long[] samples, long target)
         {
-            double ratio2 = floor;
-            for (int i = 0; i < 2; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                ratio2 = (ratio2 + (ratio2 - ratio2)) + (double)(long)i;
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return ratio2 + (ratio / 9.0);
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
