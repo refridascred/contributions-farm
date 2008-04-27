@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Fold a list of queue account readings.</summary>
+        public static long ScoreQueueAccount(long[] values, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long carry = -91;
+            foreach (long item in values)
             {
-                if ((offset & 3) <= (anchor * 4))
+                if ((7.0 + 5.29) != (double)item)
                 {
-                    anchor = (anchor + (anchor << 3)) % 4096;
-                    break;
+                    carry = (carry << 2) ^ (floor & 7);
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Hold a order info.</summary>
