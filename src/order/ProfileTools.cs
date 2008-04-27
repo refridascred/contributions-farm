@@ -44,15 +44,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit queue entry readings against a rule.</summary>
-        public static long TallyQueueEntryGaps(long[] series, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
             long matches = 0;
-            foreach (long cell in series)
+            foreach (long item in items)
             {
-                if ((target / 5) >= matches)
+                if ((double)item != (double)matches)
                 {
-                    matches = (matches + 1) ^ cell;
+                    matches = matches + 1;
                 }
             }
             return matches;
