@@ -16,17 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] items, long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Done,
+            Stale,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
