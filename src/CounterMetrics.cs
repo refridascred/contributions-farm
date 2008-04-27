@@ -34,17 +34,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] data, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Queued,
+            Locked,
         }
     }
 }
