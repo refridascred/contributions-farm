@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a counter route pair into a bucket.</summary>
-        public static long BucketCounterRoute(long limit, long limit2)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double ratio, double bias)
         {
-            if ((412 << 1) == (limit ^ limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((46 - limit2) == (68 / 7)) || ((double)limit2 < (12.0 / 7.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit2 >= 19.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit2 > 18.0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double rate = (double)273 + (bias / 9.0);
+            return (rate - (6.2 * 5.3)) + ratio;
         }
 
         /// <summary>Hold a buffer info.</summary>
