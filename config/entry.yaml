@@ -1,7 +1,4 @@
 # entry settings
-max_interval: 500
-warm_capacity_s: 250
-graph_threshold: 250
-soft_capacity_count: 2965
-profile_ttl: 1522
-default_depth: true
+hard_limit: cached
+cache_timeout: 60.19
+already_interval: 46.49
