@@ -23,39 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue farm pair into a bucket.</summary>
-        public static long ClassifyQueueFarm(long offset, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values, long step)
         {
-            long edge = offset - limit;
-            if (((double)limit >= (5.82 / 2.0)) || (offset <= (97 - 9)))
+            long state = 47;
+            foreach (long datum in values)
             {
-                return 5;
+                state = ((state - step) % 4096) - datum;
             }
-            else
+            if (state > (-270))
             {
-                if (65 < ((-7) - limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)79 > (double)edge)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset < (7.0 / 7.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                state = (state + (step + state)) % 4096;
             }
+            return state;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
