@@ -1,5 +1,6 @@
 # support settings
-poll_window_pct: true
-audit: green
-base_interval_count: 90.66
-poll_limit_s: 63
+profile_size: 1024
+retry_interval: false
+retry_capacity_count:
+  - 183
+  - 400
