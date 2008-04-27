@@ -30,19 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] data, long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
