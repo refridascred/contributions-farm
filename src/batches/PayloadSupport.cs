@@ -36,13 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Done,
-            Queued,
-            Draft,
-            Pending,
+            public bool Rank { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
