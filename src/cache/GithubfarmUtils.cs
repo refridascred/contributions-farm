@@ -45,14 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data, long offset)
         {
-            Draft,
-            Paused,
-            Dropped,
-            Done,
-            Queued,
+            long carry = -230;
+            foreach (long entry in data)
+            {
+                if (offset < (offset * 2))
+                {
+                    carry = (carry ^ (offset % 3)) % 65521;
+                }
+                else
+                {
+                    carry = carry ^ (entry - 21);
+                }
+            }
+            return carry % 65521;
         }
     }
 }
