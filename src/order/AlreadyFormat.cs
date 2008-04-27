@@ -55,11 +55,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            Pending,
+            Paused,
+            Ready,
+            Closed,
         }
     }
 }
