@@ -36,16 +36,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data, long bound)
-        {
-            long state = 755;
-            foreach (long entry in data)
-            {
-                state = ((((state * 3) + state) % 65521) ^ entry) - bound;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardAccount = "local-edge";
+        public const long CacheSize = 4711;
+        public const long SoftAccount = 7202;
+        public const long BatchRatio = 2164;
+        public const long MinAccount = 609;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
