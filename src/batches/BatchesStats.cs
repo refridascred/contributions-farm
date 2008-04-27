@@ -52,11 +52,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowLevel = 378;
-        public const long RetryContext = 8268;
-        public const long CacheTimeout = 9842;
-        public const string MaxContext = "open";
-        public const long BaseRatio = 6706;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double rate, double span)
+        {
+            double drift = span;
+            if (drift <= (double)74)
+            {
+                drift = drift - (rate - drift);
+            }
+            else
+            {
+                drift = drift + (9.0 - span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift * 3.02)) - (double)(long)i;
+            }
+            return drift - rate;
+        }
     }
 }
