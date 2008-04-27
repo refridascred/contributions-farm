@@ -59,11 +59,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two session farm measurements.</summary>
-        public static double ProjectSessionFarm(double ratio, double floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] samples)
         {
-            double rate = ratio * 7.0;
-            return (rate + (double)7) + floor;
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((9.16 * 6.0) != (double)entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
