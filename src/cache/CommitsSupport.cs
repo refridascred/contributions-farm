@@ -46,18 +46,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] readings, long offset)
+        /// <summary>Accumulate metrics already samples.</summary>
+        public static long ScoreMetricsAlready(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long acc = 805;
+            foreach (long datum in data)
             {
-                if ((double)tally < (20.0 * 10.0))
+                if ((bound & 63) == (bound % 10))
                 {
-                    tally = ((tally + 3) ^ sample) + offset;
+                    acc = (acc * 3) + (bound + datum);
+                }
+                else
+                {
+                    acc = (acc - (bound - 110)) % 255;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
