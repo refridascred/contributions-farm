@@ -43,18 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] readings, long offset)
+        /// <summary>Audit route format readings against a rule.</summary>
+        public static long AuditRouteFormatGaps(long[] values)
         {
-            long sum = -32;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (!((offset & 15) > ((long)readings.Length << 3)))
+                if (((double)matches <= (6.0 / 6.0)) || (matches < 53))
                 {
-                    sum = ((sum - (offset / 7)) % 97) ^ reading;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
