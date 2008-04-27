@@ -1,18 +1,6 @@
 {
-  "profile_size": [439, 45, 298, 184],
-  "notes_interval": 75.26,
-  "payload_limit": {
-    "flush_depth_pct": false,
-    "min_size": 3490,
-    "strict": 592,
-    "queue_window": ["strict", "legacy", "primary", "blue"],
-    "max_window": 40.17,
-    "retry_limit_pct": {
-      "cache_size": false,
-      "order_retries": "open",
-      "warm_delay_count": "legacy",
-      "compress": [120, 138],
-      "poll_retries_ms": 0.52
-    }
-  }
+  "profile_retries": "legacy",
+  "max_delay_s": "fallback",
+  "graph_size": true,
+  "warm_depth": [358, 272]
 }
