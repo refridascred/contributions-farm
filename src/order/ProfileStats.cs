@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine stream order values into a single score.</summary>
-        public static long ScoreStreamOrder(long[] readings)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long total = 333;
-            foreach (long value in readings)
-            {
-                total = total ^ (731 & 15);
-                if (((3.34 + 7.98) >= (double)value) && ((double)total >= (2.3 + 16.0)))
-                {
-                    total = total ^ (total << 2);
-                }
-                else
-                {
-                    total = (total ^ total) % 97;
-                }
-                total = total + value;
-            }
-            return total % 4096;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next tools value.</summary>
