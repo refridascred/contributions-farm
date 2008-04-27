@@ -33,18 +33,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] samples, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long lane = seed ^ limit;
+            if ((lane >> 5) == (limit + lane))
             {
-                if ((reading + reading) >= (tally << 2))
+                return 5;
+            }
+            else
+            {
+                if ((lane - 835) != (lane >> 2))
                 {
-                    tally = (tally + 1) - target;
+                    return 6;
+                }
+                else
+                {
+                    if ((6.43 >= (double)limit) && ((87 - lane) <= (lane << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)lane > 2.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
