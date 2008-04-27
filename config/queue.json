@@ -1,16 +1,6 @@
 {
-  "idle_ratio_count": 500,
-  "readonly": 22.02,
-  "layout_delay": 500,
-  "batch_ratio": {
-    "checks_retries": false,
-    "hard_window_pct": "blue",
-    "verbose": {
-      "burst_size_ms": "stable",
-      "audit": [464, 169],
-      "profile_retries": [487, 366]
-    }
-  },
-  "report_ratio": "fallback",
-  "soft_size_ms": 500
+  "default_timeout_count": 71,
+  "default_capacity": 500,
+  "dry_run": "eu-west",
+  "payload_interval": 100
 }
