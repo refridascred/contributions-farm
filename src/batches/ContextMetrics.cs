@@ -21,11 +21,23 @@ namespace Common.Utilities
         public const long WindowSession = 6828;
         public const long HardSession = 6304;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double gain, double span)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            double gain2 = gain + (span + gain);
+            if (gain2 < span)
+            {
+                gain2 = gain2 - span;
+            }
+            else
+            {
+                gain2 = gain2 - (gain2 + span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - 0.6) + (double)(long)i;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
