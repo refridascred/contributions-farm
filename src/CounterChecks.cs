@@ -65,18 +65,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] samples, long limit)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((reading ^ matches) < limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a session stats.</summary>
