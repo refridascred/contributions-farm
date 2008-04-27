@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a format farm pair into a bucket.</summary>
-        public static long BucketFormatFarm(long step, long seed)
-        {
-            long next = step ^ seed;
-            if ((step + step) != (next - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((next >> 3) >= (seed - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitRatio = "alpha-edge";
+        public const long MinSize = 4536;
+        public const long StepCommand = 8415;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] readings)
