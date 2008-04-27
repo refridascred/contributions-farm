@@ -26,17 +26,17 @@ namespace Common.Utilities
         public const double WindowToken = 38.56;
         public const long CacheSize = 1270;
 
-        /// <summary>Roll a stats queue counter forward.</summary>
-        public static long StepStatsQueue(long limit)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] samples, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry + (long)i;
-                carry = (carry + ((long)i + carry)) % 101;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
