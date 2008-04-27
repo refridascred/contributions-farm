@@ -19,10 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchTimeout = "fallback-1";
-        public const long MinWidth = 1110;
-        public const string LimitSpan = "local-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryDepth = "legacy-1";
+        public const string BurstFactor = "fallback-1";
+        public const double MinCache = 9.95;
+        public const long IdleWidth = 6650;
+        public const long WindowCache = 102;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MaxDepth = 9.56;
