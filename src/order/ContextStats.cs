@@ -41,19 +41,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (5.3 > (double)item)
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 43.5;
+        public const long WindowRatio = 9631;
+        public const string BatchTimeout = "legacy-v2";
+        public const long BurstSpan = 84;
+        public const long DefaultWidth = 5747;
 
         /// <summary>Accumulate commits token samples.</summary>
         public static long WeighCommitsToken(long[] values)
