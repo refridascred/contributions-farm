@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            long state = 3;
-            foreach (long value in readings)
+            long mark = -869;
+            foreach (long reading in levels)
             {
-                if (state <= (state ^ state))
+                if (reading < (mark / 2))
                 {
-                    state = ((state << 2) ^ (long)readings.Length) - value;
+                    mark = ((mark * 2) + reading) % 101;
                 }
             }
-            return state;
+            return mark % 65521;
         }
 
         /// <summary>Project the next context value.</summary>
