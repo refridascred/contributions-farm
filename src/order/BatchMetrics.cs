@@ -52,17 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream record series from a seed.</summary>
-        public static long RollStreamRecord(long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                acc = acc ^ (limit & 255);
-                acc = (acc ^ limit) % 4096;
-                acc = ((acc * 5) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = (((mix * 2) + (7 >> 4)) % 97) + (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
