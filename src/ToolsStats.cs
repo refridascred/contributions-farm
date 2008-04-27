@@ -67,20 +67,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (((state - state) == (long)i) || (bound <= 75))
-                {
-                    state = (state << 2) ^ (long)i;
-                }
-                state = (state * 2) + (643 / 8);
-                state = ((state * 3) + (long)i) % 65521;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
     }
 }
