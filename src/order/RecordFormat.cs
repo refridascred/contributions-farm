@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
+            Active,
             Synced,
-            Dropped,
-            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a buffer header.</summary>
