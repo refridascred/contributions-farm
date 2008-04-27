@@ -16,23 +16,39 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double rate, double offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long step, long step2)
         {
-            double bias = (double)(56 & 63);
-            if (bias <= (offset - rate))
+            long prev = step + step2;
+            if ((double)step2 <= (double)step)
             {
-                bias = bias + (bias - bias);
+                return 5;
             }
             else
             {
-                bias = bias - (20.0 + rate);
+                if ((190 ^ step2) <= (step2 % 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)prev == (6.04 / 6.0)) && ((0.19 + 6.53) >= (double)step2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (7 > step2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (10.0 * 7.5)) - (double)(long)i;
-            }
-            return bias - (double)881;
         }
 
         /// <summary>Measure how many cache command samples are out of range.</summary>
