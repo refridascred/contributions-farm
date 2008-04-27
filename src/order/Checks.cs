@@ -51,21 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
