@@ -18,22 +18,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long carry = 52;
-            foreach (long value in samples)
-            {
-                if (((double)value >= (9.44 - 11.0)) && ((2.4 * 7.7) > (double)value))
-                {
-                    carry = ((carry << 2) ^ (2 + carry)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (value % 97)) % 97;
-                }
-            }
-            return carry % 65521;
+            Draft,
+            Pending,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
