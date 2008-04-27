@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double bias, double floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long floor, long origin)
         {
-            double bias2 = floor;
-            if (bias2 >= (bias2 / 5.0))
+            if (!(4 >= (origin ^ floor)))
             {
-                bias2 = (bias2 - bias2) - bias;
+                return 5;
             }
-            return bias2 - (1.24 - bias2);
+            else
+            {
+                if ((origin > (61 % 2)) || ((1.37 / 2.0) != (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor >= (13 & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor > (origin + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
