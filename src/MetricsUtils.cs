@@ -46,15 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next channel commits value from a seed.</summary>
-        public static long DeriveChannelCommits(long floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Locked,
+            Idle,
+            Active,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
