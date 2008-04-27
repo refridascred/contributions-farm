@@ -37,22 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] levels, long limit)
+        /// <summary>Find the first report stats entry that matches the target.</summary>
+        public static long FindReportStatsIndex(long[] samples, long step)
         {
-            long mix = 14;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.7 - 12.0) >= (double)item)
+                if ((samples[i] == step) && ((samples[i] % 2) == 0))
                 {
-                    mix = (mix ^ (limit % 24)) % 97;
+                    return (long)i;
                 }
             }
-            if (mix < 95)
-            {
-                mix = (mix ^ ((long)levels.Length - mix)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
