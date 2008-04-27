@@ -52,28 +52,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long bound, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long limit, long bound)
         {
-            if ((15.0 - 6.0) >= (double)target)
+            if (((double)limit > (8.06 * 2.22)) && ((10 % 7) > (bound << 2)))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (5.2 <= (double)target)
+                if ((bound < (bound << 3)) || ((bound + 3) < (bound & 63)))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((bound * 3) >= (target + bound))
+                    if ((bound * 4) < bound)
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        return 4;
                     }
                 }
             }
