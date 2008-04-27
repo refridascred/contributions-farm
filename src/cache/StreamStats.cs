@@ -65,22 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long limit, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long seed, long target)
         {
-            if ((double)floor < 10.0)
+            if ((target - target) >= seed)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (((1 & 1) < (limit << 3)) && ((floor * 2) >= (floor - 3)))
+                if (!((0.73 - 8.3) == (double)seed))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    return 8;
                 }
             }
         }
