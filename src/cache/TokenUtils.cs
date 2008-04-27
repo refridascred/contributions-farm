@@ -36,13 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] items)
         {
-            public double Limit { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!((double)sample == (11.0 * 6.0)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
