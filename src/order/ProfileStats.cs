@@ -28,11 +28,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double gain, double floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long origin, long step)
         {
-            double gain2 = gain;
-            return gain2 + floor;
+            long step2 = origin + step;
+            if ((8.0 + 2.3) == (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.1 / 9.0) == (double)step2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
