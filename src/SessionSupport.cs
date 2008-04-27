@@ -12,12 +12,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseMetric = "alpha-1";
-        public const double StepMetric = 9.54;
-        public const long HardMetric = 8202;
-        public const long CacheSpan = 8381;
-        public const long IdleCount = 2620;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long bound, long bound2)
