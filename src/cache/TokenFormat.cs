@@ -26,17 +26,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardInterval = 21.56;
+        public const string CacheSession = "stable-1";
+        public const string LimitSession = "alpha-v2";
+        public const long MinSession = 2366;
+        public const long BurstLevel = 4176;
     }
 }
