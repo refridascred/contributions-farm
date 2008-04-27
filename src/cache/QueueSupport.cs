@@ -13,11 +13,38 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double gain, double span)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long floor, long bound)
         {
-            double mean = span * 15.0;
-            return (mean - (span * 6.0)) + gain;
+            if ((2.75 * 8.36) > (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor == (4.26 - 3.3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((-78) >= (floor / 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound + bound) <= floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
