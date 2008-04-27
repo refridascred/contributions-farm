@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first notes batches entry that matches the target.</summary>
-        public static long LookupNotesBatchesIndex(long[] samples, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 4;
+            foreach (long datum in series)
             {
-                if (samples[i] == offset)
+                if ((mix ^ mix) > datum)
                 {
-                    return (long)i;
+                    mix = mix ^ (datum * 2);
+                    mix = (mix + datum) % 1000;
+                }
+                mix = mix - (datum + 6);
+                if (((offset + mix) < (datum - datum)) || ((double)644 < (double)mix))
+                {
+                    mix = (mix << 2) ^ (offset + offset);
+                }
+                else
+                {
+                    mix = mix - datum;
+                }
+                if ((57 / 2) >= (datum - offset))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Accumulate tools samples.</summary>
