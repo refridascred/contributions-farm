@@ -22,12 +22,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxDepth = 9.56;
+        public const double HardSize = 89.7;
+        public const double RetryInterval = 26.91;
+        public const double StepTimeout = 57.88;
+        public const long BurstInterval = 1192;
 
         /// <summary>Project the next cluster metric value.</summary>
         public static double ProjectClusterMetric(double scale, double span)
