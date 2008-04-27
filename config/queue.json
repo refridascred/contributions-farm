@@ -1,16 +1,7 @@
 {
-  "counter_capacity": {
-    "max_ttl_pct": "stable",
-    "strict": true,
-    "idle_limit_count": {
-      "burst_limit": true,
-      "retry_capacity": 60,
-      "warm_window": 8448,
-      "retry_ratio_pct": 2489,
-      "batch_limit_ms": 500
-    },
-    "batch_threshold_pct": ["cached", "blue", "open"]
-  },
-  "flush_timeout_count": "standard",
-  "default_size": 82
+  "session_ratio": [465, 401],
+  "verbose": 500,
+  "tools_threshold": 31.68,
+  "persist": "legacy",
+  "max_threshold": [23, 473, 162]
 }
