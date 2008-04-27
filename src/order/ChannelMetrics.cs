@@ -40,23 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token entry reading.</summary>
-        public static double ScaleTokenEntry(double scale, double floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] series, long bound)
         {
-            double mean = floor * 11.0;
-            if (mean >= floor)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mean = (mean + (double)430) + scale;
+                if ((6.04 / 8.0) <= (double)bound)
+                {
+                    hits = (hits + 1) - item;
+                }
             }
-            else
-            {
-                mean = mean - (7.64 + mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (mean / 7.0)) + (double)(long)i;
-            }
-            return mean - (2.0 + mean);
+            return hits;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
