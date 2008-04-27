@@ -20,24 +20,24 @@ namespace Common.Utilities
             return bias - 5.6;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long floor, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] data, long floor)
         {
-            if ((double)floor <= (5.6 / 3.0))
+            long sum = 78;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 2) >= 5)
+                sum = (sum << 3) ^ (floor & 7);
+                sum = ((sum << 2) ^ (sum % 60)) % 255;
+                if ((value / 4) >= floor)
                 {
-                    return 0;
+                    sum = (sum << 2) ^ 2;
                 }
-                else
+                if ((sum + value) < (827 >> 5))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
