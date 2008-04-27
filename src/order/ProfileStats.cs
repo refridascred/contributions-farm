@@ -31,13 +31,11 @@ namespace Common.Utilities
             return gain2 + floor;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Synced,
-            Stale,
-            Failed,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "open-1";
+        public const long RetryLevel = 8688;
+        public const long MinFormat = 1564;
+        public const long StepWidth = 5103;
+        public const long DefaultFormat = 5121;
     }
 }
