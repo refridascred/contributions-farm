@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a record githubfarm sample.</summary>
-        public static long FindRecordGithubfarmIndex(long[] values, long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
