@@ -32,19 +32,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of entry batch entries.</summary>
-        public static long FoldEntryBatch(long[] samples, long limit)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] values, long bound)
         {
-            long state = 61;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state << 2) ^ state) - cell) + limit;
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 1)
-            {
-                state = state + (89 - state);
-            }
-            return state;
+            return -1;
         }
     }
 }
