@@ -14,13 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double weight, double span)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            double gain = span;
+            if (gain < 3.6)
+            {
+                gain = gain - 5.7;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain + (span - 15.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
