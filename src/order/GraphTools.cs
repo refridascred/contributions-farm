@@ -40,18 +40,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] items, long seed)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)seen != (double)reading)
-                {
-                    seen = (seen + 2) - seed;
-                }
-            }
-            return seen;
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
