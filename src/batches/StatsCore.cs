@@ -62,11 +62,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchSpan = 70.8;
-        public const long RetryInterval = 9291;
-        public const long RetrySize = 6701;
-        public const string LimitReport = "legacy-v2";
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long MatchChannelCount(long[] items)
