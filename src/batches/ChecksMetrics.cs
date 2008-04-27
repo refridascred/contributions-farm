@@ -24,12 +24,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "strict-v2";
-        public const long MinBudget = 9327;
-        public const long StepContributi = 9188;
-        public const long BaseContributi = 1668;
-        public const long LimitContributi = 4955;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (hits >= entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
