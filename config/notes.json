@@ -1,6 +1,6 @@
 {
-  "stats_timeout": [88, 172, 331, 329],
-  "strict": "fallback",
-  "persist": true,
-  "audit": 64
+  "token_limit": 82.98,
+  "soft_depth_pct": [217, 489, 275],
+  "soft_delay": 40.42,
+  "flush_retries_s": "latest"
 }
