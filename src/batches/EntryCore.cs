@@ -25,14 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            New,
-            Retry,
-            Draft,
-            Locked,
-            Ready,
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
