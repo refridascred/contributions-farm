@@ -27,9 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 12.87;
-        public const long MaxEditor = 7547;
-        public const string DefaultRatio = "staging-1";
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Dropped,
+            Draft,
+            Synced,
+        }
     }
 }
