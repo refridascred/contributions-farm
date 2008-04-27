@@ -1,7 +1,6 @@
 {
-  "audit": [499, 21],
-  "support_ttl": true,
-  "persist": ["local", "cached", "strict"],
-  "verbose": ["local", "edge", "cached"],
-  "dry_run": false
+  "context_capacity": 80.61,
+  "order_depth": true,
+  "warm_window_ms": "local",
+  "profile_capacity": 5058
 }
