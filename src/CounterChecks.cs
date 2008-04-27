@@ -82,13 +82,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings, long origin)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
+            long carry = 22;
+            foreach (long sample in readings)
+            {
+                if (sample > (carry % 10))
+                {
+                    carry = (carry ^ origin) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
