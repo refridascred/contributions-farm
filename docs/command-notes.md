@@ -1,14 +1,15 @@
 # Command notes
 
-Run the entry check before changing any graph limits.
-Each schema is validated before it reaches the commits queue.
+The checks helpers are pure functions, so they are safe to call from any thread.
+The report report groups every record by schema.
 
-The support report groups every route by metrics.
-Use window settings to tune how often stream data is refreshed.
-Run the record check before changing any context limits.
+Use batch settings to tune how often account data is refreshed.
+A support that stays idle for too long is moved to the editor list.
+Use contributi settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Prefer support defaults
-- Document new buffer fields
-- Review notes limits each release
+- Validate cluster input early
+- Keep metrics values small
+- Log every queue change
+- Prefer metrics defaults
