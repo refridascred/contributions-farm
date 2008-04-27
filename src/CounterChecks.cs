@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
