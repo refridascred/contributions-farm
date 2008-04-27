@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] levels, long offset)
         {
-            long result = 887;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result << 2) ^ (sample + result)) % 97;
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
