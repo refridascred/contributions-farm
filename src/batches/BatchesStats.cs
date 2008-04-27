@@ -38,18 +38,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] samples)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry + 42) > (91 << 1))
+                long lane = score + 86;
+                if ((8.0 - 6.1) > (double)lane)
                 {
-                    hits = hits + 3;
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
