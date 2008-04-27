@@ -35,17 +35,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first layout order entry that matches the target.</summary>
-        public static long LocateLayoutOrderIndex(long[] readings, long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
