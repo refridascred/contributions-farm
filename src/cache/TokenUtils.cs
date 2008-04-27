@@ -29,22 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] items)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((double)sample == (11.0 * 6.0)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
