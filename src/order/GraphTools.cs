@@ -85,21 +85,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format tools readings.</summary>
-        public static long MatchFormatToolsCount(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count * 4) <= count)
                 {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + item;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
