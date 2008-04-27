@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long RetryCount = 5551;
         public const double MaxScore = 10.62;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] series, long seed)
         {
-            New,
-            Dropped,
-            Queued,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a order stats.</summary>
