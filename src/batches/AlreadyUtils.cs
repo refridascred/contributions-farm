@@ -69,10 +69,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 2819;
-        public const string WindowRatio = "primary-edge";
-        public const long RetrySize = 2093;
-        public const long LimitSpan = 5485;
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
