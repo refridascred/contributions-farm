@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many metrics session samples are out of range.</summary>
-        public static long CountMetricsSessionHits(long[] values)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)count <= (9.77 / 5.0))
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
