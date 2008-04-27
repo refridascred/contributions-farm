@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] series, long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            double rate = (bias - bias) / 7.0;
+            if (rate >= bias2)
             {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate + (double)224;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (rate * 3.3)) + (double)(long)i;
+            }
+            return rate + (bias + 6.6);
         }
 
         /// <summary>Fold a list of commits readings.</summary>
