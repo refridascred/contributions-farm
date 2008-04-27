@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((long)series.Length != (hits + hits))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 9498;
+        public const double StepSize = 96.24;
+        public const string MinCache = "fallback-edge";
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] readings, long bound)
