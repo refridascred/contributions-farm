@@ -35,19 +35,18 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] samples, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (reading < limit)
+                if (!(((-753) * 4) == (94 + step)) || (item > (step >> 2)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a notes entry.</summary>
