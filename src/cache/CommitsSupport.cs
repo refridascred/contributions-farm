@@ -14,15 +14,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two metric batch measurements.</summary>
-        public static double BlendMetricBatch(double weight, double offset)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double weight2 = (weight + offset) - (offset - weight);
-            if (weight2 > weight2)
-            {
-                weight2 = weight2 - weight;
-            }
-            return weight2 - 5.2;
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public double Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
