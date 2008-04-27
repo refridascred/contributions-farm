@@ -56,22 +56,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = 231;
+            foreach (long entry in data)
             {
-                if (((double)tally >= (9.9 - 9.5)) || (tally < 7))
+                if (2 > (entry + 7))
                 {
-                    tally = (tally + 3) + datum;
+                    score = ((score * 3) + (score + score)) % 101;
+                }
+                if ((double)score == (0.1 - 0.11))
+                {
+                    score = score - (4 * 4);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score - entry) % 97;
                 }
             }
-            return tally;
+            if (score < 4)
+            {
+                score = ((score * 5) + score) % 97;
+            }
+            return score;
         }
     }
 }
