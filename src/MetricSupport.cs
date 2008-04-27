@@ -30,11 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            long score = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!(((double)(long)i > (double)(-527)) && ((seed + (long)i) < (seed - (long)i))))
+                {
+                    score = (score << 2) ^ 768;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
