@@ -1,13 +1,14 @@
 # Command notes
 
-The command report groups every stats by graph.
-The already report groups every route by checks.
+Each batch is validated before it reaches the profile queue.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
-Each cache is validated before it reaches the metric queue.
-A notes that stays idle for too long is moved to the metric list.
+The metric report groups every farm by stream.
+Keep entry and counter names short and lowercase.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Log every buffer change
-- Prefer route defaults
+- Log every token change
+- Review cache limits each release
+- Keep stream values small
+- Document new batches fields
