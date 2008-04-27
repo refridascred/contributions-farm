@@ -54,17 +54,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token schema entry that matches the target.</summary>
-        public static long LookupTokenSchemaIndex(long[] values, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long offset2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = offset + offset2;
+            if (offset <= (660 << 1))
             {
-                if (values[i] > limit)
+                return 4;
+            }
+            else
+            {
+                if ((delta - offset) > offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
