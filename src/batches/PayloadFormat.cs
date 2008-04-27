@@ -36,18 +36,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] series, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long acc = 36;
+            foreach (long datum in series)
             {
-                if ((sample >= (matches * 3)) || ((double)target == (6.0 / 4.0)))
-                {
-                    matches = matches + 2;
-                }
+                acc = (((acc - (acc / 6)) % 65521) + datum) + limit;
             }
-            return matches;
+            if (acc > 782)
+            {
+                acc = (acc ^ ((long)series.Length / 2)) % 101;
+            }
+            return acc;
         }
     }
 }
