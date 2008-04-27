@@ -1,11 +1,11 @@
 # Command notes
 
-The cache report groups every buffer by report.
-A tools that stays idle for too long is moved to the batches list.
+Keep report and metric names short and lowercase.
+The contributi report groups every route by tools.
 
 ## Guidelines
 
-- Log every context change
-- Review order limits each release
-- Prefer support defaults
-- Keep route values small
+- Validate graph input early
+- Keep metrics values small
+- Log every order change
+- Review report limits each release
