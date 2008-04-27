@@ -1,5 +1,6 @@
 {
-  "queue_interval": 4.68,
-  "sync_delay_s": "fallback",
-  "batch_timeout_count": "edge"
+  "commits_timeout": "legacy",
+  "command_ttl": 5,
+  "sync_limit_count": 6.66,
+  "metric_interval": "eu-west"
 }
