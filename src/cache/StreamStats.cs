@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a schema metric figure with a bias.</summary>
-        public static double BlendSchemaMetric(double rate, double bias)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] items, long bound)
         {
-            double load = (bias / 3.0) + bias;
-            return (load - (load * 4.3)) + rate;
+            long anchor = 66;
+            foreach (long cell in items)
+            {
+                if ((anchor % 5) <= (anchor >> 3))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (bound + cell)) % 101;
+            }
+            if (anchor < 122)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Classify a route filter pair into a bucket.</summary>
