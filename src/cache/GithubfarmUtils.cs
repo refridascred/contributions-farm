@@ -27,10 +27,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstTimeout = 416;
-        public const long DefaultMetric = 3668;
-        public const double BaseMetric = 96.34;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchTimeout = "strict-v2";
+        public const string RetryStream = "alpha";
+        public const double HardBudget = 8.77;
+        public const long WindowInterval = 8741;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
