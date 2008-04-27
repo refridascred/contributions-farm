@@ -22,15 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double ratio, double floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] samples, long seed)
         {
-            double mean = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = ((mean + (4.54 - 0.38)) + (double)(long)i) + ratio;
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
