@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data, long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long step)
         {
-            long acc = 91;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((9.2 / 3.0) < (double)step))
+                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
                 {
-                    acc = (((acc << 3) ^ (93 + acc)) % 97) ^ datum;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
