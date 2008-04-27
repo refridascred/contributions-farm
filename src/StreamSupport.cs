@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] series, long seed)
         {
-            long sum = 4;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample >> 2) == (sum >> 3))
+                if (series[i] == seed)
                 {
-                    sum = (sum * 5) + (sum - 11);
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
