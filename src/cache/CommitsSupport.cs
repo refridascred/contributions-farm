@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many farm context samples are out of range.</summary>
-        public static long TallyFarmContextMatches(long[] readings, long offset)
+        /// <summary>Audit payload batch readings against a rule.</summary>
+        public static long CountPayloadBatchGaps(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((cell - offset) >= (tally & 31))
+                if (!((16.0 * 5.8) == (double)datum))
                 {
-                    tally = tally + 2;
+                    count = (count + 3) - seed;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
