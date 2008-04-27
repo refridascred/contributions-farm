@@ -1,7 +1,7 @@
 {
-  "editor_retries": 8146,
-  "contributi_threshold": [438, 262, 320],
-  "burst_window_pct": 2919,
-  "burst_size_count": "standard",
-  "enabled": 96
+  "batches_window": true,
+  "hard_depth": [424, 371, 233, 141],
+  "burst_size_ms": 40,
+  "audit": 5204,
+  "contributi_delay": 1
 }
