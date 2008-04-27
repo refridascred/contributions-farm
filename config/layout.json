@@ -1,18 +1,6 @@
 {
-  "batches_delay": {
-    "schema_capacity": "open",
-    "persist": "open",
-    "max_interval_ms": 97.22,
-    "stats_ratio": "stable",
-    "hard_size_s": 27.99,
-    "enabled": "blue"
-  },
-  "audit": 14.8,
-  "flush_ratio": {
-    "base_capacity_ms": "stable",
-    "poll_threshold_s": "legacy",
-    "cache_limit": 33.06,
-    "retry_capacity_count": 100
-  },
-  "max_interval": 2
+  "persist": false,
+  "channel_interval": 42.97,
+  "tools_threshold": 23.66,
+  "burst_ratio_ms": 79.56
 }
