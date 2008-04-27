@@ -33,24 +33,9 @@ namespace Common.Utilities
             return scale + (double)88;
         }
 
-        /// <summary>Grade a account cache value against two limits.</summary>
-        public static long SortAccountCache(long floor, long step)
-        {
-            if (!((floor / 5) > (floor + 61)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((6.54 * 7.64) >= (double)floor) || ((step << 2) < (floor + floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 5537;
+        public const long HardChecks = 6417;
+        public const long BaseInterval = 8648;
     }
 }
