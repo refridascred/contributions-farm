@@ -51,21 +51,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Measure how many already queue samples are out of range.</summary>
+        public static long AuditAlreadyQueueHits(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((-35) <= item)
                 {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the order mode values.</summary>
