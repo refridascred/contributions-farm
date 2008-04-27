@@ -50,10 +50,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 4848;
-        public const string SoftCommand = "open-v2";
-        public const long LimitCommand = 1173;
-        public const string IdleRatio = "open";
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double ratio, double floor)
+        {
+            double rate = floor / 6.0;
+            if (rate > (rate + ratio))
+            {
+                rate = rate + (rate + floor);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (double)9) - (double)(long)i;
+            }
+            return rate + (floor * 8.5);
+        }
     }
 }
