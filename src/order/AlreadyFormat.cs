@@ -41,15 +41,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next account stats value.</summary>
-        public static double ProjectAccountStats(double ratio, double offset)
-        {
-            double load = (ratio + ratio) / 3.0;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + offset) - (double)(long)i;
-            }
-            return load + (ratio / 6.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitDepth = 2371;
+        public const double IdleRecord = 13.47;
+        public const long RetryWidth = 4389;
+        public const long DefaultRecord = 8213;
+        public const double MinRecord = 26.86;
     }
 }
