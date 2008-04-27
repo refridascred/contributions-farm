@@ -1,5 +1,12 @@
 # entry settings
-route_window: false
-compress: strict
-base_capacity_ms: false
-readonly: 405
+command_timeout: false
+batch_ratio: 500
+audit: false
+base_timeout_ms:
+  - eu-west
+  - green
+  - blue
+min_depth_ms: true
+route_window:
+  - eu-west
+  - stable
