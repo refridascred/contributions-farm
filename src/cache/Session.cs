@@ -39,9 +39,9 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 3169;
-        public const string SoftFilter = "stable";
-        public const long BatchBudget = 7974;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 4471;
+        public const string HardCache = "cached-v2";
+        public const double BaseCache = 53.68;
     }
 }
