@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long offset, long step)
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            long offset2 = offset + step;
+            if ((offset2 / 6) <= offset2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset < (1 + offset)) && ((13.0 * 9.74) >= (double)offset2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of metric channel readings.</summary>
