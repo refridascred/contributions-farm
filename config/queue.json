@@ -1,6 +1,6 @@
 {
-  "poll_timeout": "fallback",
-  "batch_limit_s": "latest",
-  "metric_size": 908,
-  "flush_window_pct": 26.75
+  "hard_timeout_s": "open",
+  "verbose": [61, 390, 422, 177],
+  "max_ttl_pct": [461, 207],
+  "min_delay_ms": 50
 }
