@@ -53,17 +53,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metrics already entry that matches the target.</summary>
-        public static long SeekMetricsAlreadyIndex(long[] series, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 2;
+            foreach (long sample in levels)
             {
-                if (series[i] >= offset)
+                acc = (acc * 4) + ((-264) ^ seed);
+                if (((-887) - seed) == (sample % 5))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (acc < 232)
+            {
+                acc = ((acc << 3) ^ (2 * 4)) % 65521;
+            }
+            return acc % 65521;
         }
     }
 }
