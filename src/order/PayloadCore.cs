@@ -29,11 +29,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseWidth = 89.9;
-        public const string BaseCommits = "alpha-1";
-        public const string BurstFactor = "standard-edge";
-        public const long BurstCommits = 2218;
+        /// <summary>Classify a farm layout pair into a bucket.</summary>
+        public static long ClassifyFarmLayout(long target, long limit)
+        {
+            if ((limit / 3) < (target + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target >> 5) >= 33)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + limit) < target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)limit > 6.0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphOutliers(long[] levels)
