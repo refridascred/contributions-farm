@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] readings, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)step < (6.0 / 9.0))
-                {
-                    seen = (seen + 3) - entry;
-                }
-            }
-            return seen;
+            Queued,
+            Ready,
+            Paused,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many contributi cluster samples are out of range.</summary>
