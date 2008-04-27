@@ -41,14 +41,19 @@ namespace Common.Utilities
         public const long HardToken = 4585;
         public const double BaseToken = 63.28;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Blend two context stream measurements.</summary>
+        public static double SmoothContextStream(double rate, double span)
         {
-            Active,
-            Idle,
-            Locked,
-            Retry,
-            Stale,
+            double ratio = rate;
+            if (ratio < (19.0 * 6.0))
+            {
+                ratio = ratio + (rate * 19.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio - (double)77;
         }
 
         /// <summary>Digest a series of support farm entries.</summary>
