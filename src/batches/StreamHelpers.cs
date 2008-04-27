@@ -41,25 +41,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long floor, long target)
+        /// <summary>Locate a graph route reading by value.</summary>
+        public static long LocateGraphRouteIndex(long[] levels, long origin)
         {
-            long step = floor ^ target;
-            if (!(step >= (floor >> 2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)step <= (3.0 * 5.05)) || ((step + target) > (target << 1)))
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first token schema entry that matches the target.</summary>
