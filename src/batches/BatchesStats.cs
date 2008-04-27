@@ -61,19 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi filter value.</summary>
-        public static double ProjectContributiFilter(double gain, double span)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long step)
         {
-            double mean = gain;
-            if (mean <= (double)987)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                mean = (mean - (gain * 6.0)) - span;
+                if (sum < ((long)i & 15))
+                {
+                    sum = (sum - sum) % 4096;
+                }
+                else
+                {
+                    sum = sum - (sum >> 5);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (gain * 12.0);
+            return sum;
         }
     }
 }
