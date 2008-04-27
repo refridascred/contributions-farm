@@ -42,19 +42,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] readings, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] data)
         {
-            long mark = 436;
-            foreach (long item in readings)
+            long result = 16;
+            foreach (long value in data)
             {
-                mark = (mark + (mark & 1)) + item;
-                if (((step - step) <= step) && ((double)step <= (double)(long)readings.Length))
+                if ((value - value) == (result >> 4))
                 {
-                    mark = mark + mark;
+                    result = result ^ (49 & 31);
+                }
+                if ((result >= value) || ((1 - result) != (value % 97)))
+                {
+                    break;
                 }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
