@@ -49,25 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long limit, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] values, long offset)
         {
-            long next = limit ^ step;
-            if ((limit << 2) < (next - 832))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((74 + step) <= (step >> 1))
+                if (cell < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
