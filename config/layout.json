@@ -1,9 +1,5 @@
 {
-  "persist": "staging",
-  "metrics_timeout": {
-    "poll_window": 100,
-    "farm_capacity": 87,
-    "persist": "primary"
-  },
-  "dry_run": "legacy"
+  "warm_size_count": 250,
+  "persist": 9.18,
+  "flush_retries": "cached"
 }
