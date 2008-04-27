@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] series)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (((hits - reading) != (hits % 24)) || ((reading & 31) != (reading + hits)))
+                if (cell <= step)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
