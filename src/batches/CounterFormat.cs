@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] items, long limit)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 8;
+            foreach (long cell in samples)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor ^ (step + step)) % 255) + cell;
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Count the metric profile entries that pass the check.</summary>
