@@ -1,6 +1,6 @@
 {
-  "persist": false,
-  "channel_interval": 42.97,
-  "tools_threshold": 23.66,
-  "burst_ratio_ms": 79.56
+  "persist": ["eu-west", "fallback", "strict", "edge"],
+  "idle_ratio_count": true,
+  "queue_window": "edge",
+  "hard_size_pct": "standard"
 }
