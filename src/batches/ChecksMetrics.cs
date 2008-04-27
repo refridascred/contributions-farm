@@ -80,19 +80,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph contributi measurements.</summary>
-        public static double ProjectGraphContributi(double bias, double floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long seed, long floor)
         {
-            double weight = floor;
-            if (weight > (floor - 1.68))
+            long gap = seed ^ floor;
+            if ((floor - 54) > (seed ^ gap))
             {
-                weight = weight + weight;
+                return 0;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                weight = (weight - floor) + (double)(long)i;
+                if (gap < 140)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)floor <= (double)60) && ((floor - seed) < (gap - 75)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return weight + bias;
         }
     }
 }
