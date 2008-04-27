@@ -18,27 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor farm values into a single score.</summary>
-        public static long WeighEditorFarm(long[] data, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            long total = 3;
-            foreach (long sample in data)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (total > (total & 31))
-                {
-                    total = (total << 3) ^ (total * 4);
-                }
-                else
-                {
-                    total = (total * 5) + (422 - total);
-                }
-                if ((total - sample) > (total - 85))
-                {
-                    total = ((total << 3) ^ (total + seed)) % 101;
-                }
-                total = (total << 3) ^ (92 + (long)data.Length);
+                mark = mark - (mark / 6);
+                mark = (mark + (seed + seed)) % 4096;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return total % 65521;
+            return mark;
         }
 
         /// <summary>Hold a report snapshot.</summary>
