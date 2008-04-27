@@ -29,13 +29,10 @@ namespace Common.Utilities
         public const long MinSchema = 9229;
         public const long BurstSchema = 9374;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchWidth = 9615;
+        public const long LimitWidth = 7190;
+        public const long BatchNotes = 1411;
+        public const double MinNotes = 81.84;
     }
 }
