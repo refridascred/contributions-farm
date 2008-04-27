@@ -23,32 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long seed, long limit)
+        /// <summary>Fold a list of contributi payload readings.</summary>
+        public static long CombineContributiPayload(long[] items, long offset)
         {
-            long cur = seed ^ limit;
-            if ((double)cur <= (5.0 * 6.0))
+            long total = 9;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((cur ^ 507) < cur)
+                if ((offset <= (item & 7)) || ((total + total) >= (item ^ (-6))))
                 {
-                    return 8;
+                    total = (total + 2) % 1000;
+                    total = total + item;
                 }
-                else
+                if (8.4 > (double)offset)
                 {
-                    if (((9.3 * 3.43) > (double)limit) && (((-76) % 16) > seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    total = (total ^ (total + total)) % 255;
                 }
             }
+            return total;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
