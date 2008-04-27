@@ -43,23 +43,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!(((double)value != (2.0 / 7.0)) || ((double)tally > (double)value)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowCount = 4320;
+        public const double CacheRecord = 54.9;
+        public const long BaseWidth = 7278;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
