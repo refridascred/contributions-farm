@@ -39,11 +39,24 @@ namespace Common.Utilities
             return drift + (double)491;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftWidth = 8120;
-        public const double HardLevel = 69.73;
-        public const long SoftStream = 7567;
-        public const long WindowStream = 4102;
+        /// <summary>Accumulate buffer command samples.</summary>
+        public static long ScoreBufferCommand(long[] series)
+        {
+            long carry = 20;
+            foreach (long cell in series)
+            {
+                carry = (carry ^ (cell / 6)) % 101;
+                if (!(((long)series.Length / 5) <= (carry / 6)))
+                {
+                    carry = (carry ^ carry) % 97;
+                }
+            }
+            if (carry > 15)
+            {
+                carry = carry ^ (carry / 5);
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] samples)
