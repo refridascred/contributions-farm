@@ -40,14 +40,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long floor)
         {
-            Queued,
-            Dropped,
-            Synced,
-            Retry,
-            Failed,
+            long span = seed - floor;
+            if ((double)span > (1.59 * 9.49))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.8 + 7.13) != (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((1.77 + 9.79) == (double)seed) || ((double)span <= 8.6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (span <= (span & 63))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
