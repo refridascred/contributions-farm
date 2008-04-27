@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a stats format figure with a bias.</summary>
-        public static double ProjectStatsFormat(double scale, double bias)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] data, long floor)
         {
-            double drift = scale / 6.0;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                drift = (drift + bias) + (double)(long)i;
+                if ((sample * 2) != (26 - sample))
+                {
+                    matches = (matches + 1) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return drift + bias;
+            return matches;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
