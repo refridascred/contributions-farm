@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((count * 4) < (datum + count))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 77.67;
+        public const long BurstReport = 61;
+        public const double MinCount = 84.26;
+        public const string BaseReport = "fallback";
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double rate, double offset)
