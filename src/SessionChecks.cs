@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (bias2 + 15.0) / 2.0;
+            if (rate <= bias)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + (3.7 + 9.0);
             }
-            return matches;
+            return rate - rate;
         }
 
         /// <summary>Digest a series of command entries.</summary>
