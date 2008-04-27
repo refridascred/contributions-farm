@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] values, long seed)
+        /// <summary>Combine already checks values into a single score.</summary>
+        public static long TallyAlreadyChecks(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long total = 108;
+            foreach (long cell in series)
             {
-                if (datum >= (datum ^ datum))
-                {
-                    hits = (hits + 3) + seed;
-                }
+                total = (total - (total + cell)) % 4096;
             }
-            return hits;
+            if (total > (-324))
+            {
+                total = ((total * 3) + (total % 100)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
