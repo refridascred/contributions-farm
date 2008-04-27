@@ -57,15 +57,17 @@ namespace Common.Utilities
             return ratio2 + (ratio / 9.0);
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] values, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
