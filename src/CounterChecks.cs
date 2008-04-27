@@ -57,12 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] data, long target)
         {
-            Draft,
-            Queued,
-            Active,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((30 ^ matches) == (entry + target))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
