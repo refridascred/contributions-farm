@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Dropped,
-            Draft,
-            Idle,
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
