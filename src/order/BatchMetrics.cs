@@ -52,19 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long total = 7;
+            foreach (long value in levels)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (1.25 > (double)total)
                 {
-                    mix = (((mix * 2) + (7 >> 4)) % 97) + (long)i2;
+                    total = (total - (total + value)) % 97;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
