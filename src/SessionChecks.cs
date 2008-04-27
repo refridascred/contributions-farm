@@ -46,12 +46,12 @@ namespace Common.Utilities
             return load - (floor + floor);
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] <= floor) && ((data[i] % 5) == 0))
+                if (series[i] < floor)
                 {
                     return (long)i;
                 }
