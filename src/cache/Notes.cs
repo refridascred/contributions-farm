@@ -54,12 +54,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
