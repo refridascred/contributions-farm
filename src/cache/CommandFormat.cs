@@ -14,39 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long bound, long offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long offset2 = bound + offset;
-            if ((double)offset2 <= (4.1 * 6.4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset <= (offset << 1)) || (offset >= (bound << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset2 << 2) > (offset / 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((45 % 97) < offset2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
