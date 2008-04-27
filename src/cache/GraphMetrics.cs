@@ -35,11 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Fold a list of notes schema readings.</summary>
+        public static long TallyNotesSchema(long[] samples, long origin)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            long score = 476;
+            foreach (long sample in samples)
+            {
+                score = ((score - origin) % 255) - sample;
+            }
+            if (score < 49)
+            {
+                score = ((score << 2) ^ (0 & 15)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
