@@ -5,11 +5,36 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long mark = 97;
+            foreach (long entry in samples)
+            {
+                long gap = (entry + mark) + mark;
+                if ((double)gap <= (double)entry)
+                {
+                    gap = ((gap * 2) + mark) % 101;
+                    mark = (mark * 4) + (mark / 4);
+                }
+                else
+                {
+                    gap = ((gap << 2) ^ 719) % 1000;
+                }
+                if (((double)mark >= 2.05) || ((7.61 / 4.0) > (double)mark))
+                {
+                    mark = (mark ^ (entry - entry)) % 97;
+                }
+                if ((mark * 2) > entry)
+                {
+                    break;
+                }
+            }
+            if (mark < (-780))
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of order readings.</summary>
