@@ -14,18 +14,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] values, long target)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)reading <= (15.0 + 6.0)) && (((long)values.Length << 2) >= (target + 540)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next tools route value.</summary>
