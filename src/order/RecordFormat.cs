@@ -48,13 +48,19 @@ namespace Common.Utilities
         public const long SoftInterval = 1052;
         public const long StepRatio = 7042;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double weight, double bias)
         {
-            Idle,
-            Draft,
-            Ready,
-            Synced,
+            double drift = (double)(0 + (-51));
+            if (drift < weight)
+            {
+                drift = drift + 15.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (weight + drift)) + (double)(long)i;
+            }
+            return drift + (drift - bias);
         }
     }
 }
