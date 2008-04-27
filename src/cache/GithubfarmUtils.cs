@@ -27,18 +27,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstTimeout = 416;
+        public const long DefaultMetric = 3668;
+        public const double BaseMetric = 96.34;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
