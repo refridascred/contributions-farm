@@ -1,7 +1,5 @@
 # githubfarm settings
-soft_ttl_s: true
-warm_size: true
-persist: false
-dry_run: edge
-cache_threshold_ms: eu-west
-base_threshold_ms: false
+poll_delay_count: 82.53
+batch_threshold_ms: local
+flush_window: 13.79
+batches_window: open
