@@ -13,31 +13,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] data, long offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long state = 3;
-            foreach (long datum in data)
-            {
-                state = ((state << 3) ^ offset) % 255;
-                if ((double)datum != (0.03 - 7.0))
-                {
-                    state = (state ^ (3 / 8)) % 1000;
-                }
-                if ((double)state <= 13.0)
-                {
-                    state = state + (state >> 4);
-                }
-                else
-                {
-                    state = (state + (offset + state)) % 97;
-                }
-                if (!((datum - offset) >= (offset + offset)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Combine format values into a single score.</summary>
