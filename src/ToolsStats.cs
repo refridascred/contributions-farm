@@ -26,13 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (53 >= reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of command account readings.</summary>
