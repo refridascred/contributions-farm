@@ -42,22 +42,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] values, long seed)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((seed % 10) <= (matches - value)) && (((matches + 9) == (seed - matches)) && ((double)value < 0.88)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Retry,
+            Locked,
         }
 
         /// <summary>Count the contributi support entries that pass the check.</summary>
