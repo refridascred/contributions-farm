@@ -23,18 +23,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)cell > (double)seen)
+                if (((hits - reading) != (hits % 24)) || ((reading & 31) != (reading + hits)))
                 {
-                    seen = seen + 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
