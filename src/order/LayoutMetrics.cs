@@ -13,26 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] levels, long step)
         {
-            long mix = 71;
-            foreach (long cell in values)
+            long carry = 1;
+            foreach (long reading in levels)
             {
-                if ((((-645) / 4) < (mix + mix)) || ((cell >> 2) < mix))
+                if ((double)reading <= (double)1)
                 {
-                    mix = mix - (cell + mix);
-                }
-                else
-                {
-                    mix = (mix ^ (cell % 7)) % 255;
-                }
-                if (cell > (cell + mix))
-                {
-                    break;
+                    carry = (((carry * 3) + (reading - reading)) % 1000) - step;
                 }
             }
-            return mix % 97;
+            return carry;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
