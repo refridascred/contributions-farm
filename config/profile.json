@@ -1,8 +1,8 @@
 {
-  "filter_retries": "strict",
-  "route_capacity": "open",
-  "stream_retries": [73, 126, 138, 449],
-  "channel_ratio": true,
-  "strict": [410, 125, 303],
-  "enabled": ["latest", "green", "local"]
+  "retry_capacity_pct": 250,
+  "flush_size_pct": "cached",
+  "editor_window": "local",
+  "dry_run": 78.41,
+  "default_retries_pct": 89,
+  "hard_window_pct": [352, 257, 257]
 }
