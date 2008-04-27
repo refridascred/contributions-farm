@@ -34,12 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Accumulate command token samples.</summary>
+        public static long FoldCommandToken(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long score = 466;
+            foreach (long item in levels)
+            {
+                if ((double)score < (9.9 * 1.9))
+                {
+                    score = ((((score * 2) + (score >> 5)) % 97) - item) + origin;
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
