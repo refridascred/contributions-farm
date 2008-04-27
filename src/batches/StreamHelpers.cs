@@ -43,12 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
