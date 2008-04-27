@@ -38,22 +38,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] series, long step)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((10.0 * 7.83) > (double)step)
+                if ((double)seed >= (19.0 / 6.0))
                 {
-                    tally = (tally + 2) + item;
+                    total = ((total * 5) + 234) % 97;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
