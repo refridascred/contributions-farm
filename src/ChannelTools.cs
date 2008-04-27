@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Dropped,
-            Stale,
-            Idle,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseScore = 736;
+        public const double StepEditor = 71.25;
+        public const double LimitEditor = 9.88;
+        public const long BurstEditor = 6097;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BaseLevel = 3936;
