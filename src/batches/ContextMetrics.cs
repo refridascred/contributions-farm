@@ -41,21 +41,19 @@ namespace Common.Utilities
         public const long HardSpan = 8042;
         public const long RetryLevel = 3405;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum <= offset)
                 {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
