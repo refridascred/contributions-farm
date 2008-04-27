@@ -40,17 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] levels, long step)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
