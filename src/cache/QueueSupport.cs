@@ -14,19 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double weight, double span)
+        /// <summary>Audit context metrics readings against a rule.</summary>
+        public static long AuditContextMetricsGaps(long[] samples)
         {
-            double gain = span;
-            if (gain < 3.6)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                gain = gain - 5.7;
+                if ((reading + matches) <= reading)
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain + (span - 15.0);
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
