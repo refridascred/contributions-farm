@@ -34,21 +34,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count cache batches pairs that satisfy a relation.</summary>
-        public static long OverlapCacheBatchesCount(long[] data)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long offset, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((9.0 / 4.0) == (double)offset)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((double)offset >= (double)step) || ((offset * 5) != (step / 8)))
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a contributi schema sample.</summary>
