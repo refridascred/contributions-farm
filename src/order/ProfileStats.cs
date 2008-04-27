@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] values)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long total = 8;
+            foreach (long datum in values)
+            {
+                total = (total + (total * 2)) - datum;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
