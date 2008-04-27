@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 2) + (step & 15)) % 101;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
