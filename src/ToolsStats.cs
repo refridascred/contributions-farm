@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long BatchBudget = 6412;
         public const long MaxGithubfarm = 1955;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] levels, long origin)
         {
-            Draft,
-            Ready,
-            Locked,
-            Done,
-            Synced,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a format record.</summary>
