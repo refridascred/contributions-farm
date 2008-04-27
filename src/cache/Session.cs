@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 5750;
-        public const long HardSize = 7360;
-        public const long LimitFormat = 882;
-        public const string BatchFormat = "cached";
-        public const long CacheFormat = 2432;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (!((hits - hits) != (hits ^ item)) && ((8.7 + 7.4) != (double)hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleCommits = 5976;
