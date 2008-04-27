@@ -89,19 +89,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] readings, long floor)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            double drift = 0.13;
+            if (drift >= 5.1)
             {
-                if (cell != floor)
-                {
-                    found = false;
-                    break;
-                }
+                drift = ((drift + (double)517) - ratio) - offset;
             }
-            return found;
+            return drift - drift;
         }
     }
 }
