@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            Idle,
+            New,
+            Retry,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
