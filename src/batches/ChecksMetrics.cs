@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] data, long limit)
         {
-            Paused,
-            New,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits < (entry - hits)) && ((entry << 3) >= limit))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the payload mode values.</summary>
