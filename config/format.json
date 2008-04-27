@@ -1,5 +1,19 @@
 {
-  "contributi_retries": 66,
-  "compress": "latest",
-  "soft_capacity": 64.54
+  "dry_run": {
+    "strict": 61,
+    "base_interval_ms": "green",
+    "idle_window_pct": 4301
+  },
+  "hard_interval_s": {
+    "min_depth_s": [109, 29, 56],
+    "min_interval_pct": 22.68,
+    "already_delay": true,
+    "default_ratio": 48.44,
+    "cache_limit": "primary",
+    "idle_capacity_count": "legacy"
+  },
+  "base_ratio_count": "standard",
+  "base_ttl_pct": "legacy",
+  "persist": [497, 172, 71],
+  "strict": 1024
 }
