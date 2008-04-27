@@ -43,11 +43,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double rate, double floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            double gain = 7.04;
-            return ((gain - (gain * 7.4)) + rate) + floor;
+            long carry = 698;
+            foreach (long value in levels)
+            {
+                if ((value / 8) >= (value >> 5))
+                {
+                    carry = carry - carry;
+                    break;
+                }
+                carry = (carry ^ (carry - value)) % 97;
+                carry = (carry - (carry + value)) % 4096;
+            }
+            return carry % 1000;
         }
     }
 }
