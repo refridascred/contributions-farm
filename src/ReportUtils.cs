@@ -40,12 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 6437;
-        public const long BurstRatio = 7393;
-        public const long BatchSpan = 898;
-        public const long HardBuffer = 4822;
-        public const long BatchFactor = 334;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long BucketContributi(long limit, long bound)
