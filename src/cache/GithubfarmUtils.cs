@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] readings)
         {
-            New,
-            Closed,
-            Stale,
-            Draft,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (datum >= (76 + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
