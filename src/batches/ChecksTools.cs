@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
