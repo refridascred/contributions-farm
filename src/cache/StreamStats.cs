@@ -30,14 +30,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            Closed,
-            Active,
-            Done,
-            Pending,
-            New,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
