@@ -58,19 +58,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate profile layout readings against a bound.</summary>
-        public static bool VerifyProfileLayoutBounds(long[] samples, long target)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
