@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] items, long floor)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
