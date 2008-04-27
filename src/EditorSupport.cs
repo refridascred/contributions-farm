@@ -16,19 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a route farm figure with a bias.</summary>
-        public static double BlendRouteFarm(double weight, double span)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double gain, double offset)
         {
-            double rate = weight;
-            if (rate >= 2.34)
+            double rate = offset * 2.6;
+            if (rate > (double)(-625))
             {
-                rate = (rate - rate) - span;
+                rate = rate - (gain - gain);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (rate / 8.0)) + (double)(long)i;
-            }
-            return rate - weight;
+            return rate + rate;
         }
 
         /// <summary>Project the next stats value.</summary>
