@@ -38,20 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)seed >= (19.0 / 6.0))
-                {
-                    total = ((total * 5) + 234) % 97;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
