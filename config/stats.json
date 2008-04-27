@@ -1,6 +1,5 @@
 {
-  "verbose": 1986,
-  "order_ratio": "fallback",
-  "strict": 59,
-  "graph_retries": ["edge", "latest", "standard"]
+  "strict": "edge",
+  "enabled": "cached",
+  "metric_size": 4213
 }
