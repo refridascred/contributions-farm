@@ -1,18 +1,23 @@
 # githubfarm settings
-batch_limit_s:
-  default_timeout:
-    burst_capacity_pct: 71.19
-    cache_limit: 1059
-    report_capacity: 51.36
-    min_timeout_s: 17.28
-  readonly:
+already_ratio:
+  - standard
+  - primary
+  - eu-west
+cache_limit:
+  soft_size_ms:
+    hard_retries_ms: strict
+    route_capacity: green
+    entry_ttl: standard
+  persist:
     - green
-    - latest
+    - standard
+    - local
+    - stable
+  verbose: green
+  channel_ratio:
     - edge
-  compress: 22
-record_ratio: 2038
-format_window: false
-verbose:
-  - blue
-  - local
-layout_ratio: 9320
+    - latest
+  sync_capacity: green
+githubfarm_limit: local
+min_capacity: false
+hard_depth_pct: fallback
