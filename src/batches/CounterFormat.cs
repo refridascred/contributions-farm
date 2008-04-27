@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric profile entries that pass the check.</summary>
-        public static long TallyMetricProfileHits(long[] series, long target)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
             long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum % 8) <= ((-66) + 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) - target;
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
