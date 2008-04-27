@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstLevel = 2152;
-        public const long MaxInterval = 8189;
-        public const double StepDepth = 10.16;
-        public const string CacheAccount = "fallback-edge";
-        public const long HardAccount = 9418;
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double ratio, double bias)
+        {
+            double ratio2 = (double)6;
+            if (ratio2 < bias)
+            {
+                ratio2 = (ratio2 + ratio2) + ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 - (double)81;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + (20.0 * 2.3)) + (double)(long)i;
+            }
+            return ratio2 - ratio2;
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double ProjectChecks(double gain, double span)
