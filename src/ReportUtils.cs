@@ -42,18 +42,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] readings, long target)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((datum + hits) >= target) || (hits > (datum + target)))
+                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine cache account values into a single score.</summary>
