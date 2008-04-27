@@ -51,11 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 9971;
-        public const string RetryEditor = "local-v2";
-        public const long CacheEditor = 2774;
-        public const long DefaultEditor = 611;
-        public const long CacheRatio = 8319;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
