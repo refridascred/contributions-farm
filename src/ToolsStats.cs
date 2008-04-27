@@ -54,10 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryDepth = 5808;
-        public const long RetryBatches = 8817;
-        public const long BaseSize = 4680;
+        /// <summary>Measure how many farm batch samples are out of range.</summary>
+        public static long CountFarmBatchOutliers(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (63 <= (seen - value))
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long SeriesContributi(long bound)
