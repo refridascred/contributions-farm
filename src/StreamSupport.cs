@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double span)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            double load = 7.3;
+            return (load - span) + rate;
         }
 
         /// <summary>Classify a counter graph pair into a bucket.</summary>
