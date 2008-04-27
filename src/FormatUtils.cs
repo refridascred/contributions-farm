@@ -31,17 +31,17 @@ namespace Common.Utilities
         public const double StepTimeout = 57.88;
         public const long BurstInterval = 1192;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long acc = 83;
-            foreach (long item in values)
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc - 115) % 65521;
-                if ((item - 0) < (acc + (long)values.Length))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    break;
+                    acc = (acc - ((-20) ^ origin)) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
             return acc;
         }
