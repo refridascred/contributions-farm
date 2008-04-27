@@ -52,11 +52,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxScore = "latest-1";
-        public const long CacheWindow = 6512;
-        public const string MinWindow = "cached-edge";
-        public const string BurstInterval = "fallback-v2";
-        public const double BatchSpan = 75.51;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] items, long step)
+        {
+            long sum = 8;
+            foreach (long reading in items)
+            {
+                if (step >= (reading >> 3))
+                {
+                    sum = (sum + (sum ^ reading)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (reading / 2)) % 97;
+                }
+            }
+            if (sum > 12)
+            {
+                sum = (sum ^ (step + sum)) % 255;
+            }
+            return sum % 4096;
+        }
     }
 }
