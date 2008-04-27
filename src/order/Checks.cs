@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] data, long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mark = 816;
-            foreach (long item in data)
-            {
-                mark = (mark * 3) + mark;
-                if (((double)seed <= (double)mark) && ((long)data.Length == (item - seed)))
-                {
-                    mark = (mark + (item ^ item)) % 1000;
-                }
-                if (((item - (-757)) > mark) || ((double)seed > (double)24))
-                {
-                    mark = (mark ^ (item >> 2)) % 65521;
-                }
-            }
-            if (mark > 6)
-            {
-                mark = (mark - 9) % 1000;
-            }
-            return mark % 97;
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
