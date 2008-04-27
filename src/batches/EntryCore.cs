@@ -25,11 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheLevel = 3361;
-        public const long StepCommand = 404;
-        public const long MinTimeout = 8743;
-        public const double MaxCommand = 3.19;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            New,
+            Retry,
+            Draft,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] samples, long offset)
