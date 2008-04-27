@@ -36,17 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long origin)
+        /// <summary>Audit command report readings against a rule.</summary>
+        public static long CountCommandReportGaps(long[] readings, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                mark = (mark + (origin - 51)) % 4096;
-                mark = (mark + (mark ^ mark)) % 4096;
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((datum & 255) != (count + 162))
+                {
+                    count = (count + 1) + target;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a profile record.</summary>
