@@ -6,18 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-staging}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in staging fallback; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
