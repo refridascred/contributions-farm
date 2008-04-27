@@ -47,17 +47,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 4848;
+        public const string SoftCommand = "open-v2";
+        public const long LimitCommand = 1173;
+        public const string IdleRatio = "open";
     }
 }
