@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] values, long limit)
+        /// <summary>Digest a series of buffer checks entries.</summary>
+        public static long CombineBufferChecks(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long acc = 92;
+            foreach (long value in readings)
             {
-                if ((18.0 + 4.76) >= (double)limit)
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc - (value & 31)) % 4096;
             }
-            return tally;
+            if (acc < 15)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Hold a support info.</summary>
