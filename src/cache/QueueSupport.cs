@@ -23,22 +23,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] values, long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long seed)
         {
-            long result = 29;
-            foreach (long datum in values)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)seed == (1.0 / 5.0))
-                {
-                    result = result - ((long)values.Length + datum);
-                }
+                sum = (sum * 3) + seed;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (result < 460)
-            {
-                result = ((result * 2) + (result << 1)) % 255;
-            }
-            return result;
+            return sum;
         }
     }
 }
