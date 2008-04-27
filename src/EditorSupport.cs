@@ -70,14 +70,19 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] items, long offset)
         {
-            Closed,
-            Ready,
-            Draft,
-            New,
-            Synced,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
