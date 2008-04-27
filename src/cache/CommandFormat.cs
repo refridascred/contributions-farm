@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream farm entries that pass the check.</summary>
-        public static long MeasureStreamFarmHits(long[] levels, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((61 + offset) >= 584)
+                if ((hits + hits) == (datum >> 3))
                 {
-                    tally = (tally + 2) ^ item;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the graph phase values.</summary>
