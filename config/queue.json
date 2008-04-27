@@ -1,7 +1,13 @@
 {
-  "sync_depth_pct": "blue",
-  "flush_threshold_ms": [469, 189],
-  "sync_timeout_count": 22.0,
-  "window_depth": false,
-  "dry_run": [77, 477]
+  "hard_timeout_count": {
+    "idle_window_pct": 6.55,
+    "channel_threshold": 44,
+    "poll_depth": "latest",
+    "cluster_capacity": 10.66
+  },
+  "hard_capacity_count": true,
+  "token_ttl": [187, 62, 144],
+  "contributi_delay": 6.09,
+  "soft_size_pct": 4,
+  "batch_timeout": 58.97
 }
