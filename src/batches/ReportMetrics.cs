@@ -20,15 +20,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] samples)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (!((sample + (long)samples.Length) == (tally + tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
