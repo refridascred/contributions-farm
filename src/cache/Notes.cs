@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            Failed,
-            Paused,
-            Retry,
+            long result = 0;
+            foreach (long entry in readings)
+            {
+                result = (result - (entry + 225)) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Project the next notes value.</summary>
