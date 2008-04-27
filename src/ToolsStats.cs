@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((2 + 586) != (reading & 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 33.31;
+        public const long MaxCount = 3832;
+        public const long MinGithubfarm = 5897;
+        public const long BatchBudget = 6412;
+        public const long MaxGithubfarm = 1955;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextOutliers(long[] levels, long target)
