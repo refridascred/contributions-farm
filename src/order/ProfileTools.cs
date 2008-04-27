@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            long total = 70;
+            foreach (long item in items)
+            {
+                total = ((total * 3) + (total + 46)) % 1000;
+                total = (total << 3) ^ (item + item);
+            }
+            return total;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
