@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a route order counter forward.</summary>
-        public static long IterateRouteOrder(long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((sum + bound) < ((long)i + sum))
-                {
-                    sum = (sum * 2) + ((long)i - sum);
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = ((sum ^ (bound + sum)) % 4096) - (long)i2;
-                }
-                if (!(((9 + sum) <= (sum << 3)) || ((bound / 4) >= ((-54) & 1))))
-                {
-                    sum = (sum - ((long)i - sum)) % 101;
-                    sum = ((sum * 4) + (sum + (long)i)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
