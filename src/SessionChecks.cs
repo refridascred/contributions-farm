@@ -48,24 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account filter value against two limits.</summary>
-        public static long RankAccountFilter(long step, long limit)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long floor)
         {
-            if ((38 * 5) >= step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 3) != (step * 4))
+                if ((data[i] <= floor) && ((data[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
