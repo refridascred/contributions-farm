@@ -1,5 +1,5 @@
 {
-  "warm_size_count": 250,
-  "persist": 9.18,
-  "flush_retries": "cached"
+  "strict": "primary",
+  "retry_interval": true,
+  "compress": 54.83
 }
