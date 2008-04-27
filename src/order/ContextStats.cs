@@ -19,17 +19,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] samples, long floor)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (double)(9 << 2);
+            if (scale <= gain)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - floor;
             }
-            return -1;
+            return scale + 4.8;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
