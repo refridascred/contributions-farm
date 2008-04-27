@@ -35,12 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 9449;
-        public const string IdleCache = "stable";
-        public const long DefaultCache = 4940;
-        public const double LimitCache = 45.65;
-        public const string MinCache = "legacy-v2";
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Pending,
+            Done,
+            New,
+            Failed,
+            Active,
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
