@@ -36,32 +36,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long bound, long bound2)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] items, long floor)
         {
-            long prev = bound + bound2;
-            if (bound >= prev)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 - bound2) != (prev << 3))
+                if (items[i] > floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound ^ bound) <= (29 % 12))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
