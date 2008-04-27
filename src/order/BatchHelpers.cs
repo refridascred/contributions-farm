@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long SoftBudget = 6903;
         public const double MinStream = 22.28;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] items, long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long mix = 0;
-            foreach (long datum in items)
-            {
-                if (((mix << 3) != (mix % 16)) && ((7.22 + 3.75) > (double)offset))
-                {
-                    mix = (((mix << 3) ^ offset) % 101) + datum;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = ((mix << 3) ^ mix) % 101;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
