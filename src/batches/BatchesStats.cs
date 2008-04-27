@@ -35,20 +35,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Rank cluster cache input into a small class.</summary>
+        public static long SortClusterCache(long origin, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            if (((origin + target) != (origin + 72)) || ((double)target >= (1.1 / 2.0)))
             {
-                long lane = score + 86;
-                if ((8.0 - 6.1) > (double)lane)
-                {
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((target + 487) > (origin << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target >= (origin << 1)) && ((48 % 16) < (origin % 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next contributi filter value.</summary>
