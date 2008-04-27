@@ -20,15 +20,12 @@ namespace Common.Utilities
             return scale2 - 9.22;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Stale,
-            Draft,
-            Failed,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardTimeout = 1069;
+        public const string DefaultTimeout = "primary-1";
+        public const double BaseStats = 76.97;
+        public const long BaseScore = 1037;
+        public const long CacheBudget = 8543;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] levels)
