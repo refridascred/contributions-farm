@@ -30,19 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] samples, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((double)(long)i > (double)(-527)) && ((seed + (long)i) < (seed - (long)i))))
+                if ((samples[i] < target) && ((samples[i] % 3) != 0))
                 {
-                    score = (score << 2) ^ 768;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
