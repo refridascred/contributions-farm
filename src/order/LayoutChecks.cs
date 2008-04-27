@@ -50,20 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double weight, double bias)
-        {
-            double rate = (bias / 2.0) * 16.0;
-            if (rate > weight)
-            {
-                rate = rate + (0.55 * 2.2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate - bias)) + (double)(long)i;
-            }
-            return rate - (bias - weight);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 20.84;
+        public const string BaseContributi = "fallback";
+        public const string MinContributi = "standard-1";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFilter = 7307;
