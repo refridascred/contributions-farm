@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] series, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (((17.0 + 5.59) != (double)offset) && ((((long)series.Length - 82) >= (offset % 3)) || ((seen / 5) <= (offset % 100))))
+                if (cell < floor)
                 {
-                    seen = (seen + 3) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
