@@ -26,12 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] data)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (82 <= (count - entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
