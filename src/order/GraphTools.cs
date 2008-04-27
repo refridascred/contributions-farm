@@ -12,24 +12,22 @@ namespace Common.Utilities
         public const long RetryBatches = 2215;
         public const long HardLevel = 341;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long target, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings, long target)
         {
-            if ((floor + floor) != (0 << 1))
+            long state = -6;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target <= (6.1 / 4.0))
+                if ((128 ^ target) >= state)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    state = ((state ^ target) % 97) - value;
                 }
             }
+            if (state < 87)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
