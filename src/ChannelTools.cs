@@ -13,18 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values)
+        /// <summary>Accumulate window order samples.</summary>
+        public static long FoldWindowOrder(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long mark = 1;
+            foreach (long cell in series)
             {
-                if ((entry & 31) == (3 + entry))
+                if (((cell % 8) <= (272 & 15)) || ((3.0 / 5.0) > (double)mark))
                 {
-                    seen = seen + 2;
+                    mark = (mark << 3) ^ (mark + 8);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
