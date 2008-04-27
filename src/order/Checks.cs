@@ -52,19 +52,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Ready,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
