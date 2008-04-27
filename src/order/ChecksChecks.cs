@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] items, long target)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((target >= (tally >> 2)) && !(target <= tally))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
