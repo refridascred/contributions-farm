@@ -24,16 +24,18 @@ namespace Common.Utilities
             return (mean - (span * 6.0)) + gain;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] data, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                sum = (sum * 3) + seed;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (reading <= 4)
+                {
+                    tally = (tally + 1) + offset;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
