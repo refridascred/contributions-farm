@@ -34,38 +34,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long seed, long offset)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long origin)
         {
-            if ((seed ^ seed) >= (offset * 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((3 + offset) <= (offset >> 3)))
+                if (data[i] > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.0 / 4.0) <= (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((80 & 7) <= (seed % 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
