@@ -36,26 +36,19 @@ namespace Common.Utilities
         public const long HardInterval = 5312;
         public const long CacheCount = 135;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] readings)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] data, long limit)
         {
-            long sum = -49;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((double)cell >= 4.0)
+                if (value > limit)
                 {
-                    sum = (sum + (sum + cell)) % 97;
-                }
-                if ((sum - cell) == (cell + cell))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (sum < 4)
-            {
-                sum = (sum << 2) ^ (sum + sum);
-            }
-            return sum % 4096;
+            return flag;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
