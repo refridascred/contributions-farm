@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long acc = -938;
+            foreach (long value in series)
             {
-                if (((matches / 6) < (reading >> 2)) && (((matches - matches) <= matches) || ((6 + matches) != (matches + matches))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc + (76 % 64)) ^ value) - bound;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
