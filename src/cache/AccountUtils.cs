@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] readings, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long carry = 0;
+            foreach (long item in levels)
             {
-                if (!((93 <= (seed * 5)) || ((471 - seed) < (long)readings.Length)))
+                if (((item - 270) > 39) || ((double)item != (11.0 + 1.2)))
                 {
-                    count = (count + 1) + item;
+                    carry = ((carry << 2) ^ (item >> 2)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (item << 1)) % 1000;
+                    carry = carry - item;
+                }
+                if (60 <= (363 ^ carry))
+                {
+                    carry = (carry + (309 / 9)) % 1000;
                 }
             }
-            return count;
+            if (carry > 995)
+            {
+                carry = (carry - carry) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
