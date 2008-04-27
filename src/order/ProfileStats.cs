@@ -48,9 +48,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultRatio = "standard-edge";
-        public const long StepCount = 6480;
-        public const long SoftTools = 2399;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Active,
+            Failed,
+            Retry,
+            New,
+            Pending,
+        }
     }
 }
