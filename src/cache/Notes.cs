@@ -40,18 +40,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mix = 7;
+            foreach (long item in data)
             {
-                if ((double)entry <= (7.4 - 6.4))
+                if (((461 - floor) != ((long)data.Length + floor)) && ((mix / 5) > (item * 5)))
                 {
-                    tally = tally + 2;
+                    mix = (mix - (item % 7)) % 101;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
