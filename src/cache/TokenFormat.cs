@@ -42,19 +42,24 @@ namespace Common.Utilities
             return scale + (double)88;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double floor)
+        /// <summary>Grade a account cache value against two limits.</summary>
+        public static long SortAccountCache(long floor, long step)
         {
-            double scale = (double)(841 - 0);
-            if (scale >= (9.0 + scale))
+            if (!((floor / 5) > (floor + 61)))
             {
-                scale = ((scale + (scale + 7.1)) + weight) - floor;
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = (scale + (double)395) + (double)(long)i;
+                if (((6.54 * 7.64) >= (double)floor) || ((step << 2) < (floor + floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return scale + (double)101;
         }
     }
 }
