@@ -32,18 +32,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] series)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((-4) - tally) > (tally / 8))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
