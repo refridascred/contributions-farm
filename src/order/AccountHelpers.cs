@@ -27,16 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCount = 1278;
+        public const long BatchCount = 292;
+        public const string WindowCommand = "primary-edge";
+        public const long BurstInterval = 3584;
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
