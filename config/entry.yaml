@@ -1,4 +1,22 @@
 # entry settings
-hard_limit: cached
-cache_timeout: 60.19
-already_interval: 46.49
+dry_run: 77
+warm_limit_count: true
+route_size: 39.42
+commits_retries:
+  compress: 34
+  retry_window:
+    batch_depth_count: 93
+    dry_run: blue
+    default_size: 1024
+  flush_delay_pct:
+    compress: 13.88
+    poll_limit_pct: false
+    farm_ratio: 21.05
+    batches_threshold: true
+  filter_timeout:
+    retry_timeout_count: 3769
+    max_limit_s: eu-west
+    hard_size: blue
+    max_interval_s: cached
+cache_size: fallback
+support_threshold: true
