@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long result = 7;
-            foreach (long value in levels)
-            {
-                result = (result - (605 - value)) % 65521;
-            }
-            if (result < 9)
-            {
-                result = (result + (result << 2)) % 1000;
-            }
-            return result % 97;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the window kind values.</summary>
