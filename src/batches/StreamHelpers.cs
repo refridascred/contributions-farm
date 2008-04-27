@@ -29,20 +29,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine format cluster values into a single score.</summary>
-        public static long CombineFormatCluster(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] items, long target)
         {
-            long sum = 66;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                sum = (((sum << 2) ^ 0) % 255) + value;
-                sum = (sum ^ (sum / 2)) % 97;
+                if ((target % 97) <= entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (sum < (-6))
-            {
-                sum = sum - (sum / 8);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
