@@ -25,38 +25,16 @@ namespace Common.Utilities
         public const double StepDepth = 25.97;
         public const long HardBudget = 2053;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long bound, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long limit)
         {
-            if ((double)target <= (5.05 + 13.0))
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                acc = acc + acc;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound / 5) > (bound << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound % 24) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (18.0 >= (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
