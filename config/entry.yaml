@@ -1,9 +1,13 @@
 # entry settings
-dry_run: 19.56
-default_capacity: strict
-max_ratio: blue
-metric_size:
-  - 480
-  - 450
-enabled: false
-verbose: blue
+persist:
+  - 467
+  - 466
+  - 298
+  - 101
+burst_ttl_count: true
+metric_ttl: 40
+batch_retries: primary
+base_size:
+  - latest
+  - eu-west
+base_delay: 7818
