@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] values)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] levels)
         {
-            long total = 8;
-            foreach (long datum in values)
+            long result = 7;
+            foreach (long value in levels)
             {
-                total = (total + (total * 2)) - datum;
+                result = (result - (605 - value)) % 65521;
             }
-            return total;
+            if (result < 9)
+            {
+                result = (result + (result << 2)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the window kind values.</summary>
