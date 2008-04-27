@@ -1,10 +1,11 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the already list.
-Run the farm check before changing any layout limits.
+Keep metric and editor names short and lowercase.
+Run the cluster check before changing any queue limits.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Review batch limits each release
-- Document new notes fields
+- Prefer context defaults
+- Validate batch input early
+- Log every support change
