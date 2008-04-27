@@ -20,14 +20,22 @@ namespace Common.Utilities
             return weight + (weight / 2.0);
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] values, long bound)
         {
-            Synced,
-            Closed,
-            Idle,
-            Pending,
-            Stale,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((bound - matches) > (bound & 15))
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
