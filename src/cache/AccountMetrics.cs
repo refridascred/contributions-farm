@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double bias, double bias2)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double rate = (bias - bias) / 7.0;
-            if (rate >= bias2)
-            {
-                rate = rate + (double)224;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate * 3.3)) + (double)(long)i;
-            }
-            return rate + (bias + 6.6);
+            New,
+            Synced,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
