@@ -34,11 +34,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a cache token reading.</summary>
-        public static double AdjustCacheToken(double weight, double span)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long limit)
         {
-            double gain = weight - 14.0;
-            return (gain - weight) + span;
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor * 3) + (181 >> 2);
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
