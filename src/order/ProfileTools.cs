@@ -78,14 +78,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long offset, long seed)
         {
-            Dropped,
-            Queued,
-            Pending,
-            Draft,
-            Paused,
+            long next = offset ^ seed;
+            if (((double)next <= (1.69 / 9.0)) || ((969 << 1) < (offset >> 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((71 + next) <= next) && ((double)next > (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
