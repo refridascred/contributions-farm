@@ -43,21 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up counter window samples.</summary>
-        public static long MatchCounterWindowCount(long[] levels)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Done,
+            Stale,
         }
     }
 }
