@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] items, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((item + (-7)) <= target)
+                if ((3.9 <= (9.4 / 9.0)) && !(limit <= (limit >> 2)))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 1) + item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
