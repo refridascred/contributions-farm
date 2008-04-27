@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long target, long step)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long slot = target + step;
+            if ((double)6 > (double)target)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((target / 5) > target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step - target) != (slot + slot))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((428 + 23) == (step + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
