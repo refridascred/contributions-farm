@@ -36,12 +36,10 @@ namespace Common.Utilities
             return (weight - scale) + span;
         }
 
-        /// <summary>Scale a cache filter figure with a bias.</summary>
-        public static double ScaleCacheFilter(double rate, double bias)
-        {
-            double drift = rate;
-            return drift - bias;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 110;
+        public const string DefaultEditor = "primary";
+        public const long BatchScore = 9662;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
