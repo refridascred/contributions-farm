@@ -40,11 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowBudget = 5035;
-        public const double MaxLevel = 55.9;
-        public const long MinInterval = 7497;
-        public const double HardWindow = 68.16;
-        public const string WindowInterval = "stable-edge";
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
