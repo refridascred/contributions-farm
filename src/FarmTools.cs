@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] values, long limit)
+        /// <summary>Look up the position of a record githubfarm sample.</summary>
+        public static long FindRecordGithubfarmIndex(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < limit)
+                if ((values[i] >= origin) && ((values[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Match up token samples.</summary>
