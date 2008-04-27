@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] levels, long step)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] readings)
         {
-            long mix = 164;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix << 2) ^ (mix - mix)) ^ cell) + step;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix < 255)
-            {
-                mix = ((mix * 5) + (60 >> 5)) % 4096;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
