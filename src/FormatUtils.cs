@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Scale a cluster checks figure with a bias.</summary>
+        public static double SmoothClusterChecks(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = offset;
+            if (rate < (scale + offset))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate + rate;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (double)4;
         }
 
         /// <summary>Digest a series of record entries.</summary>
