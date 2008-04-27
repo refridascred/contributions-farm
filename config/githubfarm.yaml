@@ -1,6 +1,4 @@
 # githubfarm settings
-token_size: 7254
-base_depth: 57.84
-batch_ttl: legacy
-dry_run: 60
-format_interval: 88.66
+verbose: 60
+entry_depth: 100
+batch_ratio: 9032
