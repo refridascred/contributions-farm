@@ -69,13 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
     }
 }
