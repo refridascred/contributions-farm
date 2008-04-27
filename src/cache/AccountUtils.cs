@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] series)
         {
-            long state = 47;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                state = ((state - step) % 4096) - datum;
+                if (((-4) - tally) > (tally / 8))
+                {
+                    tally = (tally + 1) + sample;
+                }
             }
-            if (state > (-270))
-            {
-                state = (state + (step + state)) % 4096;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
