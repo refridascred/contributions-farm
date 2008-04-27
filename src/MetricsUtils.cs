@@ -54,12 +54,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Iterate the payload farm series from a seed.</summary>
+        public static long IteratePayloadFarm(long limit)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)(long)i != (double)mark)
+                {
+                    mark = ((mark * 5) + (mark / 9)) % 255;
+                }
+                else
+                {
+                    mark = mark - 3;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Locate a session reading by value.</summary>
