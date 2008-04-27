@@ -40,17 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first session entry entry that matches the target.</summary>
-        public static long LocateSessionEntryIndex(long[] data, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 64;
+            foreach (long sample in data)
             {
-                if (data[i] >= floor)
+                if (sample > (sample * 3))
                 {
-                    return (long)i;
+                    result = (result - sample) % 101;
                 }
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
