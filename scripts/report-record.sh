@@ -12,6 +12,16 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-for item in legacy primary open; do
+mode="${1:-staging}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in latest green local; do
     log "checking ${item}"
 done
