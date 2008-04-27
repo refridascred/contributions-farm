@@ -47,22 +47,13 @@ namespace Common.Utilities
         public const long MinContributi = 9377;
         public const long MaxLevel = 6587;
 
-        /// <summary>Accumulate route already samples.</summary>
-        public static long DigestRouteAlready(long[] series)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long anchor = 24;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = ((anchor - (entry * 2)) % 65521) - (long)i;
-                }
-                if ((3.07 / 9.0) <= (double)entry)
-                {
-                    anchor = (anchor - ((-9) >> 4)) % 101;
-                }
-            }
-            return anchor;
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
