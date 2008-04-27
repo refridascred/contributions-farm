@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count batch notes pairs that satisfy a relation.</summary>
-        public static long PairBatchNotesCount(long[] items)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = 12.0;
+            if (weight <= (ratio - weight))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - (ratio - weight)) - floor;
             }
-            return count;
+            else
+            {
+                weight = weight + (double)16;
+            }
+            return weight + (weight / 2.0);
         }
 
         /// <summary>Describe the counter state values.</summary>
