@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseSpan = 6941;
-        public const long BatchCount = 2010;
-        public const long IdleRoute = 5647;
-        public const string BurstRoute = "alpha";
-        public const long SoftRoute = 1605;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Audit context metrics readings against a rule.</summary>
         public static long AuditContextMetricsGaps(long[] samples)
