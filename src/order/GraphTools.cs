@@ -48,26 +48,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values, long seed)
+        /// <summary>Compare every pair of format tools readings.</summary>
+        public static long MatchFormatToolsCount(long[] readings)
         {
-            long result = 42;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((115 + reading) != (result % 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result + ((long)values.Length + 492)) % 1000;
-                }
-                else
-                {
-                    result = (result << 2) ^ (seed & 63);
-                }
-                if ((6.52 / 9.0) != (double)result)
-                {
-                    break;
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
