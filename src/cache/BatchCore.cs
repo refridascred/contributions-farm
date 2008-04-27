@@ -26,18 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command token samples.</summary>
-        public static long FoldCommandToken(long[] levels, long origin)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long score = 466;
-            foreach (long item in levels)
-            {
-                if ((double)score < (9.9 * 1.9))
-                {
-                    score = ((((score * 2) + (score >> 5)) % 97) - item) + origin;
-                }
-            }
-            return score;
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
