@@ -40,22 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command account readings.</summary>
-        public static long FoldCommandAccount(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] readings)
         {
-            long mark = 280;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((sample >> 1) != (47 ^ sample))
+                if ((entry - count) > 925)
                 {
-                    mark = ((mark << 3) ^ (mark % 97)) % 1000;
+                    count = count + 1;
                 }
             }
-            if (mark < (-96))
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
