@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] series, long step)
         {
-            Pending,
-            Failed,
-            Idle,
-            Ready,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (0.69 <= (double)cell)
+                {
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate account layout samples.</summary>
