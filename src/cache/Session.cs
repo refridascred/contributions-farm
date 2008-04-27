@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] values)
+        /// <summary>Measure how many route cluster samples are out of range.</summary>
+        public static long MeasureRouteClusterOutliers(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((double)tally >= (5.1 / 8.0))
+                if ((double)limit < 3.97)
                 {
-                    tally = (tally + 3) ^ sample;
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
