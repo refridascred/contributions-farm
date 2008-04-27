@@ -84,22 +84,19 @@ namespace Common.Utilities
         public const long IdleScore = 2291;
         public const string DefaultSize = "legacy";
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] series, long step)
         {
-            long score = 99;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (!((4.0 / 7.0) < (double)datum))
+                if (reading <= step)
                 {
-                    score = (score + (datum & 15)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 55)
-            {
-                score = ((score << 2) ^ (score % 60)) % 1000;
-            }
-            return score;
+            return valid;
         }
     }
 }
