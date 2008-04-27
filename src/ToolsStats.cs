@@ -19,22 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (item < hits)
+                if ((matches - datum) >= matches)
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a entry options.</summary>
