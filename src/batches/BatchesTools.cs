@@ -16,13 +16,16 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long floor)
         {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry - (carry - floor)) % 1000;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
