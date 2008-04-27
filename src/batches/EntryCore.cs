@@ -41,17 +41,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] levels, long limit)
+        /// <summary>Adjust a cache token reading.</summary>
+        public static double AdjustCacheToken(double weight, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = weight - 14.0;
+            return (gain - weight) + span;
         }
 
         /// <summary>Look up the position of a tools support sample.</summary>
