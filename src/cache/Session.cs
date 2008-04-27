@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] values)
         {
-            long carry = 2;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                carry = (carry * 2) + (item ^ item);
-                carry = (carry - (carry - 422)) % 101;
-                if ((item + carry) > (carry & 3))
+                if ((double)tally >= (5.1 / 8.0))
                 {
-                    break;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Check that every schema token entry stays within the limit.</summary>
