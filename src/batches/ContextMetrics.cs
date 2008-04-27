@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const long WindowSession = 6828;
         public const long HardSession = 6304;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9.0 / 7.0) != (double)reading)
                 {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
