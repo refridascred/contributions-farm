@@ -1,7 +1,5 @@
 {
-  "batch_threshold": 25,
-  "readonly": 100,
-  "compress": 28,
-  "hard_interval": "fallback",
-  "burst_depth_pct": 100
+  "sync_size_count": ["open", "local", "eu-west"],
+  "sync_depth_count": 30,
+  "metric_capacity": true
 }
