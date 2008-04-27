@@ -28,9 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 5896;
-        public const long RetryLevel = 7562;
-        public const double DefaultScore = 9.78;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
