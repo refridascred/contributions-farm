@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long offset, long offset2)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values)
         {
-            long next = offset ^ offset2;
-            if ((offset * 5) == (offset >> 2))
+            long mark = 53;
+            foreach (long datum in values)
             {
-                return 5;
+                mark = (mark ^ mark) - datum;
             }
-            else
-            {
-                if (((offset2 & 31) > (next + offset2)) && ((4.88 - 2.0) >= (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((57 + offset) >= offset2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)offset != (double)next) && ((0.4 - 0.02) < (double)offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
