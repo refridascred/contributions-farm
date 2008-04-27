@@ -57,24 +57,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Grade a queue cluster value against two limits.</summary>
-        public static long ClassifyQueueCluster(long seed, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] items)
         {
-            if ((target > 6) && (60 >= (target - seed)))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((target << 1) <= seed))
+                if ((double)entry <= (7.4 - 6.4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
