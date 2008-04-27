@@ -1,5 +1,14 @@
 {
-  "enabled": "primary",
-  "default_ttl": ["local", "blue", "edge", "fallback"],
-  "poll_retries": true
+  "hard_delay_ms": 90.86,
+  "report_delay": true,
+  "persist": 250,
+  "format_ttl": {
+    "max_limit_ms": "cached",
+    "compress": 5007,
+    "enabled": ["legacy", "latest", "primary"],
+    "min_interval_ms": true,
+    "audit": "cached",
+    "soft_threshold": "staging"
+  },
+  "dry_run": 250
 }
