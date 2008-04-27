@@ -16,13 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 6857;
+        public const string CacheInterval = "cached-1";
+        public const string MaxStream = "alpha-edge";
+        public const string BurstBudget = "open-1";
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
