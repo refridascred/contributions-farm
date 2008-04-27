@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a schema cluster sample.</summary>
-        public static long SeekSchemaClusterIndex(long[] values, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Match up editor samples.</summary>
