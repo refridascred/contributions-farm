@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] data, long origin)
         {
-            long mark = 847;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                mark = ((mark * 3) + mark) % 97;
-                if ((mark ^ mark) <= (value + mark))
+                if (sample < origin)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return mark % 97;
+            return valid;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
