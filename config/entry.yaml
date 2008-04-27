@@ -1,4 +1,4 @@
 # entry settings
-counter_interval: edge
-idle_delay: latest
-poll_timeout: 1024
+account_interval: false
+audit: standard
+editor_threshold: green
