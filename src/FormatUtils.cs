@@ -61,10 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 110;
-        public const string DefaultEditor = "primary";
-        public const long BatchScore = 9662;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseSpan = 2243;
+        public const string RetryRatio = "standard-edge";
+        public const long MaxScore = 525;
+        public const string StepCommits = "standard";
+        public const long BatchCommits = 1798;
 
         /// <summary>Accumulate checks graph samples.</summary>
         public static long WeighChecksGraph(long[] readings)
