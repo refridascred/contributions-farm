@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Pending,
+            Stale,
+            Closed,
             Ready,
-            Idle,
+            Active,
+            Done,
         }
 
         /// <summary>Roll a route counter forward.</summary>
