@@ -64,11 +64,9 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double ratio, double offset)
-        {
-            double load = ratio;
-            return (load + (ratio - 0.8)) + offset;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitBudget = 31.38;
+        public const double BatchOrder = 20.17;
+        public const long BaseTimeout = 2143;
     }
 }
