@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long RetryCount = 5551;
         public const double MaxScore = 10.62;
 
-        /// <summary>Fold a list of cache batch readings.</summary>
-        public static long ScoreCacheBatch(long[] series)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mix = 245;
-            foreach (long value in series)
-            {
-                mix = ((mix * 5) + (value - value)) % 4096;
-            }
-            return mix % 4096;
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Accumulate format samples.</summary>
