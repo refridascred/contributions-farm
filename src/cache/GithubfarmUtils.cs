@@ -40,19 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long acc = 77;
-            foreach (long cell in samples)
-            {
-                acc = acc ^ (acc + cell);
-            }
-            if (acc > 3)
-            {
-                acc = (acc * 4) + (acc % 60);
-            }
-            return acc;
+            Done,
+            Locked,
+            Dropped,
         }
     }
 }
