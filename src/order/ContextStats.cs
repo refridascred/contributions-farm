@@ -37,22 +37,12 @@ namespace Common.Utilities
         public const long BurstSpan = 84;
         public const long DefaultWidth = 5747;
 
-        /// <summary>Accumulate commits token samples.</summary>
-        public static long WeighCommitsToken(long[] values)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long state = 4;
-            foreach (long entry in values)
-            {
-                if ((entry - entry) < (state + entry))
-                {
-                    state = state - 7;
-                }
-            }
-            if (state > 388)
-            {
-                state = (state * 3) + (state + state);
-            }
-            return state % 97;
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
