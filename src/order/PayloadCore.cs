@@ -68,22 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] levels)
+        /// <summary>Match up channel editor samples.</summary>
+        public static long PairChannelEditorCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits << 3) != (cell - hits))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
