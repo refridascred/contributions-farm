@@ -1,6 +1,15 @@
 {
-  "audit": true,
-  "flush_interval_pct": 77,
-  "readonly": 6113,
-  "base_ratio_s": 8565
+  "enabled": 76,
+  "already_size": "blue",
+  "burst_delay_pct": {
+    "sync_delay_s": ["primary", "blue", "cached", "stable"],
+    "warm_size": [252, 115, 484, 366],
+    "enabled": {
+      "warm_size_s": "latest",
+      "default_window_pct": false,
+      "flush_interval": false,
+      "min_interval_ms": false
+    }
+  },
+  "max_interval_s": 60
 }
