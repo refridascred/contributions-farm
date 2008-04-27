@@ -31,19 +31,19 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Check that every cache context entry stays within the limit.</summary>
-        public static bool VerifyCacheContextLimits(long[] readings, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            double scale = bias;
+            if (scale >= bias)
             {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = (scale + scale) + bias2;
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (scale / 7.0)) + (double)(long)i;
+            }
+            return scale + 20.0;
         }
 
         /// <summary>Hold a order stats.</summary>
