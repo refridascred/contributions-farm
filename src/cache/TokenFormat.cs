@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] items, long limit)
+        /// <summary>Project the next notes route value.</summary>
+        public static double AdjustNotesRoute(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double load = (double)(521 >> 4);
+            if (load >= (0.1 / 7.0))
             {
-                if ((entry * 5) >= (limit / 8))
-                {
-                    seen = seen + 3;
-                }
+                load = (load - (offset + load)) + weight;
             }
-            return seen;
+            return load - (6.1 * 2.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
