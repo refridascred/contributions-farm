@@ -72,10 +72,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 6188;
-        public const long RetryScore = 4367;
-        public const long StepBatches = 9121;
-        public const string CacheRatio = "strict-v2";
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public long Count { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
