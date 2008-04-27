@@ -70,12 +70,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Paused,
-            Active,
-            Done,
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
