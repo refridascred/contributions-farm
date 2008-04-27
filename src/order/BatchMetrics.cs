@@ -66,15 +66,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            long carry = seed;
+            double bias2 = bias;
             for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                bias2 = ((bias2 + bias) + (double)(long)i) - ratio;
             }
-            return carry;
+            return bias2 - (bias2 / 6.0);
         }
     }
 }
