@@ -34,12 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long origin)
         {
-            Paused,
-            Ready,
-            Locked,
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark + (origin - 51)) % 4096;
+                mark = (mark + (mark ^ mark)) % 4096;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Locate a session reading by value.</summary>
