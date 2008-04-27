@@ -26,11 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of command account readings.</summary>
