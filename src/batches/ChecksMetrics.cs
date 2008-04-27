@@ -26,18 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] data, long limit)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits < (entry - hits)) && ((entry << 3) >= limit))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the payload mode values.</summary>
