@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] readings, long offset)
         {
-            long acc = -938;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc + (76 % 64)) ^ value) - bound;
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
