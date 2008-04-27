@@ -56,21 +56,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] levels)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed + (long)i) != ((long)i >> 5))
                 {
-                    if ((levels[i] + levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score * 2) + (640 + score);
+                    continue;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
