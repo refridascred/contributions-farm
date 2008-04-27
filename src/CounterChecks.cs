@@ -66,9 +66,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseStream = "stable-v2";
-        public const double SoftLevel = 89.48;
-        public const long DefaultInterval = 781;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Done,
+            Active,
+            Draft,
+            Ready,
+            Paused,
+        }
     }
 }
