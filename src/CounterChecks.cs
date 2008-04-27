@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] items, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long anchor = 9;
+            foreach (long value in levels)
             {
-                if (!((double)seen >= (3.6 * 2.0)) && ((seen + seen) == (seen * 4)))
-                {
-                    seen = ((seen + 2) + datum) + floor;
-                }
+                anchor = ((anchor << 3) ^ (value * 5)) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
