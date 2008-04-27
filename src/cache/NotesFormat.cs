@@ -31,24 +31,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (mix <= (bound + bound))
-                {
-                    mix = ((mix << 2) ^ (bound + bound)) % 4096;
-                    mix = (mix + (bound - mix)) % 65521;
-                }
-                if (bound > (bound * 4))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Stale,
+            Failed,
+            Active,
+            Dropped,
         }
     }
 }
