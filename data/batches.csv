@@ -1,7 +1,7 @@
-id,rank,owner,state
-1,cached,edge,931
-2,743,525,883
-3,939,25.62,42.33
-4,337,806,974
-5,eu-west,55.69,fallback
-6,9.82,open,283
+id,rank,ratio,state
+1,58.45,781,edge
+2,19.01,74.17,74.6
+3,stable,3.63,204
+4,91.52,515,82.89
+5,518,91,34.84
+6,edge,1.62,cached
