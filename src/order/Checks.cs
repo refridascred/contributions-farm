@@ -61,14 +61,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Done,
             Ready,
-            Pending,
-            Draft,
-            Active,
+            Paused,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
