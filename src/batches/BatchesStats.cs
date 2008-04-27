@@ -42,19 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] items, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= seed)
+                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
