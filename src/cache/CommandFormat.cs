@@ -46,19 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] data, long step)
+        /// <summary>Digest a series of buffer checks entries.</summary>
+        public static long ScoreBufferChecks(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long anchor = -931;
+            foreach (long sample in readings)
             {
-                if (item < step)
+                if (!((floor % 64) < (anchor + sample)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor + (sample << 3)) % 255;
                 }
             }
-            return valid;
+            return anchor % 1000;
         }
     }
 }
