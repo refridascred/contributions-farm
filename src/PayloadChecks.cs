@@ -74,13 +74,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Project the next stats notes value.</summary>
+        public static double ProjectStatsNotes(double weight, double floor)
         {
-            Closed,
-            Synced,
-            Retry,
-            Queued,
+            double gain = floor;
+            if (gain > (floor - floor))
+            {
+                gain = gain - (double)489;
+            }
+            else
+            {
+                gain = gain - (floor * 1.65);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (weight / 2.0)) - (double)(long)i;
+            }
+            return gain - (gain * 3.45);
         }
     }
 }
