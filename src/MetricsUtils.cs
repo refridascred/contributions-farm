@@ -54,12 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Locate a session reading by value.</summary>
