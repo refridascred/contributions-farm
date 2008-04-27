@@ -26,16 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor * 3) + (181 >> 2);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a route snapshot.</summary>
