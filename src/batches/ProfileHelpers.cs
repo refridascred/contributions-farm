@@ -35,13 +35,11 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Ready,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchBudget = 6670;
+        public const long LimitCommits = 3471;
+        public const long BatchCommits = 1945;
+        public const long StepCommits = 611;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] data, long seed)
