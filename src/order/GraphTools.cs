@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double gain, double offset)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            double ratio = (double)(192 + 610);
+            if (ratio < (double)309)
             {
-                if (!(((long)i + (long)i) > (total + offset)))
-                {
-                    total = ((total * 4) + ((long)i % 100)) % 101;
-                }
-                total = (total ^ (total - total)) % 101;
-                total = ((total * 2) + (long)i) % 101;
+                ratio = (ratio - ratio) - offset;
             }
-            return total;
+            else
+            {
+                ratio = ratio + (double)72;
+            }
+            return ratio + gain;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
