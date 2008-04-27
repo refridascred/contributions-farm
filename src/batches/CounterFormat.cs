@@ -30,12 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] items, long origin)
         {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
