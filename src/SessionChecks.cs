@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Check that every commits editor entry stays within the limit.</summary>
+        public static bool VerifyCommitsEditorLimits(long[] items, long floor)
         {
-            Paused,
-            Locked,
-            Failed,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
