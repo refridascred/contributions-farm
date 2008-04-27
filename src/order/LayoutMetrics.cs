@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine entry counter values into a single score.</summary>
-        public static long ScoreEntryCounter(long[] samples, long offset)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mark = 367;
-            foreach (long entry in samples)
-            {
-                mark = ((mark - (entry ^ entry)) % 97) - offset;
-                mark = mark ^ (entry + entry);
-                if ((7.1 * 4.14) > (double)entry)
-                {
-                    break;
-                }
-            }
-            return mark;
+            New,
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
