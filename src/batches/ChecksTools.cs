@@ -40,12 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] series, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
+                if (items[i] > bound)
                 {
                     return (long)i;
                 }
