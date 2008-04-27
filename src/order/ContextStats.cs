@@ -32,24 +32,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] data, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] values)
         {
-            long score = 780;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                score = ((score << 3) ^ (score >> 1)) - limit;
-                score = (score - (entry << 1)) % 4096;
-                if ((0.17 - 9.5) != (double)score)
+                if (((25 > (value - 5)) || ((matches % 60) <= (value ^ value))) && (((value * 5) < value) && (matches > (matches - value))))
                 {
-                    score = score ^ (score << 2);
-                }
-                else
-                {
-                    score = ((score << 3) ^ entry) % 1000;
+                    matches = matches + 3;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
