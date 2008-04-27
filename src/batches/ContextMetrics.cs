@@ -26,18 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] values, long limit)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((limit + seen) >= (sample * 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
