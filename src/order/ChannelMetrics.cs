@@ -30,17 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long floor)
+        /// <summary>Count the session queue entries that pass the check.</summary>
+        public static long CountSessionQueueGaps(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (values[i] < floor)
+                if ((double)count > (5.0 + 16.0))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
