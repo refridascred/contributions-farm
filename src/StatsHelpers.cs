@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 77.67;
-        public const long BurstReport = 61;
-        public const double MinCount = 84.26;
-        public const string BaseReport = "fallback";
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double rate, double offset)
