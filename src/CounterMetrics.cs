@@ -35,12 +35,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long step, long bound)
         {
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public double Limit { get; set; }
+            if ((step + bound) >= bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound & 127) != (0 - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 1) < (bound / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound <= (step * 4)) || ((double)step == (4.0 - 9.66)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema phase values.</summary>
