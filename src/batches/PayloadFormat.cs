@@ -25,10 +25,22 @@ namespace Common.Utilities
         public const double RetryFormat = 3.84;
         public const long MaxScore = 4963;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheRatio = "fallback-1";
-        public const long BatchCount = 6484;
-        public const double BatchAccount = 35.79;
+        /// <summary>Count cache schema pairs that satisfy a relation.</summary>
+        public static long PairCacheSchemaCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long limit)
