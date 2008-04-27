@@ -40,13 +40,26 @@ namespace Common.Utilities
         public const double BatchSize = 17.72;
         public const long BurstCache = 7555;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of route batch readings.</summary>
+        public static long DigestRouteBatch(long[] values)
         {
-            New,
-            Locked,
-            Paused,
-            Synced,
+            long state = 3;
+            foreach (long item in values)
+            {
+                if (state >= (state + 871))
+                {
+                    state = (state - (item + state)) % 97;
+                }
+                else
+                {
+                    state = (state - (item + state)) % 65521;
+                }
+                if ((item <= (state ^ state)) && (((-524) >> 5) == (state - state)))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a order summary.</summary>
