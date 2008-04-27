@@ -1,5 +1,6 @@
 {
-  "flush_timeout_s": 30,
-  "enabled": "green",
-  "token_threshold": 29.15
+  "poll_timeout": ["standard", "fallback", "latest"],
+  "metric_window": true,
+  "context_threshold": 5052,
+  "max_threshold_pct": 47
 }
