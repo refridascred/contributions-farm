@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const double WindowProfile = 14.88;
         public const double MaxProfile = 93.81;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((18.0 + 4.76) >= (double)limit)
+                {
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a support info.</summary>
