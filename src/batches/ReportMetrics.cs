@@ -33,19 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double gain, double span)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double mean = span;
-            if (mean <= (mean * 18.0))
-            {
-                mean = (mean - mean) + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean * 2.21)) + (double)(long)i;
-            }
-            return mean + mean;
+            Active,
+            Synced,
+            Idle,
+            Done,
+            Paused,
         }
     }
 }
