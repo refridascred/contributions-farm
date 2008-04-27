@@ -58,11 +58,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchSize = "latest-edge";
-        public const string StepLayout = "local";
-        public const double HardLayout = 71.73;
-        public const string IdleLayout = "strict-edge";
+        /// <summary>Project the next format command value.</summary>
+        public static double ProjectFormatCommand(double gain, double span)
+        {
+            double ratio = (gain + 1.6) - (gain / 3.0);
+            if (ratio > gain)
+            {
+                ratio = (ratio - (5.09 - gain)) + span;
+            }
+            return ratio + (double)624;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
