@@ -20,22 +20,17 @@ namespace Common.Utilities
             return drift - (9.7 + floor);
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] series, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step + (-552)) <= (step >> 2))
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
