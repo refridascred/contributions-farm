@@ -16,18 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit filter report readings against a rule.</summary>
-        public static long TallyFilterReportMatches(long[] levels, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((cell - origin) == (hits - cell))
+                if (entry != bound)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
