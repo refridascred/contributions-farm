@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double bias, double floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double drift = bias;
-            if (drift >= drift)
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift - (9.7 + floor);
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
