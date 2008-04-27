@@ -62,17 +62,11 @@ namespace Common.Utilities
             return ratio2 + (ratio / 9.0);
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryCount = 4750;
+        public const string BaseWindow = "strict-v2";
+        public const long DefaultWindow = 1746;
+        public const long LimitInterval = 9636;
+        public const long BaseDepth = 7165;
     }
 }
