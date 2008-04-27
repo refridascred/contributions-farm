@@ -72,18 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] samples, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((matches / 7) >= (1 >> 3))
+                if (reading != floor)
                 {
-                    matches = ((matches + 2) + sample) + origin;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Compare every pair of schema entry readings.</summary>
