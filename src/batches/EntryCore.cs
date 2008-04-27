@@ -61,14 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] samples, long seed)
         {
-            Draft,
-            Dropped,
-            New,
-            Stale,
-            Closed,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches << 1) == (587 >> 2))
+                {
+                    matches = ((matches + 1) + cell) + seed;
+                }
+            }
+            return matches;
         }
     }
 }
