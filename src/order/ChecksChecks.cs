@@ -12,11 +12,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] levels, long floor)
         {
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((floor >= (floor - 853)) && (41 < floor))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
