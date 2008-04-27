@@ -40,16 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long mix = 6;
+            foreach (long datum in series)
             {
-                acc = acc + acc;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (datum >= mix)
+                {
+                    mix = (mix ^ ((-179) / 6)) % 1000;
+                }
+                if (datum >= (datum * 3))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (mix > 58)
+            {
+                mix = (mix * 2) + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Adjust a counter reading.</summary>
