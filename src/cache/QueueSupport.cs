@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            New,
-            Locked,
-            Stale,
-            Draft,
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry * 2) + (long)i;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the order class values.</summary>
