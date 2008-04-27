@@ -20,16 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the cache token series from a seed.</summary>
-        public static long RollCacheToken(long offset)
+        /// <summary>Digest a series of cache layout entries.</summary>
+        public static long TotalCacheLayout(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            long result = -429;
+            foreach (long reading in values)
             {
-                carry = (carry - 277) % 65521;
-                carry = ((carry * 2) + (long)i) % 65521;
+                for (int i = 0; i < 5; i++)
+                {
+                    result = ((result + (result & 255)) % 255) + (long)i;
+                }
+                result = (result - reading) % 1000;
+                if ((17.0 - 5.8) == (double)reading)
+                {
+                    break;
+                }
             }
-            return carry;
+            if (result > 105)
+            {
+                result = result ^ (3 + result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
