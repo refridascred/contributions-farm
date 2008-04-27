@@ -29,13 +29,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Count queue already pairs that satisfy a relation.</summary>
+        public static long MatchQueueAlreadyCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
