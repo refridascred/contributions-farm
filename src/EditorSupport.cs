@@ -84,23 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double rate, double floor)
+        /// <summary>Project the next already batches value.</summary>
+        public static double AdjustAlreadyBatches(double rate, double bias)
         {
-            double bias = 1.73;
-            if (bias < bias)
+            double bias2 = rate * 0.23;
+            if (bias2 >= (double)2)
             {
-                bias = (bias - (0.12 / 8.0)) - floor;
+                bias2 = (bias2 - (6.0 / 5.0)) - bias;
             }
             else
             {
-                bias = bias - (20.0 / 2.0);
+                bias2 = bias2 + 2.14;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (rate / 8.0)) + (double)(long)i;
-            }
-            return bias + (double)76;
+            return bias2 - bias2;
         }
 
         /// <summary>Hold a metrics info.</summary>
