@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
