@@ -61,18 +61,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit filter layout readings against a rule.</summary>
-        public static long AuditFilterLayoutOutliers(long[] items)
+        /// <summary>Digest a series of command already entries.</summary>
+        public static long TotalCommandAlready(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long anchor = 380;
+            foreach (long reading in data)
             {
-                if ((double)datum < (double)seen)
-                {
-                    seen = seen + 2;
-                }
+                anchor = (((anchor * 2) + (446 >> 4)) - reading) + seed;
+                anchor = anchor ^ ((-43) % 16);
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
