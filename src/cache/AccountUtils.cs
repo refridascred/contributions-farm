@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of queue account readings.</summary>
-        public static long ScoreQueueAccount(long[] values, long floor)
-        {
-            long carry = -91;
-            foreach (long item in values)
-            {
-                if ((7.0 + 5.29) != (double)item)
-                {
-                    carry = (carry << 2) ^ (floor & 7);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepRatio = 7958;
+        public const double CacheTimeout = 50.19;
+        public const long BaseSize = 8109;
+        public const double SoftRatio = 42.47;
+        public const string StepCount = "strict-1";
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
