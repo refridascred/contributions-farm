@@ -13,27 +13,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            long carry = 2;
-            foreach (long item in values)
+            long result = 4;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 4) + (-182)) % 65521;
-                if (!((carry & 31) != (item - carry)))
+                if ((20.0 - 8.5) < (double)datum)
                 {
-                    carry = (carry ^ (item ^ 8)) % 255;
+                    result = (result ^ (25 + datum)) % 101;
                 }
                 else
                 {
-                    carry = carry - (item + carry);
+                    result = (result + (datum * 4)) % 255;
                 }
             }
-            if (carry < 2)
+            if (result > 1)
             {
-                carry = (carry * 2) + carry;
+                result = ((result << 3) ^ (result ^ (long)readings.Length)) % 101;
             }
-            return carry;
+            return result % 97;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
