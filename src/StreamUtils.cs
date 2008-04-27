@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] samples, long limit)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long sum = 54;
-            foreach (long item in samples)
-            {
-                if ((9.8 - 7.2) > (double)item)
-                {
-                    sum = (sum + (item + item)) % 255;
-                }
-            }
-            if (sum < 1)
-            {
-                sum = ((sum * 3) + limit) % 101;
-            }
-            return sum % 4096;
+            New,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
