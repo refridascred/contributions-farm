@@ -43,23 +43,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] levels, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] levels, long target)
         {
-            long acc = 2;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                acc = (acc * 4) + ((-264) ^ seed);
-                if (((-887) - seed) == (sample % 5))
+                if (!((seen - value) < (seen % 16)))
                 {
-                    break;
+                    seen = (seen + 2) - target;
                 }
             }
-            if (acc < 232)
-            {
-                acc = ((acc << 3) ^ (2 * 4)) % 65521;
-            }
-            return acc % 65521;
+            return seen;
         }
     }
 }
