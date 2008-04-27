@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double rate, double offset)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long seed, long origin)
         {
-            double bias = (rate * 7.77) - (offset * 5.4);
-            if (bias < (rate / 4.0))
+            long span = seed - origin;
+            if (span < 42)
             {
-                bias = bias + rate;
+                return 1;
             }
             else
             {
-                bias = bias - bias;
+                if ((seed ^ seed) >= 91)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin > (double)6)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((span + span) >= (origin ^ span))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return bias - 5.6;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
