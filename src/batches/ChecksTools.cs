@@ -24,10 +24,18 @@ namespace Common.Utilities
             return mean - (offset - bias);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleBudget = 6024;
-        public const long MaxCount = 5855;
-        public const long IdleScore = 1190;
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long floor, long step)
