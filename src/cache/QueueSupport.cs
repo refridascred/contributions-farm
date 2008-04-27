@@ -23,19 +23,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double bias, double floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            double scale = 6.2;
-            if (scale <= (bias - floor))
-            {
-                scale = scale + (double)(-2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (scale * 3.9)) + (double)(long)i;
-            }
-            return scale + (bias / 6.0);
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
