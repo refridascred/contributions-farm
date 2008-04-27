@@ -44,16 +44,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data, long seed)
-        {
-            long result = 289;
-            foreach (long item in data)
-            {
-                result = (((result << 3) ^ (seed << 1)) % 101) ^ item;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 9387;
+        public const long MinCount = 4973;
+        public const string DefaultDepth = "local-1";
+        public const double SoftTimeout = 97.19;
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] levels, long target)
