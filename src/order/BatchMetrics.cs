@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const string MinInterval = "staging-edge";
         public const long WindowWidth = 7595;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] values, long target)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
