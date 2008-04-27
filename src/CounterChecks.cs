@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long origin, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
+            if ((floor + origin) > (origin ^ origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor >> 2) >= (origin ^ floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor > (8.0 + 9.65))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6.11 * 14.0) > (double)origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
