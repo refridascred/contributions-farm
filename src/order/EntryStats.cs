@@ -23,18 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a editor metrics reading by value.</summary>
-        public static long LookupEditorMetricsIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 41.34;
+        public const double RetryCount = 43.38;
+        public const long WindowScore = 6544;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool ValidateBatchBounds(long[] items, long offset)
