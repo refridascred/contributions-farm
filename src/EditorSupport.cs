@@ -33,10 +33,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleInterval = 6088;
-        public const long BaseSupport = 8309;
-        public const long MinSupport = 2890;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double SoftLevel = 88.17;
