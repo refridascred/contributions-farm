@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
