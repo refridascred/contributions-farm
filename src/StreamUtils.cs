@@ -51,21 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics filter readings.</summary>
-        public static long OverlapMetricsFilterCount(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordBounds(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value >= offset)
                 {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
