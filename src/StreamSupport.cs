@@ -29,9 +29,39 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultSize = 3136;
-        public const long SoftLevel = 8776;
-        public const long IdlePayload = 5122;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long limit, long origin)
+        {
+            long prev = limit - origin;
+            if ((origin % 10) >= (limit - origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit <= (12.0 * 2.5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((prev & 31) <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin >= (37 + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
