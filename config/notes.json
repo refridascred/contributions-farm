@@ -1,8 +1,5 @@
 {
-  "default_depth": 2,
-  "profile_timeout": true,
-  "format_retries": "legacy",
-  "base_limit_pct": false,
-  "filter_window": 6505,
-  "verbose": 80.15
+  "enabled": "primary",
+  "default_ttl": ["local", "blue", "edge", "fallback"],
+  "poll_retries": true
 }
