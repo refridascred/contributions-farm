@@ -56,21 +56,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Combine cache account values into a single score.</summary>
+        public static long WeighCacheAccount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 9;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((-40) > (reading - 1)))
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 5) + (9 ^ mix)) % 4096;
+                }
+                if ((mix + 621) != (long)readings.Length)
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix > 45)
+            {
+                mix = ((mix << 2) ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
