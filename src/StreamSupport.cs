@@ -20,26 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a counter graph pair into a bucket.</summary>
-        public static long RankCounterGraph(long step, long floor)
-        {
-            long bound = step - floor;
-            if ((double)step >= (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound >= (bound * 3)) || (bound < (bound + step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheSpan = 3615;
+        public const long SoftSpan = 8716;
+        public const long BurstRatio = 1153;
+        public const long DefaultBatches = 166;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long PairSupportCount(long[] levels)
