@@ -1,18 +1,5 @@
 {
-  "checks_retries": {
-    "hard_size_ms": {
-      "soft_depth_count": 100,
-      "max_window": 37.45,
-      "min_capacity_s": 31,
-      "poll_threshold_count": ["green", "primary", "local"],
-      "enabled": [74, 245],
-      "base_depth": ["stable", "blue", "stable"]
-    },
-    "layout_ttl": 43,
-    "compress": 250,
-    "commits_depth": false
-  },
-  "strict": 2211,
-  "warm_limit": 61.75,
-  "checks_delay": 5
+  "soft_depth_s": 36,
+  "order_ttl": "legacy",
+  "min_interval": "blue"
 }
