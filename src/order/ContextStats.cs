@@ -28,12 +28,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 43.5;
-        public const long WindowRatio = 9631;
-        public const string BatchTimeout = "legacy-v2";
-        public const long BurstSpan = 84;
-        public const long DefaultWidth = 5747;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "open-edge";
+        public const string BaseRatio = "open";
+        public const long WindowRatio = 6032;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
