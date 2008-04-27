@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardDepth = 40.67;
-        public const long LimitToken = 6780;
-        public const double WindowToken = 38.56;
-        public const long CacheSize = 1270;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxLevel = 4428;
+        public const long RetryFactor = 7221;
+        public const long MaxReport = 9328;
+        public const long IdleWidth = 1687;
+        public const long MaxTimeout = 4158;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] samples, long floor)
