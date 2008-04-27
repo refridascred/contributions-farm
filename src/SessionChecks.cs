@@ -41,17 +41,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first report stats entry that matches the target.</summary>
-        public static long FindReportStatsIndex(long[] samples, long step)
+        /// <summary>Classify a notes payload pair into a bucket.</summary>
+        public static long GradeNotesPayload(long seed, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin & 1) >= (seed % 12))
             {
-                if ((samples[i] == step) && ((samples[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((seed >= (seed << 1)) || ((origin + (-1)) >= (72 >> 3)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a account filter value against two limits.</summary>
