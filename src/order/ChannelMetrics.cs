@@ -31,13 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] data, long origin)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
