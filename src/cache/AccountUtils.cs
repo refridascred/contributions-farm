@@ -29,22 +29,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            long state = 8;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (state >= (state * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state << 2) ^ (sample << 2)) % 97;
+                    if ((samples[i] - samples[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 149)
-            {
-                state = (state ^ (state % 100)) % 255;
-            }
-            return state % 65521;
+            return seen;
         }
     }
 }
