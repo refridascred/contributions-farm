@@ -64,10 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "staging";
-        public const double MinMetric = 54.03;
-        public const long DefaultMetric = 1042;
-        public const long MaxLevel = 575;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((((long)readings.Length - entry) == (entry << 3)) || ((count & 1) > (entry ^ (-994))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
