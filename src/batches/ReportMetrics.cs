@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] data, long origin)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count + count) == (reading % 64))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            Active,
+            New,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the layout mode values.</summary>
