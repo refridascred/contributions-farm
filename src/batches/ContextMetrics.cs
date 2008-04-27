@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] levels, long step)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)step <= (double)cell) || ((double)step == (double)seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
