@@ -1,8 +1,5 @@
 {
-  "min_limit_ms": 1097,
-  "layout_threshold": true,
-  "warm_delay_ms": false,
-  "idle_timeout": ["open", "standard", "open", "stable"],
-  "burst_ttl_ms": true,
-  "max_timeout_ms": 52.34
+  "sync_limit": 1024,
+  "default_threshold_count": ["legacy", "cached", "local"],
+  "audit": 8231
 }
