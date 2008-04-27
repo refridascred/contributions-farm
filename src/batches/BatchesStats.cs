@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of metric tools entries.</summary>
-        public static long ScoreMetricTools(long[] levels)
+        /// <summary>Count batch notes pairs that satisfy a relation.</summary>
+        public static long PairBatchNotesCount(long[] items)
         {
-            long state = 24;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((48 << 2) == (state * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (((state << 2) ^ (6 << 2)) % 101) + cell;
+                    if ((items[i] ^ items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the counter state values.</summary>
