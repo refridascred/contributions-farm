@@ -1,23 +1,11 @@
 {
-  "retry_depth_count": 3810,
-  "hard_size_ms": {
-    "readonly": {
-      "persist": "local",
-      "record_depth": [304, 320, 94, 98],
-      "metrics_capacity": 80.77,
-      "batch_threshold": 100,
-      "dry_run": true
-    },
-    "notes_delay": 6893,
-    "cache_window_count": {
-      "profile_depth": 9581,
-      "strict": ["primary", "latest"],
-      "dry_run": false,
-      "notes_depth": 500,
-      "max_depth": true
-    },
-    "strict": 71,
-    "command_window": true
-  },
-  "stats_delay": 87.94
+  "idle_ttl": "eu-west",
+  "poll_size_count": 33.09,
+  "sync_retries_ms": 8858,
+  "filter_timeout": {
+    "soft_interval": 500,
+    "payload_depth": 79,
+    "queue_window": 250,
+    "burst_timeout": 60
+  }
 }
