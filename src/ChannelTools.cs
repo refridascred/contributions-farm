@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleCount = "alpha";
+        public const long SoftContext = 9932;
+        public const long DefaultContext = 1134;
+        public const long LimitRatio = 6727;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
