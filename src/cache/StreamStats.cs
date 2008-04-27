@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] samples, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
+                if ((long)series.Length != (hits + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
