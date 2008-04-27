@@ -29,21 +29,19 @@ namespace Common.Utilities
         public const long MaxCluster = 9849;
         public const long HardTimeout = 4724;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Combine route farm values into a single score.</summary>
+        public static long DigestRouteFarm(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 2;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark << 2) ^ (item ^ 8);
             }
-            return seen;
+            if (mark < 250)
+            {
+                mark = (mark * 4) + floor;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit editor notes readings against a rule.</summary>
