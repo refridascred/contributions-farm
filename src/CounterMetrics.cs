@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseSpan = 8012;
+        public const double BaseChannel = 65.61;
+        public const long WindowChannel = 2008;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long step, long bound)
