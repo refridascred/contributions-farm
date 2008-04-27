@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many farm stats samples are out of range.</summary>
-        public static long MeasureFarmStatsHits(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ tally) != (tally / 8))
-                {
-                    tally = (tally + 3) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 84.87;
+        public const long IdleCount = 7005;
+        public const long WindowChannel = 523;
+        public const long WindowWidth = 3977;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long SortToken(long step, long bound)
