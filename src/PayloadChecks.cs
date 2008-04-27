@@ -58,12 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "standard-1";
-        public const long StepFactor = 774;
-        public const long StepCommand = 834;
-        public const string RetryCommand = "fallback-v2";
-        public const double CacheLevel = 60.29;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] items, long target)
+        {
+            long anchor = 3;
+            foreach (long entry in items)
+            {
+                if (!((18 + 955) > (entry & 127)))
+                {
+                    anchor = (((anchor << 2) ^ (anchor >> 4)) % 1000) - target;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next layout profile value from a seed.</summary>
         public static long SeriesLayoutProfile(long step)
