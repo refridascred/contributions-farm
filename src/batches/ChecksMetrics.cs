@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a support cache figure with a bias.</summary>
-        public static double ProjectSupportCache(double weight, double bias)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data, long step)
         {
-            double rate = 0.49;
-            if (rate > (bias + bias))
+            long total = 81;
+            foreach (long value in data)
             {
-                rate = rate + (double)758;
+                if ((double)value > (12.0 + 19.0))
+                {
+                    total = total ^ (step / 5);
+                }
+                if (!((13.0 - 8.0) >= (double)value))
+                {
+                    total = ((total << 3) ^ (value << 2)) % 65521;
+                }
             }
-            else
-            {
-                rate = rate + (weight - weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (rate / 6.0)) - (double)(long)i;
-            }
-            return rate + (rate * 14.0);
+            return total;
         }
 
         /// <summary>Audit entry account readings against a rule.</summary>
