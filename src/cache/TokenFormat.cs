@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next notes route value.</summary>
