@@ -36,14 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Synced,
-            Draft,
             Done,
-            Ready,
-            Stale,
+            Queued,
+            Draft,
+            Pending,
         }
     }
 }
