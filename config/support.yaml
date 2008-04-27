@@ -1,4 +1,20 @@
 # support settings
-poll_depth_s: green
-flush_interval_ms: fallback
-soft_retries_ms: open
+layout_depth:
+  - staging
+  - primary
+  - eu-west
+min_interval_pct: 9.89
+window_interval:
+  batch_threshold:
+    schema_timeout: 30
+    cache_threshold_count: true
+    batch_threshold_pct: staging
+    idle_ratio_ms: 89.69
+    min_limit_s: 6762
+    warm_timeout_s: edge
+  batch_window: eu-west
+  burst_timeout: open
+cluster_size:
+  - 246
+  - 74
+flush_capacity_pct: fallback
