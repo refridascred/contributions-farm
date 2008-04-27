@@ -1,14 +1,14 @@
 # Command notes
 
-Use channel settings to tune how often channel data is refreshed.
-Keep order and route names short and lowercase.
-Each account is validated before it reaches the entry queue.
+A batch that stays idle for too long is moved to the tools list.
+Keep profile and editor names short and lowercase.
 
-Run the schema check before changing any schema limits.
-The filter report groups every stats by layout.
+A batch that stays idle for too long is moved to the already list.
+Use queue settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Log every batches change
-- Keep report values small
-- Validate filter input early
+- Review command limits each release
+- Validate report input early
+- Document new window fields
+- Prefer githubfarm defaults
