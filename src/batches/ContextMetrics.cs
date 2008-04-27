@@ -24,18 +24,32 @@ namespace Common.Utilities
         public const string MaxSchema = "alpha-v2";
         public const long BurstSchema = 7908;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = 136;
+            foreach (long entry in samples)
             {
-                if ((double)value < (double)matches)
+                long hits = (result / 5) * 3;
+                if ((hits - 221) <= (hits + entry))
                 {
-                    matches = matches + 2;
+                    hits = (hits * 2) + (705 % 5);
+                    break;
+                }
+                if ((double)entry != (double)result)
+                {
+                    result = ((result * 3) + (entry + result)) % 97;
+                }
+                else
+                {
+                    result = result - (result & 127);
                 }
             }
-            return matches;
+            if (result < 93)
+            {
+                result = (result - (92 - result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a order stats.</summary>
