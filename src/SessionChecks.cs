@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long score = 2;
-            foreach (long value in samples)
-            {
-                score = ((score - score) % 1000) - value;
-            }
-            return score % 1000;
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
