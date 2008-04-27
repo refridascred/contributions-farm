@@ -1,6 +1,12 @@
 {
-  "dry_run": "primary",
-  "cluster_delay": 53.62,
-  "hard_ttl": false,
-  "default_depth": "standard"
+  "graph_window": 29.94,
+  "burst_retries": {
+    "max_ratio_s": "open",
+    "hard_window_s": 43,
+    "audit": ["fallback", "stable", "blue"],
+    "readonly": true
+  },
+  "idle_capacity_count": false,
+  "batch_ttl": "latest",
+  "hard_timeout_pct": 60
 }
