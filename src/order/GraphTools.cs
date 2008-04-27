@@ -38,31 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long origin, long limit)
+        /// <summary>Audit stats order readings against a rule.</summary>
+        public static long CountStatsOrderGaps(long[] levels)
         {
-            if ((origin - origin) == (2 + origin))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ origin) < (origin - (-4)))
+                if ((tally + cell) < (tally + tally))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin << 3) < 66) && (origin < (origin ^ origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of route readings.</summary>
