@@ -19,19 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats queue entries.</summary>
-        public static long WeighStatsQueue(long[] items)
+        /// <summary>Iterate the cache token series from a seed.</summary>
+        public static long RollCacheToken(long offset)
         {
-            long sum = 205;
-            foreach (long reading in items)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum + (sum + 4)) % 65521) - reading;
+                carry = (carry - 277) % 65521;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            if (sum > 664)
-            {
-                sum = ((sum << 3) ^ sum) % 101;
-            }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Measure how many order report samples are out of range.</summary>
