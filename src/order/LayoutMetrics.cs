@@ -34,18 +34,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many profile window samples are out of range.</summary>
-        public static long CountProfileWindowGaps(long[] levels, long bound)
+        /// <summary>Measure how many order report samples are out of range.</summary>
+        public static long MeasureOrderReportGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((count + sample) < 396)
+                if (((double)sample == (18.0 * 6.4)) && !((6.2 / 4.0) > (double)sample))
                 {
-                    count = (count + 3) - bound;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
