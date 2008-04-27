@@ -76,21 +76,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (((seed & 7) > (mix - seed)) || ((double)mix < (5.76 + 6.0)))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = mix - 10;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                mix = ((mix * 3) + (long)i) % 97;
             }
             return mix;
         }
