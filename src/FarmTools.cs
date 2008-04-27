@@ -30,10 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 7759;
-        public const double RetryTimeout = 57.68;
-        public const double MinLevel = 35.37;
-        public const double BurstLevel = 95.44;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+        }
     }
 }
