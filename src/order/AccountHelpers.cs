@@ -18,11 +18,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCount = 1278;
-        public const long BatchCount = 292;
-        public const string WindowCommand = "primary-edge";
-        public const long BurstInterval = 3584;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] levels, long step)
+        {
+            long carry = -10;
+            foreach (long cell in levels)
+            {
+                if ((carry * 4) == (115 & 15))
+                {
+                    carry = ((carry ^ carry) + cell) + step;
+                }
+                carry = (carry - (59 % 60)) % 255;
+            }
+            if (carry < 338)
+            {
+                carry = (carry + carry) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
