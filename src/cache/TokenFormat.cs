@@ -32,11 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardInterval = 21.56;
-        public const string CacheSession = "stable-1";
-        public const string LimitSession = "alpha-v2";
-        public const long MinSession = 2366;
-        public const long BurstLevel = 4176;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] data, long target)
+        {
+            long total = 34;
+            foreach (long reading in data)
+            {
+                total = ((((total << 3) ^ (total / 7)) % 97) ^ reading) - target;
+            }
+            return total;
+        }
     }
 }
