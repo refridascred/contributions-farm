@@ -1,6 +1,7 @@
 # support settings
-profile_size: 1024
-retry_interval: false
-retry_capacity_count:
-  - 183
-  - 400
+tools_depth: fallback
+cache_capacity_ms: standard
+compress:
+  - stable
+  - edge
+  - cached
