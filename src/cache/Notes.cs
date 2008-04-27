@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] values, long step)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Project the next notes value.</summary>
