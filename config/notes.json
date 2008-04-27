@@ -1,13 +1,15 @@
 {
-  "burst_ttl": 38,
-  "max_size_s": "latest",
-  "hard_interval_count": {
-    "batches_size": 98.12,
-    "metric_size": 43.44,
-    "idle_threshold_s": 60,
-    "githubfarm_capacity": "edge"
+  "batch_threshold": "blue",
+  "base_window_s": false,
+  "githubfarm_ttl": {
+    "metrics_ttl": 8330,
+    "verbose": 8864,
+    "persist": 30,
+    "idle_depth_s": false,
+    "soft_limit_ms": 33.34,
+    "retry_threshold_count": [36, 184, 457, 433]
   },
-  "counter_depth": 25,
-  "idle_size_s": "eu-west",
-  "min_timeout": "strict"
+  "sync_delay_ms": false,
+  "farm_limit": "edge",
+  "warm_size_ms": false
 }
