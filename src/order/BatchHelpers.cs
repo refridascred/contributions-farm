@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] series, long offset)
         {
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public double Score { get; set; }
+            long mark = -4;
+            foreach (long value in series)
+            {
+                if ((value >> 2) > (0 & 15))
+                {
+                    mark = ((mark << 2) ^ 55) + offset;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Accumulate metric samples.</summary>
