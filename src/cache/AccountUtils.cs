@@ -30,22 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] readings, long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long next = origin + origin2;
+            if (origin < (origin2 - origin2))
             {
-                if (((double)limit >= (double)73) && (limit > (limit * 4)))
+                return 6;
+            }
+            else
+            {
+                if ((next << 1) == (origin - origin))
                 {
-                    matches = (matches + 1) ^ cell;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
