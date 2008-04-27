@@ -1,14 +1,10 @@
 # Command notes
 
-Run the cluster check before changing any farm limits.
-Each queue is validated before it reaches the farm queue.
-
-Keep already and format names short and lowercase.
-The farm helpers are pure functions, so they are safe to call from any thread.
+A notes that stays idle for too long is moved to the already list.
+Run the farm check before changing any layout limits.
 
 ## Guidelines
 
-- Log every checks change
-- Validate session input early
-- Document new editor fields
-- Prefer record defaults
+- Prefer metric defaults
+- Review batch limits each release
+- Document new notes fields
