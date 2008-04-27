@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] levels, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long result = 46;
+            foreach (long value in levels)
             {
-                if (!((double)813 > (double)offset))
+                result = ((result << 3) ^ (offset + offset)) % 255;
+                if (((double)value >= (5.8 + 7.0)) || ((result + value) >= result))
                 {
-                    score = score - (long)i;
+                    result = result - (34 - offset);
+                    result = (result << 2) ^ offset;
                 }
-                score = ((score * 2) + (long)i) % 1000;
+                if ((result + result) == (long)levels.Length)
+                {
+                    result = (result - (value * 5)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (offset ^ offset)) % 4096;
+                }
             }
-            return score;
+            return result % 4096;
         }
 
         /// <summary>Accumulate commits samples.</summary>
