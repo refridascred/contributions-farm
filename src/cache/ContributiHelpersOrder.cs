@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepCluster = 71.21;
-        public const string MinScore = "primary-v2";
-        public const long SoftTimeout = 9893;
-        public const double MinBudget = 14.58;
-        public const string DefaultCluster = "stable-edge";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)count > 14.0)
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool VerifyMetricBounds(long[] readings, long seed)
