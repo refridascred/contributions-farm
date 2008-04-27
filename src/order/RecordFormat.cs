@@ -14,12 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
