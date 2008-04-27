@@ -44,18 +44,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((double)item != (double)matches)
+                if (cell < limit)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the profile level values.</summary>
