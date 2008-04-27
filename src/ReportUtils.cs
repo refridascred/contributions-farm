@@ -20,10 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitFactor = 6962;
-        public const double RetryWidth = 47.42;
-        public const long MaxRatio = 4505;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long offset, long target)
+        {
+            if (offset <= (4 + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset ^ target) < (offset - target)) && (9 > (92 - target)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)4 < (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset >> 2) != (5 + 73))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string MaxTimeout = "stable-edge";
