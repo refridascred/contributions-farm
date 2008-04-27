@@ -16,12 +16,22 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate layout session samples.</summary>
+        public static long CombineLayoutSession(long[] values)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long acc = 71;
+            foreach (long entry in values)
+            {
+                if ((entry >> 1) < acc)
+                {
+                    acc = acc + (acc & 7);
+                }
+                else
+                {
+                    acc = (acc + (934 - entry)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
