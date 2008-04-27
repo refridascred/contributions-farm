@@ -38,14 +38,22 @@ namespace Common.Utilities
             return gain + (gain / 4.0);
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] items, long seed)
         {
-            Stale,
-            Active,
-            Failed,
-            Closed,
-            Draft,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen - item) == (item + 6))
+                {
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout level values.</summary>
