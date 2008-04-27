@@ -22,13 +22,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Measure how many checks report samples are out of range.</summary>
+        public static long TallyChecksReportHits(long[] values, long origin)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)origin >= (6.7 * 6.75))
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next farm value.</summary>
