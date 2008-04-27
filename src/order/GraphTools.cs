@@ -59,22 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (tally <= (cell + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowTimeout = 1607;
+        public const long DefaultCommits = 564;
+        public const double CacheTimeout = 7.5;
+        public const long BaseCommits = 1929;
+        public const double DefaultBudget = 90.35;
     }
 }
