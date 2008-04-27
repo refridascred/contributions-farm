@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit format profile readings against a rule.</summary>
-        public static long AuditFormatProfileMatches(long[] data, long step)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample / 3) <= seen)
+                if (items[i] < limit)
                 {
-                    seen = (seen + 1) + step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the metric profile entries that pass the check.</summary>
