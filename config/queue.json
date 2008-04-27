@@ -1,7 +1,8 @@
 {
-  "entry_retries": ["blue", "fallback", "latest"],
-  "hard_limit_s": "eu-west",
-  "poll_ratio": "strict",
-  "idle_limit_count": 35,
-  "hard_capacity_ms": 58
+  "tools_threshold": 968,
+  "readonly": "eu-west",
+  "cluster_size": [183, 25, 106, 360],
+  "cache_timeout": 100,
+  "githubfarm_ttl": false,
+  "soft_ratio": true
 }
