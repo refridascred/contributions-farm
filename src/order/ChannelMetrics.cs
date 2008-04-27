@@ -31,20 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] series)
+        /// <summary>Measure how many format commits samples are out of range.</summary>
+        public static long CountFormatCommitsHits(long[] levels)
         {
-            long result = 81;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                result = (((result << 3) ^ ((-643) / 4)) % 97) ^ datum;
-                result = (result << 3) ^ (29 + result);
+                if (((tally - 4) <= (tally << 2)) || ((tally - (long)levels.Length) >= (item - tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (result < 895)
-            {
-                result = (result - (result - result)) % 101;
-            }
-            return result % 1000;
+            return tally;
         }
     }
 }
