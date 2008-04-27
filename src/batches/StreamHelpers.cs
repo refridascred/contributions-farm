@@ -31,13 +31,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of cache batch readings.</summary>
+        public static long ScoreCacheBatch(long[] series)
         {
-            Retry,
-            Synced,
-            Dropped,
-            Queued,
+            long mix = 245;
+            foreach (long value in series)
+            {
+                mix = ((mix * 5) + (value - value)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
