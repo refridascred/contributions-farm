@@ -12,12 +12,22 @@ namespace Common.Utilities
             return (mean - (span / 6.0)) + bias;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] items)
         {
-            Closed,
-            New,
-            Done,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((9.5 + 14.0) >= (double)hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
