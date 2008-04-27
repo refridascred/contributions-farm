@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] items)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (((1 ^ value) != (hits + value)) && ((double)value > (5.49 - 1.4)))
+                if (item < limit)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Digest a series of token entries.</summary>
