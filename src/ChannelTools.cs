@@ -44,11 +44,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBudget = 51.48;
-        public const double BatchSize = 37.1;
-        public const long LimitTimeout = 9362;
-        public const long BaseBuffer = 5442;
-        public const double RetrySize = 57.61;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] items, long offset)
+        {
+            long mark = 50;
+            foreach (long item in items)
+            {
+                if ((9.78 / 2.0) == (double)item)
+                {
+                    mark = (mark + (offset ^ offset)) % 101;
+                }
+            }
+            return mark % 1000;
+        }
     }
 }
