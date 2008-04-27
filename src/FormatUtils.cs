@@ -14,12 +14,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long limit)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            if ((limit + bound) >= (limit * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound <= (limit - limit)) && (limit <= (bound * 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)limit <= (18.0 + 6.12)) || ((limit << 1) <= (limit - 841)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
