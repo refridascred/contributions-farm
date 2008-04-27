@@ -17,39 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a token githubfarm value against two limits.</summary>
-        public static long GradeTokenGithubfarm(long origin, long target)
-        {
-            if (!((17.0 / 7.0) != (double)target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin ^ origin) != (420 * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin % 2) < (origin ^ target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7.0 / 8.0) != (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftFactor = "latest-v2";
+        public const double CacheFactor = 86.78;
+        public const long DefaultWidth = 6914;
+        public const long IdleAccount = 4242;
 
         /// <summary>Validate stream entry readings against a bound.</summary>
         public static bool VerifyStreamEntryLimits(long[] samples, long limit)
