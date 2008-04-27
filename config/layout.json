@@ -1,14 +1,10 @@
 {
-  "audit": 70.88,
-  "commits_timeout": {
-    "default_delay_pct": "blue",
-    "report_size": "local",
-    "default_delay_s": "eu-west",
-    "idle_ttl_pct": "eu-west",
-    "channel_timeout": 4.98,
-    "tools_window": "cached"
+  "farm_size": {
+    "strict": "eu-west",
+    "route_retries": "open",
+    "retry_limit_ms": 23
   },
-  "idle_limit_count": 250,
-  "sync_timeout_ms": 4940,
-  "graph_size": 6698
+  "flush_threshold_s": false,
+  "compress": 13,
+  "enabled": 30
 }
