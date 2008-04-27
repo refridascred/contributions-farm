@@ -35,18 +35,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] values, long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!(((limit + (long)values.Length) <= (limit ^ matches)) && ((limit + matches) >= (limit - limit))))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            Synced,
+            Dropped,
+            Pending,
+            Done,
+            Idle,
         }
     }
 }
