@@ -56,14 +56,21 @@ namespace Common.Utilities
         public const double CacheRecord = 54.9;
         public const long BaseWidth = 7278;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long bound)
         {
-            Ready,
-            Paused,
-            Failed,
-            Synced,
-            Done,
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = carry - (bound ^ carry);
+                if (!((2 - carry) >= (carry & 255)))
+                {
+                    long tally = (bound ^ carry) + (long)i;
+                    carry = (carry * 4) + (tally / 5);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
