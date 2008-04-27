@@ -1,15 +1,11 @@
 # githubfarm settings
-soft_timeout: 28.7
-base_depth_pct: latest
-retry_capacity:
-  enabled: 1802
-  record_capacity: legacy
-  max_limit_ms: 10.44
-  default_interval_count: 69.09
-  sync_ratio_ms: primary
-  poll_timeout:
-    audit: 100
-    batch_depth_pct: 4750
-    default_interval: 8282
-    soft_window: 77.94
-tools_window: eu-west
+warm_size_pct:
+  - 141
+  - 197
+  - 405
+cache_limit:
+  default_depth_count: 60.13
+  idle_size_count: 36
+  idle_timeout_pct: true
+sync_ttl_ms: 33
+layout_retries: true
