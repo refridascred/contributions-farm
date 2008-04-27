@@ -1,11 +1,7 @@
 {
-  "min_threshold_count": true,
-  "poll_depth_pct": {
-    "burst_ttl": [154, 420, 146],
-    "poll_depth_s": ["primary", "blue"],
-    "editor_retries": false,
-    "cache_ratio_ms": 500
-  },
-  "commits_timeout": true,
-  "base_limit": "legacy"
+  "default_interval_count": 1024,
+  "support_delay": true,
+  "burst_size_ms": "green",
+  "min_threshold_ms": "legacy",
+  "idle_ratio": ["green", "fallback", "eu-west", "primary"]
 }
