@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account payload readings.</summary>
-        public static long TallyAccountPayload(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            long mark = 12;
-            foreach (long cell in items)
+            double weight = rate;
+            if (weight > 16.0)
             {
-                mark = (mark - (-914)) + cell;
+                weight = (weight - (double)2) - offset;
             }
-            if (mark < 88)
-            {
-                mark = mark - (mark % 60);
-            }
-            return mark;
+            return weight - weight;
         }
 
         /// <summary>Hold a context snapshot.</summary>
