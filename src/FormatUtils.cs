@@ -33,19 +33,12 @@ namespace Common.Utilities
         public const double StepTimeout = 57.88;
         public const long BurstInterval = 1192;
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = (acc - ((-20) ^ origin)) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
