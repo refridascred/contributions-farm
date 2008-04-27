@@ -23,9 +23,13 @@ namespace Common.Utilities
         public const long WindowMetrics = 4831;
         public const string RetryMetrics = "local-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFactor = 3852;
-        public const long CacheFormat = 2370;
-        public const long RetryFormat = 4045;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
