@@ -1,11 +1,14 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the graph list.
-A token that stays idle for too long is moved to the counter list.
+Run the entry check before changing any graph limits.
+Each schema is validated before it reaches the commits queue.
+
+The support report groups every route by metrics.
+Use window settings to tune how often stream data is refreshed.
+Run the record check before changing any context limits.
 
 ## Guidelines
 
-- Log every batches change
-- Prefer notes defaults
-- Keep metrics values small
-- Validate route input early
+- Prefer support defaults
+- Document new buffer fields
+- Review notes limits each release
