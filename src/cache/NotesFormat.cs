@@ -28,19 +28,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next layout order value from a seed.</summary>
-        public static long StepLayoutOrder(long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result - step) % 4096) ^ (long)i2;
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
     }
 }
