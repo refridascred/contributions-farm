@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
+            New,
+            Draft,
+            Retry,
             Idle,
-            Locked,
-            Active,
-            Failed,
         }
 
         /// <summary>Hold a session snapshot.</summary>
