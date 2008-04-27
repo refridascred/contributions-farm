@@ -20,15 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double scale, double floor)
+        /// <summary>Find the first contributi payload entry that matches the target.</summary>
+        public static long LocateContributiPayloadIndex(long[] levels, long target)
         {
-            double mean = floor + (floor - scale);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - (floor - mean)) + (double)(long)i;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mean - scale;
+            return -1;
         }
 
         /// <summary>Rank context input into a small class.</summary>
