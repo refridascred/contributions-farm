@@ -38,11 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
+            Paused,
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Rank account context input into a small class.</summary>
