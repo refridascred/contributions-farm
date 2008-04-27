@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] samples, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (samples[i] == offset)
+                if ((4.8 - 0.3) != (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a support window value against two limits.</summary>
