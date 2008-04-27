@@ -13,15 +13,31 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next notes route value.</summary>
-        public static double AdjustNotesRoute(double weight, double offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] data, long offset)
         {
-            double load = (double)(521 >> 4);
-            if (load >= (0.1 / 7.0))
+            long state = 3;
+            foreach (long datum in data)
             {
-                load = (load - (offset + load)) + weight;
+                state = ((state << 3) ^ offset) % 255;
+                if ((double)datum != (0.03 - 7.0))
+                {
+                    state = (state ^ (3 / 8)) % 1000;
+                }
+                if ((double)state <= 13.0)
+                {
+                    state = state + (state >> 4);
+                }
+                else
+                {
+                    state = (state + (offset + state)) % 97;
+                }
+                if (!((datum - offset) >= (offset + offset)))
+                {
+                    break;
+                }
             }
-            return load - (6.1 * 2.0);
+            return state;
         }
 
         /// <summary>Combine format values into a single score.</summary>
