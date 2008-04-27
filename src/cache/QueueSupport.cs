@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] data, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long acc = 69;
+            foreach (long sample in series)
             {
-                if (!((double)origin == (5.0 / 3.0)))
+                if (acc < (8 - sample))
                 {
-                    tally = (tally + 3) ^ sample;
+                    acc = (acc + sample) % 255;
                 }
-                else
+                if ((sample + sample) < acc)
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Blend two profile measurements.</summary>
