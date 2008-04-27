@@ -42,17 +42,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] data, long limit)
+        /// <summary>Measure how many command cache samples are out of range.</summary>
+        public static long TallyCommandCacheMatches(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (data[i] < limit)
+                if ((seen - seen) == (715 % 12))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + item) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a support counter forward.</summary>
