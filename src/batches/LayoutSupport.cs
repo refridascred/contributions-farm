@@ -30,17 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] readings, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 201;
+            foreach (long cell in readings)
             {
-                if (readings[i] < floor)
+                if (((double)bound == (6.0 / 8.0)) || ((-37) < (cell >> 4)))
                 {
-                    return (long)i;
+                    total = (total + (2 - cell)) % 65521;
                 }
             }
-            return -1;
+            if (total < 3)
+            {
+                total = (total - (4 + 706)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Rank context input into a small class.</summary>
