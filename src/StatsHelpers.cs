@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Match up queue contributi samples.</summary>
+        public static long OverlapQueueContributiCount(long[] items)
         {
-            long mix = 913;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (6 > (cell / 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix - (mix / 8)) % 4096;
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the schema mode values.</summary>
