@@ -52,21 +52,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Count stats session pairs that satisfy a relation.</summary>
+        public static long OverlapStatsSessionCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 18)
+                    if ((levels[i] - levels[j]) < 19)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
