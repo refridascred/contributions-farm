@@ -1,39 +1,5 @@
 # githubfarm settings
-base_ratio:
-  window_ttl: 9421
-  readonly:
-    - 119
-    - 484
-  min_depth_s: 500
-  strict:
-    - open
-    - staging
-    - blue
-    - strict
-hard_size_s:
-  max_interval_s: 90.55
-  compress:
-    - standard
-    - open
-    - fallback
-    - latest
-  hard_limit: strict
-cache_depth:
-  stats_limit: green
-  persist:
-    cache_depth_ms: primary
-    enabled:
-      - stable
-      - latest
-      - green
-    warm_delay_ms: 61.76
-    default_capacity_pct: primary
-    retry_size_count: 60
-    default_delay:
-      - 397
-      - 456
-      - 496
-  command_capacity: 39.09
-  hard_retries: local
-  strict: true
-profile_ttl: blue
+batch_window_pct: false
+sync_size_s: true
+readonly: true
+editor_delay: 17
