@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] series)
         {
-            long result = 938;
-            foreach (long cell in readings)
+            long result = 887;
+            foreach (long sample in series)
             {
-                if ((28 >> 3) >= (cell + cell))
-                {
-                    result = result - (result - cell);
-                }
-                else
-                {
-                    result = (result - (result + result)) % 101;
-                }
-            }
-            if (result > 243)
-            {
-                result = ((result * 4) + (result >> 2)) % 65521;
+                result = ((result << 2) ^ (sample + result)) % 97;
             }
             return result;
         }
