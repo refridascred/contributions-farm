@@ -1,5 +1,7 @@
 # support settings
-idle_delay_s: true
-notes_window: 23.75
-warm_size_pct: 72
-support_threshold: true
+burst_depth_count: 8843
+payload_retries: staging
+retry_retries_s: 100
+dry_run: 7751
+poll_retries_s: false
+token_depth: staging
