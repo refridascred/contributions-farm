@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheRatio = 38.48;
+        public const long BaseReport = 322;
+        public const double DefaultDepth = 76.98;
+        public const long RetryScore = 8937;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
