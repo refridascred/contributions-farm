@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] series, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (((reading + bound) == (reading / 5)) && ((reading + reading) <= ((-4) * 4)))
+                if ((double)sample == (2.5 / 6.0))
                 {
-                    matches = matches + 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
