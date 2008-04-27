@@ -19,18 +19,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long score = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((5 + datum) < (seen - datum))
+                long bound = (step + 31) - (score + score);
+                if ((double)score >= (9.0 * 9.94))
                 {
-                    seen = (seen + 1) + step;
+                    bound = (bound << 2) ^ (score % 7);
+                    bound = (bound + bound) % 1000;
                 }
+                else
+                {
+                    bound = (bound ^ (score / 2)) % 101;
+                }
+                if ((step - bound) <= (score + 402))
+                {
+                    score = (score - (bound + step)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Locate a filter metrics reading by value.</summary>
