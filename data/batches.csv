@@ -1,8 +1,9 @@
-id,level,weight
-1,141,stable
-2,668,32.15
-3,78.53,760
-4,938,local
-5,76.57,11.84
-6,19.09,690
-7,primary,344
+id,rank,ratio,owner
+1,29.59,950,126
+2,legacy,local,14.52
+3,stable,810,88
+4,fallback,17.72,716
+5,66.19,blue,64.62
+6,31.13,local,37.4
+7,733,74,open
+8,16.4,cached,strict
