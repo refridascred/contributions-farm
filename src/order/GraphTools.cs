@@ -12,10 +12,12 @@ namespace Common.Utilities
         public const long RetryBatches = 2215;
         public const long HardLevel = 341;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "staging-1";
-        public const double SoftBatch = 73.72;
-        public const long HardBatch = 4724;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public string Rank { get; set; } = "";
+            public double Total { get; set; }
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long ScoreGithubfarm(long[] values)
