@@ -69,18 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] levels)
         {
-            long mix = 194;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (!((double)entry > (double)mix))
+                if ((hits << 3) != (cell - hits))
                 {
-                    mix = (mix * 3) + (entry % 97);
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mix % 4096;
+            return hits;
         }
     }
 }
