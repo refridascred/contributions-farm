@@ -68,31 +68,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long step, long limit)
+        /// <summary>Fold a list of githubfarm contributi readings.</summary>
+        public static long FoldGithubfarmContributi(long[] series)
         {
-            if ((step << 3) >= 384)
+            long anchor = 5;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit >= (12.0 + 9.59))
+                anchor = anchor - anchor;
+                if (((double)anchor == (14.0 / 4.0)) && ((entry - entry) == (entry << 2)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((2 >= (step >> 3)) || ((5.75 - 8.6) >= (double)limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    anchor = anchor ^ anchor;
                 }
             }
+            if (anchor > 7)
+            {
+                anchor = ((anchor * 4) + anchor) % 255;
+            }
+            return anchor;
         }
     }
 }
