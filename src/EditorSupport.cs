@@ -16,15 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double gain, double offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            double rate = offset * 2.6;
-            if (rate > (double)(-625))
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                rate = rate - (gain - gain);
+                state = ((state * 4) + state) % 255;
+                state = ((state * 3) + (origin + origin)) % 101;
+                if ((origin + origin) != ((long)i ^ origin))
+                {
+                    state = (state ^ origin) % 97;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return rate + rate;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
