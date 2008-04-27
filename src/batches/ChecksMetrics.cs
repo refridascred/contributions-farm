@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Failed,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "strict-v2";
+        public const long MinBudget = 9327;
+        public const long StepContributi = 9188;
+        public const long BaseContributi = 1668;
+        public const long LimitContributi = 4955;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
