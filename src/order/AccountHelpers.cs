@@ -87,10 +87,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheInterval = "legacy-1";
-        public const long MinBudget = 9977;
-        public const long BaseSize = 5609;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry / 6) >= seed)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool ValidateReportLimits(long[] data, long limit)
