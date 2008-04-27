@@ -1,6 +1,34 @@
 {
-  "soft_threshold_ms": "legacy",
-  "token_timeout": "primary",
-  "schema_retries": 1685,
-  "route_size": "primary"
+  "dry_run": {
+    "min_timeout_ms": {
+      "hard_depth_s": 24,
+      "max_ratio_s": 373,
+      "default_retries_pct": 55.87
+    },
+    "support_capacity": 500,
+    "cache_timeout_s": {
+      "flush_capacity": false,
+      "sync_retries_count": 3089,
+      "warm_window_s": 60,
+      "cache_size": "staging"
+    },
+    "checks_ratio": {
+      "poll_interval_count": "legacy",
+      "hard_capacity_pct": false,
+      "flush_depth_count": 84.48,
+      "base_capacity_s": "staging"
+    },
+    "hard_capacity_ms": 36.98,
+    "layout_size": "stable"
+  },
+  "enabled": "local",
+  "checks_depth": 5707,
+  "account_size": 5711,
+  "default_interval_ms": 97,
+  "farm_interval": {
+    "flush_interval": false,
+    "cache_delay": "stable",
+    "idle_depth": "standard",
+    "base_retries_count": [473, 109]
+  }
 }
