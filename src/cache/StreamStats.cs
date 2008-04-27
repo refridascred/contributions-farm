@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long bound)
+        /// <summary>Count already cluster pairs that satisfy a relation.</summary>
+        public static long PairAlreadyClusterCount(long[] series)
         {
-            if ((bound >> 4) >= (target - target))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target % 24) != (target - target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((15.0 + 18.0) > (double)target))
+                    if ((series[i] - series[j]) == 15)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((759 - target) >= (target + target)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate channel command samples.</summary>
