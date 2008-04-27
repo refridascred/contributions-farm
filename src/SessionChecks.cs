@@ -14,27 +14,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] series, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] readings, long bound)
         {
-            long state = 627;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                state = (state - state) % 97;
-                if ((state ^ state) >= (value % 24))
+                if (sample >= bound)
                 {
-                    state = (state << 2) ^ (value - state);
-                }
-                else
-                {
-                    state = (state + (state / 3)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            if (state < (-2))
-            {
-                state = ((state << 3) ^ target) % 255;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Classify a notes payload pair into a bucket.</summary>
