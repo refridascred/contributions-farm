@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] values, long seed)
         {
-            long anchor = 8;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                anchor = ((anchor ^ (step + step)) % 255) + cell;
+                if (datum >= (datum ^ datum))
+                {
+                    hits = (hits + 3) + seed;
+                }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Count the metric profile entries that pass the check.</summary>
