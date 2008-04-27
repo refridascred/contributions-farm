@@ -20,19 +20,15 @@ namespace Common.Utilities
         public const double WindowFactor = 16.33;
         public const string BatchContext = "stable-v2";
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] values, long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry != target)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return ok;
+            return result;
         }
     }
 }
