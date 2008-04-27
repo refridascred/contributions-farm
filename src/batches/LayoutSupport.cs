@@ -51,18 +51,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] samples, long seed)
+        /// <summary>Audit profile contributi readings against a rule.</summary>
+        public static long MeasureProfileContributiMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((377 ^ seed) <= (seed + sample))
+                if ((cell % 16) < (cell * 2))
                 {
-                    matches = matches + 2;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
