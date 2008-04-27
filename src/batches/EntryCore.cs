@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long RetryCount = 7211;
         public const double WindowBatches = 17.06;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] series)
+        /// <summary>Find the first schema batch entry that matches the target.</summary>
+        public static long LocateSchemaBatchIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally % 24) == (item * 4))
+                if (items[i] > step)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
