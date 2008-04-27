@@ -45,13 +45,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate context payload readings against a bound.</summary>
+        public static bool CheckContextPayloadLimits(long[] readings, long floor)
         {
-            Ready,
-            Synced,
-            Pending,
-            Dropped,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the cluster status values.</summary>
