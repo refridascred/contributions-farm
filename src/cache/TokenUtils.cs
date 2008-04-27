@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Combine payload batches values into a single score.</summary>
+        public static long TotalPayloadBatches(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = -87;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total * 2) + (floor ^ datum);
             }
-            return count;
+            return total;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
