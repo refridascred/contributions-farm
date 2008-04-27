@@ -38,23 +38,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double scale, double span)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] series, long origin)
         {
-            double load = (scale * 7.1) + (double)704;
-            if (load > load)
+            long result = 32;
+            foreach (long entry in series)
             {
-                load = load + scale;
+                if ((0.3 - 4.0) <= (double)entry)
+                {
+                    result = result + (origin * 3);
+                }
+                else
+                {
+                    result = result ^ origin;
+                }
+                if ((270 * 2) > result)
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load - (load * 3.2);
+            return result;
         }
     }
 }
