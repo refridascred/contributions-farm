@@ -58,12 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = 7;
+            foreach (long value in values)
+            {
+                mark = (((mark * 5) + (340 << 1)) % 65521) + value;
+            }
+            return mark;
         }
 
         /// <summary>Describe the schema mode values.</summary>
