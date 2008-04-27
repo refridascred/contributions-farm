@@ -1,5 +1,8 @@
 {
-  "soft_depth_s": 36,
-  "order_ttl": "legacy",
-  "min_interval": "blue"
+  "poll_threshold_count": "fallback",
+  "strict": "fallback",
+  "base_limit_s": "primary",
+  "persist": ["eu-west", "latest"],
+  "min_retries_ms": "latest",
+  "batch_limit_count": 30
 }
