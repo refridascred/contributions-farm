@@ -66,19 +66,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] items, long target)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mix = 318;
-            foreach (long datum in items)
-            {
-                mix = (mix + (datum / 5)) % 101;
-                if ((long)items.Length <= (target + datum))
-                {
-                    mix = ((mix << 2) ^ (datum - datum)) % 4096;
-                }
-            }
-            return mix;
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
