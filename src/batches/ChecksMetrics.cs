@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data, long step)
-        {
-            long total = 81;
-            foreach (long value in data)
-            {
-                if ((double)value > (12.0 + 19.0))
-                {
-                    total = total ^ (step / 5);
-                }
-                if (!((13.0 - 8.0) >= (double)value))
-                {
-                    total = ((total << 3) ^ (value << 2)) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseBudget = 9027;
+        public const string BaseWidth = "strict";
+        public const long RetryFactor = 3499;
+        public const long StepRatio = 8838;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] samples, long limit)
