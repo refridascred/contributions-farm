@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] readings, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long target)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry != step)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Match up checks samples.</summary>
