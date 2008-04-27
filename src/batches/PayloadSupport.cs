@@ -36,13 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values)
         {
-            New,
-            Done,
-            Failed,
-            Active,
+            long sum = -356;
+            foreach (long cell in values)
+            {
+                if (6 > sum)
+                {
+                    sum = (sum ^ (cell & 63)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (sum + sum)) % 65521;
+                }
+            }
+            return sum;
         }
     }
 }
