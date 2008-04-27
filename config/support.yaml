@@ -1,8 +1,7 @@
 # support settings
-poll_delay_ms: 84
-readonly: latest
-verbose:
-  - fallback
-  - primary
-  - edge
-hard_timeout: false
+buffer_depth: 39.25
+profile_ratio: true
+soft_ratio_s: green
+batch_ttl:
+  - 137
+  - 494
