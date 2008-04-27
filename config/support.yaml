@@ -1,6 +1,8 @@
 # support settings
-dry_run:
-  - 5
-  - 226
-batch_timeout_count: 93.91
-base_size_ms: 3609
+persist:
+  - edge
+  - strict
+  - fallback
+  - legacy
+idle_ttl_s: primary
+readonly: 93.75
