@@ -19,23 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double bias, double offset)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double rate, double offset)
         {
-            double gain = bias;
-            if (gain > (9.54 * 6.26))
+            double rate2 = 2.35;
+            if (rate2 < 2.0)
             {
-                gain = gain + offset;
+                rate2 = rate2 - (offset * 5.9);
             }
             else
             {
-                gain = gain - gain;
+                rate2 = rate2 - rate;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 2.5) + (double)(long)i;
-            }
-            return gain + (gain / 4.0);
+            return rate2 - rate2;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
