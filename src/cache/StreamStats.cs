@@ -37,24 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long seed, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            if ((target - target) >= seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((0.73 - 8.3) == (double)seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Closed,
+            Done,
         }
     }
 }
