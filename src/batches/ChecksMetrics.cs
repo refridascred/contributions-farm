@@ -69,19 +69,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks channel readings against a bound.</summary>
-        public static bool VerifyChecksChannelBounds(long[] items, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double gain = 7.29;
+            if (gain >= 9.6)
             {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (floor - 6.45)) - scale;
             }
-            return flag;
+            else
+            {
+                gain = gain - (double)(-516);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (double)0) + (double)(long)i;
+            }
+            return gain + 0.24;
         }
     }
 }
