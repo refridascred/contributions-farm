@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] levels)
-        {
-            long mix = 94;
-            foreach (long item in levels)
-            {
-                if ((45 >> 5) > (item << 2))
-                {
-                    mix = (mix * 4) + mix;
-                }
-                mix = ((mix * 3) + (76 >> 1)) % 101;
-                if (!((item * 4) == (mix - 91)))
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = (mix - (item - item)) % 101;
-                }
-            }
-            if (mix > 3)
-            {
-                mix = (mix << 2) ^ (mix << 1);
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepWidth = 3113;
+        public const long MaxBatches = 8374;
+        public const long MinBatches = 8892;
+        public const long MinDepth = 4156;
 
         /// <summary>Project the next session value.</summary>
         public static double AdjustSession(double bias, double bias2)
