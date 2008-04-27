@@ -64,25 +64,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long limit, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] series, long target)
         {
-            long slot = limit - bound;
-            if ((double)slot != (4.4 - 8.07))
+            long anchor = 846;
+            foreach (long datum in series)
             {
-                return 0;
+                anchor = ((anchor - (anchor - datum)) % 255) - target;
             }
-            else
-            {
-                if (((slot / 3) != (limit - limit)) || ((slot / 9) <= (limit - slot)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a graph record.</summary>
