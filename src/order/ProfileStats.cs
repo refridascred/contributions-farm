@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] levels)
+        /// <summary>Combine stream order values into a single score.</summary>
+        public static long ScoreStreamOrder(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long total = 333;
+            foreach (long value in readings)
             {
-                if (!((reading << 3) >= reading) || (reading >= (89 / 8)))
+                total = total ^ (731 & 15);
+                if (((3.34 + 7.98) >= (double)value) && ((double)total >= (2.3 + 16.0)))
                 {
-                    matches = matches + 3;
+                    total = total ^ (total << 2);
                 }
+                else
+                {
+                    total = (total ^ total) % 97;
+                }
+                total = total + value;
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Project the next tools value.</summary>
