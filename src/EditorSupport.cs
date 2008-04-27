@@ -36,15 +36,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] levels, long step)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long carry = 667;
-            foreach (long item in levels)
-            {
-                carry = ((((carry * 5) + 249) % 65521) + item) - step;
-            }
-            return carry % 65521;
+            Queued,
+            Dropped,
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
