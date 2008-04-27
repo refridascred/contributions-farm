@@ -61,10 +61,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxFactor = 61.31;
-        public const double DefaultCache = 38.48;
-        public const long BurstBudget = 787;
-        public const string BurstScore = "latest-v2";
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Retry,
+            Ready,
+            New,
+            Queued,
+            Active,
+        }
     }
 }
