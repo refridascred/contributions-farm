@@ -1,4 +1,9 @@
 # entry settings
-base_delay: stable
-default_timeout_ms: green
-max_interval_count: primary
+warm_capacity:
+  - primary
+  - edge
+  - fallback
+strict: eu-west
+contributi_capacity: stable
+min_interval: false
+soft_retries_s: edge
