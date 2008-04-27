@@ -37,18 +37,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many profile checks samples are out of range.</summary>
-        public static long MeasureProfileChecksMatches(long[] values, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((((reading << 1) >= target) && ((2 + hits) > (hits ^ hits))) && ((double)target != (double)reading))
-                {
-                    hits = hits + 3;
-                }
+                result = (result + (origin << 2)) % 4096;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
     }
 }
