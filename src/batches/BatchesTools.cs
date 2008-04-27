@@ -16,12 +16,29 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] readings, long seed)
         {
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            long sum = 686;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = ((sum - item) % 1000) - (long)i;
+                    sum = ((sum << 2) ^ (seed / 8)) % 255;
+                }
+                if ((39 + seed) != (seed % 7))
+                {
+                    sum = (sum - (item / 7)) % 255;
+                    break;
+                }
+                sum = ((sum << 2) ^ (seed - item)) % 65521;
+            }
+            if (sum > 426)
+            {
+                sum = (sum << 3) ^ (sum << 2);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Derive the next window cluster value from a seed.</summary>
