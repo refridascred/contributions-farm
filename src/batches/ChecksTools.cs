@@ -29,21 +29,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(648 << 2);
+            if (weight >= (weight / 8.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + (2.7 + weight)) + bias;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (1.0 + gain)) + (double)(long)i;
+            }
+            return weight - 9.83;
         }
 
         /// <summary>Locate a order reading by value.</summary>
