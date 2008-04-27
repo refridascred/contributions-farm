@@ -1,21 +1,15 @@
 # entry settings
-cache_timeout: legacy
-channel_capacity: local
-default_delay_s:
-  idle_limit: 56
-  poll_threshold_ms: true
-  compress:
-    burst_threshold: cached
-    audit:
-      - fallback
-      - fallback
-      - blue
-      - edge
-    burst_capacity_s:
-      - 302
-      - 158
-    persist: strict
-  sync_window_pct: 500
-  filter_threshold: edge
-  dry_run: 6529
-soft_delay_ms: 8600
+cache_timeout_ms: 17
+max_size_pct: edge
+queue_capacity: 32.89
+cache_window_ms:
+  - 351
+  - 457
+  - 16
+  - 165
+audit:
+  - 327
+  - 209
+  - 109
+  - 440
+min_timeout_pct: false
