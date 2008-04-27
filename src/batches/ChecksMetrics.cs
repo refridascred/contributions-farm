@@ -64,23 +64,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double scale, double floor)
+        /// <summary>Count the contributi support entries that pass the check.</summary>
+        public static long AuditContributiSupportMatches(long[] series)
         {
-            double gain = 7.29;
-            if (gain >= 9.6)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                gain = (gain + (floor - 6.45)) - scale;
+                if ((((double)entry == (1.2 - 6.0)) && ((entry % 24) <= (entry << 3))) && ((tally - tally) > tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                gain = gain - (double)(-516);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (double)0) + (double)(long)i;
-            }
-            return gain + 0.24;
+            return tally;
         }
     }
 }
