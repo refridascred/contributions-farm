@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const long DefaultWidth = 2436;
         public const long StepCount = 9011;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
