@@ -1,6 +1,8 @@
 {
-  "route_ttl": [226, 200, 75],
-  "counter_limit": 55,
-  "token_limit": "staging",
-  "sync_threshold_count": 3345
+  "retry_interval": 93,
+  "poll_timeout_s": "standard",
+  "flush_ratio_count": 34,
+  "record_ratio": 30,
+  "verbose": 91.03,
+  "stream_size": 9730
 }
