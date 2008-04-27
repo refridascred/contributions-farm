@@ -40,11 +40,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Match up buffer contributi samples.</summary>
+        public static long CompareBufferContributiCount(long[] series)
         {
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
