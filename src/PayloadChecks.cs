@@ -59,11 +59,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitLevel = 3074;
-        public const long StepFormat = 1536;
-        public const long StepCount = 8395;
-        public const double MaxWidth = 29.55;
-        public const long RetryFormat = 4970;
+        /// <summary>Measure how many support route samples are out of range.</summary>
+        public static long CountSupportRouteHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((item > (hits % 5)) && ((hits % 10) > (item + 14))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
