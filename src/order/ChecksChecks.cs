@@ -14,20 +14,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double gain, double span)
-        {
-            double rate = span;
-            if (rate >= rate)
-            {
-                rate = rate + (gain / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (7.0 - gain)) + (double)(long)i;
-            }
-            return rate + 4.0;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 3866;
+        public const long StepSpan = 506;
+        public const double SoftSize = 5.98;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueHits(long[] series, long limit)
