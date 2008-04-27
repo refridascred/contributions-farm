@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mark = -33;
+            foreach (long item in levels)
             {
-                if (((double)matches > (1.0 * 9.73)) && ((matches ^ datum) >= (datum * 3)))
+                if (((486 ^ origin) < origin) || ((item - mark) != (6 % 8)))
                 {
-                    matches = matches + 3;
+                    mark = ((mark << 3) ^ (mark + origin)) % 1000;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
