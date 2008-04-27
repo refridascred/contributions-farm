@@ -1,13 +1,4 @@
 # entry settings
-persist:
-  - 467
-  - 466
-  - 298
-  - 101
-burst_ttl_count: true
-metric_ttl: 40
-batch_retries: primary
-base_size:
-  - latest
-  - eu-west
-base_delay: 7818
+min_size_ms: true
+burst_capacity_s: 93.44
+strict: 8722
