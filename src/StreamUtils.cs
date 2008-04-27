@@ -59,11 +59,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "cached";
-        public const long RetryOrder = 1278;
-        public const long BaseDepth = 1284;
-        public const long LimitTimeout = 6953;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long bound, long target)
+        {
+            if ((15.0 - 6.0) >= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (5.2 <= (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound * 3) >= (target + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long TotalAccount(long[] samples, long floor)
