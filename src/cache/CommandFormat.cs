@@ -22,13 +22,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            Dropped,
+            Draft,
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
