@@ -42,12 +42,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
