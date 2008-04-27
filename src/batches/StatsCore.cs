@@ -69,19 +69,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] samples, long floor)
+        /// <summary>Adjust a stats cache reading.</summary>
+        public static double BlendStatsCache(double weight, double span)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double gain = (double)(-4) + (double)(-73);
+            for (int i = 0; i < 9; i++)
             {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (((gain + (11.0 / 9.0)) + (double)(long)i) + weight) + span;
             }
-            return found;
+            return gain + (double)4;
         }
     }
 }
