@@ -30,18 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item / 2) <= item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] - data[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
