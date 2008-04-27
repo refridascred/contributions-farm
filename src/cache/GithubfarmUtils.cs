@@ -27,11 +27,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchTimeout = "strict-v2";
-        public const string RetryStream = "alpha";
-        public const double HardBudget = 8.77;
-        public const long WindowInterval = 8741;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((((target >> 3) != (target & 1)) && ((reading & 31) == (target ^ seen))) && !(target > (reading ^ (long)readings.Length)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
