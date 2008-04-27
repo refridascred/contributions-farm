@@ -33,9 +33,15 @@ namespace Common.Utilities
             return load - (6.1 * 2.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 5537;
-        public const long HardChecks = 6417;
-        public const long BaseInterval = 8648;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] samples)
+        {
+            long state = 4;
+            foreach (long sample in samples)
+            {
+                state = ((state * 3) + (sample + sample)) % 101;
+            }
+            return state;
+        }
     }
 }
