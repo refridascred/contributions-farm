@@ -44,17 +44,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stream buffer reading by value.</summary>
-        public static long LookupStreamBufferIndex(long[] samples, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long floor, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step = floor ^ target;
+            if (!(step >= (floor >> 2)))
             {
-                if (samples[i] > floor)
+                return 4;
+            }
+            else
+            {
+                if (((double)step <= (3.0 * 5.05)) || ((step + target) > (target << 1)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
