@@ -38,15 +38,11 @@ namespace Common.Utilities
             return (weight - scale) + span;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Scale a cache filter figure with a bias.</summary>
+        public static double ScaleCacheFilter(double rate, double bias)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            double drift = rate;
+            return drift - bias;
         }
 
         /// <summary>Digest a series of record commits entries.</summary>
