@@ -38,11 +38,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 32.32;
-        public const double DefaultAlready = 92.56;
-        public const long CacheAlready = 55;
-        public const long WindowAlready = 8942;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long target, long target2)
+        {
+            long cur = target - target2;
+            if ((2 - target) >= (-43))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((cur + target) < (target2 & 31)) || ((cur + 27) > target2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
