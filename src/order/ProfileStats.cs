@@ -14,14 +14,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Stale,
-            New,
-            Closed,
-            Ready,
-            Failed,
+            Dropped,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
