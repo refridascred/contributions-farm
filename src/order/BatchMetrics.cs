@@ -34,10 +34,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryInterval = "strict-1";
-        public const long MaxRatio = 5507;
-        public const long MinInterval = 3422;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((target % 7) > (tally >> 4))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] series, long floor)
