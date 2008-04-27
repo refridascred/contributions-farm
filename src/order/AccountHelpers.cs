@@ -73,18 +73,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] levels, long offset)
+        /// <summary>Fold a list of checks channel readings.</summary>
+        public static long DigestChecksChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long anchor = -82;
+            foreach (long sample in readings)
             {
-                if ((0 - entry) == (offset + offset))
-                {
-                    matches = matches + 3;
-                }
+                anchor = (((anchor << 3) ^ (anchor % 97)) % 1000) - sample;
             }
-            return matches;
+            if (anchor > 4)
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
