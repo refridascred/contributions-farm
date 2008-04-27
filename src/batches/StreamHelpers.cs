@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((reading + count) > (reading & 63)) || ((count << 1) >= (reading % 100)))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 67.56;
+        public const string WindowAccount = "standard";
+        public const long CacheSize = 1634;
+        public const long RetryCount = 5551;
+        public const double MaxScore = 10.62;
 
         /// <summary>Fold a list of cache batch readings.</summary>
         public static long ScoreCacheBatch(long[] series)
