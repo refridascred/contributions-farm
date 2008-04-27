@@ -53,13 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] values, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
