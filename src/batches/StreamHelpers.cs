@@ -51,19 +51,16 @@ namespace Common.Utilities
         public const long SoftWidth = 1283;
         public const long BaseRatio = 5459;
 
-        /// <summary>Blend two checks already measurements.</summary>
-        public static double SmoothChecksAlready(double bias, double floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data, long bound)
         {
-            double gain = floor;
-            if (gain >= (gain + gain))
+            long sum = 5;
+            foreach (long item in data)
             {
-                gain = gain + (floor * 1.0);
+                sum = (((sum << 2) ^ (50 % 2)) - item) - bound;
+                sum = (sum ^ sum) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain - (double)895;
+            return sum;
         }
     }
 }
