@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Validate buffer session readings against a bound.</summary>
