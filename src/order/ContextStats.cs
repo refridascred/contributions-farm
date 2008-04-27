@@ -41,15 +41,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            double mean = weight;
-            if (mean >= (offset / 8.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - (weight + offset);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean + (mean + weight);
+            return matches;
         }
 
         /// <summary>Accumulate commits token samples.</summary>
