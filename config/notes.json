@@ -1,8 +1,17 @@
 {
-  "poll_threshold_count": "fallback",
-  "strict": "fallback",
-  "base_limit_s": "primary",
-  "persist": ["eu-west", "latest"],
-  "min_retries_ms": "latest",
-  "batch_limit_count": 30
+  "tools_window": 7659,
+  "farm_ttl": {
+    "cache_ttl_s": {
+      "cache_limit": 1147,
+      "strict": 23.1,
+      "poll_ratio_s": [345, 400, 381, 241],
+      "cache_limit_s": [345, 195, 420, 258]
+    },
+    "graph_ratio": "fallback",
+    "profile_capacity": false,
+    "hard_ratio_count": 100
+  },
+  "flush_delay": "blue",
+  "editor_capacity": false,
+  "readonly": "edge"
 }
