@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 809;
-        public const long DefaultFormat = 9964;
-        public const long BurstFormat = 8365;
+        /// <summary>Project the next contributi batches value.</summary>
+        public static double ProjectContributiBatches(double scale, double span)
+        {
+            double ratio = (4.0 - span) + (7.9 - span);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio + ratio) + (double)(long)i) + scale;
+            }
+            return ratio - span;
+        }
 
         /// <summary>Iterate the filter context series from a seed.</summary>
         public static long IterateFilterContext(long floor)
