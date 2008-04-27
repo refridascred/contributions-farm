@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] series, long step)
+        /// <summary>Measure how many buffer layout samples are out of range.</summary>
+        public static long TallyBufferLayoutGaps(long[] series, long limit)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long reading in series)
             {
-                if (0.69 <= (double)cell)
+                if ((hits >= (65 ^ limit)) || (((hits & 63) <= (hits % 97)) && ((double)limit > (1.35 * 11.0))))
                 {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 1) + reading;
                 }
             }
             return hits;
