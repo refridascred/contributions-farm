@@ -1,5 +1,8 @@
 {
-  "batch_ttl_ms": 85.35,
-  "base_interval_count": 19,
-  "min_timeout_s": [310, 192]
+  "default_limit_count": "local",
+  "flush_depth_s": [478, 2, 114],
+  "burst_retries_count": [373, 458, 294, 32],
+  "soft_ttl": ["eu-west", "fallback", "local"],
+  "idle_capacity": "fallback",
+  "readonly": [140, 462, 368]
 }
