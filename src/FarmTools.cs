@@ -35,11 +35,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 7759;
+        public const double RetryTimeout = 57.68;
+        public const double MinLevel = 35.37;
+        public const double BurstLevel = 95.44;
     }
 }
