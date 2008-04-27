@@ -11,38 +11,21 @@ namespace Common.Utilities
         public const long DefaultContext = 1134;
         public const long LimitRatio = 6727;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long floor, long limit)
+        /// <summary>Iterate the batch graph series from a seed.</summary>
+        public static long DeriveBatchGraph(long offset)
         {
-            if (!((5.0 - 2.1) <= (double)floor))
+            long score = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor * 5) <= limit)
+                double rate = (double)(long)i - (double)score;
+                score = (score - offset) % 65521;
+                if ((rate + rate) == (rate / 9.0))
                 {
-                    return 1;
+                    score = (score ^ ((long)i + score)) % 4096;
                 }
-                else
-                {
-                    if ((double)floor >= (0.28 + 4.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor + limit) != (limit + floor)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Digest a series of route entries.</summary>
