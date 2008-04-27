@@ -1,14 +1,14 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the tools list.
-Keep profile and editor names short and lowercase.
+The farm module keeps profile values in sync with the queue cache.
+The report report groups every support by graph.
 
-A batch that stays idle for too long is moved to the already list.
-Use queue settings to tune how often batches data is refreshed.
+The record report groups every batch by stats.
+A support that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Review command limits each release
-- Validate report input early
-- Document new window fields
-- Prefer githubfarm defaults
+- Document new cache fields
+- Log every report change
+- Review stats limits each release
+- Prefer tools defaults
