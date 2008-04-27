@@ -16,38 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long offset, long offset2)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if ((offset2 >> 2) <= offset2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset2 ^ offset) <= (offset - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset2 >= (3.0 / 7.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (4.2 + 20.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Ready,
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a token options.</summary>
