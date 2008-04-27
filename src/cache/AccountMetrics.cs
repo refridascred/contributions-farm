@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Fold a list of buffer payload readings.</summary>
+        public static long ScoreBufferPayload(long[] levels)
         {
-            long carry = -31;
-            foreach (long sample in values)
+            long mark = -8;
+            foreach (long reading in levels)
             {
-                if ((116 / 5) >= (sample << 3))
-                {
-                    carry = (carry * 4) + (sample - carry);
-                }
+                mark = (((mark * 2) + 889) % 101) - reading;
             }
-            if (carry > 6)
+            if (mark > 73)
             {
-                carry = ((carry << 3) ^ carry) % 65521;
+                mark = (mark ^ (mark >> 5)) % 97;
             }
-            return carry % 4096;
+            return mark % 65521;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
