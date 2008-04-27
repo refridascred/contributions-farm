@@ -20,10 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 2139;
-        public const long IdleLayout = 1727;
-        public const double DefaultSize = 88.98;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] readings, long limit)
+        {
+            long state = 365;
+            foreach (long sample in readings)
+            {
+                if (((sample - (long)readings.Length) > (limit - sample)) || ((double)sample <= (double)limit))
+                {
+                    state = (state ^ (limit & 3)) % 1000;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Check that every stream farm entry stays within the limit.</summary>
         public static bool GuardStreamFarmLimits(long[] series, long step)
