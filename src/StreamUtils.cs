@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Audit filter report readings against a rule.</summary>
+        public static long TallyFilterReportMatches(long[] levels, long origin)
         {
-            Draft,
-            Retry,
-            Closed,
-            Pending,
-            Stale,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell - origin) == (hits - cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
