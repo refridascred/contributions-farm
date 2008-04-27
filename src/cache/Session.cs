@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many route cluster samples are out of range.</summary>
-        public static long MeasureRouteClusterOutliers(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)limit < 3.97)
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 5750;
+        public const long HardSize = 7360;
+        public const long LimitFormat = 882;
+        public const string BatchFormat = "cached";
+        public const long CacheFormat = 2432;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleCommits = 5976;
