@@ -47,11 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] samples, long offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((offset % 100) < (offset << 1))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account phase values.</summary>
