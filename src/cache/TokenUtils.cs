@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Validate cache commits readings against a bound.</summary>
+        public static bool VerifyCacheCommitsLimits(long[] values, long bound)
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
