@@ -1,5 +1,14 @@
 {
-  "strict": 34.03,
-  "dry_run": "open",
-  "flush_window_count": "open"
+  "profile_capacity": {
+    "poll_size_ms": false,
+    "layout_interval": 3,
+    "flush_capacity_pct": false,
+    "burst_ratio": ["fallback", "fallback"],
+    "soft_timeout_ms": "open",
+    "schema_timeout": 44.07
+  },
+  "hard_capacity_count": "primary",
+  "flush_timeout": 100,
+  "batch_limit": 92.68,
+  "filter_interval": 61
 }
