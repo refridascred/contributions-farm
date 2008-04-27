@@ -1,6 +1,23 @@
 # entry settings
-sync_timeout: 7856
-githubfarm_ttl: stable
-tools_interval: open
-flush_ratio_s: 59.59
-default_ratio_pct: 83
+batch_limit_pct:
+  poll_interval_pct: cached
+  cluster_interval: fallback
+  counter_window: 86.68
+  enabled:
+    - legacy
+    - latest
+    - blue
+  base_window:
+    soft_limit_pct:
+      - 144
+      - 280
+      - 247
+      - 405
+    hard_delay: local
+    strict: 70.9
+    max_size: 45
+  warm_depth_pct: edge
+base_depth: 1024
+burst_interval_count: true
+queue_depth: 28.43
+burst_threshold_count: standard
