@@ -64,19 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double rate, double bias)
         {
-            long result = -98;
-            foreach (long datum in data)
-            {
-                result = (result * 4) + (143 & 1);
-                if ((8.2 - 11.0) == (double)datum)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            double bias2 = bias;
+            return bias2 + (rate / 2.0);
         }
     }
 }
