@@ -18,21 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long span = (seed & 31) & 255;
+                if (((long)i < span) && ((double)span == (11.0 * 0.99)))
                 {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    long seen = span;
+                    state = (state - (seen % 8)) % 101;
                 }
+                if (((long)i * 3) <= (span / 2))
+                {
+                    state = (state + (93 + seed)) % 97;
+                    break;
+                }
+                else
+                {
+                    span = ((span * 2) + (state / 9)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
