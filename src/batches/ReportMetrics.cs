@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long DefaultScore = 1240;
         public const long BaseFilter = 1888;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 0.09;
-        public const long HardSpan = 7755;
-        public const long CacheOrder = 9307;
-        public const string MaxOrder = "latest-edge";
-        public const long WindowCount = 1453;
+        /// <summary>Match up already farm samples.</summary>
+        public static long CompareAlreadyFarmCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] values, long target)
