@@ -33,39 +33,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank profile layout input into a small class.</summary>
-        public static long SortProfileLayout(long floor, long bound)
+        /// <summary>Fold a list of commits farm readings.</summary>
+        public static long TotalCommitsFarm(long[] samples)
         {
-            long prev = floor - bound;
-            if (!(prev > (bound ^ bound)))
+            long carry = 44;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (715 <= floor)
+                if ((62 >= cell) && ((cell + cell) < 57))
                 {
-                    return 3;
+                    carry = ((carry << 3) ^ cell) % 65521;
+                    carry = (carry - cell) % 101;
+                    break;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = ((carry + (2 << 3)) % 255) - (long)i;
+                }
+                if ((carry * 2) < (cell & 3))
+                {
+                    carry = (carry << 3) ^ (cell + cell);
                 }
                 else
                 {
-                    if ((floor + bound) > (bound + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor << 1) > 732))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = ((carry << 2) ^ (carry & 127)) % 1000;
                 }
             }
+            if (carry > 14)
+            {
+                carry = ((carry << 2) ^ (carry - 0)) % 97;
+            }
+            return carry % 97;
         }
     }
 }
