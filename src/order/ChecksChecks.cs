@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Audit graph counter readings against a rule.</summary>
+        public static long CountGraphCounterGaps(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((3.61 + 9.0) < (double)seen)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
