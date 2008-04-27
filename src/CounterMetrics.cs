@@ -58,13 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            New,
-            Retry,
-            Locked,
-            Failed,
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
