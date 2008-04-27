@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] levels, long step)
+        /// <summary>Accumulate support format samples.</summary>
+        public static long ScoreSupportFormat(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long total = 53;
+            foreach (long cell in readings)
             {
-                if (((double)step <= (double)cell) || ((double)step == (double)seen))
+                if ((total + bound) >= (770 << 2))
                 {
-                    seen = seen + 3;
+                    total = ((total ^ (bound & 63)) % 65521) ^ cell;
                 }
             }
-            return seen;
+            if (total > (-99))
+            {
+                total = (total ^ (bound >> 4)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of order readings.</summary>
