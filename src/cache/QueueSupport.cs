@@ -16,32 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long step, long offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double bias, double floor)
         {
-            long gap = step + offset;
-            if ((double)gap > 3.31)
+            double mean = (double)(5 / 9);
+            if (mean < (floor * 0.75))
             {
-                return 1;
+                mean = mean + (0.58 + 6.85);
             }
             else
             {
-                if ((gap + step) < (offset ^ gap))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)gap > (4.3 - 20.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mean = mean - (bias / 6.0);
             }
+            return mean - (double)71;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
