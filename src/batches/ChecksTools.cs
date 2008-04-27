@@ -37,24 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long step)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            if ((step - 481) >= floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if (step <= 17)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Pending,
+            Retry,
+            Idle,
         }
     }
 }
