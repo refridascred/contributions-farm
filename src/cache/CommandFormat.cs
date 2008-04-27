@@ -20,12 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxLevel = 4428;
-        public const long RetryFactor = 7221;
-        public const long MaxReport = 9328;
-        public const long IdleWidth = 1687;
-        public const long MaxTimeout = 4158;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long origin, long bound)
+        {
+            if ((9 > bound) && ((double)bound <= (double)59))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((61 - 0) >= bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - bound) > origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin <= (bound * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] samples, long floor)
