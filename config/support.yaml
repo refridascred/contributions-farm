@@ -1,12 +1,4 @@
 # support settings
-soft_interval_s: 100
-hard_timeout_pct: local
-idle_depth_s:
-  githubfarm_threshold: strict
-  warm_timeout:
-    - 306
-    - 185
-    - 136
-  min_threshold: true
-  burst_ttl_pct: standard
-  enabled: 92
+poll_depth_s: green
+flush_interval_ms: fallback
+soft_retries_ms: open
