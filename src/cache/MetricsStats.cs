@@ -43,18 +43,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] levels, long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            double bias = offset;
+            if (bias >= (double)(-873))
             {
-                if (!((seen - value) < (seen % 16)))
-                {
-                    seen = (seen + 2) - target;
-                }
+                bias = (bias + (bias / 7.0)) - weight;
             }
-            return seen;
+            return bias + (19.0 * 0.07);
         }
     }
 }
