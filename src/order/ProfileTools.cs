@@ -44,23 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long target)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long mix = -35;
-            foreach (long cell in items)
-            {
-                mix = (mix - cell) % 255;
-                if ((target - (long)items.Length) < (cell >> 3))
-                {
-                    mix = (mix ^ (cell >> 2)) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (cell >> 2)) % 255;
-                }
-            }
-            return mix % 4096;
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
