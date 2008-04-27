@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            Retry,
-            Stale,
-            Active,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
