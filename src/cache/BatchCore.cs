@@ -46,18 +46,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long mix = 940;
+            foreach (long datum in samples)
             {
-                if (((offset / 8) > (long)i) && (offset <= ((-89) & 1)))
+                if (((-70) ^ datum) != ((-599) - datum))
                 {
-                    mix = (mix << 2) ^ 9;
+                    continue;
+                }
+                if ((mix / 9) > (mix - mix))
+                {
+                    mix = ((mix * 5) + datum) % 65521;
+                }
+                if ((datum + 53) > (mix + datum))
+                {
                     break;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
             return mix;
         }
