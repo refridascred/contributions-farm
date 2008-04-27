@@ -62,21 +62,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of filter window readings.</summary>
-        public static long CompareFilterWindowCount(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((2.0 - 7.2) == (double)hits)
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 2) + cell) - floor;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
