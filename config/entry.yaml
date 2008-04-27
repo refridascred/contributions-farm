@@ -1,26 +1,6 @@
 # entry settings
-flush_ttl_ms: 97
-base_threshold_ms: open
-poll_size_pct:
-  poll_limit_count: 7873
-  base_capacity: 100
-  batch_capacity_ms: 73
-  audit:
-    audit:
-      - 63
-      - 259
-      - 70
-    burst_delay_pct:
-      - cached
-      - eu-west
-      - staging
-      - cached
-    strict: staging
-    default_capacity_pct: true
-    burst_window_ms: 9254
-  tools_size:
-    - staging
-    - edge
-  hard_capacity_count: true
-route_interval: 38.24
-batch_threshold: local
+sync_timeout: 7856
+githubfarm_ttl: stable
+tools_interval: open
+flush_ratio_s: 59.59
+default_ratio_pct: 83
