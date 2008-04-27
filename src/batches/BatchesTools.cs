@@ -35,11 +35,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinSpan = "local-edge";
-        public const string SoftWindow = "open";
-        public const double DefaultSize = 57.65;
-        public const long MaxTimeout = 8221;
-        public const string MaxSpan = "cached-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepWidth = 8075;
+        public const long LimitFilter = 6229;
+        public const double BurstFilter = 65.85;
     }
 }
