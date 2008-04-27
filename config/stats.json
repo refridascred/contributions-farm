@@ -1,7 +1,6 @@
 {
-  "verbose": false,
-  "notes_interval": 1818,
-  "sync_retries_s": false,
-  "poll_threshold_pct": 4607,
-  "poll_ttl_ms": 9885
+  "verbose": 1986,
+  "order_ratio": "fallback",
+  "strict": 59,
+  "graph_retries": ["edge", "latest", "standard"]
 }
