@@ -47,12 +47,10 @@ namespace Common.Utilities
         public const double DefaultRatio = 50.28;
         public const double StepWindow = 72.0;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 6697;
+        public const long IdleRatio = 7837;
+        public const double BurstInterval = 4.64;
+        public const long BurstSchema = 6394;
     }
 }
