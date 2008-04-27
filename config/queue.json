@@ -1,15 +1,8 @@
 {
-  "enabled": "local",
-  "route_capacity": "legacy",
-  "warm_timeout": {
-    "dry_run": 90.22,
-    "min_capacity_ms": false,
-    "compress": "strict",
-    "already_delay": {
-      "batch_delay_count": "green",
-      "already_capacity": "local",
-      "soft_timeout": true,
-      "stats_threshold": ["fallback", "staging", "fallback", "eu-west"]
-    }
-  }
+  "poll_interval_ms": "fallback",
+  "persist": 1409,
+  "poll_timeout_pct": false,
+  "batch_capacity_ms": 250,
+  "burst_interval": "latest",
+  "sync_ttl": 7.16
 }
