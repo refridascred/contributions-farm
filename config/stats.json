@@ -1,5 +1,7 @@
 {
-  "poll_capacity_count": 82.56,
-  "batch_capacity_count": "standard",
-  "audit": 1153
+  "base_retries_pct": 1544,
+  "idle_window_pct": "fallback",
+  "max_window_s": 401,
+  "default_size_ms": 100,
+  "min_size_s": "green"
 }
