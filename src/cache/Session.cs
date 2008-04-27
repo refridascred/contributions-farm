@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long BaseScore = 682;
         public const long StepTimeout = 3749;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Check that every schema token entry stays within the limit.</summary>
+        public static bool GuardSchemaTokenLimits(long[] readings, long target)
         {
-            Done,
-            Retry,
-            Synced,
-            Failed,
-            Locked,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
