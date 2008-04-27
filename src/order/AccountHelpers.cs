@@ -63,13 +63,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long step)
         {
-            Ready,
-            Draft,
-            Stale,
-            Synced,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((step <= (datum + datum)) && (seen > (seen * 4)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first buffer report entry that matches the target.</summary>
