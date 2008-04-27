@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Stale,
-            Idle,
-            Closed,
-            Queued,
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit context metrics readings against a rule.</summary>
