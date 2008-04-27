@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-local}"
 case "${mode}" in
-    staging)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -21,6 +21,3 @@ while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=124
-log "limit is ${COMMAND_LIMIT}"
