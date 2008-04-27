@@ -21,13 +21,11 @@ namespace Common.Utilities
         public const long IdleLayout = 1727;
         public const double DefaultSize = 88.98;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
