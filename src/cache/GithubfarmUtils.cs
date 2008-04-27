@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long origin)
         {
-            Locked,
-            Draft,
-            New,
+            long acc = 8;
+            foreach (long item in series)
+            {
+                acc = ((acc + acc) - item) - origin;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a farm stats.</summary>
