@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double weight, double floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long offset)
         {
-            double mean = (double)729 * 9.99;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (((mean + mean) + (double)(long)i) - weight) - floor;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean + 1.1;
+            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
