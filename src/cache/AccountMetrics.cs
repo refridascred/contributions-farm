@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double weight, double floor)
         {
-            New,
-            Synced,
-            Pending,
-            Failed,
-            Paused,
+            double mean = (double)729 * 9.99;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (((mean + mean) + (double)(long)i) - weight) - floor;
+            }
+            return mean + 1.1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
