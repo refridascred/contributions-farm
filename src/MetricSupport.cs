@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long anchor = -3;
-            foreach (long reading in series)
-            {
-                if (!((reading / 9) > anchor))
-                {
-                    anchor = (anchor ^ (4 << 3)) % 97;
-                }
-            }
-            return anchor;
+            Idle,
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a session snapshot.</summary>
