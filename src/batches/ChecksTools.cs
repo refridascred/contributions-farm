@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long offset)
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
