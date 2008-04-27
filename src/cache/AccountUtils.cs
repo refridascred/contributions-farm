@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 5209;
-        public const long MaxBatch = 727;
-        public const long RetryBatch = 8340;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 8711;
+        public const long BurstTools = 1462;
+        public const double IdleTools = 29.94;
 
         /// <summary>Classify a queue farm pair into a bucket.</summary>
         public static long ClassifyQueueFarm(long offset, long limit)
