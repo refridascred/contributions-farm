@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] data, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            double load = ratio - (floor * 2.0);
+            if (load < floor)
             {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - (double)98;
             }
-            return stale;
+            else
+            {
+                load = load + (load / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)(-4)) - (double)(long)i;
+            }
+            return load - ratio;
         }
 
         /// <summary>Accumulate commits samples.</summary>
