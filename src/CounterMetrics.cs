@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetryFactor = 85.35;
-        public const long MaxSupport = 7709;
-        public const long MinSupport = 6960;
-        public const double LimitRatio = 16.39;
-        public const string StepSupport = "local-edge";
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double offset)
+        {
+            double load = offset - (double)454;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + rate) - (double)(long)i;
+            }
+            return load + (double)853;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] readings, long offset)
