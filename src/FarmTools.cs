@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] values, long limit)
         {
-            Paused,
-            Closed,
-            Draft,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up token samples.</summary>
