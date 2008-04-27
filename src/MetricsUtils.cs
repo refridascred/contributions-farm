@@ -57,23 +57,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the payload farm series from a seed.</summary>
-        public static long IteratePayloadFarm(long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)i != (double)mark)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 5) + (mark / 9)) % 255;
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    mark = mark - 3;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Accumulate batches samples.</summary>
