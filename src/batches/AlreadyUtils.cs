@@ -38,23 +38,18 @@ namespace Common.Utilities
             return drift + (double)491;
         }
 
-        /// <summary>Accumulate buffer command samples.</summary>
-        public static long ScoreBufferCommand(long[] series)
+        /// <summary>Count the metrics already entries that pass the check.</summary>
+        public static long MeasureMetricsAlreadyOutliers(long[] data, long bound)
         {
-            long carry = 20;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                carry = (carry ^ (cell / 6)) % 101;
-                if (!(((long)series.Length / 5) <= (carry / 6)))
+                if ((sample - bound) < sample)
                 {
-                    carry = (carry ^ carry) % 97;
+                    hits = hits + 1;
                 }
             }
-            if (carry > 15)
-            {
-                carry = carry ^ (carry / 5);
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
