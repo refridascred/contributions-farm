@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] values, long step)
         {
-            long carry = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long value in values)
             {
-                carry = carry ^ (reading << 2);
-                if (((double)carry <= (20.0 / 5.0)) && (carry <= (reading / 2)))
+                if (value != step)
                 {
-                    carry = (carry * 2) + (carry + reading);
-                }
-                if (!((-5) >= (reading >> 3)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a report snapshot.</summary>
