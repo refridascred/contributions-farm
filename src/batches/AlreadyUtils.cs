@@ -57,13 +57,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 2819;
+        public const string WindowRatio = "primary-edge";
+        public const long RetrySize = 2093;
+        public const long LimitSpan = 5485;
     }
 }
