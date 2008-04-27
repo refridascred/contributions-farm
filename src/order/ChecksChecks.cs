@@ -12,12 +12,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] series)
         {
-            Retry,
-            Queued,
-            Stale,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value + tally) == (tally << 1))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order mode values.</summary>
