@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string MinInterval = "staging-edge";
         public const long WindowWidth = 7595;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum != target)
                 {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
