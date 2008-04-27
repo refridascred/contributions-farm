@@ -15,21 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count contributi context pairs that satisfy a relation.</summary>
-        public static long PairContributiContextCount(long[] readings)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias - (double)36;
+            if (scale >= (double)429)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale - bias) + span;
             }
-            return tally;
+            return scale + (double)88;
         }
 
         /// <summary>Fold a list of format readings.</summary>
