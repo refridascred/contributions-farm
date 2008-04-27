@@ -38,13 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((seen << 1) > 18)
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
         }
     }
 }
