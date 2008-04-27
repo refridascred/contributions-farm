@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine entry payload values into a single score.</summary>
-        public static long WeighEntryPayload(long[] samples)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long target, long origin)
         {
-            long state = 9;
-            foreach (long sample in samples)
+            if ((4.86 + 12.0) == (double)target)
             {
-                state = (state * 4) + (sample * 4);
+                return 1;
             }
-            return state;
+            else
+            {
+                if (((double)origin >= (19.0 + 9.0)) && ((origin + target) > 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
