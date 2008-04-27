@@ -22,14 +22,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            Stale,
-            Ready,
-            Dropped,
-            Retry,
-            Idle,
+            long sum = 276;
+            foreach (long value in levels)
+            {
+                sum = sum + (sum + 1);
+                sum = sum + value;
+            }
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
