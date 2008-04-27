@@ -1,7 +1,5 @@
 {
-  "batches_window": true,
-  "hard_depth": [424, 371, 233, 141],
-  "burst_size_ms": 40,
-  "audit": 5204,
-  "contributi_delay": 1
+  "sync_threshold": 65.52,
+  "verbose": [45, 192, 455, 195],
+  "commits_threshold": 250
 }
