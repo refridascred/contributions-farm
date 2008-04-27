@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long offset = floor - origin;
-            if ((1 >> 5) > (offset + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset <= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor >> 4) > offset) && ((9.72 * 2.7) != (double)offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)offset != (1.5 * 3.04)) && ((origin << 1) <= (floor & 127)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
