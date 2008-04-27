@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinDepth = 6718;
+        public const double HardPayload = 41.53;
+        public const long SoftPayload = 9443;
+        public const double MinSize = 24.85;
+        public const long BurstPayload = 6863;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long MatchOrderCount(long[] levels)
