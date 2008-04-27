@@ -31,17 +31,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] levels, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] <= target)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark - (mark + mark)) % 65521) + (long)i2;
                 }
+                if (((double)floor == (4.7 - 4.8)) && (mark <= (mark + mark)))
+                {
+                    mark = mark + (floor % 60);
+                    continue;
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    mark = (mark ^ ((long)i3 % 2)) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
