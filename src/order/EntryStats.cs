@@ -32,19 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] items, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (datum >= offset)
+                if (item >= bound)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Describe the record phase values.</summary>
