@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Scale a stats format figure with a bias.</summary>
+        public static double ProjectStatsFormat(double scale, double bias)
         {
-            Done,
-            Retry,
-            Dropped,
+            double drift = scale / 6.0;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
