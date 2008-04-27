@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    level INTEGER,
-    count INTEGER NOT NULL DEFAULT 0,
-    active INTEGER NOT NULL DEFAULT 1
+    label TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    rank INTEGER,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
+CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
 
-INSERT INTO commits_records (state, level, count, active) VALUES ('strict', 86, 37, 20);
-INSERT INTO commits_records (state, level, count, active) VALUES ('eu-west', 46, 44, 22);
+INSERT INTO commits_records (state, label, score, rank, owner) VALUES ('strict', 'fallback', 51.2, 27, 'cached');
