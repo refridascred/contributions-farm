@@ -20,38 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long origin, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if ((9 > bound) && ((double)bound <= (double)59))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((61 - 0) >= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - bound) > origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin <= (bound * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Stale,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a profile options.</summary>
