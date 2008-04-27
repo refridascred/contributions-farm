@@ -36,18 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
-        public static long TallyContributiClusterGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((19 + tally) >= (datum + (long)data.Length))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 5896;
+        public const long RetryLevel = 7562;
+        public const double DefaultScore = 9.78;
     }
 }
