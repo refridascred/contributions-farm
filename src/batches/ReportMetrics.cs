@@ -19,26 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] series)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings, long seed)
         {
-            long mix = 45;
-            foreach (long entry in series)
+            long total = 61;
+            foreach (long cell in readings)
             {
-                if ((entry >> 1) != (mix + 6))
-                {
-                    mix = ((mix * 4) + (mix % 12)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + (7 % 7)) % 97;
-                }
+                total = ((total ^ (cell & 15)) % 97) - seed;
             }
-            if (mix < 64)
+            if (total < 45)
             {
-                mix = (mix - (mix * 2)) % 4096;
+                total = total ^ (0 + total);
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Describe the farm phase values.</summary>
