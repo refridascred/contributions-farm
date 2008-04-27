@@ -41,24 +41,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long origin, long seed)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            if ((origin << 2) == (53 + 6))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((2.32 / 3.0) == (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many farm batch samples are out of range.</summary>
