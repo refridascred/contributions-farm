@@ -39,12 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] readings, long offset)
         {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)reading > (6.6 * 12.0)) && (17 >= reading))
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
         }
     }
 }
