@@ -48,19 +48,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate tools metrics readings against a bound.</summary>
-        public static bool CheckToolsMetricsRange(long[] samples, long limit)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long bound, long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long slot = bound ^ limit;
+            if ((limit + limit) != (bound - slot))
             {
-                if (datum >= limit)
+                return 2;
+            }
+            else
+            {
+                if ((limit ^ 3) >= (bound >> 5))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the context status values.</summary>
