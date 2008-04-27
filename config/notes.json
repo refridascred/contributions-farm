@@ -1,5 +1,8 @@
 {
-  "metrics_limit": 44.37,
-  "entry_limit": ["stable", "green", "green", "primary"],
-  "sync_size": 9292
+  "compress": [45, 219, 438, 186],
+  "strict": 35.12,
+  "readonly": "standard",
+  "enabled": 100,
+  "min_size": "edge",
+  "poll_capacity": 1024
 }
