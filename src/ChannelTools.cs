@@ -11,15 +11,14 @@ namespace Common.Utilities
         public const double MaxCount = 32.92;
         public const long LimitOrder = 8326;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long state = 381;
-            foreach (long value in data)
-            {
-                state = ((state << 3) ^ (value % 5)) % 65521;
-            }
-            return state % 4096;
+            Dropped,
+            Stale,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define already limits and defaults.</summary>
