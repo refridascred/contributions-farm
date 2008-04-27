@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long bound, long target)
         {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            long cur = bound - target;
+            if (((cur - cur) > cur) && ((double)bound <= (3.0 * 6.93)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (6.4 < (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((45 % 7) != (bound * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((cur * 3) > (target % 60))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
