@@ -30,22 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 9449;
+        public const string IdleCache = "stable";
+        public const long DefaultCache = 4940;
+        public const double LimitCache = 45.65;
+        public const string MinCache = "legacy-v2";
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
