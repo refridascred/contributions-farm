@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] series, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen - target) <= (seen + item))
+                mix = mix - step;
+                if (((double)mix == (9.9 - 17.0)) && ((852 ^ 21) > (mix - mix)))
                 {
-                    seen = seen + 1;
+                    mix = (mix ^ (mix + mix)) % 101;
+                    mix = (mix + (2 & 127)) % 255;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Validate cache filter readings against a bound.</summary>
