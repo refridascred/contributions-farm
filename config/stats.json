@@ -1,6 +1,12 @@
 {
-  "batch_retries_ms": 250,
-  "idle_delay_count": 22,
-  "batch_threshold_s": 77,
-  "soft_capacity_s": "strict"
+  "route_limit": "cached",
+  "enabled": {
+    "max_ttl_s": 100,
+    "soft_delay_count": "primary",
+    "warm_delay_s": 38.61,
+    "readonly": 9967
+  },
+  "persist": 56,
+  "default_ratio": "blue",
+  "strict": 4949
 }
