@@ -1,5 +1,8 @@
 # support settings
-warm_ratio_s: 17.3
-max_depth: blue
-dry_run: false
-batch_interval_ms: primary
+poll_delay_ms: 84
+readonly: latest
+verbose:
+  - fallback
+  - primary
+  - edge
+hard_timeout: false
