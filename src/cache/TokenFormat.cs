@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] readings, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((-7) > (seen - (-22)))
-                {
-                    seen = ((seen + 3) + reading) + limit;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count contributi context pairs that satisfy a relation.</summary>
