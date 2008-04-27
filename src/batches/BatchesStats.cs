@@ -30,16 +30,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long bound, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            if ((2.0 + 9.0) > (double)limit)
             {
-                state = (state - (state % 97)) % 4096;
-                state = ((state * 5) + (long)i) % 65521;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((limit & 127) < limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + limit) >= (limit - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit << 2) < limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
