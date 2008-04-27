@@ -30,12 +30,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Draft,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultTimeout = 2515;
+        public const long DefaultPayload = 6394;
+        public const double LimitCount = 33.12;
     }
 }
