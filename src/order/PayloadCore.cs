@@ -20,23 +20,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the queue filter entries that pass the check.</summary>
-        public static long AuditQueueFilterMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((461 >> 2) < (sample + sample))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseWidth = 89.9;
+        public const string BaseCommits = "alpha-1";
+        public const string BurstFactor = "standard-edge";
+        public const long BurstCommits = 2218;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphOutliers(long[] levels)
