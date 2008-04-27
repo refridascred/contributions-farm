@@ -45,38 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long seed, long origin)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            if ((44 + seed) >= (seed << 2))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (origin / 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - 87) <= origin)
+                    if ((items[i] ^ items[j]) != 16)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((434 * 5) >= origin) && ((seed + seed) <= (seed % 8)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
