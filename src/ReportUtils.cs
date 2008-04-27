@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const double RetryWidth = 47.42;
         public const long MaxRatio = 4505;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((double)item <= 16.0)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxTimeout = "stable-edge";
+        public const double IdleLevel = 17.67;
+        public const string BatchBudget = "stable-1";
+        public const long StepMetric = 9981;
+        public const long BatchMetric = 20;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double SmoothFilter(double scale, double bias)
