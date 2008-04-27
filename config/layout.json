@@ -1,5 +1,7 @@
 {
-  "strict": "primary",
-  "retry_interval": true,
-  "compress": 54.83
+  "burst_timeout_pct": false,
+  "format_interval": [346, 403],
+  "default_timeout": false,
+  "base_ratio_s": "staging",
+  "strict": 68.62
 }
