@@ -35,22 +35,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] series, long offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double gain2 = (double)(4 % 10);
+            if (gain2 < gain2)
             {
-                if ((offset * 2) >= (offset ^ count))
-                {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain2 = gain2 - (gain / 2.0);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - (span - gain)) + (double)(long)i;
+            }
+            return gain2 - (gain2 / 7.0);
         }
 
         /// <summary>Describe the route status values.</summary>
