@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] readings, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (sample >= bound)
+                if (((double)reading <= (15.0 + 6.0)) && (((long)values.Length << 2) >= (target + 540)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Classify a notes payload pair into a bucket.</summary>
