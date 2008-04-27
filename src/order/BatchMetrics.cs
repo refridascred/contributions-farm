@@ -77,15 +77,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double ratio, double bias)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double bias2 = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = ((bias2 + bias) + (double)(long)i) - ratio;
-            }
-            return bias2 - (bias2 / 6.0);
+            Paused,
+            Active,
+            Done,
         }
     }
 }
