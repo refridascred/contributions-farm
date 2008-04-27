@@ -1,8 +1,8 @@
 {
-  "strict": ["primary", "open", "fallback"],
-  "flush_interval_s": 90.86,
-  "audit": "legacy",
-  "idle_retries": 87.94,
-  "batch_timeout_s": false,
-  "min_capacity_ms": 80
+  "filter_retries": "strict",
+  "route_capacity": "open",
+  "stream_retries": [73, 126, 138, 449],
+  "channel_ratio": true,
+  "strict": [410, 125, 303],
+  "enabled": ["latest", "green", "local"]
 }
