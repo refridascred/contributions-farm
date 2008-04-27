@@ -1,7 +1,9 @@
 # support settings
-burst_depth_count: 8843
-payload_retries: staging
-retry_retries_s: 100
-dry_run: 7751
-poll_retries_s: false
-token_depth: staging
+flush_ratio_ms: 6.51
+enabled:
+  - staging
+  - legacy
+cache_capacity_count: 30
+retry_ttl: 0.4
+metrics_size: 63
+soft_capacity: standard
