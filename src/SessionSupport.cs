@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((double)count != (7.0 + 2.2)) || ((count / 6) > count))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
