@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] samples)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long step, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long span = step ^ offset;
+            if (93 < (offset % 24))
             {
-                if ((((double)tally < (10.0 * 9.66)) && ((6.0 - 6.7) < (double)value)) || ((tally ^ 883) > ((long)samples.Length % 100)))
+                return 8;
+            }
+            else
+            {
+                if (507 >= (span << 3))
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
