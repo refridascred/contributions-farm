@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long step, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((step + 3) > (step & 63))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset * 2) >= step)
                 {
-                    if ((readings[i] + readings[j]) < 15)
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + offset) >= (85 + 6))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the commits kind values.</summary>
