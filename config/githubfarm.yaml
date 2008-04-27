@@ -1,11 +1,15 @@
 # githubfarm settings
-contributi_window:
-  - 341
-  - 167
-  - 130
-soft_retries_pct: latest
-hard_interval_ms:
-  - 17
-  - 207
-  - 250
-  - 196
+commits_size: open
+idle_delay: latest
+session_ratio: 917
+channel_ttl:
+  strict: strict
+  idle_capacity:
+    - 402
+    - 255
+  retry_limit_ms: true
+  verbose: 45.35
+  base_ttl: 73
+  min_timeout: 1024
+default_timeout_count: 60
+enabled: 1783
