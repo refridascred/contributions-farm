@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long seed)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Blend two command measurements.</summary>
