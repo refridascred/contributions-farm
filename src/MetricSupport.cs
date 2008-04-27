@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long target, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] series, long offset)
         {
-            if ((4.86 + 12.0) == (double)target)
+            bool valid = true;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin >= (19.0 + 9.0)) && ((origin + target) > 6))
+                if (item != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a session snapshot.</summary>
