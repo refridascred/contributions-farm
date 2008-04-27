@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseBudget = 9027;
-        public const string BaseWidth = "strict";
-        public const long RetryFactor = 3499;
-        public const long StepRatio = 8838;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Idle,
+            Closed,
+            New,
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LocateBatchIndex(long[] samples, long limit)
