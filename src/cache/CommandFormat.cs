@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long step, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] data, long bound)
         {
-            if ((step + 3) > (step & 63))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 2) >= step)
+                if (entry < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + offset) >= (85 + 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the commits kind values.</summary>
