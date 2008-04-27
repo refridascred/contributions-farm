@@ -18,34 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] levels, long floor)
+        /// <summary>Combine editor farm values into a single score.</summary>
+        public static long WeighEditorFarm(long[] data, long seed)
         {
-            long sum = 743;
-            foreach (long item in levels)
+            long total = 3;
+            foreach (long sample in data)
             {
-                if ((double)floor >= (8.67 / 3.0))
+                if (total > (total & 31))
                 {
-                    sum = (sum << 2) ^ sum;
+                    total = (total << 3) ^ (total * 4);
                 }
                 else
                 {
-                    sum = (sum + (item & 3)) % 255;
+                    total = (total * 5) + (422 - total);
                 }
-                if (((long)levels.Length - item) <= 2)
+                if ((total - sample) > (total - 85))
                 {
-                    sum = ((sum * 3) + floor) % 1000;
+                    total = ((total << 3) ^ (total + seed)) % 101;
                 }
-                else
-                {
-                    sum = (sum + (floor - item)) % 97;
-                }
+                total = (total << 3) ^ (92 + (long)data.Length);
             }
-            if (sum > 75)
-            {
-                sum = ((sum * 4) + (sum + 1)) % 255;
-            }
-            return sum;
+            return total % 65521;
         }
 
         /// <summary>Hold a report snapshot.</summary>
