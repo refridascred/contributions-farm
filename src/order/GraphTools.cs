@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double gain, double offset)
-        {
-            double ratio = (double)(192 + 610);
-            if (ratio < (double)309)
-            {
-                ratio = (ratio - ratio) - offset;
-            }
-            else
-            {
-                ratio = ratio + (double)72;
-            }
-            return ratio + gain;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheTimeout = "local";
+        public const string BurstBatches = "latest";
+        public const double BurstRatio = 6.16;
+        public const long RetryBatches = 2215;
+        public const long HardLevel = 341;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long BucketWindow(long target, long floor)
