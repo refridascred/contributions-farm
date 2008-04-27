@@ -56,23 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((double)(long)i == (1.4 / 5.0))
+                if (((double)tally >= (9.9 - 9.5)) || (tally < 7))
                 {
-                    total = (total + (3 / 7)) % 255;
+                    tally = (tally + 3) + datum;
                 }
                 else
                 {
-                    total = (total + offset) % 255;
+                    tally = tally - 1;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
     }
 }
