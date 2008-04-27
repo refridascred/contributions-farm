@@ -34,12 +34,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Paused,
-            Closed,
-            Done,
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
