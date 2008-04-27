@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] samples, long origin)
+        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
+        public static bool CheckMetricsChannelRange(long[] values, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((origin >> 5) < (count - (-432)))
+                if (datum <= target)
                 {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the cache level values.</summary>
