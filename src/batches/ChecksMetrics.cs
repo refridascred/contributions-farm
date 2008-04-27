@@ -32,14 +32,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Draft,
-            Retry,
-            Done,
-            Paused,
-            Ready,
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
