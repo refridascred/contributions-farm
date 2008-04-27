@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum > floor)
                 {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
