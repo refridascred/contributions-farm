@@ -19,21 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] == limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit command report readings against a rule.</summary>
