@@ -32,19 +32,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double span)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            double gain2 = (double)(4 % 10);
-            if (gain2 < gain2)
+            double mean = weight;
+            if (mean >= (offset / 8.0))
             {
-                gain2 = gain2 - (gain / 2.0);
+                mean = mean - (weight + offset);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - (span - gain)) + (double)(long)i;
-            }
-            return gain2 - (gain2 / 7.0);
+            return mean + (mean + weight);
         }
 
         /// <summary>Accumulate commits token samples.</summary>
