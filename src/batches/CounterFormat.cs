@@ -37,17 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = (scale * 7.1) + (double)704;
+            if (load > load)
             {
-                if ((items[i] < origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + scale;
             }
-            return -1;
+            else
+            {
+                load = load + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load - (load * 3.2);
         }
     }
 }
