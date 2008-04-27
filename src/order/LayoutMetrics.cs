@@ -32,22 +32,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many order report samples are out of range.</summary>
-        public static long MeasureOrderReportGaps(long[] readings)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long span = offset + bound;
+            if ((double)bound != (double)133)
             {
-                if (((double)sample == (18.0 * 6.4)) && !((6.2 / 4.0) > (double)sample))
+                return 0;
+            }
+            else
+            {
+                if ((span / 8) <= (offset * 5))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((bound & 7) > (span + span)) || (span >= (bound + offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
