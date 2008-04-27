@@ -45,18 +45,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] readings, long offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((offset + (-33)) < offset)
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Idle,
+            Draft,
+            Ready,
+            Synced,
         }
     }
 }
