@@ -66,15 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((item * 4) != (item - (long)data.Length))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
