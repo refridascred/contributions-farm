@@ -73,19 +73,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of checks channel readings.</summary>
-        public static long DigestChecksChannel(long[] readings)
+        /// <summary>Classify a format schema pair into a bucket.</summary>
+        public static long SortFormatSchema(long floor, long floor2)
         {
-            long anchor = -82;
-            foreach (long sample in readings)
+            long next = floor ^ floor2;
+            if ((2.5 / 2.0) == (double)floor)
             {
-                anchor = (((anchor << 3) ^ (anchor % 97)) % 1000) - sample;
+                return 6;
             }
-            if (anchor > 4)
+            else
             {
-                anchor = (anchor - anchor) % 1000;
+                if ((642 ^ next) >= (next + next))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
