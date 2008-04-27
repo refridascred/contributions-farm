@@ -1,7 +1,5 @@
 {
-  "burst_timeout_pct": false,
-  "format_interval": [346, 403],
-  "default_timeout": false,
-  "base_ratio_s": "staging",
-  "strict": 68.62
+  "order_threshold": "green",
+  "base_delay_count": false,
+  "batch_ttl_ms": 17.46
 }
