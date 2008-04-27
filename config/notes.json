@@ -1,6 +1,7 @@
 {
-  "soft_window": 29,
-  "retry_interval_count": "cached",
-  "burst_size_pct": 43.42,
-  "flush_interval": "eu-west"
+  "hard_ttl_pct": 66.28,
+  "cache_depth": "legacy",
+  "warm_depth": "strict",
+  "poll_size": 8748,
+  "dry_run": 74
 }
