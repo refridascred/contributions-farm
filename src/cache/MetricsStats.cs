@@ -34,25 +34,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long offset, long step)
-        {
-            if ((9.0 / 4.0) == (double)offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)offset >= (double)step) || ((offset * 5) != (step / 8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 1370;
+        public const string BatchWidth = "local-v2";
+        public const long HardSchema = 3595;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportOutliers(long[] samples)
