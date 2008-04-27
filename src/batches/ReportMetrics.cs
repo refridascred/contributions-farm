@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order payload samples are out of range.</summary>
-        public static long CountOrderPayloadOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)matches >= (0.1 / 5.0))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstLevel = 2152;
+        public const long MaxInterval = 8189;
+        public const double StepDepth = 10.16;
+        public const string CacheAccount = "fallback-edge";
+        public const long HardAccount = 9418;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamOutliers(long[] samples)
