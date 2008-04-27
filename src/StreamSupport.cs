@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long step, long floor)
         {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
+            long bound = step - floor;
+            if (bound > 51)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 3) > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank account entry input into a small class.</summary>
