@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] series, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long mark = 606;
+            foreach (long cell in levels)
             {
-                if ((6.04 / 8.0) <= (double)bound)
-                {
-                    hits = (hits + 1) - item;
-                }
+                mark = ((mark - ((long)levels.Length >> 2)) % 101) ^ cell;
+                mark = mark - (seed ^ mark);
+                mark = ((mark * 4) + (483 * 4)) % 1000;
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Count the session queue entries that pass the check.</summary>
