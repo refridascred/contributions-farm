@@ -36,10 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 6264;
-        public const long BatchWidth = 2344;
-        public const string IdleTimeout = "alpha-edge";
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long MeasureChannelMatches(long[] series, long origin)
