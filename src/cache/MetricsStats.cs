@@ -62,18 +62,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] readings)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!((tally - 9) == (1 - (long)readings.Length)) && ((cell + cell) <= cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            New,
+            Dropped,
         }
     }
 }
