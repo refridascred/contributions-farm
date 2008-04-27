@@ -13,19 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] data, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
