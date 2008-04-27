@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Locate a editor record reading by value.</summary>
+        public static long LookupEditorRecordIndex(long[] data, long offset)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metrics cluster samples are out of range.</summary>
