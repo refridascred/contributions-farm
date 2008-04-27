@@ -68,21 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel editor samples.</summary>
-        public static long PairChannelEditorCount(long[] readings)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 4)
+                    if ((values[i] + values[j]) == 8)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
