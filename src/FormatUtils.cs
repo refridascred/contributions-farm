@@ -14,31 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long target)
         {
-            if ((limit + bound) >= (limit * 3))
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound <= (limit - limit)) && (limit <= (bound * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)limit <= (18.0 + 6.12)) || ((limit << 1) <= (limit - 841)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
