@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitFactor = 94.61;
-        public const long BatchGithubfarm = 8048;
-        public const long MaxGithubfarm = 6826;
-        public const long CacheWidth = 9297;
+        /// <summary>Iterate the account session series from a seed.</summary>
+        public static long SeriesAccountSession(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterLimits(long[] readings, long floor)
