@@ -26,15 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double bias, double span)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] series, long step)
         {
-            double scale = (double)(8 << 3);
-            if (scale >= (double)6)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                scale = (scale - bias) - span;
+                if (reading > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale - scale;
+            return ok;
         }
     }
 }
