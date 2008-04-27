@@ -50,11 +50,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinSize = "strict-v2";
-        public const long BurstCommits = 7093;
-        public const long LimitCommits = 4282;
-        public const long IdleCommits = 9613;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryTimeout = 5114;
