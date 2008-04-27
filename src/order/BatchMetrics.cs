@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Measure how many filter schema samples are out of range.</summary>
+        public static long AuditFilterSchemaOutliers(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)seen > (4.1 * 9.8))
                 {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
