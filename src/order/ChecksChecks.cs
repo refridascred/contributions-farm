@@ -14,17 +14,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] levels, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long sample in series)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                if ((acc ^ sample) < (sample % 64))
                 {
-                    return (long)i;
+                    acc = acc + sample;
+                }
+                if ((double)sample >= (double)11)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
