@@ -87,21 +87,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of schema entry readings.</summary>
-        public static long PairSchemaEntryCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstWidth = "fallback-edge";
+        public const long BurstScore = 4862;
+        public const double SoftLevel = 38.79;
+        public const long HardRatio = 8458;
+        public const long DefaultRecord = 9125;
     }
 }
