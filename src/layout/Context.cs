@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "alpha-edge";
+        public const long SoftLevel = 4462;
+        public const double BurstTools = 51.01;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
