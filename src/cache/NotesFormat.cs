@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Queued,
-            Failed,
-            Idle,
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
