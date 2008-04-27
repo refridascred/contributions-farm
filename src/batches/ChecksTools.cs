@@ -45,13 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] series, long step)
         {
-            Active,
-            Pending,
-            Retry,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
