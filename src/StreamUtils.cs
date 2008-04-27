@@ -23,32 +23,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long floor, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] series)
         {
-            long bound2 = floor + bound;
-            if ((6.72 + 8.0) == (double)bound2)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor >= (4.0 / 2.0)) || ((floor / 3) > (bound2 << 2)))
+                if ((double)cell > (double)seen)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((165 * 4) >= (bound & 127)) && ((double)bound >= (3.0 - 0.3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
