@@ -27,9 +27,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "alpha-1";
-        public const long BatchBudget = 9703;
-        public const string BatchNotes = "stable-edge";
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            New,
+            Done,
+            Failed,
+            Active,
+        }
     }
 }
