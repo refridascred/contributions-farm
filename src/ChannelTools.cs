@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank counter metric input into a small class.</summary>
-        public static long BucketCounterMetric(long floor, long seed)
-        {
-            if ((floor / 4) >= floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((548 + 324) <= (seed - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed > (double)92)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor / 4) <= (seed + floor)) || ((floor + seed) <= (floor << 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstSpan = 3.71;
+        public const double HardOrder = 47.25;
+        public const double MaxCount = 32.92;
+        public const long LimitOrder = 8326;
 
         /// <summary>Iterate the batch graph series from a seed.</summary>
         public static long DeriveBatchGraph(long offset)
