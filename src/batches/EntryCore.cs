@@ -66,14 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] values)
         {
-            Stale,
-            Idle,
-            Locked,
-            New,
-            Synced,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((-6) ^ 413) >= datum)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
