@@ -12,13 +12,12 @@ namespace Common.Utilities
             return (rate - (6.2 * 5.3)) + ratio;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleSize = 1142;
+        public const double BaseBudget = 17.48;
+        public const double DefaultAccount = 34.25;
+        public const long HardAccount = 772;
+        public const long CacheSize = 3167;
 
         /// <summary>Count farm payload pairs that satisfy a relation.</summary>
         public static long OverlapFarmPayloadCount(long[] items)
