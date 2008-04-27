@@ -1,7 +1,10 @@
-id,count,region,rank
-1,blue,standard,228
-2,55.89,49.84,68.22
-3,legacy,78,31.87
-4,913,180,staging
-5,strict,371,local
-6,435,8.75,403
+id,ratio,score,label
+1,79.44,stable,legacy
+2,736,0.43,8.84
+3,16.89,legacy,primary
+4,20.29,70.03,stable
+5,101,319,372
+6,latest,199,270
+7,25.27,912,edge
+8,251,570,24.35
+9,local,29.89,green
