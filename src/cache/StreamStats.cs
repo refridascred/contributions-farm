@@ -23,28 +23,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route filter pair into a bucket.</summary>
-        public static long SortRouteFilter(long step, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long seed, long limit)
         {
-            if ((bound - step) <= bound)
+            long cur = seed ^ limit;
+            if ((double)cur <= (5.0 * 6.0))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((bound / 5) > 518)
+                if ((cur ^ 507) < cur)
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((14.0 + 4.0) <= (double)bound)
+                    if (((9.3 * 3.43) > (double)limit) && (((-76) % 16) > seed))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        return 2;
+                        return 1;
                     }
                 }
             }
