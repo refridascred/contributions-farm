@@ -19,12 +19,10 @@ namespace Common.Utilities
         public const long BatchInterval = 6956;
         public const long DefaultLevel = 476;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 2511;
+        public const long SoftNotes = 669;
+        public const long StepNotes = 6538;
+        public const long RetryNotes = 8332;
     }
 }
