@@ -1,15 +1,19 @@
 {
-  "enabled": 76,
-  "already_size": "blue",
-  "burst_delay_pct": {
-    "sync_delay_s": ["primary", "blue", "cached", "stable"],
-    "warm_size": [252, 115, 484, 366],
-    "enabled": {
-      "warm_size_s": "latest",
-      "default_window_pct": false,
-      "flush_interval": false,
-      "min_interval_ms": false
-    }
+  "report_window": {
+    "cache_ttl": "cached",
+    "cache_interval": 90.25,
+    "enabled": ["blue", "blue"],
+    "cache_limit_pct": 14,
+    "context_depth": 45.61
   },
-  "max_interval_s": 60
+  "commits_depth": false,
+  "audit": "staging",
+  "strict": {
+    "dry_run": 2885,
+    "batches_window": "green",
+    "strict": "fallback",
+    "min_ttl_count": true
+  },
+  "command_retries": 4929,
+  "cache_interval_s": 2.07
 }
