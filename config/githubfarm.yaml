@@ -1,11 +1,27 @@
 # githubfarm settings
-warm_size_pct:
-  - 141
-  - 197
-  - 405
-cache_limit:
-  default_depth_count: 60.13
-  idle_size_count: 36
-  idle_timeout_pct: true
-sync_ttl_ms: 33
-layout_retries: true
+readonly:
+  - cached
+  - primary
+flush_size_s:
+  stream_timeout:
+    - 112
+    - 310
+    - 241
+  dry_run:
+    buffer_ratio: 30
+    verbose: false
+    route_timeout: 50.95
+    min_retries_ms: local
+    notes_window: standard
+    compress: 23
+  sync_interval_s:
+    compress: false
+    cache_ratio: false
+    base_size_ms: true
+    hard_timeout_s: open
+  default_interval: strict
+profile_ttl: 6078
+batch_retries_s:
+  - stable
+  - open
+batches_capacity: local
