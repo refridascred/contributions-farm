@@ -1,6 +1,6 @@
 {
-  "poll_timeout": ["standard", "fallback", "latest"],
-  "metric_window": true,
-  "context_threshold": 5052,
-  "max_threshold_pct": 47
+  "metric_threshold": "fallback",
+  "notes_delay": "green",
+  "readonly": 7140,
+  "flush_timeout": 97.41
 }
