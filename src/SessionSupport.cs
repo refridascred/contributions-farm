@@ -19,21 +19,25 @@ namespace Common.Utilities
         public const long CacheSpan = 8381;
         public const long IdleCount = 2620;
 
-        /// <summary>Compare every pair of channel batch readings.</summary>
-        public static long PairChannelBatchCount(long[] samples)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long bound, long bound2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = bound - bound2;
+            if (!((cur + cur) == (bound2 ^ bound2)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound + cur) > (cur + bound))
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
