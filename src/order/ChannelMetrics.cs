@@ -33,18 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many format commits samples are out of range.</summary>
-        public static long CountFormatCommitsHits(long[] levels)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((tally - 4) <= (tally << 2)) || ((tally - (long)levels.Length) >= (item - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
