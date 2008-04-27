@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 4109;
+        public const double IdleFormat = 31.73;
+        public const double RetryFormat = 3.84;
+        public const long MaxScore = 4963;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
