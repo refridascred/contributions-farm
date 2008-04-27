@@ -38,18 +38,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = 4;
+            foreach (long value in readings)
             {
-                if ((69 << 3) > (item / 8))
+                result = (((result << 2) ^ (value + value)) % 255) - limit;
+                if (!((value - 7) < 39))
                 {
-                    hits = hits + 2;
+                    result = (result << 2) ^ (result / 2);
+                }
+                else
+                {
+                    result = (result ^ ((long)readings.Length / 8)) % 255;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
