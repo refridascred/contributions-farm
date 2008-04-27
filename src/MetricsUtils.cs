@@ -76,17 +76,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] samples, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 976;
+            foreach (long entry in data)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                if (((mix & 63) < ((-5) & 63)) || (((long)data.Length - mix) < mix))
                 {
-                    return (long)i;
+                    mix = (((mix << 3) ^ (mix & 1)) % 4096) - entry;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
