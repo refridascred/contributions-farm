@@ -77,18 +77,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account support samples are out of range.</summary>
-        public static long MeasureAccountSupportOutliers(long[] readings)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)count >= (0.7 / 5.0))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
