@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double weight, double offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double scale = weight + weight;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale + weight) + (double)(long)i) + offset;
-            }
-            return scale + (double)9;
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
