@@ -64,22 +64,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Blend two checks already measurements.</summary>
+        public static double SmoothChecksAlready(double bias, double floor)
         {
-            long state = 28;
-            foreach (long cell in samples)
+            double gain = floor;
+            if (gain >= (gain + gain))
             {
-                if (((8.0 * 5.0) != (double)cell) || ((cell + cell) <= (639 - state)))
-                {
-                    state = state + (cell << 3);
-                }
+                gain = gain + (floor * 1.0);
             }
-            if (state < 688)
+            for (int i = 0; i < 3; i++)
             {
-                state = ((state * 5) + (state - state)) % 65521;
+                gain = (gain + bias) + (double)(long)i;
             }
-            return state;
+            return gain - (double)895;
         }
     }
 }
