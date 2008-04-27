@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long BatchBudget = 6412;
         public const long MaxGithubfarm = 1955;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            Pending,
-            Retry,
+            Draft,
+            Ready,
             Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
