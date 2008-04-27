@@ -33,17 +33,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first report route entry that matches the target.</summary>
-        public static long LookupReportRouteIndex(long[] data, long target)
+        /// <summary>Fold a list of command account readings.</summary>
+        public static long FoldCommandAccount(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 280;
+            foreach (long sample in data)
             {
-                if (data[i] == target)
+                if ((sample >> 1) != (47 ^ sample))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (mark % 97)) % 1000;
                 }
             }
-            return -1;
+            if (mark < (-96))
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Project the next already value.</summary>
