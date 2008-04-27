@@ -1,8 +1,14 @@
 {
-  "readonly": 11.95,
-  "retry_interval_count": false,
-  "poll_threshold_s": "latest",
-  "retry_interval": ["cached", "strict", "edge", "latest"],
-  "flush_retries_ms": 250,
-  "max_delay_s": true
+  "audit": 70.88,
+  "commits_timeout": {
+    "default_delay_pct": "blue",
+    "report_size": "local",
+    "default_delay_s": "eu-west",
+    "idle_ttl_pct": "eu-west",
+    "channel_timeout": 4.98,
+    "tools_window": "cached"
+  },
+  "idle_limit_count": 250,
+  "sync_timeout_ms": 4940,
+  "graph_size": 6698
 }
