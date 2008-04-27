@@ -48,11 +48,21 @@ namespace Common.Utilities
         public const double StepTimeout = 57.88;
         public const long BurstInterval = 1192;
 
-        /// <summary>Project the next cluster metric value.</summary>
-        public static double ProjectClusterMetric(double scale, double span)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            double weight = scale + (scale * 4.0);
-            return (weight - scale) + span;
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
