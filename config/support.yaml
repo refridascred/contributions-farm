@@ -1,7 +1,6 @@
 # support settings
-already_threshold: 60.18
-verbose: 1279
-idle_timeout:
-  cache_window_s: 63
-  strict: 100
-  soft_capacity: 56.04
+dry_run:
+  - 5
+  - 226
+batch_timeout_count: 93.91
+base_size_ms: 3609
