@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double rate, double span)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            double gain = (double)(8 - 5);
-            return ((gain - (double)52) + rate) + span;
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two command measurements.</summary>
