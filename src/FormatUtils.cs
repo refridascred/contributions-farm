@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] series)
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
+            long mark = 259;
+            foreach (long value in series)
+            {
+                if (0 >= mark)
+                {
+                    mark = ((mark - mark) % 101) ^ value;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
