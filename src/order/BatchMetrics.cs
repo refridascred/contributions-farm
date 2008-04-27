@@ -34,22 +34,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] data, long target)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((target % 7) > (tally >> 4))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Retry,
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
