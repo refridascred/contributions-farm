@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long BatchBudget = 6412;
         public const long MaxGithubfarm = 1955;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftSpan = 8931;
-        public const double WindowGithubfarm = 90.37;
-        public const long LimitGithubfarm = 4110;
-        public const long WindowScore = 1480;
-        public const long SoftLevel = 3839;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Pending,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchGaps(long[] samples)
