@@ -20,10 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseSpan = 8012;
-        public const double BaseChannel = 65.61;
-        public const long WindowChannel = 2008;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings, long offset)
+        {
+            long score = 8;
+            foreach (long cell in readings)
+            {
+                score = ((score - (offset << 3)) % 65521) - cell;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long step, long bound)
