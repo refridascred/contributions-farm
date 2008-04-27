@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit batches context readings against a rule.</summary>
-        public static long AuditBatchesContextOutliers(long[] levels, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] series)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((value << 3) <= (329 / 7)) || ((count / 4) == (count << 2)))
+                if ((5.85 - 5.0) < (double)reading)
                 {
-                    count = (count + 2) - seed;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the counter kind values.</summary>
