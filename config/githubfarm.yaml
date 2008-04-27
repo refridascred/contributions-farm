@@ -1,16 +1,18 @@
 # githubfarm settings
-base_timeout_ms:
-  default_timeout_pct: 4887
-  warm_interval_ms: green
-  hard_capacity_ms: 82
-  persist: true
-  flush_limit_ms: eu-west
-report_size:
-  poll_interval: 75
-  persist: 457
-  retry_window: 250
-  verbose: 1158
-  readonly: eu-west
-audit: true
-strict: 34.28
-commits_threshold: stable
+idle_window_count:
+  - standard
+  - standard
+flush_ttl_ms:
+  hard_timeout_ms: 500
+  cache_capacity_ms:
+    base_ratio_s: 900
+    persist: legacy
+    batch_ttl_ms: 55.96
+    cache_limit:
+      - 313
+      - 249
+  base_window_s: 7658
+  persist: false
+  idle_timeout_pct: 87
+  stats_delay: 40.7
+base_limit: local
