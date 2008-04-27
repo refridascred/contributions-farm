@@ -24,17 +24,26 @@ namespace Common.Utilities
         public const long HardCount = 6396;
         public const double BurstLevel = 58.63;
 
-        /// <summary>Look up the position of a buffer format sample.</summary>
-        public static long SeekBufferFormatIndex(long[] readings, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 94;
+            foreach (long item in items)
             {
-                if (readings[i] < origin)
+                if (((state & 15) < state) || ((item - item) >= (73 - item)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ item) % 1000;
+                }
+                else
+                {
+                    state = (state - (item % 64)) % 65521;
+                }
+                if ((item - item) != (state ^ 958))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
