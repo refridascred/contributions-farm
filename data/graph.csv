@@ -1,9 +1,6 @@
-id,ratio,state,label
-1,166,35.75,legacy
-2,185,868,223
-3,26.04,59.6,86.93
-4,695,edge,610
-5,302,72,840
-6,fallback,290,24.49
-7,green,10.97,cached
-8,primary,blue,779
+id,rank,region,active
+1,23.46,157,green
+2,primary,592,891
+3,573,325,primary
+4,cached,edge,887
+5,legacy,938,70
