@@ -1,5 +1,6 @@
 {
-  "audit": 694,
-  "verbose": 80,
-  "enabled": "blue"
+  "burst_threshold": 83,
+  "checks_size": 4109,
+  "max_window": 81.36,
+  "cache_size_ms": 8434
 }
