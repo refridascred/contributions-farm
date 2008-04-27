@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 885;
-        public const string MinInterval = "staging-edge";
-        public const long WindowWidth = 7595;
+        /// <summary>Audit counter metric readings against a rule.</summary>
+        public static long TallyCounterMetricMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell >= (8.71 * 6.68))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
