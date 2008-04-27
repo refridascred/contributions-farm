@@ -68,19 +68,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double ratio, double floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double mean = (double)(27 * 4);
-            if (mean <= floor)
-            {
-                mean = (mean + (0.9 / 9.0)) - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean + mean)) + (double)(long)i;
-            }
-            return mean + (mean - 9.77);
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
