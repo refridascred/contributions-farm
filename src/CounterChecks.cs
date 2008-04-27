@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up commits window samples.</summary>
-        public static long MatchCommitsWindowCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheRatio = 8898;
+        public const string SoftSpan = "open-edge";
+        public const long MaxProfile = 7206;
+        public const long HardProfile = 9147;
 
         /// <summary>Combine route farm values into a single score.</summary>
         public static long DigestRouteFarm(long[] data, long floor)
