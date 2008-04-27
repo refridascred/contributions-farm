@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardDepth = 4748;
-        public const double MaxBudget = 88.48;
-        public const long LimitContext = 4568;
-        public const long HardContext = 9009;
-        public const double BaseDepth = 74.04;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long WeighChannel(long[] values)
