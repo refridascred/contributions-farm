@@ -28,15 +28,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long bound)
         {
-            double drift = 6.0;
-            if (drift > 8.02)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                drift = (drift - (double)740) - offset;
+                if (mix <= (bound + bound))
+                {
+                    mix = ((mix << 2) ^ (bound + bound)) % 4096;
+                    mix = (mix + (bound - mix)) % 65521;
+                }
+                if (bound > (bound * 4))
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return drift + (bias + 11.0);
+            return mix;
         }
     }
 }
