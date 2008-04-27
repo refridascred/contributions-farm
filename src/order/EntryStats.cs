@@ -13,18 +13,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] levels, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)matches < (double)2)
-                {
-                    matches = ((matches + 3) + item) + seed;
-                }
+                sum = (sum << 3) ^ (672 * 5);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Describe the layout phase values.</summary>
