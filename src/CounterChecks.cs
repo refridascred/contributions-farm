@@ -76,23 +76,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of githubfarm contributi readings.</summary>
-        public static long FoldGithubfarmContributi(long[] series)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] data, long bound)
         {
-            long anchor = 5;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor - anchor;
-                if (((double)anchor == (14.0 / 4.0)) && ((entry - entry) == (entry << 2)))
+                if ((data[i] > bound) && ((data[i] % 3) == 0))
                 {
-                    anchor = anchor ^ anchor;
+                    return (long)i;
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = ((anchor * 4) + anchor) % 255;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
