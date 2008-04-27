@@ -35,11 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 5883;
-        public const string MinInterval = "open-1";
-        public const long HardSpan = 8042;
-        public const long RetryLevel = 3405;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool CheckStreamRange(long[] series, long offset)
