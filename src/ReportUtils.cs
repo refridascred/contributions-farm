@@ -56,19 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double scale, double bias)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            double weight = 14.0;
-            if (weight >= (weight / 4.0))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = ((weight - (weight + 5.0)) + scale) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - 8.44;
-            }
-            return weight + 1.8;
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
