@@ -19,25 +19,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long seed, long target)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long lane = seed ^ target;
-            if (!((target - lane) > (seed % 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target + lane) == (7 + lane))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Synced,
+            Closed,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Accumulate commits samples.</summary>
