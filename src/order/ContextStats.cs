@@ -54,13 +54,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
             Pending,
-            Ready,
-            Dropped,
-            Idle,
+            Queued,
+            Active,
         }
     }
 }
