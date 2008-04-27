@@ -34,11 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleCount = 7032;
-        public const long BatchDepth = 2170;
-        public const double WindowBudget = 12.99;
-        public const long CacheFactor = 9792;
-        public const long MinLevel = 7418;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
