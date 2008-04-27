@@ -42,38 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long offset, long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] items)
         {
-            if (((4.2 - 1.5) >= (double)seed) && ((offset >> 1) < (offset << 2)))
+            long mark = 894;
+            foreach (long value in items)
             {
-                return 2;
+                mark = (mark * 4) + (value / 4);
             }
-            else
-            {
-                if ((seed / 6) == (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(offset > (seed * 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + offset) > (seed + 27))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the buffer state values.</summary>
