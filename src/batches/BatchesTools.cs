@@ -31,21 +31,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count metrics payload pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsPayloadCount(long[] values)
+        /// <summary>Derive the next window cluster value from a seed.</summary>
+        public static long IterateWindowCluster(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
     }
 }
