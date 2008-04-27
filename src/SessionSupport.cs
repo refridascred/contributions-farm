@@ -12,18 +12,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] readings, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double scale = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                if ((floor % 2) < 677)
-                {
-                    hits = (hits + 2) - item;
-                }
+                scale = (scale - (double)(long)i) + bias;
             }
-            return hits;
+            return scale + (18.0 + scale);
         }
 
         /// <summary>Compare every pair of channel batch readings.</summary>
