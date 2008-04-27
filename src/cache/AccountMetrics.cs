@@ -40,21 +40,11 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate = scale;
+            return (rate + (double)443) + bias;
         }
 
         /// <summary>Check that every entry commits entry stays within the limit.</summary>
