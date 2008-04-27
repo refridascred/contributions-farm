@@ -76,21 +76,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result << 2) ^ (result % 16)) % 101;
-                if ((-675) <= (result + (long)i))
-                {
-                    result = (result + (result >> 1)) % 65521;
-                    result = (result ^ (step ^ step)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "strict-edge";
+        public const long DefaultTools = 9445;
+        public const double IdleInterval = 76.42;
+        public const long HardTimeout = 5348;
     }
 }
