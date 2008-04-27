@@ -29,24 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry buffer readings.</summary>
-        public static long WeighEntryBuffer(long[] levels)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] samples, long seed)
         {
-            long sum = 84;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sum == (5.0 + 5.9))
+                if (samples[i] < seed)
                 {
-                    sum = sum ^ (sum - 99);
-                    sum = ((sum << 3) ^ value) % 101;
+                    return (long)i;
                 }
-                sum = sum + (sum - sum);
             }
-            if (sum < (-66))
-            {
-                sum = ((sum * 3) + (248 * 4)) % 97;
-            }
-            return sum % 1000;
+            return -1;
         }
     }
 }
