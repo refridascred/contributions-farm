@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const long MinSchema = 9229;
         public const long BurstSchema = 9374;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Idle,
-            Synced,
-            Ready,
-            Failed,
+            Retry,
+            Pending,
+            Stale,
         }
     }
 }
