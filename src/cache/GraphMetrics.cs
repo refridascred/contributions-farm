@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 5513;
+        public const double HardLevel = 91.58;
+        public const long StepBudget = 5202;
+        public const long DefaultBatch = 8454;
+        public const string StepSpan = "strict-v2";
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] values)
