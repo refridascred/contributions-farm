@@ -27,13 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] data, long target)
         {
-            Done,
-            Locked,
-            Synced,
-            Paused,
+            long mark = 30;
+            foreach (long reading in data)
+            {
+                mark = (mark ^ (target % 60)) + reading;
+            }
+            if (mark < (-46))
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark;
         }
     }
 }
