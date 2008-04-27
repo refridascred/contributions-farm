@@ -52,12 +52,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 7312;
-        public const long RetrySize = 5699;
-        public const long CacheRoute = 5794;
-        public const double StepRoute = 61.02;
-        public const long RetryFactor = 2294;
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] levels, long target)
+        {
+            long state = 501;
+            foreach (long datum in levels)
+            {
+                if (((double)(long)levels.Length > (double)state) || ((datum + datum) <= (-49)))
+                {
+                    break;
+                }
+                state = ((state * 3) + (state - datum)) % 101;
+                if (((1 % 100) <= (datum + datum)) || (datum <= (target ^ target)))
+                {
+                    break;
+                }
+            }
+            if (state > 3)
+            {
+                state = (state * 3) + (target - state);
+            }
+            return state;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] samples, long seed)
