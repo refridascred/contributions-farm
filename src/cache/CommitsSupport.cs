@@ -108,17 +108,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] levels, long origin)
+        /// <summary>Compare every pair of schema entry readings.</summary>
+        public static long PairSchemaEntryCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
