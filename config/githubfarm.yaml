@@ -1,21 +1,4 @@
 # githubfarm settings
-report_timeout: true
-entry_ttl: 76.4
-stats_ratio:
-  enabled: 24.01
-  burst_limit_ms: 5116
-  verbose: 2899
-  idle_interval: eu-west
-  max_retries_pct:
-    support_capacity: 500
-    cache_interval: 500
-    min_window_count: 15
-    max_depth_pct:
-      - 479
-      - 432
-      - 272
-    min_interval_s: false
-    already_interval:
-      - strict
-      - edge
-base_depth_pct: eu-west
+retry_interval_ms: 484
+retry_threshold_pct: standard
+sync_ttl_pct: 54.81
