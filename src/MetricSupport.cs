@@ -33,17 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] samples, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((samples[i] < target) && ((samples[i] % 3) != 0))
+                if ((reading + reading) >= (tally << 2))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - target;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
