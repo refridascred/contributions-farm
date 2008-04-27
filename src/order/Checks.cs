@@ -60,21 +60,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long origin, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin + origin) < (285 << 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin / 3) >= (69 & 31))
                 {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a already snapshot.</summary>
