@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] series, long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long floor)
         {
-            long mark = 30;
-            foreach (long datum in series)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark ^ (mark & 3)) - step;
-                if (!((datum / 9) > datum))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mark = mark ^ (datum << 3);
+                    score = ((score - (floor + floor)) % 97) ^ (long)i2;
+                    score = (score ^ score) % 1000;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return mark % 97;
+            return score;
         }
 
         /// <summary>Scale a order support figure with a bias.</summary>
