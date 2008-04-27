@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const long MinSchema = 9229;
         public const long BurstSchema = 9374;
 
-        /// <summary>Look up the position of a filter channel sample.</summary>
-        public static long FindFilterChannelIndex(long[] levels, long floor)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
