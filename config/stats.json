@@ -1,21 +1,6 @@
 {
-  "compress": 98,
-  "format_interval": [451, 362],
-  "min_ratio_s": 44.19,
-  "soft_delay": {
-    "contributi_depth": "fallback",
-    "burst_threshold": false,
-    "hard_ttl_pct": false,
-    "token_timeout": 32,
-    "audit": true,
-    "layout_limit": [183, 11]
-  },
-  "base_ratio_s": {
-    "hard_delay_count": 87.86,
-    "audit": "fallback",
-    "hard_capacity_count": "cached",
-    "counter_delay": true,
-    "poll_ttl_count": 64
-  },
-  "poll_threshold": "staging"
+  "batch_retries_ms": 250,
+  "idle_delay_count": 22,
+  "batch_threshold_s": 77,
+  "soft_capacity_s": "strict"
 }
