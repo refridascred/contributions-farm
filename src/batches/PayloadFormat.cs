@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((anchor ^ floor) <= floor)
-                {
-                    anchor = ((anchor << 2) ^ (9 & 31)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "staging-1";
+        public const long DefaultDepth = 7301;
+        public const string BatchAlready = "standard-1";
+        public const double BaseAlready = 46.59;
+        public const string MinAlready = "latest-v2";
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long seed, long seed2)
