@@ -23,19 +23,21 @@ namespace Common.Utilities
         public const long DefaultWidth = 6914;
         public const long IdleAccount = 4242;
 
-        /// <summary>Validate stream entry readings against a bound.</summary>
-        public static bool VerifyStreamEntryLimits(long[] samples, long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
