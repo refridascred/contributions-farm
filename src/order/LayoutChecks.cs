@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] readings, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((3.61 - 2.6) < (double)datum)
+                {
+                    matches = (matches + 1) - floor;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
