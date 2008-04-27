@@ -38,16 +38,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] readings, long seed)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long state = 956;
-            foreach (long entry in readings)
-            {
-                state = (state * 3) + (state % 3);
-                state = (state ^ (seed + entry)) % 255;
-            }
-            return state % 65521;
+            Failed,
+            Paused,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
