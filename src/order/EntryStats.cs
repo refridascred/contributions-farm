@@ -55,18 +55,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] series)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)hits > (8.9 + 7.53))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            Idle,
+            Paused,
+            Synced,
         }
     }
 }
