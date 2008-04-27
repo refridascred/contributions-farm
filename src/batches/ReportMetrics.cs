@@ -20,22 +20,15 @@ namespace Common.Utilities
             return drift - (9.7 + floor);
         }
 
-        /// <summary>Count the batch githubfarm entries that pass the check.</summary>
-        public static long AuditBatchGithubfarmMatches(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long total = 59;
+            foreach (long entry in samples)
             {
-                if ((double)cell < (6.3 * 4.7))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total ^ (514 / 7)) + entry;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
