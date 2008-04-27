@@ -71,9 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseLevel = 4664;
-        public const long BaseSupport = 8245;
-        public const string HardDepth = "primary";
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
