@@ -41,12 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Done,
-            Locked,
+            Draft,
+            Paused,
             Dropped,
+            Done,
+            Queued,
         }
     }
 }
