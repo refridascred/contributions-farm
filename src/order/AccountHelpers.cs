@@ -73,12 +73,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] levels, long offset)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((0 - entry) == (offset + offset))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
