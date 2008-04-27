@@ -62,18 +62,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] items, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((9.71 + 10.0) != (double)entry)
+                if (item <= floor)
                 {
-                    count = (count + 1) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
