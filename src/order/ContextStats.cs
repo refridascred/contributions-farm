@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)step <= (double)datum)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 4703;
+        public const long IdleReport = 3231;
+        public const long BaseBudget = 5932;
+        public const long BatchReport = 3489;
+        public const long MinReport = 711;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] readings)
