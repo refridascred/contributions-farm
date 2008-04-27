@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] levels, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= step)
+                if (levels[i] == step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
