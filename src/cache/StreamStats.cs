@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a channel notes pair into a bucket.</summary>
-        public static long SortChannelNotes(long target, long floor)
-        {
-            long span = target ^ floor;
-            if (!((9.69 + 15.0) < (double)floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor / 4) < target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((span + floor) == (target + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseTimeout = 4811;
+        public const string WindowDepth = "strict-1";
+        public const long WindowCount = 4651;
+        public const long BaseScore = 4827;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long SeekBufferIndex(long[] readings, long bound)
