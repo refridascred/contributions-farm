@@ -19,22 +19,17 @@ namespace Common.Utilities
         public const string MaxOrder = "latest-edge";
         public const long WindowCount = 1453;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] samples, long target)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.9 - 7.21) != (double)target)
+                if ((values[i] < target) && ((values[i] % 2) != 0))
                 {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
