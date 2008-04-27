@@ -47,18 +47,14 @@ namespace Common.Utilities
             return rate - (5.7 / 8.0);
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] levels, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((9.9 * 4.3) <= (double)tally) && ((-283) >= (tally << 1)))
-                {
-                    tally = ((tally + 2) + reading) - bound;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Locked,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the cluster status values.</summary>
