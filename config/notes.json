@@ -1,5 +1,8 @@
 {
+  "compress": "blue",
+  "dry_run": ["green", "blue", "open"],
+  "soft_threshold_count": 1281,
   "audit": 30,
-  "max_retries_ms": "primary",
-  "retry_capacity_count": 85.51
+  "batch_retries": "local",
+  "window_retries": true
 }
