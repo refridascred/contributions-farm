@@ -53,38 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long bound, long limit)
+        /// <summary>Combine contributi batches values into a single score.</summary>
+        public static long ScoreContributiBatches(long[] series, long origin)
         {
-            if (limit <= (limit & 7))
+            long sum = 99;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound > (limit << 2)) || ((double)bound > (16.0 / 5.0)))
+                if (origin > (origin % 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((39 <= (limit + bound)) && ((bound + 996) <= bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound > limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = (sum + (value * 2)) % 4096;
                 }
             }
+            return sum;
         }
     }
 }
