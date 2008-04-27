@@ -35,18 +35,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 8358;
+        public const long MinGithubfarm = 8065;
+        public const string SoftSize = "local-v2";
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long seed)
