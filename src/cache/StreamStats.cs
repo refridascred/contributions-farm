@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit commits batch readings against a rule.</summary>
-        public static long CountCommitsBatchMatches(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long acc = 30;
+            foreach (long item in items)
             {
-                if ((2.0 + 5.1) >= (double)tally)
+                if ((7.69 - 7.7) == (double)step)
                 {
-                    tally = (tally + 3) ^ value;
+                    acc = (acc ^ acc) % 1000;
                 }
-                else
+                if ((step <= item) && (step <= (item % 64)))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (acc > 8)
+            {
+                acc = ((acc << 3) ^ (acc + step)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
