@@ -1,9 +1,8 @@
 # support settings
-flush_ratio_ms: 6.51
-enabled:
-  - staging
-  - legacy
-cache_capacity_count: 30
-retry_ttl: 0.4
-metrics_size: 63
-soft_capacity: standard
+poll_delay_s: 54.04
+audit:
+  - 161
+  - 357
+  - 178
+  - 266
+token_limit: 7523
