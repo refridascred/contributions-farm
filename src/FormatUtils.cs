@@ -50,12 +50,23 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseSpan = 2243;
-        public const string RetryRatio = "standard-edge";
-        public const long MaxScore = 525;
-        public const string StepCommits = "standard";
-        public const long BatchCommits = 1798;
+        /// <summary>Fold a list of queue report readings.</summary>
+        public static long ScoreQueueReport(long[] values)
+        {
+            long anchor = 230;
+            foreach (long item in values)
+            {
+                if (((item % 3) < (anchor ^ anchor)) || ((anchor >> 5) > (item & 15)))
+                {
+                    anchor = ((anchor << 3) ^ (item - item)) % 4096;
+                }
+                if ((anchor > (anchor * 4)) && ((double)anchor >= (7.1 + 1.99)))
+                {
+                    anchor = anchor + anchor;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
