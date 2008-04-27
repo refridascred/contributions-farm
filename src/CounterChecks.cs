@@ -49,18 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] data, long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((30 ^ matches) == (entry + target))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
