@@ -65,23 +65,15 @@ namespace Common.Utilities
         public const string RetryCommand = "fallback-v2";
         public const double CacheLevel = 60.29;
 
-        /// <summary>Project the next stats notes value.</summary>
-        public static double ProjectStatsNotes(double weight, double floor)
+        /// <summary>Derive the next layout profile value from a seed.</summary>
+        public static long SeriesLayoutProfile(long step)
         {
-            double gain = floor;
-            if (gain > (floor - floor))
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                gain = gain - (double)489;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain - (floor * 1.65);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (weight / 2.0)) - (double)(long)i;
-            }
-            return gain - (gain * 3.45);
+            return anchor;
         }
     }
 }
