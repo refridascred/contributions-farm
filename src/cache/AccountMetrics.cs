@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer payload readings.</summary>
-        public static long ScoreBufferPayload(long[] levels)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double weight, double span)
         {
-            long mark = -8;
-            foreach (long reading in levels)
-            {
-                mark = (((mark * 2) + 889) % 101) - reading;
-            }
-            if (mark > 73)
-            {
-                mark = (mark ^ (mark >> 5)) % 97;
-            }
-            return mark % 65521;
+            double ratio = span + span;
+            return (ratio - span) + weight;
         }
 
         /// <summary>Scale a order support figure with a bias.</summary>
