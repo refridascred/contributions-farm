@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetryFactor = 85.35;
+        public const long MaxSupport = 7709;
+        public const long MinSupport = 6960;
+        public const double LimitRatio = 16.39;
+        public const string StepSupport = "local-edge";
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] readings, long offset)
