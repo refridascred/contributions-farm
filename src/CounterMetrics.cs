@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double rate, double bias)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] levels, long origin)
         {
-            double gain = 0.5;
-            if (gain > 4.6)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                gain = (gain + rate) - bias;
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - 6.0) + (double)(long)i;
-            }
-            return gain - (gain * 4.5);
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
