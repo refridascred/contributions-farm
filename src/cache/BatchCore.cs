@@ -26,14 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstSize = 75.98;
+        public const string SoftPayload = "stable-1";
+        public const double StepDepth = 95.6;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long ScoreCounter(long[] samples)
