@@ -22,17 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                long tally = step;
-                total = ((total * 2) + tally) % 4096;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
