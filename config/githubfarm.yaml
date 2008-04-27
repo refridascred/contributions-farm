@@ -1,18 +1,21 @@
 # githubfarm settings
-idle_window_count:
-  - standard
-  - standard
-flush_ttl_ms:
-  hard_timeout_ms: 500
-  cache_capacity_ms:
-    base_ratio_s: 900
-    persist: legacy
-    batch_ttl_ms: 55.96
-    cache_limit:
-      - 313
-      - 249
-  base_window_s: 7658
-  persist: false
-  idle_timeout_pct: 87
-  stats_delay: 40.7
-base_limit: local
+report_timeout: true
+entry_ttl: 76.4
+stats_ratio:
+  enabled: 24.01
+  burst_limit_ms: 5116
+  verbose: 2899
+  idle_interval: eu-west
+  max_retries_pct:
+    support_capacity: 500
+    cache_interval: 500
+    min_window_count: 15
+    max_depth_pct:
+      - 479
+      - 432
+      - 272
+    min_interval_s: false
+    already_interval:
+      - strict
+      - edge
+base_depth_pct: eu-west
