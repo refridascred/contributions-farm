@@ -14,15 +14,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long state = 8;
-            foreach (long sample in series)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                state = state + (sample + state);
+                if ((origin * 2) >= origin)
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return state % 4096;
+            return acc;
         }
 
         /// <summary>Validate stream entry readings against a bound.</summary>
