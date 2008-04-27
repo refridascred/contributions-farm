@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long carry = 0;
-            foreach (long item in levels)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((item - 270) > 39) || ((double)item != (11.0 + 1.2)))
+                if ((offset & 3) <= (anchor * 4))
                 {
-                    carry = ((carry << 2) ^ (item >> 2)) % 4096;
+                    anchor = (anchor + (anchor << 3)) % 4096;
+                    break;
                 }
-                else
-                {
-                    carry = ((carry * 2) + (item << 1)) % 1000;
-                    carry = carry - item;
-                }
-                if (60 <= (363 ^ carry))
-                {
-                    carry = (carry + (309 / 9)) % 1000;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            if (carry > 995)
-            {
-                carry = (carry - carry) % 4096;
-            }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Hold a order info.</summary>
