@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (reading > origin)
+                if ((-7) > (seen - (-22)))
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 3) + reading) + limit;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Hold a farm header.</summary>
