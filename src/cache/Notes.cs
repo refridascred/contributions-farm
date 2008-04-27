@@ -30,13 +30,21 @@ namespace Common.Utilities
         public const double DefaultStats = 53.7;
         public const long MaxCount = 1599;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            Active,
-            Stale,
-            Ready,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate context payload readings against a bound.</summary>
