@@ -40,13 +40,13 @@ namespace Common.Utilities
         public const double BatchSize = 17.72;
         public const long BurstCache = 7555;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
-            public bool Offset { get; set; }
+            New,
+            Locked,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a order summary.</summary>
