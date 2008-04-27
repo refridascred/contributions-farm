@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] data, long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((12.0 * 18.0) > (double)limit)
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
