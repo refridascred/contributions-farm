@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long CacheInterval = 8390;
         public const long MaxInterval = 2801;
 
-        /// <summary>Measure how many buffer layout samples are out of range.</summary>
-        public static long TallyBufferLayoutGaps(long[] series, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits >= (65 ^ limit)) || (((hits & 63) <= (hits % 97)) && ((double)limit > (1.35 * 11.0))))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
