@@ -31,14 +31,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Pending,
-            Locked,
-            Active,
+            Ready,
             Paused,
-            Queued,
+            Synced,
         }
 
         /// <summary>Define record limits and defaults.</summary>
