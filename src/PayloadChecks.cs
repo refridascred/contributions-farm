@@ -62,18 +62,13 @@ namespace Common.Utilities
             return scale - 10.0;
         }
 
-        /// <summary>Fold a list of already account readings.</summary>
-        public static long CombineAlreadyAccount(long[] samples, long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long total = 383;
-            foreach (long value in samples)
-            {
-                if (total >= (total + total))
-                {
-                    total = ((total + (total + total)) + value) + offset;
-                }
-            }
-            return total;
+            Active,
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
