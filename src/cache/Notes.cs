@@ -59,13 +59,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Retry,
-            Idle,
-            Active,
-            Locked,
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
