@@ -28,17 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] values, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (values[i] == floor)
+                if ((tally & 63) > (97 + datum))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
