@@ -19,19 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long seed)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long offset = step + seed;
+            if ((178 + offset) > (offset + offset))
             {
-                if (value <= seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)step < 1.0)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (offset <= (seed >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)seed < (6.2 + 4.85)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
