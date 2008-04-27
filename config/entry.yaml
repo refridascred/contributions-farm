@@ -1,26 +1,21 @@
 # entry settings
-readonly: latest
-retry_window_s:
-  retry_delay_s:
-    min_retries_s: false
-    default_threshold_pct: true
-    enabled: 30
-    burst_size_s:
-      - 147
-      - 7
-      - 241
-    queue_ttl: 100
-  base_ttl:
-    poll_depth: eu-west
-    max_window_s: false
-    max_ratio_count: 95.48
-    strict: 96.9
-    burst_capacity_pct: fallback
-    batch_threshold_s: 24
-  default_delay_ms:
-    - 245
-    - 194
-  burst_threshold_pct: cached
-  base_threshold_s: staging
-enabled: 18
-contributi_ttl: 30
+cache_timeout: legacy
+channel_capacity: local
+default_delay_s:
+  idle_limit: 56
+  poll_threshold_ms: true
+  compress:
+    burst_threshold: cached
+    audit:
+      - fallback
+      - fallback
+      - blue
+      - edge
+    burst_capacity_s:
+      - 302
+      - 158
+    persist: strict
+  sync_window_pct: 500
+  filter_threshold: edge
+  dry_run: 6529
+soft_delay_ms: 8600
