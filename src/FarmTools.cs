@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next schema metric value from a seed.</summary>
-        public static long DeriveSchemaMetric(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = carry + ((long)i >> 3);
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 8.28;
+        public const double WindowProfile = 14.88;
+        public const double MaxProfile = 93.81;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string SoftScore = "cached-1";
