@@ -47,13 +47,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double scale, double span)
         {
-            Dropped,
-            Synced,
-            Active,
-            Closed,
+            double load = (double)(62 ^ 346);
+            if (load > (double)72)
+            {
+                load = (load - (scale / 2.0)) + span;
+            }
+            else
+            {
+                load = load - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + scale;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
