@@ -53,19 +53,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double ratio, double floor)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            double bias = 0.1;
-            if (bias <= ratio)
-            {
-                bias = bias + (floor - floor);
-            }
-            else
-            {
-                bias = bias + ratio;
-            }
-            return bias + (double)0;
+            double mean = (span + scale) + 4.0;
+            return mean + (double)4;
         }
     }
 }
