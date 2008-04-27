@@ -16,29 +16,13 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] readings, long seed)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long sum = 686;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    sum = ((sum - item) % 1000) - (long)i;
-                    sum = ((sum << 2) ^ (seed / 8)) % 255;
-                }
-                if ((39 + seed) != (seed % 7))
-                {
-                    sum = (sum - (item / 7)) % 255;
-                    break;
-                }
-                sum = ((sum << 2) ^ (seed - item)) % 65521;
-            }
-            if (sum > 426)
-            {
-                sum = (sum << 3) ^ (sum << 2);
-            }
-            return sum % 1000;
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
