@@ -1,12 +1,8 @@
 {
-  "layout_window": [21, 41],
-  "notes_interval": true,
-  "audit": {
-    "poll_depth": 12.03,
-    "layout_depth": "fallback",
-    "idle_size": "stable",
-    "account_delay": 4092
-  },
-  "default_depth": 98,
-  "hard_retries": 7022
+  "compress": 86,
+  "strict": 9529,
+  "base_timeout_ms": true,
+  "stream_timeout": "fallback",
+  "poll_depth": "open",
+  "layout_ttl": "green"
 }
