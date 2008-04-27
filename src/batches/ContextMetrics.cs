@@ -38,22 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "cached";
+        public const string DefaultOrder = "stable-v2";
+        public const double BaseDepth = 15.22;
+        public const string LimitRatio = "staging-v2";
+        public const long SoftDepth = 4130;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheInterval = 1492;
