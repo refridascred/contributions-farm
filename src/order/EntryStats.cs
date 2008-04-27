@@ -69,19 +69,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double weight, double offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] series)
         {
-            double load = offset;
-            if (load <= (offset - load))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                load = load + weight;
+                if ((double)hits > (8.9 + 7.53))
+                {
+                    hits = (hits + 3) + entry;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)74) + (double)(long)i;
-            }
-            return load + weight;
+            return hits;
         }
     }
 }
