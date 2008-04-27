@@ -74,19 +74,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] readings, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
