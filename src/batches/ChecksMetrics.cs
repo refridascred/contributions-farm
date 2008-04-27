@@ -23,18 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit entry account readings against a rule.</summary>
-        public static long CountEntryAccountHits(long[] series, long seed)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((952 + seen) < seed)
+                if (samples[i] == limit)
                 {
-                    seen = (seen + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the session class values.</summary>
