@@ -31,31 +31,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items, long target)
         {
-            if (!((floor + 6) < (seed + (-691))))
+            long mix = -35;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((seed + (-9)) == (172 << 2)))
+                mix = (mix - cell) % 255;
+                if ((target - (long)items.Length) < (cell >> 3))
                 {
-                    return 8;
+                    mix = (mix ^ (cell >> 2)) % 101;
                 }
                 else
                 {
-                    if ((seed + 48) == (floor << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = ((mix << 2) ^ (cell >> 2)) % 255;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
