@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)tally < (5.6 - 5.68)))
+                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
                 {
-                    tally = (tally + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
