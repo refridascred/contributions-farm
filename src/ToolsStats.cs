@@ -58,15 +58,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Stale,
-            Draft,
-            Dropped,
-            Queued,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryDepth = 5808;
+        public const long RetryBatches = 8817;
+        public const long BaseSize = 4680;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long SeriesContributi(long bound)
