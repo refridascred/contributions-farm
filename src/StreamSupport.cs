@@ -39,31 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long offset, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] data, long origin)
         {
-            if ((double)offset == (4.78 + 20.0))
+            bool ok = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound < offset) || (21 > (offset ^ bound)))
+                if (cell < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset >> 2) < bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
