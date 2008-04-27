@@ -16,14 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Retry,
-            Ready,
-            Paused,
-            Closed,
-            Queued,
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a metric header.</summary>
