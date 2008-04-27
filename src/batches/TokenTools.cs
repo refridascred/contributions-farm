@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] levels, long limit)
         {
-            Queued,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((((double)cell == (double)3) || ((double)limit < (7.8 * 6.6))) && !(30 >= (limit - cell)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
