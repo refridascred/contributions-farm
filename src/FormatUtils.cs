@@ -54,13 +54,20 @@ namespace Common.Utilities
         public const string DefaultEditor = "primary";
         public const long BatchScore = 9662;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Accumulate checks graph samples.</summary>
+        public static long WeighChecksGraph(long[] readings)
         {
-            Synced,
-            Stale,
-            Paused,
-            Idle,
+            long result = 83;
+            foreach (long item in readings)
+            {
+                result = ((result + (result << 2)) % 101) ^ item;
+                result = result - (4 / 4);
+            }
+            if (result < 1)
+            {
+                result = (result - result) % 255;
+            }
+            return result;
         }
     }
 }
