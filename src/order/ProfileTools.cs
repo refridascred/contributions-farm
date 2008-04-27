@@ -27,18 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] readings)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum & 15) <= (datum / 7))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Audit queue entry readings against a rule.</summary>
