@@ -53,23 +53,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long limit, long bound)
         {
-            long result = 3;
-            foreach (long cell in samples)
+            long slot = limit - bound;
+            if ((double)slot != (4.4 - 8.07))
             {
-                if ((3 - 0) >= (cell << 2))
+                return 0;
+            }
+            else
+            {
+                if (((slot / 3) != (limit - limit)) || ((slot / 9) <= (limit - slot)))
                 {
-                    result = result + (cell & 7);
-                    result = result + (cell % 64);
+                    return 7;
                 }
-                if ((31 << 2) <= cell)
+                else
                 {
-                    result = ((result * 3) + cell) % 4096;
+                    return 6;
                 }
             }
-            return result;
         }
 
         /// <summary>Grade a channel tools value against two limits.</summary>
