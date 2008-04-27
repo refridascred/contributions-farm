@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] readings, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (readings[i] < offset)
+                if (!((93 <= (seed * 5)) || ((471 - seed) < (long)readings.Length)))
                 {
-                    return (long)i;
+                    count = (count + 1) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
