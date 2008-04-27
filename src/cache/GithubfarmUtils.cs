@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 2589;
-        public const long WindowDepth = 526;
-        public const long MinReport = 1646;
-        public const long BurstReport = 1409;
-        public const double BaseReport = 30.07;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] readings, long seed)
