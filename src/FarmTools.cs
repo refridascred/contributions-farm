@@ -20,21 +20,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long target2)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = target - target2;
+            if ((double)target2 >= (3.6 / 4.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((target2 % 8) <= (slot + target2)))
                 {
-                    if ((readings[i] ^ readings[j]) != 13)
+                    return 8;
+                }
+                else
+                {
+                    if (2.0 >= (double)slot)
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
