@@ -38,12 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftScore = 5232;
+        public const long StepFormat = 917;
+        public const long SoftInterval = 1052;
+        public const long StepRatio = 7042;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
