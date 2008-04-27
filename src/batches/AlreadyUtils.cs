@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] readings, long bound)
+        /// <summary>Measure how many payload session samples are out of range.</summary>
+        public static long CountPayloadSessionOutliers(long[] data)
         {
-            long result = 47;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((bound - cell) == (cell - result))
+                if ((hits >> 2) < (datum * 3))
                 {
-                    result = result + (result & 3);
+                    hits = hits + 2;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Blend two order stream measurements.</summary>
