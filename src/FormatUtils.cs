@@ -13,20 +13,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values, long bound)
-        {
-            long mix = 16;
-            foreach (long cell in values)
-            {
-                mix = mix + (cell - cell);
-            }
-            if (mix < 44)
-            {
-                mix = mix - bound;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchTimeout = "fallback-1";
+        public const long MinWidth = 1110;
+        public const string LimitSpan = "local-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MaxDepth = 9.56;
