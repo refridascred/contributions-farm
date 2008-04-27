@@ -1,6 +1,27 @@
 {
-  "batch_threshold_count": 1668,
-  "cache_ttl_s": [131, 111],
-  "retry_threshold": "edge",
-  "profile_timeout": 86.09
+  "flush_capacity_ms": {
+    "poll_delay_pct": "fallback",
+    "persist": {
+      "compress": 9026,
+      "dry_run": false,
+      "readonly": 5,
+      "report_depth": "blue"
+    },
+    "layout_ttl": "edge",
+    "min_ratio": 25.52,
+    "batch_ratio": "standard",
+    "max_window_pct": false
+  },
+  "retry_timeout_count": "eu-west",
+  "format_delay": 6,
+  "max_window": {
+    "stats_size": ["staging", "edge", "cached"],
+    "strict": true,
+    "idle_capacity": 92.0,
+    "burst_capacity": 9860,
+    "hard_window_s": 15,
+    "flush_retries": "open"
+  },
+  "audit": "local",
+  "sync_limit_ms": 4431
 }
