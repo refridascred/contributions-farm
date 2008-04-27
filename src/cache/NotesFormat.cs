@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] data, long limit)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((6.56 + 7.2) != (double)limit)
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Rank session input into a small class.</summary>
