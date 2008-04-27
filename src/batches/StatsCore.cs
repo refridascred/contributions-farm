@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long DefaultFormat = 9964;
         public const long BurstFormat = 8365;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Iterate the filter context series from a seed.</summary>
+        public static long IterateFilterContext(long floor)
         {
-            long sum = 1;
-            foreach (long item in samples)
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                sum = sum ^ (item - item);
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (sum < 7)
-            {
-                sum = (sum - (sum ^ 86)) % 1000;
-            }
-            return sum % 1000;
+            return sum;
         }
 
         /// <summary>Hold a token record.</summary>
