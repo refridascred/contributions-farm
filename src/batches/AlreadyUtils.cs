@@ -62,9 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetrySpan = 1734;
-        public const long SoftBudget = 1791;
-        public const long MaxSpan = 7456;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings, long offset)
+        {
+            long acc = 35;
+            foreach (long value in readings)
+            {
+                acc = (((acc * 4) + (value + 713)) % 101) + offset;
+            }
+            return acc % 1000;
+        }
     }
 }
