@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double rate, double span)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] samples, long offset)
         {
-            double bias = 6.81;
-            if (bias >= (bias / 4.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (span / 7.0);
+                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - rate) + (double)(long)i;
-            }
-            return bias + (9.8 + rate);
+            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
