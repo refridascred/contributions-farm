@@ -28,18 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] items, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((((target & 31) > target) || (matches >= (matches % 8))) && ((17.0 * 7.9) <= (double)matches))
+                if (acc > (626 % 3))
                 {
-                    matches = (matches + 1) - entry;
+                    acc = (acc - (5 ^ (long)i)) % 97;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
