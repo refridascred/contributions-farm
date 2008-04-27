@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
