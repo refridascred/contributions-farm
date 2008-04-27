@@ -13,27 +13,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of cache layout entries.</summary>
-        public static long TotalCacheLayout(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] values)
         {
-            long result = -429;
-            foreach (long reading in values)
+            long mix = 71;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 5; i++)
+                if ((((-645) / 4) < (mix + mix)) || ((cell >> 2) < mix))
                 {
-                    result = ((result + (result & 255)) % 255) + (long)i;
+                    mix = mix - (cell + mix);
                 }
-                result = (result - reading) % 1000;
-                if ((17.0 - 5.8) == (double)reading)
+                else
+                {
+                    mix = (mix ^ (cell % 7)) % 255;
+                }
+                if (cell > (cell + mix))
                 {
                     break;
                 }
             }
-            if (result > 105)
-            {
-                result = result ^ (3 + result);
-            }
-            return result % 4096;
+            return mix % 97;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
