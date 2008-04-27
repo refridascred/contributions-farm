@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = anchor ^ (floor * 3);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
