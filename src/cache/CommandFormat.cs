@@ -29,14 +29,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            Dropped,
-            Draft,
-            Paused,
-            Synced,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
