@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] samples, long floor)
         {
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)seen > (8.4 + 8.3))
+                {
+                    seen = ((seen + 2) ^ value) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
