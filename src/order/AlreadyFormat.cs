@@ -39,11 +39,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitDepth = 2371;
-        public const double IdleRecord = 13.47;
-        public const long RetryWidth = 4389;
-        public const long DefaultRecord = 8213;
-        public const double MinRecord = 26.86;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Token { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
