@@ -1,11 +1,5 @@
 {
-  "profile_window": false,
-  "cache_window": {
-    "session_window": 93.31,
-    "batches_delay": 100,
-    "readonly": 67.77,
-    "persist": "latest"
-  },
-  "verbose": ["blue", "standard", "local", "blue"],
-  "base_timeout_count": "open"
+  "contributi_depth": false,
+  "batch_window": 100,
+  "profile_interval": 100
 }
