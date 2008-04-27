@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the entry cache entries that pass the check.</summary>
-        public static long TallyEntryCacheHits(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((7 + limit) > limit)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 7848;
+        public const long CacheBatch = 2184;
+        public const long DefaultBudget = 9099;
+        public const long MinBudget = 6499;
+        public const double IdleLevel = 61.9;
 
         /// <summary>Iterate the cache token series from a seed.</summary>
         public static long RollCacheToken(long offset)
