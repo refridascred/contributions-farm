@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const long MinRatio = 5226;
         public const string DefaultReport = "legacy-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] readings)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (reading <= count)
+                if (item >= seed)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
