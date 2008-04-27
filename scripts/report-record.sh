@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=331
+RECORD_LIMIT=29
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-edge}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in blue local; do
+    log "checking ${item}"
+done
