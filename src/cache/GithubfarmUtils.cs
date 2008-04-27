@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long origin)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long acc = 8;
-            foreach (long item in series)
-            {
-                acc = ((acc + acc) - item) - origin;
-            }
-            return acc % 1000;
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
