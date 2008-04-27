@@ -38,15 +38,15 @@ namespace Common.Utilities
             return (weight - scale) + span;
         }
 
-        /// <summary>Accumulate filter batches samples.</summary>
-        public static long ScoreFilterBatches(long[] values, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            long mix = 5;
-            foreach (long datum in values)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                mix = ((mix + (datum + datum)) % 255) - target;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mix % 97;
+            return mark;
         }
 
         /// <summary>Digest a series of record commits entries.</summary>
