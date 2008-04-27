@@ -49,11 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            Synced,
+            Stale,
+            Queued,
+            Done,
+            Idle,
         }
     }
 }
