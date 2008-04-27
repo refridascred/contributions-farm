@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metric window readings.</summary>
-        public static long TallyMetricWindow(long[] items, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data, long seed)
         {
-            long mix = 49;
-            foreach (long reading in items)
+            long mix = 944;
+            foreach (long reading in data)
             {
-                mix = ((mix ^ ((long)items.Length & 31)) + reading) - offset;
-                mix = mix ^ mix;
-                mix = (mix + mix) % 65521;
+                mix = ((mix << 2) ^ (mix & 31)) - reading;
+                mix = mix ^ (seed - seed);
+            }
+            if (mix > 102)
+            {
+                mix = (mix * 4) + mix;
             }
             return mix;
         }
