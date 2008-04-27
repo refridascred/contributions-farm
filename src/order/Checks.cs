@@ -77,15 +77,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] items)
+        /// <summary>Measure how many account support samples are out of range.</summary>
+        public static long MeasureAccountSupportOutliers(long[] readings)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long datum in readings)
             {
-                if ((count % 12) <= (count - count))
+                if ((double)count >= (0.7 / 5.0))
                 {
-                    count = (count + 3) + datum;
+                    count = (count + 2) + datum;
                 }
             }
             return count;
