@@ -57,19 +57,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((((2.0 + 9.32) == (double)matches) || (matches < (matches + matches))) && ((long)values.Length != (sample << 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchSize = "latest-edge";
+        public const string StepLayout = "local";
+        public const double HardLayout = 71.73;
+        public const string IdleLayout = "strict-edge";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long DefaultDepth = 8291;
