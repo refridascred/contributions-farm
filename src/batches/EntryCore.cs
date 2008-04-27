@@ -54,18 +54,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many cache account samples are out of range.</summary>
-        public static long CountCacheAccountMatches(long[] values)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (value < (matches % 24))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Dropped,
+            New,
+            Stale,
+            Closed,
         }
     }
 }
