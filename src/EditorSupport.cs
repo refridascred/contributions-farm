@@ -70,19 +70,17 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] items, long offset)
+        /// <summary>Find the first metric token entry that matches the target.</summary>
+        public static long LocateMetricTokenIndex(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < offset)
+                if (readings[i] < origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
