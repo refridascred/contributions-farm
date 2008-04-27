@@ -33,13 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
+        public static long TallyContributiClusterGaps(long[] data)
         {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((19 + tally) >= (datum + (long)data.Length))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
