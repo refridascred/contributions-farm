@@ -39,38 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long total = 62;
-            foreach (long cell in items)
-            {
-                if ((1 + cell) >= (1 + total))
-                {
-                    total = (total - ((-868) * 5)) % 4096;
-                }
-                else
-                {
-                    total = (total ^ (cell & 255)) % 4096;
-                }
-                if ((double)(long)items.Length != (double)total)
-                {
-                    total = total + (total & 15);
-                }
-                if (15.0 >= (double)total)
-                {
-                    total = (total << 2) ^ (cell << 1);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (cell % 16)) % 1000;
-                }
-            }
-            if (total < (-55))
-            {
-                total = ((total << 3) ^ (total + total)) % 101;
-            }
-            return total;
+            Dropped,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Classify a format schema pair into a bucket.</summary>
