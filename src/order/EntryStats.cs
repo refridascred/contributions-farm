@@ -56,22 +56,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            long sum = 9;
-            foreach (long item in series)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((item / 7) > (item ^ item))
-                {
-                    sum = sum - (-9);
-                }
+                carry = carry - (carry - 78);
+                carry = carry - ((long)i >> 1);
+                carry = carry - (limit - 5);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (sum < 9)
-            {
-                sum = sum ^ (sum - sum);
-            }
-            return sum;
+            return carry;
         }
     }
 }
