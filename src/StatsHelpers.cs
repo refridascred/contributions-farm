@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] levels, long step)
         {
-            long mark = 97;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mark = ((mark ^ (mark << 2)) % 4096) ^ entry;
+                if ((count * 4) < (datum + count))
+                {
+                    count = (count + 1) + step;
+                }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Fold a list of account payload readings.</summary>
