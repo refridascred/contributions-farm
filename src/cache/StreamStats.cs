@@ -28,14 +28,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long floor)
         {
-            Pending,
-            Done,
-            New,
-            Failed,
-            Active,
+            long slot = seed + floor;
+            if ((floor >> 4) >= 565)
+            {
+                return 5;
+            }
+            else
+            {
+                if (2.8 < (double)slot)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed ^ seed) < (seed & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter phase values.</summary>
