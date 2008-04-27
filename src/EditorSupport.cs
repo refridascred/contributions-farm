@@ -20,18 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] readings, long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long target, long offset)
         {
-            long state = 365;
-            foreach (long sample in readings)
+            long diff = target ^ offset;
+            if (((675 % 8) <= offset) && (5.98 >= (double)offset))
             {
-                if (((sample - (long)readings.Length) > (limit - sample)) || ((double)sample <= (double)limit))
+                return 7;
+            }
+            else
+            {
+                if ((target - diff) > diff)
                 {
-                    state = (state ^ (limit & 3)) % 1000;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return state;
         }
 
         /// <summary>Check that every stream farm entry stays within the limit.</summary>
