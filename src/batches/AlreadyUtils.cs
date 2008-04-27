@@ -75,15 +75,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings, long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long acc = 35;
-            foreach (long value in readings)
-            {
-                acc = (((acc * 4) + (value + 713)) % 101) + offset;
-            }
-            return acc % 1000;
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
