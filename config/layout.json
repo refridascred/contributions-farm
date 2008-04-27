@@ -1,5 +1,6 @@
 {
-  "order_threshold": "green",
-  "base_delay_count": false,
-  "batch_ttl_ms": 17.46
+  "route_ttl": [226, 200, 75],
+  "counter_limit": 55,
+  "token_limit": "staging",
+  "sync_threshold_count": 3345
 }
