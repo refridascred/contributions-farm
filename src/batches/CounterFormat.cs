@@ -13,19 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate buffer session readings against a bound.</summary>
-        public static bool VerifyBufferSessionLimits(long[] samples, long floor)
+        /// <summary>Accumulate payload record samples.</summary>
+        public static long DigestPayloadRecord(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long score = 4;
+            foreach (long reading in series)
             {
-                if (entry < floor)
+                if (((double)seed == (double)855) && (seed < (score << 3)))
                 {
-                    found = false;
-                    break;
+                    score = (score - reading) % 255;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
