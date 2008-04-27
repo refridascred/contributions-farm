@@ -19,10 +19,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "local-v2";
-        public const long DefaultWidth = 2436;
-        public const long StepCount = 9011;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
