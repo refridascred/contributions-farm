@@ -52,23 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double ratio, double bias)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] series, long floor)
         {
-            double drift = (6.4 + bias) * 4.53;
-            if (drift >= drift)
+            long matches = 0;
+            foreach (long value in series)
             {
-                drift = drift - ratio;
+                if ((9.0 / 7.0) <= (double)value)
+                {
+                    matches = (matches + 1) - floor;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (ratio + 0.7)) + (double)(long)i;
-            }
-            return drift + 20.0;
+            return matches;
         }
     }
 }
