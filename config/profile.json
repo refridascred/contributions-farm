@@ -1,21 +1,6 @@
 {
-  "dry_run": 54.31,
-  "tools_window": [117, 160],
-  "cache_timeout_ms": "standard",
-  "base_timeout_s": {
-    "cache_ratio": [342, 450, 259, 300],
-    "warm_ttl_pct": 5625,
-    "metrics_retries": "latest",
-    "window_delay": 1759,
-    "hard_timeout_s": "staging",
-    "compress": {
-      "idle_threshold_ms": "stable",
-      "strict": 1134,
-      "burst_ratio_count": "eu-west",
-      "audit": 9.89,
-      "filter_threshold": true,
-      "persist": 33.95
-    }
-  },
-  "idle_depth_pct": "open"
+  "burst_capacity_pct": 43.71,
+  "cluster_ratio": 250,
+  "sync_ratio_pct": "stable",
+  "context_capacity": "eu-west"
 }
