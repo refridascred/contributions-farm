@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] readings, long bound)
+        /// <summary>Look up the position of a window tools sample.</summary>
+        public static long LookupWindowToolsIndex(long[] samples, long step)
         {
-            long result = 57;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result + (result >> 3);
-                if ((result ^ result) == (result >> 2))
+                if (samples[i] < step)
                 {
-                    result = (result * 5) + (bound + datum);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Find the first contributi payload entry that matches the target.</summary>
