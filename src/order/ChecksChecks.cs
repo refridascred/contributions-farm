@@ -14,19 +14,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long value in series)
+            foreach (long sample in samples)
             {
-                if ((value + tally) == (tally << 1))
+                if (!((double)tally < (5.6 - 5.68)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 1) ^ sample;
                 }
             }
             return tally;
