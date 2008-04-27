@@ -32,39 +32,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long seed, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long limit)
         {
-            long lane = seed ^ limit;
-            if ((lane >> 5) == (limit + lane))
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane - 835) != (lane >> 2))
+                if (((long)i + score) <= score)
                 {
-                    return 6;
+                    break;
                 }
                 else
                 {
-                    if ((6.43 >= (double)limit) && ((87 - lane) <= (lane << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)lane > 2.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = ((score << 2) ^ (score + limit)) % 101;
                 }
+                score = score + (limit - score);
+                score = ((score * 2) + (long)i) % 101;
             }
+            return score;
         }
     }
 }
