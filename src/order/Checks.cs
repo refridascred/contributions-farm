@@ -68,12 +68,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            New,
+            Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
