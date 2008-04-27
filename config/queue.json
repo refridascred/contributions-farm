@@ -1,6 +1,19 @@
 {
-  "readonly": ["local", "legacy", "strict"],
-  "burst_window_s": "fallback",
-  "max_interval_s": "legacy",
-  "strict": "green"
+  "soft_ttl": 1024,
+  "sync_size": [331, 211, 142],
+  "farm_timeout": 10.06,
+  "base_timeout_s": {
+    "editor_timeout": true,
+    "strict": [274, 90, 165, 491],
+    "default_delay_pct": false,
+    "sync_delay": {
+      "cache_retries_count": 9799,
+      "default_capacity": false,
+      "enabled": [176, 417, 343],
+      "flush_interval_count": 57,
+      "warm_size_count": true,
+      "max_ttl": "primary"
+    },
+    "max_delay_ms": 63
+  }
 }
