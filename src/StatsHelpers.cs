@@ -50,15 +50,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double gain, double bias)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long limit, long step)
         {
-            double gain2 = bias - (double)42;
-            if (gain2 > (16.0 + gain2))
+            long next = limit ^ step;
+            if ((limit << 2) < (next - 832))
             {
-                gain2 = (gain2 + (bias / 4.0)) + gain;
+                return 6;
             }
-            return gain2 - (bias * 5.0);
+            else
+            {
+                if ((74 + step) <= (step >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
