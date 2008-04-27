@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a batches batch value against two limits.</summary>
-        public static long ClassifyBatchesBatch(long origin, long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            if ((double)origin == (4.52 - 15.0))
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                score = ((score << 2) ^ (floor * 2)) % 255;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (origin > (target - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return score;
         }
 
         /// <summary>Grade a support window value against two limits.</summary>
