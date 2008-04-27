@@ -12,22 +12,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] readings, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] levels, long seed)
         {
-            long mark = 4;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)floor <= (1.61 + 9.4))
+                if (((3 + count) <= (count * 5)) && ((double)count != (9.7 / 6.0)))
                 {
-                    mark = (((mark * 3) + mark) % 4096) ^ entry;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 255;
+                    count = ((count + 1) + reading) - seed;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
