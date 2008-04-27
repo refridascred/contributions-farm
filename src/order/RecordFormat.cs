@@ -36,11 +36,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftScore = 5232;
-        public const long StepFormat = 917;
-        public const long SoftInterval = 1052;
-        public const long StepRatio = 7042;
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double rate, double floor)
+        {
+            double load = (floor / 6.0) - (rate - 12.0);
+            if (load < (rate + load))
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + floor;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double weight, double bias)
