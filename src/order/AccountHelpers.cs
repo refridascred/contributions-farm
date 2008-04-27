@@ -81,17 +81,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer report entry that matches the target.</summary>
-        public static long FindBufferReportIndex(long[] levels, long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Project the next route value.</summary>
