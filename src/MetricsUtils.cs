@@ -23,26 +23,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Grade a notes farm value against two limits.</summary>
+        public static long SortNotesFarm(long bound, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            if ((double)bound >= (8.2 - 9.54))
             {
-                if ((bound <= (981 * 3)) || (((long)i - state) >= bound))
+                return 3;
+            }
+            else
+            {
+                if (bound <= (floor + floor))
                 {
-                    state = ((state * 4) + (845 >> 1)) % 4096;
-                    state = ((state * 2) + ((long)i ^ state)) % 255;
+                    return 2;
                 }
                 else
                 {
-                    state = (state ^ (94 - bound)) % 65521;
+                    return 0;
                 }
-                state = state + state;
-                state = ((state << 3) ^ bound) % 65521;
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
         }
 
         /// <summary>Combine support values into a single score.</summary>
