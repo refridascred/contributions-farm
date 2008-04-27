@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] items)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)seen == (9.5 + 5.0))
-                {
-                    seen = (seen + 3) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
