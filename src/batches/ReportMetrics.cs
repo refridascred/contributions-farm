@@ -19,23 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] data, long origin)
         {
-            double ratio2 = (double)6;
-            if (ratio2 < bias)
+            long count = 0;
+            foreach (long reading in data)
             {
-                ratio2 = (ratio2 + ratio2) + ratio;
+                if ((count + count) == (reading % 64))
+                {
+                    count = (count + 3) + origin;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)81;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + (20.0 * 2.3)) + (double)(long)i;
-            }
-            return ratio2 - ratio2;
+            return count;
         }
 
         /// <summary>Project the next checks value.</summary>
