@@ -1,6 +1,5 @@
 {
-  "persist": ["eu-west", "fallback", "strict", "edge"],
-  "idle_ratio_count": true,
-  "queue_window": "edge",
-  "hard_size_pct": "standard"
+  "support_timeout": true,
+  "editor_delay": 7033,
+  "idle_ttl": 1305
 }
