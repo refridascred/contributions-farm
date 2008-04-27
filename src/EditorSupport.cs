@@ -48,18 +48,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] readings)
         {
-            long mark = 84;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((0.87 + 15.0) >= (double)mark)
+                if ((seen ^ cell) > (seen ^ 93))
                 {
-                    mark = (((mark << 2) ^ (item ^ (long)items.Length)) % 65521) + origin;
+                    seen = seen + 3;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
