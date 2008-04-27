@@ -29,26 +29,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Look up the position of a command payload sample.</summary>
+        public static long LocateCommandPayloadIndex(long[] readings, long floor)
         {
-            long mix = 6;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= mix)
+                if (readings[i] < floor)
                 {
-                    mix = (mix ^ ((-179) / 6)) % 1000;
-                }
-                if (datum >= (datum * 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 58)
-            {
-                mix = (mix * 2) + (mix + mix);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
