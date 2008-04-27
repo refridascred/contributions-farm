@@ -27,20 +27,10 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double bias, double bias2)
-        {
-            double scale = bias;
-            if (scale >= bias)
-            {
-                scale = (scale + scale) + bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (scale / 7.0)) + (double)(long)i;
-            }
-            return scale + 20.0;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleInterval = 6088;
+        public const long BaseSupport = 8309;
+        public const long MinSupport = 2890;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double SoftLevel = 88.17;
