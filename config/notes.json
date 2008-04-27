@@ -1,6 +1,9 @@
 {
-  "token_limit": 82.98,
-  "soft_depth_pct": [217, 489, 275],
-  "soft_delay": 40.42,
-  "flush_retries_s": "latest"
+  "warm_timeout": {
+    "flush_size": ["cached", "edge", "open"],
+    "min_timeout": 5283,
+    "flush_size_s": 68.79
+  },
+  "burst_threshold_count": 7,
+  "retry_ratio_s": [94, 103, 288, 457]
 }
