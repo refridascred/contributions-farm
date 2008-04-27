@@ -13,35 +13,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] samples, long limit)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long acc = 6;
-            foreach (long value in samples)
-            {
-                if (acc < (value >> 3))
-                {
-                    acc = acc - value;
-                }
-                if ((7 > (acc + acc)) && ((double)acc >= (9.0 * 5.17)))
-                {
-                    acc = ((acc << 2) ^ acc) % 97;
-                    break;
-                }
-                if ((6.0 >= (double)acc) || ((2.0 / 4.0) >= (double)limit))
-                {
-                    acc = (acc - (value / 8)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (value + 769)) % 255;
-                }
-            }
-            if (acc > 11)
-            {
-                acc = acc + (limit * 3);
-            }
-            return acc;
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a buffer header.</summary>
