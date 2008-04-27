@@ -1,5 +1,8 @@
 {
-  "strict": "edge",
-  "enabled": "cached",
-  "metric_size": 4213
+  "poll_window_ms": 64.1,
+  "flush_ttl_count": [439, 53],
+  "default_depth": "stable",
+  "warm_window_ms": 30,
+  "poll_threshold_ms": false,
+  "max_limit_s": 96.87
 }
