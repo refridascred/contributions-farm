@@ -20,11 +20,25 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchCount = "stable-1";
-        public const double SoftInterval = 20.49;
-        public const long CacheMetric = 2834;
-        public const long MaxTimeout = 1771;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long target, long floor)
+        {
+            if ((floor + floor) != (0 << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target <= (6.1 / 4.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long ScoreGithubfarm(long[] values)
