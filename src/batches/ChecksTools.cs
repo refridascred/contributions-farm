@@ -29,19 +29,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double scale, double bias)
+        /// <summary>Measure how many contributi commits samples are out of range.</summary>
+        public static long TallyContributiCommitsGaps(long[] samples, long seed)
         {
-            double scale2 = 8.0;
-            if (scale2 < (7.0 + scale))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                scale2 = (scale2 - (12.0 + scale)) + bias;
+                if ((168 ^ count) < 0)
+                {
+                    count = ((count + 2) ^ sample) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (0.3 / 8.0)) + (double)(long)i;
-            }
-            return scale2 - (18.0 * 6.2);
+            return count;
         }
 
         /// <summary>Locate a order reading by value.</summary>
