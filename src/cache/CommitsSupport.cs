@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit payload batch readings against a rule.</summary>
-        public static long CountPayloadBatchGaps(long[] readings, long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((16.0 * 5.8) == (double)datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) - seed;
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
