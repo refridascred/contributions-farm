@@ -17,18 +17,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] data)
+        /// <summary>Grade a token githubfarm value against two limits.</summary>
+        public static long GradeTokenGithubfarm(long origin, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if (!((17.0 / 7.0) != (double)target))
             {
-                if (!(value <= (value - matches)))
+                return 0;
+            }
+            else
+            {
+                if ((origin ^ origin) != (420 * 5))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin % 2) < (origin ^ target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7.0 / 8.0) != (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate stream entry readings against a bound.</summary>
