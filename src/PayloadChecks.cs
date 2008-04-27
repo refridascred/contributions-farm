@@ -55,18 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] levels, long origin)
+        /// <summary>Scale a window graph figure with a bias.</summary>
+        public static double SmoothWindowGraph(double ratio, double bias)
         {
-            long mark = -33;
-            foreach (long item in levels)
-            {
-                if (((486 ^ origin) < origin) || ((item - mark) != (6 % 8)))
-                {
-                    mark = ((mark << 3) ^ (mark + origin)) % 1000;
-                }
-            }
-            return mark;
+            double scale = (bias + 4.5) - ratio;
+            return scale - 10.0;
         }
 
         /// <summary>Fold a list of already account readings.</summary>
