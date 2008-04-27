@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema token entry stays within the limit.</summary>
-        public static bool GuardSchemaTokenLimits(long[] readings, long target)
+        /// <summary>Combine contributi report values into a single score.</summary>
+        public static long TotalContributiReport(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long result = -6;
+            foreach (long reading in readings)
             {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result - (reading - result)) % 65521) - floor;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
