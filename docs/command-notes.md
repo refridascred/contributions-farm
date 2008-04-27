@@ -1,13 +1,14 @@
 # Command notes
 
-Run the buffer check before changing any commits limits.
-The report module keeps editor values in sync with the cluster cache.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The graph module keeps support values in sync with the batches cache.
+A githubfarm that stays idle for too long is moved to the buffer list.
 
-Each entry is validated before it reaches the checks queue.
-Defaults for profile live in the config folder and can be overridden per environment.
+The route helpers are pure functions, so they are safe to call from any thread.
+Use session settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Review buffer limits each release
-- Keep stream values small
+- Keep commits values small
+- Prefer cache defaults
+- Log every support change
