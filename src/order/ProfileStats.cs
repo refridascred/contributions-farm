@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] levels)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading << 3) >= reading) || (reading >= (89 / 8)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next command value.</summary>
