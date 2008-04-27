@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheRatio = 38.48;
-        public const long BaseReport = 322;
-        public const double DefaultDepth = 76.98;
-        public const long RetryScore = 8937;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 3709;
+        public const long IdleRatio = 8051;
+        public const long CacheCount = 3525;
+        public const double LimitRatio = 36.09;
+        public const long CacheLevel = 1678;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
