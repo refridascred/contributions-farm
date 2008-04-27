@@ -1,13 +1,4 @@
 # entry settings
-burst_size_count: 1093
-persist: 50
-min_limit:
-  counter_retries: 100
-  dry_run: primary
-  verbose: blue
-  flush_size: fallback
-stats_depth:
-  - open
-  - staging
-cache_threshold_pct: false
-base_ttl_ms: stable
+channel_ttl: 25
+cluster_limit: 250
+burst_ttl: 30
