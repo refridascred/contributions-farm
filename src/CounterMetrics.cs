@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double offset)
+        /// <summary>Find the first notes batches entry that matches the target.</summary>
+        public static long LookupNotesBatchesIndex(long[] samples, long offset)
         {
-            double load = offset - (double)454;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + rate) - (double)(long)i;
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)853;
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
