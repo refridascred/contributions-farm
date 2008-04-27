@@ -24,10 +24,24 @@ namespace Common.Utilities
         public const long BatchInterval = 6956;
         public const long DefaultLevel = 476;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 2511;
-        public const long SoftNotes = 669;
-        public const long StepNotes = 6538;
-        public const long RetryNotes = 8332;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long origin, long origin2)
+        {
+            if (9 <= origin2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin << 2) >= (origin % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
