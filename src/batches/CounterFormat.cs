@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Validate buffer session readings against a bound.</summary>
+        public static bool VerifyBufferSessionLimits(long[] samples, long floor)
         {
-            long score = 36;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                score = (score ^ 911) % 97;
-                if ((datum % 5) >= (long)data.Length)
+                if (entry < floor)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (score > 5)
-            {
-                score = ((score * 4) + (score >> 5)) % 101;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
