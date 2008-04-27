@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] series)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long state = 8;
+            foreach (long sample in series)
             {
-                if ((double)count > 14.0)
-                {
-                    count = (count + 2) - sample;
-                }
+                state = state + (sample + state);
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Validate stream entry readings against a bound.</summary>
