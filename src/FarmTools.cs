@@ -25,19 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer checks entries.</summary>
-        public static long CombineBufferChecks(long[] readings)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long acc = 92;
-            foreach (long value in readings)
-            {
-                acc = (acc - (value & 31)) % 4096;
-            }
-            if (acc < 15)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc;
+            Active,
+            Closed,
+            Draft,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a support info.</summary>
