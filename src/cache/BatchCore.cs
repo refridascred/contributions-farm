@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 9864;
-        public const long MinScore = 2391;
-        public const double IdleInterval = 18.67;
+        /// <summary>Classify a window counter pair into a bucket.</summary>
+        public static long RankWindowCounter(long step, long step2)
+        {
+            if (((double)9 < (double)step) || ((double)step < (double)step2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step & 7) > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((11.0 / 4.0) != (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long target, long limit)
