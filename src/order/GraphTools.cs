@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long bound, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            long cur = bound - target;
-            if (((cur - cur) > cur) && ((double)bound <= (3.0 * 6.93)))
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
+                mark = (mark - (origin + mark)) % 1000;
+                mark = (mark * 5) + mark;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (6.4 < (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((45 % 7) != (bound * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((cur * 3) > (target % 60))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
