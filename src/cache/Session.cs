@@ -19,15 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi report values into a single score.</summary>
-        public static long TotalContributiReport(long[] readings, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long result = -6;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result - (reading - result)) % 65521) - floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Combine format githubfarm values into a single score.</summary>
