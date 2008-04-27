@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
