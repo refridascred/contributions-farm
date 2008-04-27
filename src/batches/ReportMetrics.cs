@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryLevel = 8912;
-        public const long LimitFilter = 2705;
-        public const string CacheFilter = "latest-v2";
-        public const long DefaultScore = 1240;
-        public const long BaseFilter = 1888;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Retry,
+            Paused,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Match up already farm samples.</summary>
         public static long CompareAlreadyFarmCount(long[] samples)
