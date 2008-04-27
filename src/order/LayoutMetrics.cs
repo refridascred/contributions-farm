@@ -27,19 +27,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double rate, double bias)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data, long step)
         {
-            double ratio = bias;
-            if (ratio < bias)
+            long state = 9;
+            foreach (long cell in data)
             {
-                ratio = ratio + (1.0 - bias);
+                state = ((state - (state + step)) % 255) - cell;
             }
-            else
-            {
-                ratio = ratio - rate;
-            }
-            return ratio + (bias / 9.0);
+            return state % 4096;
         }
     }
 }
