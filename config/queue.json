@@ -1,19 +1,16 @@
 {
-  "report_window": {
-    "cache_ttl": "cached",
-    "cache_interval": 90.25,
-    "enabled": ["blue", "blue"],
-    "cache_limit_pct": 14,
-    "context_depth": 45.61
+  "counter_capacity": {
+    "max_ttl_pct": "stable",
+    "strict": true,
+    "idle_limit_count": {
+      "burst_limit": true,
+      "retry_capacity": 60,
+      "warm_window": 8448,
+      "retry_ratio_pct": 2489,
+      "batch_limit_ms": 500
+    },
+    "batch_threshold_pct": ["cached", "blue", "open"]
   },
-  "commits_depth": false,
-  "audit": "staging",
-  "strict": {
-    "dry_run": 2885,
-    "batches_window": "green",
-    "strict": "fallback",
-    "min_ttl_count": true
-  },
-  "command_retries": 4929,
-  "cache_interval_s": 2.07
+  "flush_timeout_count": "standard",
+  "default_size": 82
 }
