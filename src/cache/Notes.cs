@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const double DefaultStats = 53.7;
         public const long MaxCount = 1599;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = rate;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = ((gain - (double)(-41)) + (double)(long)i) - offset;
             }
-            return matches;
+            return gain + gain;
         }
 
         /// <summary>Describe the support level values.</summary>
