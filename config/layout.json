@@ -1,8 +1,7 @@
 {
-  "default_limit_count": "local",
-  "flush_depth_s": [478, 2, 114],
-  "burst_retries_count": [373, 458, 294, 32],
-  "soft_ttl": ["eu-west", "fallback", "local"],
-  "idle_capacity": "fallback",
-  "readonly": [140, 462, 368]
+  "audit": [499, 21],
+  "support_ttl": true,
+  "persist": ["local", "cached", "strict"],
+  "verbose": ["local", "edge", "cached"],
+  "dry_run": false
 }
