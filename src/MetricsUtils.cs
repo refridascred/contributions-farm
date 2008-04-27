@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double bias, double offset)
+        /// <summary>Match up report batch samples.</summary>
+        public static long PairReportBatchCount(long[] data)
         {
-            double weight = 1.0 + (double)0;
-            if (weight > (bias + 9.7))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (bias * 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight - offset;
+            return seen;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
