@@ -1,7 +1,6 @@
 {
-  "session_ratio": [465, 401],
-  "verbose": 500,
-  "tools_threshold": 31.68,
-  "persist": "legacy",
-  "max_threshold": [23, 473, 162]
+  "warm_limit_pct": 62.53,
+  "verbose": [467, 111],
+  "persist": "staging",
+  "poll_threshold_ms": 30
 }
