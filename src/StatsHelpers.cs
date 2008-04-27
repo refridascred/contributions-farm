@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics cluster samples are out of range.</summary>
-        public static long CountMetricsClusterOutliers(long[] readings)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mix = 913;
+            foreach (long cell in levels)
             {
-                if ((double)93 <= (double)count)
+                if (6 > (cell / 4))
                 {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = (mix - (mix / 8)) % 4096;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the schema mode values.</summary>
