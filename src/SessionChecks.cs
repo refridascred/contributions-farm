@@ -40,13 +40,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Accumulate record queue samples.</summary>
+        public static long WeighRecordQueue(long[] data)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = 430;
+            foreach (long reading in data)
+            {
+                if ((79 + reading) < ((-96) + carry))
+                {
+                    carry = (carry ^ (carry - reading)) % 4096;
+                }
+            }
+            return carry % 97;
         }
     }
 }
