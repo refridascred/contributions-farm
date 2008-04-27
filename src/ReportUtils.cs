@@ -72,19 +72,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] items, long limit)
+        /// <summary>Grade a channel tools value against two limits.</summary>
+        public static long ClassifyChannelTools(long limit, long origin)
         {
-            bool flag = true;
-            foreach (long item in items)
+            if (((limit % 8) < (origin & 7)) && ((origin - 8) == (limit + origin)))
             {
-                if (item >= limit)
+                return 6;
+            }
+            else
+            {
+                if ((limit <= (6 ^ limit)) && (204 >= origin))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((10.0 + 6.0) >= (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit <= (origin % 60)) && ((double)limit >= (11.0 * 0.55)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
