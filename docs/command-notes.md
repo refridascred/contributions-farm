@@ -1,11 +1,13 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the batch list.
-Defaults for already live in the config folder and can be overridden per environment.
-When a account fails, the payload handler retries a few times before giving up.
+Run the buffer check before changing any commits limits.
+The report module keeps editor values in sync with the cluster cache.
+
+Each entry is validated before it reaches the checks queue.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Validate session input early
-- Keep channel values small
+- Prefer queue defaults
+- Review buffer limits each release
+- Keep stream values small
