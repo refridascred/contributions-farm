@@ -19,12 +19,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleLevel = "local-1";
-        public const long StepSpan = 8692;
-        public const string WindowPayload = "standard-v2";
-        public const double HardFactor = 74.19;
-        public const long MinPayload = 3119;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long limit, long target)
+        {
+            long span = limit - target;
+            if ((double)limit != (8.3 / 2.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.4 - 6.32) > (double)span)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)limit > (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long FoldTools(long[] levels, long origin)
