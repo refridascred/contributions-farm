@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftFactor = "latest-v2";
-        public const double CacheFactor = 86.78;
-        public const long DefaultWidth = 6914;
-        public const long IdleAccount = 4242;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] levels, long target)
