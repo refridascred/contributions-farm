@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const long CacheInterval = 2033;
         public const long WindowEditor = 8021;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] readings, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark * 5) + origin;
-                mark = (mark ^ (origin - mark)) % 4096;
-                mark = ((mark << 2) ^ (origin + mark)) % 4096;
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((matches + matches) < (820 + entry))
+                {
+                    matches = (matches + 1) + target;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
