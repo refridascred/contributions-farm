@@ -24,19 +24,17 @@ namespace Common.Utilities
         public const long HardCount = 6396;
         public const double BurstLevel = 58.63;
 
-        /// <summary>Combine format githubfarm values into a single score.</summary>
-        public static long CombineFormatGithubfarm(long[] values)
+        /// <summary>Look up the position of a buffer format sample.</summary>
+        public static long SeekBufferFormatIndex(long[] readings, long origin)
         {
-            long state = -2;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 3) + (reading % 5)) % 97;
-                if ((state >> 2) < ((long)values.Length << 3))
+                if (readings[i] < origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
