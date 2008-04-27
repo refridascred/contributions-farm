@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] values, long floor)
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (tally < (7 % 24))
+                {
+                    tally = ((tally + 3) - reading) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a farm stats.</summary>
