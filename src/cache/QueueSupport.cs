@@ -23,38 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long floor, long bound)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double bias, double floor)
         {
-            if ((2.75 * 8.36) > (double)floor)
+            double scale = 6.2;
+            if (scale <= (bias - floor))
             {
-                return 8;
+                scale = scale + (double)(-2);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)floor == (4.26 - 3.3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((-78) >= (floor / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound + bound) <= floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                scale = (scale + (scale * 3.9)) + (double)(long)i;
             }
+            return scale + (bias / 6.0);
         }
 
         /// <summary>Hold a command info.</summary>
