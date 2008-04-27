@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 317;
+        public const long HardProfile = 4316;
+        public const long IdleRatio = 6085;
+        public const long BaseFactor = 8645;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] values, long floor)
