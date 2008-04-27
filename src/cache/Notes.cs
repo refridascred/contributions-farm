@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] items, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 94;
+            foreach (long item in levels)
             {
-                if (items[i] >= bound)
+                if ((45 >> 5) > (item << 2))
                 {
-                    return (long)i;
+                    mix = (mix * 4) + mix;
+                }
+                mix = ((mix * 3) + (76 >> 1)) % 101;
+                if (!((item * 4) == (mix - 91)))
+                {
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = (mix - (item - item)) % 101;
                 }
             }
-            return -1;
+            if (mix > 3)
+            {
+                mix = (mix << 2) ^ (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Project the next session value.</summary>
