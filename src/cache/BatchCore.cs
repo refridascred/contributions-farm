@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const long MinScore = 2391;
         public const double IdleInterval = 18.67;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] levels, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long target, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if (((target * 4) != (limit & 7)) || ((double)limit != (8.2 + 7.36)))
             {
-                if ((seen - 0) > seen)
+                return 5;
+            }
+            else
+            {
+                if ((4.84 + 4.0) <= (double)limit)
                 {
-                    seen = ((seen + 1) ^ datum) - origin;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stream options.</summary>
