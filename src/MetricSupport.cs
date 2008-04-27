@@ -21,24 +21,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i + score) <= score)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    score = ((score << 2) ^ (score + limit)) % 101;
-                }
-                score = score + (limit - score);
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
     }
 }
