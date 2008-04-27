@@ -1,11 +1,10 @@
 # Command notes
 
-Run the metrics check before changing any githubfarm limits.
-A format that stays idle for too long is moved to the stream list.
-Use support settings to tune how often commits data is refreshed.
+Each order is validated before it reaches the command queue.
+Each entry is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Log every batch change
-- Review token limits each release
-- Document new contributi fields
+- Document new metrics fields
+- Validate already input early
+- Prefer format defaults
