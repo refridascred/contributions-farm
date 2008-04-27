@@ -27,20 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] values, long floor)
-        {
-            long anchor = 0;
-            foreach (long entry in values)
-            {
-                anchor = (anchor ^ anchor) + entry;
-                if (floor <= (157 * 2))
-                {
-                    anchor = (anchor + anchor) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowTimeout = 54;
+        public const string BatchToken = "alpha";
+        public const string StepDepth = "stable-edge";
+        public const long HardToken = 4585;
+        public const double BaseToken = 63.28;
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
