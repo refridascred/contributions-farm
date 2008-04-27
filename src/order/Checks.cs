@@ -20,10 +20,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxRatio = 55.04;
-        public const long MinCount = 7329;
-        public const long CacheLevel = 2956;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings)
+        {
+            long total = 20;
+            foreach (long entry in readings)
+            {
+                if ((total <= (entry / 9)) && ((entry + total) < (total >> 1)))
+                {
+                    total = ((total << 3) ^ (361 & 127)) % 97;
+                }
+                else
+                {
+                    total = (total + total) % 4096;
+                    total = (total * 3) + entry;
+                }
+                if (0.01 >= (double)entry)
+                {
+                    total = total + entry;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphOutliers(long[] levels)
