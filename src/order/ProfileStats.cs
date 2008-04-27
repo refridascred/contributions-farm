@@ -14,19 +14,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double rate, double offset)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double rate2 = 2.35;
-            if (rate2 < 2.0)
-            {
-                rate2 = rate2 - (offset * 5.9);
-            }
-            else
-            {
-                rate2 = rate2 - rate;
-            }
-            return rate2 - rate2;
+            Stale,
+            New,
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
