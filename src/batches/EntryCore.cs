@@ -25,22 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheLevel = 3361;
+        public const long StepCommand = 404;
+        public const long MinTimeout = 8743;
+        public const double MaxCommand = 3.19;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] samples, long offset)
