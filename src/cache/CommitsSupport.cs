@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] items, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((double)reading < (double)step)
+                if ((5 + datum) < (seen - datum))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 1) + step;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
