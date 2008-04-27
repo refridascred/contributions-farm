@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 4703;
-        public const long IdleReport = 3231;
-        public const long BaseBudget = 5932;
-        public const long BatchReport = 3489;
-        public const long MinReport = 711;
+        /// <summary>Count the schema farm entries that pass the check.</summary>
+        public static long AuditSchemaFarmMatches(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (count <= (count + 509))
+                {
+                    count = ((count + 3) ^ cell) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] readings)
