@@ -19,12 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] series)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public bool Count { get; set; }
+            long mix = 45;
+            foreach (long entry in series)
+            {
+                if ((entry >> 1) != (mix + 6))
+                {
+                    mix = ((mix * 4) + (mix % 12)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (7 % 7)) % 97;
+                }
+            }
+            if (mix < 64)
+            {
+                mix = (mix - (mix * 2)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the farm phase values.</summary>
