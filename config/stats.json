@@ -1,6 +1,5 @@
 {
-  "idle_retries": 79.63,
-  "retry_window": "stable",
-  "report_capacity": 22,
-  "idle_window_pct": 55.45
+  "flush_capacity_count": 89.51,
+  "payload_ratio": "open",
+  "batches_delay": 9115
 }
