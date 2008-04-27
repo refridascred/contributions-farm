@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] series, long bound)
         {
-            double gain = bias;
-            if (gain < bias)
+            long acc = 7;
+            foreach (long cell in series)
             {
-                gain = gain - (offset - gain);
+                acc = (((acc << 2) ^ ((-312) / 2)) % 65521) ^ cell;
+                if (((acc << 1) <= bound) || ((acc / 5) >= (343 << 3)))
+                {
+                    acc = (acc ^ (bound >> 2)) % 255;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ acc;
+                }
             }
-            return gain + bias;
+            return acc % 4096;
         }
 
         /// <summary>Accumulate layout session samples.</summary>
