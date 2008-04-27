@@ -49,40 +49,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long floor)
-        {
-            long span = seed - floor;
-            if ((double)span > (1.59 * 9.49))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.8 + 7.13) != (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((1.77 + 9.79) == (double)seed) || ((double)span <= 8.6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (span <= (span & 63))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 1152;
+        public const long LimitSchema = 7532;
+        public const long DefaultWidth = 4023;
+        public const long IdleSchema = 185;
+        public const string DefaultDepth = "primary-1";
 
         /// <summary>Project the next already batches value.</summary>
         public static double AdjustAlreadyBatches(double rate, double bias)
