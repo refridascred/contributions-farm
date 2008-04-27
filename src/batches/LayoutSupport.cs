@@ -66,11 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public long Level { get; set; }
-            public double Token { get; set; }
+            New,
+            Retry,
+            Stale,
+            Dropped,
         }
     }
 }
