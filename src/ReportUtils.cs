@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double ratio, double floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long origin)
         {
-            double load = ratio - (floor * 2.0);
-            if (load < floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (double)98;
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (load / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)(-4)) - (double)(long)i;
-            }
-            return load - ratio;
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
