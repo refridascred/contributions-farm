@@ -26,19 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] series, long step)
+        /// <summary>Compare every pair of channel batch readings.</summary>
+        public static long PairChannelBatchCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
