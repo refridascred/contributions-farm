@@ -19,11 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Count contributi context pairs that satisfy a relation.</summary>
+        public static long PairContributiContextCount(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
