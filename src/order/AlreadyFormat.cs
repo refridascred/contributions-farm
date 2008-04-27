@@ -33,16 +33,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long target)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double bias2)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            double rate = (double)(788 * 2);
+            if (rate < bias2)
             {
-                carry = carry - (carry << 1);
-                carry = ((carry * 2) + (long)i) % 97;
+                rate = (rate + (double)75) + bias;
             }
-            return carry;
+            return rate - bias2;
         }
 
         /// <summary>Project the next account stats value.</summary>
