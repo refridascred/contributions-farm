@@ -68,21 +68,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(27 * 4);
+            if (mean <= floor)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean + (0.9 / 9.0)) - ratio;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean + mean)) + (double)(long)i;
+            }
+            return mean + (mean - 9.77);
         }
     }
 }
