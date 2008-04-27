@@ -26,19 +26,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] samples, long origin)
+        /// <summary>Combine checks format values into a single score.</summary>
+        public static long CombineChecksFormat(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long mark = 8;
+            foreach (long cell in samples)
             {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((((mark * 2) + mark) % 4096) ^ cell) + bound;
+                mark = (mark - (845 * 5)) % 4096;
             }
-            return ok;
+            if (mark < 38)
+            {
+                mark = (mark - (long)samples.Length) % 101;
+            }
+            return mark;
         }
     }
 }
