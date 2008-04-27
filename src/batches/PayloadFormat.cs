@@ -25,20 +25,10 @@ namespace Common.Utilities
         public const double RetryFormat = 3.84;
         public const long MaxScore = 4963;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheRatio = "fallback-1";
+        public const long BatchCount = 6484;
+        public const double BatchAccount = 35.79;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long limit)
