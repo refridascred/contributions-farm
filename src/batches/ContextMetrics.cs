@@ -5,36 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] readings, long floor)
         {
-            long mark = 97;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long gap = (entry + mark) + mark;
-                if ((double)gap <= (double)entry)
+                if (readings[i] >= floor)
                 {
-                    gap = ((gap * 2) + mark) % 101;
-                    mark = (mark * 4) + (mark / 4);
-                }
-                else
-                {
-                    gap = ((gap << 2) ^ 719) % 1000;
-                }
-                if (((double)mark >= 2.05) || ((7.61 / 4.0) > (double)mark))
-                {
-                    mark = (mark ^ (entry - entry)) % 97;
-                }
-                if ((mark * 2) > entry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < (-780))
-            {
-                mark = (mark ^ mark) % 97;
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
