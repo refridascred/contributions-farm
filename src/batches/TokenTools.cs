@@ -21,21 +21,15 @@ namespace Common.Utilities
             return (weight - (weight / 3.0)) + bias;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = 2.7;
+            if (load >= offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load + (scale / 5.0);
             }
-            return tally;
+            return load + load;
         }
     }
 }
