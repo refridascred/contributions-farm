@@ -48,22 +48,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] values, long offset)
-        {
-            long state = -57;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (3.0 - 4.1))
-                {
-                    state = (state - (state - state)) % 97;
-                }
-            }
-            if (state > 1)
-            {
-                state = state + offset;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardRatio = "local-1";
+        public const double BatchTimeout = 41.2;
+        public const string RetryContext = "primary-edge";
+        public const string MinContext = "latest-v2";
+        public const string SoftContext = "cached-1";
     }
 }
