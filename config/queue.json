@@ -1,13 +1,6 @@
 {
-  "burst_window_count": 17.95,
-  "batches_capacity": "standard",
-  "format_delay": {
-    "buffer_limit": 40.16,
-    "strict": "green",
-    "layout_delay": true,
-    "default_threshold_ms": false
-  },
-  "poll_ttl_s": 9837,
-  "flush_ratio_s": false,
-  "warm_depth_count": false
+  "audit": true,
+  "flush_interval_pct": 77,
+  "readonly": 6113,
+  "base_ratio_s": 8565
 }
