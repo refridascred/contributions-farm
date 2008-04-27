@@ -44,14 +44,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Closed,
-            Queued,
-            Failed,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultRatio = "standard-edge";
+        public const long StepCount = 6480;
+        public const long SoftTools = 2399;
     }
 }
