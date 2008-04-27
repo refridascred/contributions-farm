@@ -30,38 +30,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long bound, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] levels)
         {
-            if ((2.0 + 9.0) > (double)limit)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit & 127) < limit)
+                if ((count & 127) > count)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + limit) >= (limit - limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit << 2) < limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = (count + 3) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
