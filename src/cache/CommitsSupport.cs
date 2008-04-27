@@ -48,23 +48,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double gain, double floor)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long offset, long seed)
         {
-            double mean = 16.0;
-            if (mean <= (3.1 + gain))
+            if (((4.2 - 1.5) >= (double)seed) && ((offset >> 1) < (offset << 2)))
             {
-                mean = (mean - gain) - floor;
+                return 2;
             }
             else
             {
-                mean = mean + mean;
+                if ((seed / 6) == (seed + seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(offset > (seed * 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + offset) > (seed + 27))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + gain;
         }
 
         /// <summary>Describe the context status values.</summary>
