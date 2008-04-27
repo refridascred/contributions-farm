@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples, long origin)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long acc = -54;
-            foreach (long value in samples)
-            {
-                if (!(origin > (acc - value)))
-                {
-                    acc = (acc + (1 & 255)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 3) + ((long)samples.Length << 2)) % 101;
-                }
-                if ((value / 5) <= value)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of metric channel readings.</summary>
