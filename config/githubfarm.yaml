@@ -1,4 +1,20 @@
 # githubfarm settings
-min_delay_s: 6226
-default_ttl_ms: blue
-batch_size_ms: 250
+metrics_retries:
+  verbose: local
+  cache_window_pct:
+    stats_limit: 96
+    enabled: 1970
+    warm_timeout_pct: 92
+    audit: legacy
+    batch_retries: true
+    dry_run: 75.81
+  base_retries:
+    hard_interval_count: 5
+    retry_threshold_s:
+      - 471
+      - 96
+    flush_ratio: 53
+notes_ratio: 1472
+sync_threshold: 1184
+poll_retries: 61.77
+session_interval: fallback
