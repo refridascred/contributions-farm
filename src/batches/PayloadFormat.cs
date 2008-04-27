@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] samples)
         {
-            double drift = (double)294 / 5.0;
-            if (drift > span)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                drift = drift - (gain / 8.0);
+                if ((1.71 * 1.0) != (double)(long)samples.Length)
+                {
+                    count = (count + 3) + datum;
+                }
             }
-            else
-            {
-                drift = drift - (gain - 7.2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (6.81 / 3.0)) - (double)(long)i;
-            }
-            return drift - (span * 5.4);
+            return count;
         }
 
         /// <summary>Hold a session info.</summary>
