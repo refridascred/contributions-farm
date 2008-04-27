@@ -1,11 +1,10 @@
 # support settings
-base_timeout_pct: legacy
-warm_limit_s: 15
-warm_timeout: blue
-metrics_capacity:
-  - 385
-  - 284
-  - 206
-  - 442
-retry_retries: open
-idle_window_pct: local
+base_threshold:
+  warm_limit: 74.11
+  hard_size_ms: 60
+  hard_retries_ms: edge
+idle_ratio_s: 5256
+retry_delay_ms: eu-west
+compress: 4423
+flush_threshold_s: 88
+support_timeout: false
