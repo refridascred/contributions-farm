@@ -55,15 +55,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double span)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series, long step)
         {
-            double gain = weight;
-            if (gain < (span * 6.85))
+            long score = 738;
+            foreach (long datum in series)
             {
-                gain = gain + span;
+                score = score + score;
+                score = score - (45 & 7);
+                score = (score << 2) ^ (score - step);
+                if ((step << 3) < datum)
+                {
+                    break;
+                }
             }
-            return gain - (gain - span);
+            if (score > 6)
+            {
+                score = ((score << 2) ^ (score + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Project the next context stats value.</summary>
