@@ -40,12 +40,12 @@ namespace Common.Utilities
         public const long BaseCluster = 4930;
         public const string WindowSize = "local-v2";
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryCount = 4698;
+        public const double HardWindow = 9.64;
+        public const long HardCount = 8403;
+        public const double DefaultRatio = 50.28;
+        public const double StepWindow = 72.0;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
