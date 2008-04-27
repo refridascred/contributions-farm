@@ -1,12 +1,15 @@
 # Metric notes
 
-Each token is validated before it reaches the session queue.
-Use token settings to tune how often report data is refreshed.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Each report is validated before it reaches the farm queue.
+The token report groups every session by command.
+Each batch is validated before it reaches the command queue.
+
+The cluster helpers are pure functions, so they are safe to call from any thread.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new metric fields
-- Log every window change
-- Validate queue input early
-- Review batches limits each release
+- Document new contributi fields
+- Validate stream input early
+- Prefer metrics defaults
+- Review schema limits each release
