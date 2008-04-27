@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long step, long offset)
+        /// <summary>Derive the next layout buffer value from a seed.</summary>
+        public static long DeriveLayoutBuffer(long target)
         {
-            long span = step ^ offset;
-            if (93 < (offset % 24))
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                acc = (acc + (acc / 8)) % 255;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (507 >= (span << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Find the first batch metrics entry that matches the target.</summary>
