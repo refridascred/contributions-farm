@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] levels, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] data, long limit)
         {
-            long result = 46;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                result = ((result << 3) ^ (offset + offset)) % 255;
-                if (((double)value >= (5.8 + 7.0)) || ((result + value) >= result))
+                if (datum > limit)
                 {
-                    result = result - (34 - offset);
-                    result = (result << 2) ^ offset;
-                }
-                if ((result + result) == (long)levels.Length)
-                {
-                    result = (result - (value * 5)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (offset ^ offset)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return stale;
         }
 
         /// <summary>Accumulate commits samples.</summary>
