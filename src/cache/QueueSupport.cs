@@ -27,11 +27,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitDepth = 119;
-        public const double SoftGraph = 22.13;
-        public const double SoftCount = 51.86;
-        public const long WindowDepth = 6563;
-        public const long SoftScore = 7366;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] values, long seed)
+        {
+            long result = 29;
+            foreach (long datum in values)
+            {
+                if ((double)seed == (1.0 / 5.0))
+                {
+                    result = result - ((long)values.Length + datum);
+                }
+            }
+            if (result < 460)
+            {
+                result = ((result * 2) + (result << 1)) % 255;
+            }
+            return result;
+        }
     }
 }
