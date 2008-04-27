@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] series, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] data, long floor)
         {
-            long anchor = 39;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                anchor = ((anchor - (anchor + floor)) % 4096) - item;
+                if (value < (seen + (long)data.Length))
+                {
+                    seen = (seen + 3) + floor;
+                }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
