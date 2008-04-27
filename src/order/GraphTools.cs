@@ -46,21 +46,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Audit layout editor readings against a rule.</summary>
+        public static long AuditLayoutEditorGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seen >= (seen << 1))
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
