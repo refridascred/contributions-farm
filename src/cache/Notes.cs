@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long result = 0;
-            foreach (long entry in readings)
-            {
-                result = (result - (entry + 225)) % 1000;
-            }
-            return result % 1000;
+            Dropped,
+            Pending,
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Project the next notes value.</summary>
