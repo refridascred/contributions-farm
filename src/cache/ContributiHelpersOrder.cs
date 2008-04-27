@@ -23,23 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] data)
         {
-            long acc = 758;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (!((double)datum != (2.9 - 18.0)))
+                if (!(value <= (value - matches)))
                 {
-                    acc = (acc ^ ((long)readings.Length + acc)) % 97;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    acc = acc + datum;
-                }
-                acc = ((acc << 3) ^ (datum ^ datum)) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate stream entry readings against a bound.</summary>
