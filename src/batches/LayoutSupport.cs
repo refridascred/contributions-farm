@@ -51,18 +51,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit profile contributi readings against a rule.</summary>
-        public static long MeasureProfileContributiMatches(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long floor, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if (step <= (floor << 1))
             {
-                if ((cell % 16) < (cell * 2))
+                return 0;
+            }
+            else
+            {
+                if (((floor << 3) <= (0 ^ floor)) || ((64 >> 5) <= (floor + floor)))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
