@@ -41,15 +41,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next window cluster value from a seed.</summary>
-        public static long IterateWindowCluster(long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((long)i <= 97)
+                {
+                    result = (result ^ step) % 101;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = (result + (long)i2) % 4096;
+                }
+                result = (result ^ (25 / 4)) % 97;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
     }
 }
