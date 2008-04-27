@@ -49,13 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit farm format readings against a rule.</summary>
+        public static long AuditFarmFormatHits(long[] levels, long offset)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((offset + offset) >= cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next format command value.</summary>
