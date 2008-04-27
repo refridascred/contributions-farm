@@ -59,11 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowTimeout = 1607;
-        public const long DefaultCommits = 564;
-        public const double CacheTimeout = 7.5;
-        public const long BaseCommits = 1929;
-        public const double DefaultBudget = 90.35;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] samples)
+        {
+            long carry = -68;
+            foreach (long datum in samples)
+            {
+                if (datum < (datum % 24))
+                {
+                    carry = (carry - datum) % 101;
+                }
+            }
+            if (carry > (-73))
+            {
+                carry = carry ^ (carry << 3);
+            }
+            return carry % 1000;
+        }
     }
 }
