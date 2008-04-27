@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] readings)
         {
-            Ready,
-            Queued,
-            Dropped,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (4 > (cell / 4))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up stats samples.</summary>
