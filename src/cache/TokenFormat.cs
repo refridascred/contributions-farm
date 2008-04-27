@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] items)
         {
-            long mix = 3;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ sample) - (long)i;
-                }
-                if ((59 >= (65 + sample)) || ((sample % 10) == (mix >> 4)))
-                {
-                    mix = mix + (mix + mix);
-                }
-                if ((sample / 6) <= sample)
-                {
-                    break;
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 208)
-            {
-                mix = (mix - (7 & 15)) % 1000;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Adjust a stream reading.</summary>
