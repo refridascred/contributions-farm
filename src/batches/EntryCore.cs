@@ -51,18 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] samples, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((matches << 1) == (587 >> 2))
+                if (reading >= floor)
                 {
-                    matches = ((matches + 1) + cell) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
