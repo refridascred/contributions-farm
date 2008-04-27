@@ -14,17 +14,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long acc = 758;
+            foreach (long datum in readings)
             {
-                if ((origin * 2) >= origin)
+                if (!((double)datum != (2.9 - 18.0)))
                 {
-                    break;
+                    acc = (acc ^ ((long)readings.Length + acc)) % 97;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
+                else
+                {
+                    acc = acc + datum;
+                }
+                acc = ((acc << 3) ^ (datum ^ datum)) % 97;
             }
             return acc;
         }
