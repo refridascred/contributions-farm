@@ -36,22 +36,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] items, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((target % 97) <= entry)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
