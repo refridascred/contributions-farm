@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Buffer checks helpers.</summary>
     public static class BufferChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinInterval = 2931;
-        public const long BatchGraph = 8520;
-        public const long RetryCount = 6933;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((step <= (2 + 83)) || !(entry < (step + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long limit)
