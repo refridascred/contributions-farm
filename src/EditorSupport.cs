@@ -48,18 +48,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] readings)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double drift = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((seen ^ cell) > (seen ^ 93))
-                {
-                    seen = seen + 3;
-                }
+                drift = (drift - (10.0 * 7.31)) + (double)(long)i;
             }
-            return seen;
+            return drift - (rate * 12.0);
         }
 
         /// <summary>Check that every editor metrics entry stays within the limit.</summary>
