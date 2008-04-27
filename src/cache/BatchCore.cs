@@ -25,26 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((anchor ^ anchor) <= 1) && ((bound & 1) >= ((long)i - (long)i)))
-                {
-                    anchor = (anchor - (long)i) % 97;
-                    anchor = ((anchor * 4) + (bound >> 3)) % 97;
-                    break;
-                }
-                if (!(bound <= (bound - anchor)))
-                {
-                    anchor = (anchor * 2) + anchor;
-                    anchor = anchor - ((long)i ^ (long)i);
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            Pending,
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
