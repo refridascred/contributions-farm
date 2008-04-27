@@ -63,18 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((count * 4) <= count)
+                if (tally <= (cell + tally))
                 {
-                    count = (count + 1) + item;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
