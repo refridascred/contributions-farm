@@ -79,15 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] samples, long floor)
+        /// <summary>Iterate the record notes series from a seed.</summary>
+        public static long IterateRecordNotes(long seed)
         {
-            long sum = 9;
-            foreach (long item in samples)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                sum = ((sum ^ item) % 65521) - floor;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Hold a filter info.</summary>
