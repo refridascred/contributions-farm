@@ -1,14 +1,11 @@
 # Command notes
 
-The layout report groups every githubfarm by batch.
-The layout report groups every batch by cluster.
-
-Use session settings to tune how often commits data is refreshed.
-Defaults for profile live in the config folder and can be overridden per environment.
+Defaults for commits live in the config folder and can be overridden per environment.
+Use format settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Review graph limits each release
-- Log every metric change
-- Prefer metric defaults
-- Document new batches fields
+- Validate layout input early
+- Document new session fields
+- Log every batches change
+- Prefer entry defaults
