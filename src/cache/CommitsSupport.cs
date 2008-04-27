@@ -71,18 +71,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] values, long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((bound % 16) >= (value - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
