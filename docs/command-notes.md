@@ -1,11 +1,10 @@
 # Command notes
 
-When a order fails, the githubfarm handler retries a few times before giving up.
-Use filter settings to tune how often notes data is refreshed.
-When a support fails, the batch handler retries a few times before giving up.
+Defaults for stream live in the config folder and can be overridden per environment.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new metrics fields
-- Log every commits change
-- Keep layout values small
+- Log every cache change
+- Keep account values small
+- Review farm limits each release
