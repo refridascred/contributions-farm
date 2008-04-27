@@ -16,22 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 4) + state) % 255;
-                state = ((state * 3) + (origin + origin)) % 101;
-                if ((origin + origin) != ((long)i ^ origin))
-                {
-                    state = (state ^ origin) % 97;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 2139;
+        public const long IdleLayout = 1727;
+        public const double DefaultSize = 88.98;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
