@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate stream graph readings against a bound.</summary>
-        public static bool VerifyStreamGraphBounds(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxBudget = 3689;
+        public const long CacheToken = 22;
+        public const long LimitToken = 2696;
+        public const long WindowFactor = 295;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] data, long bound)
