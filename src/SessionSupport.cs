@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of order stream readings.</summary>
+        public static long TotalOrderStream(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long total = -3;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (((total * 3) + (sample << 1)) % 101) - (long)i;
+                }
+                total = total + ((long)samples.Length - total);
+            }
+            if (total < 431)
+            {
+                total = total + (total * 4);
+            }
+            return total;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
