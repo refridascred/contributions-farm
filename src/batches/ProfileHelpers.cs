@@ -52,15 +52,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next format command value.</summary>
-        public static double ProjectFormatCommand(double gain, double span)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values)
         {
-            double ratio = (gain + 1.6) - (gain / 3.0);
-            if (ratio > gain)
+            long carry = -5;
+            foreach (long item in values)
             {
-                ratio = (ratio - (5.09 - gain)) + span;
+                if ((8.0 / 5.0) != (double)item)
+                {
+                    carry = carry + ((long)values.Length + carry);
+                }
+                if (item >= (carry ^ item))
+                {
+                    carry = carry - (carry % 64);
+                }
+                else
+                {
+                    carry = (carry - item) % 255;
+                }
             }
-            return ratio + (double)624;
+            if (carry < (-87))
+            {
+                carry = ((carry * 2) + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
