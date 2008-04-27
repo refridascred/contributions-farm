@@ -18,11 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSchema = 77.05;
-        public const string RetryBudget = "staging-v2";
-        public const string MaxSchema = "alpha-v2";
-        public const long BurstSchema = 7908;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] series, long target)
+        {
+            long score = -71;
+            foreach (long sample in series)
+            {
+                if ((10.0 + 3.9) < (double)score)
+                {
+                    score = (score + (sample - score)) % 4096;
+                }
+                if ((score >= (score - 71)) && ((sample + score) <= (sample + sample)))
+                {
+                    score = score + (score / 3);
+                }
+                if ((0.21 - 13.0) > (double)target)
+                {
+                    break;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] samples)
