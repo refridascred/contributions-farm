@@ -50,12 +50,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Digest a series of counter already entries.</summary>
+        public static long ScoreCounterAlready(long[] values)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public double Count { get; set; }
+            long carry = 690;
+            foreach (long item in values)
+            {
+                carry = (carry ^ (item - item)) % 65521;
+                if ((9 + item) >= (140 + item))
+                {
+                    break;
+                }
+            }
+            if (carry > 35)
+            {
+                carry = carry + (54 + carry);
+            }
+            return carry;
         }
 
         /// <summary>Audit filter layout readings against a rule.</summary>
