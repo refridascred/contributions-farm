@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] series, long offset)
-        {
-            long mark = -4;
-            foreach (long value in series)
-            {
-                if ((value >> 2) > (0 & 15))
-                {
-                    mark = ((mark << 2) ^ 55) + offset;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 2039;
+        public const double MaxStream = 93.8;
+        public const long StepStream = 9304;
+        public const long SoftBudget = 6903;
+        public const double MinStream = 22.28;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long FoldMetric(long[] items, long offset)
