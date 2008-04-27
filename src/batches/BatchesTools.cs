@@ -20,11 +20,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 2365;
-        public const double MinRatio = 34.63;
-        public const long DefaultSession = 2209;
-        public const string LimitTimeout = "latest";
-        public const long SoftSize = 1756;
+        /// <summary>Count farm payload pairs that satisfy a relation.</summary>
+        public static long OverlapFarmPayloadCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
