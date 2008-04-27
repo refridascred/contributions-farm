@@ -39,11 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardRatio = "local-1";
-        public const double BatchTimeout = 41.2;
-        public const string RetryContext = "primary-edge";
-        public const string MinContext = "latest-v2";
-        public const string SoftContext = "cached-1";
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
