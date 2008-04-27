@@ -33,32 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long floor, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] values)
         {
-            long slot = floor + step;
-            if ((floor + floor) < step)
+            long score = 571;
+            foreach (long datum in values)
             {
-                return 8;
+                score = score + (datum & 7);
             }
-            else
+            if (score < 30)
             {
-                if ((floor * 3) >= (6 - (-1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor <= (5 + step)) && (4 > (slot - 88)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                score = (score + (score / 3)) % 1000;
             }
+            return score;
         }
     }
 }
