@@ -1,18 +1,5 @@
 {
-  "dry_run": {
-    "counter_capacity": 60,
-    "compress": 38.73,
-    "report_capacity": 82,
-    "sync_window": [481, 31, 26]
-  },
-  "enabled": "standard",
-  "batch_threshold": {
-    "strict": 1144,
-    "persist": [300, 357],
-    "base_ratio_pct": true,
-    "readonly": 94.6
-  },
-  "commits_ttl": "edge",
-  "cache_depth_count": "standard",
-  "buffer_ratio": [32, 67]
+  "batch_ttl_ms": 85.35,
+  "base_interval_count": 19,
+  "min_timeout_s": [310, 192]
 }
