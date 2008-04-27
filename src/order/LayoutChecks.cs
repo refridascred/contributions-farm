@@ -65,15 +65,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] data, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = 25;
+            foreach (long reading in data)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                if (((reading % 24) != (acc + offset)) || ((reading & 1) >= acc))
+                {
+                    acc = (acc - (acc << 1)) % 255;
+                }
             }
-            return carry;
+            return acc % 4096;
         }
     }
 }
