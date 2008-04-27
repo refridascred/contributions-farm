@@ -48,12 +48,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 1152;
-        public const long LimitSchema = 7532;
-        public const long DefaultWidth = 4023;
-        public const long IdleSchema = 185;
-        public const string DefaultDepth = "primary-1";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next already batches value.</summary>
         public static double AdjustAlreadyBatches(double rate, double bias)
