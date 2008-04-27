@@ -57,12 +57,24 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Grade a queue cluster value against two limits.</summary>
+        public static long ClassifyQueueCluster(long seed, long target)
         {
-            Pending,
-            Paused,
-            Locked,
+            if ((target > 6) && (60 >= (target - seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((target << 1) <= seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
