@@ -28,24 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a notes payload pair into a bucket.</summary>
-        public static long GradeNotesPayload(long seed, long origin)
+        /// <summary>Project the next tools route value.</summary>
+        public static double ScaleToolsRoute(double ratio, double floor)
         {
-            if ((origin & 1) >= (seed % 12))
+            double load = (double)9;
+            if (load > (9.67 - load))
             {
-                return 4;
+                load = (load + (double)1) + ratio;
             }
             else
             {
-                if ((seed >= (seed << 1)) || ((origin + (-1)) >= (72 >> 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                load = load - (floor / 8.0);
             }
+            return load - (floor + floor);
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
