@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long offset, long offset2)
         {
-            double mean = span;
-            return (mean - (span / 6.0)) + bias;
+            long next = offset ^ offset2;
+            if ((offset * 5) == (offset >> 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset2 & 31) > (next + offset2)) && ((4.88 - 2.0) >= (double)offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((57 + offset) >= offset2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)offset != (double)next) && ((0.4 - 0.02) < (double)offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order payload samples are out of range.</summary>
