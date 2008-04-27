@@ -70,32 +70,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long seed, long floor)
-        {
-            long gap = seed ^ floor;
-            if ((floor - 54) > (seed ^ gap))
-            {
-                return 0;
-            }
-            else
-            {
-                if (gap < 140)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)floor <= (double)60) && ((floor - seed) < (gap - 75)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryFactor = 3290;
+        public const long BurstCounter = 2548;
+        public const long WindowBudget = 9530;
     }
 }
