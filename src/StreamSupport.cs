@@ -18,25 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long step, long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long bound = step - floor;
-            if (bound > 51)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 3) > step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Ready,
+            Queued,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Rank account entry input into a small class.</summary>
