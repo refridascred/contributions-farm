@@ -80,11 +80,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchWidth = 32.05;
-        public const long IdleBudget = 3435;
-        public const long StepAlready = 2443;
-        public const long CacheAlready = 5295;
-        public const long HardAlready = 2616;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "local";
+        public const long SoftCommand = 506;
+        public const long MinCommand = 6785;
     }
 }
