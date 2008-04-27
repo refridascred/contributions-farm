@@ -35,9 +35,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepScore = "staging";
-        public const long BaseOrder = 8883;
-        public const long CacheInterval = 3805;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] data)
+        {
+            long anchor = 497;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor ^ ((long)data.Length + anchor)) % 1000) ^ cell;
+                anchor = ((anchor * 3) + (anchor / 3)) % 97;
+                if ((3.44 - 1.95) <= (double)anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > (-4))
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
+        }
     }
 }
