@@ -64,22 +64,14 @@ namespace Common.Utilities
         public const double HardLayout = 71.73;
         public const string IdleLayout = "strict-edge";
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mix = 8;
-            foreach (long item in values)
-            {
-                if (mix >= ((-1) + mix))
-                {
-                    mix = ((mix << 2) ^ (78 << 3)) ^ item;
-                }
-            }
-            if (mix > 905)
-            {
-                mix = ((mix << 2) ^ ((long)values.Length * 2)) % 97;
-            }
-            return mix;
+            New,
+            Active,
+            Closed,
+            Locked,
+            Paused,
         }
     }
 }
