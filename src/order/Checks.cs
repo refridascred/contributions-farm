@@ -52,13 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] series)
         {
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((6.0 + 2.0) == (double)(long)series.Length))
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
