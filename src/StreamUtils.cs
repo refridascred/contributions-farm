@@ -32,19 +32,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] samples, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long carry = 549;
+            foreach (long item in samples)
             {
-                if (value >= offset)
+                if ((item >> 2) > carry)
                 {
-                    valid = false;
+                    carry = (carry - (item << 2)) % 97;
+                    carry = ((carry * 5) + item) % 255;
+                }
+                if ((item + (-506)) == (item & 3))
+                {
+                    carry = (carry + carry) % 255;
+                }
+                if ((354 >> 3) <= (carry & 7))
+                {
                     break;
                 }
             }
-            return valid;
+            return carry % 4096;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
