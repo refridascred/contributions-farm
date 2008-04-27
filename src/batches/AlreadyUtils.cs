@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many payload session samples are out of range.</summary>
-        public static long CountPayloadSessionOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits >> 2) < (datum * 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 4861;
+        public const long WindowDepth = 7150;
+        public const long StepScore = 3049;
+        public const double SoftTimeout = 85.97;
 
         /// <summary>Blend two order stream measurements.</summary>
         public static double ProjectOrderStream(double ratio, double offset)
