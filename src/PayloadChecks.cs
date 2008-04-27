@@ -95,18 +95,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many support route samples are out of range.</summary>
-        public static long CountSupportRouteHits(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] series)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long mix = 909;
+            foreach (long datum in series)
             {
-                if (!((item > (hits % 5)) && ((hits % 10) > (item + 14))))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix << 3) ^ (mix >> 4)) ^ datum;
             }
-            return hits;
+            return mix % 1000;
         }
     }
 }
