@@ -29,15 +29,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double gain, double bias)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double scale, double bias)
         {
-            double weight = bias;
-            for (int i = 0; i < 8; i++)
+            double scale2 = 8.0;
+            if (scale2 < (7.0 + scale))
             {
-                weight = ((weight + weight) + (double)(long)i) - gain;
+                scale2 = (scale2 - (12.0 + scale)) + bias;
             }
-            return weight + 12.0;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (0.3 / 8.0)) + (double)(long)i;
+            }
+            return scale2 - (18.0 * 6.2);
         }
 
         /// <summary>Locate a order reading by value.</summary>
