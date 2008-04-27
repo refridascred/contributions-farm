@@ -48,14 +48,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Pending,
-            Draft,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepFactor = "latest-edge";
+        public const string DefaultFactor = "stable-v2";
+        public const long BaseLevel = 9514;
+        public const long CacheGithubfarm = 9975;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardContext = 2819;
