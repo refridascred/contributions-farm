@@ -35,15 +35,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double scale, double offset)
-        {
-            double load = 2.7;
-            if (load >= offset)
-            {
-                load = load + (scale / 5.0);
-            }
-            return load + load;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowBudget = 5035;
+        public const double MaxLevel = 55.9;
+        public const long MinInterval = 7497;
+        public const double HardWindow = 68.16;
+        public const string WindowInterval = "stable-edge";
     }
 }
