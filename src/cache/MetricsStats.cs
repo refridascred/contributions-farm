@@ -35,26 +35,25 @@ namespace Common.Utilities
         public const double BatchSize = 17.72;
         public const long BurstCache = 7555;
 
-        /// <summary>Fold a list of route batch readings.</summary>
-        public static long DigestRouteBatch(long[] values)
+        /// <summary>Combine session window values into a single score.</summary>
+        public static long DigestSessionWindow(long[] items)
         {
-            long state = 3;
-            foreach (long item in values)
+            long carry = 5;
+            foreach (long sample in items)
             {
-                if (state >= (state + 871))
+                if ((2 % 64) == (carry / 2))
                 {
-                    state = (state - (item + state)) % 97;
+                    carry = carry + (sample + 720);
+                    carry = (carry - sample) % 65521;
                 }
                 else
                 {
-                    state = (state - (item + state)) % 65521;
+                    carry = carry ^ (9 / 2);
+                    carry = (carry * 5) + 983;
                 }
-                if ((item <= (state ^ state)) && (((-524) >> 5) == (state - state)))
-                {
-                    break;
-                }
+                carry = carry + (sample * 5);
             }
-            return state % 4096;
+            return carry % 1000;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
