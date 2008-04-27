@@ -43,15 +43,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] samples, long origin)
         {
-            double bias = offset;
-            if (bias >= (double)(-873))
+            long sum = 878;
+            foreach (long sample in samples)
             {
-                bias = (bias + (bias / 7.0)) - weight;
+                sum = (sum + ((long)samples.Length * 4)) % 97;
+                if ((189 - 14) > (origin - sample))
+                {
+                    sum = ((sum * 2) + (98 + 9)) % 97;
+                }
             }
-            return bias + (19.0 * 0.07);
+            return sum;
         }
     }
 }
