@@ -27,19 +27,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] series, long limit)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < limit)
+                if (items[i] >= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
