@@ -15,20 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine githubfarm queue values into a single score.</summary>
-        public static long TotalGithubfarmQueue(long[] data, long seed)
-        {
-            long acc = 0;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = ((acc + (acc % 64)) % 4096) - (long)i;
-                }
-                acc = (acc * 5) + (seed + value);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 1517;
+        public const long BaseTimeout = 9214;
+        public const string LimitWidth = "stable-1";
+        public const string BurstPayload = "standard-1";
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LocateProfileIndex(long[] samples, long offset)
