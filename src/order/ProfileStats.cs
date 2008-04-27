@@ -49,14 +49,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            Synced,
-            Stale,
-            Queued,
-            Done,
-            Idle,
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)(long)i == (1.4 / 5.0))
+                {
+                    total = (total + (3 / 7)) % 255;
+                }
+                else
+                {
+                    total = (total + offset) % 255;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
