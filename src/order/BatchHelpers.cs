@@ -37,11 +37,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
