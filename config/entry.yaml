@@ -1,17 +1,4 @@
 # entry settings
-readonly: 72.99
-command_depth: green
-metric_ttl: false
-format_ratio:
-  - 97
-  - 464
-metrics_timeout:
-  warm_retries_count:
-    - 465
-    - 275
-    - 49
-  already_limit: eu-west
-  cluster_window: 31.53
-  soft_timeout: 65.23
-  compress: blue
-  base_window_pct: true
+base_delay: stable
+default_timeout_ms: green
+max_interval_count: primary
