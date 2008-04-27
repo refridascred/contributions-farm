@@ -32,17 +32,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a command payload sample.</summary>
-        public static long LocateCommandPayloadIndex(long[] readings, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                state = (state - (state % 97)) % 4096;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
