@@ -19,23 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] items, long step)
         {
-            double gain = scale;
-            if (gain >= (13.0 * 9.9))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                gain = (gain + (double)5) + span;
+                if ((double)reading < (double)step)
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (20.0 * 9.67)) + (double)(long)i;
-            }
-            return gain + (gain / 3.0);
+            return tally;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
