@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] values, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] > target)
+                if (!(((long)i + (long)i) > (total + offset)))
                 {
-                    return (long)i;
+                    total = ((total * 4) + ((long)i % 100)) % 101;
                 }
+                total = (total ^ (total - total)) % 101;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
