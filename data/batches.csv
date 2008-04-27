@@ -1,7 +1,7 @@
-id,level,label,weight
-1,open,634,open
-2,48.91,green,240
-3,95.3,75.2,5.26
-4,blue,43.69,22
-5,fallback,open,strict
-6,69.94,98,865
+id,active,state,count
+1,845,434,87.24
+2,31.99,green,25.73
+3,39.31,green,strict
+4,75.55,blue,77.71
+5,eu-west,primary,blue
+6,5.47,799,760
