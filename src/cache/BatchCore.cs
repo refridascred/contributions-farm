@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine command notes values into a single score.</summary>
-        public static long TallyCommandNotes(long[] levels)
-        {
-            long result = 305;
-            foreach (long reading in levels)
-            {
-                if (((reading >> 1) <= reading) && (reading < (reading + reading)))
-                {
-                    result = result + reading;
-                }
-            }
-            if (result < 80)
-            {
-                result = (result + result) % 97;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSupport = 51.94;
+        public const string BatchScore = "local-1";
+        public const string IdleBudget = "strict";
+        public const long CacheInterval = 8390;
+        public const long MaxInterval = 2801;
 
         /// <summary>Measure how many buffer layout samples are out of range.</summary>
         public static long TallyBufferLayoutGaps(long[] series, long limit)
