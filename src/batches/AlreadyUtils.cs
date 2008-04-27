@@ -44,23 +44,21 @@ namespace Common.Utilities
         public const long SoftStream = 7567;
         public const long WindowStream = 4102;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] samples)
         {
-            long mark = 748;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (datum + 913)) + (long)i;
-                    mark = ((mark * 3) + mark) % 97;
-                }
-                if ((mark << 3) < (mark / 4))
-                {
-                    mark = (mark ^ (mark - mark)) % 1000;
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
