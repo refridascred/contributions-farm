@@ -39,12 +39,12 @@ namespace Common.Utilities
         public const long MaxRatio = 5507;
         public const long MinInterval = 3422;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] readings, long step)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] >= step)
+                if (series[i] > floor)
                 {
                     return (long)i;
                 }
