@@ -27,13 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit cache order readings against a rule.</summary>
+        public static long CountCacheOrderOutliers(long[] items, long seed)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)(long)items.Length == (5.6 / 2.0))
+                {
+                    count = ((count + 1) ^ value) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
