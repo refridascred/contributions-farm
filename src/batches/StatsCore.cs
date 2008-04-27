@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long DefaultFormat = 9964;
         public const long BurstFormat = 8365;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long sum = 1;
+            foreach (long item in samples)
             {
-                if (((datum - datum) > (datum % 24)) && ((datum + matches) != (550 + matches)))
-                {
-                    matches = matches + 2;
-                }
+                sum = sum ^ (item - item);
             }
-            return matches;
+            if (sum < 7)
+            {
+                sum = (sum - (sum ^ 86)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a token record.</summary>
