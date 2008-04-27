@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Active,
+            Paused,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
