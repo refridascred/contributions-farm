@@ -40,10 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheWidth = 900;
-        public const string BatchContributi = "local-v2";
-        public const string DefaultSize = "strict-v2";
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
