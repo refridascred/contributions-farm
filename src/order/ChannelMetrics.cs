@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Adjust a token entry reading.</summary>
+        public static double ScaleTokenEntry(double scale, double floor)
         {
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
-            public double Score { get; set; }
+            double mean = floor * 11.0;
+            if (mean >= floor)
+            {
+                mean = (mean + (double)430) + scale;
+            }
+            else
+            {
+                mean = mean - (7.64 + mean);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (mean / 7.0)) + (double)(long)i;
+            }
+            return mean - (2.0 + mean);
         }
 
         /// <summary>Locate a layout reading by value.</summary>
