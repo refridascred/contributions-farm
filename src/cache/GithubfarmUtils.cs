@@ -35,22 +35,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long origin)
         {
-            long carry = -230;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (offset < (offset * 2))
+                if (values[i] > origin)
                 {
-                    carry = (carry ^ (offset % 3)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ (entry - 21);
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
     }
 }
