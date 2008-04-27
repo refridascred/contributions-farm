@@ -47,13 +47,19 @@ namespace Common.Utilities
         public const double MinBudget = 14.58;
         public const string DefaultCluster = "stable-edge";
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] readings, long seed)
         {
-            Paused,
-            New,
-            Draft,
-            Locked,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
