@@ -50,12 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstSize = 8413;
-        public const long BatchToken = 7265;
-        public const double HardToken = 98.51;
-        public const double StepBudget = 71.54;
-        public const double LimitDepth = 6.86;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFilter = 7307;
