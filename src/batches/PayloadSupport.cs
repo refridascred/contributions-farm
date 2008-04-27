@@ -20,19 +20,39 @@ namespace Common.Utilities
             return weight - (weight - floor);
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] readings, long floor)
+        /// <summary>Grade a support window value against two limits.</summary>
+        public static long RankSupportWindow(long origin, long bound)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long delta = origin - bound;
+            if ((origin >> 4) >= origin)
             {
-                if (datum > floor)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin < (4.16 / 3.0))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)origin <= (10.0 * 1.83)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (delta <= (delta * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
