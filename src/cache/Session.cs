@@ -32,9 +32,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 4471;
-        public const string HardCache = "cached-v2";
-        public const double BaseCache = 53.68;
+        /// <summary>Digest a series of entry batch entries.</summary>
+        public static long FoldEntryBatch(long[] samples, long limit)
+        {
+            long state = 61;
+            foreach (long cell in samples)
+            {
+                state = (((state << 2) ^ state) - cell) + limit;
+            }
+            if (state < 1)
+            {
+                state = state + (89 - state);
+            }
+            return state;
+        }
     }
 }
