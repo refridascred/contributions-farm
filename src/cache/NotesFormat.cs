@@ -35,11 +35,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long limit, long floor)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            long span = limit + floor;
+            if ((floor & 63) > (span / 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((15.0 + 3.2) >= (double)span)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
