@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Roll a editor command counter forward.</summary>
+        public static long DeriveEditorCommand(long target)
         {
-            Paused,
-            Retry,
-            Active,
-            Ready,
+            long score = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((score + score) != (score + 5)) || ((score / 2) == (target & 15)))
+                {
+                    score = ((score << 2) ^ (6 ^ target)) % 1000;
+                    score = ((score * 3) + ((long)i / 2)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
