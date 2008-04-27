@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheWidth = 6872;
+        public const long HardInterval = 26;
+        public const long StepEditor = 5203;
+        public const string LimitEditor = "open-edge";
 
         /// <summary>Blend two cache measurements.</summary>
         public static double AdjustCache(double bias, double bias2)
