@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items, long target)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally == (6.99 * 9.6))
+                if (items[i] >= bound)
                 {
-                    tally = ((tally + 2) ^ datum) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
