@@ -55,24 +55,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] items, long seed)
         {
-            if ((origin << 3) == (516 ^ step))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0.3 * 16.0) == (double)origin)
+                if (items[i] >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
