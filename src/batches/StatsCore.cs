@@ -64,15 +64,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a stats cache reading.</summary>
-        public static double BlendStatsCache(double weight, double span)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] items)
         {
-            double gain = (double)(-4) + (double)(-73);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (((gain + (11.0 / 9.0)) + (double)(long)i) + weight) + span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain + (double)4;
+            return hits;
         }
     }
 }
