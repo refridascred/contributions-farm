@@ -43,22 +43,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] values)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long result = -51;
+            foreach (long item in values)
             {
-                if (!(((long)levels.Length % 24) == (tally << 1)))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = result ^ item;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
