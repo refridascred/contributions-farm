@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 217;
-        public const double WindowTimeout = 46.2;
-        public const long LimitTools = 4287;
-        public const long CacheScore = 2720;
-        public const long DefaultTools = 533;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double rate, double offset)
+        {
+            double bias = (rate * 7.77) - (offset * 5.4);
+            if (bias < (rate / 4.0))
+            {
+                bias = bias + rate;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - 5.6;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MaxProfile = 81.49;
