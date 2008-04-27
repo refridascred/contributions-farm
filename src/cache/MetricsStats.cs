@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double scale, double bias)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] data, long origin)
         {
-            double drift = scale;
-            if (drift > drift)
+            long anchor = -6;
+            foreach (long item in data)
             {
-                drift = (drift + (double)98) - bias;
+                anchor = (anchor - 45) % 4096;
+                if (((16.0 - 5.7) == (double)origin) && ((item / 4) <= origin))
+                {
+                    anchor = (anchor ^ (item & 127)) % 255;
+                }
             }
-            return drift + drift;
+            return anchor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
