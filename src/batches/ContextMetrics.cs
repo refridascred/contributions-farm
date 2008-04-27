@@ -40,19 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch schema readings against a bound.</summary>
-        public static bool VerifyBatchSchemaRange(long[] series, long bound)
+        /// <summary>Grade a graph window value against two limits.</summary>
+        public static long SortGraphWindow(long bound, long step)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long slot = bound ^ step;
+            if (!(bound < (637 + 262)))
             {
-                if (reading != bound)
+                return 3;
+            }
+            else
+            {
+                if ((1.1 / 9.0) <= (4.31 * 20.0))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((slot ^ 4) >= (step * 3)) && (((-65) % 7) >= step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step - slot) > bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
