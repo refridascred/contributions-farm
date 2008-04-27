@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] values, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 4;
+            foreach (long sample in items)
             {
-                if ((values[i] <= offset) && ((values[i] % 2) != 0))
+                if (sample <= (origin - origin))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (mix & 7)) % 97;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the tools context series from a seed.</summary>
