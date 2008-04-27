@@ -46,19 +46,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] series, long limit)
+        /// <summary>Adjust a profile editor reading.</summary>
+        public static double AdjustProfileEditor(double gain, double span)
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale = gain + (span - span);
+            return scale - scale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
