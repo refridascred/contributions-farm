@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] series, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((((9 + offset) <= (value / 8)) && (value < ((-708) + 915))) || ((3.5 * 9.71) == (double)offset))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
