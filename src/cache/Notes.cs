@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double gain, double bias)
-        {
-            double ratio = (double)((-9) * 4);
-            if (ratio > 19.0)
-            {
-                ratio = ratio - gain;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (bias - gain)) + (double)(long)i;
-            }
-            return ratio - 4.5;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "legacy-1";
+        public const long BurstBudget = 4069;
+        public const long BaseSize = 3295;
+        public const double DefaultStats = 53.7;
+        public const long MaxCount = 1599;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
