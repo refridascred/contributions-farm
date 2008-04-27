@@ -51,19 +51,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] items, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (item <= floor)
+                if ((377 ^ seed) <= (seed + sample))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the contributi state values.</summary>
