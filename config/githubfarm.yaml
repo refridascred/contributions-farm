@@ -1,23 +1,4 @@
 # githubfarm settings
-already_ratio:
-  - standard
-  - primary
-  - eu-west
-cache_limit:
-  soft_size_ms:
-    hard_retries_ms: strict
-    route_capacity: green
-    entry_ttl: standard
-  persist:
-    - green
-    - standard
-    - local
-    - stable
-  verbose: green
-  channel_ratio:
-    - edge
-    - latest
-  sync_capacity: green
-githubfarm_limit: local
-min_capacity: false
-hard_depth_pct: fallback
+min_delay_s: 6226
+default_ttl_ms: blue
+batch_size_ms: 250
