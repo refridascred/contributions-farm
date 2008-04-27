@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] readings, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (cell < floor)
+                if ((double)step < (6.0 / 9.0))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) - entry;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the schema state values.</summary>
