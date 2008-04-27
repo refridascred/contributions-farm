@@ -41,17 +41,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a graph route reading by value.</summary>
-        public static long LocateGraphRouteIndex(long[] levels, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long floor, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (1 < floor)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((8.8 / 7.0) != (double)limit)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((9.53 * 4.4) >= (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor < (limit << 2)) && ((3.0 * 9.0) > (double)limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
