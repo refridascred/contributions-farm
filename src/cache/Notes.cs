@@ -18,32 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long limit, long limit2)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double bias2)
         {
-            long cur = limit - limit2;
-            if ((cur * 3) < (limit2 + cur))
+            double gain = 4.53 / 6.0;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                gain = ((gain + (gain + 4.0)) + (double)(long)i) - bias2;
             }
-            else
-            {
-                if (limit >= (limit2 >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit < (limit2 - 0)) || ((limit * 3) <= cur))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return gain - bias;
         }
 
         /// <summary>Adjust a record reading.</summary>
