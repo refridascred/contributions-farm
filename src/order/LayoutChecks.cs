@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] readings, long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long floor, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long gap = floor ^ step;
+            if ((13.0 - 4.66) < (double)gap)
             {
-                if ((3.61 - 2.6) < (double)datum)
+                return 4;
+            }
+            else
+            {
+                if ((double)step <= (3.8 / 4.0))
                 {
-                    matches = (matches + 1) - floor;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
