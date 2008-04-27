@@ -13,17 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] samples, long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 886;
+            foreach (long entry in items)
             {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (mix - seed)) % 101) - entry;
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Describe the farm kind values.</summary>
