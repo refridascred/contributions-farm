@@ -28,23 +28,36 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long origin, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long origin, long limit)
         {
-            long step2 = origin + step;
-            if ((8.0 + 2.3) == (double)origin)
+            if ((origin - limit) != (6 - limit))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((2.1 / 9.0) == (double)step2)
+                if ((limit + 16) <= (limit & 255))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 5;
+                    if (((origin / 7) < (origin << 3)) && ((726 + limit) < origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (960 <= (limit % 10))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
