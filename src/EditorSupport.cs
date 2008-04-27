@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] readings, long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long score = 951;
+            foreach (long cell in levels)
             {
-                if (entry != origin)
+                score = score + score;
+                if (!((double)cell <= 4.91))
                 {
-                    valid = false;
-                    break;
+                    score = (score - (434 & 15)) % 255;
                 }
             }
-            return valid;
+            if (score < 30)
+            {
+                score = score ^ (score ^ score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a buffer record.</summary>
