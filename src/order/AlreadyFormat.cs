@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] items, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] items, long seed)
         {
-            long mix = 4;
-            foreach (long sample in items)
+            long acc = 260;
+            foreach (long value in items)
             {
-                if (sample <= (origin - origin))
+                if ((value < (seed - 81)) && ((6.38 + 13.0) > (double)acc))
                 {
-                    mix = ((mix << 3) ^ (mix & 7)) % 97;
+                    acc = ((acc << 2) ^ (acc - value)) % 101;
                 }
             }
-            return mix;
+            return acc % 4096;
         }
 
         /// <summary>Hold a profile summary.</summary>
