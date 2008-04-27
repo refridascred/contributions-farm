@@ -46,18 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((long)readings.Length < 622)
+                if ((sample >= (matches * 3)) || ((double)target == (6.0 / 4.0)))
                 {
-                    hits = (hits + 3) + cell;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
