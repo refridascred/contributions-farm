@@ -70,11 +70,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetrySpan = 54.78;
-        public const long IdleRoute = 2790;
-        public const string MinRoute = "alpha-1";
-        public const double IdleTimeout = 47.8;
-        public const long BurstFactor = 925;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstCount = "staging-edge";
+        public const long CacheTimeout = 5325;
+        public const long MaxStats = 5519;
     }
 }
