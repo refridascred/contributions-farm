@@ -31,10 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 8750;
-        public const double BatchWidth = 81.53;
-        public const long MaxSize = 7471;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 8471;
+        public const double BurstSession = 53.54;
+        public const string StepSession = "latest-edge";
+        public const long RetrySession = 6717;
+        public const long WindowCount = 292;
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
