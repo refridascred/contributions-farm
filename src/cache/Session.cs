@@ -24,26 +24,21 @@ namespace Common.Utilities
         public const long HardCount = 6396;
         public const double BurstLevel = 58.63;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            long state = 94;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((state & 15) < state) || ((item - item) >= (73 - item)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 2) ^ item) % 1000;
-                }
-                else
-                {
-                    state = (state - (item % 64)) % 65521;
-                }
-                if ((item - item) != (state ^ 958))
-                {
-                    break;
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
