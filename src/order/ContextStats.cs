@@ -19,15 +19,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double gain, double floor)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            double scale = (double)(9 << 2);
-            if (scale <= gain)
-            {
-                scale = scale - floor;
-            }
-            return scale + 4.8;
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
