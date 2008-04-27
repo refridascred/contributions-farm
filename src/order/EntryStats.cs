@@ -13,18 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] series, long limit)
+        /// <summary>Audit tools order readings against a rule.</summary>
+        public static long MeasureToolsOrderGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((entry + limit) < (seen + seen))
+                if ((hits - 23) <= sample)
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the layout state values.</summary>
