@@ -23,22 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue order values into a single score.</summary>
-        public static long ScoreQueueOrder(long[] values, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] readings, long step)
         {
-            long total = 825;
-            foreach (long reading in values)
+            long acc = 44;
+            foreach (long datum in readings)
             {
-                if ((offset & 63) < (4 - 88))
-                {
-                    total = ((total << 3) ^ (reading + total)) % 97;
-                }
-                if ((total % 16) > (418 << 3))
-                {
-                    total = ((total * 3) + reading) % 1000;
-                }
+                acc = ((acc - (step + acc)) % 101) - datum;
             }
-            return total % 97;
+            if (acc < 276)
+            {
+                acc = acc + step;
+            }
+            return acc;
         }
 
         /// <summary>Classify a route filter pair into a bucket.</summary>
