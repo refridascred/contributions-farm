@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitScore = "primary-v2";
-        public const long HardCount = 9724;
-        public const double BatchPayload = 91.17;
-        public const long CacheWidth = 4713;
-        public const long SoftLevel = 8712;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphOutliers(long[] levels)
