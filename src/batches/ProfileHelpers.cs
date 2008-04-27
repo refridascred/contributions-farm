@@ -27,23 +27,19 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double scale, double floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] samples, long limit)
         {
-            double mean = scale;
-            if (mean >= (scale / 8.0))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                mean = mean + (mean - mean);
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean / 8.0)) + (double)(long)i;
-            }
-            return mean - scale;
+            return ok;
         }
 
         /// <summary>Hold a notes entry.</summary>
