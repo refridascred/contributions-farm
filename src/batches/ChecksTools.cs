@@ -25,24 +25,19 @@ namespace Common.Utilities
         public const double MaxTimeout = 19.81;
         public const string RetryEntry = "stable";
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long offset, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] samples, long floor)
         {
-            if (origin < offset)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin & 63) >= origin) || ((origin / 4) <= offset))
+                if (datum != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
