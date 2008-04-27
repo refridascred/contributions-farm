@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Compare every pair of format batch readings.</summary>
+        public static long CompareFormatBatchCount(long[] samples)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
