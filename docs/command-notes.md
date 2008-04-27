@@ -1,14 +1,14 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-The graph module keeps support values in sync with the batches cache.
-A githubfarm that stays idle for too long is moved to the buffer list.
+Use channel settings to tune how often channel data is refreshed.
+Keep order and route names short and lowercase.
+Each account is validated before it reaches the entry queue.
 
-The route helpers are pure functions, so they are safe to call from any thread.
-Use session settings to tune how often profile data is refreshed.
+Run the schema check before changing any schema limits.
+The filter report groups every stats by layout.
 
 ## Guidelines
 
-- Keep commits values small
-- Prefer cache defaults
-- Log every support change
+- Log every batches change
+- Keep report values small
+- Validate filter input early
