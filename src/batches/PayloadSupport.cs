@@ -53,32 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command account pair into a bucket.</summary>
-        public static long BucketCommandAccount(long origin, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long diff = origin ^ offset;
-            if (((9 / 5) == (origin / 9)) || ((diff - 319) > 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset + offset) > (offset << 3)) && ((double)offset < (4.0 + 12.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + diff) > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Synced,
+            Draft,
+            Done,
+            Ready,
+            Stale,
         }
     }
 }
