@@ -34,25 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long target, long target2)
+        /// <summary>Accumulate commits counter samples.</summary>
+        public static long DigestCommitsCounter(long[] samples)
         {
-            long cur = target - target2;
-            if ((2 - target) >= (-43))
+            long score = 888;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((cur + target) < (target2 & 31)) || ((cur + 27) > target2))
+                score = score - (value % 12);
+                if (value >= (score - 387))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    break;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Describe the contributi state values.</summary>
