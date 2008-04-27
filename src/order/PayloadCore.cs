@@ -27,22 +27,27 @@ namespace Common.Utilities
         public const string BatchProfile = "alpha-edge";
         public const long HardLevel = 1478;
 
-        /// <summary>Count the tools metric entries that pass the check.</summary>
-        public static long AuditToolsMetricHits(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long anchor = 1;
+            foreach (long item in series)
             {
-                if ((tally > (tally >> 1)) || (reading <= (587 & 255)))
+                anchor = (anchor * 4) + (item * 5);
+                if ((anchor - item) > item)
                 {
-                    tally = tally + 2;
+                    anchor = (anchor + ((long)series.Length + 590)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    anchor = (anchor - (item % 7)) % 97;
                 }
             }
-            return tally;
+            if (anchor < (-72))
+            {
+                anchor = (anchor ^ (78 + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
