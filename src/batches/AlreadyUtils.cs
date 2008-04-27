@@ -72,19 +72,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] samples, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((6.4 + 0.89) == (double)floor))
+                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
                 {
-                    score = (score - (floor * 5)) % 65521;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
     }
 }
