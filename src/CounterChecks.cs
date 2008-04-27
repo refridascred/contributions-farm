@@ -20,22 +20,13 @@ namespace Common.Utilities
         public const long MaxProfile = 7206;
         public const long HardProfile = 9147;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] levels, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (7.0 > (double)value)
-                {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit editor notes readings against a rule.</summary>
