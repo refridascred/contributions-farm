@@ -20,38 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long offset, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            if (offset <= (4 + target))
+            long carry = 30;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset ^ target) < (offset - target)) && (9 > (92 - target)))
+                if ((reading * 3) != (carry - carry))
                 {
-                    return 2;
+                    carry = (carry + (reading ^ reading)) % 255;
                 }
                 else
                 {
-                    if (!((double)4 < (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset >> 2) != (5 + 73))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = carry ^ (reading >> 1);
+                }
+                if (!((1.78 + 7.3) > (double)reading))
+                {
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
