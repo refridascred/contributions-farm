@@ -57,19 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)item <= (2.0 / 2.0))
-                {
-                    count = (count + 2) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 32.32;
+        public const double DefaultAlready = 92.56;
+        public const long CacheAlready = 55;
+        public const long WindowAlready = 8942;
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
