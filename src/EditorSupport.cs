@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Audit layout support readings against a rule.</summary>
+        public static long TallyLayoutSupportHits(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if (((entry >= (count & 3)) || ((count & 7) > (count % 10))) || ((-159) > (entry >> 3)))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
