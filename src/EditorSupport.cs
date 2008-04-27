@@ -42,11 +42,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftLevel = 88.17;
-        public const long HardInterval = 1567;
-        public const string HardWidth = "cached";
-        public const long DefaultGithubfarm = 613;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] levels, long step)
+        {
+            long carry = 667;
+            foreach (long item in levels)
+            {
+                carry = ((((carry * 5) + 249) % 65521) + item) - step;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double BlendLayout(double rate, double floor)
