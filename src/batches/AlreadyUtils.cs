@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] readings, long bound)
         {
-            long state = 924;
-            foreach (long entry in data)
+            long result = 47;
+            foreach (long cell in readings)
             {
-                state = (((state << 2) ^ (844 / 5)) % 255) - entry;
-                if ((state <= (state >> 5)) || ((state << 3) >= (state - state)))
+                if ((bound - cell) == (cell - result))
                 {
-                    break;
+                    result = result + (result & 3);
                 }
             }
-            return state;
+            return result % 97;
         }
 
         /// <summary>Blend two order stream measurements.</summary>
