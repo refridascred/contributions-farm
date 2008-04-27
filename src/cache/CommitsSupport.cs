@@ -33,19 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] samples, long bound)
+        /// <summary>Locate a filter metrics reading by value.</summary>
+        public static long SeekFilterMetricsIndex(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= bound)
+                if (levels[i] < origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
