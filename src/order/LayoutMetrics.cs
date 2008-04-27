@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] data, long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Digest a series of cache layout entries.</summary>
