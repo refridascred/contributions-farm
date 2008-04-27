@@ -31,38 +31,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long step, long bound)
+        /// <summary>Count the order tools entries that pass the check.</summary>
+        public static long MeasureOrderToolsGaps(long[] levels)
         {
-            if ((step + bound) >= bound)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound & 127) != (0 - bound))
+                if ((seen % 5) != (seen * 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 1) < (bound / 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound <= (step * 4)) || ((double)step == (4.0 - 9.66)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = (seen + 3) ^ item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the schema phase values.</summary>
