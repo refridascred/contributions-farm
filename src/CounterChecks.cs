@@ -46,18 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor notes readings against a rule.</summary>
-        public static long AuditEditorNotesMatches(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (value < (value << 2))
+                if (!((reading ^ matches) < limit))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a cluster info.</summary>
