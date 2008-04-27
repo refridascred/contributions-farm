@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] values)
         {
-            double scale2 = (scale + 9.63) * 1.8;
-            if (scale2 <= 7.2)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                scale2 = scale2 - offset;
+                if (((double)cell < (15.0 + 0.32)) || (seen >= (seen ^ cell)))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (scale - offset)) + (double)(long)i;
-            }
-            return scale2 - 9.22;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
