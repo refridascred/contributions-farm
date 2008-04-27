@@ -40,18 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                state = state - (long)i;
-                state = (state + (seed << 2)) % 4096;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 5883;
+        public const string MinInterval = "open-1";
+        public const long HardSpan = 8042;
+        public const long RetryLevel = 3405;
 
         /// <summary>Match up editor samples.</summary>
         public static long CompareEditorCount(long[] series)
