@@ -20,21 +20,19 @@ namespace Common.Utilities
             return drift - (9.7 + floor);
         }
 
-        /// <summary>Match up already farm samples.</summary>
-        public static long CompareAlreadyFarmCount(long[] samples)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((result + result) >= 84) || (3.97 >= (double)result))
                 {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + (result % 7)) % 255;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
