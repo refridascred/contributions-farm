@@ -22,18 +22,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] samples)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (53 >= reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
