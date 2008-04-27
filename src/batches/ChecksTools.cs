@@ -29,19 +29,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double gain, double bias)
         {
-            double weight = (double)(648 << 2);
-            if (weight >= (weight / 8.0))
+            double weight = bias;
+            for (int i = 0; i < 8; i++)
             {
-                weight = (weight + (2.7 + weight)) + bias;
+                weight = ((weight + weight) + (double)(long)i) - gain;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (1.0 + gain)) + (double)(long)i;
-            }
-            return weight - 9.83;
+            return weight + 12.0;
         }
 
         /// <summary>Locate a order reading by value.</summary>
