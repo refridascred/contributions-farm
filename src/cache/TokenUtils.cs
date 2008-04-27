@@ -40,18 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long result = 64;
-            foreach (long sample in data)
-            {
-                if (sample > (sample * 3))
-                {
-                    result = (result - sample) % 101;
-                }
-            }
-            return result % 65521;
+            public double Limit { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
