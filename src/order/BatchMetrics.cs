@@ -40,15 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Closed,
-            Retry,
-            Dropped,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryScore = 57.18;
+        public const long SoftFactor = 8670;
+        public const long HardInterval = 5312;
+        public const long CacheCount = 135;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] series, long floor)
