@@ -47,16 +47,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] series, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long step)
         {
-            long sum = 742;
-            foreach (long datum in series)
+            if ((origin << 3) == (516 ^ step))
             {
-                sum = (sum - (bound - 3)) + datum;
-                sum = (sum * 2) + (65 * 2);
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((0.3 * 16.0) == (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
