@@ -45,10 +45,11 @@ namespace Common.Utilities
         public const string LimitRatio = "staging-v2";
         public const long SoftDepth = 4130;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheInterval = 1492;
-        public const double BaseCache = 73.11;
-        public const long SoftSize = 8861;
-        public const long LimitCache = 4744;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public bool Count { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
