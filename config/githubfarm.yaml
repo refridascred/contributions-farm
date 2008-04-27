@@ -1,16 +1,18 @@
 # githubfarm settings
-hard_depth_pct: 63
-cache_threshold_ms: false
-format_ttl: latest
-sync_depth_s:
-  max_threshold_s: staging
-  default_retries_pct: 30
-  cache_timeout_ms: 55.46
-  batch_timeout_count:
+batch_limit_s:
+  default_timeout:
+    burst_capacity_pct: 71.19
+    cache_limit: 1059
+    report_capacity: 51.36
+    min_timeout_s: 17.28
+  readonly:
+    - green
     - latest
-    - standard
     - edge
-    - blue
-  hard_ratio_count: standard
-max_depth_count: 35
-poll_limit_s: 1807
+  compress: 22
+record_ratio: 2038
+format_window: false
+verbose:
+  - blue
+  - local
+layout_ratio: 9320
