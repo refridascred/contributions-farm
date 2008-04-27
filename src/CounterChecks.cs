@@ -82,18 +82,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] data)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (tally > (datum - datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate token readings against a bound.</summary>
