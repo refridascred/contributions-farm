@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] data)
+        /// <summary>Roll a commits filter counter forward.</summary>
+        public static long RollCommitsFilter(long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)count != (7.0 + 2.2)) || ((count / 6) > count))
-                {
-                    count = (count + 2) + item;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
