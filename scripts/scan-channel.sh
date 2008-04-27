@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest local cached; do
+CHANNEL_LIMIT=241
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in cached stable; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
