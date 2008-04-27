@@ -13,12 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long bound)
         {
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up layout samples.</summary>
