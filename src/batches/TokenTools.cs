@@ -34,14 +34,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] items, long bound)
         {
-            Dropped,
-            Stale,
-            Failed,
-            Queued,
-            Paused,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
