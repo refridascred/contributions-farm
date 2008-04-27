@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit format support readings against a rule.</summary>
-        public static long MeasureFormatSupportGaps(long[] items, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((origin - 568) <= (hits % 16))
-                {
-                    hits = (hits + 3) - value;
-                }
-            }
-            return hits;
+            Dropped,
+            Draft,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define session limits and defaults.</summary>
