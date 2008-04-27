@@ -26,18 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] series, long origin)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double rate, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double bias = (double)(56 & 63);
+            if (bias <= (offset - rate))
             {
-                if ((long)series.Length <= (count + sample))
-                {
-                    count = (count + 2) - origin;
-                }
+                bias = bias + (bias - bias);
             }
-            return count;
+            else
+            {
+                bias = bias - (20.0 + rate);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (10.0 * 7.5)) - (double)(long)i;
+            }
+            return bias - (double)881;
         }
 
         /// <summary>Measure how many cache command samples are out of range.</summary>
