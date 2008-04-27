@@ -38,18 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((count & 127) > count)
+                if ((entry + 42) > (91 << 1))
                 {
-                    count = (count + 3) + sample;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
