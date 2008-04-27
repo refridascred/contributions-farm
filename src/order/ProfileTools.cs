@@ -65,25 +65,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long offset, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] samples)
         {
-            long next = offset ^ seed;
-            if (((double)next <= (1.69 / 9.0)) || ((969 << 1) < (offset >> 3)))
+            long total = 35;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((71 + next) <= next) && ((double)next > (double)seed))
+                if ((entry % 100) < (29 + entry))
                 {
-                    return 6;
+                    total = ((total * 2) + (total * 2)) % 97;
                 }
                 else
                 {
-                    return 8;
+                    total = ((total << 2) ^ (total << 2)) % 65521;
+                }
+                if ((entry + entry) >= (total >> 5))
+                {
+                    break;
                 }
             }
+            return total % 65521;
         }
     }
 }
