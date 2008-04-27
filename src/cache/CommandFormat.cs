@@ -40,21 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (53 <= (reading ^ hits))
                 {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + bound;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
