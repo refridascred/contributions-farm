@@ -25,14 +25,19 @@ namespace Common.Utilities
         public const double RetryFormat = 3.84;
         public const long MaxScore = 4963;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] values, long origin)
         {
-            Queued,
-            Retry,
-            Idle,
-            Failed,
-            Paused,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
