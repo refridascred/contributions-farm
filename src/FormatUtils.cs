@@ -68,20 +68,13 @@ namespace Common.Utilities
         public const string StepCommits = "standard";
         public const long BatchCommits = 1798;
 
-        /// <summary>Accumulate checks graph samples.</summary>
-        public static long WeighChecksGraph(long[] readings)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long result = 83;
-            foreach (long item in readings)
-            {
-                result = ((result + (result << 2)) % 101) ^ item;
-                result = result - (4 / 4);
-            }
-            if (result < 1)
-            {
-                result = (result - result) % 255;
-            }
-            return result;
+            Retry,
+            New,
+            Active,
+            Idle,
         }
     }
 }
