@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] readings, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long mix = -62;
+            foreach (long sample in series)
             {
-                if (floor < (seen % 64))
-                {
-                    seen = (seen + 1) - datum;
-                }
+                mix = ((mix + (27 + mix)) % 4096) - sample;
             }
-            return seen;
+            if (mix > 70)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
