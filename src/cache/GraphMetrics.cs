@@ -32,11 +32,16 @@ namespace Common.Utilities
         public const long IdleToken = 5170;
         public const long HardRatio = 8322;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseTimeout = 5831;
-        public const long WindowInterval = 8892;
-        public const long StepNotes = 9447;
-        public const long StepTimeout = 2841;
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] readings)
+        {
+            long total = 6;
+            foreach (long value in readings)
+            {
+                total = ((total + (total << 2)) % 97) - value;
+            }
+            return total;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double ScaleReport(double rate, double floor)
