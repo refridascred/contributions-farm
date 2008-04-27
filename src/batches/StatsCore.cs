@@ -42,12 +42,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] series)
         {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((69 << 3) > (item / 8))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
