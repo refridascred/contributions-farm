@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double rate, double span)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            double bias = 6.81;
+            if (bias >= (bias / 4.0))
+            {
+                bias = bias + (span / 7.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - rate) + (double)(long)i;
+            }
+            return bias + (9.8 + rate);
         }
 
         /// <summary>Blend two command measurements.</summary>
