@@ -50,19 +50,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] values, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (cell < limit)
+                if (reading < limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
