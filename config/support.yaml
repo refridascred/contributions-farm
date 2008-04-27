@@ -1,4 +1,7 @@
 # support settings
-strict: eu-west
-cache_capacity_pct: false
-checks_delay: false
+idle_ttl: blue
+verbose: 47
+hard_threshold: 60
+window_threshold: false
+already_timeout: true
+batch_threshold: 82
