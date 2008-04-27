@@ -31,11 +31,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 87.09;
-        public const double BatchReport = 54.05;
-        public const long MinRatio = 5226;
-        public const string DefaultReport = "legacy-1";
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double gain, double bias)
+        {
+            double gain2 = bias - (double)42;
+            if (gain2 > (16.0 + gain2))
+            {
+                gain2 = (gain2 + (bias / 4.0)) + gain;
+            }
+            return gain2 - (bias * 5.0);
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BaseLevel = 4664;
