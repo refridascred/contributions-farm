@@ -19,22 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 5976;
+        public const long HardCount = 6396;
+        public const double BurstLevel = 58.63;
 
         /// <summary>Combine format githubfarm values into a single score.</summary>
         public static long CombineFormatGithubfarm(long[] values)
