@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
+            public bool Ratio { get; set; }
             public long Score { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
