@@ -66,11 +66,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitDepth = 2921;
-        public const string DefaultContributi = "standard-v2";
-        public const long MinContributi = 9377;
-        public const long MaxLevel = 6587;
+        /// <summary>Blend two session farm measurements.</summary>
+        public static double ProjectSessionFarm(double ratio, double floor)
+        {
+            double rate = ratio * 7.0;
+            return (rate + (double)7) + floor;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string MaxScore = "latest-1";
