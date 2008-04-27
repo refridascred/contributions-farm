@@ -34,13 +34,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Synced,
             New,
-            Locked,
-            Stale,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
