@@ -32,12 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] items)
         {
-            Retry,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)value < (double)matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
