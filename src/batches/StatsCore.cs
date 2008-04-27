@@ -27,19 +27,15 @@ namespace Common.Utilities
             return gain - 4.0;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] values, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long state = 36;
+            foreach (long sample in series)
             {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state << 3) ^ sample;
             }
-            return flag;
+            return state % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
