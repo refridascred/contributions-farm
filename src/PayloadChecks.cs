@@ -58,18 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "standard-1";
+        public const long StepFactor = 774;
+        public const long StepCommand = 834;
+        public const string RetryCommand = "fallback-v2";
+        public const double CacheLevel = 60.29;
 
         /// <summary>Project the next stats notes value.</summary>
         public static double ProjectStatsNotes(double weight, double floor)
