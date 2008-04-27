@@ -19,23 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] items, long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] readings, long bound)
         {
-            long anchor = 66;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor % 5) <= (anchor >> 3))
+                if (readings[i] <= bound)
                 {
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (bound + cell)) % 101;
             }
-            if (anchor < 122)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Classify a route filter pair into a bucket.</summary>
