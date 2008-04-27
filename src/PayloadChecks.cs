@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleLevel = "local-1";
+        public const long StepSpan = 8692;
+        public const string WindowPayload = "standard-v2";
+        public const double HardFactor = 74.19;
+        public const long MinPayload = 3119;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long FoldTools(long[] levels, long origin)
