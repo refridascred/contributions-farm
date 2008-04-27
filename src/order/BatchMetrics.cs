@@ -34,19 +34,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally ^ bound) >= (tally & 15))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryInterval = "strict-1";
+        public const long MaxRatio = 5507;
+        public const long MinInterval = 3422;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LookupQueueIndex(long[] readings, long step)
