@@ -64,26 +64,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache account values into a single score.</summary>
-        public static long WeighCacheAccount(long[] readings)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            long mix = 9;
-            foreach (long reading in readings)
+            long result = 3;
+            foreach (long cell in samples)
             {
-                if (!((-40) > (reading - 1)))
+                if ((3 - 0) >= (cell << 2))
                 {
-                    mix = ((mix * 5) + (9 ^ mix)) % 4096;
+                    result = result + (cell & 7);
+                    result = result + (cell % 64);
                 }
-                if ((mix + 621) != (long)readings.Length)
+                if ((31 << 2) <= cell)
                 {
-                    break;
+                    result = ((result * 3) + cell) % 4096;
                 }
             }
-            if (mix > 45)
-            {
-                mix = ((mix << 2) ^ mix) % 101;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Adjust a batches reading.</summary>
