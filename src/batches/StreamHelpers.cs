@@ -62,19 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double ratio, double floor)
+        /// <summary>Find the first token schema entry that matches the target.</summary>
+        public static long LookupTokenSchemaIndex(long[] values, long limit)
         {
-            double scale = (double)(44 - 28);
-            if (scale <= floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale + (double)(-76);
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (ratio - scale)) + (double)(long)i;
-            }
-            return scale - (floor / 6.0);
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
