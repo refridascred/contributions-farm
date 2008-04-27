@@ -1,14 +1,6 @@
 {
-  "default_timeout_pct": {
-    "sync_ttl": false,
-    "warm_timeout": true,
-    "soft_window_ms": 81,
-    "strict": 60
-  },
-  "burst_depth_count": {
-    "compress": 5413,
-    "warm_delay_s": "local",
-    "hard_threshold": 71.86
-  },
-  "strict": [494, 110, 46, 51]
+  "persist": 60,
+  "retry_timeout_pct": 71,
+  "readonly": 1024,
+  "batch_capacity_pct": 2
 }
