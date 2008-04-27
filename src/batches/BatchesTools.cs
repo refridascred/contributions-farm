@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long offset)
+        /// <summary>Audit batch filter readings against a rule.</summary>
+        public static long MeasureBatchFilterGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
+                if (((sample + hits) >= (hits / 5)) || ((6.0 * 1.83) >= (double)sample))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a token counter forward.</summary>
