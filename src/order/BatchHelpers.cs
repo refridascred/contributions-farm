@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank layout cache input into a small class.</summary>
-        public static long BucketLayoutCache(long floor, long seed)
-        {
-            long edge = floor + seed;
-            if ((seed / 5) <= (edge + seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((4.0 / 5.0) <= (double)edge)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor > 20.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinTimeout = 5611;
+        public const double BurstLevel = 23.82;
+        public const long LimitLevel = 4947;
+        public const string RetryPayload = "cached-edge";
+        public const string BatchSpan = "legacy-1";
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long RankCache(long step, long seed)
