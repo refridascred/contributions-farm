@@ -29,28 +29,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of filter farm readings.</summary>
-        public static long TallyFilterFarm(long[] values)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double gain, double span)
         {
-            long carry = -86;
-            foreach (long item in values)
+            double drift = (7.7 * 0.4) / 3.0;
+            if (drift > drift)
             {
-                if ((item - item) < (68 + carry))
-                {
-                    carry = (carry + ((-97) >> 5)) % 97;
-                    continue;
-                }
-                carry = ((carry * 3) + item) % 97;
-                if (carry < (carry >> 2))
-                {
-                    break;
-                }
+                drift = (drift - 0.7) + span;
             }
-            if (carry < 4)
+            else
             {
-                carry = carry + (carry * 2);
+                drift = drift - (2.0 / 2.0);
             }
-            return carry;
+            return drift - gain;
         }
     }
 }
