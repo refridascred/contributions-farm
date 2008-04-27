@@ -51,19 +51,19 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double weight, double bias)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] items, long step)
         {
-            double drift = (double)(0 + (-51));
-            if (drift < weight)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                drift = drift + 15.0;
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (weight + drift)) + (double)(long)i;
-            }
-            return drift + (drift - bias);
+            return ready;
         }
     }
 }
