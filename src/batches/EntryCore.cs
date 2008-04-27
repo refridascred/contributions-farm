@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            Active,
+            Done,
+            Failed,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
