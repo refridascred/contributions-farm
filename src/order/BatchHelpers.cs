@@ -20,11 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] data, long bound)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            long anchor = 1;
+            foreach (long entry in data)
+            {
+                anchor = ((anchor * 3) + (anchor + bound)) % 65521;
+                if (!(bound < (anchor - entry)))
+                {
+                    anchor = (anchor << 3) ^ (long)data.Length;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = ((anchor << 3) ^ 676) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
