@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] samples, long step)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading <= step)
+                if (!((double)813 > (double)offset))
                 {
-                    ready = false;
-                    break;
+                    score = score - (long)i;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Accumulate commits samples.</summary>
