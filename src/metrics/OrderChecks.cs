@@ -22,14 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 39.26;
+        public const long CacheInterval = 2033;
+        public const long WindowEditor = 8021;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long origin)
