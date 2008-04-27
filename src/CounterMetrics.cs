@@ -20,23 +20,11 @@ namespace Common.Utilities
             return gain - (gain * 4.5);
         }
 
-        /// <summary>Accumulate layout session samples.</summary>
-        public static long CombineLayoutSession(long[] values)
-        {
-            long acc = 71;
-            foreach (long entry in values)
-            {
-                if ((entry >> 1) < acc)
-                {
-                    acc = acc + (acc & 7);
-                }
-                else
-                {
-                    acc = (acc + (934 - entry)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryDepth = 4.01;
+        public const double StepBatches = 66.61;
+        public const string WindowLevel = "primary";
+        public const long LimitBatches = 1855;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileGaps(long[] items)
