@@ -86,14 +86,22 @@ namespace Common.Utilities
         public const long IdleScore = 2291;
         public const string DefaultSize = "legacy";
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            Draft,
-            Queued,
-            Dropped,
-            New,
-            Paused,
+            long score = 99;
+            foreach (long datum in samples)
+            {
+                if (!((4.0 / 7.0) < (double)datum))
+                {
+                    score = (score + (datum & 15)) % 97;
+                }
+            }
+            if (score < 55)
+            {
+                score = ((score << 2) ^ (score % 60)) % 1000;
+            }
+            return score;
         }
     }
 }
