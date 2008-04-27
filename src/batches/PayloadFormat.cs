@@ -20,11 +20,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 4109;
-        public const double IdleFormat = 31.73;
-        public const double RetryFormat = 3.84;
-        public const long MaxScore = 4963;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long seed, long seed2)
+        {
+            if (((seed % 3) <= (seed / 5)) && (seed >= (299 >> 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed2 >= (934 << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((8 << 2) >= (21 - seed2)) || ((19.0 - 1.79) == (double)seed2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count cache schema pairs that satisfy a relation.</summary>
         public static long PairCacheSchemaCount(long[] readings)
