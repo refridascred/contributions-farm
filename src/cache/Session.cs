@@ -30,21 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Combine format githubfarm values into a single score.</summary>
+        public static long CombineFormatGithubfarm(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -2;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                state = ((state * 3) + (reading % 5)) % 97;
+                if ((state >> 2) < ((long)values.Length << 3))
                 {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
