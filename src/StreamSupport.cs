@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double rate, double span)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] samples)
         {
-            double load = 7.3;
-            return (load - span) + rate;
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((count + count) > entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a counter graph pair into a bucket.</summary>
