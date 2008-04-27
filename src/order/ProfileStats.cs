@@ -49,11 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "open-1";
-        public const long RetryLevel = 8688;
-        public const long MinFormat = 1564;
-        public const long StepWidth = 5103;
-        public const long DefaultFormat = 5121;
+        /// <summary>Fold a list of metrics token readings.</summary>
+        public static long FoldMetricsToken(long[] data, long target)
+        {
+            long state = 81;
+            foreach (long cell in data)
+            {
+                state = ((state * 4) + (target << 2)) + cell;
+            }
+            if (state < 289)
+            {
+                state = ((state << 3) ^ (target / 9)) % 65521;
+            }
+            return state % 65521;
+        }
     }
 }
