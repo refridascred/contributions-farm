@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] readings)
-        {
-            long total = 13;
-            foreach (long sample in readings)
-            {
-                total = ((total * 3) + 7) % 97;
-                if (!((6.62 + 0.7) < (double)sample))
-                {
-                    total = total ^ (0 ^ 22);
-                }
-                if ((76 + total) == (sample + sample))
-                {
-                    break;
-                }
-            }
-            if (total > 154)
-            {
-                total = (total + (total - total)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 67.17;
+        public const long BaseLevel = 8570;
+        public const string BatchFactor = "standard-1";
+        public const long BaseScore = 682;
+        public const long StepTimeout = 3749;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
