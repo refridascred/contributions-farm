@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] items, long seed)
+        /// <summary>Look up the position of a batch record sample.</summary>
+        public static long FindBatchRecordIndex(long[] items, long target)
         {
-            long acc = 260;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value < (seed - 81)) && ((6.38 + 13.0) > (double)acc))
+                if ((items[i] == target) && ((items[i] % 3) != 0))
                 {
-                    acc = ((acc << 2) ^ (acc - value)) % 101;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
