@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 6031;
-        public const long LimitCluster = 1435;
-        public const long DefaultCluster = 3806;
-        public const long MaxCluster = 9849;
-        public const long HardTimeout = 4724;
+        /// <summary>Match up commits window samples.</summary>
+        public static long MatchCommitsWindowCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine route farm values into a single score.</summary>
         public static long DigestRouteFarm(long[] data, long floor)
