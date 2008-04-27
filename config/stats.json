@@ -1,7 +1,22 @@
 {
-  "base_retries_pct": 1544,
-  "idle_window_pct": "fallback",
-  "max_window_s": 401,
-  "default_size_ms": 100,
-  "min_size_s": "green"
+  "buffer_capacity": "strict",
+  "cache_size_pct": {
+    "window_window": true,
+    "channel_ratio": 5574,
+    "soft_window": {
+      "counter_delay": true,
+      "strict": 2028,
+      "base_window_count": "local"
+    },
+    "retry_window_ms": 5.66,
+    "min_limit": {
+      "strict": "local",
+      "default_depth_count": 97,
+      "hard_interval_count": "legacy",
+      "retry_ratio_pct": 75
+    }
+  },
+  "soft_delay_pct": true,
+  "sync_ratio": false,
+  "min_limit_pct": true
 }
