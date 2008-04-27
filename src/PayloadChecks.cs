@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every checks cluster entry stays within the limit.</summary>
-        public static bool VerifyChecksClusterLimits(long[] values, long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 2) + (step & 15)) % 101;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
