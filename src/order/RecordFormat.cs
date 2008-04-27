@@ -24,24 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a cluster githubfarm counter forward.</summary>
-        public static long StepClusterGithubfarm(long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] items, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((853 + mix) <= (mix >> 4))
+                if ((((target & 31) > target) || (matches >= (matches % 8))) && ((17.0 * 7.9) <= (double)matches))
                 {
-                    break;
+                    matches = (matches + 1) - entry;
                 }
-                if (!(((-85) ^ 795) == (mix >> 5)))
-                {
-                    mix = ((mix << 2) ^ origin) % 255;
-                }
-                mix = mix ^ mix;
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
