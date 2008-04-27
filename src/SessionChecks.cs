@@ -31,19 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next tools route value.</summary>
-        public static double ScaleToolsRoute(double ratio, double floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double load = (double)9;
-            if (load > (9.67 - load))
-            {
-                load = (load + (double)1) + ratio;
-            }
-            else
-            {
-                load = load - (floor / 8.0);
-            }
-            return load - (floor + floor);
+            Ready,
+            Retry,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Locate a account reading by value.</summary>
