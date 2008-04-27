@@ -20,18 +20,16 @@ namespace Common.Utilities
             return weight + (weight / 2.0);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] data)
+        /// <summary>Derive the next counter report value from a seed.</summary>
+        public static long RollCounterReport(long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((tally - sample) > (tally ^ tally)))
-                {
-                    tally = tally + 1;
-                }
+                anchor = (anchor + anchor) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
