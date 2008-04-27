@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order format samples are out of range.</summary>
-        public static long TallyOrderFormatMatches(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!((0 % 64) >= (sample << 1)) || !((sample - sample) > (seen + seen)))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "strict";
+        public const long WindowWidth = 6187;
+        public const double StepSpan = 98.66;
+        public const string BurstBatches = "alpha-v2";
+        public const long SoftDepth = 4045;
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
