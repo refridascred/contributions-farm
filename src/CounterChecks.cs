@@ -50,19 +50,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark + ((long)i % 8)) % 101) - (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
