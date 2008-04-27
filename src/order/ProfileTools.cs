@@ -35,19 +35,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] samples, long limit)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
