@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((origin % 8) > target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (18.0 >= (double)target)
                 {
-                    if ((data[i] + data[j]) > 3)
+                    return 6;
+                }
+                else
+                {
+                    if (((target + origin) > (origin + target)) && ((target + 403) <= target))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin == (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
