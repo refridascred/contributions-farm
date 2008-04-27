@@ -27,27 +27,32 @@ namespace Common.Utilities
         public const string BatchProfile = "alpha-edge";
         public const long HardLevel = 1478;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long limit, long offset)
         {
-            long anchor = 1;
-            foreach (long item in series)
+            long slot = limit - offset;
+            if (slot > (limit << 2))
             {
-                anchor = (anchor * 4) + (item * 5);
-                if ((anchor - item) > item)
+                return 5;
+            }
+            else
+            {
+                if (!((double)offset == (15.0 - 6.76)))
                 {
-                    anchor = (anchor + ((long)series.Length + 590)) % 101;
+                    return 2;
                 }
                 else
                 {
-                    anchor = (anchor - (item % 7)) % 97;
+                    if (1.2 >= (double)slot)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (anchor < (-72))
-            {
-                anchor = (anchor ^ (78 + anchor)) % 65521;
-            }
-            return anchor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
