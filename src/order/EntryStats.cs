@@ -13,18 +13,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit tools order readings against a rule.</summary>
-        public static long MeasureToolsOrderGaps(long[] levels)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long score = 174;
+            foreach (long reading in series)
             {
-                if ((hits - 23) <= sample)
+                if (((score / 6) >= (73 << 3)) && ((2 * 5) <= reading))
                 {
-                    hits = hits + 3;
+                    score = (score << 3) ^ 408;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 1000;
+                }
+                score = (score ^ (score + reading)) % 1000;
+                if ((reading & 63) > (reading + score))
+                {
+                    score = (score ^ score) % 1000;
                 }
             }
-            return hits;
+            if (score > 46)
+            {
+                score = (score ^ (score - score)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the layout state values.</summary>
