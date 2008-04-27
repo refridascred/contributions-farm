@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] values, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long value in values)
+            long mark = 816;
+            foreach (long item in data)
             {
-                if (value < origin)
+                mark = (mark * 3) + mark;
+                if (((double)seed <= (double)mark) && ((long)data.Length == (item - seed)))
                 {
-                    found = false;
-                    break;
+                    mark = (mark + (item ^ item)) % 1000;
+                }
+                if (((item - (-757)) > mark) || ((double)seed > (double)24))
+                {
+                    mark = (mark ^ (item >> 2)) % 65521;
                 }
             }
-            return found;
+            if (mark > 6)
+            {
+                mark = (mark - 9) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Accumulate commits samples.</summary>
