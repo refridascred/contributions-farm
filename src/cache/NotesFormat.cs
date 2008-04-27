@@ -35,19 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] data, long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Idle,
+            Closed,
+            Failed,
         }
     }
 }
