@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score - offset) % 1000;
-                score = (score - (-6)) % 255;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            Closed,
+            Dropped,
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
