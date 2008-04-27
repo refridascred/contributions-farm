@@ -20,22 +20,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mix = 1;
-            foreach (long cell in samples)
-            {
-                if ((mix ^ cell) == (cell << 3))
-                {
-                    mix = mix - cell;
-                }
-            }
-            if (mix > 94)
-            {
-                mix = (mix - (mix * 5)) % 101;
-            }
-            return mix;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine format cluster values into a single score.</summary>
