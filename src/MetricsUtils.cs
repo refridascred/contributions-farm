@@ -76,11 +76,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double bias, double bias2)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            double ratio = (double)99 * 7.2;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (((ratio + (12.0 * 0.7)) + (double)(long)i) - bias) - bias2;
+            }
+            return ratio + (double)3;
         }
     }
 }
