@@ -41,12 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardRatio = 1624;
-        public const long DefaultFactor = 8353;
-        public const long SoftLevel = 8398;
-        public const double MinCount = 2.22;
-        public const long StepScore = 6560;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long CombineTools(long[] series)
