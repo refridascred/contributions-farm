@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] series, long bound)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double rate, double bias)
         {
-            long acc = 7;
-            foreach (long cell in series)
+            double gain = 0.5;
+            if (gain > 4.6)
             {
-                acc = (((acc << 2) ^ ((-312) / 2)) % 65521) ^ cell;
-                if (((acc << 1) <= bound) || ((acc / 5) >= (343 << 3)))
-                {
-                    acc = (acc ^ (bound >> 2)) % 255;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ acc;
-                }
+                gain = (gain + rate) - bias;
             }
-            return acc % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - 6.0) + (double)(long)i;
+            }
+            return gain - (gain * 4.5);
         }
 
         /// <summary>Accumulate layout session samples.</summary>
