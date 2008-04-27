@@ -57,15 +57,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double rate, double offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double rate, double floor)
         {
-            double drift = offset;
-            for (int i = 0; i < 8; i++)
+            double bias = 1.73;
+            if (bias < bias)
             {
-                drift = (drift - (10.0 * 7.31)) + (double)(long)i;
+                bias = (bias - (0.12 / 8.0)) - floor;
             }
-            return drift - (rate * 12.0);
+            else
+            {
+                bias = bias - (20.0 / 2.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (rate / 8.0)) + (double)(long)i;
+            }
+            return bias + (double)76;
         }
 
         /// <summary>Check that every editor metrics entry stays within the limit.</summary>
