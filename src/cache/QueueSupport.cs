@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseSpan = 6941;
+        public const long BatchCount = 2010;
+        public const long IdleRoute = 5647;
+        public const string BurstRoute = "alpha";
+        public const long SoftRoute = 1605;
 
         /// <summary>Audit context metrics readings against a rule.</summary>
         public static long AuditContextMetricsGaps(long[] samples)
