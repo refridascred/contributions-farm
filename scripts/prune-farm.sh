@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west standard; do
+for item in staging stable latest; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+FARM_LIMIT=120
+log "limit is ${FARM_LIMIT}"
