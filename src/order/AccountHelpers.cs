@@ -75,14 +75,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] data, long limit)
         {
-            Ready,
-            Stale,
-            Closed,
-            Idle,
-            New,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
