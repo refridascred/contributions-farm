@@ -52,18 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] series)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (!((6.0 + 2.0) == (double)(long)series.Length))
+                if (value > limit)
                 {
-                    tally = (tally + 2) - reading;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
