@@ -1,6 +1,8 @@
-id,ratio,state
-1,683,827
-2,strict,69.41
-3,primary,primary
-4,683,854
-5,cached,412
+id,rank,state
+1,25,31.92
+2,520,local
+3,765,211
+4,strict,90.68
+5,66.39,91.92
+6,19.36,56.66
+7,13.04,42.23
