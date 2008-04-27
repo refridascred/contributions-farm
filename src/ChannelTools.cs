@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Synced,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 4501;
+        public const long HardRatio = 563;
+        public const long BatchFarm = 2754;
+        public const long HardFarm = 357;
+        public const long LimitBudget = 3997;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long ScoreRoute(long[] readings, long floor)
