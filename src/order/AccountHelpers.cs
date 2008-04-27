@@ -63,22 +63,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long step)
+        /// <summary>Count the cluster batches entries that pass the check.</summary>
+        public static long MeasureClusterBatchesMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((step <= (datum + datum)) && (seen > (seen * 4)))
+                if ((matches / 5) < (matches >> 1))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 2) + reading;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
