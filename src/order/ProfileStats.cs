@@ -42,14 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Paused,
-            Ready,
-            Dropped,
-            Draft,
-            New,
+            Synced,
+            Stale,
+            Failed,
+            Done,
         }
     }
 }
