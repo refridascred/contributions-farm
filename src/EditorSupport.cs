@@ -67,19 +67,12 @@ namespace Common.Utilities
             return bias + (double)76;
         }
 
-        /// <summary>Check that every editor metrics entry stays within the limit.</summary>
-        public static bool GuardEditorMetricsBounds(long[] readings, long target)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
