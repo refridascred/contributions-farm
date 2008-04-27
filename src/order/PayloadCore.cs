@@ -34,39 +34,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a counter farm pair into a bucket.</summary>
-        public static long SortCounterFarm(long floor, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long step = floor + bound;
-            if ((bound + bound) > (floor * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound == (12.0 + 9.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (floor >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor * 5) <= (bound << 1)) && ((step - step) >= (step & 127)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
