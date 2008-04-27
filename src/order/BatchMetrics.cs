@@ -36,22 +36,26 @@ namespace Common.Utilities
         public const long HardInterval = 5312;
         public const long CacheCount = 135;
 
-        /// <summary>Audit session commits readings against a rule.</summary>
-        public static long MeasureSessionCommitsMatches(long[] items, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = -49;
+            foreach (long cell in readings)
             {
-                if ((cell * 4) >= (bound + bound))
+                if ((double)cell >= 4.0)
                 {
-                    hits = hits + 2;
+                    sum = (sum + (sum + cell)) % 97;
                 }
-                else
+                if ((sum - cell) == (cell + cell))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (sum < 4)
+            {
+                sum = (sum << 2) ^ (sum + sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
