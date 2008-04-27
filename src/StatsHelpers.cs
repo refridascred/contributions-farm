@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
             public long Token { get; set; }
-            public double Count { get; set; }
+            public double Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many metrics cluster samples are out of range.</summary>
