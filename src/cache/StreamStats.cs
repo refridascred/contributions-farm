@@ -19,21 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Scale a schema metric figure with a bias.</summary>
+        public static double BlendSchemaMetric(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double load = (bias / 3.0) + bias;
+            return (load - (load * 4.3)) + rate;
         }
 
         /// <summary>Classify a route filter pair into a bucket.</summary>
