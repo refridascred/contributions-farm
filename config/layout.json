@@ -1,5 +1,8 @@
 {
-  "sync_ratio_ms": true,
-  "idle_retries": true,
-  "flush_threshold": "green"
+  "readonly": 11.95,
+  "retry_interval_count": false,
+  "poll_threshold_s": "latest",
+  "retry_interval": ["cached", "strict", "edge", "latest"],
+  "flush_retries_ms": 250,
+  "max_delay_s": true
 }
