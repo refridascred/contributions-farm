@@ -49,12 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            Dropped,
+            Queued,
+            Pending,
+            Draft,
+            Paused,
         }
     }
 }
