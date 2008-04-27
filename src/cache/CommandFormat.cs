@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 3709;
-        public const long IdleRatio = 8051;
-        public const long CacheCount = 3525;
-        public const double LimitRatio = 36.09;
-        public const long CacheLevel = 1678;
+        /// <summary>Audit stats farm readings against a rule.</summary>
+        public static long CountStatsFarmOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 2) >= entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the stream farm entries that pass the check.</summary>
         public static long MeasureStreamFarmHits(long[] levels, long offset)
