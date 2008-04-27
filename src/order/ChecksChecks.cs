@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a stream token reading.</summary>
-        public static double SmoothStreamToken(double ratio, double bias)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long step)
         {
-            double drift = ratio;
-            if (drift >= (double)334)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                drift = drift + ratio;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return drift - bias;
+            return state;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
