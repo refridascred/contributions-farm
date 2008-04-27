@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 2039;
-        public const double MaxStream = 93.8;
-        public const long StepStream = 9304;
-        public const long SoftBudget = 6903;
-        public const double MinStream = 22.28;
+        /// <summary>Validate stream graph readings against a bound.</summary>
+        public static bool VerifyStreamGraphBounds(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
