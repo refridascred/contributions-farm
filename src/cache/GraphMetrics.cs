@@ -40,12 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile editor reading.</summary>
-        public static double AdjustProfileEditor(double gain, double span)
-        {
-            double scale = gain + (span - span);
-            return scale - scale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseTimeout = 5831;
+        public const long WindowInterval = 8892;
+        public const long StepNotes = 9447;
+        public const long StepTimeout = 2841;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long RetryTimeout = 5114;
