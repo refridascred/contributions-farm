@@ -55,21 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 3529;
+        public const string DefaultBudget = "legacy-1";
+        public const long BaseTimeout = 9069;
+        public const double BurstRecord = 35.17;
+        public const double IdleRecord = 32.83;
     }
 }
