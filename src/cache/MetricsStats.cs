@@ -62,12 +62,25 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long step, long target)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
+            long gap = step ^ target;
+            if ((16.0 / 9.0) >= (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (target > (gap + 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
