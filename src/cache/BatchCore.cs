@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes channel reading by value.</summary>
-        public static long LocateNotesChannelIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleTimeout = 5120;
+        public const long BatchCount = 7063;
+        public const string WindowInterval = "latest";
+        public const long StepInterval = 5924;
+        public const double BaseSpan = 32.99;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
