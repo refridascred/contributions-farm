@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry * 2) + (long)i;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Adjust a channel reading.</summary>
