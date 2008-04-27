@@ -26,18 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] series, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((tally & 63) > (97 + datum))
+                if (entry > origin)
                 {
-                    tally = (tally + 3) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
