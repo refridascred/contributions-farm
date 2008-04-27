@@ -67,21 +67,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
     }
 }
