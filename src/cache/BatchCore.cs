@@ -46,9 +46,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "primary-1";
-        public const long IdleLayout = 6511;
-        public const long StepRatio = 4501;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((offset / 8) > (long)i) && (offset <= ((-89) & 1)))
+                {
+                    mix = (mix << 2) ^ 9;
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
