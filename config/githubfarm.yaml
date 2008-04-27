@@ -1,15 +1,17 @@
 # githubfarm settings
-commits_size: open
-idle_delay: latest
-session_ratio: 917
-channel_ttl:
-  strict: strict
-  idle_capacity:
-    - 402
-    - 255
-  retry_limit_ms: true
-  verbose: 45.35
-  base_ttl: 73
-  min_timeout: 1024
-default_timeout_count: 60
-enabled: 1783
+audit:
+  context_ttl: true
+  soft_ttl_ms: 61
+  cache_size_count:
+    - staging
+    - staging
+  format_limit: true
+  farm_window:
+    - stable
+    - standard
+    - legacy
+strict: true
+sync_threshold_s: true
+warm_size_count: edge
+compress: staging
+route_interval: 100
