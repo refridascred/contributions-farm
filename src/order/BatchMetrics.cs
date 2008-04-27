@@ -58,12 +58,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryCount = 4698;
-        public const double HardWindow = 9.64;
-        public const long HardCount = 8403;
-        public const double DefaultRatio = 50.28;
-        public const double StepWindow = 72.0;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepSchema = 6697;
