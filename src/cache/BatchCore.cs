@@ -25,15 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context session samples.</summary>
-        public static long TallyContextSession(long[] values, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long bound)
         {
-            long sum = 5;
-            foreach (long cell in values)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                sum = (((sum * 5) + seed) % 1000) - cell;
+                if (((anchor ^ anchor) <= 1) && ((bound & 1) >= ((long)i - (long)i)))
+                {
+                    anchor = (anchor - (long)i) % 97;
+                    anchor = ((anchor * 4) + (bound >> 3)) % 97;
+                    break;
+                }
+                if (!(bound <= (bound - anchor)))
+                {
+                    anchor = (anchor * 2) + anchor;
+                    anchor = anchor - ((long)i ^ (long)i);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
