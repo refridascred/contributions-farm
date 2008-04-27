@@ -35,25 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long limit, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long span = limit + floor;
-            if ((floor & 63) > (span / 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((15.0 + 3.2) >= (double)span)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Closed,
+            Pending,
+            Draft,
+            Synced,
         }
     }
 }
