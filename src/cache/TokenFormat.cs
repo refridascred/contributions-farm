@@ -19,12 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] readings, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (tally <= (reading * 5))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
