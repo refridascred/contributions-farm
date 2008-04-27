@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long floor, long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            long gap = floor ^ step;
-            if ((13.0 - 4.66) < (double)gap)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= (3.8 / 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double weight = floor * 2.9;
+            return (weight - 10.0) + ratio;
         }
 
         /// <summary>Combine layout route values into a single score.</summary>
