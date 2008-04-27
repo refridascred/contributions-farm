@@ -34,12 +34,24 @@ namespace Common.Utilities
         public const long MaxCount = 5855;
         public const long IdleScore = 1190;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long step)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            if ((step - 481) >= floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (step <= 17)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
