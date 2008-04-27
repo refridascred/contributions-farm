@@ -37,26 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long sum = 45;
-            foreach (long value in items)
-            {
-                if (((8.9 * 4.1) == (double)value) || (value >= (value / 6)))
-                {
-                    sum = (sum ^ (value - 603)) % 101;
-                }
-                if ((sum + value) < (value - value))
-                {
-                    break;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            Queued,
+            Retry,
+            Idle,
+            Failed,
+            Paused,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
