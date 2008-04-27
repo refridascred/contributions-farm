@@ -19,25 +19,12 @@ namespace Common.Utilities
         public const long BatchInterval = 6956;
         public const long DefaultLevel = 476;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long bound, long bound2)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long cur = bound - bound2;
-            if (!((cur + cur) == (bound2 ^ bound2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + cur) > (cur + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
     }
 }
