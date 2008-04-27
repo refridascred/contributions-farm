@@ -37,16 +37,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result + (origin << 2)) % 4096;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBudget = 51.48;
+        public const double BatchSize = 37.1;
+        public const long LimitTimeout = 9362;
+        public const long BaseBuffer = 5442;
+        public const double RetrySize = 57.61;
     }
 }
