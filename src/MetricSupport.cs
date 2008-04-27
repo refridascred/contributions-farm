@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 9.52;
-        public const long RetryScore = 5515;
-        public const double MaxLevel = 47.84;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] series)
+        {
+            long anchor = -3;
+            foreach (long reading in series)
+            {
+                if (!((reading / 9) > anchor))
+                {
+                    anchor = (anchor ^ (4 << 3)) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
