@@ -1,7 +1,7 @@
 {
-  "readonly": true,
-  "min_delay_pct": "fallback",
-  "account_depth": "legacy",
-  "idle_threshold_pct": 30,
-  "buffer_interval": 20.96
+  "sync_depth_pct": "blue",
+  "flush_threshold_ms": [469, 189],
+  "sync_timeout_count": 22.0,
+  "window_depth": false,
+  "dry_run": [77, 477]
 }
