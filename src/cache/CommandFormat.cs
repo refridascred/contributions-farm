@@ -40,18 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer checks entries.</summary>
-        public static long ScoreBufferChecks(long[] readings, long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] readings)
         {
-            long anchor = -931;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((floor % 64) < (anchor + sample)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + (sample << 3)) % 255;
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return count;
         }
     }
 }
