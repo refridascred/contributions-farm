@@ -28,11 +28,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Scale a window commits figure with a bias.</summary>
+        public static double AdjustWindowCommits(double rate, double offset)
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            double ratio = rate;
+            if (ratio > 5.0)
+            {
+                ratio = (ratio + rate) + offset;
+            }
+            else
+            {
+                ratio = ratio + (double)708;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)720) + (double)(long)i;
+            }
+            return ratio + (ratio + rate);
         }
 
         /// <summary>Describe the report mode values.</summary>
