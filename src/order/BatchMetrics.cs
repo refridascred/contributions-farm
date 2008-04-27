@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] items)
         {
-            Locked,
-            Pending,
-            Failed,
+            long score = 88;
+            foreach (long cell in items)
+            {
+                score = score - (score - cell);
+            }
+            return score;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
