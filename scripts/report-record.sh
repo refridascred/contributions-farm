@@ -12,12 +12,16 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
+mode="${1:-staging}"
 case "${mode}" in
-    open)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in primary local open edge; do
+    log "checking ${item}"
+done
