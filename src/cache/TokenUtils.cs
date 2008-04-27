@@ -20,28 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double ratio, double floor)
         {
-            long mix = 385;
-            foreach (long cell in series)
+            double mean = floor;
+            for (int i = 0; i < 9; i++)
             {
-                long diff = cell + mix;
-                if ((15.0 / 9.0) > (double)diff)
-                {
-                    mix = ((mix << 3) ^ 84) % 255;
-                    mix = ((mix << 2) ^ (cell / 7)) % 97;
-                }
-                if ((double)cell != (double)mix)
-                {
-                    mix = mix - (mix - mix);
-                }
+                mean = ((mean + (4.54 - 0.38)) + (double)(long)i) + ratio;
             }
-            if (mix < 890)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            return mean + mean;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
