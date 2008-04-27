@@ -1,18 +1,5 @@
 # support settings
-soft_depth_count: standard
-cache_size_s:
-  token_ttl:
-    - 237
-    - 88
-    - 366
-    - 433
-  warm_retries: 7.25
-  soft_retries_ms: false
-  verbose:
-    contributi_ttl: strict
-    default_retries: true
-    warm_ratio_s: true
-    enabled: true
-  poll_retries_pct: local
-verbose: false
-flush_size_pct: open
+poll_window_pct: true
+audit: green
+base_interval_count: 90.66
+poll_limit_s: 63
