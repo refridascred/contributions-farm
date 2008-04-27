@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            Draft,
+            Retry,
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
