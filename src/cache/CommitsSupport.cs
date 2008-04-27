@@ -91,13 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] samples, long origin)
         {
-            Idle,
-            Paused,
-            Closed,
-            Active,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches / 7) >= (1 >> 3))
+                {
+                    matches = ((matches + 2) + sample) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
