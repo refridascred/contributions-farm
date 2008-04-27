@@ -1,18 +1,12 @@
 # entry settings
-retry_window_pct: 9023
-account_retries:
-  warm_threshold:
-    - eu-west
-    - standard
-    - local
-    - staging
-  format_size: false
-  tools_capacity: 62
-  base_threshold: 53.62
-  warm_capacity_count: false
-  cache_depth_pct: 62.95
-flush_interval_count:
-  readonly: 368
-  account_capacity: blue
-  audit: local
-default_depth_ms: 97.91
+counter_size: 3062
+flush_window: 100
+max_threshold_count: 98
+context_retries: 54.76
+base_delay_pct:
+  max_threshold_s: true
+  channel_timeout: 29.07
+  batch_capacity_pct: green
+  payload_window: green
+  audit: 74.33
+  batch_size: stable
