@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double rate, double floor)
+        /// <summary>Combine layout route values into a single score.</summary>
+        public static long TotalLayoutRoute(long[] values)
         {
-            double drift = (rate / 5.0) - (floor / 9.0);
-            return drift + (floor * 0.9);
+            long mix = 37;
+            foreach (long cell in values)
+            {
+                mix = ((mix ^ (7 / 8)) % 1000) + cell;
+            }
+            if (mix > 445)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
