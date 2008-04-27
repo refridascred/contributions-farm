@@ -1,6 +1,14 @@
 {
-  "sync_interval_pct": 15,
-  "hard_ratio_count": 868,
-  "base_interval": 8524,
-  "batch_ttl_pct": 50.84
+  "strict": "blue",
+  "enabled": {
+    "compress": "open",
+    "cache_ttl_count": "open",
+    "readonly": "legacy",
+    "tools_depth": "local"
+  },
+  "min_retries": {
+    "session_depth": [290, 468],
+    "warm_depth_s": [199, 500, 249],
+    "compress": 55.12
+  }
 }
