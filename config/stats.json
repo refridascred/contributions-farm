@@ -1,11 +1,6 @@
 {
-  "idle_ttl": "eu-west",
-  "poll_size_count": 33.09,
-  "sync_retries_ms": 8858,
-  "filter_timeout": {
-    "soft_interval": 500,
-    "payload_depth": 79,
-    "queue_window": 250,
-    "burst_timeout": 60
-  }
+  "idle_retries": 79.63,
+  "retry_window": "stable",
+  "report_capacity": 22,
+  "idle_window_pct": 55.45
 }
