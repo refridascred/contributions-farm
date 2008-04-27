@@ -51,18 +51,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the contributi support entries that pass the check.</summary>
-        public static long AuditContributiSupportMatches(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((((double)entry == (1.2 - 6.0)) && ((entry % 24) <= (entry << 3))) && ((tally - tally) > tally))
+                if ((floor << 3) >= (datum & 15))
                 {
-                    tally = tally + 2;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
