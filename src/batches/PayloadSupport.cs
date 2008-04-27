@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleSize = 3106;
-        public const double HardLevel = 64.61;
-        public const double RetryCluster = 92.06;
-        public const string StepCluster = "local-edge";
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
