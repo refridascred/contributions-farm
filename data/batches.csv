@@ -1,7 +1,7 @@
-id,state,weight
-1,local,84.09
-2,blue,73.39
-3,59.01,74.06
-4,626,76.06
-5,green,374
-6,605,658
+id,rank,owner,state
+1,cached,edge,931
+2,743,525,883
+3,939,25.62,42.33
+4,337,806,974
+5,eu-west,55.69,fallback
+6,9.82,open,283
