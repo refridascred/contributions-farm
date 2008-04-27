@@ -19,39 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a support window value against two limits.</summary>
-        public static long RankSupportWindow(long origin, long bound)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long delta = origin - bound;
-            if ((origin >> 4) >= origin)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin < (4.16 / 3.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)origin <= (10.0 * 1.83)))
+                    if ((readings[i] - readings[j]) == 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (delta <= (delta * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the metrics class values.</summary>
