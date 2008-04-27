@@ -26,38 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long step, long limit)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double rate, double floor)
         {
-            if ((step ^ step) <= 45)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step / 4) >= (607 % 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((0.3 / 3.0) != (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (5.0 < (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double drift = (rate / 5.0) - (floor / 9.0);
+            return drift + (floor * 0.9);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
