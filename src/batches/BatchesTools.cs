@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] items, long bound)
+        /// <summary>Classify a counter route pair into a bucket.</summary>
+        public static long BucketCounterRoute(long limit, long limit2)
         {
-            long sum = 36;
-            foreach (long sample in items)
+            if ((412 << 1) == (limit ^ limit))
             {
-                if ((sample + sample) < 50)
+                return 5;
+            }
+            else
+            {
+                if (((46 - limit2) == (68 / 7)) || ((double)limit2 < (12.0 / 7.0)))
                 {
-                    sum = (sum << 3) ^ (47 % 10);
+                    return 4;
                 }
-                if (!((bound + sample) >= (324 - bound)))
+                else
                 {
-                    sum = sum + (sample - sample);
-                }
-                if ((bound + 70) <= sum)
-                {
-                    break;
+                    if ((double)limit2 >= 19.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit2 > 18.0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Roll a token counter forward.</summary>
