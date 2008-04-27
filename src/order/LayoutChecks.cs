@@ -50,10 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 20.84;
-        public const string BaseContributi = "fallback";
-        public const string MinContributi = "standard-1";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstSize = 8413;
+        public const long BatchToken = 7265;
+        public const double HardToken = 98.51;
+        public const double StepBudget = 71.54;
+        public const double LimitDepth = 6.86;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardFilter = 7307;
