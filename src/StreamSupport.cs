@@ -19,12 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "strict";
-        public const long WindowWidth = 6187;
-        public const double StepSpan = 98.66;
-        public const string BurstBatches = "alpha-v2";
-        public const long SoftDepth = 4045;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen + 0) < (limit ^ datum))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long LookupContextIndex(long[] readings, long step)
