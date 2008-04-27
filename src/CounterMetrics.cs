@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const string WindowLevel = "primary";
         public const long LimitBatches = 1855;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] items)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits <= (6 / 4)) || ((((long)items.Length >> 1) >= datum) && ((double)hits <= (10.0 + 8.1))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
