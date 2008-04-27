@@ -47,24 +47,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double scale, double span)
-        {
-            double load = (double)(62 ^ 346);
-            if (load > (double)72)
-            {
-                load = (load - (scale / 2.0)) + span;
-            }
-            else
-            {
-                load = load - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + scale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardRatio = 1624;
+        public const long DefaultFactor = 8353;
+        public const long SoftLevel = 8398;
+        public const double MinCount = 2.22;
+        public const long StepScore = 6560;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long CombineTools(long[] series)
