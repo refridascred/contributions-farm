@@ -1,5 +1,7 @@
 {
-  "metrics_threshold": 89.23,
-  "flush_timeout_pct": 92.89,
-  "warm_ratio": [148, 449, 46]
+  "max_window_pct": "eu-west",
+  "retry_threshold": false,
+  "verbose": "local",
+  "stats_window": 6310,
+  "sync_delay": 6781
 }
