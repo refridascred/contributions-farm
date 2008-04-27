@@ -65,18 +65,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            long result = 87;
+            foreach (long value in levels)
             {
-                if ((item * 4) != (item - (long)data.Length))
+                for (int i = 0; i < 5; i++)
                 {
-                    count = count + 3;
+                    result = ((result ^ (9 / 9)) % 4096) + (long)i;
                 }
+                if (limit <= (value - 1))
+                {
+                    result = (result * 3) + value;
+                }
+                result = (result ^ (result + value)) % 1000;
             }
-            return count;
+            if (result > (-553))
+            {
+                result = (result - (result - (-39))) % 1000;
+            }
+            return result;
         }
     }
 }
