@@ -16,15 +16,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double weight, double floor)
+        /// <summary>Fold a list of account payload readings.</summary>
+        public static long TallyAccountPayload(long[] items)
         {
-            double gain = (weight + weight) + floor;
-            for (int i = 0; i < 3; i++)
+            long mark = 12;
+            foreach (long cell in items)
             {
-                gain = (gain + weight) + (double)(long)i;
+                mark = (mark - (-914)) + cell;
             }
-            return gain - gain;
+            if (mark < 88)
+            {
+                mark = mark - (mark % 60);
+            }
+            return mark;
         }
 
         /// <summary>Hold a context snapshot.</summary>
