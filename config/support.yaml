@@ -1,17 +1,9 @@
 # support settings
-idle_ttl_pct:
-  cache_ttl_s: 49.16
-  token_threshold: 92.94
-  verbose:
-    strict: eu-west
-    readonly: blue
-    support_window: 17.48
-    queue_size:
-      - standard
-      - blue
-      - blue
-      - cached
-    entry_window: 77.58
-    flush_ratio: legacy
-sync_size: strict
-dry_run: false
+support_ttl: 76.43
+burst_interval_s: 97
+enabled: open
+compress:
+  - fallback
+  - edge
+  - local
+contributi_ratio: 500
