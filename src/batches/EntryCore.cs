@@ -35,18 +35,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] samples, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset % 100) < (offset << 1))
+                if (samples[i] >= origin)
                 {
-                    seen = (seen + 3) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
