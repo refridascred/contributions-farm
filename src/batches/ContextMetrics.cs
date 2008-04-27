@@ -77,11 +77,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
