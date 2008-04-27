@@ -68,15 +68,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a cache checks counter forward.</summary>
-        public static long RollCacheChecks(long offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Ready,
+            Draft,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
