@@ -46,15 +46,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long result = -51;
-            foreach (long item in values)
-            {
-                result = result ^ item;
-            }
-            return result;
+            Dropped,
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
