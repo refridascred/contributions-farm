@@ -20,14 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Active,
-            Closed,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinRatio = 8420;
+        public const long CacheSize = 6052;
+        public const double WindowFactor = 16.33;
+        public const string BatchContext = "stable-v2";
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] levels)
