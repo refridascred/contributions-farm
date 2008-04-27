@@ -34,12 +34,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Stale,
-            Queued,
+            New,
+            Retry,
             Locked,
+            Failed,
         }
     }
 }
