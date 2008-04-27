@@ -43,19 +43,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] samples, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long sum = 878;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum + ((long)samples.Length * 4)) % 97;
-                if ((189 - 14) > (origin - sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum * 2) + (98 + 9)) % 97;
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
