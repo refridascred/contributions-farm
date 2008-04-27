@@ -45,19 +45,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Rank account context input into a small class.</summary>
+        public static long GradeAccountContext(long target, long step)
         {
-            double scale = span;
-            if (scale > span)
+            if ((4.7 / 5.0) != (double)step)
             {
-                scale = scale - (double)98;
+                return 0;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = (scale - (bias / 6.0)) + (double)(long)i;
+                if ((double)step > (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return scale + (double)48;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
