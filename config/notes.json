@@ -1,8 +1,6 @@
 {
-  "layout_depth": "cached",
-  "report_ratio": "open",
-  "max_retries_count": 250,
-  "cache_size_ms": "edge",
-  "strict": ["fallback", "local", "eu-west", "edge"],
-  "queue_retries": "fallback"
+  "soft_window": 29,
+  "retry_interval_count": "cached",
+  "burst_size_pct": 43.42,
+  "flush_interval": "eu-west"
 }
