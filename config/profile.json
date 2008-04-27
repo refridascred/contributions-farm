@@ -1,15 +1,6 @@
 {
-  "default_timeout": {
-    "flush_interval": {
-      "hard_ratio": 94.18,
-      "idle_depth_count": "local",
-      "channel_interval": [213, 361]
-    },
-    "cache_interval_pct": "green",
-    "base_ratio_pct": false,
-    "burst_delay": [50, 472]
-  },
-  "readonly": false,
-  "strict": 4.65,
-  "poll_window_pct": 30
+  "hard_timeout": 90,
+  "sync_delay_ms": 470,
+  "soft_ratio_s": false,
+  "verbose": false
 }
