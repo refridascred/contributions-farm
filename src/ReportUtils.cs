@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxTimeout = "stable-edge";
-        public const double IdleLevel = 17.67;
-        public const string BatchBudget = "stable-1";
-        public const long StepMetric = 9981;
-        public const long BatchMetric = 20;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (!((datum + hits) >= target) || (hits > (datum + target)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double SmoothFilter(double scale, double bias)
