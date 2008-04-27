@@ -71,21 +71,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Digest a series of token filter entries.</summary>
+        public static long TotalTokenFilter(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 420;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry + carry) + cell) + origin;
             }
-            return tally;
+            if (carry > 345)
+            {
+                carry = ((carry * 5) + (carry % 16)) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
