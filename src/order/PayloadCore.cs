@@ -20,18 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate stats report samples.</summary>
-        public static long CombineStatsReport(long[] values)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            long score = 704;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score + 4) <= reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score * 2) + (reading - score)) % 97;
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Describe the tools class values.</summary>
