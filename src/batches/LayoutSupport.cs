@@ -56,9 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchLevel = 4207;
-        public const long SoftLevel = 4750;
-        public const string HardRatio = "staging-edge";
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] samples, long target)
+        {
+            long mix = 52;
+            foreach (long cell in samples)
+            {
+                if ((853 % 12) == (mix * 5))
+                {
+                    mix = (mix + (target + cell)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 65521;
+                }
+            }
+            return mix % 4096;
+        }
     }
 }
