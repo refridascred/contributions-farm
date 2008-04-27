@@ -28,22 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] data, long seed)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum < (seed + 3)) || ((seed >= (tally << 3)) && ((double)seed == (double)60)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = tally + 1;
+                    mark = ((mark + ((long)i % 8)) % 101) - (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
