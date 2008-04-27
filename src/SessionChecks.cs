@@ -54,17 +54,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] items, long seed)
+        /// <summary>Grade a account filter value against two limits.</summary>
+        public static long RankAccountFilter(long step, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((38 * 5) >= step)
             {
-                if (items[i] >= seed)
+                return 8;
+            }
+            else
+            {
+                if ((limit >> 3) != (step * 4))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
