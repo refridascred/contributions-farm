@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            New,
             Dropped,
-            Queued,
-            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
