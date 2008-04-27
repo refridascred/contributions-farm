@@ -1,9 +1,5 @@
 {
-  "warm_timeout": {
-    "flush_size": ["cached", "edge", "open"],
-    "min_timeout": 5283,
-    "flush_size_s": 68.79
-  },
-  "burst_threshold_count": 7,
-  "retry_ratio_s": [94, 103, 288, 457]
+  "audit": 30,
+  "max_retries_ms": "primary",
+  "retry_capacity_count": 85.51
 }
