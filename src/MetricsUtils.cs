@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double bias, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            double weight = 1.0 + (double)0;
+            if (weight > (bias + 9.7))
             {
-                if ((origin - (long)i) < (long)i)
-                {
-                    mix = ((mix * 5) + ((long)i + mix)) % 65521;
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                weight = weight - offset;
             }
-            return mix;
+            else
+            {
+                weight = weight + (bias * 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight - offset;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
