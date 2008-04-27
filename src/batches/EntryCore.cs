@@ -54,26 +54,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] items, long step)
+        /// <summary>Measure how many cache account samples are out of range.</summary>
+        public static long CountCacheAccountMatches(long[] values)
         {
-            long sum = 8;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (step >= (reading >> 3))
+                if (value < (matches % 24))
                 {
-                    sum = (sum + (sum ^ reading)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (reading / 2)) % 97;
+                    matches = matches + 2;
                 }
             }
-            if (sum > 12)
-            {
-                sum = (sum ^ (step + sum)) % 255;
-            }
-            return sum % 4096;
+            return matches;
         }
     }
 }
