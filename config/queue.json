@@ -1,8 +1,7 @@
 {
-  "poll_interval_ms": "fallback",
-  "persist": 1409,
-  "poll_timeout_pct": false,
-  "batch_capacity_ms": 250,
-  "burst_interval": "latest",
-  "sync_ttl": 7.16
+  "readonly": true,
+  "min_delay_pct": "fallback",
+  "account_depth": "legacy",
+  "idle_threshold_pct": 30,
+  "buffer_interval": 20.96
 }
