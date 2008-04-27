@@ -1,4 +1,4 @@
 # githubfarm settings
-retry_interval_ms: 484
-retry_threshold_pct: standard
-sync_ttl_pct: 54.81
+sync_retries_count: open
+sync_threshold: 44
+enabled: staging
