@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "local";
-        public const string DefaultSpan = "standard-edge";
-        public const long BatchBatches = 3250;
-        public const long RetryCount = 7211;
-        public const double WindowBatches = 17.06;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long step, long limit)
+        {
+            long lane = step - limit;
+            if ((lane - 9) < (limit + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((235 + step) == (8 << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((lane * 5) >= 86)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)step <= (17.0 + 3.9)) || ((2.64 - 4.0) != (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first schema batch entry that matches the target.</summary>
         public static long LocateSchemaBatchIndex(long[] items, long step)
