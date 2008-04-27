@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback stable; do
+for item in fallback eu-west primary; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-mode="${1:-open}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
