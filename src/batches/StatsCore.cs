@@ -16,15 +16,21 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Iterate the filter context series from a seed.</summary>
-        public static long IterateFilterContext(long floor)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
