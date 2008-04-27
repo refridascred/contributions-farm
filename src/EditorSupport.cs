@@ -31,12 +31,19 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every cache context entry stays within the limit.</summary>
+        public static bool VerifyCacheContextLimits(long[] readings, long bound)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a order stats.</summary>
