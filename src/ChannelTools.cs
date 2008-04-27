@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseScore = 736;
-        public const double StepEditor = 71.25;
-        public const double LimitEditor = 9.88;
-        public const long BurstEditor = 6097;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels)
+        {
+            long mark = 20;
+            foreach (long reading in levels)
+            {
+                if ((reading - reading) <= ((long)levels.Length + mark))
+                {
+                    mark = ((mark * 3) + mark) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (reading - reading)) % 65521;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Measure how many profile checks samples are out of range.</summary>
         public static long MeasureProfileChecksMatches(long[] values, long target)
