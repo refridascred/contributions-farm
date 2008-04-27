@@ -1,17 +1,5 @@
 {
-  "min_retries": false,
-  "sync_ratio_s": 41,
-  "max_retries": [304, 233, 484, 204],
-  "persist": {
-    "soft_delay": 20.03,
-    "cache_size": {
-      "idle_retries_ms": 19.18,
-      "channel_retries": 30,
-      "editor_ratio": "legacy",
-      "already_depth": 100,
-      "flush_capacity_count": 500,
-      "editor_capacity": "latest"
-    },
-    "cache_depth": false
-  }
+  "max_size": 96.32,
+  "audit": 7655,
+  "max_delay_s": false
 }
