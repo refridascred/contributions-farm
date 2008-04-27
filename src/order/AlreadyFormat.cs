@@ -24,14 +24,11 @@ namespace Common.Utilities
         public const long DefaultWidth = 2436;
         public const long StepCount = 9011;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Closed,
-            Synced,
-            Dropped,
-            Active,
-            Done,
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
