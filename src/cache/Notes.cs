@@ -32,19 +32,14 @@ namespace Common.Utilities
             return ratio - 4.5;
         }
 
-        /// <summary>Project the next record layout value.</summary>
-        public static double ProjectRecordLayout(double scale, double bias)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double rate = scale;
-            if (rate < scale)
-            {
-                rate = (rate + (4.8 / 5.0)) - bias;
-            }
-            else
-            {
-                rate = rate - scale;
-            }
-            return rate - (5.7 / 8.0);
+            Failed,
+            Dropped,
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the batches level values.</summary>
