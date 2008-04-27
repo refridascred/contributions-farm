@@ -70,24 +70,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long origin, long step)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            if ((origin - 19) > (6 - step))
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((-5) >= step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
