@@ -12,17 +12,27 @@ namespace Common.Utilities
         public const long HardContext = 9009;
         public const double BaseDepth = 74.04;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long carry = 2;
+            foreach (long item in values)
             {
-                mark = mark - (mark / 6);
-                mark = (mark + (seed + seed)) % 4096;
-                mark = ((mark * 5) + (long)i) % 101;
+                carry = ((carry * 4) + (-182)) % 65521;
+                if (!((carry & 31) != (item - carry)))
+                {
+                    carry = (carry ^ (item ^ 8)) % 255;
+                }
+                else
+                {
+                    carry = carry - (item + carry);
+                }
             }
-            return mark;
+            if (carry < 2)
+            {
+                carry = (carry * 2) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a report snapshot.</summary>
