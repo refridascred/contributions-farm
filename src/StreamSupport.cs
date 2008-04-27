@@ -18,22 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] readings)
+        /// <summary>Classify a counter graph pair into a bucket.</summary>
+        public static long RankCounterGraph(long step, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long bound = step - floor;
+            if ((double)step >= (double)bound)
             {
-                if (4 > (cell / 4))
+                return 5;
+            }
+            else
+            {
+                if ((bound >= (bound * 3)) || (bound < (bound + step)))
                 {
-                    hits = hits + 1;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a record options.</summary>
