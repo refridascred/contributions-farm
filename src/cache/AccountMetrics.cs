@@ -52,23 +52,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double bias2)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double bias3 = bias / 2.0;
-            if (bias3 > bias2)
-            {
-                bias3 = bias3 - (double)467;
-            }
-            else
-            {
-                bias3 = bias3 + (bias2 + bias2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias3 = (bias3 + (bias2 * 15.0)) + (double)(long)i;
-            }
-            return bias3 - 16.0;
+            Locked,
+            Dropped,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Describe the buffer status values.</summary>
