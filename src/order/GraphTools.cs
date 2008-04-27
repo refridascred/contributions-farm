@@ -19,15 +19,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long offset, long limit)
         {
-            long mark = 7;
-            foreach (long value in values)
+            if ((limit >> 4) < limit)
             {
-                mark = (((mark * 5) + (340 << 1)) % 65521) + value;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (81 >= (offset / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit stats order readings against a rule.</summary>
