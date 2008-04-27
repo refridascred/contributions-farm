@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Idle,
-            Dropped,
-            Ready,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardDepth = 40.67;
+        public const long LimitToken = 6780;
+        public const double WindowToken = 38.56;
+        public const long CacheSize = 1270;
 
         /// <summary>Roll a stats queue counter forward.</summary>
         public static long StepStatsQueue(long limit)
