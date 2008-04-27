@@ -33,15 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a checks editor figure with a bias.</summary>
-        public static double ScaleChecksEditor(double rate, double bias)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            double bias2 = (double)(4 % 12);
-            if (bias2 < (double)0)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = ((bias2 - bias2) - rate) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias2 + (9.0 * 5.0);
+            return count;
         }
     }
 }
