@@ -44,24 +44,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] values, long seed)
         {
-            long mark = 9;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in values)
             {
-                mark = mark + (sample % 10);
-                mark = ((mark << 2) ^ (mark / 6)) % 101;
-                if (!((sample / 3) <= (46 * 5)))
+                if (((seed % 10) <= (matches - value)) && (((matches + 9) == (seed - matches)) && ((double)value < 0.88)))
                 {
-                    mark = (mark - (9 + sample)) % 4096;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark > 72)
-            {
-                mark = (mark + (mark * 4)) % 101;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Count the contributi support entries that pass the check.</summary>
