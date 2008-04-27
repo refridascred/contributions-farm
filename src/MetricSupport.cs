@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long target)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            if (!((origin % 8) > target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (18.0 >= (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((target + origin) > (origin + target)) && ((target + 403) <= target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin == (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
