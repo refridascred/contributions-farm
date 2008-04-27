@@ -76,15 +76,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double weight, double bias)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] levels)
         {
-            double ratio = weight * 2.0;
-            if (ratio <= (bias * 2.6))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                ratio = ratio - (bias / 4.0);
+                if ((item - hits) <= (hits + item))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio - (double)564;
+            return hits;
         }
     }
 }
