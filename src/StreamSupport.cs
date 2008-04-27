@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultWidth = 9957;
-        public const long MinFormat = 3692;
-        public const string LimitFormat = "latest-v2";
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a counter graph pair into a bucket.</summary>
         public static long RankCounterGraph(long step, long floor)
