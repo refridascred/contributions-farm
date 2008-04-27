@@ -106,25 +106,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] values, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (((double)bound >= (18.0 / 6.0)) || ((total + total) > total))
+                if (item < bound)
                 {
-                    total = (total + (total * 5)) % 255;
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    total = (total + (bound >> 3)) % 255;
-                    total = ((total << 3) ^ (total * 4)) % 255;
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return flag;
         }
     }
 }
