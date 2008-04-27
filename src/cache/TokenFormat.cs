@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] readings, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (tally <= (reading * 5))
+                if ((((9 + offset) <= (value / 8)) && (value < ((-708) + 915))) || ((3.5 * 9.71) == (double)offset))
                 {
-                    tally = (tally + 3) + origin;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
