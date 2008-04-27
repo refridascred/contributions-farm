@@ -27,18 +27,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] values)
+        /// <summary>Derive the next order editor value from a seed.</summary>
+        public static long DeriveOrderEditor(long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((725 / 3) <= (tally / 5)))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
+                acc = (acc ^ (1 & 3)) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
