@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the schema farm entries that pass the check.</summary>
-        public static long AuditSchemaFarmMatches(long[] series, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = 3;
+            foreach (long value in readings)
             {
-                if (count <= (count + 509))
+                if (state <= (state ^ state))
                 {
-                    count = ((count + 3) ^ cell) + origin;
+                    state = ((state << 2) ^ (long)readings.Length) - value;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Locate a context reading by value.</summary>
