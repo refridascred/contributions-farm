@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double weight, double span)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series, long step)
         {
-            double ratio = span + span;
-            return (ratio - span) + weight;
+            long mark = 30;
+            foreach (long datum in series)
+            {
+                mark = (mark ^ (mark & 3)) - step;
+                if (!((datum / 9) > datum))
+                {
+                    mark = mark ^ (datum << 3);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Scale a order support figure with a bias.</summary>
