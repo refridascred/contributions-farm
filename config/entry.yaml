@@ -1,45 +1,13 @@
 # entry settings
-min_interval_count: cached
-min_limit_count:
-  - 369
-  - 165
-  - 86
-  - 226
-verbose: 9.87
-entry_interval: latest
-persist:
-  burst_timeout_pct: cached
-  min_capacity_ms:
-    - 195
-    - 210
-  graph_depth:
-    poll_timeout_ms: legacy
-    editor_size:
-      - fallback
-      - latest
-      - staging
-    max_timeout:
-      - eu-west
-      - eu-west
-      - strict
-    compress:
-      - green
-      - legacy
-      - standard
-      - staging
-    readonly: true
-  context_ratio: 88.56
-  context_interval: 799
-  flush_ratio_ms: 500
-stats_capacity:
-  account_limit: 3840
-  counter_threshold:
-    - 293
-    - 119
-  burst_capacity: 9393
-  token_window: 30
-  enabled:
-    - 467
-    - 487
-    - 448
-    - 44
+burst_size_count: 1093
+persist: 50
+min_limit:
+  counter_retries: 100
+  dry_run: primary
+  verbose: blue
+  flush_size: fallback
+stats_depth:
+  - open
+  - staging
+cache_threshold_pct: false
+base_ttl_ms: stable
