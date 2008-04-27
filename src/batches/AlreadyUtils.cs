@@ -30,25 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long step, long target)
-        {
-            if (target <= step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target << 2) == (7 + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftWidth = 8120;
+        public const double HardLevel = 69.73;
+        public const long SoftStream = 7567;
+        public const long WindowStream = 4102;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long ScoreFilter(long[] data)
