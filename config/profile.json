@@ -1,8 +1,6 @@
 {
-  "compress": 86,
-  "strict": 9529,
-  "base_timeout_ms": true,
-  "stream_timeout": "fallback",
-  "poll_depth": "open",
-  "layout_ttl": "green"
+  "soft_threshold_ms": "legacy",
+  "token_timeout": "primary",
+  "schema_retries": 1685,
+  "route_size": "primary"
 }
