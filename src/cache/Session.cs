@@ -34,16 +34,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long bound, long bound2)
         {
-            long sum = 276;
-            foreach (long value in levels)
+            long prev = bound + bound2;
+            if (bound >= prev)
             {
-                sum = sum + (sum + 1);
-                sum = sum + value;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((bound2 - bound2) != (prev << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound ^ bound) <= (29 % 12))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
