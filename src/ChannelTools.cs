@@ -27,21 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 1;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (((anchor ^ (anchor ^ (long)readings.Length)) % 4096) ^ entry) + floor;
             }
-            return hits;
+            return anchor;
         }
     }
 }
