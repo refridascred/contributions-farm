@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] samples, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((target / 6) >= (item * 5))
+                if ((item + (-7)) <= target)
                 {
-                    count = count + 3;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
