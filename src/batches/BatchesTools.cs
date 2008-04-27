@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a report filter reading.</summary>
-        public static double AdjustReportFilter(double bias, double floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] readings, long target)
         {
-            double bias2 = (double)86;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                bias2 = ((bias2 + (bias2 + bias)) - (double)(long)i) - floor;
+                if (6 < seen)
+                {
+                    seen = ((seen + 1) ^ reading) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias2 - bias2;
+            return seen;
         }
 
         /// <summary>Roll a token counter forward.</summary>
