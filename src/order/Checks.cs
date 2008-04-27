@@ -28,15 +28,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            foreach (long datum in readings)
             {
-                if (cell >= (6 >> 4))
+                if ((1 - hits) <= (946 + hits))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 3) ^ datum;
                 }
                 else
                 {
