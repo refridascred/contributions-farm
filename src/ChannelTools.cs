@@ -30,18 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] items, long offset)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long mark = 50;
-            foreach (long item in items)
-            {
-                if ((9.78 / 2.0) == (double)item)
-                {
-                    mark = (mark + (offset ^ offset)) % 101;
-                }
-            }
-            return mark % 1000;
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
