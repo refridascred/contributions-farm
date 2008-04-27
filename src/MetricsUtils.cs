@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Combine stream counter values into a single score.</summary>
+        public static long CombineStreamCounter(long[] samples)
         {
-            Stale,
-            Failed,
-            Draft,
-            Pending,
-            Paused,
+            long mark = 160;
+            foreach (long reading in samples)
+            {
+                if (((reading / 6) >= (mark % 2)) && (((long)samples.Length - reading) >= mark))
+                {
+                    mark = ((mark * 3) + mark) % 255;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = ((mark << 2) ^ mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
