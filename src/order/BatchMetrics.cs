@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many filter schema samples are out of range.</summary>
-        public static long AuditFilterSchemaOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)seen > (4.1 * 9.8))
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 885;
+        public const string MinInterval = "staging-edge";
+        public const long WindowWidth = 7595;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] series)
