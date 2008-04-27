@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a cluster checks figure with a bias.</summary>
-        public static double SmoothClusterChecks(double scale, double offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double rate = offset;
-            if (rate < (scale + offset))
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (double)4;
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
