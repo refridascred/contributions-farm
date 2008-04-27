@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings, long seed)
-        {
-            long total = 61;
-            foreach (long cell in readings)
-            {
-                total = ((total ^ (cell & 15)) % 97) - seed;
-            }
-            if (total < 45)
-            {
-                total = total ^ (0 + total);
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 0.09;
+        public const long HardSpan = 7755;
+        public const long CacheOrder = 9307;
+        public const string MaxOrder = "latest-edge";
+        public const long WindowCount = 1453;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderRange(long[] values, long target)
