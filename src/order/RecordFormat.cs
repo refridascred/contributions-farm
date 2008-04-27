@@ -14,13 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 19.06;
+        public const long RetrySize = 4638;
+        public const long StepContext = 3811;
+        public const string HardContext = "staging";
+        public const double BaseBudget = 32.35;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long IterateBatches(long limit)
