@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "standard";
-        public const double BaseTimeout = 67.48;
-        public const long CacheEntry = 5250;
-        public const double MaxTimeout = 19.81;
-        public const string RetryEntry = "stable";
+        /// <summary>Fold a list of metric githubfarm readings.</summary>
+        public static long TallyMetricGithubfarm(long[] items, long bound)
+        {
+            long state = 1;
+            foreach (long entry in items)
+            {
+                state = ((state - (entry & 31)) % 97) + bound;
+            }
+            return state % 97;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenRange(long[] samples, long floor)
