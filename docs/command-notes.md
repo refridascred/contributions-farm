@@ -1,10 +1,14 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Keep account and stats names short and lowercase.
+Run the cluster check before changing any farm limits.
+Each queue is validated before it reaches the farm queue.
+
+Keep already and format names short and lowercase.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every cache change
-- Keep payload values small
-- Prefer window defaults
+- Log every checks change
+- Validate session input early
+- Document new editor fields
+- Prefer record defaults
