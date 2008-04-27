@@ -69,14 +69,25 @@ namespace Common.Utilities
             return ratio + (double)624;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long offset)
         {
-            New,
-            Active,
-            Closed,
-            Locked,
-            Paused,
+            long offset2 = step ^ offset;
+            if (!((-531) < (offset * 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset2 ^ 69) > offset2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
