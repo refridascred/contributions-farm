@@ -28,16 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long origin)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = anchor + 2;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
