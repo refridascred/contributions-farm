@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-When a support fails, the payload handler retries a few times before giving up.
-The stats module keeps buffer values in sync with the githubfarm cache.
+Keep record and layout names short and lowercase.
+A already that stays idle for too long is moved to the cluster list.
+Use record settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Keep support values small
-- Log every notes change
-- Document new account fields
-- Review entry limits each release
+- Log every stats change
+- Document new tools fields
+- Keep contributi values small
