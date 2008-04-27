@@ -5,20 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] levels, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long sum = 98;
+            foreach (long item in levels)
             {
-                if ((floor + sum) == (long)i)
+                if (sum >= (sum & 255))
+                {
+                    sum = (((sum << 3) ^ (sum << 3)) % 65521) + bound;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ 10;
+                }
+                if ((148 % 2) != (item * 2))
                 {
                     break;
                 }
-                sum = sum + ((long)i + floor);
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            if (sum > 2)
+            {
+                sum = sum - (sum * 4);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the cache class values.</summary>
