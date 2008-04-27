@@ -59,10 +59,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 7307;
-        public const double RetryFilter = 68.98;
-        public const long StepFilter = 9498;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double bias)
+        {
+            double bias2 = rate;
+            if (bias2 > 6.95)
+            {
+                bias2 = bias2 - bias;
+            }
+            else
+            {
+                bias2 = bias2 + rate;
+            }
+            return bias2 + (bias / 3.0);
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long BucketEditor(long origin, long step)
