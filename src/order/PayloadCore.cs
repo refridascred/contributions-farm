@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long CacheScore = 2720;
         public const long DefaultTools = 533;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 81.49;
+        public const long SoftProfile = 3995;
+        public const string BaseSize = "standard-v2";
+        public const string BatchProfile = "alpha-edge";
+        public const long HardLevel = 1478;
 
         /// <summary>Count the tools metric entries that pass the check.</summary>
         public static long AuditToolsMetricHits(long[] levels)
