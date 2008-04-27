@@ -68,14 +68,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Roll a cache checks counter forward.</summary>
+        public static long RollCacheChecks(long offset)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Idle,
-            Ready,
+            long state = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
