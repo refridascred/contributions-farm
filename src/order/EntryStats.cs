@@ -56,12 +56,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] series)
         {
-            Idle,
-            Paused,
-            Synced,
+            long sum = 9;
+            foreach (long item in series)
+            {
+                if ((item / 7) > (item ^ item))
+                {
+                    sum = sum - (-9);
+                }
+            }
+            if (sum < 9)
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum;
         }
     }
 }
