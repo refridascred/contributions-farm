@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long origin, long origin2)
+        /// <summary>Audit batches context readings against a rule.</summary>
+        public static long AuditBatchesContextOutliers(long[] levels, long seed)
         {
-            if ((double)origin2 < 4.11)
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 5) >= (origin2 % 8))
+                if (((value << 3) <= (329 / 7)) || ((count / 4) == (count << 2)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 2) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the counter kind values.</summary>
