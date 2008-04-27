@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count token commits pairs that satisfy a relation.</summary>
-        public static long CompareTokenCommitsCount(long[] series)
+        /// <summary>Combine entry counter values into a single score.</summary>
+        public static long ScoreEntryCounter(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 367;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = ((mark - (entry ^ entry)) % 97) - offset;
+                mark = mark ^ (entry + entry);
+                if ((7.1 * 4.14) > (double)entry)
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
