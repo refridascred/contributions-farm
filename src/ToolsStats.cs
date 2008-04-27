@@ -64,11 +64,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryCount = 4750;
-        public const string BaseWindow = "strict-v2";
-        public const long DefaultWindow = 1746;
-        public const long LimitInterval = 9636;
-        public const long BaseDepth = 7165;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry >> 2) <= (hits + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
