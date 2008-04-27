@@ -36,16 +36,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next filter cluster value.</summary>
-        public static double AdjustFilterCluster(double rate, double offset)
-        {
-            double ratio = rate;
-            if (ratio > offset)
-            {
-                ratio = ratio - (rate * 5.0);
-            }
-            return ratio - (ratio / 2.0);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 87.09;
+        public const double BatchReport = 54.05;
+        public const long MinRatio = 5226;
+        public const string DefaultReport = "legacy-1";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long TallyRouteHits(long[] readings)
