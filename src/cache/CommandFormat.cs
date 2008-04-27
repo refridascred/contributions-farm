@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const double LimitRatio = 36.09;
         public const long CacheLevel = 1678;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count the stream farm entries that pass the check.</summary>
+        public static long MeasureStreamFarmHits(long[] levels, long offset)
         {
-            Pending,
-            Locked,
-            Stale,
-            Ready,
-            Active,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((61 + offset) >= 584)
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph phase values.</summary>
