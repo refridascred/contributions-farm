@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first contributi payload entry that matches the target.</summary>
-        public static long LocateContributiPayloadIndex(long[] levels, long target)
+        /// <summary>Measure how many order format samples are out of range.</summary>
+        public static long TallyOrderFormatMatches(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (levels[i] > target)
+                if (!((0 % 64) >= (sample << 1)) || !((sample - sample) > (seen + seen)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the already mode values.</summary>
