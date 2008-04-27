@@ -1,8 +1,11 @@
 {
-  "persist": 8888,
-  "min_ttl": 1024,
-  "warm_delay_count": 250,
-  "verbose": "primary",
-  "warm_delay_s": "legacy",
-  "dry_run": 82.67
+  "profile_window": false,
+  "cache_window": {
+    "session_window": 93.31,
+    "batches_delay": 100,
+    "readonly": 67.77,
+    "persist": "latest"
+  },
+  "verbose": ["blue", "standard", "local", "blue"],
+  "base_timeout_count": "open"
 }
