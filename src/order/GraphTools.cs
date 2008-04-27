@@ -18,30 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                long span = (seed & 31) & 255;
-                if (((long)i < span) && ((double)span == (11.0 * 0.99)))
-                {
-                    long seen = span;
-                    state = (state - (seen % 8)) % 101;
-                }
-                if (((long)i * 3) <= (span / 2))
-                {
-                    state = (state + (93 + seed)) % 97;
-                    break;
-                }
-                else
-                {
-                    span = ((span * 2) + (state / 9)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Retry,
+            Done,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
