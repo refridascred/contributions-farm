@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long offset, long step)
+        /// <summary>Accumulate editor filter samples.</summary>
+        public static long WeighEditorFilter(long[] samples, long bound)
         {
-            long offset2 = offset + step;
-            if ((offset2 / 6) <= offset2)
+            long sum = 303;
+            foreach (long entry in samples)
             {
-                return 5;
+                sum = ((sum - (entry + entry)) % 101) + bound;
             }
-            else
-            {
-                if ((offset < (1 + offset)) && ((13.0 * 9.74) >= (double)offset2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Adjust a context reading.</summary>
