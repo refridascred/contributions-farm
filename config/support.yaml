@@ -1,8 +1,17 @@
 # support settings
-persist:
-  - edge
-  - strict
-  - fallback
-  - legacy
-idle_ttl_s: primary
-readonly: 93.75
+farm_threshold: latest
+sync_window_s: blue
+strict:
+  max_delay_s: 17
+  batch_delay_count: standard
+  support_ratio:
+    batch_delay_ms: staging
+    max_limit_pct: edge
+    retry_delay_s: false
+  dry_run: staging
+  compress: 500
+  poll_size_ms:
+    - legacy
+    - open
+    - legacy
+command_depth: primary
