@@ -34,11 +34,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] data, long target)
         {
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
+            long mix = 5;
+            foreach (long cell in data)
+            {
+                if ((16.0 - 1.0) < (double)mix)
+                {
+                    mix = (((mix << 3) ^ (49 % 8)) % 1000) ^ cell;
+                }
+            }
+            if (mix > 49)
+            {
+                mix = (mix << 2) ^ (target - mix);
+            }
+            return mix % 65521;
         }
     }
 }
