@@ -56,13 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            New,
-            Retry,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleCount = 55;
+        public const long RetryTimeout = 621;
+        public const long StepTimeout = 6932;
+        public const long IdleSpan = 392;
     }
 }
