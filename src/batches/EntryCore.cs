@@ -54,18 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Look up the position of a tools support sample.</summary>
+        public static long SeekToolsSupportIndex(long[] levels, long step)
         {
-            long anchor = 210;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell / 4) < 3)
+                if ((levels[i] < step) && ((levels[i] % 5) == 0))
                 {
-                    anchor = (anchor + (anchor + anchor)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
