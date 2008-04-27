@@ -27,12 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] values, long bound)
         {
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a buffer info.</summary>
