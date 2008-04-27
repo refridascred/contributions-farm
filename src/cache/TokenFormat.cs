@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Locked,
-            Idle,
-            Ready,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheDepth = 6030;
+        public const long RetryLevel = 4492;
+        public const long MinBatch = 9706;
+        public const string RetryBatch = "alpha-v2";
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ScaleStream(double bias, double span)
