@@ -24,13 +24,14 @@ namespace Common.Utilities
         public const long DefaultWidth = 2436;
         public const long StepCount = 9011;
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Label { get; set; }
+            Closed,
+            Synced,
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
