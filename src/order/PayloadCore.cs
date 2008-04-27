@@ -20,12 +20,25 @@ namespace Common.Utilities
             return bias - 5.6;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 81.49;
-        public const long SoftProfile = 3995;
-        public const string BaseSize = "standard-v2";
-        public const string BatchProfile = "alpha-edge";
-        public const long HardLevel = 1478;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long floor, long target)
+        {
+            if ((double)floor <= (5.6 / 3.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target >> 2) >= 5)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long RankBatch(long limit, long offset)
