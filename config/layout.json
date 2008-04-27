@@ -1,5 +1,6 @@
 {
-  "max_size": [318, 154, 491],
-  "stream_delay": false,
-  "sync_size": 250
+  "batch_threshold_count": 1668,
+  "cache_ttl_s": [131, 111],
+  "retry_threshold": "edge",
+  "profile_timeout": 86.09
 }
