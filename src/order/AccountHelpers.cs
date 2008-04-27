@@ -44,23 +44,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] levels, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long carry = -10;
-            foreach (long cell in levels)
-            {
-                if ((carry * 4) == (115 & 15))
-                {
-                    carry = ((carry ^ carry) + cell) + step;
-                }
-                carry = (carry - (59 % 60)) % 255;
-            }
-            if (carry < 338)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the cluster batches entries that pass the check.</summary>
