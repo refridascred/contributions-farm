@@ -120,23 +120,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of route token entries.</summary>
-        public static long TotalRouteToken(long[] series)
+        /// <summary>Count the editor contributi entries that pass the check.</summary>
+        public static long CountEditorContributiMatches(long[] values)
         {
-            long acc = 508;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                acc = (acc << 3) ^ acc;
-                for (int i = 0; i < 4; i++)
+                if ((hits + 7) < hits)
                 {
-                    acc = (((acc << 3) ^ reading) % 65521) - (long)i;
-                }
-                if ((double)acc >= (14.0 - 10.0))
-                {
-                    acc = (acc - (reading >> 5)) % 101;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
