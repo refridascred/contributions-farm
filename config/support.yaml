@@ -1,10 +1,17 @@
 # support settings
-batch_window_count: green
-order_ttl: 26.13
-soft_size:
-  - strict
-  - local
-  - open
-batch_window: 7372
-verbose: cached
-poll_window: false
+idle_ttl_pct:
+  cache_ttl_s: 49.16
+  token_threshold: 92.94
+  verbose:
+    strict: eu-west
+    readonly: blue
+    support_window: 17.48
+    queue_size:
+      - standard
+      - blue
+      - blue
+      - cached
+    entry_window: 77.58
+    flush_ratio: legacy
+sync_size: strict
+dry_run: false
