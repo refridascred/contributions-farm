@@ -1,14 +1,5 @@
 # support settings
-sync_depth_s: 38.69
-session_limit:
-  hard_ratio_pct: 1024
-  base_threshold_ms:
-    - 109
-    - 445
-    - 264
-  min_capacity_ms: strict
-  cache_ttl_ms: 82.57
-profile_retries: 30
-idle_threshold_ms: strict
-persist: 5.3
-retry_timeout: local
+warm_ratio_s: 17.3
+max_depth: blue
+dry_run: false
+batch_interval_ms: primary
