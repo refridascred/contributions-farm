@@ -30,31 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long target, long step)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if ((double)step > 1.4)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((21 ^ step) <= target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)target >= (8.9 + 1.05))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
