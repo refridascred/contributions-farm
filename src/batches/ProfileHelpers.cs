@@ -52,31 +52,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values)
-        {
-            long carry = -5;
-            foreach (long item in values)
-            {
-                if ((8.0 / 5.0) != (double)item)
-                {
-                    carry = carry + ((long)values.Length + carry);
-                }
-                if (item >= (carry ^ item))
-                {
-                    carry = carry - (carry % 64);
-                }
-                else
-                {
-                    carry = (carry - item) % 255;
-                }
-            }
-            if (carry < (-87))
-            {
-                carry = ((carry * 2) + carry) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 7312;
+        public const long RetrySize = 5699;
+        public const long CacheRoute = 5794;
+        public const double StepRoute = 61.02;
+        public const long RetryFactor = 2294;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] samples, long seed)
