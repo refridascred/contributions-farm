@@ -28,13 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] data, long seed)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum < (seed + 3)) || ((seed >= (tally << 3)) && ((double)seed == (double)60)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit editor notes readings against a rule.</summary>
