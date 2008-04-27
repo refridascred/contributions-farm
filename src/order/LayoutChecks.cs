@@ -64,18 +64,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] data, long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long acc = 25;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((reading % 24) != (acc + offset)) || ((reading & 1) >= acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc - (acc << 1)) % 255;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return hits;
         }
     }
 }
