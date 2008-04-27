@@ -51,21 +51,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Project the next contributi filter value.</summary>
+        public static double ProjectContributiFilter(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = gain;
+            if (mean <= (double)987)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - (gain * 6.0)) - span;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (gain * 12.0);
         }
     }
 }
