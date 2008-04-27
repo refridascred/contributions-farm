@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long MinLevel = 1947;
         public const long MinWidth = 5652;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define command limits and defaults.</summary>
