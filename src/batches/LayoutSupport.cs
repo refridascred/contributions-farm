@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 37.9;
-        public const long SoftAccount = 3334;
-        public const long HardAccount = 2941;
-        public const long LimitInterval = 5563;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] values, long floor)
