@@ -32,19 +32,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] data, long step)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (!(960 >= ((-3) - step)))
+                if (item < step)
                 {
+                    valid = false;
                     break;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return valid;
         }
     }
 }
