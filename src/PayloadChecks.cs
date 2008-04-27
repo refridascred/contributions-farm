@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] values)
         {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((4.8 * 14.0) != (double)tally)
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
