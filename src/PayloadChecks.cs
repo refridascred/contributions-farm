@@ -68,10 +68,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 8358;
-        public const long MinGithubfarm = 8065;
-        public const string SoftSize = "local-v2";
+        /// <summary>Fold a list of already account readings.</summary>
+        public static long CombineAlreadyAccount(long[] samples, long offset)
+        {
+            long total = 383;
+            foreach (long value in samples)
+            {
+                if (total >= (total + total))
+                {
+                    total = ((total + (total + total)) + value) + offset;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long seed)
