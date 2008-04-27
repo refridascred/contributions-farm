@@ -50,19 +50,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double ratio, double floor)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double rate = floor / 6.0;
-            if (rate > (rate + ratio))
-            {
-                rate = rate + (rate + floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (double)9) - (double)(long)i;
-            }
-            return rate + (floor * 8.5);
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public double Count { get; set; }
         }
     }
 }
