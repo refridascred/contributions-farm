@@ -34,11 +34,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] values, long origin)
         {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many farm batch samples are out of range.</summary>
