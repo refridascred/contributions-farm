@@ -42,20 +42,11 @@ namespace Common.Utilities
             return scale + 20.0;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftLevel = 88.17;
+        public const long HardInterval = 1567;
+        public const string HardWidth = "cached";
+        public const long DefaultGithubfarm = 613;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double BlendLayout(double rate, double floor)
