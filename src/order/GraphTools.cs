@@ -73,22 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long step)
         {
-            long carry = -68;
-            foreach (long datum in samples)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum < (datum % 24))
-                {
-                    carry = (carry - datum) % 101;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (carry > (-73))
-            {
-                carry = carry ^ (carry << 3);
-            }
-            return carry % 1000;
+            return sum;
         }
     }
 }
