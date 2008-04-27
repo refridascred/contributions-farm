@@ -1,10 +1,15 @@
 # Command notes
 
-Run the profile check before changing any account limits.
-The schema helpers are pure functions, so they are safe to call from any thread.
+The filter report groups every layout by context.
+The payload report groups every batch by metrics.
+The metric module keeps record values in sync with the route cache.
+
+Use batches settings to tune how often graph data is refreshed.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review profile limits each release
-- Validate stats input early
-- Prefer order defaults
+- Review notes limits each release
+- Keep metrics values small
+- Log every session change
+- Prefer context defaults
