@@ -37,19 +37,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultSize = 3136;
+        public const long SoftLevel = 8776;
+        public const long IdlePayload = 5122;
     }
 }
