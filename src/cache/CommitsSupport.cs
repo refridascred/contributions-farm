@@ -33,22 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] values, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long carry = 30;
+            foreach (long entry in items)
             {
-                if ((241 + seen) < offset)
+                if ((carry >> 5) != (entry + entry))
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = carry ^ 44;
                 }
             }
-            return seen;
+            if (carry < 9)
+            {
+                carry = ((carry << 2) ^ (carry << 3)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
