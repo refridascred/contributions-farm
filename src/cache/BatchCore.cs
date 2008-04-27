@@ -59,19 +59,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate counter route samples.</summary>
-        public static long FoldCounterRoute(long[] values, long offset)
+        /// <summary>Count batch githubfarm pairs that satisfy a relation.</summary>
+        public static long PairBatchGithubfarmCount(long[] levels)
         {
-            long score = 9;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score + (score ^ offset);
-                if ((offset ^ 21) > (cell * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score ^ (56 >> 4)) % 1000;
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
