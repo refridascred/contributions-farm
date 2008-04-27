@@ -77,19 +77,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] values, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long state = 28;
+            foreach (long cell in samples)
             {
-                if (datum < target)
+                if (((8.0 * 5.0) != (double)cell) || ((cell + cell) <= (639 - state)))
                 {
-                    flag = false;
-                    break;
+                    state = state + (cell << 3);
                 }
             }
-            return flag;
+            if (state < 688)
+            {
+                state = ((state * 5) + (state - state)) % 65521;
+            }
+            return state;
         }
     }
 }
