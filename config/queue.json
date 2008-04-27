@@ -1,5 +1,26 @@
 {
-  "sync_threshold": 65.52,
-  "verbose": [45, 192, 455, 195],
-  "commits_threshold": 250
+  "idle_delay": 44,
+  "tools_timeout": 30,
+  "strict": {
+    "persist": "strict",
+    "poll_ratio_ms": false,
+    "poll_retries": "latest",
+    "batch_retries": "open",
+    "strict": {
+      "batches_capacity": "open",
+      "token_ratio": 27,
+      "cache_ttl_pct": 250,
+      "metrics_size": 100,
+      "retry_size": 3.74,
+      "schema_delay": "latest"
+    }
+  },
+  "profile_delay": {
+    "enabled": 100,
+    "soft_capacity_ms": "green",
+    "idle_capacity_s": "edge",
+    "soft_interval_pct": "cached"
+  },
+  "cache_ratio_ms": "edge",
+  "checks_window": [58, 19, 458]
 }
