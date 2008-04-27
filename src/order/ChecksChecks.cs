@@ -12,15 +12,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the order mode values.</summary>
