@@ -35,13 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double offset)
         {
-            Active,
-            Idle,
-            Closed,
-            Failed,
+            double drift = 6.0;
+            if (drift > 8.02)
+            {
+                drift = (drift - (double)740) - offset;
+            }
+            return drift + (bias + 11.0);
         }
     }
 }
