@@ -27,18 +27,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] samples, long limit)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long sum = 60;
-            foreach (long cell in samples)
-            {
-                if ((limit >> 3) != (cell % 16))
-                {
-                    sum = (sum - (54 * 4)) % 255;
-                }
-            }
-            return sum % 97;
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
