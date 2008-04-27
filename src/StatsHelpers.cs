@@ -46,19 +46,9 @@ namespace Common.Utilities
         public const long MinRatio = 5226;
         public const string DefaultReport = "legacy-1";
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseLevel = 4664;
+        public const long BaseSupport = 8245;
+        public const string HardDepth = "primary";
     }
 }
