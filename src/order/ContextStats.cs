@@ -35,11 +35,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] data, long bound)
         {
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 755;
+            foreach (long entry in data)
+            {
+                state = ((((state * 3) + state) % 65521) ^ entry) - bound;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
