@@ -68,21 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Derive the next queue report value from a seed.</summary>
+        public static long IterateQueueReport(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
     }
 }
