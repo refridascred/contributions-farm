@@ -24,12 +24,19 @@ namespace Common.Utilities
             return scale + (double)20;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long offset)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = state + ((long)i2 - offset);
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the filter phase values.</summary>
