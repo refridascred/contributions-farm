@@ -1,23 +1,4 @@
 # githubfarm settings
-soft_threshold: strict
-dry_run: eu-west
-batch_depth_ms:
-  readonly:
-    readonly: 100
-    poll_ttl_count: 1024
-    filter_capacity:
-      - eu-west
-      - primary
-      - cached
-    filter_size: 60
-    burst_window_s: legacy
-    githubfarm_limit: true
-  format_delay: 6394
-  context_depth: 9717
-  githubfarm_timeout:
-    - 271
-    - 435
-    - 395
-    - 294
-  hard_retries: staging
-  farm_capacity: strict
+queue_ratio: legacy
+cache_size: true
+record_threshold: 62
