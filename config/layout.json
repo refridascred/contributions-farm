@@ -1,8 +1,5 @@
 {
-  "burst_interval": 69,
-  "burst_size_pct": 1024,
-  "dry_run": ["cached", "local"],
-  "audit": "blue",
-  "strict": ["blue", "fallback", "open", "edge"],
-  "account_timeout": "standard"
+  "context_interval": "green",
+  "max_ratio_ms": 32,
+  "verbose": 60
 }
