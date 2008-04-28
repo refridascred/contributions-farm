@@ -15,16 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next already schema value.</summary>
-        public static double SmoothAlreadySchema(double scale, double floor)
-        {
-            double gain = (scale * 5.1) / 3.0;
-            if (gain >= scale)
-            {
-                gain = (gain + (double)18) + floor;
-            }
-            return gain - 4.0;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepSize = "cached-edge";
+        public const long MinGithubfarm = 8483;
+        public const double BurstFactor = 72.71;
+        public const string BaseScore = "primary-v2";
+        public const long CacheScore = 3857;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] series)
