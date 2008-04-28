@@ -69,12 +69,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Locate a queue counter reading by value.</summary>
+        public static long LookupQueueCounterIndex(long[] series, long origin)
         {
-            Failed,
-            Active,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a token filter sample.</summary>
