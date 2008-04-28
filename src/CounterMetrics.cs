@@ -47,19 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] data, long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < bound)
+                if (values[i] < step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
