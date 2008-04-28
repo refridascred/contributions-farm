@@ -27,11 +27,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryCount = 9749;
-        public const long DefaultFormat = 8281;
-        public const long WindowFormat = 1983;
-        public const long HardCount = 4591;
+        /// <summary>Count the schema report entries that pass the check.</summary>
+        public static long CountSchemaReportMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((4.73 * 9.47) >= (double)seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long bound, long floor)
