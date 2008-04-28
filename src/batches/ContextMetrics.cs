@@ -11,31 +11,19 @@ namespace Common.Utilities
         public const double CacheInterval = 2.1;
         public const string IdleFormat = "legacy-edge";
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long seed, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] samples, long bound)
         {
-            if ((seed - offset) < (5 ^ seed))
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= (double)seed)
+                if (datum != bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset * 4) != (offset % 100))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit filter token readings against a rule.</summary>
