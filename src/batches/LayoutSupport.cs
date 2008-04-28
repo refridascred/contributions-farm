@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double bias, double span)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            double drift = (double)(10 + 12);
-            if (drift < (double)873)
-            {
-                drift = (drift - (double)3) + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (bias * 0.3)) - (double)(long)i;
-            }
-            return drift - drift;
+            Dropped,
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Measure how many support schema samples are out of range.</summary>
