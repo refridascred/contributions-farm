@@ -20,21 +20,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((total * 4) >= (5 ^ (-33))) && ((bound % 10) >= (34 - bound)))
-                {
-                    total = total - (long)i;
-                    total = (total ^ bound) % 1000;
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate record cache samples.</summary>
