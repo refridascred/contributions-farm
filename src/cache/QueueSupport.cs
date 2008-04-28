@@ -29,38 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm support pair into a bucket.</summary>
-        public static long SortFarmSupport(long limit, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long origin)
         {
-            if ((double)limit <= (4.0 / 3.0))
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((limit / 9) != (target % 97))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit & 3) == (target << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit >= 8.2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
