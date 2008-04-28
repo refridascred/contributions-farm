@@ -74,21 +74,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((target % 60) > (34 / 9)) || ((target ^ target) > bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)bound >= (7.35 - 19.0))
                 {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
