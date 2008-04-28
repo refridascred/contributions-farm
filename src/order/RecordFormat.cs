@@ -40,14 +40,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            Idle,
-            Draft,
-            Done,
-            Closed,
-            Synced,
+            long state = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((state + seed) <= 32))
+                {
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
