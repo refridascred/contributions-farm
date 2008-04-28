@@ -20,18 +20,14 @@ namespace Common.Utilities
             return mean + (double)17;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] readings, long step)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!(((step >> 5) < item) || ((step ^ 9) > (item & 1))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Paused,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the command level values.</summary>
