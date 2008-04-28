@@ -23,18 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] data, long bound)
+        /// <summary>Iterate the cache already series from a seed.</summary>
+        public static long DeriveCacheAlready(long step)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (matches < (matches + matches))
-                {
-                    matches = ((matches + 1) + item) - bound;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a schema stats.</summary>
