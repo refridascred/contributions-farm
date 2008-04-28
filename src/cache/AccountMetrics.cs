@@ -21,12 +21,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double ratio, double span)
         {
-            Active,
-            Retry,
-            Ready,
+            double rate = span;
+            if (rate <= span)
+            {
+                rate = (rate - (span / 4.0)) + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate + (4.6 / 4.0);
         }
 
         /// <summary>Scale a order support figure with a bias.</summary>
