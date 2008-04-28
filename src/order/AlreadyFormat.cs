@@ -72,11 +72,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 67.83;
-        public const double SoftScore = 52.76;
-        public const double SoftSchema = 93.21;
-        public const long RetryRatio = 5591;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public bool Rank { get; set; }
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long FoldLayout(long[] items)
