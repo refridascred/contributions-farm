@@ -1,6 +1,17 @@
 {
-  "poll_capacity": 56.47,
-  "audit": 67,
-  "sync_retries": "staging",
-  "verbose": "eu-west"
+  "burst_retries": {
+    "cache_window": false,
+    "retry_limit": "cached",
+    "queue_limit": {
+      "audit": "stable",
+      "layout_window": 33,
+      "base_depth": "primary",
+      "readonly": "blue",
+      "batch_threshold_count": [243, 298, 95, 68]
+    },
+    "cache_delay_s": "local"
+  },
+  "command_retries": 100,
+  "min_threshold_count": 100,
+  "sync_ratio": "fallback"
 }
