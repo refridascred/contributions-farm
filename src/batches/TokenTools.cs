@@ -12,18 +12,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] series, long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((0 * 3) == (99 + reading))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
