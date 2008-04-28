@@ -23,17 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a support batch sample.</summary>
-        public static long LocateSupportBatchIndex(long[] readings, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (readings[i] >= bound)
+                if (matches < (matches + matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + item) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a schema stats.</summary>
