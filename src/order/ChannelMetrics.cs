@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double bias, double offset)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            double load = bias;
+            if (load < (load * 1.2))
+            {
+                load = (load - (double)911) + offset;
+            }
+            else
+            {
+                load = load - 16.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (bias + 7.5)) + (double)(long)i;
+            }
+            return load - (bias + load);
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
