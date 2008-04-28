@@ -13,24 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long seed, long target)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            if ((seed - target) < (seed / 6))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((368 / 3) <= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
