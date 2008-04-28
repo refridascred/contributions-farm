@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] values)
         {
-            long anchor = 14;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                anchor = (anchor - sample) % 65521;
-                if ((double)sample <= (3.0 / 7.0))
+                if ((sample % 8) != (sample & 255))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
