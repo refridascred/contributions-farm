@@ -25,13 +25,12 @@ namespace Common.Utilities
             return load - (double)240;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepFactor = 9313;
+        public const long MinReport = 2482;
+        public const long BatchScore = 5621;
+        public const string BaseReport = "staging-1";
+        public const long IdleScore = 7848;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double IdleCluster = 87.76;
