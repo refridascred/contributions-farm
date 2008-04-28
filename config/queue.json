@@ -1,6 +1,8 @@
 {
-  "poll_limit_pct": "legacy",
-  "hard_ratio": "eu-west",
-  "max_capacity_s": 57.01,
-  "flush_size_count": true
+  "report_interval": 60,
+  "audit": "primary",
+  "tools_ttl": 90,
+  "idle_retries": true,
+  "min_timeout_count": [441, 306, 112],
+  "retry_retries_ms": 99
 }
