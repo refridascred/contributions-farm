@@ -28,12 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long limit)
         {
-            Idle,
-            Queued,
-            Retry,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
