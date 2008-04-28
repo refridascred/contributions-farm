@@ -65,18 +65,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((floor & 31) < (floor - floor))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinCount = 4611;
+        public const double RetrySize = 57.19;
+        public const double HardSpan = 80.48;
+        public const string MinFormat = "strict-v2";
     }
 }
