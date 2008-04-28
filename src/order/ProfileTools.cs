@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            long total = 70;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 3) + (total + 46)) % 1000;
-                total = (total << 3) ^ (item + item);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Blend two notes measurements.</summary>
