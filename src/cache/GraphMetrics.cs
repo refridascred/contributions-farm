@@ -12,18 +12,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] levels, long bound)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)bound < 15.0)
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
