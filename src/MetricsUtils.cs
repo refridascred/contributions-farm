@@ -71,25 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long limit)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] samples, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                carry = (carry - (carry % 2)) % 255;
-                if ((carry * 2) < (limit & 1))
+                if (item >= seed)
                 {
+                    flag = false;
                     break;
                 }
-                if ((limit + limit) > (limit ^ carry))
-                {
-                    carry = carry - (limit - limit);
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return flag;
         }
     }
 }
