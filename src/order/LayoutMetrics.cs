@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] data, long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + matches) != (matches + matches))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
+            Failed,
+            Draft,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
