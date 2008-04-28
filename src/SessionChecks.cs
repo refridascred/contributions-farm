@@ -27,14 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] levels, long origin)
         {
-            Done,
-            Draft,
-            Queued,
-            Ready,
-            Synced,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the profile status values.</summary>
