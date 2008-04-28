@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultSize = 2940;
-        public const string WindowReport = "fallback-edge";
-        public const long BatchReport = 3488;
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double rate, double span)
+        {
+            double scale = span;
+            if (scale > scale)
+            {
+                scale = scale - (rate * 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale + (span + 20.0);
+        }
 
         /// <summary>Validate tools metric readings against a bound.</summary>
         public static bool CheckToolsMetricRange(long[] levels, long target)
