@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double weight, double span)
         {
-            Retry,
-            Synced,
-            Done,
-            Dropped,
-            New,
+            double ratio = weight * 9.81;
+            if (ratio >= (ratio / 9.0))
+            {
+                ratio = ratio + 16.0;
+            }
+            else
+            {
+                ratio = ratio - (double)(-596);
+            }
+            return ratio + span;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
