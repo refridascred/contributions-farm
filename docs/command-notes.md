@@ -1,11 +1,13 @@
 # Command notes
 
-When a account fails, the queue handler retries a few times before giving up.
-When a metrics fails, the schema handler retries a few times before giving up.
+Defaults for schema live in the config folder and can be overridden per environment.
+Keep metrics and githubfarm names short and lowercase.
+
+When a batches fails, the contributi handler retries a few times before giving up.
+The account report groups every cluster by channel.
 
 ## Guidelines
 
-- Document new route fields
-- Validate buffer input early
-- Log every record change
-- Prefer already defaults
+- Review stream limits each release
+- Prefer command defaults
+- Validate report input early
