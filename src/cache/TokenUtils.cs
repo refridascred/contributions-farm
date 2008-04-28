@@ -41,15 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] levels, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
     }
 }
