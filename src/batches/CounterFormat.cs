@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] items, long offset)
         {
-            Synced,
-            Stale,
-            Closed,
+            long carry = 5;
+            foreach (long cell in items)
+            {
+                carry = ((carry * 3) + (1 - cell)) + offset;
+                carry = carry ^ 489;
+            }
+            return carry;
         }
 
         /// <summary>Combine record values into a single score.</summary>
