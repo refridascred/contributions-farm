@@ -1,15 +1,5 @@
 {
-  "sync_interval_count": {
-    "strict": false,
-    "batch_size": [64, 324, 249, 312],
-    "poll_ttl": {
-      "compress": ["edge", "green"],
-      "max_timeout": 30,
-      "format_delay": "standard",
-      "strict": 46.74
-    },
-    "readonly": 1024
-  },
-  "warm_timeout_pct": "latest",
-  "batch_interval_s": 500
+  "soft_threshold_count": 30,
+  "warm_ttl": "green",
+  "route_size": true
 }
