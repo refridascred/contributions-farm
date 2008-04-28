@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Grade a filter already value against two limits.</summary>
+        public static long BucketFilterAlready(long limit, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((limit & 127) >= target) || ((75 - limit) < (target + target)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((target >= 18) || ((limit * 5) >= (53 - target)))
                 {
-                    if ((readings[i] ^ readings[j]) > 10)
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + limit) <= target)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
