@@ -47,19 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] readings, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (reading <= limit)
+                if (cell < bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
