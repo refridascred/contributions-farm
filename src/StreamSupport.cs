@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] levels)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((double)reading == (9.0 / 8.0)) || ((71 * 5) != (count % 10))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a batch summary.</summary>
