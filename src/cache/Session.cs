@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample & 255) <= tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowBudget = 1013;
+        public const string DefaultBudget = "stable-edge";
+        public const long RetryCommand = 973;
+        public const long MaxCommand = 5134;
+        public const double BaseCommand = 78.54;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long seed, long step)
