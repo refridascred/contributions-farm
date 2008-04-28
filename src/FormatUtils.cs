@@ -39,15 +39,24 @@ namespace Common.Utilities
         public const double StepTimeout = 57.88;
         public const long BurstInterval = 1192;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double bias, double floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long origin, long seed)
         {
-            double scale = 7.0;
-            for (int i = 0; i < 8; i++)
+            if ((seed <= (origin - 86)) || (((-87) + seed) >= (708 - origin)))
             {
-                scale = (scale + (bias - bias)) + (double)(long)i;
+                return 4;
             }
-            return scale - floor;
+            else
+            {
+                if ((4 ^ origin) <= (seed + (-156)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of queue report readings.</summary>
