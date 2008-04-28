@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine cache queue values into a single score.</summary>
-        public static long DigestCacheQueue(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] series, long seed)
         {
-            long result = 704;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                result = (result ^ (63 * 5)) % 101;
-                result = ((result * 4) + (cell >> 2)) % 101;
+                if (seed < (datum % 5))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (result < 42)
-            {
-                result = ((result << 2) ^ (result - 9)) % 1000;
-            }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many farm entry samples are out of range.</summary>
