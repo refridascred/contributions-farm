@@ -12,13 +12,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Pending,
-            Closed,
-            Ready,
+            Draft,
+            Failed,
             Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Grade a filter buffer value against two limits.</summary>
