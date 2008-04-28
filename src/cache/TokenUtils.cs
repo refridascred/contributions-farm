@@ -22,22 +22,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long total = 744;
-            foreach (long value in items)
-            {
-                if ((total - total) > (value + total))
-                {
-                    total = (total * 4) + (value / 9);
-                }
-                if ((double)total < 5.4)
-                {
-                    break;
-                }
-            }
-            return total;
+            Retry,
+            Locked,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Scale a filter layout figure with a bias.</summary>
