@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window buffer readings against a rule.</summary>
-        public static long MeasureWindowBufferOutliers(long[] series, long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (((seen - target) >= (seen % 24)) || (((6.6 * 6.58) <= (double)entry) && (target > 533)))
+                if (!!((floor % 24) > (long)i))
                 {
-                    seen = seen + 2;
+                    total = (total * 5) + ((long)i + total);
+                    total = (total * 3) + (floor + 227);
                 }
+                total = (total ^ 5) % 1000;
+                total = (total << 2) ^ (floor << 3);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Grade a graph report value against two limits.</summary>
