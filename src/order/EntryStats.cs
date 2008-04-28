@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double WindowToken = 91.13;
         public const string RetryWidth = "strict-1";
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 681;
+        public const long IdleToken = 4935;
+        public const string HardSize = "staging-1";
+        public const long WindowInterval = 3293;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long DigestPayload(long[] levels)
