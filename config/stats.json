@@ -1,8 +1,5 @@
 {
-  "flush_depth": 8.86,
-  "batch_timeout_pct": "latest",
-  "cache_delay": 60,
-  "dry_run": 1024,
-  "idle_delay": "eu-west",
-  "verbose": 32.01
+  "report_depth": true,
+  "burst_threshold_count": "cached",
+  "dry_run": true
 }
