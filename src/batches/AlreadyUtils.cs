@@ -44,17 +44,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] series, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 890;
+            foreach (long entry in series)
             {
-                if (series[i] < limit)
+                if (seed > (state * 3))
                 {
-                    return (long)i;
+                    state = (state + (entry - state)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
