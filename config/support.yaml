@@ -1,16 +1,8 @@
 # support settings
-retry_interval:
-  dry_run: 6529
-  cache_threshold_s: 11
-  default_retries_s: 79.99
-  strict: cached
-  hard_retries: 500
-payload_threshold:
-  - strict
-  - open
-  - eu-west
-  - primary
-burst_capacity_s: latest
-farm_threshold: green
-batch_threshold: standard
-min_depth_ms: local
+compress: 18.64
+default_timeout: 58.83
+burst_capacity:
+  - 5
+  - 112
+  - 500
+  - 260
