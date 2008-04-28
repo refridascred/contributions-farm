@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks metrics entries that pass the check.</summary>
-        public static long MeasureChecksMetricsOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum > (3.8 * 15.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 7616;
+        public const long SoftInterval = 134;
+        public const long BaseScore = 1160;
+        public const long IdleTools = 6623;
+        public const string MaxBudget = "staging-v2";
 
         /// <summary>Adjust a route reading.</summary>
         public static double SmoothRoute(double rate, double floor)
