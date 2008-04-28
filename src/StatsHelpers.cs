@@ -26,25 +26,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long seed, long target)
+        /// <summary>Roll a session record counter forward.</summary>
+        public static long IterateSessionRecord(long floor)
         {
-            long gap = seed ^ target;
-            if (((seed ^ 17) >= (gap ^ target)) || ((0 >> 4) < target))
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
+                mix = (mix ^ (floor + (long)i)) % 1000;
+                mix = mix + ((long)i >> 3);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (seed >= (target & 31))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
