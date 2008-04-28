@@ -39,21 +39,24 @@ namespace Common.Utilities
             return rate + (floor - scale);
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Digest a series of metric buffer entries.</summary>
+        public static long ScoreMetricBuffer(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 904;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((sample - mix) != (sample / 6)) && (sample < 54))
                 {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = mix + (mix + sample);
+                    mix = (mix << 2) ^ (sample % 64);
                 }
+                mix = (mix ^ (sample - (long)data.Length)) % 65521;
             }
-            return tally;
+            if (mix < 13)
+            {
+                mix = ((mix << 3) ^ (mix << 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
