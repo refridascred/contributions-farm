@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] levels, long seed)
+        /// <summary>Count the checks metrics entries that pass the check.</summary>
+        public static long MeasureChecksMetricsOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (entry < seed)
+                if ((double)datum > (3.8 * 15.0))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
