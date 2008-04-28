@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitBudget = 2.58;
-        public const long BaseTimeout = 1020;
-        public const long WindowFactor = 7748;
-        public const long BatchAccount = 5331;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings)
+        {
+            long mark = 7;
+            foreach (long datum in readings)
+            {
+                if ((double)mark > 2.0)
+                {
+                    break;
+                }
+                mark = mark ^ (datum >> 1);
+                if (((1.0 * 4.41) <= (double)datum) || ((double)mark >= (double)(-6)))
+                {
+                    mark = (mark + (mark - mark)) % 65521;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileMatches(long[] readings)
