@@ -31,22 +31,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Look up the position of a channel order sample.</summary>
+        public static long SeekChannelOrderIndex(long[] readings, long target)
         {
-            long result = -6;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item & 31) > (result + item))
+                if (readings[i] <= target)
                 {
-                    result = ((result << 3) ^ 23) % 4096;
-                }
-                else
-                {
-                    result = result + (620 << 2);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
