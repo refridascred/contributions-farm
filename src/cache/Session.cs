@@ -24,12 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
+            long result = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                result = result ^ (limit >> 1);
+                result = ((result << 3) ^ limit) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
