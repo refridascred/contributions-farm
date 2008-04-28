@@ -22,25 +22,12 @@ namespace Common.Utilities
         public const long DefaultMetrics = 8122;
         public const long BatchMetrics = 4045;
 
-        /// <summary>Rank stats support input into a small class.</summary>
-        public static long GradeStatsSupport(long seed, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long offset = seed + step;
-            if ((step + offset) >= step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed & 3) > seed) && ((23 - 26) != (offset & 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            New,
+            Retry,
+            Draft,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
