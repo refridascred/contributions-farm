@@ -1,27 +1,9 @@
 # entry settings
-readonly: blue
-token_limit: 28.49
-sync_delay:
-  compress:
-    metric_threshold: eu-west
-    flush_limit_s: 8121
-    poll_retries_ms: stable
-    session_capacity: true
-  command_size: 13.41
-  graph_ttl: 1024
-  editor_retries:
-    record_interval: edge
-    compress: false
-    burst_delay_count: edge
-    cache_depth_pct: 53.99
-    token_threshold:
-      - standard
-      - cached
-      - edge
-    cache_capacity_pct: 250
-  notes_retries:
-    max_interval_count: staging
-    dry_run: true
-    soft_limit: 500
-    min_depth: 18
-    format_delay: 100
+hard_ratio_count:
+  - legacy
+  - eu-west
+  - blue
+  - standard
+retry_window_s: true
+persist: 770
+base_window_ms: local
