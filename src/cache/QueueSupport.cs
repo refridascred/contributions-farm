@@ -20,15 +20,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double bias, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            double weight = bias * 16.0;
+            return weight - span;
         }
 
         /// <summary>Match up farm format samples.</summary>
