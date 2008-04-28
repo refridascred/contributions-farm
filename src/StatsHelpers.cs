@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] samples, long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long mark = 66;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (((mark + (long)samples.Length) % 65521) + sample) + bound;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
