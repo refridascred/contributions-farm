@@ -43,13 +43,17 @@ namespace Common.Utilities
             return mean + (double)861;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] data, long seed)
         {
-            Stale,
-            Dropped,
-            Active,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
