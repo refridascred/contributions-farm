@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 76.31;
-        public const double RetryDepth = 92.66;
-        public const long StepLevel = 3794;
-        public const long BatchSupport = 364;
+        /// <summary>Count buffer channel pairs that satisfy a relation.</summary>
+        public static long OverlapBufferChannelCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 1174;
