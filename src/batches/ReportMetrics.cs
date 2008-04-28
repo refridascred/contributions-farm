@@ -13,17 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] series, long offset)
+        /// <summary>Validate window already readings against a bound.</summary>
+        public static bool GuardWindowAlreadyLimits(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((series[i] <= offset) && ((series[i] % 5) == 0))
+                if (item != limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
