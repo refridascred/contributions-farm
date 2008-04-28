@@ -37,12 +37,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            Ready,
+            Active,
+            Stale,
+            Locked,
+            Done,
         }
     }
 }
