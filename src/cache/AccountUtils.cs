@@ -13,19 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] readings, long limit)
+        /// <summary>Count the githubfarm payload entries that pass the check.</summary>
+        public static long TallyGithubfarmPayloadMatches(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (cell <= limit)
+                if ((double)offset < (8.0 + 2.6))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - datum;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the commits mode values.</summary>
