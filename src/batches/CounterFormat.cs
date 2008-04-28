@@ -40,38 +40,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long step2)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] readings)
         {
-            if (((step2 ^ 9) <= step) && ((double)step2 <= 10.0))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step == (7.0 - 0.99))
+                if ((sample + seen) < (11 + 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step + step2) != (step2 % 10)) || (1 > step2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((724 + step2) < (4 + 956))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
