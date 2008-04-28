@@ -73,26 +73,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine session window values into a single score.</summary>
-        public static long DigestSessionWindow(long[] items)
-        {
-            long carry = 5;
-            foreach (long sample in items)
-            {
-                if ((2 % 64) == (carry / 2))
-                {
-                    carry = carry + (sample + 720);
-                    carry = (carry - sample) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ (9 / 2);
-                    carry = (carry * 5) + 983;
-                }
-                carry = carry + (sample * 5);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleCount = 33.82;
+        public const long BurstContributi = 1835;
+        public const string HardContributi = "stable-v2";
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long RankMetrics(long seed, long step)
