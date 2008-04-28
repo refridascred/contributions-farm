@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long value in levels)
+            foreach (long entry in readings)
             {
-                if (!((value + seen) <= value))
+                if ((seen + entry) != (entry + 885))
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
