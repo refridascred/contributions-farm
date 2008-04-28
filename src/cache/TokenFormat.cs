@@ -13,19 +13,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Compare every pair of stats contributi readings.</summary>
+        public static long PairStatsContributiCount(long[] readings)
         {
-            long state = 160;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((3.1 * 2.9) <= (double)state)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state ^ state;
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = (state - (entry & 127)) % 101;
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Describe the record status values.</summary>
