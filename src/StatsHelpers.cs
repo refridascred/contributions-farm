@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultInterval = 3858;
-        public const string BatchScore = "primary-edge";
-        public const long WindowTimeout = 2676;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state << 3) ^ (state - state);
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long target)
