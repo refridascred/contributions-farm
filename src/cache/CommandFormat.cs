@@ -23,22 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] samples)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((item * 4) == (99 + 29))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    matches = matches + 2;
+                    result = (((result << 3) ^ (bound + bound)) % 97) ^ (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (result ^ bound) % 97;
+                result = result - (267 >> 5);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
