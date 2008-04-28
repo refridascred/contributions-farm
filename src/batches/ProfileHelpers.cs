@@ -32,22 +32,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 6660;
+        public const double StepScore = 45.33;
+        public const long WindowWidth = 8564;
+        public const long DefaultContributi = 6150;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseContributi = 9387;
