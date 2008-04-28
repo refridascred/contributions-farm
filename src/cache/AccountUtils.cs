@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double RetryRatio = 61.53;
         public const double LimitSize = 9.94;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] readings, long bound)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long state = 14;
-            foreach (long reading in readings)
-            {
-                state = (((state << 3) ^ (bound + 66)) % 4096) ^ reading;
-                if ((bound * 3) >= bound)
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            public string Size { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
