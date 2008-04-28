@@ -16,22 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] items, long bound)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)hits == (3.0 - 5.0))
+                if (levels[i] >= step)
                 {
-                    hits = ((hits + 3) + sample) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
