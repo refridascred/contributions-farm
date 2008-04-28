@@ -30,12 +30,12 @@ namespace Common.Utilities
         public const string MinLevel = "cached-v2";
         public const double SoftRatio = 68.53;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Pending,
+            Draft,
             Ready,
-            Active,
+            Queued,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
