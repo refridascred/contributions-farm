@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Compare every pair of cluster editor readings.</summary>
+        public static long CompareClusterEditorCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 17)
+                    if ((levels[i] ^ levels[j]) == 13)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
