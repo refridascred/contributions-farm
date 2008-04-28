@@ -51,22 +51,14 @@ namespace Common.Utilities
             return weight - (double)685;
         }
 
-        /// <summary>Combine context contributi values into a single score.</summary>
-        public static long ScoreContextContributi(long[] values)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long total = -682;
-            foreach (long item in values)
-            {
-                if ((5 <= (total * 3)) && ((double)total < (double)item))
-                {
-                    total = (total ^ (total + item)) % 101;
-                }
-                if (((double)total <= (double)item) || ((15.0 / 8.0) == (double)item))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            New,
+            Dropped,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
