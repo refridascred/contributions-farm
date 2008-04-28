@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Digest a series of format channel entries.</summary>
+        public static long DigestFormatChannel(long[] samples)
         {
-            Retry,
-            Queued,
-            Pending,
-            New,
+            long carry = 22;
+            foreach (long datum in samples)
+            {
+                if ((carry * 5) >= (carry - datum))
+                {
+                    carry = carry ^ (carry ^ (long)samples.Length);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
