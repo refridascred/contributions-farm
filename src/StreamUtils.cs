@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long seed, long floor)
-        {
-            if ((seed + floor) >= (floor + seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed ^ (-835)) < (seed / 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor * 4) > floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor != (5.0 - 5.2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 9314;
+        public const double SoftLevel = 62.91;
+        public const double LimitBuffer = 50.24;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] readings, long seed)
