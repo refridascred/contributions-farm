@@ -47,17 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long target)
+        /// <summary>Digest a series of entry record entries.</summary>
+        public static long TallyEntryRecord(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 6;
+            foreach (long reading in items)
             {
-                if (items[i] >= target)
+                carry = ((carry ^ (seed % 7)) % 4096) + reading;
+                if ((4.0 + 0.1) == (double)seed)
                 {
-                    return (long)i;
+                    carry = (carry + 397) % 65521;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Locate a report reading by value.</summary>
