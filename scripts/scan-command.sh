@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west strict standard local; do
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in staging open legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-blue}"
+mode="${1:-open}"
 case "${mode}" in
-    eu-west)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=148
-log "limit is ${COMMAND_LIMIT}"
