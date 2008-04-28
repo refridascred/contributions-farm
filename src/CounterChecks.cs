@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long origin, long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            if ((floor + origin) > (origin ^ origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor >> 2) >= (origin ^ floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor > (8.0 + 9.65))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6.11 * 14.0) > (double)origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Active,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
