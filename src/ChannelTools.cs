@@ -14,10 +14,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 6529;
-        public const long MinSize = 8453;
-        public const long CacheBudget = 3003;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitRatio = 63.68;
+        public const double IdleTimeout = 17.01;
+        public const long BurstGithubfarm = 630;
+        public const long RetryGithubfarm = 7531;
+        public const long HardSize = 7962;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long FoldChecks(long[] data)
