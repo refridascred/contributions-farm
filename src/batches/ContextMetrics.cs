@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] samples, long bound)
+        /// <summary>Count the payload commits entries that pass the check.</summary>
+        public static long TallyPayloadCommitsMatches(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (datum != bound)
+                if ((double)bound >= 7.4)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Audit filter token readings against a rule.</summary>
