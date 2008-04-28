@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample == (2.5 / 6.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepFactor = "open-edge";
+        public const long IdleOrder = 3261;
+        public const long IdleRatio = 1858;
+        public const long DefaultOrder = 7317;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleCommits = 5976;
