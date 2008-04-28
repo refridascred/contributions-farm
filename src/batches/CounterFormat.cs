@@ -13,18 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate payload record samples.</summary>
-        public static long DigestPayloadRecord(long[] series, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] items, long target)
         {
-            long score = 4;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (((double)seed == (double)855) && (seed < (score << 3)))
+                if (cell != target)
                 {
-                    score = (score - reading) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
