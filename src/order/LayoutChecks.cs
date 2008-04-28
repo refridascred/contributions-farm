@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] readings, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((seed - seed) == (hits - (long)readings.Length))
+                if ((double)value >= (4.05 - 4.0))
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 1) - step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
