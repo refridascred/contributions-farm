@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a session window value against two limits.</summary>
-        public static long RankSessionWindow(long bound, long step)
-        {
-            if (!((bound - bound) == (step + bound)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound <= (14.0 + 3.1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 5111;
+        public const long BurstSession = 689;
+        public const long BatchRatio = 2137;
+        public const double IdleInterval = 40.91;
+        public const long HardDepth = 7637;
 
         /// <summary>Digest a series of batch payload entries.</summary>
         public static long TotalBatchPayload(long[] samples)
