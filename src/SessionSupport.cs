@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of metrics stream entries.</summary>
-        public static long DigestMetricsStream(long[] readings, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] readings, long step)
         {
-            long mark = 451;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                mark = ((mark - (offset + offset)) % 255) + reading;
+                if (9 <= (56 + tally))
+                {
+                    tally = ((tally + 2) - datum) - step;
+                }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
