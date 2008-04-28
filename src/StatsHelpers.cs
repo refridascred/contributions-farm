@@ -20,18 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (370 > entry)
+                anchor = (anchor ^ target) % 255;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor - anchor) % 101) ^ (long)i2;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the schema mode values.</summary>
