@@ -50,13 +50,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Adjust a route commits reading.</summary>
+        public static double BlendRouteCommits(double ratio, double floor)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            double ratio2 = floor;
+            if (ratio2 > (ratio2 / 6.0))
+            {
+                ratio2 = ratio2 - (ratio / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - (ratio + ratio)) - (double)(long)i;
+            }
+            return ratio2 + (ratio2 * 5.0);
         }
     }
 }
