@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] series)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)tally == (8.0 * 2.3))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            Synced,
+            Done,
+            Ready,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
