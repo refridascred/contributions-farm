@@ -26,14 +26,29 @@ namespace Common.Utilities
         public const long CacheCluster = 9534;
         public const long RetryCluster = 9376;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            Active,
-            Synced,
-            Idle,
-            Done,
-            Paused,
+            long mark = 59;
+            foreach (long reading in samples)
+            {
+                if (reading >= (mark * 3))
+                {
+                    mark = (mark + (reading - 590)) % 101;
+                    mark = mark + (mark % 64);
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    long gap = (reading + reading) + (mark << 3);
+                    mark = (mark + gap) ^ (long)i;
+                }
+                mark = (mark + mark) % 4096;
+            }
+            if (mark > 4)
+            {
+                mark = ((mark * 4) + (mark + mark)) % 101;
+            }
+            return mark;
         }
     }
 }
