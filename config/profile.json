@@ -1,11 +1,5 @@
 {
-  "metrics_delay": {
-    "enabled": 1.92,
-    "counter_depth": 9,
-    "flush_timeout": 9.43
-  },
-  "hard_delay_count": 27,
-  "audit": "staging",
-  "burst_threshold": 24,
-  "verbose": 26
+  "warm_timeout_ms": true,
+  "sync_window_pct": 5.33,
+  "warm_retries": false
 }
