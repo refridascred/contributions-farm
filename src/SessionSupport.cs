@@ -20,11 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 9.23;
-        public const double MaxChannel = 50.91;
-        public const long BurstChannel = 3669;
-        public const long HardChannel = 1119;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 5) + (origin * 4)) % 255;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
