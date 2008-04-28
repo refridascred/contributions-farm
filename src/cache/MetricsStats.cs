@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a stream stats value against two limits.</summary>
-        public static long BucketStreamStats(long seed, long step)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if (!((804 + step) == (seed - seed)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(step <= (seed + 605)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed ^ step) == (seed & 63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - 30) <= (345 + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Synced,
+            Draft,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
