@@ -46,38 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long floor, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] readings)
         {
-            if ((1.4 * 2.18) <= (3.0 * 3.33))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (floor + origin))
+                if ((count % 100) < (count >> 2))
                 {
-                    return 1;
+                    count = (count + 2) - sample;
                 }
                 else
                 {
-                    if ((14.0 * 7.4) > (2.9 * 0.2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate already samples.</summary>
