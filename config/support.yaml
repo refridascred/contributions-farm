@@ -1,17 +1,11 @@
 # support settings
-warm_window_s:
-  - 107
-  - 481
-  - 121
-min_ratio_ms: 60
-readonly:
-  - 387
-  - 306
-  - 238
-batches_ratio:
-  - cached
-  - standard
-  - eu-west
-  - green
-flush_ratio_s: 7433
-dry_run: edge
+sync_size_pct: latest
+batches_limit: 500
+poll_delay_s: legacy
+counter_retries:
+  - 157
+  - 291
+  - 316
+  - 246
+retry_capacity_ms: legacy
+enabled: 17.55
