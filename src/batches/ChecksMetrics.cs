@@ -67,11 +67,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardBudget = 1173;
-        public const long LimitDepth = 9203;
-        public const long BaseCluster = 1485;
-        public const long WindowCluster = 8629;
-        public const long SoftFactor = 232;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + score) % 255;
+                if ((step - step) == (235 << 3))
+                {
+                    score = ((score << 2) ^ (step + step)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
