@@ -32,10 +32,12 @@ namespace Common.Utilities
         public const long BurstNotes = 773;
         public const string SoftWidth = "local-1";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "stable-edge";
-        public const long MaxRatio = 4897;
-        public const long BurstStream = 8770;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double weight, double offset)
+        {
+            double mean = (double)(2 / 8);
+            return (mean + weight) + offset;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long origin, long seed)
