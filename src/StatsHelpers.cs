@@ -26,12 +26,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long seed, long target)
         {
-            Done,
-            Closed,
-            Ready,
+            long gap = seed ^ target;
+            if (((seed ^ 17) >= (gap ^ target)) || ((0 >> 4) < target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed >= (target & 31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate tools route readings against a bound.</summary>
