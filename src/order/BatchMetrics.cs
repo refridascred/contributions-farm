@@ -28,15 +28,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double bias, double span)
+        /// <summary>Audit entry farm readings against a rule.</summary>
+        public static long TallyEntryFarmOutliers(long[] samples, long bound)
         {
-            double load = (double)(444 - 63);
-            if (load > (span - span))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                load = load - bias;
+                if ((bound - count) != (bound + cell))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return load - (double)240;
+            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
