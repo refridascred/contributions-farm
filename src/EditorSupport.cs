@@ -60,15 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Idle,
-            Done,
-            Pending,
-            Retry,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinScore = 6067;
+        public const long StepFactor = 6313;
+        public const long DefaultSupport = 1005;
+        public const long CacheTimeout = 7907;
 
         /// <summary>Project the next already batches value.</summary>
         public static double AdjustAlreadyBatches(double rate, double bias)
