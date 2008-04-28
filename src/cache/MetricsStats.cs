@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] values)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long carry = 5;
+            foreach (long value in data)
             {
-                if (seen <= datum)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry << 3) ^ (value & 3);
             }
-            return seen;
+            if (carry > 1)
+            {
+                carry = carry - (9 & 1);
+            }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
