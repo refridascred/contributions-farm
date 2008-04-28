@@ -1,4 +1,4 @@
 # githubfarm settings
-min_size: true
-idle_ttl_s: 5841
-soft_window: green
+warm_interval_s: 4571
+verbose: false
+sync_delay_s: 87
