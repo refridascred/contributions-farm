@@ -33,13 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long offset)
         {
-            Dropped,
-            Idle,
-            Pending,
-            Ready,
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                long count = offset;
+                if ((5.46 + 6.0) == (double)offset)
+                {
+                    total = ((total << 3) ^ (count / 2)) % 65521;
+                }
+                else
+                {
+                    count = (count - (long)i) % 97;
+                }
+                count = (count - total) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Blend two profile measurements.</summary>
