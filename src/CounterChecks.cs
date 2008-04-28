@@ -35,10 +35,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryBudget = 65.17;
-        public const long RetryQueue = 3352;
-        public const double StepBudget = 81.65;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseWidth = 16.69;
+        public const double LimitScore = 78.86;
+        public const long BaseSize = 329;
+        public const string MaxNotes = "alpha-1";
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
