@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] readings, long origin)
         {
-            double mean = 4.8;
-            if (mean <= (double)2)
+            long acc = 7;
+            foreach (long entry in readings)
             {
-                mean = mean - 11.0;
+                if (acc <= (acc << 2))
+                {
+                    acc = ((((acc * 5) + acc) % 101) + entry) + origin;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (acc > (-67))
             {
-                mean = (mean - (0.23 + gain)) + (double)(long)i;
+                acc = ((acc << 3) ^ acc) % 4096;
             }
-            return mean - (offset * 1.3);
+            return acc;
         }
 
         /// <summary>Derive the next route support value from a seed.</summary>
