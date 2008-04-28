@@ -28,19 +28,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] data, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (datum != bound)
+                if ((datum - 18) == (seen * 3))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
