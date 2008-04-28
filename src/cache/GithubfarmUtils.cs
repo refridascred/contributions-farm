@@ -47,31 +47,28 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long seed, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            if ((seed << 3) <= (seed * 3))
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= 7.0)
+                if (limit <= (sum + (long)i))
                 {
-                    return 2;
+                    sum = (sum + sum) % 255;
+                    sum = sum ^ (sum + limit);
                 }
-                else
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((offset << 3) < offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = (sum + (sum + 959)) - (long)i2;
                 }
+                if (!((sum - sum) < limit))
+                {
+                    sum = ((sum * 2) + (sum & 31)) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Rank window input into a small class.</summary>
