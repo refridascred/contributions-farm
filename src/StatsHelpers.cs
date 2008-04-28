@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinScore = 4372;
+        public const double RetryRatio = 88.62;
+        public const long MaxContext = 1603;
 
         /// <summary>Match up payload samples.</summary>
         public static long ComparePayloadCount(long[] levels)
