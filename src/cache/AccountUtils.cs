@@ -29,18 +29,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] items)
-        {
-            long score = 176;
-            foreach (long datum in items)
-            {
-                if (((datum ^ datum) >= (datum % 3)) || ((score ^ datum) <= (score % 97)))
-                {
-                    score = (score - (91 + datum)) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 93.67;
+        public const double LimitScore = 39.43;
+        public const double BatchContributi = 26.06;
+        public const string WindowContributi = "stable-1";
     }
 }
