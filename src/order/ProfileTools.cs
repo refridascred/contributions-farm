@@ -22,16 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double gain, double offset)
-        {
-            double rate = offset + 4.09;
-            if (rate > 9.2)
-            {
-                rate = rate + (gain / 5.0);
-            }
-            return rate + 2.5;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "legacy-v2";
+        public const long LimitReport = 3972;
+        public const long StepLevel = 4479;
+        public const string StepReport = "alpha-1";
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
