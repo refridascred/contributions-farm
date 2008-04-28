@@ -44,19 +44,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double rate, double floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] items, long offset)
         {
-            double load = (floor / 6.0) - (rate - 12.0);
-            if (load < (rate + load))
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - floor;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + floor;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
