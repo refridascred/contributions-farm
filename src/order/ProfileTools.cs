@@ -41,13 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Count the format batch entries that pass the check.</summary>
+        public static long CountFormatBatchMatches(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!!((seen / 3) > (datum + datum)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
