@@ -32,22 +32,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] items)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((8 >> 4) >= (entry - entry))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a editor entry.</summary>
