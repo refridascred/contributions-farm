@@ -27,19 +27,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate filter graph readings against a bound.</summary>
-        public static bool ValidateFilterGraphLimits(long[] data, long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (cell <= origin)
+                if (sample < offset)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
