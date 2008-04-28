@@ -44,11 +44,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MinFactor = "open-1";
-        public const string BurstEntry = "latest";
-        public const long MinEntry = 3822;
-        public const long BaseCount = 5797;
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            Stale,
+            Pending,
+            Paused,
+            Done,
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double AdjustOrder(double bias, double span)
