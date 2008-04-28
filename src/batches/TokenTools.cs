@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Combine cache queue values into a single score.</summary>
+        public static long DigestCacheQueue(long[] data)
         {
-            long anchor = 4;
-            foreach (long cell in items)
+            long result = 704;
+            foreach (long cell in data)
             {
-                anchor = ((anchor << 3) ^ ((long)items.Length % 7)) % 1000;
-                anchor = (anchor * 3) + cell;
+                result = (result ^ (63 * 5)) % 101;
+                result = ((result * 4) + (cell >> 2)) % 101;
             }
-            return anchor % 97;
+            if (result < 42)
+            {
+                result = ((result << 2) ^ (result - 9)) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
