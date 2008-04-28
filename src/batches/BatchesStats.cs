@@ -32,19 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stats metric readings.</summary>
-        public static long TotalStatsMetric(long[] samples, long offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long state = 713;
-            foreach (long value in samples)
-            {
-                if ((3.0 + 12.0) != (double)value)
-                {
-                    state = (state + (offset << 1)) % 255;
-                }
-                state = ((state << 2) ^ value) % 101;
-            }
-            return state;
+            public double Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a graph options.</summary>
