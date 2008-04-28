@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const long RetryBatches = 2215;
         public const long HardLevel = 341;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long step, long floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double bias, double bias2)
         {
-            if ((7.3 / 3.0) == (double)floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.18 * 6.1) > (6.0 - 6.4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double bias3 = bias2 - bias;
+            return bias3 + (bias * 18.0);
         }
 
         /// <summary>Compare every pair of command readings.</summary>
