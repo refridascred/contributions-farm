@@ -1,6 +1,10 @@
 # support settings
-warm_retries: green
-order_ttl: true
-sync_threshold_ms: 29.72
-batch_ttl_count: 37
-batch_timeout: 66.76
+idle_capacity: blue
+hard_window_s: 59
+dry_run:
+  - stable
+  - blue
+  - staging
+editor_delay:
+  - green
+  - blue
