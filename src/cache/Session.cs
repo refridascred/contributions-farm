@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepFactor = "open-edge";
-        public const long IdleOrder = 3261;
-        public const long IdleRatio = 1858;
-        public const long DefaultOrder = 7317;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextRange(long[] readings, long bound)
