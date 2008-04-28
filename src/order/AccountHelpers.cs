@@ -25,22 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] data, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long result = -184;
-            foreach (long sample in data)
-            {
-                if (19.0 > (double)offset)
-                {
-                    result = ((result << 3) ^ offset) - sample;
-                }
-            }
-            if (result < 530)
-            {
-                result = ((result * 3) + result) % 97;
-            }
-            return result % 4096;
+            Idle,
+            Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a already entry.</summary>
