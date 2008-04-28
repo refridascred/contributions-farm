@@ -63,12 +63,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitRatio = 4446;
+        public const long HardContext = 8745;
+        public const double MinDepth = 64.44;
+        public const long HardSize = 4748;
     }
 }
