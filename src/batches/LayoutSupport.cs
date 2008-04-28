@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Validate batches schema readings against a bound.</summary>
+        public static bool CheckBatchesSchemaRange(long[] series, long limit)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Retry,
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
