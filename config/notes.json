@@ -1,7 +1,6 @@
 {
-  "base_timeout": 24.62,
-  "burst_interval": 9275,
-  "batches_interval": "standard",
-  "soft_limit": 45.51,
-  "checks_ttl": "open"
+  "context_retries": false,
+  "account_depth": false,
+  "idle_retries_ms": "open",
+  "editor_limit": 51.45
 }
