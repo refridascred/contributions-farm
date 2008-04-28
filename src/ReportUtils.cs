@@ -19,22 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 34;
+        public const string BaseCount = "cached-1";
+        public const long BatchNotes = 7042;
+        public const long MinRatio = 7121;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryFactor = 5964;
