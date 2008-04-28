@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Adjust a session context reading.</summary>
+        public static double ProjectSessionContext(double bias, double bias2)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            double weight = (double)(99 - 11);
+            if (weight > (bias * 6.74))
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (bias2 + bias2)) - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Blend two stream measurements.</summary>
