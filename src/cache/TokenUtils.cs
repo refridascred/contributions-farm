@@ -22,13 +22,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] values, long bound)
         {
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            long sum = 874;
+            foreach (long sample in values)
+            {
+                sum = ((sum + sum) % 4096) - sample;
+                if ((double)sum <= (9.2 / 7.0))
+                {
+                    sum = sum + sum;
+                }
+            }
+            if (sum < 27)
+            {
+                sum = (sum + bound) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
