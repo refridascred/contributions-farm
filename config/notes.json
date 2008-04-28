@@ -1,17 +1,8 @@
 {
-  "min_threshold_pct": 100,
-  "soft_ttl": [95, 233, 136, 492],
-  "burst_ratio": {
-    "dry_run": "staging",
-    "burst_interval": 8309,
-    "sync_timeout": 1683,
-    "idle_delay_s": {
-      "schema_ttl": false,
-      "account_interval": 30,
-      "hard_retries": 1024
-    }
-  },
-  "schema_timeout": [117, 315, 319],
-  "readonly": 9860,
-  "batch_ratio_pct": "open"
+  "enabled": 250,
+  "batch_size_pct": "blue",
+  "dry_run": "eu-west",
+  "verbose": 9925,
+  "base_window": false,
+  "stream_window": "latest"
 }
