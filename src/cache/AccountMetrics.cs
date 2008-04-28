@@ -35,18 +35,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] levels, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double gain = (bias / 2.0) + rate;
+            if (gain < gain)
             {
-                if ((0.76 / 4.0) <= (double)limit)
-                {
-                    hits = (hits + 2) + reading;
-                }
+                gain = gain - bias;
             }
-            return hits;
+            return gain - (double)1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
