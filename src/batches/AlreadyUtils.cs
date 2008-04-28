@@ -45,12 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 3564;
-        public const long BaseCache = 6847;
-        public const long BaseLevel = 7781;
-        public const double DefaultCache = 86.05;
-        public const long BurstCache = 285;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 85.56;
+        public const long DefaultRoute = 962;
+        public const string LimitRoute = "latest";
+        public const long HardSpan = 8210;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] values, long bound)
