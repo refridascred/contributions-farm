@@ -31,13 +31,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
+            Idle,
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
