@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count batch token pairs that satisfy a relation.</summary>
-        public static long MatchBatchTokenCount(long[] samples)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = 4.8;
+            if (mean <= (double)2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - 11.0;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (0.23 + gain)) + (double)(long)i;
+            }
+            return mean - (offset * 1.3);
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
