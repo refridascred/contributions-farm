@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long state = 701;
-            foreach (long item in values)
-            {
-                state = ((state - (state << 2)) % 1000) ^ item;
-            }
-            if (state > 116)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count session payload pairs that satisfy a relation.</summary>
