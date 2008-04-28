@@ -46,18 +46,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] series, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if (((-8) & 15) >= floor)
             {
-                if ((entry ^ entry) > (offset & 255))
+                return 7;
+            }
+            else
+            {
+                if ((bound & 127) < (floor * 3))
                 {
-                    tally = tally + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
