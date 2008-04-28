@@ -39,24 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long origin, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            if ((origin + origin) < (285 << 3))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin / 3) >= (69 & 31))
+                if ((seen + 419) < sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate payload batch readings against a bound.</summary>
