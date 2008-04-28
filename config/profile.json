@@ -1,6 +1,11 @@
 {
-  "compress": 60,
-  "default_size": "green",
-  "audit": "staging",
-  "poll_timeout": "strict"
+  "flush_interval": "strict",
+  "poll_ttl_s": 93.39,
+  "dry_run": {
+    "compress": "eu-west",
+    "min_interval_count": ["standard", "local"],
+    "stream_size": 59,
+    "record_limit": "legacy"
+  },
+  "retry_limit_pct": 60
 }
