@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((value - (long)samples.Length) < count)
+                if (sample <= step)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
