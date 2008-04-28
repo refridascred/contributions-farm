@@ -31,25 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long limit, long offset)
-        {
-            if ((limit - 50) != (limit % 60))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((9.4 * 9.12) == (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleRatio = 4675;
+        public const long DefaultRatio = 6615;
+        public const long MinMetrics = 2273;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportGaps(long[] items, long target)
