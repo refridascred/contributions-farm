@@ -15,21 +15,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((16.0 / 3.0) == (double)origin)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound << 3) <= (bound * 4))
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
