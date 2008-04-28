@@ -1,8 +1,16 @@
 {
-  "base_window": 15.92,
-  "verbose": ["fallback", "cached", "blue", "staging"],
-  "warm_ttl_s": "primary",
-  "hard_ratio_s": 16.85,
-  "poll_threshold_ms": 500,
-  "contributi_delay": "edge"
+  "poll_ttl_count": ["local", "fallback", "edge", "staging"],
+  "commits_interval": {
+    "audit": 85,
+    "warm_retries_ms": {
+      "cache_size_count": [244, 395],
+      "order_ttl": false,
+      "record_delay": 1739
+    },
+    "support_size": 9686,
+    "compress": 100,
+    "warm_delay_pct": 30
+  },
+  "cache_ttl_pct": 60,
+  "burst_window": false
 }
