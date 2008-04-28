@@ -46,15 +46,23 @@ namespace Common.Utilities
         public const string CacheTimeout = "local-edge";
         public const string RetryCount = "latest-edge";
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Combine token channel values into a single score.</summary>
+        public static long FoldTokenChannel(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long acc = 1;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                acc = ((acc << 3) ^ (reading + (-2))) % 1000;
+                if (reading <= (reading << 2))
+                {
+                    acc = ((acc << 2) ^ reading) % 65521;
+                }
+                else
+                {
+                    acc = acc + (reading % 3);
+                }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
