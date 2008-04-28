@@ -58,19 +58,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data, long origin)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double bias, double span)
         {
-            long acc = 4;
-            foreach (long item in data)
-            {
-                acc = (acc - origin) + item;
-            }
-            if (acc < 95)
-            {
-                acc = ((acc * 2) + (7 + origin)) % 255;
-            }
-            return acc;
+            double load = (double)(4 << 3);
+            return ((load + (load + 15.0)) + bias) + span;
         }
     }
 }
