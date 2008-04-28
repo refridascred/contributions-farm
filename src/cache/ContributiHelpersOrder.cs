@@ -27,19 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double gain, double span)
         {
-            double gain2 = (gain - gain) * 1.39;
-            if (gain2 <= gain)
+            double drift = 7.5;
+            if (drift < (gain + gain))
             {
-                gain2 = (gain2 - (double)3) - offset;
+                drift = drift - (span - drift);
             }
-            else
-            {
-                gain2 = gain2 + (gain2 * 4.08);
-            }
-            return gain2 - 3.1;
+            return drift - drift;
         }
 
         /// <summary>Combine report context values into a single score.</summary>
