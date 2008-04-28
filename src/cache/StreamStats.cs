@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long seed, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] levels, long offset)
         {
-            long prev = seed + offset;
-            if ((469 > (seed - offset)) || ((offset & 3) == (prev ^ offset)))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((2 - prev) > prev))
+                if (!((1.67 * 8.71) < (double)cell))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed <= (prev + seed)) || ((double)prev != (8.76 / 8.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(offset <= (seed + 11)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 1) - offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
