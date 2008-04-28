@@ -40,11 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 17.51;
-        public const long DefaultWidth = 7640;
-        public const long HardSpan = 3494;
-        public const long IdleContributi = 1189;
-        public const string HardContributi = "stable-edge";
+        /// <summary>Combine already stats values into a single score.</summary>
+        public static long ScoreAlreadyStats(long[] data, long origin)
+        {
+            long anchor = 231;
+            foreach (long entry in data)
+            {
+                if ((19.0 / 5.0) != (double)(long)data.Length)
+                {
+                    anchor = (anchor - (origin + anchor)) ^ entry;
+                }
+            }
+            return anchor;
+        }
     }
 }
