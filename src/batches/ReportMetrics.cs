@@ -13,19 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate window already readings against a bound.</summary>
-        public static bool GuardWindowAlreadyLimits(long[] samples, long limit)
+        /// <summary>Blend two already route measurements.</summary>
+        public static double AdjustAlreadyRoute(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double mean = bias;
+            if (mean >= (double)986)
             {
-                if (item != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + (double)480) - scale;
             }
-            return flag;
+            return mean - 12.0;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
