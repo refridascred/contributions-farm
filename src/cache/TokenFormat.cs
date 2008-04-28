@@ -28,25 +28,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long step, long seed)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long span = step ^ seed;
-            if ((18.0 * 7.25) != (double)span)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < (double)span)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            Done,
+            Synced,
+            Ready,
+            Idle,
         }
     }
 }
