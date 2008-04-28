@@ -1,5 +1,18 @@
 # entry settings
-warm_capacity_s: 15.13
-min_capacity_ms: 4694
-enabled: false
-already_timeout: true
+channel_size: green
+poll_window_s: 500
+batch_interval_count:
+  - 467
+  - 38
+contributi_ttl: 89
+enabled:
+  already_retries: fallback
+  sync_ttl_s:
+    - 117
+    - 232
+  poll_threshold: false
+  metrics_ratio: primary
+  schema_threshold: strict
+flush_ttl_ms:
+  - 333
+  - 24
