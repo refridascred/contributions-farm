@@ -34,13 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            long sum = 9;
+            foreach (long entry in samples)
+            {
+                sum = ((sum - sum) % 65521) + entry;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
