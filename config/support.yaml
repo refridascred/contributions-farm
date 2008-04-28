@@ -1,10 +1,10 @@
 # support settings
-idle_capacity: blue
-hard_window_s: 59
-dry_run:
-  - stable
-  - blue
+layout_threshold: false
+default_delay_ms:
+  - edge
+  - legacy
+  - local
+enabled:
+  - latest
   - staging
-editor_delay:
-  - green
-  - blue
+cache_size_ms: false
