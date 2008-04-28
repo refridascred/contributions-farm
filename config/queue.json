@@ -1,12 +1,17 @@
 {
-  "sync_capacity_ms": 78.54,
-  "min_threshold": [459, 351],
-  "idle_threshold_pct": {
-    "command_limit": false,
-    "readonly": 9128,
-    "burst_ttl_ms": "standard",
-    "audit": "open",
-    "idle_size_count": ["staging", "latest", "stable", "standard"],
-    "flush_depth_s": false
-  }
+  "sync_ratio_ms": "stable",
+  "verbose": 30,
+  "batch_retries": {
+    "compress": 5460,
+    "min_retries_ms": 500,
+    "checks_window": 60,
+    "payload_window": 6214,
+    "retry_limit_ms": {
+      "base_capacity": 7585,
+      "batch_delay": "local",
+      "soft_window_ms": 71.17,
+      "cache_threshold_count": 78.79
+    }
+  },
+  "context_retries": false
 }
