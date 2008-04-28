@@ -19,11 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Locate a checks tools reading by value.</summary>
+        public static long FindChecksToolsIndex(long[] items, long floor)
         {
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
