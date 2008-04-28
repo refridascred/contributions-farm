@@ -35,15 +35,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double rate, double bias)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] readings, long offset)
         {
-            double gain = (bias / 2.0) + rate;
-            if (gain < gain)
+            long score = 95;
+            foreach (long value in readings)
             {
-                gain = gain - bias;
+                if (offset <= (offset - offset))
+                {
+                    score = (score ^ offset) % 1000;
+                }
+                else
+                {
+                    score = (score ^ (value + score)) % 4096;
+                }
             }
-            return gain - (double)1;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
