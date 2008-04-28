@@ -16,22 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstSpan = "strict";
+        public const long RetryDepth = 1391;
+        public const long MinRoute = 109;
+        public const string HardBudget = "fallback";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 672;
