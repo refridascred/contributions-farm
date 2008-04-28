@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue stream entries that pass the check.</summary>
-        public static long CountQueueStreamMatches(long[] data, long origin)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)(long)data.Length < 13.0)
-                {
-                    matches = ((matches + 3) - value) - origin;
-                }
-            }
-            return matches;
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
