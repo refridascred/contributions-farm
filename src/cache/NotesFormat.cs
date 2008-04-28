@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account counter entries that pass the check.</summary>
-        public static long TallyAccountCounterGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((17.0 + 4.5) > (6.0 - 0.1))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowSpan = 8086;
+        public const long SoftFactor = 5293;
+        public const string MinRatio = "alpha-v2";
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
