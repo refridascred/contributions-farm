@@ -40,22 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long sum = 280;
+            foreach (long value in data)
             {
-                if ((double)tally <= (3.7 + 3.4))
-                {
-                    tally = ((tally + 3) ^ cell) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum + (238 + seed)) % 255) + value;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Check that every account report entry stays within the limit.</summary>
