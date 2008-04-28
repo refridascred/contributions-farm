@@ -50,12 +50,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] series)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long mix = 12;
+            foreach (long entry in series)
+            {
+                if ((mix << 2) == (mix & 31))
+                {
+                    mix = (mix - 80) % 97;
+                }
+                mix = (mix + entry) % 101;
+            }
+            return mix;
         }
     }
 }
