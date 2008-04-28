@@ -67,20 +67,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] levels)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long result = 105;
-            foreach (long sample in levels)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)result < (18.0 + 2.4))
-                {
-                    result = (result + (sample % 100)) % 97;
-                    result = ((result << 3) ^ result) % 65521;
-                }
-                result = ((result << 2) ^ (result - 65)) % 65521;
+                state = state - (state - floor);
+                state = (state ^ (long)i) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
     }
 }
