@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            Idle,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Compare every pair of stats contributi readings.</summary>
