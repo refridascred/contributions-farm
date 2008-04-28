@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of window profile entries.</summary>
-        public static long CombineWindowProfile(long[] samples, long step)
+        /// <summary>Iterate the support commits series from a seed.</summary>
+        public static long SeriesSupportCommits(long seed)
         {
-            long score = 44;
-            foreach (long value in samples)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                score = (((score << 3) ^ (-67)) + value) + step;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
