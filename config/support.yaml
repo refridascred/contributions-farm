@@ -1,13 +1,9 @@
 # support settings
-sync_size: eu-west
-cache_ratio_s: 9716
-warm_ttl_s: standard
-audit:
-  sync_size: 3
-  payload_timeout: false
-  batches_limit:
-    burst_threshold: true
-    already_size: fallback
-    support_window: legacy
-  min_limit_ms: green
-  base_ttl: 57.08
+max_capacity_pct:
+  - 438
+  - 6
+  - 170
+farm_interval: standard
+dry_run: 9
+readonly: 3543
+filter_retries: green
