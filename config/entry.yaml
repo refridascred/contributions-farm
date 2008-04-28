@@ -1,25 +1,27 @@
 # entry settings
-warm_ratio_ms:
-  support_ttl:
-    hard_ttl_count: 250
-    batches_interval:
-      - 72
-      - 151
-      - 179
-    flush_ttl: green
-  burst_depth: 33.63
-  cache_threshold_count: 250
-  flush_capacity: 3937
-  account_interval: legacy
-hard_retries_s: 4.47
-strict: fallback
-idle_delay_s: 39.33
-poll_window:
-  burst_interval_s: 71.67
-  min_size:
-    base_size_s: 85.58
-    batch_window: cached
-    soft_retries_count: 3536
-  cache_delay_s: local
-  audit: 250
-  sync_threshold_s: latest
+readonly: blue
+token_limit: 28.49
+sync_delay:
+  compress:
+    metric_threshold: eu-west
+    flush_limit_s: 8121
+    poll_retries_ms: stable
+    session_capacity: true
+  command_size: 13.41
+  graph_ttl: 1024
+  editor_retries:
+    record_interval: edge
+    compress: false
+    burst_delay_count: edge
+    cache_depth_pct: 53.99
+    token_threshold:
+      - standard
+      - cached
+      - edge
+    cache_capacity_pct: 250
+  notes_retries:
+    max_interval_count: staging
+    dry_run: true
+    soft_limit: 500
+    min_depth: 18
+    format_delay: 100
