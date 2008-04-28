@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long MaxBudget = 1263;
         public const long CacheSize = 8841;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryMetrics = 1.06;
-        public const long WindowMetrics = 7770;
-        public const string StepMetrics = "strict-1";
-        public const long RetryFactor = 5131;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((9 << 1) == (20 - reading))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine context contributi values into a single score.</summary>
         public static long ScoreContextContributi(long[] values)
