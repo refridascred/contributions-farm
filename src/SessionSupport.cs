@@ -28,11 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (hits < 776)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
