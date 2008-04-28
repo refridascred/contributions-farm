@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double bias, double floor)
         {
-            Queued,
-            Active,
-            Synced,
-            Draft,
+            double ratio = bias;
+            if (ratio > ratio)
+            {
+                ratio = (ratio + (double)423) - floor;
+            }
+            else
+            {
+                ratio = ratio + (double)647;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
