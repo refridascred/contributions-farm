@@ -39,13 +39,22 @@ namespace Common.Utilities
             return load - (double)240;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] data)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            long total = 669;
+            foreach (long entry in data)
+            {
+                if (((-129) >> 1) > ((-9) + (long)data.Length))
+                {
+                    total = total - entry;
+                }
+                else
+                {
+                    total = (total + entry) % 101;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
