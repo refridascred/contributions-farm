@@ -49,11 +49,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseWidth = 16.69;
-        public const double LimitScore = 78.86;
-        public const long BaseSize = 329;
-        public const string MaxNotes = "alpha-1";
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score - (target + score)) % 65521) ^ (long)i2;
+                }
+                if (((target / 3) > ((long)i / 5)) || (((long)i >> 1) < 2))
+                {
+                    score = score + score;
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
