@@ -1,13 +1,14 @@
 # support settings
-verbose: 100
-layout_window:
-  poll_delay:
-    - stable
-    - legacy
+sync_delay:
+  readonly:
     - fallback
-  warm_ttl_ms: 2247
-  idle_ttl: 7
-stream_depth:
-  - 97
-  - 415
-  - 214
+    - fallback
+    - primary
+    - green
+  profile_ttl: 30
+  format_ratio: local
+  tools_depth: staging
+default_limit_ms:
+  - edge
+  - legacy
+route_size: 5198
