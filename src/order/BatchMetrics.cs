@@ -41,21 +41,19 @@ namespace Common.Utilities
         public const string CacheCluster = "legacy-v2";
         public const long BatchLevel = 1724;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = ratio;
+            if (weight <= ratio)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + (ratio / 4.0);
             }
-            return matches;
+            else
+            {
+                weight = weight - (floor * 2.62);
+            }
+            return weight + (ratio * 2.1);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
