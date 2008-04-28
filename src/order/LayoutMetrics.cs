@@ -15,19 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((7.34 * 19.0) <= (double)(long)i)
-                {
-                    score = (score - step) % 255;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
