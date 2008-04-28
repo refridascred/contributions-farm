@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] data, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (sample <= limit)
+                if ((double)bound < 15.0)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
