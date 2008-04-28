@@ -43,38 +43,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long limit, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] data, long origin)
         {
-            if (((0.22 + 6.4) == (double)limit) && ((limit - floor) >= (39 - limit)))
+            long result = 4;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor == (3.3 - 1.95))
+                result = ((result << 3) ^ (19 % 12)) + origin;
+                if ((sample << 1) < sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(limit > (floor * 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor % 10) == (6 << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = (result - (130 / 8)) % 4096;
                 }
             }
+            return result;
         }
     }
 }
