@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] samples, long seed)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((2.9 / 4.0) == (double)item) && ((item - item) > (item ^ matches)))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up payload samples.</summary>
