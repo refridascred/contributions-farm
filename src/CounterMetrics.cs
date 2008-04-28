@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double bias, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = 7.1;
+            if (scale <= (span * 6.0))
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (span * 9.19)) + bias;
             }
-            return -1;
+            else
+            {
+                scale = scale + (double)938;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (double)(-77)) - (double)(long)i;
+            }
+            return scale + (double)20;
         }
 
         /// <summary>Combine window values into a single score.</summary>
