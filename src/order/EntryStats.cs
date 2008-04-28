@@ -23,13 +23,32 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long bound, long floor)
         {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long bound2 = bound - floor;
+            if (!((floor << 2) < 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound2 >= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor >> 1) <= (floor ^ bound)) && ((double)bound <= 16.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
