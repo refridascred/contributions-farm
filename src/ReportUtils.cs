@@ -46,22 +46,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] items)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            long anchor = -4;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry + (-61)) <= (entry - entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor + anchor;
-                }
-                if (!((anchor + entry) >= (anchor * 3)))
-                {
-                    break;
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
