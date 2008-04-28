@@ -34,11 +34,20 @@ namespace Common.Utilities
         public const long WindowWidth = 8564;
         public const long DefaultContributi = 6150;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 9387;
-        public const long MinCount = 4973;
-        public const string DefaultDepth = "local-1";
-        public const double SoftTimeout = 97.19;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
