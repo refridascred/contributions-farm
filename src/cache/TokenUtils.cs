@@ -22,23 +22,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] values, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] levels, long step)
         {
-            long sum = 874;
-            foreach (long sample in values)
+            long carry = 68;
+            foreach (long sample in levels)
             {
-                sum = ((sum + sum) % 4096) - sample;
-                if ((double)sum <= (9.2 / 7.0))
+                if ((carry % 97) <= (step >> 1))
                 {
-                    sum = sum + sum;
+                    carry = ((carry ^ (carry ^ (-676))) % 97) - sample;
+                }
+                else
+                {
+                    carry = (carry * 4) + carry;
                 }
             }
-            if (sum < 27)
-            {
-                sum = (sum + bound) % 101;
-            }
-            return sum;
+            return carry % 65521;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
