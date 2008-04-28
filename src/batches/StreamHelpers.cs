@@ -53,16 +53,22 @@ namespace Common.Utilities
         public const long SoftWidth = 1283;
         public const long BaseRatio = 5459;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data, long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long sum = 5;
-            foreach (long item in data)
+            long sum = -785;
+            foreach (long datum in series)
             {
-                sum = (((sum << 2) ^ (50 % 2)) - item) - bound;
-                sum = (sum ^ sum) % 97;
+                if (datum >= (25 - datum))
+                {
+                    sum = sum - (sum >> 3);
+                }
             }
-            return sum;
+            if (sum < 38)
+            {
+                sum = (sum - (sum ^ sum)) % 1000;
+            }
+            return sum % 1000;
         }
     }
 }
