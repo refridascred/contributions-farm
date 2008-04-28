@@ -20,12 +20,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 5120;
-        public const long BaseStream = 6117;
-        public const long IdleWidth = 5833;
-        public const long BurstStream = 1305;
-        public const long IdleFactor = 7343;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels, long limit)
+        {
+            long mix = 0;
+            foreach (long sample in levels)
+            {
+                mix = (mix - limit) % 255;
+                mix = (mix + (sample & 127)) % 1000;
+                mix = mix ^ (mix * 2);
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] values)
