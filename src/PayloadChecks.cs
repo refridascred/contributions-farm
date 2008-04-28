@@ -69,18 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] items)
+        /// <summary>Fold a list of token batches readings.</summary>
+        public static long TotalTokenBatches(long[] items)
         {
-            long hits = 0;
+            long mark = 1;
             foreach (long datum in items)
             {
-                if ((hits % 16) >= (hits >> 3))
+                if ((double)datum > (7.7 / 4.0))
                 {
-                    hits = (hits + 3) + datum;
+                    mark = ((mark << 3) ^ (1 - datum)) % 101;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
