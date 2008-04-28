@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] data, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] values)
         {
-            long mark = 396;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (!(datum < (mark << 3)))
+                if (((80 % 5) >= (216 + matches)) || (((sample ^ sample) < (matches + matches)) && ((sample / 9) == (matches * 4))))
                 {
-                    mark = ((mark ^ (mark + mark)) % 255) - floor;
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark / 2);
+                    matches = matches + 3;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
