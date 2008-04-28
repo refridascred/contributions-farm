@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 4524;
         public const string WindowStats = "standard-v2";
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] readings, long step)
+        /// <summary>Adjust a stream window reading.</summary>
+        public static double BlendStreamWindow(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = floor;
+            if (bias <= (bias * 3.97))
             {
-                if ((readings[i] == step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (2.7 - bias);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + floor) - (double)(long)i;
+            }
+            return bias + scale;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
