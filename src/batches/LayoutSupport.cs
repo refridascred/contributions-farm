@@ -66,22 +66,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] samples, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long step, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if ((156 ^ bound) <= (bound % 16))
             {
-                if ((offset >> 2) != (offset - offset))
+                return 0;
+            }
+            else
+            {
+                if ((step + bound) < (96 + bound))
                 {
-                    tally = (tally + 2) - item;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((bound >> 5) > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)bound < (7.78 / 7.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
