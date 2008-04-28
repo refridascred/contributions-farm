@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long CachePayload = 4754;
         public const long CacheRatio = 3806;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a command header.</summary>
