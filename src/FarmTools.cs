@@ -16,20 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxDepth = 22.64;
+        public const long BaseSize = 2694;
+        public const double BatchInterval = 41.21;
 
         /// <summary>Measure how many record cache samples are out of range.</summary>
         public static long AuditRecordCacheGaps(long[] samples, long step)
