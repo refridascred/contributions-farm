@@ -1,7 +1,8 @@
-id,ratio,level,rank
-1,22.85,727,local
-2,fallback,55.17,48.5
-3,cached,latest,40.71
-4,856,stable,stable
-5,73.79,64,34.9
-6,25.37,910,97.36
+id,weight,region
+1,91.4,302
+2,87.99,15.27
+3,159,149
+4,legacy,stable
+5,41.45,561
+6,fallback,35
+7,873,160
