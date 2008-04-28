@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardInterval = 4609;
-        public const long DefaultContext = 9221;
-        public const long HardTimeout = 7090;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "alpha-1";
+        public const double SoftSpan = 82.48;
+        public const double BurstToken = 39.94;
+        public const long CacheToken = 8682;
+        public const string MaxSpan = "cached-v2";
 
         /// <summary>Scale a notes stats figure with a bias.</summary>
         public static double BlendNotesStats(double weight, double floor)
