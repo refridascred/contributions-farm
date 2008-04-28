@@ -1,8 +1,6 @@
-id,state,weight,active
-1,629,7.75,38
-2,58.66,641,82
-3,809,43.7,937
-4,333,229,staging
-5,34.15,12.21,primary
-6,cached,913,staging
-7,3.08,47.56,72.82
+id,active,region
+1,666,primary
+2,987,92.55
+3,standard,89.64
+4,cached,91.08
+5,664,cached
