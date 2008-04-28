@@ -1,4 +1,4 @@
 # githubfarm settings
-already_ratio: 4548
-hard_capacity: 2142
-idle_depth_ms: 52
+readonly: 96.84
+default_depth_ms: 95
+batch_ttl_ms: stable
