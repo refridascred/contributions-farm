@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long origin, long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] data, long origin)
         {
-            if (origin <= (origin + target))
+            long total = 729;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin == (0.3 + 4.4))
+                if (!((total + total) == (total + (long)data.Length)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target == (20.0 + 2.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = (((total * 2) + (926 - 39)) ^ cell) - origin;
                 }
             }
+            return total;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
