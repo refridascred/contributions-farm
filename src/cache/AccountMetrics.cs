@@ -17,13 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] samples, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((origin << 2) <= (hits * 3))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a command header.</summary>
