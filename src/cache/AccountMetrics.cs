@@ -74,19 +74,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double bias, double offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double bias2 = offset * 4.0;
-            if (bias2 > bias)
-            {
-                bias2 = bias2 + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - bias2) - (double)(long)i;
-            }
-            return bias2 + offset;
+            Ready,
+            Queued,
+            New,
+            Failed,
+            Dropped,
         }
     }
 }
