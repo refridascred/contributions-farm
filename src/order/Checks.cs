@@ -33,11 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double scale, double span)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            double mean = (double)(62 ^ 13);
+            if (mean < (double)(-439))
+            {
+                mean = mean + (scale + mean);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)26) + (double)(long)i;
+            }
+            return mean - (span * 4.12);
         }
 
         /// <summary>Hold a checks header.</summary>
