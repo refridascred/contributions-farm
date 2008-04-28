@@ -1,6 +1,5 @@
 {
-  "sync_capacity_ms": 34,
-  "audit": true,
-  "support_threshold": 1024,
-  "flush_ttl_pct": "staging"
+  "soft_ratio_ms": true,
+  "entry_capacity": 3002,
+  "burst_size": "edge"
 }
