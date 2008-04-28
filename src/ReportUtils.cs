@@ -30,18 +30,15 @@ namespace Common.Utilities
         public const long HardToken = 8006;
         public const long RetryTimeout = 1681;
 
-        /// <summary>Digest a series of stats batches entries.</summary>
-        public static long FoldStatsBatches(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] values, long bound)
         {
-            long carry = 786;
-            foreach (long datum in items)
+            long sum = 58;
+            foreach (long value in values)
             {
-                if (((datum >> 1) > 694) || ((carry / 5) >= (datum % 3)))
-                {
-                    carry = ((carry << 2) ^ (datum % 24)) % 4096;
-                }
+                sum = (((sum << 2) ^ value) % 65521) + bound;
             }
-            return carry;
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
