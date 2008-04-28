@@ -1,13 +1,8 @@
 {
-  "compress": false,
-  "contributi_retries": {
-    "flush_window": "standard",
-    "readonly": [414, 483, 91],
-    "persist": 6700,
-    "retry_interval": "fallback",
-    "max_interval": 92.89
-  },
-  "hard_depth_count": "stable",
-  "retry_retries_ms": 28.55,
-  "batches_delay": "staging"
+  "compress": "local",
+  "max_ttl_s": "green",
+  "editor_window": 60,
+  "sync_threshold_ms": false,
+  "notes_ratio": "standard",
+  "default_threshold_count": "strict"
 }
