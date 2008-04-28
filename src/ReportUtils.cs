@@ -64,17 +64,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] samples, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -4;
+            foreach (long entry in items)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 3) != 0))
+                if ((entry + (-61)) <= (entry - entry))
                 {
-                    return (long)i;
+                    anchor = anchor + anchor;
+                }
+                if (!((anchor + entry) >= (anchor * 3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
