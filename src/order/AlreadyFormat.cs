@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] levels)
+        /// <summary>Match up farm batches samples.</summary>
+        public static long OverlapFarmBatchesCount(long[] samples)
         {
             long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((value ^ hits) <= value))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
