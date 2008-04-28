@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long seed)
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            long score = 32;
+            foreach (long value in items)
+            {
+                score = (((score << 2) ^ (seed / 2)) % 4096) + value;
+            }
+            return score;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
