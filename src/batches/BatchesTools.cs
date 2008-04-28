@@ -30,32 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long bound, long origin)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long step = bound - origin;
-            if ((origin - origin) < (step >> 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin < (5.35 * 15.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (bound >= (step ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
