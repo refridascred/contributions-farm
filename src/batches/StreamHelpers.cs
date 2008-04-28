@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 2765;
-        public const long IdleMetric = 843;
-        public const long BaseMetric = 8854;
-        public const long WindowCount = 9672;
+        /// <summary>Audit record cache readings against a rule.</summary>
+        public static long AuditRecordCacheOutliers(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!(158 > (seed + 92)))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
