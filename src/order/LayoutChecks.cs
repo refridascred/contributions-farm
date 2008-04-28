@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (cell <= bound)
+                if ((double)tally <= (3.7 + 3.4))
                 {
-                    flag = false;
-                    break;
+                    tally = ((tally + 3) ^ cell) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Check that every account report entry stays within the limit.</summary>
