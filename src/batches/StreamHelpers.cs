@@ -33,21 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a metrics summary.</summary>
