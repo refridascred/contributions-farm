@@ -47,13 +47,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Closed,
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
