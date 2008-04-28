@@ -21,18 +21,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the githubfarm payload entries that pass the check.</summary>
-        public static long TallyGithubfarmPayloadMatches(long[] series, long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((double)offset < (8.0 + 2.6))
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Describe the commits mode values.</summary>
