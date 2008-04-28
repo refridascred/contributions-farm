@@ -68,23 +68,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] readings, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] series, long limit)
         {
-            long sum = -41;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if (series[i] < limit)
                 {
-                    sum = ((sum + (item >> 4)) % 1000) - (long)i;
-                }
-                sum = ((sum << 2) ^ (item - sum)) % 1000;
-                if (((82 >> 3) <= (item - sum)) || ((421 + bound) > (item - item)))
-                {
-                    sum = sum + (sum >> 4);
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
