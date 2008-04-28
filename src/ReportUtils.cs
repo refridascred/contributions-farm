@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] data)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry <= (count % 3))
-                {
-                    count = count + 3;
-                }
+                total = total ^ (total - bound);
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
