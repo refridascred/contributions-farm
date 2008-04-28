@@ -54,28 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels, long seed)
+        /// <summary>Fold a list of window channel readings.</summary>
+        public static long FoldWindowChannel(long[] data, long offset)
         {
-            long result = -2;
-            foreach (long sample in levels)
+            long anchor = 42;
+            foreach (long sample in data)
             {
-                result = result - result;
-                result = result + (10 * 2);
-                if ((result & 3) == ((-9) + sample))
+                for (int i = 0; i < 7; i++)
                 {
-                    result = result - (sample / 5);
+                    anchor = ((((anchor << 2) ^ 549) % 255) - (long)i) + sample;
                 }
-                if (((853 & 255) <= (sample ^ result)) || ((seed + seed) >= (sample / 6)))
+                if (15.0 <= (double)anchor)
                 {
-                    break;
+                    anchor = anchor + (offset + offset);
                 }
             }
-            if (result < 824)
+            if (anchor > 257)
             {
-                result = (result + (seed & 3)) % 97;
+                anchor = (anchor - (123 - offset)) % 101;
             }
-            return result % 65521;
+            return anchor % 65521;
         }
     }
 }
