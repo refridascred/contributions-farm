@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long bound, long offset)
         {
-            long score = 951;
-            foreach (long cell in levels)
+            long gap = bound ^ offset;
+            if ((offset + (-74)) >= (bound ^ offset))
             {
-                score = score + score;
-                if (!((double)cell <= 4.91))
+                return 0;
+            }
+            else
+            {
+                if ((86 + gap) >= (offset ^ gap))
                 {
-                    score = (score - (434 & 15)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound & 255) != (bound * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset > 16.0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (score < 30)
-            {
-                score = score ^ (score ^ score);
-            }
-            return score % 65521;
         }
 
         /// <summary>Fold a list of command context readings.</summary>
