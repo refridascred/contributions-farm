@@ -66,13 +66,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "latest-1";
+        public const string MaxGithubfarm = "latest-v2";
+        public const long StepSpan = 9930;
+        public const string BaseRatio = "primary";
+        public const double LimitSpan = 21.4;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
