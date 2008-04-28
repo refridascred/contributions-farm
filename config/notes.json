@@ -1,12 +1,9 @@
 {
-  "cache_retries_s": 30,
-  "hard_delay_pct": 60,
-  "verbose": [399, 92, 55],
-  "tools_ttl": {
-    "account_timeout": 94.96,
-    "soft_threshold_count": 2.65,
-    "default_window_count": "strict",
-    "metric_capacity": 0.39,
-    "retry_size_pct": 34
-  }
+  "poll_delay_ms": 18.6,
+  "enabled": {
+    "sync_depth": "local",
+    "flush_delay_count": [380, 177, 150, 189],
+    "strict": ["legacy", "staging"]
+  },
+  "min_capacity_count": "legacy"
 }
