@@ -39,21 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
