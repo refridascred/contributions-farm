@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] levels, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (value < target)
+                if ((item - 94) < (matches / 5))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
