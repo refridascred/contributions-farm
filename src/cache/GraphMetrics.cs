@@ -52,21 +52,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm batch readings.</summary>
-        public static long MatchGithubfarmBatchCount(long[] items)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
