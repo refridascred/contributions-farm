@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] series, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long offset)
         {
-            long carry = 1;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ (bound % 12)) % 255;
-                if ((reading % 10) >= (reading & 255))
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
                 {
-                    carry = (carry ^ bound) % 101;
-                }
-                else
-                {
-                    carry = carry ^ (reading << 1);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the filter farm entries that pass the check.</summary>
