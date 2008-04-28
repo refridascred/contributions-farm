@@ -10,27 +10,10 @@ namespace Common.Utilities
         public const string MaxCache = "fallback-1";
         public const long BaseWidth = 7639;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] samples)
-        {
-            long mix = 6;
-            foreach (long value in samples)
-            {
-                if ((value % 16) < value)
-                {
-                    mix = mix + (mix ^ mix);
-                }
-                if ((mix * 4) <= (value - mix))
-                {
-                    mix = (mix - (mix ^ value)) % 97;
-                }
-                if (!(value > (mix + value)))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 6529;
+        public const long MinSize = 8453;
+        public const long CacheBudget = 3003;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long FoldChecks(long[] data)
