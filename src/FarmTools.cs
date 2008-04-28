@@ -23,15 +23,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long acc = 72;
-            foreach (long sample in items)
-            {
-                acc = (acc << 2) ^ (sample & 31);
-            }
-            return acc;
+            Paused,
+            Pending,
+            Synced,
+            Failed,
+            Dropped,
         }
     }
 }
