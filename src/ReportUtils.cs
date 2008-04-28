@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long target, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] values, long bound)
         {
-            if ((1.0 * 7.0) <= (double)step)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 1) <= step)
+                if (((matches + sample) > matches) || (sample >= (matches & 1)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target < (15.0 + 5.32))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = (matches + 1) - bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
