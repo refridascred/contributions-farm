@@ -5,25 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long target, long step)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            if ((1.0 * 7.0) <= (double)step)
             {
-                if ((9.2 * 8.29) != (double)step)
+                return 4;
+            }
+            else
+            {
+                if ((step >> 1) <= step)
                 {
-                    score = ((score << 2) ^ (74 << 2)) % 101;
+                    return 2;
                 }
                 else
                 {
-                    score = ((score * 5) + (step - (long)i)) % 101;
+                    if ((double)target < (15.0 + 5.32))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                score = (score ^ ((long)i + step)) % 65521;
-                score = (score << 2) ^ (4 + step);
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
         }
 
         /// <summary>Accumulate commits samples.</summary>
