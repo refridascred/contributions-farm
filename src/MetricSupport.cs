@@ -39,21 +39,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = weight;
+            if (mean <= 12.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + (mean / 6.0);
             }
-            return seen;
+            else
+            {
+                mean = mean - (mean * 1.94);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean + (mean * 6.65);
         }
     }
 }
