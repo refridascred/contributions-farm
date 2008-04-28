@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Derive the next support graph value from a seed.</summary>
+        public static long SeriesSupportGraph(long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                result = (result ^ ((long)i / 7)) % 65521;
+                result = (result ^ (long)i) % 97;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
