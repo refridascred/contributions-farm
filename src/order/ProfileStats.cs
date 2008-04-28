@@ -38,11 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Roll a notes stream counter forward.</summary>
+        public static long IterateNotesStream(long floor)
         {
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix * 5) + (7 / 5);
+                if ((3 + mix) == (mix - floor))
+                {
+                    mix = mix ^ (mix * 3);
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
