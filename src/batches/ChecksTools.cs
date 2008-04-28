@@ -32,26 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] data, long limit)
         {
-            long total = 894;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((entry - entry) > (total + 5))
+                if ((value + count) >= (count + count))
                 {
-                    total = (total << 3) ^ (entry >> 3);
+                    count = (count + 3) + limit;
                 }
                 else
                 {
-                    total = (total + total) % 101;
+                    count = count - 1;
                 }
             }
-            if (total < 9)
-            {
-                total = (total << 3) ^ (total + total);
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
