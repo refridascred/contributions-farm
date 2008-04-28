@@ -54,12 +54,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double floor)
-        {
-            double rate = scale;
-            return rate + (floor - scale);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinWidth = 35.77;
+        public const long IdleNotes = 8741;
+        public const string WindowScore = "local";
 
         /// <summary>Accumulate entry samples.</summary>
         public static long ScoreEntry(long[] data)
