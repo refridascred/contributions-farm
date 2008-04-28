@@ -37,12 +37,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long step, long target)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            if (step <= (target + step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)target >= 11.0) && ((3.5 * 5.0) > (double)target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
