@@ -1,5 +1,7 @@
 {
-  "idle_threshold": "open",
-  "context_ttl": true,
-  "readonly": true
+  "poll_threshold": 60,
+  "flush_size_count": "edge",
+  "burst_ttl": 1024,
+  "soft_window": 30,
+  "max_delay_s": 2
 }
