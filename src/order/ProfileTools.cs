@@ -56,16 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] values, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                result = ((result << 3) ^ (result - (long)i)) % 65521;
-                result = ((result * 5) + (long)i) % 4093;
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
     }
 }
