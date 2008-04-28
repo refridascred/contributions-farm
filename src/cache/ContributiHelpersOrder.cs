@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] levels, long limit)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long score = 14;
+            foreach (long value in levels)
+            {
+                score = (((score * 3) + (value * 3)) % 4096) - limit;
+            }
+            if (score < 793)
+            {
+                score = (score ^ (score & 127)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the commits kind values.</summary>
