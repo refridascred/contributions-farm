@@ -12,10 +12,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxScore = "staging-v2";
-        public const string MinScore = "fallback-v2";
-        public const string MinCache = "alpha-edge";
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] levels)
