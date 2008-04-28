@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] levels)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long step, long limit)
         {
-            long carry = -9;
-            foreach (long entry in levels)
+            long cur = step + limit;
+            if (((cur >> 1) < (cur / 4)) || (((-951) + step) < cur))
             {
-                carry = (carry ^ (entry >> 1)) % 65521;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((step + 5) <= 218)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((527 & 31) > (limit - cur)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
