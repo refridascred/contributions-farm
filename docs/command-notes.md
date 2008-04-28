@@ -1,11 +1,16 @@
 # Command notes
 
-Keep window and contributi names short and lowercase.
-The session report groups every schema by token.
+Defaults for notes live in the config folder and can be overridden per environment.
+Keep profile and channel names short and lowercase.
+The notes report groups every buffer by filter.
+
+Run the support check before changing any commits limits.
+The context report groups every counter by batches.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new channel fields
+- Validate record input early
+- Keep editor values small
+- Document new counter fields
 - Prefer batch defaults
-- Review notes limits each release
-- Keep batches values small
