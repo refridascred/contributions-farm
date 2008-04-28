@@ -14,19 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit context token readings against a rule.</summary>
-        public static long CountContextTokenMatches(long[] levels, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum & 3) <= datum)
-                {
-                    matches = (matches + 2) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstDepth = 9173;
+        public const long IdleContext = 1441;
+        public const long BaseLevel = 1565;
+        public const long HardContext = 9554;
+        public const long WindowContext = 7956;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderLimits(long[] series, long step)
