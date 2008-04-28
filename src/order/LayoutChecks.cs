@@ -65,12 +65,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] values, long offset)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry >= (count - offset)) || ((17.0 + 2.56) < (double)offset))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
