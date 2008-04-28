@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the entry metrics entries that pass the check.</summary>
-        public static long AuditEntryMetricsHits(long[] series, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)(-838) != (double)target)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Closed,
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the tools phase values.</summary>
