@@ -58,17 +58,30 @@ namespace Common.Utilities
         public const long LimitFactor = 6976;
         public const long DefaultSession = 631;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            long result = 986;
-            foreach (long value in data)
+            long carry = 9;
+            foreach (long entry in items)
             {
-                result = (result ^ (value / 2)) % 255;
-                result = (result * 2) + (7 - result);
-                result = ((result * 5) + (result ^ result)) % 255;
+                if ((carry + carry) > carry)
+                {
+                    carry = ((carry * 4) + (entry % 60)) % 65521;
+                }
+                else
+                {
+                    carry = carry - (carry >> 2);
+                }
+                if (((carry << 3) != (entry ^ carry)) && ((entry - carry) == (carry - 8)))
+                {
+                    carry = (carry + (entry >> 5)) % 97;
+                }
+                if (!((entry + carry) <= (entry / 5)))
+                {
+                    carry = (carry - (carry ^ carry)) % 255;
+                }
             }
-            return result;
+            return carry;
         }
     }
 }
