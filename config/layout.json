@@ -1,23 +1,5 @@
 {
-  "retry_ratio_pct": "legacy",
-  "default_window": ["stable", "blue", "standard"],
-  "hard_ratio": {
-    "payload_retries": "green",
-    "already_ratio": {
-      "default_ratio_s": false,
-      "compress": 100,
-      "session_capacity": false,
-      "warm_timeout_count": 39.35
-    },
-    "command_interval": "latest",
-    "checks_retries": "staging",
-    "batch_interval_ms": {
-      "compress": [41, 120, 88, 92],
-      "retry_depth_s": "stable",
-      "support_timeout": 37
-    }
-  },
-  "batches_window": 93.47,
-  "default_depth_s": "primary",
-  "min_interval_ms": 43
+  "persist": 1024,
+  "soft_delay": 44,
+  "idle_capacity": ["legacy", "primary"]
 }
