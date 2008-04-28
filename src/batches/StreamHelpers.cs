@@ -33,12 +33,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] series)
         {
-            Failed,
-            Dropped,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics summary.</summary>
