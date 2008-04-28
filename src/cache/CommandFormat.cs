@@ -14,15 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long bound)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
