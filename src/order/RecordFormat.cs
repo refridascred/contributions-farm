@@ -59,15 +59,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double rate, double floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double ratio = (double)(30 % 8);
-            if (ratio > floor)
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (rate + ratio);
+            New,
+            Pending,
+            Locked,
+            Draft,
         }
     }
 }
