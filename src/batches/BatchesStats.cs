@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a cache format pair into a bucket.</summary>
-        public static long ClassifyCacheFormat(long step, long offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] levels, long target)
         {
-            if ((step * 2) <= offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset >> 4) > 610)
+                if (levels[i] <= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((4 << 3) >= (step * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the graph class values.</summary>
