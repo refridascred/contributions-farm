@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 37.31;
+        public const long WindowGithubfarm = 9929;
+        public const long WindowScore = 9569;
+        public const string IdleGithubfarm = "cached";
+        public const long CacheLevel = 2483;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double WindowWidth = 9.86;
