@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Pending,
-            Failed,
-            Synced,
+            Active,
             Draft,
+            Closed,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the command kind values.</summary>
