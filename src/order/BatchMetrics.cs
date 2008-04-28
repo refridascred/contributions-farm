@@ -68,20 +68,12 @@ namespace Common.Utilities
             return ratio - (3.61 - 10.0);
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstInterval = 7205;
+        public const long BurstRatio = 1493;
+        public const string MinSize = "latest";
+        public const string HardCounter = "primary-v2";
+        public const long BurstSpan = 1704;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstLevel = 1667;
