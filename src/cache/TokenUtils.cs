@@ -35,17 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] items, long offset)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] < offset) && ((items[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
