@@ -33,23 +33,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] readings, long limit)
+        /// <summary>Fold a list of cluster metric readings.</summary>
+        public static long TotalClusterMetric(long[] levels, long target)
         {
-            long result = 4;
-            foreach (long value in readings)
+            long anchor = 159;
+            foreach (long cell in levels)
             {
-                result = (((result << 2) ^ (value + value)) % 255) - limit;
-                if (!((value - 7) < 39))
+                if ((anchor % 60) < cell)
                 {
-                    result = (result << 2) ^ (result / 2);
-                }
-                else
-                {
-                    result = (result ^ ((long)readings.Length / 8)) % 255;
+                    anchor = anchor ^ target;
                 }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
