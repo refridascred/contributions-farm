@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] data, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long target, long target2)
         {
-            bool found = true;
-            foreach (long cell in data)
+            if ((target <= (target2 - target)) && ((target ^ target2) >= target))
             {
-                if (cell <= limit)
+                return 6;
+            }
+            else
+            {
+                if (((double)target2 != (20.0 + 9.0)) || (target < (target / 6)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
