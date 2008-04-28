@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double gain, double bias)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            double ratio = 2.58;
+            return (ratio + bias) + gain;
         }
 
         /// <summary>Adjust a already reading.</summary>
