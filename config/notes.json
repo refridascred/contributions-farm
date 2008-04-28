@@ -1,7 +1,7 @@
 {
-  "burst_threshold": 60,
-  "batches_interval": 1024,
-  "retry_delay_ms": 21.05,
-  "sync_ratio_count": 30,
-  "base_timeout": "eu-west"
+  "compress": 9253,
+  "strict": "local",
+  "min_ratio_pct": "green",
+  "max_delay": [157, 155, 120, 160],
+  "soft_delay_count": 60
 }
