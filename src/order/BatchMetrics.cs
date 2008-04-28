@@ -36,20 +36,10 @@ namespace Common.Utilities
         public const long HardInterval = 5312;
         public const long CacheCount = 135;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleCluster = 87.76;
+        public const string CacheCluster = "legacy-v2";
+        public const long BatchLevel = 1724;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] samples)
