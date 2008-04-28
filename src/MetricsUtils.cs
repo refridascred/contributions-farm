@@ -56,11 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleSize = "primary-1";
-        public const long BatchQueue = 7627;
-        public const string IdleQueue = "latest-1";
-        public const long MinQueue = 9056;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public long Token { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long seed)
