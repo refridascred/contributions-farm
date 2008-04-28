@@ -13,22 +13,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] data, long step)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((7 - step) <= (hits + 98))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    hits = (hits + 3) + cell;
+                    carry = carry + ((long)i2 * 3);
                 }
-                else
+                if ((carry + (long)i) == (seed - carry))
                 {
-                    hits = hits - 1;
+                    carry = ((carry * 4) + seed) % 101;
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Blend two profile measurements.</summary>
