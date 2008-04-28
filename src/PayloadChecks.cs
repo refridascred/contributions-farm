@@ -54,13 +54,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long offset, long floor)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long slot = offset + floor;
+            if ((1.9 / 8.0) == (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((3.4 - 1.6) <= (double)slot)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
