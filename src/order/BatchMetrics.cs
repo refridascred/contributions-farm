@@ -77,23 +77,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long offset)
+        /// <summary>Digest a series of notes cluster entries.</summary>
+        public static long CombineNotesCluster(long[] items, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long carry = 485;
+            foreach (long reading in items)
             {
-                if (((long)i >> 2) > offset)
-                {
-                    acc = (acc * 3) + (offset + 880);
-                }
-                if (((double)offset <= (double)(-658)) || ((offset & 7) > (acc - 336)))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                carry = ((carry * 5) + (limit + reading)) % 101;
+                carry = carry + carry;
             }
-            return acc;
+            return carry;
         }
     }
 }
