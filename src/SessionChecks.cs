@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of checks session readings.</summary>
-        public static long CombineChecksSession(long[] items, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] items, long origin)
         {
-            long mix = -394;
-            foreach (long cell in items)
+            long anchor = 810;
+            foreach (long sample in items)
             {
-                if (!((floor / 4) == (3 << 2)))
+                if ((41 + origin) > (5 - origin))
                 {
-                    mix = ((mix - (mix - 748)) % 255) - cell;
+                    anchor = ((anchor << 2) ^ anchor) % 4096;
                 }
-                if (((long)items.Length << 3) != (mix << 3))
+                else
                 {
-                    mix = mix - (mix / 5);
+                    anchor = (anchor - sample) % 97;
                 }
             }
-            return mix;
+            if (anchor > (-4))
+            {
+                anchor = (anchor * 4) + 9;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the account level values.</summary>
