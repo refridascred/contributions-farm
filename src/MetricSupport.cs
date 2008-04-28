@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit route queue readings against a rule.</summary>
-        public static long TallyRouteQueueHits(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches + matches) >= (310 - reading))
-                {
-                    matches = (matches + 2) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheTimeout = 30.79;
+        public const long SoftCount = 1635;
+        public const string WindowLevel = "fallback";
+        public const string CacheRatio = "primary-1";
 
         /// <summary>Combine support cache values into a single score.</summary>
         public static long WeighSupportCache(long[] series)
