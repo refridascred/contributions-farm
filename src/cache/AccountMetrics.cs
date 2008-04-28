@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 700;
-        public const long CachePayload = 4754;
-        public const long CacheRatio = 3806;
+        /// <summary>Iterate the payload buffer series from a seed.</summary>
+        public static long StepPayloadBuffer(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 3) + (mark >> 4)) % 101;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
