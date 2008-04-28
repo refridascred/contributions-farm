@@ -47,20 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics window entry stays within the limit.</summary>
-        public static bool VerifyMetricsWindowLimits(long[] items, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 9639;
+        public const long RetryDepth = 6686;
+        public const double BatchSupport = 51.88;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
