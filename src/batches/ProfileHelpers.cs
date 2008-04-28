@@ -49,21 +49,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Audit command session readings against a rule.</summary>
+        public static long TallyCommandSessionGaps(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((-3) + 709) == (seen ^ entry))
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
