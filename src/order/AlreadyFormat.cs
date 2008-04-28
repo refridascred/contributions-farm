@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long step)
         {
-            Pending,
-            Paused,
-            Failed,
+            long lane = seed + step;
+            if ((step - lane) != (lane >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((3 - seed) > 60)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step < (24 ^ 24))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
