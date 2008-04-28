@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long HardLevel = 1015;
         public const long MinCache = 4255;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] levels, long step)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (step <= (step & 127))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            Synced,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Count session payload pairs that satisfy a relation.</summary>
