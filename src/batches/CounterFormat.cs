@@ -17,21 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long acc = 981;
-            foreach (long reading in levels)
-            {
-                acc = (((acc * 4) + (acc >> 5)) % 4096) - reading;
-                acc = (acc + (4 / 7)) % 1000;
-                acc = acc + (acc & 3);
-            }
-            if (acc < (-378))
-            {
-                acc = (acc + acc) % 101;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
