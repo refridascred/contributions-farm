@@ -53,13 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            Stale,
-            Draft,
-            New,
-            Done,
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
