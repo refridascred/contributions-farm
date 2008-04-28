@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long step, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long floor)
         {
-            long lane = step - limit;
-            if ((lane - 9) < (limit + limit))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((235 + step) == (8 << 1))
+                if (datum != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((lane * 5) >= 86)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)step <= (17.0 + 3.9)) || ((2.64 - 4.0) != (double)limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
