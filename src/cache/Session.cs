@@ -11,10 +11,11 @@ namespace Common.Utilities
         public const long IdleRatio = 1858;
         public const long DefaultOrder = 7317;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 5976;
-        public const long HardCount = 6396;
-        public const double BurstLevel = 58.63;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 7450;
+        public const long LimitFactor = 6378;
+        public const double BaseBuffer = 45.76;
+        public const long RetrySize = 8426;
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] series)
