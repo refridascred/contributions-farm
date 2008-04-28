@@ -31,19 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading < (17.0 + 7.0))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheSpan = 17.08;
+        public const string MaxRatio = "fallback";
+        public const long LimitScore = 1478;
+        public const double DefaultDepth = 94.48;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long DeriveAccount(long offset)
