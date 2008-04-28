@@ -64,18 +64,18 @@ namespace Common.Utilities
         public const long CacheProfile = 9173;
         public const long StepSize = 7596;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] readings, long seed)
+        /// <summary>Count the tools report entries that pass the check.</summary>
+        public static long MeasureToolsReportMatches(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (((seen + seed) == (seen / 9)) && (seed <= (seed / 5)))
+                if ((reading & 31) >= origin)
                 {
-                    seen = (seen + 3) + item;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
