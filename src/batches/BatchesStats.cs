@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] items, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            long total = 501;
-            foreach (long entry in items)
+            double rate2 = offset;
+            if (rate2 <= (rate2 / 6.0))
             {
-                total = (total ^ (entry - 1)) - step;
+                rate2 = (rate2 - (6.3 * 0.1)) - rate;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = rate2 - (double)(long)i;
+            }
+            return rate2 - (offset - offset);
         }
 
         /// <summary>Fold a list of stats metric readings.</summary>
