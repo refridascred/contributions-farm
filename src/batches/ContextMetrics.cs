@@ -51,17 +51,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long target2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((6 + 52) != (target + target2))
             {
-                if (samples[i] < limit)
+                return 4;
+            }
+            else
+            {
+                if ((target2 - target) >= target)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
