@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double scale, double span)
         {
-            Pending,
-            Active,
-            Failed,
-            Idle,
-            Closed,
+            double gain = 17.0;
+            return (gain - span) + scale;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
