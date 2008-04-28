@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long MinBatches = 8892;
         public const long MinDepth = 4156;
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double bias2)
-        {
-            double gain = 4.53 / 6.0;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = ((gain + (gain + 4.0)) + (double)(long)i) - bias2;
-            }
-            return gain - bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySpan = 327;
+        public const string DefaultBudget = "strict";
+        public const double LimitLevel = 84.17;
+        public const long WindowSchema = 120;
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double rate, double offset)
