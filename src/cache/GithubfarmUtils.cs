@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long bound, long target)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] values, long origin)
         {
-            if ((11.0 * 7.1) >= (double)bound)
+            long sum = 50;
+            foreach (long value in values)
             {
-                return 5;
+                sum = ((sum ^ (58 + 96)) % 255) - value;
             }
-            else
+            if (sum > 20)
             {
-                if (!((7.1 * 2.46) != (double)target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((18.0 - 8.72) < (6.7 / 5.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound / 5) < (target >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                sum = (sum << 3) ^ (origin >> 1);
             }
+            return sum;
         }
 
         /// <summary>Fold a list of entry tools readings.</summary>
