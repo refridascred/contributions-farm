@@ -24,19 +24,19 @@ namespace Common.Utilities
             return mean - (floor + 4.5);
         }
 
-        /// <summary>Scale a notes stats figure with a bias.</summary>
-        public static double BlendNotesStats(double weight, double floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] levels, long target)
         {
-            double rate = floor;
-            if (rate >= weight)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                rate = rate - (double)680;
+                if (entry > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate - 5.0;
+            return flag;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
