@@ -52,23 +52,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (sum < ((long)i & 15))
-                {
-                    sum = (sum - sum) % 4096;
-                }
-                else
-                {
-                    sum = sum - (sum >> 5);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepInterval = "stable-edge";
+        public const string LimitFactor = "local-v2";
+        public const long HardBatch = 3844;
     }
 }
