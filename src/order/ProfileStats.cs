@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank layout support input into a small class.</summary>
-        public static long SortLayoutSupport(long limit, long origin)
+        /// <summary>Count the githubfarm checks entries that pass the check.</summary>
+        public static long CountGithubfarmChecksGaps(long[] items)
         {
-            long lane = limit + origin;
-            if ((double)lane >= (1.0 * 4.0))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.0 + 1.2) <= (double)limit)
+                if ((seen + 40) >= (datum + datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((2.9 - 0.6) < (double)origin) && ((6 << 3) >= lane))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((63 + lane) <= 28)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
