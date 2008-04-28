@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank metric notes input into a small class.</summary>
-        public static long SortMetricNotes(long limit, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long bound, long floor)
         {
-            long bound = limit + seed;
-            if (!(((-5) + limit) <= 8))
+            if ((2.48 * 5.69) < (double)floor)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((bound - bound) <= (limit - 6))
+                if (bound < (299 + 130))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 2;
+                    if (floor >= (floor - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor <= (6 + floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
