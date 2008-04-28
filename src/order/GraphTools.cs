@@ -48,18 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metrics channel samples are out of range.</summary>
-        public static long CountMetricsChannelOutliers(long[] data, long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((limit - limit) <= (107 ^ 125))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a notes summary.</summary>
