@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double bias, double bias2)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double load = bias + (0.28 * 11.0);
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (bias2 - 5.2)) - (double)(long)i;
-            }
-            return load - (bias2 - bias2);
+            Locked,
+            Dropped,
+            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
