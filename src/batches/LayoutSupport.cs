@@ -23,22 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile session samples are out of range.</summary>
-        public static long CountProfileSessionGaps(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((746 & 7) != (tally + datum))
+                if ((7.8 + 5.1) < (double)seed)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
