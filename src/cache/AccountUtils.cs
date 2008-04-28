@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] readings, long bound)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long bound)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample > bound)
+                if ((long)i < (bound ^ 53))
                 {
-                    valid = false;
-                    break;
+                    result = (result * 3) + (result + (long)i);
+                    result = ((result * 5) + (bound >> 5)) % 4096;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Count the githubfarm payload entries that pass the check.</summary>
