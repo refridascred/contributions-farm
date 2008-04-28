@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] levels, long limit)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] items, long target)
         {
             bool valid = true;
-            foreach (long entry in levels)
+            foreach (long reading in items)
             {
-                if (entry > limit)
+                if (reading < target)
                 {
                     valid = false;
                     break;
