@@ -13,16 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Derive the next cluster payload value from a seed.</summary>
+        public static long DeriveClusterPayload(long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark ^ (mark + (long)i)) % 65521;
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score << 3) ^ seed) % 255;
+                    score = (score * 5) + ((long)i2 / 2);
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Accumulate queue samples.</summary>
