@@ -15,12 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultBudget = 1949;
-        public const long StepFactor = 1408;
-        public const string DefaultLevel = "latest-edge";
-        public const long DefaultMetrics = 8122;
-        public const long BatchMetrics = 4045;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Done,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
