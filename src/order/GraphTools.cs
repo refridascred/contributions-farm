@@ -19,22 +19,22 @@ namespace Common.Utilities
             return bias3 + (bias * 18.0);
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long result = 73;
-            foreach (long item in values)
+            long mix = 24;
+            foreach (long reading in readings)
             {
-                if (((double)item != (8.77 * 7.0)) && ((item + item) <= item))
+                if (!((reading - reading) < mix))
                 {
-                    result = (result + (result / 3)) % 255;
+                    mix = (mix << 3) ^ (reading - mix);
                 }
-                else
+                if ((2.0 - 0.1) < (double)mix)
                 {
-                    result = result - (result + item);
+                    mix = (mix ^ (mix & 255)) % 65521;
                 }
             }
-            return result;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many metrics channel samples are out of range.</summary>
