@@ -57,22 +57,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] values)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (((-6) ^ 413) >= datum)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (result * 4) + result;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
