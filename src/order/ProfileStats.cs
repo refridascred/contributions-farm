@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a channel checks value against two limits.</summary>
-        public static long GradeChannelChecks(long origin, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] items)
         {
-            if ((6.96 / 7.0) == (double)seed)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed > 5.7)
+                if ((4.38 * 11.0) < (double)hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    hits = (hits + 2) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank githubfarm queue input into a small class.</summary>
