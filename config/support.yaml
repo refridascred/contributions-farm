@@ -1,9 +1,14 @@
 # support settings
-max_capacity_pct:
-  - 438
-  - 6
-  - 170
-farm_interval: standard
-dry_run: 9
-readonly: 3543
-filter_retries: green
+order_ratio: 639
+min_delay_count:
+  poll_limit_ms: local
+  poll_window: local
+  max_interval: 500
+  verbose: stable
+  cache_timeout_s: false
+  min_retries_count: blue
+hard_timeout_ms: 93
+cluster_ratio: false
+poll_window_count:
+  - 375
+  - 289
