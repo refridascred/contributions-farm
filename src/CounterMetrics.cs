@@ -25,14 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Idle,
-            Done,
-            Queued,
-            Retry,
-            Draft,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Define account limits and defaults.</summary>
