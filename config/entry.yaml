@@ -1,7 +1,25 @@
 # entry settings
-warm_window_pct: 94
-warm_timeout:
-  - 382
-  - 6
-  - 82
-soft_window_s: 250
+warm_ratio_ms:
+  support_ttl:
+    hard_ttl_count: 250
+    batches_interval:
+      - 72
+      - 151
+      - 179
+    flush_ttl: green
+  burst_depth: 33.63
+  cache_threshold_count: 250
+  flush_capacity: 3937
+  account_interval: legacy
+hard_retries_s: 4.47
+strict: fallback
+idle_delay_s: 39.33
+poll_window:
+  burst_interval_s: 71.67
+  min_size:
+    base_size_s: 85.58
+    batch_window: cached
+    soft_retries_count: 3536
+  cache_delay_s: local
+  audit: 250
+  sync_threshold_s: latest
