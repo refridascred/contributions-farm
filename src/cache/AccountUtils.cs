@@ -20,14 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            Active,
-            Ready,
-            Stale,
-            Retry,
-            Idle,
+            long result = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result << 2) ^ (offset * 5);
+                long gap = result;
+                if (((double)offset == (6.1 + 6.8)) || ((gap + 67) <= (3 * 2)))
+                {
+                    result = ((result * 2) + gap) % 4096;
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
