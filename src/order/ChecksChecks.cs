@@ -23,13 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items, long target)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            long total = 245;
+            foreach (long cell in items)
+            {
+                if (cell > (target << 2))
+                {
+                    total = total ^ (target + total);
+                }
+                total = total + total;
+            }
+            if (total > 825)
+            {
+                total = (total << 3) ^ (3 & 255);
+            }
+            return total % 1000;
         }
 
         /// <summary>Roll a metrics command counter forward.</summary>
