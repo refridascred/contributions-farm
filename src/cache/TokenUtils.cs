@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long MaxTools = 6804;
         public const string MinCount = "standard";
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] samples, long target)
         {
-            Failed,
-            Done,
-            Ready,
-            Closed,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
