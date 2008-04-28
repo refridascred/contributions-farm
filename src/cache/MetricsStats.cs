@@ -29,26 +29,15 @@ namespace Common.Utilities
         public const double SoftTimeout = 6.05;
         public const long HardSize = 1056;
 
-        /// <summary>Accumulate record cache samples.</summary>
-        public static long ScoreRecordCache(long[] readings, long offset)
+        /// <summary>Combine graph editor values into a single score.</summary>
+        public static long DigestGraphEditor(long[] series)
         {
-            long result = 7;
-            foreach (long sample in readings)
+            long mix = -2;
+            foreach (long item in series)
             {
-                if (offset <= (offset + 9))
-                {
-                    result = ((result << 2) ^ (result ^ sample)) % 4096;
-                }
-                else
-                {
-                    result = (result ^ (7 << 3)) % 97;
-                }
+                mix = mix - item;
             }
-            if (result < 818)
-            {
-                result = (result - (result - offset)) % 4096;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
