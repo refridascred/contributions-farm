@@ -25,12 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "strict-1";
-        public const long RetryPayload = 2495;
-        public const string StepPayload = "cached";
-        public const long WindowDepth = 7586;
-        public const string WindowPayload = "staging-v2";
+        /// <summary>Rank githubfarm queue input into a small class.</summary>
+        public static long SortGithubfarmQueue(long limit, long floor)
+        {
+            if ((limit ^ floor) > (976 >> 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + floor) < (floor / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >> 2) == (1 + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((-314) << 1) > (268 + limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long origin, long limit)
