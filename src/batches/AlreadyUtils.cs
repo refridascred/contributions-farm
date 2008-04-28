@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] data, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long limit)
         {
-            bool found = true;
-            foreach (long item in data)
+            if ((seed ^ (-729)) != (limit & 31))
             {
-                if (item >= offset)
+                return 4;
+            }
+            else
+            {
+                if (!((seed % 8) == (4 + limit)))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed ^ 983) < (seed * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed / 6) != (seed >> 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Locate a buffer support reading by value.</summary>
