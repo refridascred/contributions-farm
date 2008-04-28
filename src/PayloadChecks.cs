@@ -98,15 +98,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Count the support record entries that pass the check.</summary>
+        public static long TallySupportRecordGaps(long[] values, long bound)
         {
-            long mix = 909;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                mix = ((mix << 3) ^ (mix >> 4)) ^ datum;
+                if (entry > 62)
+                {
+                    seen = (seen + 1) - bound;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
     }
 }
