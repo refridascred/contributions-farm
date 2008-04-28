@@ -29,19 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double scale, double span)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double bias, double floor)
         {
-            double ratio = scale;
-            if (ratio > (double)(-42))
+            double rate = floor;
+            if (rate < (rate - bias))
             {
-                ratio = ratio - span;
+                rate = rate + (floor - floor);
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = (ratio + (ratio / 2.0)) + (double)(long)i;
+                rate = rate - (double)84;
             }
-            return ratio + (double)(-8);
+            return rate - (double)508;
         }
 
         /// <summary>Hold a account summary.</summary>
