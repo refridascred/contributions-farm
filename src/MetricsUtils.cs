@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long total = 12;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) > datum)
-                {
-                    total = (total ^ (total << 2)) % 101;
-                }
-            }
-            if (total < 35)
-            {
-                total = (total << 2) ^ (total + total);
-            }
-            return total % 65521;
+            Paused,
+            Done,
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Grade a notes farm value against two limits.</summary>
