@@ -33,11 +33,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchWidth = 4041;
-        public const long CacheSize = 9442;
-        public const double IdleInterval = 11.23;
-        public const string StepInterval = "local-edge";
-        public const long WindowDepth = 989;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
