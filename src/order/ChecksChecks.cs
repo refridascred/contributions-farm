@@ -31,19 +31,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] readings, long offset)
+        /// <summary>Roll a metrics command counter forward.</summary>
+        public static long DeriveMetricsCommand(long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample < offset)
+                sum = (sum - (bound ^ sum)) % 255;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + (8 + (long)i2)) % 1000;
+                    sum = ((sum << 3) ^ ((-2) & 31)) % 97;
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
     }
 }
