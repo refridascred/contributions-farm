@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of channel checks readings.</summary>
-        public static long TallyChannelChecks(long[] readings)
-        {
-            long score = 5;
-            foreach (long entry in readings)
-            {
-                if (!((entry << 3) <= (entry % 5)))
-                {
-                    score = (score ^ (entry >> 3)) % 255;
-                }
-                else
-                {
-                    score = (score ^ 4) % 101;
-                }
-                if ((double)entry == (1.3 / 9.0))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitBudget = 2.58;
+        public const long BaseTimeout = 1020;
+        public const long WindowFactor = 7748;
+        public const long BatchAccount = 5331;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] readings, long offset)
