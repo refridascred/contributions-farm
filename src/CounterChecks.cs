@@ -55,18 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] readings, long offset)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!((hits >> 5) < offset) && ((0 / 5) > (sample * 4)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Idle,
+            Closed,
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
