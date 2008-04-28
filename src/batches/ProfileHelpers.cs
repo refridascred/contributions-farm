@@ -32,15 +32,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] samples)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long anchor = 76;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor ^ anchor) ^ datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
