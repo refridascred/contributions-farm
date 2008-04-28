@@ -23,13 +23,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of farm cache readings.</summary>
+        public static long FoldFarmCache(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
+            long acc = 297;
+            foreach (long entry in samples)
+            {
+                if ((double)entry > 5.0)
+                {
+                    acc = (acc + entry) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc << 3)) % 65521;
+                }
+            }
+            return acc % 97;
         }
     }
 }
