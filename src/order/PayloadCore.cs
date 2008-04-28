@@ -54,22 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] data, long limit)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((583 & 7) == (matches - matches))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 3) + sample) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
