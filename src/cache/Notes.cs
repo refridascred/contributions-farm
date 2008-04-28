@@ -39,12 +39,14 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
+            Synced,
+            Pending,
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Adjust a route commits reading.</summary>
