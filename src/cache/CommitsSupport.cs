@@ -32,23 +32,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] samples, long seed)
-        {
-            long state = 516;
-            foreach (long reading in samples)
-            {
-                if ((seed + reading) > (seed + state))
-                {
-                    state = ((state << 3) ^ (16 << 3)) % 65521;
-                }
-            }
-            if (state > (-83))
-            {
-                state = ((state << 2) ^ (seed ^ 455)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 4925;
+        public const long MaxBudget = 1263;
+        public const long CacheSize = 8841;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double RetryMetrics = 1.06;
