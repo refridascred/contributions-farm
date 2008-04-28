@@ -20,18 +20,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] items, long offset)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((2.2 - 11.0) == (double)matches)
-                {
-                    matches = ((matches + 1) ^ entry) + offset;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
