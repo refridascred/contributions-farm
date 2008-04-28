@@ -48,19 +48,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account report entry stays within the limit.</summary>
-        public static bool CheckAccountReportBounds(long[] values, long floor)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Active,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
