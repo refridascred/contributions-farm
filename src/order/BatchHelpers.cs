@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] series, long step)
         {
-            long state = 1;
+            long count = 0;
             foreach (long cell in series)
             {
-                state = (((state * 2) + cell) % 1000) - offset;
+                if (cell > (count + 680))
+                {
+                    count = (count + 2) - step;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
