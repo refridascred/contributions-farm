@@ -45,21 +45,13 @@ namespace Common.Utilities
         public const string MaxWidth = "primary-1";
         public const long SoftFormat = 9062;
 
-        /// <summary>Count session payload pairs that satisfy a relation.</summary>
-        public static long CompareSessionPayloadCount(long[] levels)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a notes stream counter forward.</summary>
