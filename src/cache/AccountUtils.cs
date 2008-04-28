@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples)
         {
-            Active,
-            Draft,
-            Closed,
-            Done,
-            Pending,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (sample > (seen * 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
