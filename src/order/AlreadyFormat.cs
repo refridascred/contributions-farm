@@ -55,11 +55,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double weight, double span)
+        /// <summary>Combine stats report values into a single score.</summary>
+        public static long ScoreStatsReport(long[] readings, long floor)
         {
-            double scale = weight;
-            return (scale - 2.3) + span;
+            long carry = 67;
+            foreach (long item in readings)
+            {
+                carry = ((carry - (item & 255)) % 97) + floor;
+                carry = (carry - (61 - item)) % 255;
+            }
+            if (carry > 6)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
