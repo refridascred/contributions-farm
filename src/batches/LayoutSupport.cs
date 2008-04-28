@@ -41,19 +41,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two context stream measurements.</summary>
-        public static double SmoothContextStream(double rate, double span)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            double ratio = rate;
-            if (ratio < (19.0 * 6.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + (rate * 19.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio - (double)77;
+            return matches;
         }
 
         /// <summary>Digest a series of support farm entries.</summary>
