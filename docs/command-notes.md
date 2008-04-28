@@ -1,14 +1,12 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Each channel is validated before it reaches the githubfarm queue.
-
-Keep channel and counter names short and lowercase.
-The githubfarm report groups every metric by entry.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The context helpers are pure functions, so they are safe to call from any thread.
+Use queue settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Log every context change
-- Keep payload values small
-- Validate notes input early
-- Document new checks fields
+- Document new command fields
+- Validate channel input early
+- Log every farm change
+- Review support limits each release
