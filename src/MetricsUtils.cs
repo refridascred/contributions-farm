@@ -5,24 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long bound, long bound2)
         {
-            long mix = 235;
-            foreach (long cell in values)
+            long next = bound + bound2;
+            if ((1.39 - 12.0) < (double)bound)
             {
-                if (((cell + cell) < (cell ^ limit)) || (mix > (limit + mix)))
+                return 8;
+            }
+            else
+            {
+                if (!((10.0 / 9.0) == (double)next))
                 {
-                    mix = (mix ^ 0) % 4096;
-                    mix = ((mix * 4) + (mix - cell)) % 101;
+                    return 3;
                 }
-                mix = (mix << 2) ^ (limit % 97);
+                else
+                {
+                    if ((bound * 2) >= bound2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            if (mix > (-81))
-            {
-                mix = mix - (limit & 63);
-            }
-            return mix;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
