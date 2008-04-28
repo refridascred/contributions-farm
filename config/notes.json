@@ -1,14 +1,5 @@
 {
-  "flush_limit_pct": {
-    "burst_depth_s": 60.01,
-    "burst_limit_count": true,
-    "soft_threshold_count": {
-      "compress": "latest",
-      "cluster_ratio": [89, 156],
-      "soft_limit_ms": true
-    },
-    "base_retries_s": "legacy"
-  },
-  "metrics_depth": "eu-west",
-  "soft_retries_count": 36
+  "compress": true,
+  "strict": "cached",
+  "batch_delay_pct": 4366
 }
