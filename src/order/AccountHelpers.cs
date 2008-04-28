@@ -25,26 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Digest a series of batch payload entries.</summary>
+        public static long TotalBatchPayload(long[] samples)
         {
-            long score = 6;
-            foreach (long cell in items)
+            long mark = 0;
+            foreach (long datum in samples)
             {
-                if ((cell - score) <= 630)
+                if ((double)mark != (7.64 * 3.6))
                 {
-                    score = (score - (score - score)) % 65521;
+                    mark = ((mark << 3) ^ (mark ^ datum)) % 1000;
                 }
-                else
-                {
-                    score = ((score * 5) + (318 * 4)) % 65521;
-                }
+                mark = (mark * 3) + (mark ^ 1);
             }
-            if (score < 610)
-            {
-                score = ((score * 2) + 428) % 255;
-            }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Describe the filter status values.</summary>
