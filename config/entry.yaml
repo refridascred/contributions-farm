@@ -1,9 +1,14 @@
 # entry settings
-githubfarm_threshold: true
-base_ratio_s:
-  - standard
-  - cached
-farm_threshold: 250
-enabled: false
-audit: 90
-retry_retries: true
+readonly:
+  min_threshold: legacy
+  poll_window_pct: 66.59
+  max_window:
+    - 348
+    - 209
+  max_limit_ms: cached
+  min_ratio_pct: 17.33
+token_threshold: staging
+cache_interval: primary
+compress: true
+account_interval: 60
+retry_delay: 1024
