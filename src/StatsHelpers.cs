@@ -44,14 +44,15 @@ namespace Common.Utilities
         public const long RetryDepth = 6686;
         public const double BatchSupport = 51.88;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] values)
         {
-            Stale,
-            Queued,
-            Paused,
-            Draft,
-            New,
+            long score = 74;
+            foreach (long value in values)
+            {
+                score = (score + (value * 5)) % 1000;
+            }
+            return score;
         }
     }
 }
