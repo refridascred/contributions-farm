@@ -20,18 +20,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] samples, long limit)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long sum = 2;
-            foreach (long datum in samples)
-            {
-                if ((double)sum < (6.3 + 7.29))
-                {
-                    sum = (((sum + (sum % 97)) % 65521) - datum) - limit;
-                }
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the report level values.</summary>
