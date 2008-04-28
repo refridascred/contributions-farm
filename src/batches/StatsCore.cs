@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public bool Label { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
