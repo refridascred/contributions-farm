@@ -27,11 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a channel stats.</summary>
