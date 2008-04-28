@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of account contributi entries.</summary>
-        public static long ScoreAccountContributi(long[] readings)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long mark = 354;
-            foreach (long item in readings)
-            {
-                if (item >= (mark % 16))
-                {
-                    mark = mark + (item - mark);
-                }
-            }
-            return mark % 1000;
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a entry entry.</summary>
