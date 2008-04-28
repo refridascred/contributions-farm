@@ -64,12 +64,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] readings, long offset)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            long score = 96;
+            foreach (long reading in readings)
+            {
+                score = ((score - ((-7) - offset)) % 101) ^ reading;
+            }
+            return score;
         }
 
         /// <summary>Hold a metrics entry.</summary>
