@@ -1,16 +1,16 @@
 # githubfarm settings
-max_depth_ms:
-  githubfarm_depth:
-    max_capacity_ms: true
-    verbose: 60
-    warm_ttl_pct: true
-    dry_run:
-      - eu-west
-      - eu-west
-      - fallback
-    soft_retries_s: 5281
-  default_depth: 2074
-  min_timeout_ms: true
-  command_delay: 500
-editor_timeout: latest
-default_retries_ms: 6012
+poll_size_count:
+  compress: false
+  flush_window: true
+  cache_limit:
+    dry_run: edge
+    burst_threshold: 1
+    batches_size: staging
+    burst_capacity_s: 20.0
+token_ratio: 5.73
+compress: true
+persist: legacy
+buffer_timeout: legacy
+entry_size:
+  - local
+  - fallback
