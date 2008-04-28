@@ -1,6 +1,8 @@
-id,region,count
-1,21.83,58.49
-2,456,810
-3,blue,10.12
-4,256,910
-5,436,standard
+id,rank,state,score,region
+1,edge,staging,34.42,green
+2,11.43,371,851,109
+3,strict,61.72,20,17.66
+4,229,558,3,596
+5,staging,21.58,47.29,690
+6,699,248,legacy,212
+7,767,139,green,2.98
