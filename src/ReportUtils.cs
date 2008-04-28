@@ -77,13 +77,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public double Mode { get; set; }
+            Failed,
+            Stale,
+            Active,
         }
     }
 }
