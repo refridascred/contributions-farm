@@ -45,13 +45,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Match up already route samples.</summary>
+        public static long OverlapAlreadyRouteCount(long[] readings)
         {
-            Retry,
-            Paused,
-            Queued,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
