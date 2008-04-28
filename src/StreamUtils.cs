@@ -87,32 +87,11 @@ namespace Common.Utilities
             return scale + 0.87;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long step, long origin)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double scale, double span)
         {
-            long delta = step + origin;
-            if ((double)origin >= (6.0 - 7.5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (origin >= (delta & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (325 > (delta ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double ratio = (scale / 2.0) - span;
+            return ratio - (ratio / 8.0);
         }
     }
 }
