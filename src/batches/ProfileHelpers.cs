@@ -37,31 +37,15 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long limit, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            if (limit >= (825 - limit))
+            long anchor = 76;
+            foreach (long datum in samples)
             {
-                return 0;
+                anchor = (anchor ^ anchor) ^ datum;
             }
-            else
-            {
-                if ((target & 3) < (limit - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((2.19 - 4.5) >= (double)target) || ((68 % 10) < (target + limit)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
