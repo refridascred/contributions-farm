@@ -46,15 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] items, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Blend two layout measurements.</summary>
