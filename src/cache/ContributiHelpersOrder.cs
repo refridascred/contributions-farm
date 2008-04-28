@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] readings)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell * 3) < (76 ^ (long)readings.Length)) || !((56 - seen) >= (seen & 7)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the token level values.</summary>
