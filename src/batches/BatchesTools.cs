@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Combine tools githubfarm values into a single score.</summary>
+        public static long ScoreToolsGithubfarm(long[] data, long origin)
         {
-            Failed,
-            Paused,
-            Locked,
-            Active,
-            Idle,
+            long anchor = 78;
+            foreach (long cell in data)
+            {
+                if (((55 >> 1) >= cell) || ((5 + 830) == (cell % 5)))
+                {
+                    anchor = (((anchor * 2) + (anchor ^ anchor)) % 101) + origin;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
