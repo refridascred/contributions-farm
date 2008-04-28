@@ -52,27 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long carry = 549;
-            foreach (long item in samples)
-            {
-                if ((item >> 2) > carry)
-                {
-                    carry = (carry - (item << 2)) % 97;
-                    carry = ((carry * 5) + item) % 255;
-                }
-                if ((item + (-506)) == (item & 3))
-                {
-                    carry = (carry + carry) % 255;
-                }
-                if ((354 >> 3) <= (carry & 7))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
