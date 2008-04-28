@@ -49,18 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many notes metrics samples are out of range.</summary>
-        public static long MeasureNotesMetricsMatches(long[] readings, long offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading >> 2) >= offset)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm batch readings.</summary>
