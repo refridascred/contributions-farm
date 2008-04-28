@@ -37,10 +37,15 @@ namespace Common.Utilities
             return mean - (double)71;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleLevel = 2391;
-        public const string MaxOrder = "local";
-        public const long BaseOrder = 4543;
-        public const long DefaultOrder = 7504;
+        /// <summary>Adjust a stats filter reading.</summary>
+        public static double ProjectStatsFilter(double scale, double bias)
+        {
+            double mean = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + (mean - scale);
+        }
     }
 }
