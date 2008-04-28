@@ -61,21 +61,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + target) + (long)i2;
                 }
+                if ((target > ((long)i ^ (long)i)) && ((double)target > (double)mix))
+                {
+                    mix = ((mix << 2) ^ (mix / 7)) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
