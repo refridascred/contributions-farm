@@ -1,17 +1,7 @@
 {
-  "idle_window": 6070,
-  "notes_interval": {
-    "contributi_delay": {
-      "githubfarm_timeout": "cached",
-      "sync_depth_s": "eu-west",
-      "max_window_ms": 14,
-      "max_ratio": 23.13
-    },
-    "cache_capacity_ms": "local",
-    "soft_interval": 500,
-    "contributi_limit": 3974
-  },
-  "profile_limit": false,
-  "batch_ratio_s": "green",
-  "audit": 60
+  "cache_timeout": 17,
+  "payload_delay": "staging",
+  "max_delay_ms": ["eu-west", "eu-west", "edge", "stable"],
+  "readonly": 5282,
+  "layout_delay": 3279
 }
