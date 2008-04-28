@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Grade a channel checks value against two limits.</summary>
+        public static long GradeChannelChecks(long origin, long seed)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
+            if ((6.96 / 7.0) == (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed > 5.7)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the window kind values.</summary>
