@@ -1,12 +1,11 @@
 # Command notes
 
-Keep farm and layout names short and lowercase.
-A schema that stays idle for too long is moved to the window list.
-A record that stays idle for too long is moved to the checks list.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a record fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every contributi change
-- Review support limits each release
-- Keep layout values small
-- Prefer graph defaults
+- Prefer checks defaults
+- Document new profile fields
+- Validate payload input early
+- Log every context change
