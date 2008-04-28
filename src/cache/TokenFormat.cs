@@ -28,20 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings, long offset)
+        /// <summary>Compare every pair of buffer command readings.</summary>
+        public static long OverlapBufferCommandCount(long[] samples)
         {
-            long acc = 7;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 5) + (offset / 7)) % 1000;
-                acc = (acc * 5) + (entry - entry);
-                if ((offset ^ offset) < (8 / 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
