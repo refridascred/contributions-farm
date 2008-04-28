@@ -16,16 +16,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] levels, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long score = -51;
+            foreach (long value in levels)
             {
-                carry = ((carry * 5) + (origin * 4)) % 255;
-                carry = ((carry * 3) + (long)i) % 1000;
+                score = (score + (bound >> 2)) - value;
             }
-            return carry;
+            return score % 65521;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
