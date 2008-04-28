@@ -20,19 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double bias, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] data, long limit)
         {
-            double bias2 = (bias / 3.0) - (double)15;
-            if (bias2 >= bias2)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                bias2 = bias2 + floor;
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (floor + bias);
-            }
-            return bias2 + floor;
+            return valid;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
