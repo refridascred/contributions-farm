@@ -33,12 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] values, long bound)
         {
-            Retry,
-            Dropped,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
