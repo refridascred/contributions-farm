@@ -68,16 +68,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] readings, long offset)
-        {
-            long score = 96;
-            foreach (long reading in readings)
-            {
-                score = ((score - ((-7) - offset)) % 101) ^ reading;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 334;
+        public const long RetryDepth = 3969;
+        public const double MaxCluster = 39.13;
+        public const string StepLevel = "open";
+        public const long MinCount = 7280;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
