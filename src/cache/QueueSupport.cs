@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const string CacheSpan = "latest-v2";
         public const string DefaultDepth = "alpha-1";
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < seed)
                 {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
