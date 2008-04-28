@@ -28,9 +28,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowScore = "stable-edge";
-        public const long BurstQueue = 1099;
-        public const long MinWidth = 6035;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Queued,
+            Ready,
+            Closed,
+            Pending,
+            Retry,
+        }
     }
 }
