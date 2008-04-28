@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftWidth = 7617;
-        public const long IdleRatio = 3294;
-        public const long IdleDepth = 7294;
-        public const long WindowFilter = 854;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double bias, double floor)
+        {
+            double bias2 = (bias / 3.0) - (double)15;
+            if (bias2 >= bias2)
+            {
+                bias2 = bias2 + floor;
+            }
+            else
+            {
+                bias2 = bias2 + (floor + bias);
+            }
+            return bias2 + floor;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryBounds(long[] readings, long limit)
