@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] readings)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                long step = (long)i;
-                if (mix <= (step + step))
+                if (((cell * 3) < (76 ^ (long)readings.Length)) || !((56 - seen) >= (seen & 7)))
                 {
-                    step = (step ^ (step << 2)) % 4096;
-                    mix = ((mix << 2) ^ (958 * 3)) % 97;
-                    break;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    step = (step + (target % 7)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the token level values.</summary>
