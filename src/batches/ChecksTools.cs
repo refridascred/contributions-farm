@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardInterval = 4609;
+        public const long DefaultContext = 9221;
+        public const long HardTimeout = 7090;
 
         /// <summary>Fold a list of metric githubfarm readings.</summary>
         public static long TallyMetricGithubfarm(long[] items, long bound)
