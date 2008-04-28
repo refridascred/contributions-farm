@@ -26,14 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] readings, long limit)
         {
-            Pending,
-            Retry,
-            Closed,
-            Active,
-            Draft,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
