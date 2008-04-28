@@ -75,12 +75,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long bound, long target)
         {
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            if (!((target << 1) != (bound ^ target)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target % 64) <= bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
