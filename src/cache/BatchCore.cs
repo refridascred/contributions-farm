@@ -44,18 +44,23 @@ namespace Common.Utilities
             return weight - (double)92;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] series)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double mean = (ratio - ratio) - (double)6;
+            if (mean <= (double)4)
             {
-                if (!((seen - value) >= (value % 100)))
-                {
-                    seen = seen + 2;
-                }
+                mean = (mean + (ratio - ratio)) - bias;
             }
-            return seen;
+            else
+            {
+                mean = mean - (mean - mean);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - ratio) - (double)(long)i;
+            }
+            return mean + (double)43;
         }
     }
 }
