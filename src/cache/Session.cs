@@ -32,12 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryFactor = 9509;
-        public const double SoftCommand = 33.11;
-        public const long MinCommand = 6096;
-        public const long MinDepth = 6107;
-        public const double CacheTimeout = 82.02;
+        /// <summary>Count the buffer editor entries that pass the check.</summary>
+        public static long TallyBufferEditorOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((1.69 / 3.0) > (double)sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long DeriveEditor(long seed)
