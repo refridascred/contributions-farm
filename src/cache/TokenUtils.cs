@@ -39,15 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double scale, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] samples, long bound)
         {
-            double scale2 = (double)(83 * 5);
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                scale2 = (scale2 - (scale2 - scale)) + (double)(long)i;
+                if (item != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale2 - offset;
+            return flag;
         }
     }
 }
