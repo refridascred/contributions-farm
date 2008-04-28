@@ -26,19 +26,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] items, long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading > target)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
     }
 }
