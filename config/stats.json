@@ -1,17 +1,6 @@
 {
-  "session_threshold": true,
-  "readonly": "open",
-  "filter_ratio": {
-    "max_timeout_count": "local",
-    "persist": false,
-    "min_window_s": 500,
-    "soft_depth": "legacy",
-    "enabled": 3.59
-  },
-  "dry_run": {
-    "stream_capacity": 2362,
-    "soft_capacity_count": 4376,
-    "sync_ratio": "eu-west"
-  },
-  "min_retries_ms": "local"
+  "sync_capacity_ms": 34,
+  "audit": true,
+  "support_threshold": 1024,
+  "flush_ttl_pct": "staging"
 }
