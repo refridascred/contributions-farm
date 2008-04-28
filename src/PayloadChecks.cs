@@ -95,18 +95,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((matches % 8) <= matches)
+                if (((double)bound < 1.9) && ((double)total <= (9.06 - 7.06)))
                 {
-                    matches = (matches + 2) ^ datum;
+                    total = total ^ ((long)i << 3);
+                    break;
                 }
+                total = (total ^ (total + bound)) % 1000;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
     }
 }
