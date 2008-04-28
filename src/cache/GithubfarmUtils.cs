@@ -39,11 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Grade a graph report value against two limits.</summary>
