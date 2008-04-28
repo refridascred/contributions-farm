@@ -44,26 +44,16 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long limit)
         {
-            long total = 35;
-            foreach (long entry in samples)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((entry % 100) < (29 + entry))
-                {
-                    total = ((total * 2) + (total * 2)) % 97;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total << 2)) % 65521;
-                }
-                if ((entry + entry) >= (total >> 5))
-                {
-                    break;
-                }
+                result = ((result << 3) ^ (result - (long)i)) % 65521;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return total % 65521;
+            return result;
         }
     }
 }
