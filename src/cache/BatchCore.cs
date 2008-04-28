@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "stable-v2";
-        public const long IdleFactor = 9914;
-        public const long MaxGraph = 3097;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
