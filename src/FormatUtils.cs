@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the session support entries that pass the check.</summary>
-        public static long MeasureSessionSupportMatches(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((seed > (seed & 3)) || ((count % 3) != (seed * 3)))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchInterval = 82.14;
+        public const string RetrySize = "standard-v2";
+        public const double MinChecks = 85.39;
+        public const double StepFactor = 39.06;
+        public const long BatchChecks = 21;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double BlendFarm(double weight, double offset)
