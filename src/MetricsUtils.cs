@@ -40,24 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes farm value against two limits.</summary>
-        public static long SortNotesFarm(long bound, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] series, long seed)
         {
-            if ((double)bound >= (8.2 - 9.54))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound <= (floor + floor))
+                if ((item - matches) == (seed * 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit route format readings against a rule.</summary>
