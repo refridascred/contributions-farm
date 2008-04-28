@@ -22,13 +22,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Combine report context values into a single score.</summary>
+        public static long DigestReportContext(long[] items)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
+            long total = 3;
+            foreach (long entry in items)
+            {
+                total = (total - (entry + 85)) % 4096;
+                total = (total + ((long)items.Length << 3)) % 97;
+            }
+            return total;
         }
     }
 }
