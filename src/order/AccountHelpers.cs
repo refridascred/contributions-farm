@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] series)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((datum << 1) != (datum + seen)) && (((double)datum == (19.0 / 5.0)) && (datum > seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the tools filter series from a seed.</summary>
