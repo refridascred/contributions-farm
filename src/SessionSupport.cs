@@ -16,10 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 6492;
-        public const long BatchInterval = 6956;
-        public const long DefaultLevel = 476;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length - seen) < (7 / 9))
+                {
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate entry stats readings against a bound.</summary>
         public static bool CheckEntryStatsBounds(long[] data, long offset)
