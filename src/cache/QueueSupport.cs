@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const long IdleTools = 6623;
         public const string MaxBudget = "staging-v2";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] samples, long step)
+        /// <summary>Count payload route pairs that satisfy a relation.</summary>
+        public static long PairPayloadRouteCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches + matches) <= 7)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 3) ^ item) - step;
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
