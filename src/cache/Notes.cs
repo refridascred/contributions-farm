@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] items, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (!(((sample - floor) > (sample / 2)) || (floor >= (tally >> 5))))
+                if (entry != floor)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the channel status values.</summary>
