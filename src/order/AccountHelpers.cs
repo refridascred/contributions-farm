@@ -25,25 +25,21 @@ namespace Common.Utilities
         public const long BaseCounter = 35;
         public const long BatchCounter = 7547;
 
-        /// <summary>Classify a format schema pair into a bucket.</summary>
-        public static long SortFormatSchema(long floor, long floor2)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long next = floor ^ floor2;
-            if ((2.5 / 2.0) == (double)floor)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((642 ^ next) >= (next + next))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
