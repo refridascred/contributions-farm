@@ -59,18 +59,39 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] series, long origin)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long offset, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long offset2 = offset + bound;
+            if (!((offset2 - offset) > offset))
             {
-                if ((17.0 / 7.0) >= (double)datum)
+                return 2;
+            }
+            else
+            {
+                if ((offset2 >= (offset - bound)) && ((bound + 2) <= offset))
                 {
-                    count = (count + 3) - origin;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + bound) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound >= (274 - bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
