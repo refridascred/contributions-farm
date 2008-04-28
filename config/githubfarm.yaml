@@ -1,6 +1,16 @@
 # githubfarm settings
-flush_depth: false
-sync_limit: 250
-base_threshold_ms: eu-west
-poll_delay_count: false
-dry_run: false
+max_depth_ms:
+  githubfarm_depth:
+    max_capacity_ms: true
+    verbose: 60
+    warm_ttl_pct: true
+    dry_run:
+      - eu-west
+      - eu-west
+      - fallback
+    soft_retries_s: 5281
+  default_depth: 2074
+  min_timeout_ms: true
+  command_delay: 500
+editor_timeout: latest
+default_retries_ms: 6012
