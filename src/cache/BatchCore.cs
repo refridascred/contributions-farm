@@ -24,19 +24,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema checks readings against a bound.</summary>
-        public static bool CheckSchemaChecksBounds(long[] samples, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= step)
+                if (items[i] >= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
