@@ -1,12 +1,6 @@
 {
-  "compress": 1024,
-  "flush_ttl": {
-    "window_window": 19.55,
-    "strict": true,
-    "poll_ratio_count": "latest",
-    "retry_window_count": 2074,
-    "entry_window": "stable",
-    "verbose": 66.57
-  },
-  "cluster_timeout": true
+  "min_ratio_pct": "latest",
+  "base_ratio_ms": "open",
+  "dry_run": 98.09,
+  "base_limit": false
 }
