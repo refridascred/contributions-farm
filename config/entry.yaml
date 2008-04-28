@@ -1,8 +1,23 @@
 # entry settings
-default_retries_count: 60
-verbose: 500
-command_interval: 295
-warm_interval: primary
-audit:
-  - 159
-  - 272
+compress: 60
+dry_run: 21
+max_retries:
+  - standard
+  - cached
+  - edge
+verbose:
+  base_size_s:
+    compress: 250
+    notes_depth: primary
+    payload_timeout: 87
+    audit: 7.24
+    dry_run: open
+  dry_run: eu-west
+  soft_depth_count: 5809
+  sync_size_ms:
+    soft_depth: legacy
+    entry_ttl:
+      - green
+      - edge
+    flush_threshold: 7760
+    max_ttl_count: 5074
