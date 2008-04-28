@@ -33,17 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 954;
+            foreach (long reading in series)
             {
-                if (values[i] < step)
+                anchor = ((anchor * 4) + (reading + anchor)) % 97;
+                if ((anchor / 2) < (reading - anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + anchor;
+                }
+                else
+                {
+                    anchor = anchor ^ (reading << 3);
                 }
             }
-            return -1;
+            if (anchor < 603)
+            {
+                anchor = (anchor ^ (anchor << 1)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
