@@ -56,18 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] samples, long offset)
         {
-            long state = 5;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!(reading >= (reading & 63)))
+                if ((offset >> 2) != (offset - offset))
                 {
-                    state = (state << 2) ^ reading;
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
