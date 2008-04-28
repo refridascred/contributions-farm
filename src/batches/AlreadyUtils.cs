@@ -20,38 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long step, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            if ((target * 5) < target)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                result = (result ^ (result * 2)) % 255;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((target + target) <= (91 + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + step) < (target << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step << 3) == (8 - 859))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
