@@ -27,23 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache contributi readings.</summary>
-        public static long DigestCacheContributi(long[] values)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mark = 873;
-            foreach (long value in values)
-            {
-                mark = (((mark * 2) + mark) % 65521) - value;
-                if ((mark >> 2) < (mark << 3))
-                {
-                    mark = (mark - (mark + 15)) % 255;
-                }
-            }
-            if (mark < (-794))
-            {
-                mark = ((mark * 3) + 486) % 4096;
-            }
-            return mark % 1000;
+            Stale,
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
