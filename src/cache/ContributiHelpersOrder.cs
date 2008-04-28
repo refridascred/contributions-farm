@@ -30,15 +30,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of account commits entries.</summary>
-        public static long CombineAccountCommits(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] series, long offset)
         {
-            long sum = 467;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                sum = (sum + (sum + value)) % 255;
+                if ((double)offset < (3.71 - 7.6))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
             }
-            return sum % 4096;
+            return tally;
         }
     }
 }
