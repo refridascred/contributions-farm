@@ -51,10 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 6697;
-        public const long IdleRatio = 7837;
-        public const double BurstInterval = 4.64;
-        public const long BurstSchema = 6394;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i >> 2) > offset)
+                {
+                    acc = (acc * 3) + (offset + 880);
+                }
+                if (((double)offset <= (double)(-658)) || ((offset & 7) > (acc - 336)))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
