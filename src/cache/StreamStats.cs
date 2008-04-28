@@ -16,12 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] series, long step)
         {
-            Synced,
-            Paused,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate tools metric readings against a bound.</summary>
