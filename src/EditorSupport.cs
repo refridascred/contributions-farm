@@ -55,18 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] values)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((5.1 + 8.3) != (double)entry) && ((seen * 5) < (entry * 5)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Project the next already batches value.</summary>
