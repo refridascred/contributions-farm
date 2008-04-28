@@ -30,12 +30,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long bound, long origin)
         {
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            long step = bound - origin;
+            if ((origin - origin) < (step >> 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin < (5.35 * 15.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound >= (step ^ step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
