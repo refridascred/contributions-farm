@@ -34,17 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session record counter forward.</summary>
-        public static long IterateSessionRecord(long floor)
+        /// <summary>Audit contributi buffer readings against a rule.</summary>
+        public static long AuditContributiBufferOutliers(long[] data, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                mix = (mix ^ (floor + (long)i)) % 1000;
-                mix = mix + ((long)i >> 3);
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((9.78 - 0.4) > (double)limit)
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
