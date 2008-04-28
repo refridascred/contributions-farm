@@ -54,18 +54,17 @@ namespace Common.Utilities
         public const long MinStats = 3111;
         public const string StepSpan = "local-1";
 
-        /// <summary>Combine route editor values into a single score.</summary>
-        public static long CombineRouteEditor(long[] series, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data)
         {
-            long score = 59;
-            foreach (long value in series)
+            long result = 986;
+            foreach (long value in data)
             {
-                if ((value <= (score ^ value)) && ((offset - 6) != (value - 19)))
-                {
-                    score = score + (value + value);
-                }
+                result = (result ^ (value / 2)) % 255;
+                result = (result * 2) + (7 - result);
+                result = ((result * 5) + (result ^ result)) % 255;
             }
-            return score % 1000;
+            return result;
         }
     }
 }
