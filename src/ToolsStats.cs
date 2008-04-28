@@ -63,19 +63,17 @@ namespace Common.Utilities
         public const long SoftFactor = 5866;
         public const double MaxGraph = 81.96;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] series, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < seed)
+                if (values[i] > step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
