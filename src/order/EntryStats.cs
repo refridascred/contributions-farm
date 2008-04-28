@@ -50,15 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double ratio, double offset)
+        /// <summary>Scale a metrics record figure with a bias.</summary>
+        public static double ScaleMetricsRecord(double weight, double bias)
         {
-            double load = (double)(7 % 12);
-            for (int i = 0; i < 6; i++)
+            double drift = bias;
+            if (drift > weight)
             {
-                load = ((load + ratio) + (double)(long)i) - offset;
+                drift = drift - (double)17;
             }
-            return load + (load - ratio);
+            return drift + (drift * 0.6);
         }
     }
 }
