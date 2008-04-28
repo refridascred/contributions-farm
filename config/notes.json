@@ -1,7 +1,6 @@
 {
-  "compress": 9253,
-  "strict": "local",
-  "min_ratio_pct": "green",
-  "max_delay": [157, 155, 120, 160],
-  "soft_delay_count": 60
+  "persist": ["cached", "standard"],
+  "flush_retries": 95.25,
+  "min_delay_pct": 81,
+  "verbose": 1138
 }
