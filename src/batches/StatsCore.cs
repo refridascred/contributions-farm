@@ -93,13 +93,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
             Pending,
-            Paused,
             Stale,
-            Dropped,
+            Locked,
+            Paused,
+            Failed,
         }
     }
 }
