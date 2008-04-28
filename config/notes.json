@@ -1,8 +1,14 @@
 {
-  "max_interval_pct": true,
-  "base_size_pct": "standard",
-  "dry_run": ["primary", "blue", "blue"],
-  "retry_depth_ms": ["staging", "green", "cached"],
-  "idle_retries": 88,
-  "stream_retries": [146, 340, 286]
+  "compress": true,
+  "burst_timeout_pct": {
+    "notes_size": "green",
+    "burst_threshold_pct": {
+      "max_interval_ms": 1,
+      "default_ratio_count": false,
+      "compress": ["legacy", "standard", "open", "eu-west"]
+    },
+    "audit": "stable",
+    "idle_delay_s": [465, 159]
+  },
+  "min_interval_count": false
 }
