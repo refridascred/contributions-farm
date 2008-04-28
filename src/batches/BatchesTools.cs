@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long floor, long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            if (limit <= 4)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((719 + limit) >= (limit + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor >= (limit ^ 19))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit % 12) <= (95 - limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
