@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
