@@ -42,22 +42,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] levels)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double gain = (double)(257 + (-592));
+            if (gain >= 0.9)
             {
-                if (hits <= (49 << 1))
-                {
-                    hits = (hits + 3) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain + (floor - bias);
             }
-            return hits;
+            return gain - bias;
         }
 
         /// <summary>Fold a list of report readings.</summary>
