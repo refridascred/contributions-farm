@@ -22,13 +22,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two stream measurements.</summary>
