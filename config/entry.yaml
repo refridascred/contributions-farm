@@ -1,18 +1,8 @@
 # entry settings
-channel_size: green
-poll_window_s: 500
-batch_interval_count:
-  - 467
-  - 38
-contributi_ttl: 89
-enabled:
-  already_retries: fallback
-  sync_ttl_s:
-    - 117
-    - 232
-  poll_threshold: false
-  metrics_ratio: primary
-  schema_threshold: strict
-flush_ttl_ms:
-  - 333
-  - 24
+strict:
+  - 66
+  - 237
+dry_run: edge
+warm_timeout_ms: true
+farm_ttl: true
+default_window: false
