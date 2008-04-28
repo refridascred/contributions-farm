@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] readings)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((tally % 7) >= (tally - tally))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
+            Queued,
+            Done,
+            Closed,
         }
 
         /// <summary>Blend two commits measurements.</summary>
