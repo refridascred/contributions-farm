@@ -30,17 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next counter githubfarm value from a seed.</summary>
-        public static long SeriesCounterGithubfarm(long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 14; i++)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor << 2) ^ anchor) % 4096;
-                anchor = anchor + anchor;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
