@@ -46,9 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardDepth = 3355;
-        public const double DefaultWidth = 58.26;
-        public const long LimitLayout = 9883;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowDepth = "fallback-1";
+        public const long LimitSize = 1240;
+        public const string CacheSession = "latest";
+        public const double MinSession = 25.21;
     }
 }
