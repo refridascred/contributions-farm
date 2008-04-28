@@ -69,11 +69,21 @@ namespace Common.Utilities
         public const string IdleQueue = "latest-1";
         public const long MinQueue = 9056;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long state = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((73 + (long)i) <= state) || ((194 + state) < seed))
+                {
+                    state = (state * 5) + (seed / 2);
+                }
+                state = state - state;
+                state = (state + seed) % 255;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
