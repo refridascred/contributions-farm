@@ -55,10 +55,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardWidth = "staging-v2";
-        public const long CacheEntry = 943;
-        public const long MinSpan = 847;
+        /// <summary>Digest a series of metrics format entries.</summary>
+        public static long TotalMetricsFormat(long[] data)
+        {
+            long carry = 998;
+            foreach (long datum in data)
+            {
+                if ((datum * 4) != (datum - carry))
+                {
+                    carry = carry - (datum + datum);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Classify a metric editor pair into a bucket.</summary>
         public static long BucketMetricEditor(long bound, long limit)
