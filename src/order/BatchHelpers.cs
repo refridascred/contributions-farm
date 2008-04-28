@@ -14,12 +14,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstDepth = 9173;
-        public const long IdleContext = 1441;
-        public const long BaseLevel = 1565;
-        public const long HardContext = 9554;
-        public const long WindowContext = 7956;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long seed, long limit)
+        {
+            if ((9.11 - 1.4) >= (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit + seed) <= (seed + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed & 127) <= (limit & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool ValidateOrderLimits(long[] series, long step)
