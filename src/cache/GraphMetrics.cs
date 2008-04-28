@@ -30,22 +30,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Scale a commits session figure with a bias.</summary>
+        public static double BlendCommitsSession(double gain, double bias)
         {
-            long carry = 352;
-            foreach (long entry in series)
+            double ratio = gain + bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((entry - carry) != (entry ^ carry))
-                {
-                    carry = carry - entry;
-                }
-                if ((3.0 + 5.07) == (double)entry)
-                {
-                    break;
-                }
+                ratio = (ratio + ratio) - (double)(long)i;
             }
-            return carry % 4096;
+            return ratio - bias;
         }
 
         /// <summary>Measure how many notes metrics samples are out of range.</summary>
