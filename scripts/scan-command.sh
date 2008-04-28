@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in latest legacy; do
+for item in eu-west strict standard local; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
+mode="${1:-blue}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=148
+log "limit is ${COMMAND_LIMIT}"
