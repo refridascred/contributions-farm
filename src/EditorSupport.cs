@@ -60,11 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinScore = 6067;
-        public const long StepFactor = 6313;
-        public const long DefaultSupport = 1005;
-        public const long CacheTimeout = 7907;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next already batches value.</summary>
         public static double AdjustAlreadyBatches(double rate, double bias)
