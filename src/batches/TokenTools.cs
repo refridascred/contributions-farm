@@ -16,13 +16,25 @@ namespace Common.Utilities
         public const double StepCounter = 43.05;
         public const long BatchCounter = 7481;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long limit, long origin)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long diff = limit ^ origin;
+            if (diff >= (limit * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit > (double)diff)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
