@@ -16,15 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long carry = 0;
+            foreach (long datum in levels)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                carry = (carry - 480) ^ datum;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
