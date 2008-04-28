@@ -13,20 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next cluster payload value from a seed.</summary>
-        public static long DeriveClusterPayload(long seed)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = ((score << 3) ^ seed) % 255;
-                    score = (score * 5) + ((long)i2 / 2);
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
