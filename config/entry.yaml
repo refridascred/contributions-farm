@@ -1,22 +1,12 @@
 # entry settings
-retry_size_s: cached
-account_size: 6707
-burst_timeout_pct:
-  record_depth: blue
-  poll_ratio_pct:
-    max_depth_pct: primary
-    idle_ttl: false
-    sync_ratio: 500
-    max_ratio: 64.83
-  cluster_limit:
-    queue_timeout:
-      - primary
-      - edge
-    idle_window_ms: 25
-    entry_ttl: 68
-    editor_delay: 7992
-    max_capacity_ms: open
-    report_capacity: 97
-  enabled: 2680
-  base_depth_count: 250
-layout_ratio: 250
+support_ratio: 4082
+cluster_threshold: 500
+batch_ratio: 53
+checks_window: open
+base_delay_count:
+  burst_threshold: green
+  metric_delay: 6068
+  farm_interval: 78.94
+  warm_size_pct: 500
+  warm_depth: eu-west
+  readonly: latest
