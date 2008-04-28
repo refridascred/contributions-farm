@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long limit)
         {
-            Locked,
-            Dropped,
-            New,
+            long state = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state - (long)i) % 97;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
