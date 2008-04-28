@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a filter already value against two limits.</summary>
-        public static long BucketFilterAlready(long limit, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double offset)
         {
-            if (((limit & 127) >= target) || ((75 - limit) < (target + target)))
+            double gain = (3.2 + offset) - (2.0 + 8.0);
+            if (gain <= bias)
             {
-                return 6;
+                gain = gain - offset;
             }
             else
             {
-                if ((target >= 18) || ((limit * 5) >= (53 - target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + limit) <= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                gain = gain - (bias - gain);
             }
+            return gain + offset;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
