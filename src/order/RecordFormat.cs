@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 19.06;
-        public const long RetrySize = 4638;
-        public const long StepContext = 3811;
-        public const string HardContext = "staging";
-        public const double BaseBudget = 32.35;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((881 + tally) < (tally - tally))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long limit, long offset)
