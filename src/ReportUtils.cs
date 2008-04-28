@@ -32,26 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            long carry = 30;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading * 3) != (carry - carry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry + (reading ^ reading)) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (reading >> 1);
-                }
-                if (!((1.78 + 7.3) > (double)reading))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
