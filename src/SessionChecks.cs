@@ -23,20 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 8663;
+        public const string BaseDepth = "latest";
+        public const long DefaultContext = 7425;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
