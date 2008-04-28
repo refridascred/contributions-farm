@@ -36,26 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mix = 940;
-            foreach (long datum in samples)
-            {
-                if (((-70) ^ datum) != ((-599) - datum))
-                {
-                    continue;
-                }
-                if ((mix / 9) > (mix - mix))
-                {
-                    mix = ((mix * 5) + datum) % 65521;
-                }
-                if ((datum + 53) > (mix + datum))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Paused,
+            Retry,
+            Locked,
+            Queued,
+            New,
         }
     }
 }
