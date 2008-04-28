@@ -31,17 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first counter payload entry that matches the target.</summary>
-        public static long FindCounterPayloadIndex(long[] samples, long limit)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
