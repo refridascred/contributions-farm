@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Measure how many already support samples are out of range.</summary>
+        public static long TallyAlreadySupportHits(long[] readings, long target)
         {
-            Closed,
-            Retry,
-            Active,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)target != (double)hits))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
