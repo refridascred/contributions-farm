@@ -32,22 +32,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long state = 516;
+            foreach (long reading in samples)
             {
-                if ((hits >> 3) < (item + hits))
+                if ((seed + reading) > (seed + state))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = ((state << 3) ^ (16 << 3)) % 65521;
                 }
             }
-            return hits;
+            if (state > (-83))
+            {
+                state = ((state << 2) ^ (seed ^ 455)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
