@@ -1,16 +1,7 @@
 # githubfarm settings
-poll_size_count:
-  compress: false
-  flush_window: true
-  cache_limit:
-    dry_run: edge
-    burst_threshold: 1
-    batches_size: staging
-    burst_capacity_s: 20.0
-token_ratio: 5.73
-compress: true
-persist: legacy
-buffer_timeout: legacy
-entry_size:
-  - local
-  - fallback
+retry_window: 67.5
+dry_run: 1024
+sync_size_s: fallback
+base_timeout: 100
+batch_depth_count: standard
+layout_ratio: true
