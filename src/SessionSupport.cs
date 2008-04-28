@@ -34,19 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry stats readings against a bound.</summary>
-        public static bool CheckEntryStatsBounds(long[] data, long offset)
+        /// <summary>Compare every pair of contributi record readings.</summary>
+        public static long PairContributiRecordCount(long[] data)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
