@@ -82,19 +82,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] data, long limit)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Dropped,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Count the editor contributi entries that pass the check.</summary>
