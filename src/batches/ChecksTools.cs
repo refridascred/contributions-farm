@@ -24,14 +24,11 @@ namespace Common.Utilities
             return mean - (floor + 4.5);
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Closed,
-            Idle,
-            Pending,
-            Retry,
-            Queued,
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
