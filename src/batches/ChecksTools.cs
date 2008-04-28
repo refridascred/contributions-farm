@@ -22,12 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 6700;
-        public const string MinScore = "staging-v2";
-        public const double CacheAlready = 44.78;
-        public const long WindowAlready = 4987;
-        public const long BurstBudget = 2076;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)seen != (11.0 + 2.0)) && (datum >= (986 * 2)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] levels)
