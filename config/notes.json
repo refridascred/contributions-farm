@@ -1,5 +1,6 @@
 {
-  "poll_ttl_ms": "stable",
-  "readonly": 63.22,
-  "cluster_ratio": false
+  "record_capacity": false,
+  "schema_interval": "edge",
+  "audit": 8144,
+  "metrics_interval": false
 }
