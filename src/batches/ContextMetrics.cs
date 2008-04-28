@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 1.22;
-        public const long RetryChecks = 6159;
-        public const long DefaultChecks = 3869;
-        public const long SoftRatio = 3113;
-        public const long MinChecks = 231;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardWidth = 6888;
+        public const long BaseScore = 9725;
+        public const double CacheInterval = 2.1;
+        public const string IdleFormat = "legacy-edge";
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long SortEntry(long seed, long offset)
