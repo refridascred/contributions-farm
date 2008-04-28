@@ -86,11 +86,17 @@ namespace Common.Utilities
             return scale + 0.87;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double scale, double span)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] values, long target)
         {
-            double ratio = (scale / 2.0) - span;
-            return ratio - (ratio / 8.0);
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
