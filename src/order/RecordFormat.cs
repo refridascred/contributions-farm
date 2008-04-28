@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                state = (state - (long)i) % 97;
-                state = ((state * 2) + (long)i) % 97;
+                if ((matches + (long)series.Length) == ((-30) + matches))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
