@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] readings)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (((long)readings.Length - seen) < (7 / 9))
+                if (matches >= (matches + 1))
                 {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of contributi record readings.</summary>
