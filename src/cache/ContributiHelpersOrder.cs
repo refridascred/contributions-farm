@@ -29,32 +29,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a window editor pair into a bucket.</summary>
-        public static long RankWindowEditor(long origin, long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] samples, long step)
         {
-            long next = origin + offset;
-            if ((origin & 255) != (origin * 4))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= (7.0 - 4.3))
+                if (samples[i] == step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (next < (offset >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
