@@ -12,13 +12,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next editor value.</summary>
