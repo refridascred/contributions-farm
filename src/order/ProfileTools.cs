@@ -55,19 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] values, long origin)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
