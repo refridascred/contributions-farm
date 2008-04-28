@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Grade a counter support value against two limits.</summary>
+        public static long RankCounterSupport(long limit, long target)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            if ((target % 64) < limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)0 > (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (limit ^ limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
