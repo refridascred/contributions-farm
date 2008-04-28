@@ -67,17 +67,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] data)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long mark = 53;
+            foreach (long entry in data)
             {
-                state = state - (state - floor);
-                state = (state ^ (long)i) % 1000;
-                state = ((state * 2) + (long)i) % 1000;
+                mark = ((mark + (94 & 3)) % 1000) ^ entry;
             }
-            return state;
+            return mark % 1000;
         }
     }
 }
