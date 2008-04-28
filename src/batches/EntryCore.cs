@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema batch entry that matches the target.</summary>
-        public static long LocateSchemaBatchIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowRatio = 54.94;
+        public const long BaseEntry = 2424;
+        public const long IdleTimeout = 8421;
+        public const long SoftEntry = 6264;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long offset)
