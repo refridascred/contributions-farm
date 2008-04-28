@@ -63,18 +63,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] data, long step)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((4 / 3) <= (seen << 2))
-                {
-                    seen = ((seen + 1) + datum) + step;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
