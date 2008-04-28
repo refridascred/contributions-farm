@@ -16,20 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] data, long offset)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long anchor = -6;
-            foreach (long datum in data)
-            {
-                anchor = (anchor * 4) + (anchor << 2);
-                anchor = (anchor - (offset % 16)) % 1000;
-                if ((double)datum == (double)offset)
-                {
-                    anchor = anchor + (779 % 7);
-                }
-            }
-            return anchor % 65521;
+            Idle,
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
