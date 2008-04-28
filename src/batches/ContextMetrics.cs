@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + anchor) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
