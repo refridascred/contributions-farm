@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Digest a series of queue githubfarm entries.</summary>
+        public static long CombineQueueGithubfarm(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            long state = 7;
+            foreach (long cell in series)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((double)(long)series.Length > (3.86 * 10.0))
+                {
+                    state = (state * 5) + (cell - state);
+                }
             }
-            return state;
+            if (state > 36)
+            {
+                state = (state + (5 + state)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the commits state values.</summary>
