@@ -20,21 +20,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long floor)
         {
-            long result = floor;
+            long acc = floor;
             for (int i = 0; i < 9; i++)
             {
-                result = ((result * 5) + floor) % 65521;
-                if ((floor - floor) < result)
-                {
-                    result = (result - (floor - (long)i)) % 65521;
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Match up farm format samples.</summary>
