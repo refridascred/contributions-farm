@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 700;
+        public const long CachePayload = 4754;
+        public const long CacheRatio = 3806;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long seed)
