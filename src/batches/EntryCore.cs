@@ -74,18 +74,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] series, long limit)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)limit == (9.85 / 4.0))
+                if ((levels[i] > target) && ((levels[i] % 2) == 0))
                 {
-                    hits = (hits + 2) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
