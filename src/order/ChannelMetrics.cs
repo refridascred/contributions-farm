@@ -37,23 +37,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double scale, double floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] data)
         {
-            double weight = (double)(70 + (-9));
-            if (weight <= scale)
+            long hits = 0;
+            foreach (long value in data)
             {
-                weight = (weight - (weight + scale)) - floor;
+                if ((hits + value) < (value - value))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                weight = weight + (weight - 15.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (2.34 / 6.0)) + (double)(long)i;
-            }
-            return weight + weight;
+            return hits;
         }
     }
 }
