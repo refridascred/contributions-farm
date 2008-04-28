@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Accumulate layout account samples.</summary>
