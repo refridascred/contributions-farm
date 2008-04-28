@@ -19,23 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items, long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long total = 245;
-            foreach (long cell in items)
-            {
-                if (cell > (target << 2))
-                {
-                    total = total ^ (target + total);
-                }
-                total = total + total;
-            }
-            if (total > 825)
-            {
-                total = (total << 3) ^ (3 & 255);
-            }
-            return total % 1000;
+            Closed,
+            Ready,
+            New,
+            Locked,
+            Draft,
         }
 
         /// <summary>Match up already samples.</summary>
