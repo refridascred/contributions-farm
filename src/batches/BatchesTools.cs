@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already commits entry stays within the limit.</summary>
-        public static bool GuardAlreadyCommitsBounds(long[] values, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (datum >= floor)
+                if (floor >= datum)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the context status values.</summary>
