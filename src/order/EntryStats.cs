@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const double WindowToken = 91.13;
         public const string RetryWidth = "strict-1";
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] levels, long offset)
         {
-            long result = 251;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result << 3) ^ (396 + value);
-                result = (result ^ (long)readings.Length) % 97;
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
