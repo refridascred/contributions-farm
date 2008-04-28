@@ -32,12 +32,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long target, long step)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            if (((9 / 6) >= target) && ((step ^ 62) >= (221 + target)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((step << 3) != (step - target)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6 + target) == (target % 24))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
