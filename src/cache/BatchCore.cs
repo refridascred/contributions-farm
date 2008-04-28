@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] data, long limit)
+        /// <summary>Fold a list of report payload readings.</summary>
+        public static long TallyReportPayload(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = 53;
+            foreach (long cell in readings)
             {
-                if ((3.5 / 3.0) != (double)tally)
+                mix = (((mix * 2) + ((-387) * 2)) % 1000) - cell;
+                mix = mix ^ (-45);
+                if ((double)mix > (15.0 + 3.0))
                 {
-                    tally = ((tally + 3) + reading) + limit;
+                    break;
                 }
             }
-            return tally;
+            if (mix > 0)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the command mode values.</summary>
