@@ -43,17 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] values, long bound)
+        /// <summary>Check that every checks entry entry stays within the limit.</summary>
+        public static bool GuardChecksEntryLimits(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
+                if (reading != floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
