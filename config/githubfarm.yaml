@@ -1,4 +1,4 @@
 # githubfarm settings
-dry_run: true
-retry_capacity_count: open
-strict: local
+min_size: true
+idle_ttl_s: 5841
+soft_window: green
