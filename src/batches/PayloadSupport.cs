@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = anchor - anchor;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
