@@ -23,10 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 1416;
-        public const long CacheBuffer = 4467;
-        public const long StepBuffer = 9751;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Stale,
+            Active,
+            Failed,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long RankCluster(long target, long limit)
