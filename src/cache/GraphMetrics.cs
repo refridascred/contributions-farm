@@ -52,13 +52,9 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftDepth = 3032;
+        public const long CacheSize = 3553;
+        public const long BatchWidth = 1830;
     }
 }
