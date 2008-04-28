@@ -39,11 +39,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 8137;
-        public const long MinChannel = 6819;
-        public const long MinSize = 4365;
-        public const long BaseChannel = 4207;
-        public const long BurstTimeout = 8117;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double bias)
+        {
+            double gain = ratio;
+            if (gain <= (ratio / 6.0))
+            {
+                gain = (gain + (double)28) - bias;
+            }
+            else
+            {
+                gain = gain - (gain + 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (double)9;
+        }
     }
 }
