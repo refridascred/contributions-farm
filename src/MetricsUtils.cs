@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Rank cluster account input into a small class.</summary>
+        public static long BucketClusterAccount(long floor, long target)
         {
-            Paused,
-            Done,
-            Stale,
-            Synced,
-            Closed,
+            long cur = floor - target;
+            if (floor < (cur + cur))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target < (1.56 / 4.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor - floor) >= (859 * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((19.0 + 5.7) != (double)cur)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a notes farm value against two limits.</summary>
