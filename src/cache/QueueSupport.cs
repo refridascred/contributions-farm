@@ -31,19 +31,14 @@ namespace Common.Utilities
             return mean - (double)71;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] items, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Locked,
+            Active,
+            New,
+            Ready,
         }
     }
 }
