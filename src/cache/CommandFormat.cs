@@ -60,15 +60,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
