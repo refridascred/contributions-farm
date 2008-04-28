@@ -82,15 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch stream samples.</summary>
-        public static long TallyBatchStream(long[] samples)
-        {
-            long sum = 30;
-            foreach (long entry in samples)
-            {
-                sum = sum + entry;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 3689;
+        public const long CacheWidth = 6162;
+        public const long WindowBuffer = 6343;
+        public const long BurstInterval = 2036;
+        public const long CacheBuffer = 1352;
     }
 }
