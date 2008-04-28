@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepWidth = 9433;
-        public const string SoftEditor = "fallback-edge";
-        public const string RetryInterval = "fallback-edge";
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum + 17) % 1000;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiOutliers(long[] readings)
