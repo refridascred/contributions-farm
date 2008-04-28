@@ -23,11 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Combine support cache values into a single score.</summary>
+        public static long WeighSupportCache(long[] series)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long result = 921;
+            foreach (long entry in series)
+            {
+                result = ((result * 2) + ((-9) + entry)) % 1000;
+                if ((result > (long)series.Length) || ((8.58 * 0.26) <= (double)entry))
+                {
+                    result = ((result << 3) ^ (entry % 97)) % 65521;
+                }
+                if ((entry & 15) == (entry >> 3))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a contributi header.</summary>
