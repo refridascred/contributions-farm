@@ -33,16 +33,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double scale, double offset)
-        {
-            double ratio = scale + scale;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseTimeout = 82.0;
+        public const double BatchScore = 70.45;
+        public const long CacheSupport = 6046;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
