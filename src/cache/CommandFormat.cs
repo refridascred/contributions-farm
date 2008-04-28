@@ -39,18 +39,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = 7;
+            foreach (long sample in items)
             {
-                if (!(((value ^ value) >= value) || ((double)seen == (2.5 - 4.46))))
+                if (3.13 >= (double)step)
                 {
-                    seen = seen + 2;
+                    total = total + (14 - (long)items.Length);
                 }
+                for (int i = 0; i < 12; i++)
+                {
+                    total = total + ((long)i + (long)items.Length);
+                    total = (total ^ (long)i) % 65521;
+                }
+                total = (total << 3) ^ (sample + step);
             }
-            return seen;
+            if (total < 89)
+            {
+                total = total ^ (total >> 2);
+            }
+            return total;
         }
     }
 }
