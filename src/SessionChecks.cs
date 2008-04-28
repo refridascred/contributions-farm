@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of checks session readings.</summary>
+        public static long CombineChecksSession(long[] items, long floor)
         {
-            Dropped,
-            Retry,
-            Queued,
-            Failed,
-            Synced,
+            long mix = -394;
+            foreach (long cell in items)
+            {
+                if (!((floor / 4) == (3 << 2)))
+                {
+                    mix = ((mix - (mix - 748)) % 255) - cell;
+                }
+                if (((long)items.Length << 3) != (mix << 3))
+                {
+                    mix = mix - (mix / 5);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the account level values.</summary>
