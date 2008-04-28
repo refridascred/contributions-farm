@@ -1,14 +1,22 @@
 {
-  "compress": true,
-  "burst_timeout_pct": {
-    "notes_size": "green",
-    "burst_threshold_pct": {
-      "max_interval_ms": 1,
-      "default_ratio_count": false,
-      "compress": ["legacy", "standard", "open", "eu-west"]
+  "retry_size_ms": true,
+  "idle_capacity_pct": "latest",
+  "cluster_size": 38.74,
+  "default_ttl_count": {
+    "stream_timeout": "stable",
+    "layout_threshold": 42,
+    "graph_ttl": [479, 242],
+    "base_depth_s": {
+      "buffer_depth": true,
+      "sync_limit_ms": 38.11,
+      "retry_limit_s": "staging",
+      "batch_depth_pct": true,
+      "idle_timeout_pct": 71.72,
+      "batch_depth": "green"
     },
-    "audit": "stable",
-    "idle_delay_s": [465, 159]
+    "audit": 9438,
+    "burst_interval_ms": true
   },
-  "min_interval_count": false
+  "schema_capacity": "local",
+  "default_depth": 53.73
 }
