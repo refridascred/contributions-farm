@@ -58,21 +58,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of stream format readings.</summary>
-        public static long PairStreamFormatCount(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 4;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc - origin) + item;
             }
-            return seen;
+            if (acc < 95)
+            {
+                acc = ((acc * 2) + (7 + origin)) % 255;
+            }
+            return acc;
         }
     }
 }
