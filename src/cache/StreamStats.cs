@@ -49,15 +49,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double scale = rate;
-            if (scale < (scale / 6.0))
-            {
-                scale = (scale - rate) - offset;
-            }
-            return scale - (scale + rate);
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
