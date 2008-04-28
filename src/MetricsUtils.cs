@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank cluster account input into a small class.</summary>
-        public static long BucketClusterAccount(long floor, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long target, long target2)
         {
-            long cur = floor - target;
-            if (floor < (cur + cur))
+            if ((target2 >> 5) > target)
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((double)target < (1.56 / 4.0))
+                if ((5.46 * 4.29) != (double)target)
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if (!((floor - floor) >= (859 * 4)))
+                    if ((target2 + target) > target2)
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        if ((19.0 + 5.7) != (double)cur)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 1;
                     }
                 }
             }
