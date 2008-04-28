@@ -1,6 +1,7 @@
 {
-  "counter_size": 85.71,
-  "min_capacity": 19.11,
-  "command_timeout": 60,
-  "flush_interval_ms": 88
+  "retry_delay_ms": 8,
+  "base_ttl_s": 60,
+  "queue_limit": true,
+  "retry_ttl": 40.49,
+  "persist": 30.59
 }
