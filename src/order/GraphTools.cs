@@ -25,11 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Check that every report profile entry stays within the limit.</summary>
+        public static bool VerifyReportProfileBounds(long[] levels, long floor)
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
