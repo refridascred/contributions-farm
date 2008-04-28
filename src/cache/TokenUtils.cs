@@ -16,11 +16,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Grade a order payload value against two limits.</summary>
+        public static long RankOrderPayload(long origin, long limit)
         {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
+            if ((origin + limit) == (limit * 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin & 255) >= (origin << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
