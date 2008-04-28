@@ -49,15 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long bound)
         {
-            long acc = 34;
-            foreach (long datum in series)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                acc = (acc ^ (datum & 255)) % 255;
+                if (((long)i << 3) >= ((-7) / 4))
+                {
+                    score = (score ^ (bound - bound)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
