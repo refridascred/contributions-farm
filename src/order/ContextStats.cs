@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] samples, long seed)
-        {
-            long total = 3;
-            foreach (long value in samples)
-            {
-                if (((value + seed) == (22 >> 3)) && (((-31) - total) < (seed / 9)))
-                {
-                    total = (total - (total + value)) % 101;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinRatio = 4214;
+        public const string StepInterval = "staging";
+        public const long HardBudget = 128;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
