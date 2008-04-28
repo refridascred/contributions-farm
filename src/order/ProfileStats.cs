@@ -67,30 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] items, long bound)
         {
-            long score = 231;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (2 > (entry + 7))
+                if (datum <= bound)
                 {
-                    score = ((score * 3) + (score + score)) % 101;
-                }
-                if ((double)score == (0.1 - 0.11))
-                {
-                    score = score - (4 * 4);
-                }
-                else
-                {
-                    score = (score - entry) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < 4)
-            {
-                score = ((score * 5) + score) % 97;
-            }
-            return score;
+            return flag;
         }
     }
 }
