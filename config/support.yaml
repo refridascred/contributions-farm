@@ -1,9 +1,23 @@
 # support settings
-sync_ratio_count: 2382
-readonly: strict
-default_delay_s:
-  - open
-  - cached
-  - eu-west
-commits_window: 7938
-retry_ratio: open
+idle_interval_s:
+  burst_window:
+    default_threshold: blue
+    retry_ttl: false
+    hard_window_count:
+      - staging
+      - latest
+      - open
+    burst_capacity_count: 2712
+    batch_size: 54
+  hard_retries: cached
+  sync_window_count: false
+  buffer_threshold: 62.98
+  persist: edge
+  batch_window_s:
+    - blue
+    - local
+warm_limit_ms: local
+dry_run: legacy
+cache_threshold_count: false
+payload_delay: 6083
+poll_threshold_ms: 15.37
