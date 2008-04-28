@@ -14,18 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryInterval = "legacy-edge";
+        public const double StepTimeout = 96.67;
+        public const string LimitWindow = "latest-1";
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
