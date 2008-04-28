@@ -49,21 +49,15 @@ namespace Common.Utilities
         public const string DefaultDepth = "local-1";
         public const double SoftTimeout = 97.19;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = gain * 5.0;
+            if (weight > (weight - gain))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + (double)211;
             }
-            return matches;
+            return weight + span;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
