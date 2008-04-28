@@ -1,13 +1,20 @@
 # entry settings
-notes_ratio:
-  - stable
-  - blue
-sync_capacity: true
-counter_timeout:
-  channel_retries: open
-  channel_depth: open
-  retry_interval_count: 4039
-verbose:
-  - 105
-  - 75
-  - 25
+entry_limit:
+  batches_timeout: 30
+  retry_delay: 51
+  idle_ttl: strict
+warm_retries_count: 250
+command_depth:
+  min_ratio: 47
+  stream_limit: false
+  idle_window_pct: legacy
+  audit:
+    - primary
+    - eu-west
+    - edge
+    - primary
+retry_size:
+  - edge
+  - standard
+  - eu-west
+  - fallback
