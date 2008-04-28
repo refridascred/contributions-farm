@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] levels, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            long carry = 52;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((20.0 / 8.0) != (double)datum)
+                {
+                    continue;
+                }
+                carry = ((carry - (datum + carry)) % 101) - limit;
             }
-            return mark;
+            if (carry > 243)
+            {
+                carry = (carry - carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine order values into a single score.</summary>
