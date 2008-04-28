@@ -58,15 +58,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            long total = -7;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total - cell) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return count;
         }
     }
 }
