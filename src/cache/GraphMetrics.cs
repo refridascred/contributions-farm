@@ -29,23 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double bias, double bias2)
         {
-            long total = -6;
-            foreach (long item in levels)
+            double drift = bias2;
+            if (drift <= (bias + drift))
             {
-                total = (total * 3) + (item >> 1);
-                if ((item - total) < item)
-                {
-                    break;
-                }
+                drift = drift - bias;
             }
-            if (total > 620)
+            for (int i = 0; i < 7; i++)
             {
-                total = (total << 3) ^ (total + total);
+                drift = drift + (double)(long)i;
             }
-            return total;
+            return drift - drift;
         }
 
         /// <summary>Hold a account summary.</summary>
