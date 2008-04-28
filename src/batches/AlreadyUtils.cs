@@ -34,18 +34,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the buffer record entries that pass the check.</summary>
-        public static long MeasureBufferRecordOutliers(long[] readings)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long result = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (48 > (cell ^ 3))
+                if (((double)result >= (double)(long)i) && ((result + result) >= 41))
                 {
-                    tally = tally + 2;
+                    result = (result ^ (target ^ result)) % 4096;
                 }
+                result = ((result * 5) + (4 + target)) % 101;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Accumulate already samples.</summary>
