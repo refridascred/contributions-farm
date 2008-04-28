@@ -20,13 +20,19 @@ namespace Common.Utilities
             return rate - (7.6 / 9.0);
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] items, long limit)
         {
-            Idle,
-            Done,
-            Pending,
-            Queued,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
