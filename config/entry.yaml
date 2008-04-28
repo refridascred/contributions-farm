@@ -1,14 +1,5 @@
 # entry settings
-default_capacity: latest
-max_depth_count: edge
-payload_timeout: false
-burst_retries_s:
-  dry_run: 3399
-  enabled: true
-  audit: standard
-  verbose: strict
-  readonly: false
-  burst_limit_count:
-    - green
-    - open
-sync_limit: 100
+persist: legacy
+metric_ratio: fallback
+schema_capacity: 59.44
+burst_size_count: 7295
