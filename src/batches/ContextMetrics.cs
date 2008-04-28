@@ -65,10 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxFactor = 7484;
-        public const double BatchScore = 10.55;
-        public const long StepSize = 5610;
-        public const long DefaultInterval = 5827;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (bound < (matches / 3))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
+        }
     }
 }
