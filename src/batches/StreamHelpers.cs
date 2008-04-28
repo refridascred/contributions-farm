@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] data)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!((reading + (-15)) != (reading * 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of window notes entries.</summary>
