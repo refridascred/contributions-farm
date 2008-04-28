@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchCount = 37.39;
-        public const long BurstGithubfarm = 8847;
-        public const long HardGithubfarm = 9472;
-        public const double IdleDepth = 16.77;
-        public const double RetryRatio = 16.07;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Retry,
+            Synced,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
