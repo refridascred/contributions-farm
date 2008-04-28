@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+CHANNEL_LIMIT=202
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in cached legacy edge standard; do
+mode="${1:-fallback}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary blue eu-west; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=220
-log "limit is ${CHANNEL_LIMIT}"
