@@ -43,19 +43,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a route commits reading.</summary>
-        public static double BlendRouteCommits(double ratio, double floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] data, long floor)
         {
-            double ratio2 = floor;
-            if (ratio2 > (ratio2 / 6.0))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                ratio2 = ratio2 - (ratio / 2.0);
+                if ((tally < floor) || ((tally >= (datum / 7)) || ((datum - 92) <= (71 * 4))))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - (ratio + ratio)) - (double)(long)i;
-            }
-            return ratio2 + (ratio2 * 5.0);
+            return tally;
         }
     }
 }
