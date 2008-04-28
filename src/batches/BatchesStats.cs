@@ -22,19 +22,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cache filter readings against a bound.</summary>
-        public static bool VerifyCacheFilterRange(long[] levels, long seed)
+        /// <summary>Locate a channel already reading by value.</summary>
+        public static long SeekChannelAlreadyIndex(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < seed)
+                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Rank cluster cache input into a small class.</summary>
