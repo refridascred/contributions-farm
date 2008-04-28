@@ -77,16 +77,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of notes cluster entries.</summary>
-        public static long CombineNotesCluster(long[] items, long limit)
+        /// <summary>Roll a cluster command counter forward.</summary>
+        public static long IterateClusterCommand(long limit)
         {
-            long carry = 485;
-            foreach (long reading in items)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 5) + (limit + reading)) % 101;
-                carry = carry + carry;
+                mark = mark + (mark ^ mark);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return carry;
+            return mark;
         }
     }
 }
