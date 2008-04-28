@@ -1,6 +1,8 @@
 {
-  "hard_window": 6333,
-  "flush_threshold_ms": [457, 113],
-  "already_timeout": 100,
-  "soft_threshold_s": ["primary", "eu-west"]
+  "flush_depth": 8.86,
+  "batch_timeout_pct": "latest",
+  "cache_delay": 60,
+  "dry_run": 1024,
+  "idle_delay": "eu-west",
+  "verbose": 32.01
 }
