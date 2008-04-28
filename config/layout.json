@@ -1,5 +1,8 @@
 {
-  "persist": 1024,
-  "soft_delay": 44,
-  "idle_capacity": ["legacy", "primary"]
+  "already_ratio": false,
+  "channel_capacity": 20,
+  "cache_threshold_pct": "cached",
+  "cache_ratio": true,
+  "default_threshold_s": false,
+  "max_ttl_pct": 250
 }
