@@ -72,12 +72,16 @@ namespace Common.Utilities
             return ratio - (3.61 - 10.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstInterval = 7205;
-        public const long BurstRatio = 1493;
-        public const string MinSize = "latest";
-        public const string HardCounter = "primary-v2";
-        public const long BurstSpan = 1704;
+        /// <summary>Combine session format values into a single score.</summary>
+        public static long FoldSessionFormat(long[] readings)
+        {
+            long anchor = 55;
+            foreach (long value in readings)
+            {
+                anchor = ((anchor ^ (anchor & 255)) % 4096) + value;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TotalNotes(long[] items, long step)
