@@ -53,14 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] readings, long limit)
         {
-            Failed,
-            Closed,
-            Active,
-            New,
-            Done,
+            long anchor = 61;
+            foreach (long value in readings)
+            {
+                anchor = ((anchor + anchor) % 101) + limit;
+                if ((double)value >= (9.03 + 7.4))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the channel kind values.</summary>
