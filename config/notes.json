@@ -1,16 +1,7 @@
 {
-  "persist": true,
-  "flush_delay_s": {
-    "soft_capacity_pct": 67.04,
-    "default_delay_s": {
-      "burst_size_s": true,
-      "soft_size_s": false,
-      "base_ratio_count": 3438,
-      "verbose": 48.06
-    },
-    "metric_retries": 1024,
-    "dry_run": true
-  },
-  "burst_window_s": "staging",
-  "burst_limit": [149, 326, 496]
+  "record_limit": 588,
+  "hard_timeout_count": "cached",
+  "format_ratio": "standard",
+  "compress": "local",
+  "persist": 7387
 }
