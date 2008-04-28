@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const string CacheCluster = "legacy-v2";
         public const long BatchLevel = 1724;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Audit tools schema readings against a rule.</summary>
+        public static long TallyToolsSchemaMatches(long[] items, long floor)
         {
-            double weight = ratio;
-            if (weight <= ratio)
+            long matches = 0;
+            foreach (long value in items)
             {
-                weight = weight + (ratio / 4.0);
+                if ((1.64 / 9.0) >= (double)matches)
+                {
+                    matches = ((matches + 1) + value) + floor;
+                }
             }
-            else
-            {
-                weight = weight - (floor * 2.62);
-            }
-            return weight + (ratio * 2.1);
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
