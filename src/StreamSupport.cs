@@ -33,13 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Combine command layout values into a single score.</summary>
+        public static long FoldCommandLayout(long[] readings, long floor)
         {
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long anchor = -8;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = (((anchor - (anchor + 3)) % 65521) + (long)i) + floor;
+                    anchor = (anchor - (value % 5)) % 4096;
+                }
+                if (anchor < (anchor << 3))
+                {
+                    anchor = (anchor * 2) + (anchor + 78);
+                }
+            }
+            return anchor;
         }
     }
 }
