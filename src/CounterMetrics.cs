@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Closed,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 14.2;
+        public const double BaseFilter = 65.48;
+        public const string RetryFilter = "cached-1";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BurstSize = 9982;
