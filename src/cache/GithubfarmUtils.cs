@@ -28,15 +28,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two layout counter measurements.</summary>
-        public static double SmoothLayoutCounter(double gain, double floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] data, long seed)
         {
-            double scale = (double)(484 % 5);
-            if (scale < (floor / 8.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - (4.6 * 6.99);
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (gain - floor);
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
