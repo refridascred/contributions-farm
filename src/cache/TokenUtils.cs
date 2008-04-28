@@ -20,22 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] series, long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long mark = 66;
-            foreach (long value in series)
-            {
-                if ((161 + value) >= ((-298) << 2))
-                {
-                    continue;
-                }
-                if (((mark ^ origin) >= origin) && (((long)series.Length - mark) > value))
-                {
-                    mark = mark - mark;
-                }
-            }
-            return mark;
+            Closed,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
