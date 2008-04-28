@@ -29,18 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] items, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2.2 - 11.0) == (double)matches)
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 1) ^ entry) + offset;
                 }
             }
             return matches;
