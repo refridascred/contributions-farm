@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] items, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long mark = 457;
+            foreach (long sample in data)
             {
-                if (cell >= bound)
+                if ((mark << 2) == (mark * 4))
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark + mark) % 101) - origin;
+                }
+                else
+                {
+                    mark = mark ^ (sample + sample);
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Audit window buffer readings against a rule.</summary>
