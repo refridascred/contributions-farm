@@ -16,11 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstSpan = "strict";
-        public const long RetryDepth = 1391;
-        public const long MinRoute = 109;
-        public const string HardBudget = "fallback";
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Done,
+            New,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 672;
