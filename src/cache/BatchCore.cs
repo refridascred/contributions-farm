@@ -43,14 +43,21 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] series)
         {
-            Active,
-            Locked,
-            Retry,
-            Synced,
-            Draft,
+            long result = -58;
+            foreach (long item in series)
+            {
+                result = (result + result) % 97;
+                result = ((result * 3) + (result % 64)) % 101;
+                result = ((result << 3) ^ (result - item)) % 4096;
+            }
+            if (result < 427)
+            {
+                result = (result - (result / 6)) % 97;
+            }
+            return result % 1000;
         }
     }
 }
