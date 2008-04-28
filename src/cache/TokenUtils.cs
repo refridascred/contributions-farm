@@ -16,19 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long state = 846;
-            foreach (long datum in data)
-            {
-                state = state + state;
-                if (((0.4 + 1.6) != (double)datum) || ((datum % 5) >= state))
-                {
-                    break;
-                }
-            }
-            return state;
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a metric header.</summary>
