@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long step, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] values, long seed)
         {
-            long cur = step + limit;
-            if (((cur >> 1) < (cur / 4)) || (((-951) + step) < cur))
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + 5) <= 218)
+                if ((matches & 63) >= ((long)values.Length << 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((527 & 31) > (limit - cur)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = ((matches + 2) ^ item) + seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
