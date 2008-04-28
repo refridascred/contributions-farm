@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of editor token readings.</summary>
-        public static long TallyEditorToken(long[] series)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long acc = 21;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc ^ acc) >= cell)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc - acc) % 1000;
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 21)
-            {
-                acc = ((acc * 5) + (acc >> 4)) % 97;
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Describe the session class values.</summary>
