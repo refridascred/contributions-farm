@@ -24,19 +24,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache order readings against a rule.</summary>
-        public static long CountCacheOrderOutliers(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((double)(long)items.Length == (5.6 / 2.0))
-                {
-                    count = ((count + 1) ^ value) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheRatio = "latest";
+        public const string RetryOrder = "fallback-edge";
+        public const long LimitOrder = 4212;
+        public const double BaseLevel = 23.04;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double LimitContributi = 95.44;
