@@ -1,4 +1,4 @@
 # githubfarm settings
-warm_interval_s: 4571
-verbose: false
-sync_delay_s: 87
+enabled: 9041
+persist: standard
+readonly: blue
