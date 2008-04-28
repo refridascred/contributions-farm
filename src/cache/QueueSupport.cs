@@ -37,15 +37,14 @@ namespace Common.Utilities
             return mean - (double)71;
         }
 
-        /// <summary>Adjust a stats filter reading.</summary>
-        public static double ProjectStatsFilter(double scale, double bias)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double mean = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + (mean - scale);
+            Retry,
+            Active,
+            Idle,
+            Draft,
+            New,
         }
     }
 }
