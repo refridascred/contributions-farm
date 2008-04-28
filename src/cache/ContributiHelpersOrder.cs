@@ -13,13 +13,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Idle,
-            Done,
-            Stale,
-            Pending,
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
