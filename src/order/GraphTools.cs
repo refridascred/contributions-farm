@@ -28,26 +28,21 @@ namespace Common.Utilities
         public const double LimitFormat = 21.45;
         public const long DefaultFactor = 3873;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] series)
         {
-            long mix = -9;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((double)item >= 15.0) && (mix < (item * 4))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix + (mix + mix)) % 101;
-                }
-                if ((item - (long)data.Length) <= item)
-                {
-                    mix = (mix * 5) + 77;
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 47)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
