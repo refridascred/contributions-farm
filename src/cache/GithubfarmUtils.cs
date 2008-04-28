@@ -66,14 +66,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long limit, long origin)
         {
-            Dropped,
-            Queued,
-            Active,
-            Pending,
-            Failed,
+            long next = limit + origin;
+            if ((origin ^ next) <= (next - limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((15.0 / 2.0) >= (double)next)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit & 31) <= next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
