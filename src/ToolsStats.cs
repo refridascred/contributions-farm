@@ -39,11 +39,22 @@ namespace Common.Utilities
             return load - (ratio - ratio);
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] items, long seed)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum >= (4.24 - 3.3))
+                {
+                    tally = (tally + 2) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of record entries.</summary>
