@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] samples, long target)
+        /// <summary>Measure how many order format samples are out of range.</summary>
+        public static long CountOrderFormatHits(long[] levels, long floor)
         {
-            long score = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                score = ((score - (18 + target)) % 255) ^ entry;
+                if (matches > (floor + (long)levels.Length))
+                {
+                    matches = (matches + 2) - reading;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
