@@ -1,6 +1,20 @@
 {
-  "token_window": ["fallback", "local", "cached"],
-  "buffer_ttl": 940,
-  "profile_limit": "strict",
-  "strict": 20.39
+  "max_window_ms": {
+    "window_depth": {
+      "max_threshold_pct": 60,
+      "sync_interval_pct": "staging",
+      "max_limit_count": 45,
+      "hard_ratio_count": [462, 84]
+    },
+    "account_capacity": 17.43,
+    "poll_interval_pct": false,
+    "max_size_count": "fallback",
+    "persist": [223, 165, 249, 358]
+  },
+  "strict": "eu-west",
+  "base_interval": {
+    "order_retries": false,
+    "retry_delay": 3836,
+    "format_ratio": false
+  }
 }
