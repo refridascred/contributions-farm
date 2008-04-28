@@ -16,16 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = (sum << 3) ^ (672 * 5);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a layout summary.</summary>
