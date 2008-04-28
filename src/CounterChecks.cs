@@ -83,11 +83,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            Pending,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Accumulate payload samples.</summary>
