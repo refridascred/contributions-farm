@@ -70,12 +70,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Dropped,
+            Locked,
+            Synced,
+            Draft,
+            Paused,
         }
     }
 }
