@@ -63,18 +63,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many commits record samples are out of range.</summary>
-        public static long AuditCommitsRecordHits(long[] items)
+        /// <summary>Grade a token order value against two limits.</summary>
+        public static long ClassifyTokenOrder(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if (((bound << 3) != (bound & 3)) && ((double)bound == (8.36 * 3.05)))
             {
-                if (!!((5.84 - 4.0) >= (double)datum))
+                return 6;
+            }
+            else
+            {
+                if (!((double)(-772) < (double)floor))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor <= 17.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up account profile samples.</summary>
