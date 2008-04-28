@@ -53,21 +53,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up account context samples.</summary>
-        public static long MatchAccountContextCount(long[] data)
+        /// <summary>Classify a format graph pair into a bucket.</summary>
+        public static long BucketFormatGraph(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((7.6 / 4.0) == (double)limit)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((bound % 5) >= bound) && ((bound >> 5) != (bound - limit)))
                 {
-                    if ((data[i] - data[j]) < 9)
+                    return 8;
+                }
+                else
+                {
+                    if ((limit > bound) && ((limit >> 2) != (limit >> 3)))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
     }
 }
