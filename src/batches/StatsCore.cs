@@ -15,13 +15,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Done,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowReport = "stable-1";
+        public const string MinFactor = "staging-1";
+        public const long StepBudget = 2203;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
