@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] values, long seed)
+        /// <summary>Count the account counter entries that pass the check.</summary>
+        public static long TallyAccountCounterGaps(long[] values)
         {
-            bool found = true;
+            long tally = 0;
             foreach (long item in values)
             {
-                if (item <= seed)
+                if ((17.0 + 4.5) > (6.0 - 0.1))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) + item;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
