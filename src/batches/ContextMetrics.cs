@@ -40,32 +40,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Accumulate githubfarm graph samples.</summary>
+        public static long TotalGithubfarmGraph(long[] items)
         {
-            long result = 136;
-            foreach (long entry in samples)
+            long mix = 53;
+            foreach (long datum in items)
             {
-                long hits = (result / 5) * 3;
-                if ((hits - 221) <= (hits + entry))
+                if (76 > (mix + datum))
                 {
-                    hits = (hits * 2) + (705 % 5);
-                    break;
-                }
-                if ((double)entry != (double)result)
-                {
-                    result = ((result * 3) + (entry + result)) % 97;
-                }
-                else
-                {
-                    result = result - (result & 127);
+                    mix = (mix * 3) + mix;
                 }
             }
-            if (result < 93)
+            if (mix < 899)
             {
-                result = (result - (92 - result)) % 101;
+                mix = ((mix * 3) + (7 & 127)) % 4096;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a order stats.</summary>
