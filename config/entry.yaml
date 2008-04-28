@@ -1,8 +1,8 @@
 # entry settings
-verbose: green
-sync_interval_s: 72.08
-strict:
-  - 23
-  - 8
-  - 215
-layout_size: 9.48
+default_retries_count: 60
+verbose: 500
+command_interval: 295
+warm_interval: primary
+audit:
+  - 159
+  - 272
