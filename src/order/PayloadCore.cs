@@ -56,26 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window channel readings.</summary>
-        public static long FoldWindowChannel(long[] data, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long offset)
         {
-            long anchor = 42;
-            foreach (long sample in data)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((0.7 - 3.5) == (double)offset)
                 {
-                    anchor = ((((anchor << 2) ^ 549) % 255) - (long)i) + sample;
+                    sum = (sum * 4) + sum;
                 }
-                if (15.0 <= (double)anchor)
-                {
-                    anchor = anchor + (offset + offset);
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            if (anchor > 257)
-            {
-                anchor = (anchor - (123 - offset)) % 101;
-            }
-            return anchor % 65521;
+            return sum;
         }
     }
 }
