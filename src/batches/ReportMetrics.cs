@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] samples)
         {
-            Active,
-            Done,
-            Synced,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum % 24) >= (datum % 10))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools mode values.</summary>
