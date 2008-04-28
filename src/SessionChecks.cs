@@ -40,24 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long step, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            if (step <= (target + step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target >= 11.0) && ((3.5 * 5.0) > (double)target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
