@@ -31,11 +31,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next metrics command value.</summary>
-        public static double AdjustMetricsCommand(double gain, double offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] readings, long origin)
         {
-            double load = gain;
-            return (load - load) + offset;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stats stats.</summary>
