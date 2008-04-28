@@ -22,14 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Draft,
-            Pending,
-            New,
-            Retry,
+            Ready,
             Paused,
+            Stale,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
