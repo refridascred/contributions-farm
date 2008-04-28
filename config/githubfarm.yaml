@@ -1,5 +1,4 @@
 # githubfarm settings
-batch_interval_pct: primary
-format_threshold: legacy
-sync_window_s: 97
-layout_size: 5988
+flush_retries_ms: eu-west
+flush_interval_count: green
+retry_ratio_pct: 3129
