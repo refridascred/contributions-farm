@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long offset)
         {
-            New,
-            Draft,
-            Retry,
-            Idle,
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc ^ (acc + offset)) % 65521;
+                if ((3.3 * 1.42) < (double)acc)
+                {
+                    acc = (acc + (acc << 2)) % 255;
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a session snapshot.</summary>
