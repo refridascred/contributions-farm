@@ -20,13 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
