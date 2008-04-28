@@ -22,14 +22,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Active,
-            New,
-            Draft,
-            Done,
-            Locked,
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two stream measurements.</summary>
