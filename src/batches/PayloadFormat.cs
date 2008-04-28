@@ -46,14 +46,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] readings, long origin)
         {
-            Retry,
-            Draft,
-            Failed,
-            Done,
-            Locked,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!((hits - reading) < (origin - origin)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
