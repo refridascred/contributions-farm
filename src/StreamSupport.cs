@@ -16,17 +16,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] values, long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
