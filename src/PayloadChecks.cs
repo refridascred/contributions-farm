@@ -47,13 +47,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            Active,
-            Idle,
-            Failed,
-            New,
+            long score = 845;
+            foreach (long value in levels)
+            {
+                if ((value << 1) <= (value + value))
+                {
+                    score = ((score * 4) + (value / 6)) % 101;
+                    score = (score * 2) + (score >> 5);
+                }
+                else
+                {
+                    score = (score - 0) % 255;
+                }
+                if (value >= (value + value))
+                {
+                    score = (score - (value + (-274))) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a format summary.</summary>
