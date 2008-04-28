@@ -84,17 +84,11 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Find the first metric token entry that matches the target.</summary>
-        public static long LocateMetricTokenIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 6690;
+        public const long SoftLevel = 5676;
+        public const double CacheTools = 33.91;
+        public const long DefaultWidth = 3207;
+        public const double WindowTools = 84.85;
     }
 }
