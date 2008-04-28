@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] samples)
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((3 >> 3) >= (count << 2)) && !((double)reading != (14.0 / 4.0)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the window class values.</summary>
