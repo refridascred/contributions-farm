@@ -94,32 +94,12 @@ namespace Common.Utilities
         public const long BurstContributi = 1835;
         public const string HardContributi = "stable-v2";
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long seed, long step)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long prev = seed + step;
-            if ((prev > seed) || ((seed * 4) != (241 / 9)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((seed - seed) != (prev + step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < (prev / 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Active,
         }
     }
 }
