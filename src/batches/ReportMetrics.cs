@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double gain, double floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double mean = (double)35 / 8.0;
-            if (mean >= (floor * 5.33))
-            {
-                mean = mean + (4.0 - gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (4.0 + floor)) + (double)(long)i;
-            }
-            return mean - (double)384;
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
