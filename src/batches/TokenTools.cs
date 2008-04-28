@@ -26,12 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Pending,
-            Done,
-            Stale,
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
