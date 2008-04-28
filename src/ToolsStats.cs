@@ -37,12 +37,22 @@ namespace Common.Utilities
         public const long LimitOrder = 4212;
         public const double BaseLevel = 23.04;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 95.44;
-        public const double DefaultContributi = 85.56;
-        public const string StepContributi = "fallback";
-        public const long IdleContributi = 5805;
-        public const long RetryContributi = 8914;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (685 <= (offset / 5))
+                {
+                    score = ((score << 2) ^ (376 * 4)) % 65521;
+                    score = ((score * 3) + score) % 1000;
+                }
+                score = (score - offset) % 101;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long FoldContext(long[] samples)
