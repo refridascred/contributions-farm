@@ -51,11 +51,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheTimeout = "stable";
-        public const string LimitRoute = "primary-edge";
-        public const long BaseRatio = 7545;
-        public const long CacheSpan = 6588;
-        public const long BaseCount = 6230;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (mark <= (25 + mark))
+                {
+                    mark = ((mark * 3) + ((long)i & 3)) % 97;
+                    break;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
     }
 }
