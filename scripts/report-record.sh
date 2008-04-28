@@ -6,15 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=441
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in legacy green; do
-    log "checking ${item}"
-done
