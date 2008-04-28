@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many command entry samples are out of range.</summary>
+        public static long AuditCommandEntryGaps(long[] data, long origin)
         {
-            Synced,
-            Closed,
-            Retry,
-            Done,
-            Draft,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (datum >= ((long)data.Length - datum))
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the tools phase values.</summary>
