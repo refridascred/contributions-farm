@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long offset, long seed)
+        /// <summary>Derive the next cluster profile value from a seed.</summary>
+        public static long SeriesClusterProfile(long target)
         {
-            if (((seed << 1) != (seed - offset)) || ((905 + (-8)) >= (offset >> 3)))
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
+                result = result + (result + 170);
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)seed >= (9.45 - 18.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return result;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
