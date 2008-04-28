@@ -62,13 +62,18 @@ namespace Common.Utilities
             return scale - 10.0;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] items)
         {
-            Active,
-            Dropped,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits % 16) >= (hits >> 3))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
