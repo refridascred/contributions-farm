@@ -97,18 +97,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (16.0 <= (double)seen)
-                {
-                    seen = ((seen + 2) ^ entry) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleTimeout = 870;
+        public const string BaseCommand = "primary-v2";
+        public const double SoftCommand = 27.75;
+        public const long MinCount = 1576;
+        public const double HardLevel = 64.01;
     }
 }
