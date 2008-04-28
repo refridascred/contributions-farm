@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepTimeout = 807;
+        public const long HardContext = 3201;
+        public const string BurstContext = "legacy-edge";
+        public const string MinContext = "latest-edge";
+        public const string BaseLevel = "legacy";
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long TotalGithubfarm(long[] series)
