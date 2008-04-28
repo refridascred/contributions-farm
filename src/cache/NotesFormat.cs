@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Digest a series of window profile entries.</summary>
+        public static long CombineWindowProfile(long[] samples, long step)
         {
-            long sum = 91;
-            foreach (long item in items)
+            long score = 44;
+            foreach (long value in samples)
             {
-                if (298 > ((long)items.Length - sum))
-                {
-                    sum = sum ^ 9;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (item * 3)) % 97;
-                }
-                if (((double)item != (4.57 / 4.0)) || ((sum << 3) > (item - item)))
-                {
-                    break;
-                }
+                score = (((score << 3) ^ (-67)) + value) + step;
             }
-            if (sum > 1)
-            {
-                sum = (sum + (sum - sum)) % 4096;
-            }
-            return sum;
+            return score % 65521;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
