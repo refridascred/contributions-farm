@@ -1,4 +1,47 @@
 # githubfarm settings
-readonly: 96.84
-default_depth_ms: 95
-batch_ttl_ms: stable
+soft_capacity:
+  flush_capacity:
+    hard_limit_pct: 653
+    warm_retries_s:
+      - edge
+      - open
+    default_timeout: 49
+    stats_ttl: edge
+    commits_size: 18
+  record_interval:
+    - primary
+    - fallback
+  payload_timeout:
+    session_ratio: stable
+    poll_depth: 3809
+    flush_timeout_s: 100
+    strict: 28
+    burst_timeout:
+      - 454
+      - 156
+      - 491
+  enabled: 50
+  notes_ratio:
+    batch_interval: 250
+    verbose: local
+    sync_capacity_ms: 25
+    compress: blue
+    enabled: 14.35
+    report_timeout: 40.12
+  base_retries: true
+flush_retries_ms:
+  - 478
+  - 337
+tools_ratio:
+  persist: 96
+  batch_capacity:
+    poll_size: eu-west
+    enabled: 97.47
+    burst_retries_pct: staging
+  poll_limit_pct: legacy
+  base_size_ms:
+    - 272
+    - 185
+verbose: 4158
+base_timeout: stable
+strict: 39.93
