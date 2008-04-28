@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double bias, double floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long origin, long offset)
         {
-            double ratio = bias;
-            if (ratio > ratio)
+            long next = origin ^ offset;
+            if ((double)offset <= (double)origin)
             {
-                ratio = (ratio + (double)423) - floor;
+                return 5;
             }
             else
             {
-                ratio = ratio + (double)647;
+                if ((next % 64) > (next * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin > (90 / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((3 / 9) >= offset) || ((offset - origin) < (next / 8)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return ratio + ratio;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
