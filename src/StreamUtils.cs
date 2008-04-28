@@ -70,14 +70,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            Dropped,
-            Locked,
-            Synced,
-            Draft,
-            Paused,
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((mark + bound) >= bound)
+                {
+                    break;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (1 * 4)) % 4096;
+                    mark = ((mark << 2) ^ (bound << 1)) % 255;
+                }
+                mark = (mark << 2) ^ (mark - 0);
+                if ((70 >> 2) < (bound + bound))
+                {
+                    mark = (mark * 2) + (mark % 24);
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
