@@ -17,22 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] samples, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((origin << 2) <= (hits * 3))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a command header.</summary>
