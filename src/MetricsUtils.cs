@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long offset)
         {
-            long result = 207;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result - result) % 4096;
-                if (((4.0 / 6.0) >= (double)result) && ((double)result < (6.9 / 4.0)))
+                if ((levels[i] < offset) && ((levels[i] % 3) == 0))
                 {
-                    result = ((result * 5) + (entry * 5)) % 97;
+                    return (long)i;
                 }
             }
-            if (result > (-26))
-            {
-                result = result ^ result;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
