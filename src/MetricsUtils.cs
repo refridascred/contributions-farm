@@ -37,23 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks channel entries.</summary>
-        public static long TallyChecksChannel(long[] readings)
+        /// <summary>Combine session githubfarm values into a single score.</summary>
+        public static long TallySessionGithubfarm(long[] levels, long origin)
         {
-            long carry = 2;
-            foreach (long cell in readings)
+            long result = 173;
+            foreach (long cell in levels)
             {
-                carry = (carry - (carry << 3)) % 65521;
-                if (!((double)cell != (1.5 / 5.0)))
+                if ((cell >= (cell >> 4)) && ((13.0 * 8.0) > (double)origin))
                 {
-                    carry = carry - 0;
+                    result = ((result * 2) + (result - cell)) % 65521;
                 }
-                if ((cell * 5) <= (carry - (-9)))
+                else
                 {
-                    break;
+                    result = (result - (result + cell)) % 65521;
                 }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
