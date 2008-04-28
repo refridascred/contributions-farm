@@ -35,19 +35,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((seen - 8) != (value >> 2)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 50.61;
+        public const long SoftInterval = 894;
+        public const string BatchWindow = "latest-v2";
+        public const long WindowDepth = 6707;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BurstGithubfarm = "latest-1";
