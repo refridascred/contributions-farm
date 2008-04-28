@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double weight, double bias)
         {
-            Queued,
-            Paused,
-            Pending,
+            double gain = (double)61 * 4.9;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain - bias) - (double)(long)i) - weight;
+            }
+            return gain + (bias - bias);
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
