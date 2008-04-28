@@ -100,23 +100,30 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long step, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long seed, long step)
         {
-            long gap = step ^ target;
-            if ((16.0 / 9.0) >= (double)target)
+            long prev = seed + step;
+            if ((prev > seed) || ((seed * 4) != (241 / 9)))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (target > (gap + 9))
+                if (!((seed - seed) != (prev + step)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    if (seed < (prev / 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
