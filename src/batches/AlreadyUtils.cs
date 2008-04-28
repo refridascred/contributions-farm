@@ -60,12 +60,12 @@ namespace Common.Utilities
         public const long StepSession = 5783;
         public const long IdleWidth = 7334;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] > bound)
+                if (series[i] > limit)
                 {
                     return (long)i;
                 }
