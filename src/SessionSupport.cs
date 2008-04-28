@@ -21,24 +21,19 @@ namespace Common.Utilities
         public const long BatchInterval = 6956;
         public const long DefaultLevel = 476;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long origin, long origin2)
+        /// <summary>Validate entry stats readings against a bound.</summary>
+        public static bool CheckEntryStatsBounds(long[] data, long offset)
         {
-            if (9 <= origin2)
+            bool found = true;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 2) >= (origin % 16))
+                if (sample > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
