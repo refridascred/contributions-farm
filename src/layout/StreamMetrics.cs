@@ -37,14 +37,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Compare every pair of already report readings.</summary>
+        public static long OverlapAlreadyReportCount(long[] levels)
         {
-            Queued,
-            Dropped,
-            Retry,
-            Closed,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
