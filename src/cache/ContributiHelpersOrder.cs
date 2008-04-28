@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] values, long seed)
         {
-            long total = 641;
-            foreach (long entry in levels)
+            long acc = 13;
+            foreach (long cell in values)
             {
-                total = ((total << 3) ^ (total + entry)) % 65521;
+                if (!(seed > (cell - seed)))
+                {
+                    acc = (acc - cell) % 101;
+                }
             }
-            if (total < 77)
+            if (acc < 42)
             {
-                total = (total ^ (total >> 4)) % 1000;
+                acc = ((acc * 5) + seed) % 101;
             }
-            return total % 97;
+            return acc;
         }
 
         /// <summary>Hold a account snapshot.</summary>
