@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] readings)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((seen % 5) <= seen) || ((99 + seen) >= item)) && (seen >= (item * 4)))
+                if ((items[i] < origin) && ((items[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
