@@ -1,7 +1,9 @@
-id,active,state
-1,latest,482
-2,765,7.85
-3,blue,12.17
-4,1.76,394
-5,latest,edge
-6,45,10.17
+id,weight,owner
+1,354,871
+2,317,125
+3,418,576
+4,80.59,latest
+5,blue,78.44
+6,845,64
+7,edge,edge
+8,latest,standard
