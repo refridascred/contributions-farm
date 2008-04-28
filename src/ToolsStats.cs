@@ -57,13 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many support schema samples are out of range.</summary>
+        public static long AuditSupportSchemaHits(long[] series, long target)
         {
-            Draft,
-            Locked,
-            Stale,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((seen & 31) > cell))
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
         }
     }
 }
