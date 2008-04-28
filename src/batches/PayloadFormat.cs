@@ -32,15 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double scale, double floor)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] items, long offset)
         {
-            double weight = scale;
-            if (weight >= (scale - floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - (double)206;
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return weight - floor;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
