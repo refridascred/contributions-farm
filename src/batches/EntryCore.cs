@@ -30,19 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats queue value from a seed.</summary>
-        public static long RollStatsQueue(long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((bound * 4) != (10 / 6))
-                {
-                    anchor = ((anchor * 5) + bound) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Stale,
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
