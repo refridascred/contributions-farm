@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] series, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (carry - (long)i)) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the payload commits entries that pass the check.</summary>
