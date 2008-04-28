@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double rate, double floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            double mean = floor - rate;
-            if (mean < (double)161)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - mean;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (floor - mean);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (9.02 - mean)) + (double)(long)i;
-            }
-            return mean - (floor + 4.5);
+            return matches;
         }
 
         /// <summary>Hold a format record.</summary>
