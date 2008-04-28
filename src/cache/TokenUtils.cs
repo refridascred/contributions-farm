@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (!!(tally >= (66 / 3)))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxInterval = 4137;
+        public const string SoftTools = "primary";
+        public const string HardInterval = "standard-edge";
+        public const long MaxTools = 6804;
+        public const string MinCount = "standard";
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
