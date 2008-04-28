@@ -10,11 +10,24 @@ namespace Common.Utilities
         public const double BaseFilter = 65.48;
         public const string RetryFilter = "cached-1";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstSize = 9982;
-        public const long MaxQueue = 4168;
-        public const string MinLevel = "cached-v2";
-        public const double SoftRatio = 68.53;
+        /// <summary>Fold a list of filter session readings.</summary>
+        public static long TallyFilterSession(long[] data, long target)
+        {
+            long state = 764;
+            foreach (long datum in data)
+            {
+                if (datum <= state)
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state + target) % 255;
+                }
+                state = ((state * 5) + (state + state)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long PairToolsCount(long[] readings)
