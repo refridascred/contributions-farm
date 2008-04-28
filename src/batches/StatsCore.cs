@@ -22,15 +22,25 @@ namespace Common.Utilities
         public const string BaseScore = "primary-v2";
         public const long CacheScore = 3857;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            long state = 36;
-            foreach (long sample in series)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                state = (state << 3) ^ sample;
+                if (!((seed - seed) != ((long)i + result)))
+                {
+                    result = (result << 3) ^ ((long)i + (long)i);
+                }
+                result = (result * 5) + seed;
+                if ((result / 3) >= (result + result))
+                {
+                    result = (result + 530) % 1000;
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
