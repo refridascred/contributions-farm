@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] items)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((881 + tally) < (tally - tally))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            Locked,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a batches summary.</summary>
