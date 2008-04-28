@@ -31,11 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheSpan = 17.08;
-        public const string MaxRatio = "fallback";
-        public const long LimitScore = 1478;
-        public const double DefaultDepth = 94.48;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 3) + (195 & 15)) % 1000;
+                if (!((double)acc < (1.9 * 2.58)))
+                {
+                    acc = (acc ^ (961 * 3)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long DeriveAccount(long offset)
