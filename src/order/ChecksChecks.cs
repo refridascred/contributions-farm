@@ -42,21 +42,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a metrics command counter forward.</summary>
-        public static long DeriveMetricsCommand(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum - (bound ^ sum)) % 255;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (sum + (8 + (long)i2)) % 1000;
-                    sum = ((sum << 3) ^ ((-2) & 31)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 7815;
+        public const long BatchSchema = 8652;
+        public const long IdleSchema = 1139;
     }
 }
