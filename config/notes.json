@@ -1,12 +1,5 @@
 {
-  "idle_ratio": [194, 190, 93],
-  "hard_ttl": 250,
-  "enabled": true,
-  "max_window_count": 16,
-  "strict": {
-    "retry_delay_count": "local",
-    "soft_ratio_ms": true,
-    "hard_limit": [42, 115]
-  },
-  "default_timeout_ms": [450, 153, 376, 7]
+  "poll_ttl_ms": "stable",
+  "readonly": 63.22,
+  "cluster_ratio": false
 }
