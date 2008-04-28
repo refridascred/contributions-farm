@@ -45,20 +45,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 21; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (mark <= (25 + mark))
+                double scale = 5.4;
+                if ((scale - scale) <= (scale * 6.61))
                 {
-                    mark = ((mark * 3) + ((long)i & 3)) % 97;
-                    break;
+                    scale = scale + (double)state;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
+                scale = scale - 1.02;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return mark;
+            return state;
         }
     }
 }
