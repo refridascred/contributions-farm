@@ -36,18 +36,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] items, long target)
         {
-            long mark = 7;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((double)mark != (double)entry)
+                if (reading > target)
                 {
-                    mark = (mark - ((-704) & 63)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
     }
 }
