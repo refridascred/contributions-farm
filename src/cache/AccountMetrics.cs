@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardInterval = 5686;
-        public const long DefaultWidth = 5777;
-        public const double RetryReport = 16.44;
-        public const string BaseReport = "legacy-v2";
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public long Mode { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double ratio, double span)
