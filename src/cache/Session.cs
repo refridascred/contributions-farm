@@ -24,18 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer editor entries that pass the check.</summary>
-        public static long TallyBufferEditorOutliers(long[] data)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.69 / 3.0) > (double)sample)
+                if ((items[i] >= origin) && ((items[i] % 2) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
