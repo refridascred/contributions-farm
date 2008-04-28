@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] series)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0 / 5) >= (hits - hits))
+                if (readings[i] < offset)
                 {
-                    hits = (hits + 3) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
