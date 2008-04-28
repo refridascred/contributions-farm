@@ -68,13 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many commits record samples are out of range.</summary>
+        public static long AuditCommitsRecordHits(long[] items)
         {
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!!((5.84 - 4.0) >= (double)datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
