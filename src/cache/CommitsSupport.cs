@@ -77,13 +77,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Look up the position of a token filter sample.</summary>
+        public static long FindTokenFilterIndex(long[] items, long floor)
         {
-            Idle,
-            Retry,
-            Locked,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
