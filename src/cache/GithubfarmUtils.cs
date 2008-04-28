@@ -32,18 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command report readings against a rule.</summary>
-        public static long CountCommandReportGaps(long[] readings, long target)
+        /// <summary>Blend two layout counter measurements.</summary>
+        public static double SmoothLayoutCounter(double gain, double floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double scale = (double)(484 % 5);
+            if (scale < (floor / 8.0))
             {
-                if ((datum & 255) != (count + 162))
-                {
-                    count = (count + 1) + target;
-                }
+                scale = scale - (4.6 * 6.99);
             }
-            return count;
+            return scale + (gain - floor);
         }
 
         /// <summary>Hold a profile record.</summary>
