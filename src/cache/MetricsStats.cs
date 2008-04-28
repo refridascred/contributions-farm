@@ -94,12 +94,18 @@ namespace Common.Utilities
         public const long BurstContributi = 1835;
         public const string HardContributi = "stable-v2";
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] levels, long limit)
         {
-            Queued,
-            Idle,
-            Active,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((limit ^ 469) < (-498))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
