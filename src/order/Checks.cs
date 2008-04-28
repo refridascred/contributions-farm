@@ -19,11 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftSize = 43.52;
-        public const long BatchDepth = 59;
-        public const double SoftToken = 96.25;
-        public const long CacheLevel = 8691;
+        /// <summary>Derive the next record session value from a seed.</summary>
+        public static long StepRecordSession(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Derive the next counter githubfarm value from a seed.</summary>
         public static long SeriesCounterGithubfarm(long offset)
