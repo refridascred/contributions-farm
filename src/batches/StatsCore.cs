@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the metric githubfarm entries that pass the check.</summary>
-        public static long TallyMetricGithubfarmOutliers(long[] values, long step)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((step >> 3) != (hits << 3))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a window snapshot.</summary>
