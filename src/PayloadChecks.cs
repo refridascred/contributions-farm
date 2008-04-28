@@ -47,19 +47,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every graph channel entry stays within the limit.</summary>
-        public static bool ValidateGraphChannelLimits(long[] samples, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long offset, long target)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            if (((offset - target) >= (target - offset)) || (4 < (offset << 2)))
             {
-                if (value != floor)
+                return 0;
+            }
+            else
+            {
+                if ((target >> 5) <= 750)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((-700) < offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a format summary.</summary>
