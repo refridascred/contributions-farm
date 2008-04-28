@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFactor = 9497;
-        public const string DefaultWidth = "standard-1";
-        public const long BurstFilter = 3915;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long target, long seed)
+        {
+            if (seed >= (target << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target <= (1.15 * 9.1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long WeighFilter(long[] items, long seed)
