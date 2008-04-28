@@ -1,7 +1,6 @@
 {
-  "soft_retries": false,
-  "idle_ttl_ms": 44.25,
-  "readonly": "green",
-  "soft_interval_s": ["stable", "local"],
-  "cache_interval_s": [382, 367]
+  "soft_limit": "fallback",
+  "default_interval": 2439,
+  "sync_window_s": 35,
+  "verbose": "blue"
 }
