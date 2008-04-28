@@ -84,24 +84,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank contributi batch input into a small class.</summary>
-        public static long RankContributiBatch(long limit, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] samples)
         {
-            if (!((42 + limit) >= (limit + limit)))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > ((-48) & 31))
+                if (!((count + entry) > (entry - count)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
