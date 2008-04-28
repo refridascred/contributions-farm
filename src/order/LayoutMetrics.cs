@@ -20,17 +20,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long seed)
+        /// <summary>Check that every commits token entry stays within the limit.</summary>
+        public static bool GuardCommitsTokenBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (data[i] == seed)
+                if (value != offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
