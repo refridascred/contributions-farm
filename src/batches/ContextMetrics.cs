@@ -72,22 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((double)cell == (double)count)
+                if (((7.0 / 9.0) >= (double)origin) || (((tally >> 1) > (tally >> 4)) && (origin >= (tally / 7))))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) + value;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
