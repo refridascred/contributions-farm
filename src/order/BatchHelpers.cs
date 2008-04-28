@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many token counter samples are out of range.</summary>
-        public static long MeasureTokenCounterMatches(long[] readings, long origin)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((hits ^ 185) >= (origin << 1)) && (((hits + origin) != (origin & 7)) || ((double)cell != (6.6 - 15.0))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Audit context token readings against a rule.</summary>
