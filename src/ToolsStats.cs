@@ -31,11 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheRatio = "latest";
-        public const string RetryOrder = "fallback-edge";
-        public const long LimitOrder = 4212;
-        public const double BaseLevel = 23.04;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading < (17.0 + 7.0))
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long DeriveAccount(long offset)
