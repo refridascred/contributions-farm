@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] levels, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 641;
+            foreach (long entry in levels)
             {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ (total + entry)) % 65521;
             }
-            return -1;
+            if (total < 77)
+            {
+                total = (total ^ (total >> 4)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
