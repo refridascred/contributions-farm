@@ -1,5 +1,8 @@
 {
-  "soft_threshold_count": 30,
-  "warm_ttl": "green",
-  "route_size": true
+  "enabled": 30,
+  "notes_ratio": [42, 339, 186],
+  "max_depth": ["strict", "fallback", "legacy", "cached"],
+  "compress": "standard",
+  "verbose": false,
+  "stats_ratio": "legacy"
 }
