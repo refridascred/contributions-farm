@@ -12,11 +12,40 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 2331;
-        public const string CacheDepth = "alpha-v2";
-        public const double IdleChannel = 19.15;
-        public const double BatchChannel = 25.23;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long limit, long limit2)
+        {
+            long span = limit ^ limit2;
+            if (((double)span != (5.9 + 3.91)) || ((double)limit == (3.23 - 1.3)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit * 3) <= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.86 + 0.7) > (double)limit2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!(limit2 < (-26)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] samples, long step)
