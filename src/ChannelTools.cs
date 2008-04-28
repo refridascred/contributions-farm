@@ -16,17 +16,26 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Locate a already payload reading by value.</summary>
-        public static long LocateAlreadyPayloadIndex(long[] data, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 6;
+            foreach (long value in samples)
             {
-                if (data[i] <= limit)
+                if ((value % 16) < value)
                 {
-                    return (long)i;
+                    mix = mix + (mix ^ mix);
+                }
+                if ((mix * 4) <= (value - mix))
+                {
+                    mix = (mix - (mix ^ value)) % 97;
+                }
+                if (!(value > (mix + value)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
