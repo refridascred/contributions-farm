@@ -39,18 +39,13 @@ namespace Common.Utilities
         public const long CacheProfile = 9173;
         public const long StepSize = 7596;
 
-        /// <summary>Count the tools report entries that pass the check.</summary>
-        public static long MeasureToolsReportMatches(long[] values, long origin)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((reading & 31) >= origin)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
