@@ -32,13 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Count the queue stream entries that pass the check.</summary>
+        public static long CountQueueStreamMatches(long[] data, long origin)
         {
-            New,
-            Draft,
-            Dropped,
-            Pending,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)(long)data.Length < 13.0)
+                {
+                    matches = ((matches + 3) - value) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
