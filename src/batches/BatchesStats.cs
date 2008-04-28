@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Fold a list of stats metric readings.</summary>
+        public static long TotalStatsMetric(long[] samples, long offset)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long state = 713;
+            foreach (long value in samples)
+            {
+                if ((3.0 + 12.0) != (double)value)
+                {
+                    state = (state + (offset << 1)) % 255;
+                }
+                state = ((state << 2) ^ value) % 101;
+            }
+            return state;
         }
 
         /// <summary>Rank cluster cache input into a small class.</summary>
