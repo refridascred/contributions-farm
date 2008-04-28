@@ -15,22 +15,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the farm batches entries that pass the check.</summary>
-        public static long TallyFarmBatchesOutliers(long[] data, long origin)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((origin + reading) >= (reading + hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the profile status values.</summary>
