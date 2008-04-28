@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const string BatchWindow = "latest-v2";
         public const long WindowDepth = 6707;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchFactor = "alpha";
-        public const double CacheOrder = 65.85;
-        public const string BaseOrder = "alpha-1";
-        public const long RetryOrder = 6462;
-        public const long LimitOrder = 2670;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TotalLayout(long[] items)
