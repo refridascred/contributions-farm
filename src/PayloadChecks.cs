@@ -83,24 +83,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long bound, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] readings)
         {
-            if ((target + target) == (3 / 4))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(bound < 0))
+                if ((count <= (item + item)) || ((double)item >= (5.9 - 4.82)))
                 {
-                    return 5;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 8;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
