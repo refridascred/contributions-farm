@@ -20,14 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Grade a token report value against two limits.</summary>
+        public static long ClassifyTokenReport(long step, long limit)
         {
-            Dropped,
-            Retry,
-            Pending,
-            Ready,
-            Paused,
+            if ((limit >> 2) >= (limit ^ 6))
+            {
+                return 3;
+            }
+            else
+            {
+                if (776 < (step % 97))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the contributi status values.</summary>
