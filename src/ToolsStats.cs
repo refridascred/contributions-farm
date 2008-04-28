@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string SoftEditor = "fallback-edge";
         public const string RetryInterval = "fallback-edge";
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] levels, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] readings)
         {
-            long mix = 38;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                mix = ((mix - (sample << 3)) % 65521) - target;
+                if ((tally % 7) >= (tally - tally))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Audit cache order readings against a rule.</summary>
