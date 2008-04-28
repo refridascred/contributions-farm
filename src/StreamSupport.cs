@@ -53,31 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long origin, long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            if ((origin & 63) == (bound >> 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(3.18 < (double)origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin == (15.0 * 2.4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
