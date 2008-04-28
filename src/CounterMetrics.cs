@@ -34,23 +34,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long seed, long floor)
         {
-            long anchor = -5;
-            foreach (long reading in levels)
+            long cur = seed - floor;
+            if (seed <= (cur * 2))
             {
-                anchor = (anchor ^ (anchor & 15)) - origin;
-                for (int i = 0; i < 4; i++)
+                return 3;
+            }
+            else
+            {
+                if ((seed * 5) == (75 / 9))
                 {
-                    anchor = (anchor + (long)levels.Length) ^ (long)i;
+                    return 8;
                 }
-                if ((42 > (anchor % 12)) && ((reading * 5) != (reading - reading)))
+                else
                 {
-                    anchor = (anchor << 3) ^ (259 & 3);
+                    return 6;
                 }
             }
-            return anchor;
         }
     }
 }
