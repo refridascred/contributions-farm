@@ -26,10 +26,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheDepth = 19.43;
-        public const long HardCache = 9767;
-        public const long SoftTimeout = 6342;
-        public const long BatchWidth = 9474;
+        /// <summary>Measure how many record cache samples are out of range.</summary>
+        public static long AuditRecordCacheGaps(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((double)step < (double)matches) && (((4.0 + 9.65) >= (double)matches) && ((item << 1) <= (item >> 4))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
