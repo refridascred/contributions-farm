@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count buffer channel pairs that satisfy a relation.</summary>
-        public static long OverlapBufferChannelCount(long[] items)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
