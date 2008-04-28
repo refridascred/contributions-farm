@@ -93,10 +93,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "standard-1";
-        public const double DefaultContributi = 40.69;
-        public const long HardContributi = 5355;
-        public const long BatchContributi = 3591;
+        /// <summary>Grade a format commits value against two limits.</summary>
+        public static long SortFormatCommits(long limit, long offset)
+        {
+            long edge = limit - offset;
+            if ((limit - limit) < (0 - offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((edge * 5) != (edge + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-5) + edge) > (limit + edge))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
