@@ -46,10 +46,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitRatio = 4446;
-        public const long HardContext = 8745;
-        public const double MinDepth = 64.44;
-        public const long HardSize = 4748;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Retry,
+            Draft,
+            Failed,
+            Done,
+            Locked,
+        }
     }
 }
