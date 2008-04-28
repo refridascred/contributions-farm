@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits + hits) > (entry - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSize = 8144;
+        public const string CacheDepth = "staging-v2";
+        public const long SoftStream = 7738;
+        public const long MaxSpan = 7329;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] readings)
