@@ -31,12 +31,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 77.03;
+        public const string RetryNotes = "latest";
+        public const long MinNotes = 6884;
+        public const double StepBudget = 49.76;
+        public const long StepNotes = 7629;
     }
 }
