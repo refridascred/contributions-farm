@@ -50,39 +50,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank counter stats input into a small class.</summary>
-        public static long BucketCounterStats(long target, long offset)
-        {
-            if ((double)offset >= (18.0 / 2.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((2 <= (offset ^ 82)) && (target > (offset - target)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset <= (target + 252))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target > (80 % 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 1.06;
+        public const long WindowMetrics = 7770;
+        public const string StepMetrics = "strict-1";
+        public const long RetryFactor = 5131;
 
         /// <summary>Combine context contributi values into a single score.</summary>
         public static long ScoreContextContributi(long[] values)
