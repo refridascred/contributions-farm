@@ -1,8 +1,5 @@
 # githubfarm settings
-min_size_s: cached
-verbose: false
-cache_ttl_count: 0.45
-readonly: blue
-flush_limit_pct:
-  - open
-  - staging
+hard_interval_pct: 30
+verbose: 60
+readonly: true
+farm_ttl: 100
