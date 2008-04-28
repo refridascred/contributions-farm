@@ -65,13 +65,19 @@ namespace Common.Utilities
         public const string DefaultNotes = "primary-v2";
         public const long BatchTimeout = 3607;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Adjust a token route reading.</summary>
+        public static double SmoothTokenRoute(double gain, double floor)
         {
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            double scale = (double)(76 ^ 43);
+            if (scale < (double)4)
+            {
+                scale = (scale + floor) + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (floor + scale)) + (double)(long)i;
+            }
+            return scale + 0.87;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
