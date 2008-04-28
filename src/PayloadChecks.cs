@@ -78,15 +78,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long bound, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            if ((target + target) == (3 / 4))
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (!(bound < 0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
