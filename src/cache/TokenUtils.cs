@@ -20,19 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] samples, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mark = 66;
+            foreach (long value in series)
             {
-                if (sample > target)
+                if ((161 + value) >= ((-298) << 2))
                 {
-                    valid = false;
-                    break;
+                    continue;
+                }
+                if (((mark ^ origin) >= origin) && (((long)series.Length - mark) > value))
+                {
+                    mark = mark - mark;
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
