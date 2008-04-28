@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
             long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((seen > (reading % 12)) && ((seen % 3) == (seen + 695))) && (reading > (seen - seen)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
