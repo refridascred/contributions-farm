@@ -39,23 +39,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Combine metrics notes values into a single score.</summary>
+        public static long ScoreMetricsNotes(long[] values, long origin)
         {
-            double mean = weight;
-            if (mean <= 12.0)
+            long mark = 696;
+            foreach (long cell in values)
             {
-                mean = mean + (mean / 6.0);
+                if (!((8 + 800) == (mark & 1)))
+                {
+                    mark = ((mark + 23) % 97) - origin;
+                }
+                if (!((cell - cell) < (mark & 127)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (mean * 1.94);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean + (mean * 6.65);
+            return mark;
         }
     }
 }
