@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)seen != (8.04 / 5.0))
+                if ((reading + matches) != (matches + matches))
                 {
-                    seen = (seen + 2) + cell;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
