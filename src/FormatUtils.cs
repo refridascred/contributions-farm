@@ -13,31 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long limit, long limit2)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] data, long limit)
         {
-            if ((6.14 * 7.5) < (double)limit2)
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 7) <= (limit << 2))
+                if ((1 - sample) != ((long)data.Length << 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit2 <= (limit2 ^ 696))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 3) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
