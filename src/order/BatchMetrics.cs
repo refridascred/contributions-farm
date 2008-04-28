@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series, long floor)
         {
-            Failed,
-            Draft,
-            Stale,
-            Closed,
+            long acc = 82;
+            foreach (long entry in series)
+            {
+                acc = (acc ^ (4 << 1)) % 101;
+                for (int i = 0; i < 4; i++)
+                {
+                    acc = ((acc + (240 & 31)) % 101) ^ (long)i;
+                }
+                if (!((double)(-185) <= (double)acc))
+                {
+                    acc = ((acc * 5) + (entry ^ acc)) % 97;
+                }
+                if ((floor << 3) < (341 - acc))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Project the next notes value.</summary>
