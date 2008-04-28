@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Paused,
-            Active,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 4493;
+        public const long IdleFactor = 28;
+        public const long WindowGithubfarm = 5234;
+        public const long BurstGithubfarm = 1435;
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double scale, double bias)
