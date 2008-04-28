@@ -13,12 +13,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Combine queue session values into a single score.</summary>
+        public static long DigestQueueSession(long[] readings, long offset)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public double Limit { get; set; }
+            long mix = 1;
+            foreach (long cell in readings)
+            {
+                if ((1.9 + 7.0) != (double)cell)
+                {
+                    mix = ((mix << 3) ^ (offset - offset)) % 65521;
+                }
+            }
+            if (mix > 18)
+            {
+                mix = ((mix << 3) ^ mix) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
