@@ -31,11 +31,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "primary";
-        public const long LimitInterval = 9526;
-        public const long BurstFactor = 3484;
-        public const long WindowNotes = 8223;
-        public const string StepInterval = "standard-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 9437;
+        public const long WindowGraph = 5462;
+        public const long MinGraph = 5648;
+        public const double SoftRatio = 88.08;
     }
 }
