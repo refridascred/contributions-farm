@@ -29,19 +29,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double load = (double)(50 >> 5);
-            if (load < (floor - load))
-            {
-                load = load - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (load - floor)) + (double)(long)i;
-            }
-            return load - (load + 2.3);
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a schema options.</summary>
