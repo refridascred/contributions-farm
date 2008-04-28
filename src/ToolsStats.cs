@@ -79,18 +79,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit route payload readings against a rule.</summary>
-        public static long AuditRoutePayloadOutliers(long[] items, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((17.0 * 8.77) > (double)cell)
+                if (entry < seed)
                 {
-                    hits = (hits + 3) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
