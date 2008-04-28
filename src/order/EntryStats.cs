@@ -36,16 +36,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double ratio, double span)
-        {
-            double drift = ratio / 4.0;
-            if (drift > ratio)
-            {
-                drift = (drift + 15.0) - span;
-            }
-            return drift - 8.87;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 1674;
+        public const long BurstCount = 7890;
+        public const string RetrySize = "stable-edge";
+        public const double CacheProfile = 90.58;
 
         /// <summary>Scale a metrics record figure with a bias.</summary>
         public static double ScaleMetricsRecord(double weight, double bias)
