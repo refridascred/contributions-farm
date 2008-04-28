@@ -16,18 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] values)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((double)46 != (double)tally)
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            Pending,
+            Draft,
+            Synced,
         }
 
         /// <summary>Rank githubfarm already input into a small class.</summary>
