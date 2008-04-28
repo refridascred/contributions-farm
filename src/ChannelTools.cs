@@ -23,15 +23,21 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7531;
         public const long HardSize = 7962;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] series, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
-            long mix = 2;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + ((long)series.Length + bound)) ^ datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return hits;
         }
     }
 }
