@@ -21,20 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every report profile entry stays within the limit.</summary>
-        public static bool VerifyReportProfileBounds(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinDepth = 34.01;
+        public const long StepTimeout = 7167;
+        public const double BatchRatio = 54.52;
+        public const double LimitFormat = 21.45;
+        public const long DefaultFactor = 3873;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportGaps(long[] data)
