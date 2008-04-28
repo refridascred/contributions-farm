@@ -70,20 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double gain, double bias)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            double bias2 = (double)6 * 13.0;
+            if (bias2 >= (bias + bias2))
             {
-                score = ((score * 2) + score) % 255;
-                if ((step - step) == (235 << 3))
-                {
-                    score = ((score << 2) ^ (step + step)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                bias2 = bias2 + (18.0 * 15.0);
             }
-            return score;
+            else
+            {
+                bias2 = bias2 + (9.21 + gain);
+            }
+            return bias2 + bias2;
         }
     }
 }
