@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long WindowFactor = 7748;
         public const long BatchAccount = 5331;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((data[i] < offset) && ((data[i] % 5) != 0))
+                if (!(((count / 4) > entry) || ((entry * 3) >= (entry ^ 9))))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the tools class values.</summary>
