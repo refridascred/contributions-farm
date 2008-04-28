@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the payload batch series from a seed.</summary>
-        public static long RollPayloadBatch(long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total ^ (target - (long)i)) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Failed,
+            Retry,
+            Closed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Rank record input into a small class.</summary>
