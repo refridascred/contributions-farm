@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] items, long floor)
         {
-            long anchor = 361;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((-393) / 6) != (187 + sample))
+                if (((double)tally == (3.0 - 2.0)) && (3.88 > (double)floor))
                 {
-                    anchor = (anchor + (sample % 60)) % 65521;
-                }
-                if ((double)anchor >= (0.2 * 6.6))
-                {
-                    break;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
