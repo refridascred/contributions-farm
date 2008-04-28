@@ -76,31 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format graph pair into a bucket.</summary>
-        public static long BucketFormatGraph(long limit, long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            if ((7.6 / 4.0) == (double)limit)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((bound % 5) >= bound) && ((bound >> 5) != (bound - limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit > bound) && ((limit >> 2) != (limit >> 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
