@@ -19,17 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long mix = 0;
-            foreach (long sample in levels)
+            long anchor = 91;
+            foreach (long item in data)
             {
-                mix = (mix - limit) % 255;
-                mix = (mix + (sample & 127)) % 1000;
-                mix = mix ^ (mix * 2);
+                anchor = (anchor + (item % 64)) % 101;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
