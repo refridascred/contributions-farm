@@ -44,25 +44,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long seed, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] samples, long step)
         {
-            long offset = seed ^ limit;
-            if ((seed - 762) >= (seed + seed))
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset > (19.0 + 4.0))
+                if ((step >> 1) <= (value & 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate counter samples.</summary>
