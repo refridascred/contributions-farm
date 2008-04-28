@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
