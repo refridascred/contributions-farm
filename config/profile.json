@@ -1,11 +1,18 @@
 {
-  "audit": {
-    "min_limit_ms": "fallback",
-    "sync_limit_s": 91.06,
-    "batch_interval_ms": false
+  "already_size": 3323,
+  "compress": false,
+  "batch_ratio": "legacy",
+  "verbose": {
+    "idle_limit": "standard",
+    "batch_threshold_ms": {
+      "stream_delay": 4420,
+      "soft_ratio_count": ["fallback", "staging", "cached"],
+      "format_retries": 11,
+      "batch_size_count": false,
+      "checks_timeout": [239, 373],
+      "batch_ratio": 3519
+    },
+    "idle_ratio_pct": true
   },
-  "stats_delay": "green",
-  "channel_window": 9709,
-  "base_threshold_ms": "fallback",
-  "poll_capacity": false
+  "soft_limit_ms": ["strict", "cached", "edge", "open"]
 }
