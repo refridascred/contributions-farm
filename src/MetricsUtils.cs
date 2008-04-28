@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] series, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((item - matches) == (seed * 2))
+                if ((hits + hits) > (entry - hits))
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit route format readings against a rule.</summary>
