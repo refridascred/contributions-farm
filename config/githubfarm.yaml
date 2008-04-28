@@ -1,4 +1,6 @@
 # githubfarm settings
-queue_ratio: legacy
-cache_size: true
-record_threshold: 62
+flush_depth: false
+sync_limit: 250
+base_threshold_ms: eu-west
+poll_delay_count: false
+dry_run: false
