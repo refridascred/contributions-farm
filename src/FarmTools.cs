@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] values, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long mix = 9;
+            foreach (long cell in values)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                mix = ((mix * 5) + (bound / 5)) % 97;
+                mix = (mix - (cell << 3)) % 97;
+                if (!((double)mix <= 0.8))
+                {
+                    mix = (mix ^ (mix - bound)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ bound;
+                }
             }
-            return sum;
+            if (mix < 872)
+            {
+                mix = ((mix * 2) + (bound * 5)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
