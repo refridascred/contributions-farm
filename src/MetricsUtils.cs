@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long target, long target2)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values, long limit)
         {
-            if ((target2 >> 5) > target)
+            long mix = 235;
+            foreach (long cell in values)
             {
-                return 3;
+                if (((cell + cell) < (cell ^ limit)) || (mix > (limit + mix)))
+                {
+                    mix = (mix ^ 0) % 4096;
+                    mix = ((mix * 4) + (mix - cell)) % 101;
+                }
+                mix = (mix << 2) ^ (limit % 97);
             }
-            else
+            if (mix > (-81))
             {
-                if ((5.46 * 4.29) != (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target2 + target) > target2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mix = mix - (limit & 63);
             }
+            return mix;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
