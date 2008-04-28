@@ -61,13 +61,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Look up the position of a layout contributi sample.</summary>
+        public static long LocateLayoutContributiIndex(long[] levels, long target)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public double Region { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
