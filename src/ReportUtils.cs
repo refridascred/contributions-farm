@@ -49,19 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] items, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] series)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long acc = 34;
+            foreach (long datum in series)
             {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc ^ (datum & 255)) % 255;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
