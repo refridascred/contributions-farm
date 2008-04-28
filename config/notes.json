@@ -1,7 +1,16 @@
 {
-  "record_limit": 588,
-  "hard_timeout_count": "cached",
-  "format_ratio": "standard",
-  "compress": "local",
-  "persist": 7387
+  "contributi_window": [14, 242, 280],
+  "route_window": [17, 422],
+  "poll_interval_s": "standard",
+  "retry_retries_pct": {
+    "max_size": "fallback",
+    "max_capacity_ms": {
+      "audit": 62,
+      "default_retries_s": true,
+      "hard_interval_ms": "strict"
+    },
+    "batch_delay": 38.42
+  },
+  "support_capacity": 30,
+  "record_capacity": [458, 7]
 }
