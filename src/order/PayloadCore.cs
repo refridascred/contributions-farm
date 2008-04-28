@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 361;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-393) / 6) != (187 + sample))
                 {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor + (sample % 60)) % 65521;
+                }
+                if ((double)anchor >= (0.2 * 6.6))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
