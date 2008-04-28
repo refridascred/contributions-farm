@@ -32,19 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batches commits value.</summary>
-        public static double BlendBatchesCommits(double bias, double bias2)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double scale = bias2;
-            if (scale < 4.0)
-            {
-                scale = scale + (double)0;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - bias;
+            Stale,
+            Synced,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
