@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] series)
+        /// <summary>Find the first batch counter entry that matches the target.</summary>
+        public static long FindBatchCounterIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((datum << 1) != (datum + seen)) && (((double)datum == (19.0 / 5.0)) && (datum > seen)))
+                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
