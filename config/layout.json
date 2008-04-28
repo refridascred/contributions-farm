@@ -1,11 +1,7 @@
 {
-  "layout_ratio": 30,
-  "enabled": "green",
-  "readonly": {
-    "verbose": 100,
-    "burst_timeout_ms": "standard",
-    "githubfarm_threshold": "edge",
-    "retry_timeout_s": 3349,
-    "batch_retries_ms": 57
-  }
+  "max_timeout_pct": 3589,
+  "command_depth": 86,
+  "readonly": ["staging", "eu-west"],
+  "warm_delay": 5885,
+  "base_timeout_count": true
 }
