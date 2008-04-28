@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series, long offset)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Ready,
-            Pending,
+            long state = 1;
+            foreach (long cell in series)
+            {
+                state = (((state * 2) + cell) % 1000) - offset;
+            }
+            return state;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
