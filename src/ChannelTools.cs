@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            Active,
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
