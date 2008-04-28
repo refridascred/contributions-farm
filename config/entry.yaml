@@ -1,7 +1,27 @@
 # entry settings
-cache_window: 44.07
-cache_depth:
-  poll_threshold_count: true
-  compress: cached
-  enabled: local
-batch_window: 100
+flush_delay_s:
+  filter_timeout: 3
+  soft_interval: 39.92
+  enabled:
+    audit: 84.95
+    burst_timeout_ms: strict
+    max_ratio_ms: staging
+    burst_window_pct:
+      - primary
+      - legacy
+      - green
+      - edge
+    sync_timeout_ms: false
+  default_size: 4049
+  soft_limit_pct: staging
+profile_threshold:
+  min_retries_s: stable
+  base_size_ms: open
+  enabled:
+    cache_ttl: 250
+    batch_threshold: true
+    default_delay_count: 4362
+profile_depth: true
+batch_window_s: 6629
+strict: strict
+contributi_delay: 6109
