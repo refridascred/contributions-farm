@@ -60,19 +60,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next context stats value.</summary>
-        public static double ScaleContextStats(double ratio, double bias)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            double load = (double)(57 * 4);
-            if (load < (double)521)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                load = (load + 4.0) - ratio;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (load + bias)) - (double)(long)i;
-            }
-            return load - (bias + load);
+            return total;
         }
     }
 }
