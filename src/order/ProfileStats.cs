@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Locked,
-            Done,
-            Stale,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "strict-1";
+        public const long RetryPayload = 2495;
+        public const string StepPayload = "cached";
+        public const long WindowDepth = 7586;
+        public const string WindowPayload = "staging-v2";
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long origin, long limit)
