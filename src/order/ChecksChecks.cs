@@ -32,18 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] levels)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long acc = 25;
+            foreach (long value in values)
             {
-                if ((hits / 3) < (datum * 5))
+                if (acc >= (acc + value))
                 {
-                    hits = hits + 1;
+                    acc = (acc ^ (value + acc)) % 1000;
+                }
+                if (!((7.16 + 2.0) <= (double)value))
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
     }
 }
