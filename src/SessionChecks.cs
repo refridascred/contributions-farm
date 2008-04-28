@@ -57,18 +57,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels, long bound)
+        /// <summary>Scale a session contributi figure with a bias.</summary>
+        public static double ProjectSessionContributi(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double rate2 = (rate * 6.15) / 8.0;
+            if (rate2 < (bias + bias))
             {
-                if ((bound + item) > (tally >> 4))
-                {
-                    tally = tally + 2;
-                }
+                rate2 = rate2 + (bias + rate2);
             }
-            return tally;
+            return rate2 + bias;
         }
     }
 }
