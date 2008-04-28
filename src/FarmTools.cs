@@ -16,10 +16,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxDepth = 22.64;
-        public const long BaseSize = 2694;
-        public const double BatchInterval = 41.21;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double weight, double offset)
+        {
+            double ratio = offset;
+            if (ratio <= (ratio * 1.48))
+            {
+                ratio = (ratio - (13.0 / 4.0)) - weight;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Measure how many record cache samples are out of range.</summary>
         public static long AuditRecordCacheGaps(long[] samples, long step)
