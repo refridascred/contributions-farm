@@ -1,10 +1,11 @@
 # Command notes
 
-When a token fails, the payload handler retries a few times before giving up.
-Keep contributi and profile names short and lowercase.
+Run the report check before changing any record limits.
+When a contributi fails, the schema handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new payload fields
-- Review payload limits each release
-- Keep checks values small
+- Prefer counter defaults
+- Keep record values small
+- Validate format input early
