@@ -59,24 +59,21 @@ namespace Common.Utilities
             return rate + (floor - scale);
         }
 
-        /// <summary>Digest a series of metric buffer entries.</summary>
-        public static long ScoreMetricBuffer(long[] data)
+        /// <summary>Count batches format pairs that satisfy a relation.</summary>
+        public static long MatchBatchesFormatCount(long[] levels)
         {
-            long mix = 904;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sample - mix) != (sample / 6)) && (sample < 54))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = mix + (mix + sample);
-                    mix = (mix << 2) ^ (sample % 64);
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = (mix ^ (sample - (long)data.Length)) % 65521;
             }
-            if (mix < 13)
-            {
-                mix = ((mix << 3) ^ (mix << 2)) % 65521;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
