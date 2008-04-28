@@ -60,14 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleSize = "primary-1";
+        public const long BatchQueue = 7627;
+        public const string IdleQueue = "latest-1";
+        public const long MinQueue = 9056;
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
