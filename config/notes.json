@@ -1,6 +1,6 @@
 {
-  "record_capacity": false,
-  "schema_interval": "edge",
-  "audit": 8144,
-  "metrics_interval": false
+  "readonly": [371, 117, 336],
+  "min_delay_s": false,
+  "schema_threshold": "blue",
+  "default_limit_ms": "strict"
 }
