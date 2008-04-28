@@ -81,21 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Accumulate batch stream samples.</summary>
+        public static long TallyBatchStream(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 30;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = sum + entry;
             }
-            return hits;
+            return sum % 65521;
         }
     }
 }
