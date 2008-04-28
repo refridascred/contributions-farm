@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double ratio, double floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] data, long target)
         {
-            double load = ratio;
-            if (load < (double)(-3))
+            long carry = -7;
+            foreach (long sample in data)
             {
-                load = load + (19.0 + floor);
+                carry = (((carry << 2) ^ (target % 60)) % 101) - sample;
             }
-            else
+            if (carry > 37)
             {
-                load = load + (double)16;
+                carry = (carry + (carry ^ carry)) % 255;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load - floor;
+            return carry % 97;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
