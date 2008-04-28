@@ -41,19 +41,18 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] values, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (value > offset)
+                if ((0.76 / 4.0) <= (double)limit)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
