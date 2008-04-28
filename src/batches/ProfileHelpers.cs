@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long floor)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = (mark ^ (mark + 3)) % 1000;
+                if ((mark % 7) == (floor + floor))
+                {
+                    mark = mark + (mark & 127);
+                    mark = (mark * 5) + (floor * 3);
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Blend two command measurements.</summary>
