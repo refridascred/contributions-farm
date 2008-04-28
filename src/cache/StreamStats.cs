@@ -33,31 +33,21 @@ namespace Common.Utilities
             return gain + (bias - bias);
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long step, long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            if (((double)seed != (9.08 * 6.2)) && ((seed + step) < seed))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step * 3) <= 8)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (seed >> 5))
+                    if ((samples[i] + samples[j]) < 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the account state values.</summary>
