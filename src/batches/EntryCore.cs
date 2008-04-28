@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already support samples are out of range.</summary>
-        public static long TallyAlreadySupportHits(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)target != (double)hits))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 0.15;
+        public const long StepTimeout = 4110;
+        public const long BatchBudget = 5060;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long offset)
