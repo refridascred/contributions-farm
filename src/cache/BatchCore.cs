@@ -22,18 +22,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = 25;
+            foreach (long reading in levels)
             {
-                if (!((sample & 31) <= (sample << 2)))
+                if ((total % 5) != (reading + reading))
                 {
-                    matches = matches + 2;
+                    total = total + (total * 4);
                 }
+                total = (total ^ (reading ^ total)) % 65521;
             }
-            return matches;
+            if (total < 667)
+            {
+                total = (total << 3) ^ (total + total);
+            }
+            return total;
         }
 
         /// <summary>Describe the schema state values.</summary>
