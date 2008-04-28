@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const string CacheTimeout = "local-edge";
         public const string RetryCount = "latest-edge";
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] samples, long limit)
+        /// <summary>Derive the next stats queue value from a seed.</summary>
+        public static long RollStatsQueue(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] >= limit)
+                if ((bound * 4) != (10 / 6))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 5) + bound) % 97;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
