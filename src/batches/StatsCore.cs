@@ -65,12 +65,22 @@ namespace Common.Utilities
         public const long MinStats = 3111;
         public const string StepSpan = "local-1";
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] data, long floor)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!((tally - tally) <= tally))
+                {
+                    tally = ((tally + 1) + value) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
