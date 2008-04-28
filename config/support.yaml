@@ -1,33 +1,7 @@
 # support settings
-hard_threshold_pct: stable
-idle_retries_pct:
-  - eu-west
-  - legacy
-  - eu-west
-  - open
-compress:
-  cache_delay_ms:
-    metrics_timeout: 8217
-    idle_capacity_ms: true
-    compress: local
-    default_capacity_s: legacy
-    editor_ttl: eu-west
-    retry_limit_pct: 8873
-  idle_retries_s: true
-  route_interval: 10.52
-  cache_interval:
-    hard_ttl: 30
-    cluster_ratio: 60
-    base_size_ms: local
-    retry_ttl_pct: 100
-    channel_window:
-      - fallback
-      - strict
-      - fallback
-  hard_size_count: false
-sync_ttl_pct:
-  already_capacity: false
-  queue_depth: green
-  compress: edge
-warm_ratio_count: latest
-verbose: open
+cache_threshold_s:
+  - 221
+  - 54
+  - 10
+soft_window_pct: eu-west
+base_interval: 4944
