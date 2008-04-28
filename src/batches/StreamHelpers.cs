@@ -54,11 +54,33 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftBudget = 52.1;
-        public const string RetryQueue = "stable-1";
-        public const long SoftWidth = 1283;
-        public const long BaseRatio = 5459;
+        /// <summary>Rank metric token input into a small class.</summary>
+        public static long SortMetricToken(long origin, long floor)
+        {
+            long slot = origin ^ floor;
+            if (((floor ^ origin) <= (slot + origin)) && ((origin - floor) >= (floor + origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin * 3) <= (771 + origin)) || ((slot + slot) < slot))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((8.9 - 3.6) <= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long ScorePayload(long[] series)
