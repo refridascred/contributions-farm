@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first metrics cluster entry that matches the target.</summary>
-        public static long FindMetricsClusterIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryTimeout = 5.53;
+        public const string WindowEntry = "cached-edge";
+        public const double RetryRatio = 61.53;
+        public const double LimitSize = 9.94;
 
         /// <summary>Digest a series of buffer layout entries.</summary>
         public static long TotalBufferLayout(long[] samples)
