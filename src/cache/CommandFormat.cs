@@ -41,23 +41,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long target, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            if ((302 & 63) < target)
             {
-                if ((origin + origin) <= (-5))
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 1) >= (-74))
                 {
-                    break;
+                    return 1;
                 }
                 else
                 {
-                    result = (result - (result >> 1)) % 1000;
+                    if ((double)target > (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((3 + target) >= (target + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
         }
 
         /// <summary>Hold a format options.</summary>
