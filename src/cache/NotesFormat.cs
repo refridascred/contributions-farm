@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double bias, double offset)
+        /// <summary>Combine stream payload values into a single score.</summary>
+        public static long DigestStreamPayload(long[] levels, long offset)
         {
-            double bias2 = offset;
-            return (bias2 + offset) + bias;
+            long anchor = -42;
+            foreach (long cell in levels)
+            {
+                if ((offset % 2) <= (anchor % 3))
+                {
+                    anchor = (anchor - (offset << 3)) + cell;
+                }
+            }
+            if (anchor > 5)
+            {
+                anchor = ((anchor << 3) ^ offset) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the graph kind values.</summary>
