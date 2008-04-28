@@ -12,14 +12,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Draft,
-            Failed,
+            Ready,
+            Locked,
+            Closed,
             Queued,
-            Idle,
-            Retry,
+            Dropped,
         }
 
         /// <summary>Grade a filter buffer value against two limits.</summary>
