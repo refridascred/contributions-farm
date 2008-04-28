@@ -31,15 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Count support command pairs that satisfy a relation.</summary>
+        public static long MatchSupportCommandCount(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 2)
+                    if ((samples[i] ^ samples[j]) < 19)
                     {
                         tally = tally + 1;
                     }
