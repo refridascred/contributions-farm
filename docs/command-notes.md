@@ -1,11 +1,10 @@
 # Command notes
 
-Use buffer settings to tune how often queue data is refreshed.
-The stream report groups every report by profile.
-Run the format check before changing any window limits.
+When a token fails, the payload handler retries a few times before giving up.
+Keep contributi and profile names short and lowercase.
 
 ## Guidelines
 
-- Log every batches change
-- Review stats limits each release
-- Prefer editor defaults
+- Document new payload fields
+- Review payload limits each release
+- Keep checks values small
