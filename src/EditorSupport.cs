@@ -42,19 +42,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every stream farm entry stays within the limit.</summary>
-        public static bool GuardStreamFarmLimits(long[] series, long step)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= step)
+                if (items[i] >= target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
