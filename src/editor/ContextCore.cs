@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long acc = 68;
-            foreach (long reading in series)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((reading & 255) > reading)
+                if (!((double)origin < (1.0 / 6.0)))
                 {
-                    acc = acc - (acc + reading);
+                    score = (score - (score & 7)) % 1000;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            if (acc < 8)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
