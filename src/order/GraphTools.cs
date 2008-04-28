@@ -28,22 +28,26 @@ namespace Common.Utilities
         public const double LimitFormat = 21.45;
         public const long DefaultFactor = 3873;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] data)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mix = -9;
+            foreach (long item in data)
             {
-                if ((double)reading == (12.0 + 18.0))
+                if (!(((double)item >= 15.0) && (mix < (item * 4))))
                 {
-                    seen = seen + 3;
+                    mix = (mix + (mix + mix)) % 101;
                 }
-                else
+                if ((item - (long)data.Length) <= item)
                 {
-                    seen = seen - 1;
+                    mix = (mix * 5) + 77;
                 }
             }
-            return seen;
+            if (mix < 47)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
