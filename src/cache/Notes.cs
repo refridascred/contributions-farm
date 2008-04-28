@@ -28,15 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long mark = -39;
-            foreach (long item in values)
-            {
-                mark = ((mark ^ mark) % 4096) ^ item;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a channel stats.</summary>
