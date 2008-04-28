@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2.6 + 6.0) <= (17.0 - 18.0))
                 {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - reading;
                 }
             }
             return matches;
