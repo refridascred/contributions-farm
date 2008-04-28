@@ -66,19 +66,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every entry commits entry stays within the limit.</summary>
-        public static bool ValidateEntryCommitsRange(long[] series, long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the report state values.</summary>
