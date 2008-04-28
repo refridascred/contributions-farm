@@ -45,12 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 35.4;
-        public const long RetryStats = 3881;
-        public const long MinScore = 380;
-        public const long MinStats = 3111;
-        public const string StepSpan = "local-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstSession = 63.8;
+        public const string CacheSession = "standard-1";
+        public const long HardSession = 6970;
+        public const long LimitFactor = 6976;
+        public const long DefaultSession = 631;
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] data)
