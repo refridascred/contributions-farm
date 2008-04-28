@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] values, long bound)
+        /// <summary>Find the first stream counter entry that matches the target.</summary>
+        public static long SeekStreamCounterIndex(long[] items, long limit)
         {
-            long mix = 9;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 5) + (bound / 5)) % 97;
-                mix = (mix - (cell << 3)) % 97;
-                if (!((double)mix <= 0.8))
+                if (items[i] == limit)
                 {
-                    mix = (mix ^ (mix - bound)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ bound;
+                    return (long)i;
                 }
             }
-            if (mix < 872)
-            {
-                mix = ((mix * 2) + (bound * 5)) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
