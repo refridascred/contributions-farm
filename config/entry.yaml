@@ -1,14 +1,5 @@
 # entry settings
-readonly:
-  min_threshold: legacy
-  poll_window_pct: 66.59
-  max_window:
-    - 348
-    - 209
-  max_limit_ms: cached
-  min_ratio_pct: 17.33
-token_threshold: staging
-cache_interval: primary
-compress: true
-account_interval: 60
-retry_delay: 1024
+warm_capacity_s: 15.13
+min_capacity_ms: 4694
+enabled: false
+already_timeout: true
