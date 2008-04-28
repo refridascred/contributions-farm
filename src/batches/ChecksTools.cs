@@ -24,23 +24,19 @@ namespace Common.Utilities
         public const double BaseInterval = 82.8;
         public const string StepDepth = "standard-edge";
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Digest a series of cluster support entries.</summary>
+        public static long ScoreClusterSupport(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            long mark = 64;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (mix + target) + (long)i2;
-                }
-                if ((target > ((long)i ^ (long)i)) && ((double)target > (double)mix))
-                {
-                    mix = ((mix << 2) ^ (mix / 7)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                mark = ((mark * 3) + (-81)) - reading;
             }
-            return mix;
+            if (mark > 88)
+            {
+                mark = ((mark << 2) ^ mark) % 4096;
+            }
+            return mark % 97;
         }
     }
 }
