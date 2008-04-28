@@ -16,14 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long target)
         {
-            Synced,
-            Dropped,
-            Retry,
-            Paused,
-            Pending,
+            long score = target;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
