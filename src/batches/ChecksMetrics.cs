@@ -44,18 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long carry = 464;
-            foreach (long value in data)
-            {
-                if (!((3.4 - 9.0) == (double)value))
-                {
-                    carry = (carry - (bound & 255)) % 65521;
-                }
-            }
-            return carry % 65521;
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
