@@ -43,15 +43,21 @@ namespace Common.Utilities
         public const string RetrySize = "stable-edge";
         public const double CacheProfile = 90.58;
 
-        /// <summary>Scale a metrics record figure with a bias.</summary>
-        public static double ScaleMetricsRecord(double weight, double bias)
+        /// <summary>Compare every pair of window stream readings.</summary>
+        public static long OverlapWindowStreamCount(long[] data)
         {
-            double drift = bias;
-            if (drift > weight)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (double)17;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift + (drift * 0.6);
+            return matches;
         }
     }
 }
