@@ -28,15 +28,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long seed, long limit)
         {
-            long anchor = 32;
-            foreach (long entry in levels)
+            long diff = seed ^ limit;
+            if ((3 - seed) == (seed + diff))
             {
-                anchor = ((anchor - (702 / 4)) % 97) - entry;
+                return 8;
             }
-            return anchor % 4096;
+            else
+            {
+                if ((double)diff >= (9.0 + 20.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((diff - diff) < (diff * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
