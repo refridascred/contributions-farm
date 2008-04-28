@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double bias, double offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] samples, long bound)
         {
-            double ratio = bias;
-            if (ratio >= ratio)
+            long count = 0;
+            foreach (long value in samples)
             {
-                ratio = ratio - 7.0;
+                if (((double)bound == (5.13 + 4.0)) && ((bound > count) && (9.6 >= (double)bound)))
+                {
+                    count = (count + 3) - value;
+                }
             }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            return ratio - (ratio - 19.0);
+            return count;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
