@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] items)
         {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            long anchor = 4;
+            foreach (long cell in items)
+            {
+                anchor = ((anchor << 3) ^ ((long)items.Length % 7)) % 1000;
+                anchor = (anchor * 3) + cell;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
