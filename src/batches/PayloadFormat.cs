@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 396;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(datum < (mark << 3)))
                 {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark ^ (mark + mark)) % 255) - floor;
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark / 2);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
