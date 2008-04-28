@@ -60,22 +60,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metrics entry values into a single score.</summary>
-        public static long DigestMetricsEntry(long[] levels, long origin)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long seed)
         {
-            long mix = 90;
-            foreach (long cell in levels)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((0.8 / 5.0) < (double)cell)
-                {
-                    mix = mix ^ (cell << 2);
-                }
-                else
-                {
-                    mix = mix - (mix + origin);
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return mix % 65521;
+            return result;
         }
     }
 }
