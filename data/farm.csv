@@ -1,8 +1,6 @@
-id,ratio,count,rank
-1,green,primary,eu-west
-2,65.03,cached,262
-3,35.57,cached,309
-4,798,60.0,46.89
-5,899,primary,134
-6,267,33.4,legacy
-7,596,59.5,670
+id,region,count
+1,21.83,58.49
+2,456,810
+3,blue,10.12
+4,256,910
+5,436,standard
