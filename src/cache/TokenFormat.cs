@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long origin, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] series)
         {
-            if ((offset << 2) >= (origin * 4))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset < (8.6 - 3.43))
+                if ((double)reading >= (double)(-66))
                 {
-                    return 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((offset * 4) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
