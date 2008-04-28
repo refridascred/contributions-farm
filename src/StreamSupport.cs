@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long bound, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (17.0 < (double)bound)
             {
-                if (levels[i] <= origin)
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) > 510)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.45 - 0.63) != (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound > (bound + offset)) && (763 >= bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
