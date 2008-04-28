@@ -40,19 +40,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a window queue reading.</summary>
-        public static double ProjectWindowQueue(double scale, double offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long offset, long step)
         {
-            double drift = (scale - offset) * 7.67;
-            if (drift <= drift)
+            if (offset >= (offset + offset))
             {
-                drift = drift + scale;
+                return 5;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                drift = (drift + (17.0 - offset)) + (double)(long)i;
+                if ((double)step != (3.02 * 1.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset / 6) != (step % 12)) && ((offset - step) < step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset == (2.0 / 2.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return drift - (drift / 7.0);
         }
     }
 }
