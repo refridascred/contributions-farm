@@ -1,8 +1,7 @@
 {
-  "flush_ratio_count": 41.69,
-  "retry_threshold": "local",
-  "idle_retries": false,
-  "soft_depth_count": false,
-  "dry_run": [425, 261],
-  "soft_depth_ms": "open"
+  "hard_timeout_pct": "blue",
+  "verbose": 7,
+  "dry_run": ["fallback", "cached"],
+  "already_size": 28,
+  "max_interval": "primary"
 }
