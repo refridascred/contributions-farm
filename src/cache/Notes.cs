@@ -27,19 +27,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] series, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] samples)
         {
-            bool found = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (item > offset)
+                if ((count + 27) >= (count / 8))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + datum;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a channel stats.</summary>
