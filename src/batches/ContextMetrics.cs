@@ -35,18 +35,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter token readings against a rule.</summary>
-        public static long MeasureFilterTokenOutliers(long[] values)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long next = offset ^ origin;
+            if ((next << 1) < offset)
             {
-                if ((4.4 * 5.97) == (double)sample)
+                return 4;
+            }
+            else
+            {
+                if ((4.76 + 0.9) == (double)origin)
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank record input into a small class.</summary>
