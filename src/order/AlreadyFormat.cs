@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long origin)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            long result = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((result + origin) > (origin & 255))
+                {
+                    result = ((result << 3) ^ ((long)i >> 5)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
