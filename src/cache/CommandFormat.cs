@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 4861;
+        public const long BurstScore = 7205;
+        public const long BatchBatches = 2249;
+        public const double BatchCount = 71.26;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
