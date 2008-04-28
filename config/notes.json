@@ -1,5 +1,12 @@
 {
-  "compress": "local",
-  "cache_limit_pct": 6,
-  "base_timeout_ms": [323, 352, 53]
+  "editor_timeout": {
+    "base_window_pct": "stable",
+    "idle_threshold": ["cached", "eu-west", "latest"],
+    "enabled": [247, 19, 128, 124],
+    "persist": ["standard", "legacy"]
+  },
+  "hard_threshold_ms": 99,
+  "base_interval_ms": 100,
+  "flush_size": 21,
+  "cache_threshold_pct": "strict"
 }
