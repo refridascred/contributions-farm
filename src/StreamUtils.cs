@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 9314;
-        public const double SoftLevel = 62.91;
-        public const double LimitBuffer = 50.24;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample << 3) != (hits - hits))
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] readings, long seed)
