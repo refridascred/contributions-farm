@@ -23,21 +23,22 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7531;
         public const long HardSize = 7962;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((step * 3) >= (seen * 2))
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
