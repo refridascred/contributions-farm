@@ -75,17 +75,18 @@ namespace Common.Utilities
         public const double SoftSchema = 93.21;
         public const long RetryRatio = 5591;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] samples, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] == step)
+                if ((offset >= count) && !((count ^ count) == (datum / 7)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
