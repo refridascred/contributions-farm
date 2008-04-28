@@ -13,22 +13,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] series, long limit)
+        /// <summary>Grade a token record value against two limits.</summary>
+        public static long BucketTokenRecord(long offset, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if (!(27 <= (offset >> 1)))
             {
-                if ((seen + 0) < (limit ^ datum))
+                return 0;
+            }
+            else
+            {
+                if (offset < step)
                 {
-                    seen = seen + 2;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)step != (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step >= (offset / 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
