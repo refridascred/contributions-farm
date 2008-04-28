@@ -36,18 +36,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph commits samples are out of range.</summary>
-        public static long TallyGraphCommitsMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((13.0 / 6.0) == (double)seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleInterval = 5503;
+        public const long BatchBatches = 3749;
+        public const double MinCount = 68.49;
     }
 }
