@@ -33,18 +33,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] data)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((tally + datum) >= 9)
+                if (item != floor)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
