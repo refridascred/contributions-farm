@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] series)
         {
-            Pending,
-            Active,
-            Closed,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches & 255) >= reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
