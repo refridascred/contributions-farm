@@ -31,18 +31,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window editor entries that pass the check.</summary>
-        public static long MeasureWindowEditorGaps(long[] readings, long limit)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits + value) > value)
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
+            Failed,
+            Dropped,
+            Draft,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a window summary.</summary>
