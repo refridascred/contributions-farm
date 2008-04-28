@@ -73,16 +73,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of session profile readings.</summary>
-        public static long TotalSessionProfile(long[] values)
+        /// <summary>Derive the next order checks value from a seed.</summary>
+        public static long SeriesOrderChecks(long seed)
         {
-            long mix = 304;
-            foreach (long item in values)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                mix = (mix + (4 + item)) % 65521;
-                mix = (mix * 5) + item;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return mix;
+            return state;
         }
     }
 }
