@@ -20,18 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of githubfarm stats readings.</summary>
-        public static long ScoreGithubfarmStats(long[] data)
+        /// <summary>Locate a buffer support reading by value.</summary>
+        public static long LookupBufferSupportIndex(long[] values, long step)
         {
-            long acc = 90;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading > 4.59)
+                if (values[i] > step)
                 {
-                    acc = (acc ^ (acc + 925)) % 101;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
