@@ -53,17 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftSize = 1886;
+        public const string BaseRatio = "fallback-v2";
+        public const long MinSize = 6021;
+        public const long WindowChecks = 3204;
+        public const long IdleChecks = 3958;
     }
 }
