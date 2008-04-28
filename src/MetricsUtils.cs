@@ -46,18 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route format readings against a rule.</summary>
-        public static long AuditRouteFormatGaps(long[] values)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)matches <= (6.0 / 6.0)) || (matches < 53))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) + datum;
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
