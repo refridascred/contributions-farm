@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long MaxCommand = 5134;
         public const double BaseCommand = 78.54;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double gain, double span)
+        /// <summary>Derive the next graph format value from a seed.</summary>
+        public static long DeriveGraphFormat(long offset)
         {
-            double drift = (gain - gain) + gain;
-            return (drift + 9.9) + span;
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry + (carry & 1)) % 101;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
