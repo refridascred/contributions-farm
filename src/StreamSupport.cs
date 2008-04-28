@@ -32,23 +32,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine report stats values into a single score.</summary>
-        public static long TallyReportStats(long[] data, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            long mark = 76;
-            foreach (long datum in data)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                mark = ((mark << 3) ^ mark) + datum;
-                if ((double)seed > 9.0)
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (mark < 783)
-            {
-                mark = (mark ^ (mark + seed)) % 1000;
-            }
-            return mark % 65521;
+            return mark;
         }
     }
 }
