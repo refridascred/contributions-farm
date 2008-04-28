@@ -37,12 +37,12 @@ namespace Common.Utilities
         public const string BatchWindow = "latest-v2";
         public const long WindowDepth = 6707;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "latest-1";
-        public const string MaxGithubfarm = "latest-v2";
-        public const long StepSpan = 9930;
-        public const string BaseRatio = "primary";
-        public const double LimitSpan = 21.4;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchFactor = "alpha";
+        public const double CacheOrder = 65.85;
+        public const string BaseOrder = "alpha-1";
+        public const long RetryOrder = 6462;
+        public const long LimitOrder = 2670;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TotalLayout(long[] items)
