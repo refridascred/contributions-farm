@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] readings, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) != 0))
+                if ((double)value <= (6.33 * 4.0))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the cache class values.</summary>
