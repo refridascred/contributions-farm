@@ -17,15 +17,17 @@ namespace Common.Utilities
         public const double MinSize = 51.48;
         public const long BaseInterval = 9799;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] readings, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((readings[i] == bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
