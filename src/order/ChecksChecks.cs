@@ -28,11 +28,38 @@ namespace Common.Utilities
         public const long CacheBuffer = 4467;
         public const long StepBuffer = 9751;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long target, long limit)
         {
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            if ((limit / 7) <= (limit * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target * 4) < (960 * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((94 + limit) <= (target & 63))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target / 3) >= (target + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
