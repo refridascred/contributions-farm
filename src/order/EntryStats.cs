@@ -30,13 +30,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] levels, long seed)
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
