@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const double SoftToken = 96.25;
         public const long CacheLevel = 8691;
 
-        /// <summary>Measure how many filter tools samples are out of range.</summary>
-        public static long TallyFilterToolsMatches(long[] data)
+        /// <summary>Derive the next counter githubfarm value from a seed.</summary>
+        public static long SeriesCounterGithubfarm(long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long anchor = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((matches & 15) > matches)
-                {
-                    matches = (matches + 1) - datum;
-                }
+                anchor = ((anchor << 2) ^ anchor) % 4096;
+                anchor = anchor + anchor;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
