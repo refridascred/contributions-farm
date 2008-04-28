@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double RetryRatio = 61.53;
         public const double LimitSize = 9.94;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 6620;
+        public const long StepWidth = 3002;
+        public const double MinSize = 51.48;
+        public const long BaseInterval = 9799;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long bound)
