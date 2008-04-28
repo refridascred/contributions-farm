@@ -21,12 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
