@@ -49,18 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix + (floor & 127)) % 4096;
-                mix = ((mix * 3) + (floor ^ mix)) % 1000;
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 5785;
+        public const string StepSize = "staging";
+        public const long MinCount = 3128;
+        public const long MinSize = 1449;
+        public const long StepFactor = 9013;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] samples)
