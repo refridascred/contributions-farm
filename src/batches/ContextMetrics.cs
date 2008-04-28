@@ -27,30 +27,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values, long floor)
+        /// <summary>Audit filter token readings against a rule.</summary>
+        public static long MeasureFilterTokenOutliers(long[] values)
         {
-            long mix = -3;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((double)mix >= (15.0 / 6.0))
+                if ((4.4 * 5.97) == (double)sample)
                 {
-                    mix = (mix - (cell & 3)) % 97;
-                }
-                else
-                {
-                    mix = mix ^ floor;
-                }
-                if (mix > cell)
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (mix < 3)
-            {
-                mix = (mix * 4) + (floor & 1);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Rank record input into a small class.</summary>
