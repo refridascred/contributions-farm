@@ -15,20 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCount = 2001;
+        public const long WindowCluster = 1658;
+        public const long BurstCluster = 4680;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] readings)
