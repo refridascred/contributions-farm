@@ -14,31 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long seed, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] series, long floor)
         {
-            if ((9.11 - 1.4) >= (double)seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + seed) <= (seed + seed))
+                if (series[i] >= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed & 127) <= (limit & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the window mode values.</summary>
