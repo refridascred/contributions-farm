@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit record cache readings against a rule.</summary>
-        public static long AuditRecordCacheOutliers(long[] data, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (!(158 > (seed + 92)))
+                if (value > seed)
                 {
-                    count = (count + 1) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
