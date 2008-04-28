@@ -42,26 +42,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of channel queue entries.</summary>
-        public static long DigestChannelQueue(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] levels)
         {
-            long total = 3;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((total + 491) >= (total + 86)) && ((double)total != (double)cell))
+                if (hits <= (49 << 1))
                 {
-                    total = (total + (2 ^ 304)) % 97;
+                    hits = (hits + 3) - value;
                 }
-                if (cell <= (379 - cell))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (total < 75)
-            {
-                total = (total * 3) + total;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of report readings.</summary>
