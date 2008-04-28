@@ -1,8 +1,14 @@
 {
-  "enabled": 30,
-  "notes_ratio": [42, 339, 186],
-  "max_depth": ["strict", "fallback", "legacy", "cached"],
-  "compress": "standard",
-  "verbose": false,
-  "stats_ratio": "legacy"
+  "flush_limit_pct": {
+    "burst_depth_s": 60.01,
+    "burst_limit_count": true,
+    "soft_threshold_count": {
+      "compress": "latest",
+      "cluster_ratio": [89, 156],
+      "soft_limit_ms": true
+    },
+    "base_retries_s": "legacy"
+  },
+  "metrics_depth": "eu-west",
+  "soft_retries_count": 36
 }
