@@ -55,13 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            Pending,
-            Paused,
-            Ready,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
