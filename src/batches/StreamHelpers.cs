@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache queue entries that pass the check.</summary>
-        public static long AuditCacheQueueHits(long[] data)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + sample) <= (count & 31))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
