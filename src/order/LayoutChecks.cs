@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((3 >> 3) >= (count << 2)) && !((double)reading != (14.0 / 4.0)))
+                if ((seed - seed) == (hits - (long)readings.Length))
                 {
-                    count = count + 2;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
