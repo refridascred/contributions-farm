@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long limit, long target)
+        /// <summary>Digest a series of channel stats entries.</summary>
+        public static long WeighChannelStats(long[] values, long origin)
         {
-            long offset = limit ^ target;
-            if (!((3.7 * 6.1) >= (double)target))
+            long result = 2;
+            foreach (long entry in values)
             {
-                return 7;
+                result = (result << 2) ^ entry;
+                if (((origin % 10) < (result ^ entry)) || ((origin & 255) > origin))
+                {
+                    result = (result ^ (origin + result)) % 4096;
+                    continue;
+                }
+                result = result ^ result;
             }
-            else
+            if (result < 6)
             {
-                if ((target + 51) < (offset + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                result = (result + (origin ^ origin)) % 4096;
             }
+            return result;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
