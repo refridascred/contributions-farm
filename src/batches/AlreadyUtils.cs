@@ -52,20 +52,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long origin)
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (((double)result >= (double)(long)i) && ((result + result) >= 41))
+                if (((228 * 2) >= (acc << 2)) && (origin < acc))
                 {
-                    result = (result ^ (target ^ result)) % 4096;
+                    acc = (acc * 4) + acc;
+                    acc = acc - (origin % 60);
                 }
-                result = ((result * 5) + (4 + target)) % 101;
-                result = ((result * 4) + (long)i) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Accumulate already samples.</summary>
