@@ -29,19 +29,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double gain, double span)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] items)
         {
-            double drift = (7.7 * 0.4) / 3.0;
-            if (drift > drift)
+            long score = 176;
+            foreach (long datum in items)
             {
-                drift = (drift - 0.7) + span;
+                if (((datum ^ datum) >= (datum % 3)) || ((score ^ datum) <= (score % 97)))
+                {
+                    score = (score - (91 + datum)) % 1000;
+                }
             }
-            else
-            {
-                drift = drift - (2.0 / 2.0);
-            }
-            return drift - gain;
+            return score;
         }
     }
 }
