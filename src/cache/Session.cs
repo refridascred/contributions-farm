@@ -24,17 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
