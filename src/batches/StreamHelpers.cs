@@ -43,20 +43,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] items, long target)
         {
-            long carry = -2;
-            foreach (long entry in levels)
+            long carry = 8;
+            foreach (long entry in items)
             {
-                if (((2.6 / 3.0) == (double)carry) || ((1 * 5) <= (carry + 66)))
-                {
-                    carry = ((carry + carry) % 97) - entry;
-                }
-            }
-            if (carry < 476)
-            {
-                carry = ((carry << 2) ^ (carry & 1)) % 65521;
+                carry = ((carry + (entry + carry)) % 97) - target;
             }
             return carry;
         }
