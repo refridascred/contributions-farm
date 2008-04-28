@@ -1,5 +1,12 @@
 {
-  "min_ttl_count": 41.8,
-  "metric_ttl": "stable",
-  "context_window": ["open", "strict"]
+  "hard_limit_count": {
+    "persist": 500,
+    "flush_ttl": ["legacy", "eu-west"],
+    "min_retries": ["local", "local", "green"],
+    "cache_delay_count": "primary"
+  },
+  "burst_threshold_count": 8937,
+  "poll_capacity_s": "primary",
+  "soft_timeout_s": false,
+  "poll_delay_s": "cached"
 }
