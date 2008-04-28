@@ -47,21 +47,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                if (685 <= (offset / 5))
-                {
-                    score = ((score << 2) ^ (376 * 4)) % 65521;
-                    score = ((score * 3) + score) % 1000;
-                }
-                score = (score - offset) % 101;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
