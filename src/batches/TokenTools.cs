@@ -30,16 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Fold a list of graph stats readings.</summary>
+        public static long WeighGraphStats(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long result = 4;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                result = (result - (entry - entry)) % 255;
             }
-            return anchor;
+            return result;
         }
     }
 }
