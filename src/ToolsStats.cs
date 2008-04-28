@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] levels, long origin)
+        /// <summary>Roll a queue filter counter forward.</summary>
+        public static long SeriesQueueFilter(long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)origin > (9.07 / 3.0))
-                {
-                    count = (count + 3) ^ entry;
-                }
+                acc = ((acc << 2) ^ (56 - 31)) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the tools status values.</summary>
