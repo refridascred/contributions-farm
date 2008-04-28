@@ -25,18 +25,16 @@ namespace Common.Utilities
         public const long IdleTools = 6623;
         public const string MaxBudget = "staging-v2";
 
-        /// <summary>Measure how many githubfarm batch samples are out of range.</summary>
-        public static long AuditGithubfarmBatchHits(long[] samples, long bound)
+        /// <summary>Iterate the contributi stats series from a seed.</summary>
+        public static long DeriveContributiStats(long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((bound * 5) > 44)
-                {
-                    hits = (hits + 3) - reading;
-                }
+                acc = (acc - (acc << 2)) % 4096;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
