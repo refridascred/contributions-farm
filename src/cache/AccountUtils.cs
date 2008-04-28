@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score - origin) % 65521) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
