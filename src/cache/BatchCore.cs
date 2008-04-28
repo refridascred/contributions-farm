@@ -42,18 +42,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] series, long limit)
+        /// <summary>Digest a series of metrics support entries.</summary>
+        public static long FoldMetricsSupport(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long anchor = 172;
+            foreach (long entry in items)
             {
-                if (count <= limit)
+                if ((entry - entry) >= entry)
                 {
-                    count = (count + 3) + reading;
+                    anchor = (anchor << 3) ^ 78;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
