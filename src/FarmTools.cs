@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double rate, double bias)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long seed, long origin)
         {
-            double weight = rate;
-            for (int i = 0; i < 9; i++)
+            if ((origin & 127) == (seed - seed))
             {
-                weight = ((weight + 4.2) + (double)(long)i) + bias;
+                return 5;
             }
-            return weight + weight;
+            else
+            {
+                if ((seed % 8) >= (origin << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((15.0 * 1.49) <= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed & 3) > seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of report cache readings.</summary>
