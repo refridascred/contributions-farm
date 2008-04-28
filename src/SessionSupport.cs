@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits << 1) < (hits + reading))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 9.23;
+        public const double MaxChannel = 50.91;
+        public const long BurstChannel = 3669;
+        public const long HardChannel = 1119;
 
         /// <summary>Compare every pair of contributi record readings.</summary>
         public static long PairContributiRecordCount(long[] data)
