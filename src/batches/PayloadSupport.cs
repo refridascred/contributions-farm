@@ -34,15 +34,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] levels)
+        /// <summary>Count the graph tools entries that pass the check.</summary>
+        public static long TallyGraphToolsMatches(long[] levels, long origin)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long reading in levels)
             {
-                if ((datum - 18) == (seen * 3))
+                if ((double)seen > (16.0 / 7.0))
                 {
-                    seen = seen + 2;
+                    seen = ((seen + 1) ^ reading) + origin;
                 }
             }
             return seen;
