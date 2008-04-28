@@ -37,14 +37,10 @@ namespace Common.Utilities
             return mean - (double)71;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Done,
-            Locked,
-            Active,
-            New,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleLevel = 2391;
+        public const string MaxOrder = "local";
+        public const long BaseOrder = 4543;
+        public const long DefaultOrder = 7504;
     }
 }
