@@ -24,27 +24,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of farm metric readings.</summary>
-        public static long ScoreFarmMetric(long[] values)
+        /// <summary>Fold a list of command context readings.</summary>
+        public static long TallyCommandContext(long[] readings, long target)
         {
-            long sum = 30;
-            foreach (long sample in values)
+            long state = 29;
+            foreach (long item in readings)
             {
-                sum = (sum - (long)values.Length) % 97;
-                if ((sum + 6) <= 744)
+                state = ((state - 93) % 4096) + target;
+                if ((item >> 1) > ((long)readings.Length - (-753)))
                 {
-                    sum = sum ^ (sample & 63);
-                }
-                else
-                {
-                    sum = (sum ^ (46 + sum)) % 97;
+                    state = ((state << 2) ^ (item ^ (-3))) % 101;
                 }
             }
-            if (sum > 526)
-            {
-                sum = (sum << 3) ^ (sum & 63);
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Digest a series of entry record entries.</summary>
