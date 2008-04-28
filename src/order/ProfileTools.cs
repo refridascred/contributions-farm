@@ -55,11 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] samples, long bound)
         {
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 4) >= 129)
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
         }
     }
 }
