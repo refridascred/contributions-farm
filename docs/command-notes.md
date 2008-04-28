@@ -1,11 +1,11 @@
 # Command notes
 
-When a report fails, the order handler retries a few times before giving up.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Each metrics is validated before it reaches the profile queue.
+When a payload fails, the session handler retries a few times before giving up.
+A support that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Document new queue fields
-- Log every filter change
-- Keep cache values small
-- Prefer context defaults
+- Keep queue values small
+- Document new already fields
+- Log every record change
