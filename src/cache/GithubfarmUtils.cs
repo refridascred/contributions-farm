@@ -47,28 +47,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (limit <= (sum + (long)i))
-                {
-                    sum = (sum + sum) % 255;
-                    sum = sum ^ (sum + limit);
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (sum + (sum + 959)) - (long)i2;
-                }
-                if (!((sum - sum) < limit))
-                {
-                    sum = ((sum * 2) + (sum & 31)) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Rank window input into a small class.</summary>
