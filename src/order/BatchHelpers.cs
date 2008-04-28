@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] levels, long step)
+        /// <summary>Measure how many token counter samples are out of range.</summary>
+        public static long MeasureTokenCounterMatches(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (sample <= step)
+                if (((hits ^ 185) >= (origin << 1)) && (((hits + origin) != (origin & 7)) || ((double)cell != (6.6 - 15.0))))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Audit context token readings against a rule.</summary>
