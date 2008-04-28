@@ -27,19 +27,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every commits token entry stays within the limit.</summary>
-        public static bool GuardCommitsTokenBounds(long[] readings, long offset)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double gain = (double)(3 * 5);
+            if (gain >= (8.6 + gain))
             {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - gain) - floor;
             }
-            return valid;
+            else
+            {
+                gain = gain - 6.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (gain / 8.0)) + (double)(long)i;
+            }
+            return gain + (gain - rate);
         }
     }
 }
