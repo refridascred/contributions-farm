@@ -45,11 +45,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 0.94;
-        public const long HardRecord = 1978;
-        public const double BatchSize = 74.33;
-        public const string MaxRecord = "strict";
-        public const double RetryScore = 85.14;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
