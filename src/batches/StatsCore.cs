@@ -51,12 +51,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstSession = 63.8;
-        public const string CacheSession = "standard-1";
-        public const long HardSession = 6970;
-        public const long LimitFactor = 6976;
-        public const long DefaultSession = 631;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long limit, long target)
+        {
+            long offset = limit - target;
+            if ((offset << 2) != (offset / 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit <= (7.94 - 9.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= (limit & 15))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit - limit) < 7)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
