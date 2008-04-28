@@ -38,18 +38,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] data)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((hits + value) < (value - value))
+                if (value != origin)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
