@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double span)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double gain = 14.0;
-            if (gain > (double)3)
-            {
-                gain = gain - ratio;
-            }
-            else
-            {
-                gain = gain + (span - ratio);
-            }
-            return gain - (double)444;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
