@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count * 3) <= (entry << 1))
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
