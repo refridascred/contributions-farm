@@ -1,7 +1,17 @@
 {
-  "queue_retries": 25.14,
-  "poll_ratio_count": 89,
-  "batch_threshold_count": 44.58,
-  "compress": [203, 208, 216, 222],
-  "metrics_depth": true
+  "dry_run": "edge",
+  "poll_ttl_pct": ["primary", "legacy", "primary", "strict"],
+  "poll_delay_s": {
+    "burst_limit": false,
+    "verbose": {
+      "verbose": "cached",
+      "min_window_s": "edge",
+      "route_interval": 41.32,
+      "hard_capacity": 100,
+      "default_retries_count": 30,
+      "warm_threshold_pct": 88
+    },
+    "hard_depth": [12, 163, 87, 128]
+  },
+  "base_size_pct": [390, 95, 335, 235]
 }
