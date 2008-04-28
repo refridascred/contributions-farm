@@ -37,10 +37,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "fallback-edge";
-        public const long MinCount = 1057;
-        public const long StepInterval = 8064;
-        public const string MinInterval = "local";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 8137;
+        public const long MinChannel = 6819;
+        public const long MinSize = 4365;
+        public const long BaseChannel = 4207;
+        public const long BurstTimeout = 8117;
     }
 }
