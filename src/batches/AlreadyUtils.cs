@@ -32,11 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 1301;
-        public const string BaseSession = "strict-edge";
-        public const long StepSession = 5783;
-        public const long IdleWidth = 7334;
+        /// <summary>Count the buffer record entries that pass the check.</summary>
+        public static long MeasureBufferRecordOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (48 > (cell ^ 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] series, long limit)
