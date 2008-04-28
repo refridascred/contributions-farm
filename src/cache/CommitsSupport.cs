@@ -98,23 +98,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double bias, double span)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] series)
         {
-            double drift = (span + 10.0) + span;
-            if (drift >= bias)
+            long count = 0;
+            foreach (long item in series)
             {
-                drift = drift + (double)97;
+                if ((item + count) < (20 + count))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - span;
+            return count;
         }
     }
 }
