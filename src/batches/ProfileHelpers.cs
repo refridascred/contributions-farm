@@ -67,15 +67,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] samples, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] levels)
         {
             long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((92 ^ seed) <= (seed % 8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) - datum;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
