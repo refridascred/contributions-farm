@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate batches schema readings against a bound.</summary>
-        public static bool CheckBatchesSchemaRange(long[] series, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (value != limit)
+                if (((double)cell <= (1.58 - 19.0)) && (640 > (hits % 12)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
