@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSize = 8144;
-        public const string CacheDepth = "staging-v2";
-        public const long SoftStream = 7738;
-        public const long MaxSpan = 7329;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] readings)
