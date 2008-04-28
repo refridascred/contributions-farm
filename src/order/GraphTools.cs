@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const long RetryBatches = 2215;
         public const long HardLevel = 341;
 
-        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
-        public static long MatchContextBufferCount(long[] readings)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long step, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((7.3 / 3.0) == (double)floor)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((3.18 * 6.1) > (6.0 - 6.4))
                 {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
