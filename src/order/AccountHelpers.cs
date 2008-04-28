@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const long BaseCounter = 35;
         public const long BatchCounter = 7547;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 91;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum + (sum + sum)) ^ item;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
