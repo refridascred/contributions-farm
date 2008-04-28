@@ -40,18 +40,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] series)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double scale2 = (double)(83 * 5);
+            for (int i = 0; i < 4; i++)
             {
-                if ((seen ^ cell) == (24 - cell))
-                {
-                    seen = seen + 2;
-                }
+                scale2 = (scale2 - (scale2 - scale)) + (double)(long)i;
             }
-            return seen;
+            return scale2 - offset;
         }
     }
 }
