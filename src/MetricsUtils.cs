@@ -72,21 +72,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (((73 + (long)i) <= state) || ((194 + state) < seed))
+                carry = (carry - (carry % 2)) % 255;
+                if ((carry * 2) < (limit & 1))
                 {
-                    state = (state * 5) + (seed / 2);
+                    break;
                 }
-                state = state - state;
-                state = (state + seed) % 255;
-                state = ((state * 3) + (long)i) % 97;
+                if ((limit + limit) > (limit ^ carry))
+                {
+                    carry = carry - (limit - limit);
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
     }
 }
