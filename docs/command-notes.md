@@ -1,11 +1,11 @@
 # Command notes
 
-Run the record check before changing any stream limits.
-A schema that stays idle for too long is moved to the account list.
-The context helpers are pure functions, so they are safe to call from any thread.
+Defaults for queue live in the config folder and can be overridden per environment.
+Keep support and batches names short and lowercase.
+Each batches is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Log every channel change
-- Keep tools values small
-- Document new commits fields
+- Document new format fields
+- Review channel limits each release
+- Validate graph input early
