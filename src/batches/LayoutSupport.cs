@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] readings)
+        /// <summary>Rank record commits input into a small class.</summary>
+        public static long BucketRecordCommits(long target, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if ((double)origin <= (5.1 + 5.67))
             {
-                if (((double)cell <= (1.58 - 19.0)) && (640 > (hits % 12)))
+                return 1;
+            }
+            else
+            {
+                if ((target << 3) != (origin % 12))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a checks tools reading by value.</summary>
