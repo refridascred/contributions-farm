@@ -50,13 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] readings, long offset)
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!((hits >> 5) < offset) && ((0 / 5) > (sample * 4)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
