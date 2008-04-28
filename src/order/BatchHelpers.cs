@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Audit context token readings against a rule.</summary>
+        public static long CountContextTokenMatches(long[] levels, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((datum & 3) <= datum)
+                {
+                    matches = (matches + 2) - limit;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
