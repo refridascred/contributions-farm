@@ -20,11 +20,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinBudget = 55.45;
-        public const string DefaultQueue = "staging";
-        public const double SoftTimeout = 6.05;
-        public const long HardSize = 1056;
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double scale, double floor)
+        {
+            double load = (floor * 5.28) / 6.0;
+            if (load > (floor + scale))
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - scale;
+            }
+            return load - floor;
+        }
 
         /// <summary>Combine graph editor values into a single score.</summary>
         public static long DigestGraphEditor(long[] series)
