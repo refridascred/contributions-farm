@@ -47,31 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long floor, long floor2)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] data, long origin)
         {
-            if (((floor2 % 5) < (floor2 + floor)) || ((double)floor2 >= (5.7 / 3.0)))
+            long sum = -981;
+            foreach (long datum in data)
             {
-                return 2;
+                sum = ((sum - (datum / 6)) % 65521) - origin;
+                sum = (sum ^ (datum * 3)) % 1000;
             }
-            else
-            {
-                if (((floor2 / 2) == (floor & 7)) && ((5 - 1) < (floor ^ floor)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor2 * 3) == (floor << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return sum % 97;
         }
 
         /// <summary>Describe the window status values.</summary>
