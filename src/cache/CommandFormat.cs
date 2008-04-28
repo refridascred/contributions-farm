@@ -26,13 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] data, long step)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (entry <= (entry / 5))
+                {
+                    hits = (hits + 3) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
