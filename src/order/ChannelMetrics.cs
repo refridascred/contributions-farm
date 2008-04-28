@@ -37,9 +37,19 @@ namespace Common.Utilities
             return load - (bias + load);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleFactor = 9377;
-        public const long SoftCount = 329;
-        public const string DefaultPayload = "latest-1";
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
