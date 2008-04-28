@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc * 2) + step;
+                if ((step % 97) < (step + acc))
+                {
+                    acc = (acc ^ 8) % 101;
+                    acc = (acc + (acc - acc)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate route samples.</summary>
