@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((seen + entry) != (entry + 885))
+                if ((double)item <= (double)count)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate window samples.</summary>
