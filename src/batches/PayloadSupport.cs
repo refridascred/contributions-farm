@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] series, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mark = 0;
+            foreach (long datum in levels)
             {
-                if (4 < (tally ^ tally))
+                if (((333 * 4) != (datum - offset)) || ((datum - offset) >= 66))
                 {
-                    tally = ((tally + 2) + item) - origin;
+                    mark = (mark ^ (datum - 2)) % 65521;
                 }
             }
-            return tally;
+            if (mark > 437)
+            {
+                mark = (mark ^ (offset >> 3)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
