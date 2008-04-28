@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const string BatchContributi = "stable";
         public const long MinLevel = 8912;
 
-        /// <summary>Count the githubfarm context entries that pass the check.</summary>
-        public static long MeasureGithubfarmContextMatches(long[] levels, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((bound ^ cell) >= bound)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Ready,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
