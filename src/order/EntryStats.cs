@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseCount = "standard-edge";
-        public const long HardBuffer = 5893;
-        public const long StepLevel = 9137;
-        public const string MinBuffer = "staging";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (0.2 <= (double)floor)
+                {
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
