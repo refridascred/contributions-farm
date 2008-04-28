@@ -33,23 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Fold a list of stats record readings.</summary>
+        public static long WeighStatsRecord(long[] data, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long total = 7;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((2.11 + 2.0) <= (double)datum) || ((double)(long)data.Length <= (19.0 / 7.0)))
                 {
-                    carry = carry + ((long)i2 * 3);
+                    total = (total + (total / 9)) - bound;
                 }
-                if ((carry + (long)i) == (seed - carry))
-                {
-                    carry = ((carry * 4) + seed) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Blend two profile measurements.</summary>
