@@ -36,31 +36,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long limit, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings)
         {
-            if ((double)limit < (double)target)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)target <= 1.8) || ((limit / 8) <= 83))
+                if ((seen & 127) != (seen << 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.0 / 6.0) > (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = (seen + 3) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
