@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a order filter reading by value.</summary>
-        public static long LookupOrderFilterIndex(long[] levels, long floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
