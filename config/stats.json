@@ -1,6 +1,18 @@
 {
-  "hard_window_pct": "edge",
-  "readonly": 100,
-  "checks_size": ["strict", "local", "cached"],
-  "layout_window": "standard"
+  "cache_retries": true,
+  "cache_capacity": {
+    "compress": "eu-west",
+    "readonly": {
+      "persist": "primary",
+      "dry_run": "legacy",
+      "retry_delay_s": true,
+      "soft_retries": 35.48,
+      "filter_ttl": true
+    },
+    "base_limit_count": "staging",
+    "enabled": true,
+    "cache_delay_ms": 1024,
+    "hard_threshold_ms": 86.42
+  },
+  "default_ttl_ms": "open"
 }
