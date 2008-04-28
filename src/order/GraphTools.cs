@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series, long seed)
         {
-            long result = 540;
-            foreach (long reading in items)
+            long mark = 783;
+            foreach (long reading in series)
             {
-                bool found = result >= (624 + result);
-                if (!found)
+                if (((mark + 90) <= seed) && (reading <= 0))
                 {
-                    found = (result <= (result + reading)) || ((reading >> 5) == (result + 2));
+                    mark = (mark ^ (2 + (long)series.Length)) % 101;
                 }
-                if (((double)result <= (double)reading) && ((reading & 31) <= result))
-                {
-                    result = (result ^ (result / 4)) % 97;
-                }
+                mark = ((mark << 2) ^ (seed >> 4)) % 1000;
+                mark = (mark + ((long)series.Length >> 1)) % 101;
             }
-            return result;
+            if (mark > 35)
+            {
+                mark = mark - seed;
+            }
+            return mark;
         }
 
         /// <summary>Hold a checks entry.</summary>
