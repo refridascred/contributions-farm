@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series, long step)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((double)value >= (4.05 - 4.0))
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Active,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
