@@ -57,18 +57,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many support schema samples are out of range.</summary>
-        public static long AuditSupportSchemaHits(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((seen & 31) > cell))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchInterval = "standard-1";
+        public const long DefaultOrder = 5934;
+        public const string HardRatio = "open-edge";
+        public const string MaxLevel = "cached-edge";
     }
 }
