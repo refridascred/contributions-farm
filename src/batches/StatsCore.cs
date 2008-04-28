@@ -19,10 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowReport = "stable-1";
-        public const string MinFactor = "staging-1";
-        public const long StepBudget = 2203;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public bool Label { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
