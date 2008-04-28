@@ -1,15 +1,14 @@
 # entry settings
-cache_timeout_ms: 17
-max_size_pct: edge
-queue_capacity: 32.89
-cache_window_ms:
-  - 351
-  - 457
-  - 16
-  - 165
-audit:
-  - 327
-  - 209
-  - 109
-  - 440
-min_timeout_pct: false
+default_capacity: latest
+max_depth_count: edge
+payload_timeout: false
+burst_retries_s:
+  dry_run: 3399
+  enabled: true
+  audit: standard
+  verbose: strict
+  readonly: false
+  burst_limit_count:
+    - green
+    - open
+sync_limit: 100
