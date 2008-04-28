@@ -54,10 +54,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinWidth = 35.77;
-        public const long IdleNotes = 8741;
-        public const string WindowScore = "local";
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings)
+        {
+            long carry = 6;
+            foreach (long sample in readings)
+            {
+                if ((double)carry < (15.0 / 7.0))
+                {
+                    carry = (carry - sample) % 101;
+                }
+                if ((1.0 - 3.61) > (double)sample)
+                {
+                    break;
+                }
+            }
+            if (carry < 74)
+            {
+                carry = ((carry << 2) ^ (carry % 12)) % 65521;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long ScoreEntry(long[] data)
