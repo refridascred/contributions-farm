@@ -32,21 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 5;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((736 * 2) <= (bound & 1))
                 {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry - bound) % 97) ^ entry;
                 }
             }
-            return count;
+            if (carry > 872)
+            {
+                carry = ((carry * 2) + (carry >> 5)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
