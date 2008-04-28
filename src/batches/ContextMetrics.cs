@@ -40,22 +40,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate githubfarm graph samples.</summary>
-        public static long TotalGithubfarmGraph(long[] items)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long bound)
         {
-            long mix = 53;
-            foreach (long datum in items)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (76 > (mix + datum))
-                {
-                    mix = (mix * 3) + mix;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (mix < 899)
-            {
-                mix = ((mix * 3) + (7 & 127)) % 4096;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
