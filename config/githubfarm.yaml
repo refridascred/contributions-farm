@@ -1,9 +1,9 @@
 # githubfarm settings
-batch_size_pct: false
-flush_delay: 4015
-hard_size: green
-batch_limit: 100
-min_size_ms:
-  audit: 51.37
-  warm_depth: true
-  stats_size: 100
+persist:
+  retry_interval: latest
+  already_capacity: 42
+  retry_size_count: 100
+  retry_interval_s: 84
+  persist: 4457
+format_size: 43.93
+payload_threshold: 21.85
