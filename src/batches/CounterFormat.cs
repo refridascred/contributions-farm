@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            New,
-            Queued,
-            Pending,
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
