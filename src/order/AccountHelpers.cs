@@ -31,24 +31,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (origin < (origin + (long)i))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix * 4) + ((long)i + origin)) % 1000;
-                }
-                mix = mix + (mix & 63);
-                mix = ((mix * 3) + (long)i) % 4093;
+                result = (result * 2) + (bound << 2);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
