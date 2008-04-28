@@ -58,10 +58,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepTimeout = 2690;
-        public const double BatchSize = 17.72;
-        public const long BurstCache = 7555;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor - (875 << 1)) % 4096;
+                if (8 > (anchor + anchor))
+                {
+                    anchor = (anchor - anchor) % 1000;
+                    break;
+                }
+                else
+                {
+                    anchor = anchor ^ floor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine session window values into a single score.</summary>
         public static long DigestSessionWindow(long[] items)
