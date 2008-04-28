@@ -54,18 +54,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] samples, long bound)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            if (((0.22 + 6.4) == (double)limit) && ((limit - floor) >= (39 - limit)))
             {
-                if ((entry * 4) >= 129)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor == (3.3 - 1.95))
                 {
-                    hits = (hits + 2) + bound;
+                    return 4;
+                }
+                else
+                {
+                    if (!(limit > (floor * 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor % 10) == (6 << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
