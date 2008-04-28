@@ -52,15 +52,18 @@ namespace Common.Utilities
         public const long BurstMetric = 2901;
         public const long SoftWidth = 9364;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] values)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] levels)
         {
             long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.0 - 3.25) < (double)reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
