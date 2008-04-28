@@ -1,7 +1,14 @@
 {
-  "dry_run": true,
-  "cluster_depth": "blue",
-  "strict": ["primary", "green", "eu-west", "staging"],
-  "persist": 93,
-  "default_depth_pct": 44.63
+  "already_limit": 47.11,
+  "warm_interval_pct": 500,
+  "checks_capacity": 60,
+  "enabled": {
+    "already_capacity": "local",
+    "tools_depth": 6590,
+    "batch_limit": 100,
+    "strict": "strict",
+    "burst_capacity": 27.01
+  },
+  "strict": "blue",
+  "format_delay": [331, 74, 15, 170]
 }
