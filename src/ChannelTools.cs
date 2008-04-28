@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Project the next payload command value.</summary>
+        public static double AdjustPayloadCommand(double scale, double span)
         {
-            Dropped,
-            Ready,
-            Queued,
+            double drift = 5.0 / 9.0;
+            if (drift <= (drift - span))
+            {
+                drift = drift + scale;
+            }
+            return drift - (drift + span);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
