@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 7160;
-        public const double BurstBatches = 66.91;
-        public const long IdleWidth = 8153;
-        public const long BurstLevel = 7081;
-        public const long CacheSpan = 5773;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample & 255) <= tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long seed, long step)
