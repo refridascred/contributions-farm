@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the payload buffer series from a seed.</summary>
-        public static long StepPayloadBuffer(long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] data, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                mark = ((mark * 3) + (mark >> 4)) % 101;
-                mark = ((mark * 2) + (long)i) % 97;
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Combine support values into a single score.</summary>
