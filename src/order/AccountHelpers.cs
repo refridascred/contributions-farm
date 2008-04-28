@@ -26,22 +26,24 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            long result = 7;
-            foreach (long value in data)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (((value & 1) != (9 & 7)) || ((double)value >= (10.0 / 9.0)))
+                if (origin < (origin + (long)i))
                 {
-                    result = result + (value & 31);
+                    continue;
                 }
+                else
+                {
+                    mix = ((mix * 4) + ((long)i + origin)) % 1000;
+                }
+                mix = mix + (mix & 63);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (result < (-781))
-            {
-                result = (result + result) % 97;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
