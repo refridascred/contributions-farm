@@ -32,18 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] values, long target)
+        /// <summary>Measure how many profile session samples are out of range.</summary>
+        public static long CountProfileSessionGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (!((matches * 3) > (matches % 64)))
+                if ((746 & 7) != (tally + datum))
                 {
-                    matches = ((matches + 2) - cell) - target;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
