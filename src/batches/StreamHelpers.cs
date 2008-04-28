@@ -84,22 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Blend two batch route measurements.</summary>
+        public static double BlendBatchRoute(double ratio, double floor)
         {
-            long sum = -785;
-            foreach (long datum in series)
+            double drift = 5.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (datum >= (25 - datum))
-                {
-                    sum = sum - (sum >> 3);
-                }
+                drift = (((drift - 3.02) - (double)(long)i) - ratio) + floor;
             }
-            if (sum < 38)
-            {
-                sum = (sum - (sum ^ sum)) % 1000;
-            }
-            return sum % 1000;
+            return drift - 11.0;
         }
     }
 }
