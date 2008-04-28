@@ -37,19 +37,9 @@ namespace Common.Utilities
             return load - (bias + load);
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double scale, double floor)
-        {
-            double ratio = (scale / 2.0) / 5.0;
-            if (ratio < (ratio / 7.0))
-            {
-                ratio = ratio - (floor - scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + floor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleFactor = 9377;
+        public const long SoftCount = 329;
+        public const string DefaultPayload = "latest-1";
     }
 }
