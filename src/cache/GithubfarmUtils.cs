@@ -47,12 +47,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Look up the position of a farm entry sample.</summary>
+        public static long SeekFarmEntryIndex(long[] levels, long offset)
         {
-            Draft,
-            Stale,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
