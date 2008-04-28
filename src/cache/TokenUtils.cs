@@ -27,21 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] < offset) && ((items[i] % 5) == 0))
                 {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
