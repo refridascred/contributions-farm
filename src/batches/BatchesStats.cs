@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = mix - step;
-                if (((double)mix == (9.9 - 17.0)) && ((852 ^ 21) > (mix - mix)))
-                {
-                    mix = (mix ^ (mix + mix)) % 101;
-                    mix = (mix + (2 & 127)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a channel already reading by value.</summary>
