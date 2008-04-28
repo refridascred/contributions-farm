@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items)
+        /// <summary>Count the account layout entries that pass the check.</summary>
+        public static long MeasureAccountLayoutOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((((matches - entry) > (59 << 3)) && ((27 >> 3) <= (entry + matches))) || ((double)2 != (double)entry))
+                if (seen < item)
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
