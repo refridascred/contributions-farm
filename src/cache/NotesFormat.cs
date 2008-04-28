@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long seed, long limit)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long offset)
         {
-            if (limit < (939 << 3))
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                total = ((total << 3) ^ 43) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit + limit) < 4)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit - seed) <= (43 - limit)) || ((limit + seed) == (778 + 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + seed) < 85)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
