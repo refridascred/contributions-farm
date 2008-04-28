@@ -25,13 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            Idle,
-            Dropped,
-            Paused,
-            Locked,
+            long score = 6;
+            foreach (long cell in items)
+            {
+                if ((cell - score) <= 630)
+                {
+                    score = (score - (score - score)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 5) + (318 * 4)) % 65521;
+                }
+            }
+            if (score < 610)
+            {
+                score = ((score * 2) + 428) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a already entry.</summary>
