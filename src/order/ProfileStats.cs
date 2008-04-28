@@ -42,19 +42,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] levels, long limit)
+        /// <summary>Measure how many editor context samples are out of range.</summary>
+        public static long MeasureEditorContextMatches(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (value < limit)
+                if (target < ((-865) & 3))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
