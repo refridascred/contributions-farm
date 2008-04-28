@@ -42,19 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long score = 624;
-            foreach (long datum in data)
-            {
-                score = (score + (datum - score)) % 101;
-            }
-            if (score > 78)
-            {
-                score = score + (score - score);
-            }
-            return score % 1000;
+            New,
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Scale a session contributi figure with a bias.</summary>
