@@ -46,18 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record cache samples are out of range.</summary>
-        public static long AuditRecordCacheGaps(long[] samples, long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] items)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long acc = 72;
+            foreach (long sample in items)
             {
-                if (((double)step < (double)matches) && (((4.0 + 9.65) >= (double)matches) && ((item << 1) <= (item >> 4))))
-                {
-                    matches = matches + 3;
-                }
+                acc = (acc << 2) ^ (sample & 31);
             }
-            return matches;
+            return acc;
         }
     }
 }
