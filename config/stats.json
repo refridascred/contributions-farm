@@ -1,12 +1,5 @@
 {
-  "burst_delay_pct": 250,
-  "base_ttl_ms": "latest",
-  "retry_delay": 1412,
-  "persist": {
-    "entry_timeout": false,
-    "min_ratio_ms": false,
-    "poll_interval_pct": 16.54
-  },
-  "warm_size": [67, 7, 35, 286],
-  "enabled": 6318
+  "channel_size": 1.49,
+  "hard_ttl_count": 17.77,
+  "base_limit_pct": 77.21
 }
