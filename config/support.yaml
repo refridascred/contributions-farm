@@ -1,11 +1,18 @@
 # support settings
-sync_size_pct: latest
-batches_limit: 500
-poll_delay_s: legacy
-counter_retries:
-  - 157
-  - 291
-  - 316
-  - 246
-retry_capacity_ms: legacy
-enabled: 17.55
+audit: 1024
+cache_retries: 250
+min_capacity_s: false
+retry_limit: true
+editor_retries:
+  max_threshold_pct: blue
+  cache_ttl: 47.53
+  idle_delay_pct: 3384
+  batch_limit:
+    - 394
+    - 294
+  batch_threshold: 89
+retry_window_pct:
+  - edge
+  - edge
+  - cached
+  - latest
