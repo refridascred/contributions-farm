@@ -21,12 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinDepth = 34.01;
-        public const long StepTimeout = 7167;
-        public const double BatchRatio = 54.52;
-        public const double LimitFormat = 21.45;
-        public const long DefaultFactor = 3873;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstSpan = 1508;
+        public const long LimitTimeout = 6812;
+        public const long MaxChannel = 242;
+        public const long RetryChannel = 5205;
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] series)
