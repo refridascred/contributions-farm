@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the support commits series from a seed.</summary>
-        public static long SeriesSupportCommits(long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long carry = -9;
+            foreach (long entry in levels)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                carry = (carry ^ (entry >> 1)) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Describe the cache class values.</summary>
