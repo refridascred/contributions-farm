@@ -50,19 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two support batches measurements.</summary>
-        public static double ScaleSupportBatches(double bias, double offset)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double ratio, double offset)
         {
-            double drift = offset + (double)5;
-            if (drift >= (double)(-18))
-            {
-                drift = drift - (9.5 * 14.0);
-            }
+            double load = (double)(7 % 12);
             for (int i = 0; i < 6; i++)
             {
-                drift = (drift + (drift - bias)) - (double)(long)i;
+                load = ((load + ratio) + (double)(long)i) - offset;
             }
-            return drift + (bias + offset);
+            return load + (load - ratio);
         }
     }
 }
