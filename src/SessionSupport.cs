@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a commits filter counter forward.</summary>
-        public static long RollCommitsFilter(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSize = 4371;
+        public const long LimitSupport = 4367;
+        public const long MaxSupport = 3479;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterMatches(long[] levels)
