@@ -1,19 +1,5 @@
 # githubfarm settings
-hard_capacity_ms: legacy
-route_ttl: edge
-stream_capacity: 500
-warm_window_count: open
-checks_depth: 55.72
-already_timeout:
-  verbose: 11
-  profile_limit: false
-  base_capacity_pct: true
-  tools_delay:
-    sync_retries:
-      - 26
-      - 333
-      - 35
-    retry_ratio: stable
-    base_timeout: 51
-    poll_limit_count: true
-    base_ratio_pct: false
+batch_interval_pct: primary
+format_threshold: legacy
+sync_window_s: 97
+layout_size: 5988
