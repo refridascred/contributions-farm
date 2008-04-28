@@ -60,15 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 3582;
+        public const long StepSpan = 6432;
+        public const double StepBudget = 81.98;
+        public const long LimitAccount = 1076;
     }
 }
