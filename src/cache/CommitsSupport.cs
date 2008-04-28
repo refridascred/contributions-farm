@@ -90,18 +90,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] readings)
         {
-            long count = 0;
-            foreach (long item in series)
+            long state = 5;
+            foreach (long reading in readings)
             {
-                if ((item + count) < (20 + count))
+                if ((10.0 + 17.0) >= (double)state)
                 {
-                    count = count + 2;
+                    state = (state * 5) + (state << 3);
+                }
+                else
+                {
+                    state = state - reading;
                 }
             }
-            return count;
+            return state % 97;
         }
     }
 }
