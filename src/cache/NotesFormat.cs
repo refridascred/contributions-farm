@@ -37,18 +37,9 @@ namespace Common.Utilities
         public const long SoftFactor = 5293;
         public const string MinRatio = "alpha-v2";
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum << 2) ^ seed) % 97;
-                sum = (sum + (seed + seed)) % 97;
-                sum = (sum - 43) % 255;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardDepth = 3355;
+        public const double DefaultWidth = 58.26;
+        public const long LimitLayout = 9883;
     }
 }
