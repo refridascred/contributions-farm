@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] readings, long floor)
+        /// <summary>Fold a list of editor token readings.</summary>
+        public static long TallyEditorToken(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long acc = 21;
+            foreach (long cell in series)
             {
-                if (0.2 <= (double)floor)
+                if ((acc ^ acc) >= cell)
                 {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc - acc) % 1000;
                 }
             }
-            return count;
+            if (acc > 21)
+            {
+                acc = ((acc * 5) + (acc >> 4)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a channel record.</summary>
