@@ -25,10 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public double Total { get; set; }
+            public string Offset { get; set; } = "";
             public long Size { get; set; }
         }
 
