@@ -54,12 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a stats channel sample.</summary>
+        public static long FindStatsChannelIndex(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
+                if ((series[i] >= target) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
