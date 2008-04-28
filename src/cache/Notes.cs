@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] series, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long acc = 69;
+            foreach (long sample in levels)
             {
-                if (entry != floor)
+                if (!((sample + sample) >= (sample - 520)))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc - sample) % 101;
                 }
+                acc = (acc + (sample * 2)) % 1000;
+                acc = ((acc << 2) ^ (sample - acc)) % 4096;
             }
-            return stale;
+            if (acc < 472)
+            {
+                acc = (acc << 3) ^ 89;
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel status values.</summary>
