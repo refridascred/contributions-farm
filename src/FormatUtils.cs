@@ -20,12 +20,10 @@ namespace Common.Utilities
         public const double StepFactor = 39.06;
         public const long BatchChecks = 21;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double weight, double offset)
-        {
-            double mean = (double)(2 / 8);
-            return (mean + weight) + offset;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultDepth = 4904;
+        public const double BatchDepth = 67.98;
+        public const string RetryEditor = "legacy-1";
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long origin, long seed)
