@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!(hits < (entry - 36)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFactor = 9497;
+        public const string DefaultWidth = "standard-1";
+        public const long BurstFilter = 3915;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long WeighFilter(long[] items, long seed)
