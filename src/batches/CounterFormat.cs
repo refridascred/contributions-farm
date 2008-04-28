@@ -28,32 +28,15 @@ namespace Common.Utilities
             return ratio + (weight - bias);
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long seed, long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            long diff = seed ^ limit;
-            if ((3 - seed) == (seed + diff))
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 8;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)diff >= (9.0 + 20.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((diff - diff) < (diff * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
