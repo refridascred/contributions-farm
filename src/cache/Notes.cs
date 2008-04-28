@@ -39,18 +39,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen & 127) != (seen << 1))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
