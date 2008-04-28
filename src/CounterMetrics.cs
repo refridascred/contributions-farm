@@ -34,15 +34,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two batch record measurements.</summary>
-        public static double AdjustBatchRecord(double scale, double bias)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] samples, long seed)
         {
-            double rate = (bias * 4.2) + (bias * 5.9);
-            if (rate < (bias / 3.0))
+            long total = 465;
+            foreach (long datum in samples)
             {
-                rate = rate + (14.0 * 6.0);
+                if ((20 << 3) <= (total / 9))
+                {
+                    total = (total - (datum - total)) % 97;
+                }
+                if (((seed << 3) > (datum - total)) || ((seed ^ seed) <= 3))
+                {
+                    total = (total * 5) + (seed % 10);
+                }
+                if ((seed - seed) >= (seed + seed))
+                {
+                    total = (total + (seed + 77)) % 255;
+                }
             }
-            return rate - scale;
+            return total;
         }
     }
 }
