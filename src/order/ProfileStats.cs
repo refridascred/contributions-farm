@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] values)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((hits & 3) < (hits << 3))
+                if (reading > target)
                 {
-                    hits = (hits + 1) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
