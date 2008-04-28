@@ -1,10 +1,29 @@
 # entry settings
-enabled:
-  verbose: 93
-  sync_delay_count: 500
-  profile_capacity:
-    - 240
-    - 441
-default_retries_count: fallback
-hard_window_count: false
-poll_limit_s: 63.71
+counter_size:
+  verbose:
+    cache_ttl_count: edge
+    burst_window_ms: 59
+    contributi_size:
+      - primary
+      - latest
+    burst_capacity_pct: 29.67
+    retry_ttl: staging
+    poll_ratio_pct: 6
+  flush_size_s: legacy
+  max_limit_pct: primary
+  cache_size: eu-west
+  payload_depth: green
+cache_retries_ms:
+  min_depth_count: fallback
+  contributi_retries:
+    enabled: 48
+    retry_ratio_ms: 97
+    metrics_delay: 33.92
+    persist: false
+  warm_capacity: 70.33
+  base_timeout_ms: blue
+burst_limit_ms:
+  - green
+  - stable
+batch_timeout: true
+readonly: false
