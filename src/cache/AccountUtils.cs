@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample > (seen * 4))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    seen = seen + 2;
+                    score = ((score - origin) % 65521) - (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the command kind values.</summary>
