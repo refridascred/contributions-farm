@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public double Mode { get; set; }
-            public double Rank { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 7160;
+        public const double BurstBatches = 66.91;
+        public const long IdleWidth = 8153;
+        public const long BurstLevel = 7081;
+        public const long CacheSpan = 5773;
 
         /// <summary>Rank record input into a small class.</summary>
         public static long SortRecord(long seed, long step)
