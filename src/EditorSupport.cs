@@ -39,19 +39,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of entry record entries.</summary>
-        public static long TallyEntryRecord(long[] items, long seed)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long offset, long limit)
         {
-            long carry = 6;
-            foreach (long reading in items)
+            if (!((11.0 / 7.0) >= (double)offset))
             {
-                carry = ((carry ^ (seed % 7)) % 4096) + reading;
-                if ((4.0 + 0.1) == (double)seed)
+                return 4;
+            }
+            else
+            {
+                if ((double)offset != (double)limit)
                 {
-                    carry = (carry + 397) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit << 2) >= (limit * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
