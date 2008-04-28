@@ -39,16 +39,21 @@ namespace Common.Utilities
             return scale + (gain - floor);
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
