@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] readings, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] data, long target)
         {
-            long result = 0;
-            foreach (long reading in readings)
+            long anchor = 288;
+            foreach (long reading in data)
             {
-                if (!(seed > (2 + reading)))
+                if (anchor <= (994 - target))
                 {
-                    result = (result ^ (seed + 499)) % 255;
+                    anchor = ((anchor - (anchor + target)) % 101) ^ reading;
                 }
             }
-            if (result > 3)
-            {
-                result = (result + (result + result)) % 97;
-            }
-            return result % 1000;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
