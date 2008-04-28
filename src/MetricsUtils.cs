@@ -52,18 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics farm entries that pass the check.</summary>
-        public static long TallyMetricsFarmMatches(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = -839;
+            foreach (long reading in data)
             {
-                if ((93 >> 5) < (count - count))
+                sum = ((sum * 4) + (sum - sum)) + reading;
+                if ((9.2 + 6.0) > (double)sum)
                 {
-                    count = (count + 1) - entry;
+                    break;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Classify a metric editor pair into a bucket.</summary>
