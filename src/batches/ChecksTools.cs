@@ -37,19 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster support entries.</summary>
-        public static long ScoreClusterSupport(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items)
         {
-            long mark = 64;
-            foreach (long reading in levels)
+            long anchor = -208;
+            foreach (long reading in items)
             {
-                mark = ((mark * 3) + (-81)) - reading;
+                anchor = anchor + (reading - anchor);
             }
-            if (mark > 88)
+            if (anchor > 99)
             {
-                mark = ((mark << 2) ^ mark) % 4096;
+                anchor = anchor ^ (386 ^ anchor);
             }
-            return mark % 97;
+            return anchor;
         }
     }
 }
