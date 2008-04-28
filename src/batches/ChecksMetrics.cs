@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] samples)
         {
-            Idle,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits & 1) == ((-636) + 46))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
