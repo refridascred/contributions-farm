@@ -1,9 +1,34 @@
 # githubfarm settings
-persist:
-  retry_interval: latest
-  already_capacity: 42
-  retry_size_count: 100
-  retry_interval_s: 84
-  persist: 4457
-format_size: 43.93
-payload_threshold: 21.85
+farm_threshold:
+  - open
+  - eu-west
+  - green
+flush_capacity_pct:
+  min_size_count:
+    - green
+    - stable
+    - latest
+    - local
+  verbose: true
+  editor_size:
+    audit: green
+    cache_retries: legacy
+    retry_capacity_s: blue
+    retry_capacity: 85
+    hard_ratio_ms: 26.03
+    poll_ratio_pct:
+      - 164
+      - 146
+      - 352
+      - 272
+  dry_run: 3990
+  flush_threshold_s:
+    - staging
+    - blue
+    - stable
+    - latest
+  token_interval: true
+farm_limit: true
+sync_threshold: blue
+strict: eu-west
+stats_ratio: blue
