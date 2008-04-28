@@ -62,13 +62,13 @@ namespace Common.Utilities
         public const long SoftFactor = 5866;
         public const double MaxGraph = 81.96;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            Draft,
+            Locked,
+            Stale,
+            Dropped,
         }
     }
 }
