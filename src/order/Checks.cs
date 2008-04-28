@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((step ^ step) >= ((-221) & 255))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftSize = 43.52;
+        public const long BatchDepth = 59;
+        public const double SoftToken = 96.25;
+        public const long CacheLevel = 8691;
 
         /// <summary>Measure how many filter tools samples are out of range.</summary>
         public static long TallyFilterToolsMatches(long[] data)
