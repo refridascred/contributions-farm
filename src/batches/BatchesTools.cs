@@ -19,21 +19,10 @@ namespace Common.Utilities
         public const long HardAccount = 772;
         public const long CacheSize = 3167;
 
-        /// <summary>Count farm payload pairs that satisfy a relation.</summary>
-        public static long OverlapFarmPayloadCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 9223;
+        public const double DefaultDepth = 80.32;
+        public const double BatchBudget = 32.77;
+        public const double IdleSpan = 29.3;
     }
 }
