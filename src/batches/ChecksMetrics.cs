@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] items, long seed)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mix = 886;
-            foreach (long entry in items)
-            {
-                mix = ((mix ^ (mix - seed)) % 101) - entry;
-            }
-            return mix % 1000;
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
