@@ -110,18 +110,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] data, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((hits ^ hits) < (hits & 31))
+                if ((matches & 15) != (matches + (-240)))
                 {
-                    hits = ((hits + 2) + entry) + offset;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
