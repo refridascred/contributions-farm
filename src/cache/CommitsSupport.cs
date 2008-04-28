@@ -74,11 +74,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleTimeout = 870;
-        public const string BaseCommand = "primary-v2";
-        public const double SoftCommand = 27.75;
-        public const long MinCount = 1576;
-        public const double HardLevel = 64.01;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double bias, double span)
+        {
+            double drift = (span + 10.0) + span;
+            if (drift >= bias)
+            {
+                drift = drift + (double)97;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - span;
+        }
     }
 }
