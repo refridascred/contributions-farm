@@ -1,5 +1,12 @@
 {
-  "dry_run": 40.88,
-  "flush_window": 87.85,
-  "soft_delay_count": "fallback"
+  "compress": 1024,
+  "flush_ttl": {
+    "window_window": 19.55,
+    "strict": true,
+    "poll_ratio_count": "latest",
+    "retry_window_count": 2074,
+    "entry_window": "stable",
+    "verbose": 66.57
+  },
+  "cluster_timeout": true
 }
