@@ -45,19 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] series, long origin)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            double drift = (double)(898 & 127);
+            if (drift >= (drift * 2.12))
             {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift - (4.83 - 6.0)) + bias;
             }
-            return flag;
+            return drift + (offset * 9.0);
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
