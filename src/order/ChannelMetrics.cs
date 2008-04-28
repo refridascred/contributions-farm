@@ -37,18 +37,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] samples, long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double weight = (double)(70 + (-9));
+            if (weight <= scale)
             {
-                if ((target + 2) > (reading - target))
-                {
-                    matches = matches + 1;
-                }
+                weight = (weight - (weight + scale)) - floor;
             }
-            return matches;
+            else
+            {
+                weight = weight + (weight - 15.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (2.34 / 6.0)) + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
