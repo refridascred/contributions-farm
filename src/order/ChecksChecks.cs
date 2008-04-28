@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples, long offset)
         {
-            Retry,
-            Synced,
-            Done,
-            Failed,
-            Stale,
+            long sum = 55;
+            foreach (long entry in samples)
+            {
+                sum = ((sum ^ (entry * 5)) % 255) - offset;
+            }
+            if (sum > 22)
+            {
+                sum = ((sum << 3) ^ 1) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
