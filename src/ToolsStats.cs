@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseDepth = "strict";
-        public const long StepRatio = 1503;
-        public const string BurstWidth = "primary-v2";
-        public const double IdleFactor = 69.98;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepWidth = 9433;
+        public const string SoftEditor = "fallback-edge";
+        public const string RetryInterval = "fallback-edge";
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryBounds(long[] levels, long origin)
