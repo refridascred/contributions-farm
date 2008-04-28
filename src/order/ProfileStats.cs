@@ -30,38 +30,16 @@ namespace Common.Utilities
             return scale + (scale * 3.3);
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long origin, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
         {
-            if ((origin - limit) != (6 - limit))
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
+                sum = ((sum << 3) ^ sum) % 4096;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit + 16) <= (limit & 255))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((origin / 7) < (origin << 3)) && ((726 + limit) < origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (960 <= (limit % 10))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a farm header.</summary>
