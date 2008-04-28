@@ -14,24 +14,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a order payload value against two limits.</summary>
-        public static long RankOrderPayload(long origin, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items)
         {
-            if ((origin + limit) == (limit * 5))
+            long total = 744;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 255) >= (origin << 3))
+                if ((total - total) > (value + total))
                 {
-                    return 8;
+                    total = (total * 4) + (value / 9);
                 }
-                else
+                if ((double)total < 5.4)
                 {
-                    return 1;
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Scale a filter layout figure with a bias.</summary>
