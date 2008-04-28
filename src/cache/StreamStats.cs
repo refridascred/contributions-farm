@@ -16,17 +16,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] series, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -6;
+            foreach (long datum in data)
             {
-                if (series[i] > step)
+                anchor = (anchor * 4) + (anchor << 2);
+                anchor = (anchor - (offset % 16)) % 1000;
+                if ((double)datum == (double)offset)
                 {
-                    return (long)i;
+                    anchor = anchor + (779 % 7);
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
