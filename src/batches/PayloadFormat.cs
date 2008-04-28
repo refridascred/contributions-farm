@@ -23,31 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long seed, long seed2)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] series)
         {
-            if (((seed % 3) <= (seed / 5)) && (seed >= (299 >> 2)))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed2 >= (934 << 2))
+                if ((double)tally == (8.0 * 2.3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((8 << 2) >= (21 - seed2)) || ((19.0 - 1.79) == (double)seed2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 2) + entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
