@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank record commits input into a small class.</summary>
-        public static long BucketRecordCommits(long target, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values, long offset)
         {
-            if ((double)origin <= (5.1 + 5.67))
+            long mix = 2;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target << 3) != (origin % 12))
+                if (391 > (sample + sample))
                 {
-                    return 4;
+                    mix = (((mix << 2) ^ (sample - (long)values.Length)) % 97) + offset;
                 }
                 else
                 {
-                    return 5;
+                    mix = (mix << 3) ^ 894;
                 }
             }
+            return mix;
         }
 
         /// <summary>Fold a list of account readings.</summary>
