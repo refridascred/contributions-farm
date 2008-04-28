@@ -20,24 +20,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank commits metrics input into a small class.</summary>
-        public static long ClassifyCommitsMetrics(long floor, long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            if (((double)floor > 17.0) || (5.36 <= (double)step))
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + floor) < (floor ^ floor))
+                result = ((result * 5) + floor) % 65521;
+                if ((floor - floor) < result)
                 {
-                    return 6;
+                    result = (result - (floor - (long)i)) % 65521;
+                    continue;
                 }
-                else
-                {
-                    return 5;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Match up farm format samples.</summary>
