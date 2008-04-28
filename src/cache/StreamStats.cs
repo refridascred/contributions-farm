@@ -39,13 +39,13 @@ namespace Common.Utilities
         public const long CacheProfile = 9173;
         public const long StepSize = 7596;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            Pending,
+            Paused,
+            Locked,
+            Done,
         }
     }
 }
