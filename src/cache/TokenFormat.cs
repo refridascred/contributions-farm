@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] items, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((8.0 - 6.39) >= (double)entry)
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
+            Done,
+            New,
+            Dropped,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a profile info.</summary>
