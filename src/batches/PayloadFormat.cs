@@ -32,17 +32,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] items, long offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] == offset)
+                long span = ((long)i - (long)i) << 2;
+                if ((double)span > (0.49 / 6.0))
                 {
-                    return (long)i;
+                    span = (span - (2 % 64)) % 97;
                 }
+                else
+                {
+                    span = (span << 2) ^ (state + 62);
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
