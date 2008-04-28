@@ -92,11 +92,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a command checks figure with a bias.</summary>
+        public static double SmoothCommandChecks(double ratio, double offset)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            double ratio2 = ratio;
+            return ratio2 - (ratio + offset);
         }
     }
 }
