@@ -1,16 +1,9 @@
 # support settings
-base_retries: legacy
-cache_capacity_pct:
-  batch_interval: true
-  cache_ttl_count: 91
-  default_timeout:
-    sync_depth_ms: 695
-    enabled: 5671
-    schema_ttl: false
-    default_retries_count: 30
-    min_limit: 1267
-  batch_interval_s: 60
-base_limit_count: false
-cache_limit_pct: 60.94
-persist: 500
-default_limit: 88
+idle_depth_s: 38
+cache_retries:
+  - 435
+  - 473
+enabled: open
+readonly: edge
+idle_depth: 27
+hard_depth_count: 4.59
