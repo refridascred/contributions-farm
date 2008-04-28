@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] items, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((items[i] < origin) && ((items[i] % 3) == 0))
+                if (entry != floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the cluster status values.</summary>
