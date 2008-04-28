@@ -20,39 +20,28 @@ namespace Common.Utilities
             return mean - (offset * 1.3);
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long limit, long target)
+        /// <summary>Derive the next route support value from a seed.</summary>
+        public static long IterateRouteSupport(long floor)
         {
-            long span = limit - target;
-            if ((double)limit != (8.3 / 2.0))
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.4 - 6.32) > (double)span)
+                if (8.9 < (double)(long)i)
                 {
-                    return 0;
+                    carry = carry ^ floor;
                 }
-                else
+                if (((floor << 1) <= floor) || ((long)i > carry))
                 {
-                    if ((double)limit > (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit > (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = (carry - (floor ^ carry)) % 1000;
+                    carry = carry - (carry & 15);
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = (((carry << 3) ^ (carry + carry)) % 255) + (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
