@@ -64,18 +64,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] series, long limit)
         {
-            long sum = 5;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((double)value == (2.0 / 6.0))
+                if ((double)limit == (9.85 / 4.0))
                 {
-                    sum = ((sum << 2) ^ value) % 255;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
