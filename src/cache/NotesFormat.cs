@@ -30,15 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a queue stream reading.</summary>
-        public static double ScaleQueueStream(double scale, double offset)
+        /// <summary>Rank githubfarm already input into a small class.</summary>
+        public static long RankGithubfarmAlready(long offset, long floor)
         {
-            double ratio = offset;
-            if (ratio > ratio)
+            long slot = offset + floor;
+            if (((slot * 3) >= (floor >> 4)) || ((double)offset >= (19.0 - 0.01)))
             {
-                ratio = (ratio - offset) - scale;
+                return 8;
             }
-            return ratio + (double)332;
+            else
+            {
+                if ((slot - slot) <= (floor & 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor - floor) >= offset) && ((floor + slot) < (slot >> 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((offset >> 3) > (floor % 10)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
