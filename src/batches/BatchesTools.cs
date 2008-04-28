@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] levels)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (!((hits + 4) == (entry + entry)))
+                if (sample != target)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a already summary.</summary>
