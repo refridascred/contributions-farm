@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinRatio = 4214;
-        public const string StepInterval = "staging";
-        public const long HardBudget = 128;
+        /// <summary>Count the report metrics entries that pass the check.</summary>
+        public static long CountReportMetricsOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item % 60) >= (matches + item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
