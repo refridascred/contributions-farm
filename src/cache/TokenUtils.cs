@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine githubfarm support values into a single score.</summary>
-        public static long TotalGithubfarmSupport(long[] series)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            long acc = 81;
-            foreach (long cell in series)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                acc = ((acc << 2) ^ acc) - cell;
-            }
-            if (acc < 964)
-            {
-                acc = ((acc << 3) ^ (201 + (long)series.Length)) % 4096;
+                if ((bound + acc) <= (bound << 3))
+                {
+                    acc = acc - (bound - acc);
+                    acc = (acc ^ (28 ^ 75)) % 97;
+                }
+                else
+                {
+                    acc = (acc - (0 + bound)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
             return acc;
         }
