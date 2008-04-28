@@ -1,5 +1,6 @@
 {
-  "warm_limit": 15,
-  "already_interval": 15.41,
-  "verbose": 649
+  "base_timeout": 99,
+  "readonly": [384, 357, 30],
+  "min_capacity_pct": 46.62,
+  "base_limit_s": 100
 }
