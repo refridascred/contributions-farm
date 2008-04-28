@@ -48,9 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 7291;
-        public const string RetryStats = "stable-v2";
-        public const long BatchSize = 9154;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double offset)
+        {
+            double scale = rate;
+            if (scale < (scale / 6.0))
+            {
+                scale = (scale - rate) - offset;
+            }
+            return scale - (scale + rate);
+        }
     }
 }
