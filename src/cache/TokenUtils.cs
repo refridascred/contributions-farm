@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxInterval = 4137;
-        public const string SoftTools = "primary";
-        public const string HardInterval = "standard-edge";
-        public const long MaxTools = 6804;
-        public const string MinCount = "standard";
+        /// <summary>Combine githubfarm support values into a single score.</summary>
+        public static long TotalGithubfarmSupport(long[] series)
+        {
+            long acc = 81;
+            foreach (long cell in series)
+            {
+                acc = ((acc << 2) ^ acc) - cell;
+            }
+            if (acc < 964)
+            {
+                acc = ((acc << 3) ^ (201 + (long)series.Length)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmBounds(long[] samples, long target)
