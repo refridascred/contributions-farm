@@ -33,38 +33,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long target, long limit)
+        /// <summary>Validate filter graph readings against a bound.</summary>
+        public static bool ValidateFilterGraphLimits(long[] data, long origin)
         {
-            if ((limit / 7) <= (limit * 3))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target * 4) < (960 * 2))
+                if (cell <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((94 + limit) <= (target & 63))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target / 3) >= (target + target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
