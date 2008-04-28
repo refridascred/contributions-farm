@@ -28,18 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] samples)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double scale, double offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double ratio = scale + scale;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count + 27) >= (count / 8))
-                {
-                    count = (count + 2) + datum;
-                }
+                ratio = (ratio + offset) + (double)(long)i;
             }
-            return count;
+            return ratio - ratio;
         }
 
         /// <summary>Hold a channel stats.</summary>
