@@ -14,18 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many support schema samples are out of range.</summary>
-        public static long CountSupportSchemaOutliers(long[] items, long floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(71 > (cell >> 1)))
+                if (samples[i] >= seed)
                 {
-                    count = (count + 1) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
