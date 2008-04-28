@@ -1,12 +1,35 @@
 # support settings
-soft_threshold: 64.95
-verbose:
-  - 31
-  - 9
-base_ttl: stable
-poll_retries_count:
-  retry_timeout_pct: true
-  idle_ttl: 6452
-  max_capacity_ms: 4882
-  compress: eu-west
-strict: 5879
+cache_size_s: 30
+enabled: stable
+hard_size_s: blue
+record_window:
+  record_limit: 9670
+  idle_ratio: 62
+  batch_window:
+    support_ttl: true
+    payload_threshold: 250
+    default_ratio_count: 2763
+    max_interval: 70.42
+    notes_limit: 55.64
+  payload_capacity:
+    - 415
+    - 158
+  retry_threshold: 100
+  report_window: false
+cache_size_pct:
+  audit:
+    idle_delay_count: 82.17
+    dry_run:
+      - blue
+      - standard
+    base_window: 86
+    soft_capacity: 9261
+    sync_capacity_ms: 5809
+  min_interval: true
+  warm_retries_count: 65.02
+  default_window_count: 6065
+cache_ttl_s:
+  - green
+  - open
+  - open
+  - primary
