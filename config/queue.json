@@ -1,12 +1,9 @@
 {
-  "route_depth": "cached",
-  "min_limit_count": false,
-  "githubfarm_threshold": {
-    "dry_run": "primary",
-    "layout_timeout": 70.68,
-    "metrics_capacity": 21.44,
-    "warm_size_ms": "standard",
-    "strict": 831
+  "cache_ratio_s": {
+    "dry_run": 2946,
+    "idle_size_pct": "legacy",
+    "support_delay": "staging"
   },
-  "editor_interval": "green"
+  "retry_threshold": 54,
+  "farm_retries": "cached"
 }
