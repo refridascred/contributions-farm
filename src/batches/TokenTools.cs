@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] series, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((((double)tally >= 19.0) || (3.48 < (double)seed)) || ((7.01 + 5.4) < (double)tally))
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a report stats.</summary>
