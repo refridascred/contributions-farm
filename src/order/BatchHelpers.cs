@@ -41,19 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] series, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Closed,
+            Ready,
+            Failed,
         }
     }
 }
