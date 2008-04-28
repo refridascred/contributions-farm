@@ -29,17 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state << 3) ^ (state >> 1)) % 65521;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleSpan = 6931;
+        public const string LimitProfile = "standard-1";
+        public const long CacheProfile = 9173;
+        public const long StepSize = 7596;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
