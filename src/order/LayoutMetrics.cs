@@ -21,27 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate layout account samples.</summary>
-        public static long CombineLayoutAccount(long[] levels)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long score = 80;
-            foreach (long reading in levels)
-            {
-                score = ((score + (51 - 976)) % 255) ^ reading;
-                if (((long)levels.Length - 30) < score)
-                {
-                    score = (score << 2) ^ (-2);
-                }
-                else
-                {
-                    score = (score - ((-4) - 43)) % 97;
-                }
-            }
-            if (score > 2)
-            {
-                score = (score * 2) + (score / 3);
-            }
-            return score;
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
