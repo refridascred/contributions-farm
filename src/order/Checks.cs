@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] samples, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)seen > (8.4 + 8.3))
-                {
-                    seen = ((seen + 2) ^ value) + floor;
-                }
-            }
-            return seen;
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Derive the next record session value from a seed.</summary>
