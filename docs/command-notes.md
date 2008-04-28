@@ -1,12 +1,11 @@
 # Command notes
 
-Run the entry check before changing any metric limits.
-The batches module keeps notes values in sync with the stream cache.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Use notes settings to tune how often contributi data is refreshed.
+Keep channel and order names short and lowercase.
 
 ## Guidelines
 
-- Validate metric input early
-- Prefer context defaults
-- Document new tools fields
-- Keep tools values small
+- Keep stream values small
+- Review schema limits each release
+- Document new counter fields
+- Validate buffer input early
