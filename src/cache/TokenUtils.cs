@@ -36,19 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] values, long floor)
+        /// <summary>Scale a filter layout figure with a bias.</summary>
+        public static double BlendFilterLayout(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            double scale2 = (double)415 - scale;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                scale2 = ((scale2 - 0.12) - (double)(long)i) - floor;
             }
-            return valid;
+            return scale2 - 6.0;
         }
     }
 }
