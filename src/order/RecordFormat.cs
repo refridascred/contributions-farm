@@ -45,21 +45,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Match up already route samples.</summary>
-        public static long OverlapAlreadyRouteCount(long[] readings)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Draft,
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
