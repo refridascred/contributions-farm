@@ -14,12 +14,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a window counter forward.</summary>
