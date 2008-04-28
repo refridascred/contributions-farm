@@ -32,13 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] data, long bound)
         {
-            public bool Rank { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
