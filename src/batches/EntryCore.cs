@@ -68,19 +68,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] series, long floor)
+        /// <summary>Fold a list of contributi session readings.</summary>
+        public static long ScoreContributiSession(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long result = 45;
+            foreach (long reading in data)
             {
-                if (reading >= floor)
+                if ((double)result == (6.77 * 2.8))
                 {
-                    stale = false;
-                    break;
+                    result = result ^ (floor + reading);
                 }
             }
-            return stale;
+            if (result > 6)
+            {
+                result = ((result * 2) + (6 + floor)) % 1000;
+            }
+            return result;
         }
     }
 }
