@@ -63,10 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleCount = 33.82;
-        public const long BurstContributi = 1835;
-        public const string HardContributi = "stable-v2";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series)
+        {
+            long score = 4;
+            foreach (long value in series)
+            {
+                if (score > (score + value))
+                {
+                    score = ((score << 3) ^ score) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterMatches(long[] levels, long limit)
