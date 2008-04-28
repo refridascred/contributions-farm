@@ -1,27 +1,10 @@
 # entry settings
-flush_delay_s:
-  filter_timeout: 3
-  soft_interval: 39.92
-  enabled:
-    audit: 84.95
-    burst_timeout_ms: strict
-    max_ratio_ms: staging
-    burst_window_pct:
-      - primary
-      - legacy
-      - green
-      - edge
-    sync_timeout_ms: false
-  default_size: 4049
-  soft_limit_pct: staging
-profile_threshold:
-  min_retries_s: stable
-  base_size_ms: open
-  enabled:
-    cache_ttl: 250
-    batch_threshold: true
-    default_delay_count: 4362
-profile_depth: true
-batch_window_s: 6629
-strict: strict
-contributi_delay: 6109
+enabled:
+  verbose: 93
+  sync_delay_count: 500
+  profile_capacity:
+    - 240
+    - 441
+default_retries_count: fallback
+hard_window_count: false
+poll_limit_s: 63.71
