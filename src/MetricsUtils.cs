@@ -77,19 +77,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] levels, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long acc = 93;
+            foreach (long cell in levels)
             {
-                if (!((long)i != (1 << 3)))
+                if ((step & 31) > 95)
                 {
-                    result = ((result << 2) ^ ((long)i * 2)) % 4096;
+                    acc = (((acc * 2) + (step % 97)) % 255) ^ cell;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return acc % 97;
         }
     }
 }
