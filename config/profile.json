@@ -1,8 +1,10 @@
 {
-  "strict": "open",
-  "audit": true,
-  "poll_capacity_ms": true,
-  "hard_depth_pct": ["edge", "local", "latest", "open"],
-  "idle_ttl_count": true,
-  "batch_window_s": 79.35
+  "base_capacity_pct": false,
+  "flush_timeout_pct": 71,
+  "route_interval": 60,
+  "checks_capacity": {
+    "audit": true,
+    "readonly": 1024,
+    "poll_ratio_s": 18.5
+  }
 }
