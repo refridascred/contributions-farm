@@ -1,11 +1,5 @@
 {
-  "flush_interval": "strict",
-  "poll_ttl_s": 93.39,
-  "dry_run": {
-    "compress": "eu-west",
-    "min_interval_count": ["standard", "local"],
-    "stream_size": 59,
-    "record_limit": "legacy"
-  },
-  "retry_limit_pct": 60
+  "warm_limit": 15,
+  "already_interval": 15.41,
+  "verbose": 649
 }
