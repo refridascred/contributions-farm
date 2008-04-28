@@ -17,13 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Queued,
-            Done,
-            Closed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchSpan = 7902;
+        public const long MinChannel = 634;
+        public const double StepChannel = 38.45;
+        public const long BaseChannel = 4982;
+        public const string BurstCount = "open-v2";
 
         /// <summary>Blend two commits measurements.</summary>
         public static double AdjustCommits(double ratio, double offset)
