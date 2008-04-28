@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long limit, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long floor, long limit)
         {
-            if (((bound << 2) <= (bound + limit)) && ((6 / 4) > (bound >> 3)))
+            if (limit <= 4)
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((bound - bound) < (limit + bound))
+                if ((719 + limit) >= (limit + limit))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((7.7 - 4.08) < (double)limit)
+                    if (floor >= (limit ^ 19))
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        if (((12.0 * 19.0) <= (double)limit) || ((bound / 6) != (942 ^ bound)))
+                        if ((limit % 12) <= (95 - limit))
                         {
-                            return 8;
+                            return 7;
                         }
                         else
                         {
-                            return 3;
+                            return 4;
                         }
                     }
                 }
