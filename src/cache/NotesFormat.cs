@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowSpan = 8086;
-        public const long SoftFactor = 5293;
-        public const string MinRatio = "alpha-v2";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((double)46 != (double)tally)
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardDepth = 3355;
