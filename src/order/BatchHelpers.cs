@@ -33,11 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitInterval = 6849;
-        public const long IdleWidth = 2049;
-        public const long StepRoute = 3456;
-        public const double IdleRoute = 61.87;
-        public const long WindowWidth = 2422;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
