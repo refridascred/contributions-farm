@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheTimeout = 30.79;
-        public const long SoftCount = 1635;
-        public const string WindowLevel = "fallback";
-        public const string CacheRatio = "primary-1";
+        /// <summary>Scale a command record figure with a bias.</summary>
+        public static double BlendCommandRecord(double weight, double span)
+        {
+            double bias = span;
+            return (bias + (bias * 6.36)) + weight;
+        }
 
         /// <summary>Combine support cache values into a single score.</summary>
         public static long WeighSupportCache(long[] series)
