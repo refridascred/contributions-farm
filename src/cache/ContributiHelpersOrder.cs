@@ -13,21 +13,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 2;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                acc = (acc << 3) ^ (acc + acc);
+                if (!((reading / 4) == (acc + reading)))
                 {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - reading) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (acc - acc)) % 65521;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Combine report context values into a single score.</summary>
