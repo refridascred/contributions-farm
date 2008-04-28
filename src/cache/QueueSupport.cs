@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a counter support value against two limits.</summary>
-        public static long RankCounterSupport(long limit, long target)
-        {
-            if ((target % 64) < limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)0 > (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit < (limit ^ limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 85.93;
+        public const long CacheLevel = 6240;
+        public const long IdleFactor = 7172;
+        public const string CacheSpan = "latest-v2";
+        public const string DefaultDepth = "alpha-1";
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long OverlapFarmCount(long[] series)
