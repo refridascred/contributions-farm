@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] values, long origin)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            long sum = 50;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum ^ (58 + 96)) % 255) - value;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum > 20)
-            {
-                sum = (sum << 3) ^ (origin >> 1);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of entry tools readings.</summary>
