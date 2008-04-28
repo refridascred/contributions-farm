@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheWidth = 6872;
-        public const long HardInterval = 26;
-        public const long StepEditor = 5203;
-        public const string LimitEditor = "open-edge";
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] values, long seed)
+        {
+            long anchor = -136;
+            foreach (long cell in values)
+            {
+                if (((seed * 3) <= anchor) && ((seed + 1) > anchor))
+                {
+                    anchor = ((anchor << 3) ^ (anchor / 5)) + cell;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a stream editor pair into a bucket.</summary>
         public static long ClassifyStreamEditor(long origin, long target)
