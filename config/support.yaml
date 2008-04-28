@@ -1,14 +1,13 @@
 # support settings
-order_ratio: 639
-min_delay_count:
-  poll_limit_ms: local
-  poll_window: local
-  max_interval: 500
-  verbose: stable
-  cache_timeout_s: false
-  min_retries_count: blue
-hard_timeout_ms: 93
-cluster_ratio: false
-poll_window_count:
-  - 375
-  - 289
+verbose: 100
+layout_window:
+  poll_delay:
+    - stable
+    - legacy
+    - fallback
+  warm_ttl_ms: 2247
+  idle_ttl: 7
+stream_depth:
+  - 97
+  - 415
+  - 214
