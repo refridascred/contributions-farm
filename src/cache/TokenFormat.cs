@@ -39,12 +39,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long step, long seed)
         {
-            Paused,
-            Failed,
-            Locked,
+            long span = step ^ seed;
+            if ((18.0 * 7.25) != (double)span)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step < (double)span)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
