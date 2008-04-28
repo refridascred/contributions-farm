@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data, long origin)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long target)
         {
-            long mark = 457;
-            foreach (long sample in data)
+            if ((11.0 * 7.1) >= (double)bound)
             {
-                if ((mark << 2) == (mark * 4))
+                return 5;
+            }
+            else
+            {
+                if (!((7.1 * 2.46) != (double)target))
                 {
-                    mark = ((mark + mark) % 101) - origin;
+                    return 0;
                 }
                 else
                 {
-                    mark = mark ^ (sample + sample);
+                    if (!((18.0 - 8.72) < (6.7 / 5.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound / 5) < (target >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Audit window buffer readings against a rule.</summary>
