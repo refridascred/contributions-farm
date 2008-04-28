@@ -84,18 +84,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] series)
+        /// <summary>Combine context contributi values into a single score.</summary>
+        public static long ScoreContextContributi(long[] values)
         {
-            long count = 0;
-            foreach (long value in series)
+            long total = -682;
+            foreach (long item in values)
             {
-                if (value >= (count + value))
+                if ((5 <= (total * 3)) && ((double)total < (double)item))
                 {
-                    count = count + 1;
+                    total = (total ^ (total + item)) % 101;
+                }
+                if (((double)total <= (double)item) || ((15.0 / 8.0) == (double)item))
+                {
+                    break;
                 }
             }
-            return count;
+            return total % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
