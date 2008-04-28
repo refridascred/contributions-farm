@@ -48,11 +48,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchTimeout = "strict-edge";
-        public const long BurstCount = 3385;
-        public const double WindowMetrics = 14.43;
-        public const long SoftBudget = 2702;
-        public const long BurstMetrics = 3790;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double rate, double offset)
+        {
+            double mean = offset;
+            if (mean > (offset * 5.82))
+            {
+                mean = (mean + offset) + rate;
+            }
+            return mean - mean;
+        }
     }
 }
