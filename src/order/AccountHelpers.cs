@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 389;
-        public const string BaseCount = "cached";
-        public const long MinProfile = 7409;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string IdleCommand = "cached";
