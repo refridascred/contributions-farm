@@ -77,10 +77,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinCount = 4611;
-        public const double RetrySize = 57.19;
-        public const double HardSpan = 80.48;
-        public const string MinFormat = "strict-v2";
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Idle,
+            Retry,
+            Locked,
+            Done,
+        }
     }
 }
