@@ -31,21 +31,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                mark = (mark << 3) ^ (mark + step);
-                if ((step + step) == (step + (long)i))
+                if ((double)reading == (12.0 + 18.0))
                 {
-                    mark = (mark + (step + mark)) % 4096;
+                    seen = seen + 3;
                 }
-                mark = (mark << 2) ^ step;
-                mark = ((mark * 5) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the farm level values.</summary>
