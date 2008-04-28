@@ -40,18 +40,15 @@ namespace Common.Utilities
         public const long MaxBudget = 1263;
         public const long CacheSize = 8841;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] series, long step)
+        /// <summary>Project the next tools githubfarm value.</summary>
+        public static double SmoothToolsGithubfarm(double bias, double span)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double weight = (double)(25 << 3);
+            for (int i = 0; i < 6; i++)
             {
-                if ((9 << 1) == (20 - reading))
-                {
-                    hits = (hits + 1) + step;
-                }
+                weight = (((weight - (5.06 * 19.0)) + (double)(long)i) + bias) - span;
             }
-            return hits;
+            return weight - (double)685;
         }
 
         /// <summary>Combine context contributi values into a single score.</summary>
