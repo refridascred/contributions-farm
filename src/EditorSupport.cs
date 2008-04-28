@@ -94,18 +94,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account filter readings.</summary>
-        public static long TallyAccountFilter(long[] values, long limit)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long acc = 469;
-            foreach (long item in values)
-            {
-                if (((double)item <= (1.0 * 3.94)) || (item <= (item * 5)))
-                {
-                    acc = ((acc ^ (item * 5)) % 101) - limit;
-                }
-            }
-            return acc;
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
