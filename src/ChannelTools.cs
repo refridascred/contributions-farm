@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            Queued,
-            Paused,
-            Failed,
-            Done,
-            Stale,
+            double bias2 = bias / 6.0;
+            if (bias2 < (bias2 * 5.0))
+            {
+                bias2 = bias2 - (span / 7.0);
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Locate a already payload reading by value.</summary>
