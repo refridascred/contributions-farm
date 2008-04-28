@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] levels, long target)
+        /// <summary>Iterate the commits checks series from a seed.</summary>
+        public static long SeriesCommitsChecks(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] <= target)
+                mix = ((mix << 3) ^ ((long)i - 63)) % 97;
+                if (!(((long)i >> 2) < mix))
                 {
-                    return (long)i;
+                    mix = mix ^ (mix - target);
+                    mix = (mix - (mix - mix)) % 65521;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the graph class values.</summary>
