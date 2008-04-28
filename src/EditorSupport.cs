@@ -68,19 +68,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next already batches value.</summary>
-        public static double AdjustAlreadyBatches(double rate, double bias)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double bias2 = rate * 0.23;
-            if (bias2 >= (double)2)
-            {
-                bias2 = (bias2 - (6.0 / 5.0)) - bias;
-            }
-            else
-            {
-                bias2 = bias2 + 2.14;
-            }
-            return bias2 - bias2;
+            public bool Region { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
