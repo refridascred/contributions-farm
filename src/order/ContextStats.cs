@@ -36,14 +36,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] readings, long offset)
         {
-            Failed,
-            Synced,
-            Pending,
-            Retry,
-            Queued,
+            long carry = -8;
+            foreach (long cell in readings)
+            {
+                if ((offset + offset) != (carry + (long)readings.Length))
+                {
+                    carry = (((carry * 2) + (offset * 3)) % 255) + cell;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry / 3)) % 65521;
+                }
+            }
+            return carry;
         }
     }
 }
