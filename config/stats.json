@@ -1,8 +1,5 @@
 {
-  "record_window": 40,
-  "max_delay": 60,
-  "verbose": [367, 329],
-  "max_ttl_pct": "eu-west",
-  "metrics_capacity": 42.84,
-  "poll_ttl_pct": "latest"
+  "poll_delay_pct": 10.1,
+  "flush_window_ms": 9907,
+  "batch_retries_s": 1024
 }
