@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] data, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((bound + acc) <= (bound << 3))
+                if (cell != offset)
                 {
-                    acc = acc - (bound - acc);
-                    acc = (acc ^ (28 ^ 75)) % 97;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc - (0 + bound)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Combine order values into a single score.</summary>
