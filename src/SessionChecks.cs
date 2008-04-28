@@ -41,15 +41,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a session contributi figure with a bias.</summary>
-        public static double ProjectSessionContributi(double rate, double bias)
-        {
-            double rate2 = (rate * 6.15) / 8.0;
-            if (rate2 < (bias + bias))
-            {
-                rate2 = rate2 + (bias + rate2);
-            }
-            return rate2 + bias;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 0.94;
+        public const long HardRecord = 1978;
+        public const double BatchSize = 74.33;
+        public const string MaxRecord = "strict";
+        public const double RetryScore = 85.14;
     }
 }
