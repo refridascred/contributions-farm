@@ -23,10 +23,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 8663;
-        public const string BaseDepth = "latest";
-        public const long DefaultContext = 7425;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((double)datum < (9.1 + 5.1)) && (datum <= (tally + tally))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a batches reading.</summary>
         public static double ProjectBatches(double gain, double bias)
