@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] items, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((count >> 3) <= value)
+                carry = (carry * 3) + (carry << 2);
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    count = (count + 3) - seed;
+                    long bound = floor;
+                    carry = ((carry ^ (floor + bound)) % 97) ^ (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the farm class values.</summary>
