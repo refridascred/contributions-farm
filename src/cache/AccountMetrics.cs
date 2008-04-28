@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 33;
+            foreach (long item in items)
             {
-                if (data[i] == offset)
+                acc = (acc - (acc + acc)) % 4096;
+                acc = acc - (item - acc);
+                if (acc <= (611 & 63))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Describe the metric class values.</summary>
