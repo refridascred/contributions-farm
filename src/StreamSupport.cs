@@ -33,23 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command layout values into a single score.</summary>
-        public static long FoldCommandLayout(long[] readings, long floor)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long anchor = -8;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = (((anchor - (anchor + 3)) % 65521) + (long)i) + floor;
-                    anchor = (anchor - (value % 5)) % 4096;
-                }
-                if (anchor < (anchor << 3))
-                {
-                    anchor = (anchor * 2) + (anchor + 78);
-                }
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
