@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Check that every already commits entry stays within the limit.</summary>
+        public static bool GuardAlreadyCommitsBounds(long[] values, long floor)
         {
-            Retry,
-            Synced,
-            Pending,
-            Dropped,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the context status values.</summary>
