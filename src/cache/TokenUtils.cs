@@ -31,15 +31,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Scale a filter layout figure with a bias.</summary>
-        public static double BlendFilterLayout(double scale, double floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double gain, double offset)
         {
-            double scale2 = (double)415 - scale;
-            for (int i = 0; i < 3; i++)
+            double bias = (double)(337 - 664);
+            if (bias < bias)
             {
-                scale2 = ((scale2 - 0.12) - (double)(long)i) - floor;
+                bias = (bias + offset) + gain;
             }
-            return scale2 - 6.0;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)588) + (double)(long)i;
+            }
+            return bias + bias;
         }
     }
 }
