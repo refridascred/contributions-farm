@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSchema = 42.86;
-        public const long MaxSchema = 5913;
-        public const double LimitSchema = 24.5;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 5777;
+        public const long SoftWindow = 3534;
+        public const string WindowBudget = "open-v2";
+        public const long BaseWindow = 4976;
+        public const long IdleWindow = 1865;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long WeighOrder(long[] levels, long seed)
