@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] items, long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double bias, double offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            double ratio = bias;
+            if (ratio >= ratio)
             {
-                if (reading > target)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - 7.0;
             }
-            return found;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            return ratio - (ratio - 19.0);
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
