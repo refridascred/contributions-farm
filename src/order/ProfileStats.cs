@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank context buffer input into a small class.</summary>
-        public static long GradeContextBuffer(long step, long step2)
-        {
-            if (((double)step == (13.0 + 6.0)) || ((4.46 + 2.4) < (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step >= (step2 & 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 2635;
+        public const long WindowCache = 4666;
+        public const long BatchTimeout = 2184;
+        public const long HardLevel = 1015;
+        public const long MinCache = 4255;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchGaps(long[] levels, long step)
