@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine payload batches values into a single score.</summary>
-        public static long TotalPayloadBatches(long[] items, long floor)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long total = -87;
-            foreach (long datum in items)
-            {
-                total = (total * 2) + (floor ^ datum);
-            }
-            return total;
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Grade a order payload value against two limits.</summary>
