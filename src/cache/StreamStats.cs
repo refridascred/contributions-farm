@@ -63,14 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Synced,
-            Paused,
-            Closed,
-            Retry,
-            Idle,
+            Pending,
+            Ready,
+            Active,
+            New,
         }
     }
 }
