@@ -32,28 +32,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long step, long step2)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long origin, long target)
         {
-            if (step2 > (step + step2))
+            if ((target ^ origin) == (origin - origin))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (((double)step < (7.2 - 2.7)) || ((0 - step) != (step - step)))
+                if ((target / 8) == (origin & 1))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((1.0 + 12.0) >= (double)step)
+                    if (origin < (origin + 7))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        return 0;
+                        if ((origin <= (target - 193)) && ((6.1 + 6.18) < (double)target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
