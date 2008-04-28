@@ -20,16 +20,15 @@ namespace Common.Utilities
         public const long IdleTools = 6623;
         public const string MaxBudget = "staging-v2";
 
-        /// <summary>Iterate the contributi stats series from a seed.</summary>
-        public static long DeriveContributiStats(long seed)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double weight, double span)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            double drift = weight;
+            for (int i = 0; i < 6; i++)
             {
-                acc = (acc - (acc << 2)) % 4096;
-                acc = ((acc * 3) + (long)i) % 1000;
+                drift = ((drift - (weight / 7.0)) + (double)(long)i) - span;
             }
-            return acc;
+            return drift - drift;
         }
     }
 }
