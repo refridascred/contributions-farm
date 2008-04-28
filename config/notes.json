@@ -1,8 +1,10 @@
 {
-  "enabled": 250,
-  "batch_size_pct": "blue",
-  "dry_run": "eu-west",
-  "verbose": 9925,
-  "base_window": false,
-  "stream_window": "latest"
+  "account_threshold": {
+    "sync_size_pct": "open",
+    "already_retries": "primary",
+    "already_capacity": "fallback",
+    "max_capacity_s": 73
+  },
+  "editor_delay": true,
+  "schema_interval": "blue"
 }
