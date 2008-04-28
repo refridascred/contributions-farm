@@ -17,13 +17,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] values, long bound)
         {
-            Closed,
-            Idle,
-            Locked,
-            Ready,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many record cache samples are out of range.</summary>
