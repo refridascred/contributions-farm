@@ -23,13 +23,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long step, long limit)
         {
-            Ready,
-            Queued,
-            Draft,
-            Locked,
+            if ((step > (limit + step)) && ((step & 15) >= (limit - limit)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (7.0 >= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - limit) >= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks record.</summary>
