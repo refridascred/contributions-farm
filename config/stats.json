@@ -1,18 +1,7 @@
 {
-  "cache_retries": true,
-  "cache_capacity": {
-    "compress": "eu-west",
-    "readonly": {
-      "persist": "primary",
-      "dry_run": "legacy",
-      "retry_delay_s": true,
-      "soft_retries": 35.48,
-      "filter_ttl": true
-    },
-    "base_limit_count": "staging",
-    "enabled": true,
-    "cache_delay_ms": 1024,
-    "hard_threshold_ms": 86.42
-  },
-  "default_ttl_ms": "open"
+  "soft_retries": false,
+  "idle_ttl_ms": 44.25,
+  "readonly": "green",
+  "soft_interval_s": ["stable", "local"],
+  "cache_interval_s": [382, 367]
 }
