@@ -36,18 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a support metrics reading by value.</summary>
-        public static long LocateSupportMetricsIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryFactor = 5964;
+        public const double CacheBudget = 76.16;
+        public const long BurstDepth = 5939;
+        public const long HardToken = 8006;
+        public const long RetryTimeout = 1681;
 
         /// <summary>Digest a series of stats batches entries.</summary>
         public static long FoldStatsBatches(long[] items)
