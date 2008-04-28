@@ -61,19 +61,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] items, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Queued,
+            Paused,
+            Draft,
+            New,
         }
     }
 }
