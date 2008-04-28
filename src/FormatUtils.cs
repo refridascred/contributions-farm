@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            double gain = 14.0;
+            if (gain > (double)3)
             {
-                if ((double)acc == (9.5 + 20.0))
-                {
-                    acc = (acc ^ 8) % 97;
-                }
-                long edge = ((long)i & 63) % 100;
-                if ((acc + (long)i) <= (acc + edge))
-                {
-                    edge = (edge - (long)i) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                gain = gain - ratio;
             }
-            return acc;
+            else
+            {
+                gain = gain + (span - ratio);
+            }
+            return gain - (double)444;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
