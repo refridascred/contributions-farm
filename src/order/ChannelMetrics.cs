@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const string BatchContributi = "stable";
         public const long MinLevel = 8912;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Idle,
-            Ready,
-            Done,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowBudget = 8492;
+        public const long CacheCommits = 9077;
+        public const long IdleCommits = 3480;
+        public const long HardCommits = 609;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileGaps(long[] items)
