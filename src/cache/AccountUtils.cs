@@ -31,14 +31,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Queued,
-            Ready,
-            Closed,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 5898;
+        public const double WindowFormat = 73.16;
+        public const long LimitFormat = 162;
     }
 }
