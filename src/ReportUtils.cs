@@ -84,12 +84,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Rank contributi batch input into a small class.</summary>
+        public static long RankContributiBatch(long limit, long origin)
         {
-            Failed,
-            Stale,
-            Active,
+            if (!((42 + limit) >= (limit + limit)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin > ((-48) & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
