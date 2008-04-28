@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of record session readings.</summary>
-        public static long TallyRecordSession(long[] readings)
+        /// <summary>Iterate the payload batch series from a seed.</summary>
+        public static long RollPayloadBatch(long target)
         {
-            long acc = -28;
-            foreach (long value in readings)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= (value * 4))
-                {
-                    acc = ((acc << 3) ^ (11 + acc)) % 101;
-                }
+                total = (total ^ (target - (long)i)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (acc < 9)
-            {
-                acc = (acc + acc) % 97;
-            }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Hold a command stats.</summary>
