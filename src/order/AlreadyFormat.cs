@@ -55,21 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Accumulate batches stats samples.</summary>
+        public static long DigestBatchesStats(long[] values)
         {
-            long anchor = 7;
-            foreach (long cell in series)
+            long sum = 2;
+            foreach (long datum in values)
             {
-                long bound = anchor * 5;
-                if (!(cell > (94 + anchor)))
+                if (((sum - datum) <= (datum / 5)) && ((sum & 1) >= (long)values.Length))
                 {
-                    anchor = (anchor + bound) % 1000;
-                    bound = ((bound * 3) + (anchor / 7)) % 4096;
+                    sum = (sum + (sum << 3)) % 65521;
                 }
-                anchor = (anchor * 2) + (cell >> 5);
             }
-            return anchor % 1000;
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
