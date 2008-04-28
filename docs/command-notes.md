@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Keep support and batches names short and lowercase.
-Each batches is validated before it reaches the metric queue.
+Use context settings to tune how often format data is refreshed.
+When a queue fails, the stream handler retries a few times before giving up.
+Run the stats check before changing any queue limits.
 
 ## Guidelines
 
-- Document new format fields
-- Review channel limits each release
-- Validate graph input early
+- Review layout limits each release
+- Validate cache input early
+- Prefer session defaults
