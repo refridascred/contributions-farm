@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double scale, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] data)
         {
-            double weight = (double)(0 ^ 92);
-            if (weight < (scale / 7.0))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                weight = weight + (double)344;
+                if (((seen > (reading % 12)) && ((seen % 3) == (seen + 695))) && (reading > (seen - seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + span;
+            return seen;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
