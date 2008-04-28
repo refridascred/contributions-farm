@@ -1,8 +1,9 @@
-id,state,label,owner
-1,green,legacy,blue
-2,eu-west,staging,319
-3,standard,24.94,open
-4,80.69,268,32.07
-5,960,stable,76
-6,staging,standard,90.38
-7,fallback,921,standard
+id,label,rank,count,level
+1,40.77,75.48,staging,459
+2,629,21.02,656,692
+3,fallback,726,81.6,39.01
+4,open,50.57,73.23,fallback
+5,edge,22,76.81,31
+6,local,57.04,eu-west,557
+7,232,708,50.53,527
+8,926,70.39,404,894
