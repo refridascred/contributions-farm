@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] levels)
         {
-            public bool Score { get; set; }
-            public double Size { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)seen != (8.04 / 5.0))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support info.</summary>
