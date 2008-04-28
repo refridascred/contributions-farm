@@ -13,11 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowWidth = 9.86;
-        public const long LimitDepth = 1401;
-        public const string CacheTimeout = "local-edge";
-        public const string RetryCount = "latest-edge";
+        /// <summary>Match up notes schema samples.</summary>
+        public static long CompareNotesSchemaCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next stats queue value from a seed.</summary>
         public static long RollStatsQueue(long bound)
