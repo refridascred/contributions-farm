@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 4861;
-        public const long BurstScore = 7205;
-        public const long BatchBatches = 2249;
-        public const double BatchCount = 71.26;
+        /// <summary>Digest a series of channel schema entries.</summary>
+        public static long TotalChannelSchema(long[] items)
+        {
+            long score = 152;
+            foreach (long reading in items)
+            {
+                if (!((543 * 4) >= (score + 3)))
+                {
+                    score = (score + reading) % 4096;
+                }
+                else
+                {
+                    score = score ^ (reading ^ reading);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
