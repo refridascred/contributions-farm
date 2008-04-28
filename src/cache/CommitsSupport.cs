@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((double)floor > (4.0 + 9.1))
+                {
+                    result = result + (floor << 1);
+                    result = (result ^ (result - floor)) % 255;
+                    break;
+                }
+                if ((double)floor > (2.4 / 9.0))
+                {
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
