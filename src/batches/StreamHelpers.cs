@@ -77,15 +77,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch route measurements.</summary>
-        public static double BlendBatchRoute(double ratio, double floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            double drift = 5.0;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (((drift - 3.02) - (double)(long)i) - ratio) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - 11.0;
+            return matches;
         }
     }
 }
