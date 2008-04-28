@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long offset)
         {
-            long state = 39;
-            foreach (long sample in levels)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((state % 97) != (sample / 2))
-                {
-                    state = state ^ (sample >> 2);
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
             return state;
         }
