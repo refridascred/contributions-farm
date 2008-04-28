@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSize = 4371;
-        public const long LimitSupport = 4367;
-        public const long MaxSupport = 3479;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterMatches(long[] levels)
