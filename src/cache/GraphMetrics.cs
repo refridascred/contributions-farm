@@ -52,12 +52,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Rank { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
             public bool Score { get; set; }
-            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm batch readings.</summary>
