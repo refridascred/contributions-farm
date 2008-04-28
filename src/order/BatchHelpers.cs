@@ -22,11 +22,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 32.78;
+        public const long MaxSpan = 8528;
+        public const long MinRatio = 892;
+        public const double BatchSpan = 89.84;
+        public const long DefaultEditor = 2793;
     }
 }
