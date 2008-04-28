@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            double rate2 = offset;
-            if (rate2 <= (rate2 / 6.0))
+            long acc = -650;
+            foreach (long item in samples)
             {
-                rate2 = (rate2 - (6.3 * 0.1)) - rate;
+                acc = ((acc * 2) + (acc + item)) % 1000;
+                if (acc < (9 - 11))
+                {
+                    acc = (acc - acc) % 65521;
+                }
+                if (!((29 >> 5) < (acc & 63)))
+                {
+                    acc = ((acc << 3) ^ (item + acc)) % 65521;
+                }
+                else
+                {
+                    acc = acc - (481 - (long)samples.Length);
+                }
+                if ((item & 127) > item)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = rate2 - (double)(long)i;
-            }
-            return rate2 - (offset - offset);
+            return acc;
         }
 
         /// <summary>Fold a list of stats metric readings.</summary>
