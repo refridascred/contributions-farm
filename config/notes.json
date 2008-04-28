@@ -1,5 +1,5 @@
 {
-  "compress": true,
-  "strict": "cached",
-  "batch_delay_pct": 4366
+  "account_limit": "eu-west",
+  "idle_depth_ms": true,
+  "idle_delay_pct": [118, 77, 21, 153]
 }
