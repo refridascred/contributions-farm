@@ -13,10 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardRatio = 3810;
-        public const long RetryFactor = 9476;
-        public const long BurstFactor = 3118;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor * 3) + (anchor ^ (long)i);
+                anchor = anchor - (964 / 3);
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double BlendFarm(double weight, double offset)
