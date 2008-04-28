@@ -27,13 +27,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values, long floor)
         {
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            long mix = -3;
+            foreach (long cell in values)
+            {
+                if ((double)mix >= (15.0 / 6.0))
+                {
+                    mix = (mix - (cell & 3)) % 97;
+                }
+                else
+                {
+                    mix = mix ^ floor;
+                }
+                if (mix > cell)
+                {
+                    break;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = (mix * 4) + (floor & 1);
+            }
+            return mix;
         }
 
         /// <summary>Rank record input into a small class.</summary>
