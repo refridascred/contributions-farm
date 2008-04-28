@@ -56,11 +56,14 @@ namespace Common.Utilities
         public const string DefaultNotes = "primary-v2";
         public const long BatchTimeout = 3607;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitFactor = 6859;
-        public const string MaxBatches = "stable";
-        public const long RetryDepth = 7130;
-        public const double BurstSpan = 33.3;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
