@@ -29,22 +29,13 @@ namespace Common.Utilities
         public const double WindowFactor = 16.33;
         public const string BatchContext = "stable-v2";
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] samples, long bound)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (sample >= 46)
-                {
-                    count = (count + 1) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Active,
+            Dropped,
+            Failed,
         }
     }
 }
