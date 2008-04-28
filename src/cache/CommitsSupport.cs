@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate token layout readings against a bound.</summary>
-        public static bool VerifyTokenLayoutRange(long[] values, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long offset, long seed)
         {
-            bool ok = true;
-            foreach (long value in values)
+            if (((seed << 1) != (seed - offset)) || ((905 + (-8)) >= (offset >> 3)))
             {
-                if (value < bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)seed >= (9.45 - 18.0))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
