@@ -60,14 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] data, long step)
         {
-            Locked,
-            Dropped,
-            Queued,
-            Draft,
-            Active,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((4 / 3) <= (seen << 2))
+                {
+                    seen = ((seen + 1) + datum) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics entry.</summary>
