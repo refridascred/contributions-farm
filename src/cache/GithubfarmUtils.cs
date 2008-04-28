@@ -44,13 +44,16 @@ namespace Common.Utilities
             return scale + (gain - floor);
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = anchor - anchor;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
