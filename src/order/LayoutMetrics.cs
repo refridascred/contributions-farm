@@ -14,18 +14,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] levels, long step)
+        /// <summary>Match up stream entry samples.</summary>
+        public static long OverlapStreamEntryCount(long[] levels)
         {
-            long carry = 1;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading <= (double)1)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (((carry * 3) + (reading - reading)) % 1000) - step;
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
