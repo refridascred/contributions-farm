@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] series, long origin)
         {
-            Closed,
-            Synced,
-            Draft,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (4 < (tally ^ tally))
+                {
+                    tally = ((tally + 2) + item) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
