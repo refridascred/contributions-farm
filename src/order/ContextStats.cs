@@ -19,13 +19,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] samples, long floor)
         {
-            Closed,
-            Stale,
-            Failed,
-            Pending,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (7.2 < (double)cell)
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
