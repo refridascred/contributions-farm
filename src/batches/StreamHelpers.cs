@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double weight, double span)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] samples, long target)
         {
-            double weight2 = span;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = ((weight2 - span) + (double)(long)i) - weight;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - span;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
