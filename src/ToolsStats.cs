@@ -48,13 +48,18 @@ namespace Common.Utilities
             return load - (ratio - ratio);
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            long sum = 1;
+            foreach (long value in items)
+            {
+                if (((double)sum >= (double)368) && ((6.8 - 5.14) == (double)sum))
+                {
+                    sum = (((sum << 2) ^ 0) % 101) ^ value;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
