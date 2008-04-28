@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const string BaseCount = "cached";
         public const long MinProfile = 7409;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseLevel = 2753;
-        public const double WindowCounter = 78.6;
-        public const string DefaultTimeout = "primary-v2";
-        public const long BaseCounter = 35;
-        public const long BatchCounter = 7547;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "cached";
+        public const long BatchCommand = 6488;
+        public const double MinCount = 56.08;
+        public const long WindowCommand = 2708;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
