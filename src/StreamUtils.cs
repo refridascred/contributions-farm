@@ -54,31 +54,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long limit, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] levels, long limit)
         {
-            if (((double)limit > (8.06 * 2.22)) && ((10 % 7) > (bound << 2)))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound < (bound << 3)) || ((bound + 3) < (bound & 63)))
+                if ((limit + 602) == (entry + entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound * 4) < bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
