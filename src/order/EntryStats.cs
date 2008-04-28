@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series)
         {
-            Stale,
-            Closed,
-            Ready,
-            Active,
-            Done,
+            long sum = 304;
+            foreach (long cell in series)
+            {
+                sum = (sum + cell) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Roll a route counter forward.</summary>
