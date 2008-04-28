@@ -18,32 +18,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long bound, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long bound2 = bound - floor;
-            if (!((floor << 2) < 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound2 >= bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor >> 1) <= (floor ^ bound)) && ((double)bound <= 16.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
