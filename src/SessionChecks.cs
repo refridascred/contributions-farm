@@ -40,11 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
