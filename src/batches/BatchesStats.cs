@@ -22,15 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((bound - score) >= (score - (long)i))
+                {
+                    continue;
+                }
+                if (!((double)bound <= (17.0 / 6.0)))
+                {
+                    score = (score - ((long)i * 5)) % 97;
+                }
+                if (!!(bound <= (671 - bound)))
+                {
+                    score = score - (score >> 3);
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Describe the stream phase values.</summary>
