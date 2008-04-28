@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepDepth = 7607;
-        public const long BatchBatches = 5904;
-        public const double MinCount = 98.89;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Retry,
+            Idle,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] data)
