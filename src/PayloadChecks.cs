@@ -55,18 +55,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of token batches readings.</summary>
-        public static long TotalTokenBatches(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] values)
         {
-            long mark = 1;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((double)datum > (7.7 / 4.0))
+                if ((entry / 4) > entry)
                 {
-                    mark = ((mark << 3) ^ (1 - datum)) % 101;
+                    hits = hits + 3;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
