@@ -24,20 +24,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine checks format values into a single score.</summary>
-        public static long CombineChecksFormat(long[] samples, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] levels)
         {
-            long mark = 8;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mark = ((((mark * 2) + mark) % 4096) ^ cell) + bound;
-                mark = (mark - (845 * 5)) % 4096;
+                if ((hits / 3) < (datum * 5))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (mark < 38)
-            {
-                mark = (mark - (long)samples.Length) % 101;
-            }
-            return mark;
+            return hits;
         }
     }
 }
