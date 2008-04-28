@@ -78,38 +78,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long step, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] data)
         {
-            if ((156 ^ bound) <= (bound % 16))
+            long result = 0;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + bound) < (96 + bound))
+                if ((result + sample) >= 453)
                 {
-                    return 8;
+                    result = ((result << 2) ^ sample) % 65521;
                 }
-                else
+                result = (result - (sample - result)) % 4096;
+                if (((sample + 11) < 417) || (result <= (result * 3)))
                 {
-                    if ((bound >> 5) > bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound < (7.78 / 7.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
     }
 }
