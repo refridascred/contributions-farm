@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseCount = "standard-edge";
-        public const long WindowTimeout = 4524;
-        public const string WindowStats = "standard-v2";
+        /// <summary>Audit stream payload readings against a rule.</summary>
+        public static long MeasureStreamPayloadHits(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + step) > (855 & 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
