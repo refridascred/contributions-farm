@@ -19,13 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            Ready,
-            New,
-            Failed,
-            Paused,
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
