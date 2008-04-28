@@ -1,8 +1,7 @@
 {
-  "filter_delay": true,
-  "base_ratio_ms": 30,
-  "readonly": "green",
-  "max_ratio_count": 68,
-  "sync_timeout_ms": 100,
-  "compress": true
+  "burst_threshold": 60,
+  "batches_interval": 1024,
+  "retry_delay_ms": 21.05,
+  "sync_ratio_count": 30,
+  "base_timeout": "eu-west"
 }
