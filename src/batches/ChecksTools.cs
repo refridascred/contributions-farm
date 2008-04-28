@@ -49,10 +49,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 1264;
-        public const double MaxReport = 52.88;
-        public const long IdleCount = 8115;
-        public const long SoftReport = 1349;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
