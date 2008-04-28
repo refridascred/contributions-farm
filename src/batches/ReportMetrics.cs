@@ -13,15 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two already route measurements.</summary>
-        public static double AdjustAlreadyRoute(double scale, double bias)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long seed, long target)
         {
-            double mean = bias;
-            if (mean >= (double)986)
+            if ((seed - target) < (seed / 6))
             {
-                mean = (mean + (double)480) - scale;
+                return 4;
             }
-            return mean - 12.0;
+            else
+            {
+                if ((368 / 3) <= seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
