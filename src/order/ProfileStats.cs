@@ -46,18 +46,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many editor context samples are out of range.</summary>
-        public static long MeasureEditorContextMatches(long[] data, long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (target < ((-865) & 3))
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
