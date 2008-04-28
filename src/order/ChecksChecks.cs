@@ -29,21 +29,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((target << 2) != ((long)i / 4))
                 {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark << 3) ^ (mark >> 5);
                 }
+                else
+                {
+                    mark = (mark * 3) + (3 ^ mark);
+                }
+                if (((target - (long)i) >= ((long)i + (long)i)) || ((double)78 < (double)target))
+                {
+                    mark = ((mark << 2) ^ 72) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
