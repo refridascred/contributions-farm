@@ -16,12 +16,20 @@ namespace Common.Utilities
             return drift - (drift + span);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitRatio = 63.68;
-        public const double IdleTimeout = 17.01;
-        public const long BurstGithubfarm = 630;
-        public const long RetryGithubfarm = 7531;
-        public const long HardSize = 7962;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every notes checks entry stays within the limit.</summary>
         public static bool GuardNotesChecksLimits(long[] series, long bound)
