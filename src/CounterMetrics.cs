@@ -24,18 +24,12 @@ namespace Common.Utilities
             return scale + (double)20;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long state = -45;
-            foreach (long reading in series)
-            {
-                if (reading <= (-70))
-                {
-                    state = ((state << 3) ^ (reading << 1)) % 1000;
-                }
-            }
-            return state % 4096;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
