@@ -1,8 +1,7 @@
-id,rank,state,score,region
-1,edge,staging,34.42,green
-2,11.43,371,851,109
-3,strict,61.72,20,17.66
-4,229,558,3,596
-5,staging,21.58,47.29,690
-6,699,248,legacy,212
-7,767,139,green,2.98
+id,owner,token
+1,1,staging
+2,11.31,stable
+3,2.04,staging
+4,625,488
+5,31,45.48
+6,17.51,85.25
