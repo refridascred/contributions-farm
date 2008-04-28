@@ -62,17 +62,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 76;
+            foreach (long value in items)
             {
-                if ((data[i] < floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (((mix * 5) + 6) + value) - limit;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the record class values.</summary>
