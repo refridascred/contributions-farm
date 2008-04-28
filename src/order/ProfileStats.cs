@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] samples, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double rate, double offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double scale = offset * 5.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)bound == (5.13 + 4.0)) && ((bound > count) && (9.6 >= (double)bound)))
-                {
-                    count = (count + 3) - value;
-                }
+                scale = (scale - (rate * 2.0)) + (double)(long)i;
             }
-            return count;
+            return scale + (scale * 3.3);
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
