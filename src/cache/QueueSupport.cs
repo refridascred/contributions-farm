@@ -29,21 +29,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm format samples.</summary>
-        public static long MatchFarmFormatCount(long[] items)
+        /// <summary>Classify a farm support pair into a bucket.</summary>
+        public static long SortFarmSupport(long limit, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)limit <= (4.0 / 3.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((limit / 9) != (target % 97))
                 {
-                    if ((items[i] - items[j]) != 9)
+                    return 4;
+                }
+                else
+                {
+                    if ((limit & 3) == (target << 3))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit >= 8.2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
