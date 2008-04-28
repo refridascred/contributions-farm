@@ -55,14 +55,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Pending,
-            Locked,
-            Queued,
-            Closed,
-            New,
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
