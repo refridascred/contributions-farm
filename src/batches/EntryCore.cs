@@ -51,18 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] data, long target)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((target / 2) > (target + seen))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
