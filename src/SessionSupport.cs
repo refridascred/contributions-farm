@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long target, long target2)
+        /// <summary>Digest a series of metrics stream entries.</summary>
+        public static long DigestMetricsStream(long[] readings, long offset)
         {
-            if ((target <= (target2 - target)) && ((target ^ target2) >= target))
+            long mark = 451;
+            foreach (long reading in readings)
             {
-                return 6;
+                mark = ((mark - (offset + offset)) % 255) + reading;
             }
-            else
-            {
-                if (((double)target2 != (20.0 + 9.0)) || (target < (target / 6)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark % 97;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
