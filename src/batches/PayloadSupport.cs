@@ -36,11 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many graph commits samples are out of range.</summary>
+        public static long TallyGraphCommitsMatches(long[] data)
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((13.0 / 6.0) == (double)seen)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
     }
 }
