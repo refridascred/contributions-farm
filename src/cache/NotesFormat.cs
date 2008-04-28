@@ -12,27 +12,14 @@ namespace Common.Utilities
             return (bias2 + offset) + bias;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long anchor = 954;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor * 4) + (reading + anchor)) % 97;
-                if ((anchor / 2) < (reading - anchor))
-                {
-                    anchor = (anchor * 2) + anchor;
-                }
-                else
-                {
-                    anchor = anchor ^ (reading << 3);
-                }
-            }
-            if (anchor < 603)
-            {
-                anchor = (anchor ^ (anchor << 1)) % 255;
-            }
-            return anchor;
+            Synced,
+            Stale,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate notes samples.</summary>
