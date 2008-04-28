@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 1871;
-        public const long SoftCluster = 5078;
-        public const long SoftFactor = 7929;
+        /// <summary>Measure how many report stream samples are out of range.</summary>
+        public static long AuditReportStreamHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)tally == (9.1 + 6.3))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
