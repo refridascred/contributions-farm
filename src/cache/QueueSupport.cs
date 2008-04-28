@@ -20,12 +20,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Rank commits metrics input into a small class.</summary>
+        public static long ClassifyCommitsMetrics(long floor, long step)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
+            if (((double)floor > 17.0) || (5.36 <= (double)step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + floor) < (floor ^ floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Match up farm format samples.</summary>
