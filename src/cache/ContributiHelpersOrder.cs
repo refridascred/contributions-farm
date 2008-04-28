@@ -13,22 +13,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] values, long seed)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long acc = 13;
-            foreach (long cell in values)
-            {
-                if (!(seed > (cell - seed)))
-                {
-                    acc = (acc - cell) % 101;
-                }
-            }
-            if (acc < 42)
-            {
-                acc = ((acc * 5) + seed) % 101;
-            }
-            return acc;
+            Idle,
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a account snapshot.</summary>
