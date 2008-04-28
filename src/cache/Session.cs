@@ -25,22 +25,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryFactor = 9509;
+        public const double SoftCommand = 33.11;
+        public const long MinCommand = 6096;
+        public const long MinDepth = 6107;
+        public const double CacheTimeout = 82.02;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long DeriveEditor(long seed)
