@@ -40,20 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command context readings.</summary>
-        public static long TallyCommandContext(long[] readings, long target)
-        {
-            long state = 29;
-            foreach (long item in readings)
-            {
-                state = ((state - 93) % 4096) + target;
-                if ((item >> 1) > ((long)readings.Length - (-753)))
-                {
-                    state = ((state << 2) ^ (item ^ (-3))) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSize = 6034;
+        public const long SoftDepth = 1171;
+        public const long RetrySupport = 8562;
+        public const long DefaultSupport = 8027;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchMetric = 1901;
