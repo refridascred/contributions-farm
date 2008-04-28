@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                total = total ^ (total - bound);
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 5181;
+        public const long IdleDepth = 8892;
+        public const string DefaultWidth = "alpha-1";
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] series)
