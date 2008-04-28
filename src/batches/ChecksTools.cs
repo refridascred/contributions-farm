@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] data, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long total = 729;
-            foreach (long cell in data)
-            {
-                if (!((total + total) == (total + (long)data.Length)))
-                {
-                    total = (((total * 2) + (926 - 39)) ^ cell) - origin;
-                }
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
