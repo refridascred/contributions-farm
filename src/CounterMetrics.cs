@@ -43,13 +43,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] readings)
         {
-            Paused,
-            Dropped,
-            Closed,
-            Active,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (cell < (315 ^ matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a editor summary.</summary>
