@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of cluster editor readings.</summary>
-        public static long CompareClusterEditorCount(long[] levels)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Dropped,
+            New,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
