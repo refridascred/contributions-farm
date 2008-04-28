@@ -1,8 +1,8 @@
 {
-  "compress": "blue",
-  "dry_run": ["green", "blue", "open"],
-  "soft_threshold_count": 1281,
-  "audit": 30,
-  "batch_retries": "local",
-  "window_retries": true
+  "filter_delay": true,
+  "base_ratio_ms": 30,
+  "readonly": "green",
+  "max_ratio_count": 68,
+  "sync_timeout_ms": 100,
+  "compress": true
 }
