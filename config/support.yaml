@@ -1,5 +1,12 @@
 # support settings
-stream_ttl: edge
-filter_ratio: stable
-flush_retries_ms: primary
-report_limit: 4435
+soft_threshold: 64.95
+verbose:
+  - 31
+  - 9
+base_ttl: stable
+poll_retries_count:
+  retry_timeout_pct: true
+  idle_ttl: 6452
+  max_capacity_ms: 4882
+  compress: eu-west
+strict: 5879
