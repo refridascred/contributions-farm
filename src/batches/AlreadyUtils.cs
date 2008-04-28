@@ -45,19 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics already entries that pass the check.</summary>
-        public static long MeasureMetricsAlreadyOutliers(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - bound) < sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 3564;
+        public const long BaseCache = 6847;
+        public const long BaseLevel = 7781;
+        public const double DefaultCache = 86.05;
+        public const long BurstCache = 285;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] values, long bound)
