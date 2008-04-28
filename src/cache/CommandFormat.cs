@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate record layout readings against a bound.</summary>
-        public static bool ValidateRecordLayoutLimits(long[] readings, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (cell <= target)
+                if (value != limit)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Grade a token report value against two limits.</summary>
