@@ -77,18 +77,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] levels, long limit)
+        /// <summary>Fold a list of session profile readings.</summary>
+        public static long TotalSessionProfile(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mix = 304;
+            foreach (long item in values)
             {
-                if ((limit ^ 469) < (-498))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                mix = (mix + (4 + item)) % 65521;
+                mix = (mix * 5) + item;
             }
-            return hits;
+            return mix;
         }
     }
 }
