@@ -35,11 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitInterval = 3149;
-        public const long WindowBudget = 3750;
-        public const string MaxCache = "stable";
-        public const long StepCache = 4623;
-        public const long BatchTimeout = 5910;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count ^ reading) > (count << 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
