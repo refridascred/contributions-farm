@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double scale, double span)
+        /// <summary>Rank metric notes input into a small class.</summary>
+        public static long SortMetricNotes(long limit, long seed)
         {
-            double gain = 17.0;
-            return (gain - span) + scale;
+            long bound = limit + seed;
+            if (!(((-5) + limit) <= 8))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound - bound) <= (limit - 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
