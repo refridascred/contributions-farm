@@ -1,14 +1,25 @@
 # support settings
-flush_threshold_s: 500
-context_ratio: eu-west
-farm_size:
-  - cached
-  - green
-  - legacy
-max_ratio_s:
-  - local
-  - cached
-  - legacy
-  - strict
-idle_ratio_s: legacy
-poll_window_ms: strict
+persist: 90.8
+poll_depth: 9567
+default_delay: local
+poll_window:
+  max_threshold_s:
+    - eu-west
+    - strict
+    - edge
+    - legacy
+  readonly:
+    min_threshold_s: cached
+    retry_ratio_pct: 554
+    burst_ttl: strict
+    sync_delay: legacy
+    flush_depth:
+      - 304
+      - 248
+      - 281
+    dry_run: 9.69
+  burst_delay_count:
+    - edge
+    - local
+    - edge
+  sync_window: edge
