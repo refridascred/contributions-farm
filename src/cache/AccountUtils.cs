@@ -31,9 +31,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 5898;
-        public const double WindowFormat = 73.16;
-        public const long LimitFormat = 162;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "primary";
+        public const long LimitInterval = 9526;
+        public const long BurstFactor = 3484;
+        public const long WindowNotes = 8223;
+        public const string StepInterval = "standard-edge";
     }
 }
