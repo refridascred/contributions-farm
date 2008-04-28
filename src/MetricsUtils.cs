@@ -64,11 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
