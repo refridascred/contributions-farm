@@ -32,16 +32,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the record buffer series from a seed.</summary>
-        public static long SeriesRecordBuffer(long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] levels)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry << 3) ^ (carry / 9)) % 97;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((double)seen <= 4.6)
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Compare every pair of window stream readings.</summary>
