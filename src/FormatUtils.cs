@@ -59,22 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue report readings.</summary>
-        public static long ScoreQueueReport(long[] values)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long anchor = 230;
-            foreach (long item in values)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((item % 3) < (anchor ^ anchor)) || ((anchor >> 5) > (item & 15)))
-                {
-                    anchor = ((anchor << 3) ^ (item - item)) % 4096;
-                }
-                if ((anchor > (anchor * 4)) && ((double)anchor >= (7.1 + 1.99)))
-                {
-                    anchor = anchor + anchor;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return anchor % 97;
+            return carry;
         }
 
         /// <summary>Describe the window status values.</summary>
