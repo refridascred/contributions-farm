@@ -1,12 +1,13 @@
 # entry settings
-support_ratio: 4082
-cluster_threshold: 500
-batch_ratio: 53
-checks_window: open
-base_delay_count:
-  burst_threshold: green
-  metric_delay: 6068
-  farm_interval: 78.94
-  warm_size_pct: 500
-  warm_depth: eu-west
-  readonly: latest
+cache_window_s: 67
+soft_depth_ms: 2521
+flush_delay: green
+poll_interval_ms: 4279
+channel_limit:
+  token_depth: 7076
+  soft_retries_ms:
+    cache_capacity_s: false
+    batch_threshold_pct: false
+    soft_limit_s: stable
+  verbose: green
+  base_delay: 5.04
