@@ -46,11 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            Done,
+            Dropped,
+            Pending,
         }
     }
 }
