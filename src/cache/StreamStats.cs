@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double gain, double bias)
         {
-            long acc = 700;
-            foreach (long sample in items)
+            double rate = gain * 17.0;
+            if (rate > rate)
             {
-                acc = (acc - sample) % 4096;
+                rate = (rate + (double)65) - bias;
             }
-            return acc;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - (7.6 / 9.0);
         }
 
         /// <summary>Describe the filter status values.</summary>
