@@ -1,7 +1,7 @@
 # entry settings
-compress: fallback
-warm_depth:
-  - blue
-  - green
-  - eu-west
-metric_delay: green
+cache_window: 44.07
+cache_depth:
+  poll_threshold_count: true
+  compress: cached
+  enabled: local
+batch_window: 100
