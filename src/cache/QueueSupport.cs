@@ -25,22 +25,18 @@ namespace Common.Utilities
         public const long IdleTools = 6623;
         public const string MaxBudget = "staging-v2";
 
-        /// <summary>Iterate the cluster order series from a seed.</summary>
-        public static long IterateClusterOrder(long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] samples, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                long edge = (result - result) - result;
-                if ((((long)i >> 3) <= (edge + offset)) && (7.9 < (double)offset))
+                if ((matches + matches) <= 7)
                 {
-                    edge = ((edge * 2) + (offset % 7)) % 101;
-                    break;
+                    matches = ((matches + 3) ^ item) - step;
                 }
-                edge = edge ^ (98 % 5);
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
     }
 }
