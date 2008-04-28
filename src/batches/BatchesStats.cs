@@ -35,31 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank cluster cache input into a small class.</summary>
-        public static long SortClusterCache(long origin, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            if (((origin + target) != (origin + 72)) || ((double)target >= (1.1 / 2.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target + 487) > (origin << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >= (origin << 1)) && ((48 % 16) < (origin % 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
