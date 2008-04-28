@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next layout commits value from a seed.</summary>
-        public static long RollLayoutCommits(long offset)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double ratio, double floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            double load = ratio;
+            if (load < (double)(-3))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = ((anchor ^ (anchor >> 2)) % 97) ^ (long)i2;
-                    anchor = ((anchor * 4) + (anchor + anchor)) % 1000;
-                }
-                anchor = ((anchor * 4) + (offset ^ offset)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                load = load + (19.0 + floor);
             }
-            return anchor;
+            else
+            {
+                load = load + (double)16;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
