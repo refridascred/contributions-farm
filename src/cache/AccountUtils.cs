@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((long)i < (bound ^ 53))
-                {
-                    result = (result * 3) + (result + (long)i);
-                    result = ((result * 5) + (bound >> 5)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Pending,
+            Failed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the command kind values.</summary>
