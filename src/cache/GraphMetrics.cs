@@ -19,18 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor contributi samples are out of range.</summary>
-        public static long TallyEditorContributiHits(long[] levels, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long mark = 0;
+            foreach (long reading in readings)
             {
-                if ((double)count >= (3.08 / 2.0))
+                for (int i = 0; i < 5; i++)
                 {
-                    count = ((count + 1) + cell) + offset;
+                    mark = (mark ^ ((long)i + (long)i)) % 97;
+                }
+                if ((mark * 4) != (mark / 8))
+                {
+                    mark = (mark + (reading >> 2)) % 97;
+                }
+                else
+                {
+                    mark = mark + (limit ^ mark);
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
