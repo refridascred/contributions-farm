@@ -34,16 +34,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Count session payload pairs that satisfy a relation.</summary>
+        public static long CompareSessionPayloadCount(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ sum) % 4096;
-                sum = ((sum * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
