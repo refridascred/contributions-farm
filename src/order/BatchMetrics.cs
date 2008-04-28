@@ -57,10 +57,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleCluster = 87.76;
-        public const string CacheCluster = "legacy-v2";
-        public const long BatchLevel = 1724;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Failed,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricBounds(long[] levels, long origin)
