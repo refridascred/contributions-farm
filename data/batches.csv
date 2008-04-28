@@ -1,7 +1,9 @@
-id,rank,count,level,weight
-1,edge,939,94.82,414
-2,29,56.89,95.22,78.16
-3,878,standard,43.66,32.95
-4,367,63.73,cached,latest
-5,63.06,758,114,25
-6,84.58,301,78.89,fallback
+id,weight,count
+1,67.29,449
+2,local,251
+3,904,561
+4,210,fallback
+5,626,43.12
+6,27.49,382
+7,fallback,latest
+8,34,802
