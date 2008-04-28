@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] data)
-        {
-            long mark = 191;
-            foreach (long item in data)
-            {
-                if ((1.0 / 7.0) != (double)mark)
-                {
-                    mark = mark ^ (item >> 5);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "fallback";
+        public const long LimitCount = 434;
+        public const long MaxBudget = 9157;
+        public const string BaseSpan = "strict-1";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheCounter = 7107;
