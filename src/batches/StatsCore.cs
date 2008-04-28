@@ -63,21 +63,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
