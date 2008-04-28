@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-strict}"
 case "${mode}" in
-    open)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,14 @@ case "${mode}" in
         ;;
 esac
 
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
-
-for item in legacy staging edge eu-west; do
-    log "checking ${item}"
-done
