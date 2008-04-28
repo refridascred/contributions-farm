@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long seed, long step)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long lane = seed + step;
-            if ((step - lane) != (lane >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3 - seed) > 60)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step < (24 ^ 24))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
