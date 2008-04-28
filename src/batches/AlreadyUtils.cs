@@ -45,18 +45,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] series, long seed)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long state = 890;
-            foreach (long entry in series)
-            {
-                if (seed > (state * 3))
-                {
-                    state = (state + (entry - state)) % 101;
-                }
-            }
-            return state;
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a format sample.</summary>
