@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-GITHUBFARM_LIMIT=13
-log "limit is ${GITHUBFARM_LIMIT}"
+mode="${1:-edge}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-for item in strict latest cached; do
+for item in fallback open local primary; do
     log "checking ${item}"
 done
+
+GITHUBFARM_LIMIT=361
+log "limit is ${GITHUBFARM_LIMIT}"
