@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long WindowDepth = 5708;
         public const long SoftScore = 5561;
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] <= target)
                 {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
