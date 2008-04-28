@@ -43,19 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] data, long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of window stream readings.</summary>
