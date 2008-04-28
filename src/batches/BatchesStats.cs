@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the commits checks series from a seed.</summary>
-        public static long SeriesCommitsChecks(long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double scale, double span)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            double weight = (double)(0 ^ 92);
+            if (weight < (scale / 7.0))
             {
-                mix = ((mix << 3) ^ ((long)i - 63)) % 97;
-                if (!(((long)i >> 2) < mix))
-                {
-                    mix = mix ^ (mix - target);
-                    mix = (mix - (mix - mix)) % 65521;
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                weight = weight + (double)344;
             }
-            return mix;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + span;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
