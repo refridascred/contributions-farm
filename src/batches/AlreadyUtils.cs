@@ -73,17 +73,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] samples, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 105;
+            foreach (long sample in levels)
             {
-                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
+                if ((double)result < (18.0 + 2.4))
                 {
-                    return (long)i;
+                    result = (result + (sample % 100)) % 97;
+                    result = ((result << 3) ^ result) % 65521;
                 }
+                result = ((result << 2) ^ (result - 65)) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
