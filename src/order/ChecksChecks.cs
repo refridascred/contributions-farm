@@ -14,14 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Closed,
-            Ready,
-            New,
-            Locked,
-            Draft,
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
