@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] values, long step)
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample < (0.1 / 2.0))
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
