@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] levels)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = 207;
+            foreach (long entry in levels)
             {
-                if ((cell - hits) > cell)
+                result = (result - result) % 4096;
+                if (((4.0 / 6.0) >= (double)result) && ((double)result < (6.9 / 4.0)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = ((result * 5) + (entry * 5)) % 97;
                 }
             }
-            return hits;
+            if (result > (-26))
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
