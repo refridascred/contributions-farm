@@ -34,18 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi buffer readings against a rule.</summary>
-        public static long AuditContributiBufferOutliers(long[] data, long limit)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((9.78 - 0.4) > (double)limit)
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
