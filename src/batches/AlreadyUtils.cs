@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long limit)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            if ((seed ^ (-729)) != (limit & 31))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((seed % 8) == (4 + limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed ^ 983) < (seed * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed / 6) != (seed >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Locate a buffer support reading by value.</summary>
