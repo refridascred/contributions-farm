@@ -22,14 +22,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Audit command format readings against a rule.</summary>
+        public static long CountCommandFormatOutliers(long[] items, long limit)
         {
-            Locked,
-            Stale,
-            New,
-            Idle,
-            Done,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((2 - value) <= tally)
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
