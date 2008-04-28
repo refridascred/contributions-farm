@@ -1,11 +1,5 @@
 # support settings
-batch_interval_count:
-  base_window: staging
-  base_capacity_s:
-    - 44
-    - 243
-    - 68
-  retry_limit_count: fallback
-max_interval_ms: 30
-cluster_retries: 34.43
-profile_size: 72.64
+stream_ttl: edge
+filter_ratio: stable
+flush_retries_ms: primary
+report_limit: 4435
