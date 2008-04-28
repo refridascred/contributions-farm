@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 2230;
-        public const double HardTools = 2.25;
-        public const long StepWidth = 3059;
-        public const double BaseBudget = 17.94;
-        public const double MinBudget = 61.49;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseCount = "standard-edge";
+        public const long HardBuffer = 5893;
+        public const long StepLevel = 9137;
+        public const string MinBuffer = "staging";
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
