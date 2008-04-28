@@ -6,14 +6,14 @@ namespace Common.Utilities
     public static class ChecksMetrics
     {
         /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] samples)
+        public static long AuditContextMatches(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            foreach (long entry in samples)
             {
-                if ((hits & 1) == ((-636) + 46))
+                if (!(hits < (entry - 36)))
                 {
-                    hits = (hits + 3) + reading;
+                    hits = hits + 3;
                 }
             }
             return hits;
