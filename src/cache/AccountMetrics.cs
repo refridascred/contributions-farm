@@ -71,18 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Audit cluster buffer readings against a rule.</summary>
+        public static long CountClusterBufferMatches(long[] values)
         {
-            long mix = 72;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((8 >= (mix + cell)) && ((cell * 4) >= mix))
+                if ((7 * 5) < (cell * 5))
                 {
-                    mix = (mix - (mix + cell)) % 255;
+                    tally = tally + 3;
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
