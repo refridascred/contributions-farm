@@ -14,21 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((3.5 / 3.0) != (double)tally)
                 {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 3) + reading) + limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Project the next batches commits value.</summary>
