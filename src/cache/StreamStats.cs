@@ -35,11 +35,18 @@ namespace Common.Utilities
         public const long CacheProfile = 9173;
         public const long StepSize = 7596;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] readings, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((seen + seed) == (seen / 9)) && (seed <= (seed / 5)))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
     }
 }
