@@ -38,19 +38,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (value != origin)
+                if ((6.4 - 0.44) >= (double)reading)
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
