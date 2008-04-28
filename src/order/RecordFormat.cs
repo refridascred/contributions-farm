@@ -59,13 +59,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Audit order format readings against a rule.</summary>
+        public static long MeasureOrderFormatGaps(long[] samples, long target)
         {
-            New,
-            Pending,
-            Locked,
-            Draft,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen % 5) < (seen + seen))
+                {
+                    seen = ((seen + 2) + item) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
