@@ -31,12 +31,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "alpha-1";
-        public const double CacheToken = 36.2;
-        public const long BurstBudget = 6736;
-        public const long StepRatio = 3802;
-        public const double SoftSize = 27.83;
+        /// <summary>Project the next batches commits value.</summary>
+        public static double BlendBatchesCommits(double bias, double bias2)
+        {
+            double scale = bias2;
+            if (scale < 4.0)
+            {
+                scale = scale + (double)0;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - bias;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
