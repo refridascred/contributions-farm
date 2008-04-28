@@ -36,22 +36,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] readings, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] data, long offset)
         {
-            long carry = -8;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((offset + offset) != (carry + (long)readings.Length))
+                if (!((entry % 7) >= seen) || ((seen + seen) != (182 + seen)))
                 {
-                    carry = (((carry * 2) + (offset * 3)) % 255) + cell;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry / 3)) % 65521;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
