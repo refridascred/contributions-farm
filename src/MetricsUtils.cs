@@ -37,11 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Digest a series of checks channel entries.</summary>
+        public static long TallyChecksChannel(long[] readings)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            long carry = 2;
+            foreach (long cell in readings)
+            {
+                carry = (carry - (carry << 3)) % 65521;
+                if (!((double)cell != (1.5 / 5.0)))
+                {
+                    carry = carry - 0;
+                }
+                if ((cell * 5) <= (carry - (-9)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
