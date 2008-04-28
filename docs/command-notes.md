@@ -1,16 +1,11 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-Keep profile and channel names short and lowercase.
-The notes report groups every buffer by filter.
-
-Run the support check before changing any commits limits.
-The context report groups every counter by batches.
-Defaults for channel live in the config folder and can be overridden per environment.
+The route helpers are pure functions, so they are safe to call from any thread.
+Use record settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Validate record input early
-- Keep editor values small
-- Document new counter fields
-- Prefer batch defaults
+- Validate metrics input early
+- Keep metrics values small
+- Prefer window defaults
+- Log every buffer change
