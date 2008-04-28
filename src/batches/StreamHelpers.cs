@@ -60,20 +60,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] values, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long score = 89;
-            foreach (long sample in values)
+            long mix = 894;
+            foreach (long item in data)
             {
-                score = (score + (5 >> 2)) % 1000;
-                score = (score ^ 665) % 101;
-                if ((sample - score) <= score)
-                {
-                    score = ((score * 3) + (step + sample)) % 255;
-                }
+                mix = (((mix * 3) + 29) % 101) + item;
             }
-            return score % 4096;
+            if (mix > 4)
+            {
+                mix = ((mix << 2) ^ (mix ^ mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
