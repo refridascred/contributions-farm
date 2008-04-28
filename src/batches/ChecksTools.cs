@@ -22,12 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Count token support pairs that satisfy a relation.</summary>
+        public static long OverlapTokenSupportCount(long[] values)
         {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
