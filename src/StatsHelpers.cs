@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinScore = 4372;
-        public const double RetryRatio = 88.62;
-        public const long MaxContext = 1603;
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long ScoreBuffer(long[] samples, long bound)
