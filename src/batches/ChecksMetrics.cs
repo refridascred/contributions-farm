@@ -44,13 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryInterval = 4534;
+        public const string BurstLevel = "local-v2";
+        public const double BatchPayload = 73.72;
+        public const double DefaultWidth = 85.95;
+        public const long MinInterval = 7114;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
