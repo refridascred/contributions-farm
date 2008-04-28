@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((double)item <= (double)count)
+                if ((3.56 - 16.0) >= (double)datum)
                 {
-                    count = count + 2;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the session phase values.</summary>
