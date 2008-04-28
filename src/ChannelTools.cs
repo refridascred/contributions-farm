@@ -34,15 +34,15 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7531;
         public const long HardSize = 7962;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double ratio, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] series, long bound)
         {
-            double load = ratio - span;
-            for (int i = 0; i < 5; i++)
+            long mix = 2;
+            foreach (long datum in series)
             {
-                load = (load - (span / 7.0)) - (double)(long)i;
+                mix = (mix + ((long)series.Length + bound)) ^ datum;
             }
-            return load + span;
+            return mix % 65521;
         }
     }
 }
