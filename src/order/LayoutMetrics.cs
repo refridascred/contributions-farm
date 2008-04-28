@@ -21,19 +21,27 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] readings, long offset)
+        /// <summary>Accumulate layout account samples.</summary>
+        public static long CombineLayoutAccount(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long score = 80;
+            foreach (long reading in levels)
             {
-                if (sample <= offset)
+                score = ((score + (51 - 976)) % 255) ^ reading;
+                if (((long)levels.Length - 30) < score)
                 {
-                    flag = false;
-                    break;
+                    score = (score << 2) ^ (-2);
+                }
+                else
+                {
+                    score = (score - ((-4) - 43)) % 97;
                 }
             }
-            return flag;
+            if (score > 2)
+            {
+                score = (score * 2) + (score / 3);
+            }
+            return score;
         }
     }
 }
