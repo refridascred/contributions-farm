@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const long IdleTools = 6623;
         public const string MaxBudget = "staging-v2";
 
-        /// <summary>Count payload route pairs that satisfy a relation.</summary>
-        public static long PairPayloadRouteCount(long[] series)
+        /// <summary>Measure how many githubfarm batch samples are out of range.</summary>
+        public static long AuditGithubfarmBatchHits(long[] samples, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((bound * 5) > 44)
                 {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) - reading;
                 }
             }
             return hits;
