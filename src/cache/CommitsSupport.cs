@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] samples, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (item >= bound)
+                if (item < origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Validate metrics githubfarm readings against a bound.</summary>
