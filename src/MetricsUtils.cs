@@ -54,22 +54,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command filter pairs that satisfy a relation.</summary>
-        public static long PairCommandFilterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardWidth = "staging-v2";
+        public const long CacheEntry = 943;
+        public const long MinSpan = 847;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenBounds(long[] samples, long seed)
