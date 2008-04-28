@@ -39,22 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long step)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!!((floor % 24) > (long)i))
+                if ((3.0 / 2.0) > (double)anchor)
                 {
-                    total = (total * 5) + ((long)i + total);
-                    total = (total * 3) + (floor + 227);
+                    anchor = (anchor ^ ((long)i << 1)) % 255;
+                    continue;
                 }
-                total = (total ^ 5) % 1000;
-                total = (total << 2) ^ (floor << 3);
-                total = ((total * 5) + (long)i) % 4093;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Grade a graph report value against two limits.</summary>
