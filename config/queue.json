@@ -1,17 +1,8 @@
 {
-  "sync_ratio_ms": "stable",
-  "verbose": 30,
-  "batch_retries": {
-    "compress": 5460,
-    "min_retries_ms": 500,
-    "checks_window": 60,
-    "payload_window": 6214,
-    "retry_limit_ms": {
-      "base_capacity": 7585,
-      "batch_delay": "local",
-      "soft_window_ms": 71.17,
-      "cache_threshold_count": 78.79
-    }
-  },
-  "context_retries": false
+  "contributi_ttl": "staging",
+  "report_ttl": 6703,
+  "default_timeout_s": [323, 451, 421],
+  "counter_capacity": "green",
+  "cluster_timeout": false,
+  "batch_threshold_ms": 73
 }
