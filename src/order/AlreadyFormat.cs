@@ -23,39 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long limit, long limit2)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] series)
         {
-            long span = limit ^ limit2;
-            if (((double)span != (5.9 + 3.91)) || ((double)limit == (3.23 - 1.3)))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 3) <= limit)
+                if ((hits ^ value) > (hits * 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.86 + 0.7) > (double)limit2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(limit2 < (-26)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate batches stats samples.</summary>
