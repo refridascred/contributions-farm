@@ -1,6 +1,6 @@
-id,active,region
-1,666,primary
-2,987,92.55
-3,standard,89.64
-4,cached,91.08
-5,664,cached
+id,ratio,level,rank
+1,open,80.31,38.76
+2,blue,407,primary
+3,10.44,68.87,284
+4,34.58,85.56,48.56
+5,51,65.19,local
