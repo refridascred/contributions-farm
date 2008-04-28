@@ -29,10 +29,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "open-edge";
-        public const string BaseRatio = "open";
-        public const long WindowRatio = 6032;
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double floor)
+        {
+            double load = (double)(50 >> 5);
+            if (load < (floor - load))
+            {
+                load = load - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (load - floor)) + (double)(long)i;
+            }
+            return load - (load + 2.3);
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
