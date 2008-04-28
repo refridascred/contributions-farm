@@ -17,20 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor ^ target) % 255;
-                for (int i2 = 0; i2 < 5; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor - anchor) % 101) ^ (long)i2;
+                    if ((levels[i] - levels[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Roll a session record counter forward.</summary>
