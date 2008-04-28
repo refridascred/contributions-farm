@@ -31,15 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long result = 37;
+            foreach (long value in items)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (((value + result) <= (value >> 2)) && ((4.5 - 11.0) > (double)value))
+                {
+                    result = (result * 2) + result;
+                }
             }
-            return score;
+            return result % 1000;
         }
     }
 }
