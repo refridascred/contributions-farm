@@ -70,27 +70,21 @@ namespace Common.Utilities
         public const string DefaultDepth = "local-1";
         public const double SoftTimeout = 97.19;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] levels, long target)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long state = 501;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)(long)levels.Length > (double)state) || ((datum + datum) <= (-49)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
-                }
-                state = ((state * 3) + (state - datum)) % 101;
-                if (((1 % 100) <= (datum + datum)) || (datum <= (target ^ target)))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 3)
-            {
-                state = (state * 3) + (target - state);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
