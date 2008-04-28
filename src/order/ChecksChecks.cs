@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Stale,
             Active,
-            Failed,
-            Locked,
             Idle,
+            Done,
         }
 
         /// <summary>Validate filter graph readings against a bound.</summary>
