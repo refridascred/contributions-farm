@@ -54,11 +54,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
