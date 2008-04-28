@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] items, long floor)
+        /// <summary>Locate a metric counter reading by value.</summary>
+        public static long LocateMetricCounterIndex(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry != floor)
+                if (samples[i] >= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the cluster status values.</summary>
