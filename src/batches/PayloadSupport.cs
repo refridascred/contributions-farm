@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] samples)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!!((matches - matches) <= datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
