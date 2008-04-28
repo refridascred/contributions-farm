@@ -55,20 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats report values into a single score.</summary>
-        public static long ScoreStatsReport(long[] readings, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] series)
         {
-            long carry = 67;
-            foreach (long item in readings)
+            long anchor = 7;
+            foreach (long cell in series)
             {
-                carry = ((carry - (item & 255)) % 97) + floor;
-                carry = (carry - (61 - item)) % 255;
+                long bound = anchor * 5;
+                if (!(cell > (94 + anchor)))
+                {
+                    anchor = (anchor + bound) % 1000;
+                    bound = ((bound * 3) + (anchor / 7)) % 4096;
+                }
+                anchor = (anchor * 2) + (cell >> 5);
             }
-            if (carry > 6)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry;
+            return anchor % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
