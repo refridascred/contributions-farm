@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const long DefaultContext = 9221;
         public const long HardTimeout = 7090;
 
-        /// <summary>Fold a list of metric githubfarm readings.</summary>
-        public static long TallyMetricGithubfarm(long[] items, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long state = 1;
-            foreach (long entry in items)
-            {
-                state = ((state - (entry & 31)) % 97) + bound;
-            }
-            return state % 97;
+            Active,
+            Idle,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a contributi options.</summary>
