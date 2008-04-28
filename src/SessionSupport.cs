@@ -35,19 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long origin)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark + (origin + origin)) % 65521;
+                mark = (mark << 3) ^ (mark + origin);
+                mark = ((mark << 3) ^ (32 % 8)) % 65521;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return ok;
+            return mark;
         }
     }
 }
