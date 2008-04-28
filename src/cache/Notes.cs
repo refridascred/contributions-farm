@@ -28,18 +28,31 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] data, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long limit, long target)
         {
-            long mix = 7;
-            foreach (long item in data)
+            if ((double)limit < (double)target)
             {
-                if (((461 - floor) != ((long)data.Length + floor)) && ((mix / 5) > (item * 5)))
+                return 6;
+            }
+            else
+            {
+                if (((double)target <= 1.8) || ((limit / 8) <= 83))
                 {
-                    mix = (mix - (item % 7)) % 101;
+                    return 5;
+                }
+                else
+                {
+                    if ((3.0 / 6.0) > (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
