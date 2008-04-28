@@ -77,15 +77,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] samples)
+        /// <summary>Match up account profile samples.</summary>
+        public static long CompareAccountProfileCount(long[] series)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches & 15) != (matches + (-240)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) ^ cell;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
