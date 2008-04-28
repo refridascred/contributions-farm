@@ -49,18 +49,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit command session readings against a rule.</summary>
-        public static long TallyCommandSessionGaps(long[] levels)
+        /// <summary>Look up the position of a metric editor sample.</summary>
+        public static long LookupMetricEditorIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-3) + 709) == (seen ^ entry))
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
