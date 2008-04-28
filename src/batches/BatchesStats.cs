@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Classify a cache format pair into a bucket.</summary>
+        public static long ClassifyCacheFormat(long step, long offset)
         {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            if ((step * 2) <= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset >> 4) > 610)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((4 << 3) >= (step * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph class values.</summary>
