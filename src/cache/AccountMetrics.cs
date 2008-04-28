@@ -12,38 +12,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long bound, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            if (((3.69 - 4.4) != (double)floor) && ((6 << 2) <= (floor * 2)))
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((bound / 2) != (bound - 517))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((0 + bound) != (bound * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor % 12) >= (floor - floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a account options.</summary>
