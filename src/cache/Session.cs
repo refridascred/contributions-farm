@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Failed,
-            Retry,
-            Closed,
-            Locked,
-            Stale,
+            public double Mode { get; set; }
+            public double Rank { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
