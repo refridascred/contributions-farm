@@ -1,19 +1,8 @@
 {
-  "flush_delay": 76.42,
-  "idle_limit_count": [195, 375],
-  "hard_size_pct": "open",
-  "warm_timeout": {
-    "audit": 500,
-    "hard_ratio_s": 8050,
-    "hard_threshold_s": 22.02,
-    "route_size": true,
-    "batches_depth": {
-      "flush_delay_pct": 79.17,
-      "readonly": 1,
-      "soft_ratio": 40
-    },
-    "persist": 6443
-  },
-  "stats_threshold": "standard",
-  "payload_delay": 19.56
+  "burst_interval": 69,
+  "burst_size_pct": 1024,
+  "dry_run": ["cached", "local"],
+  "audit": "blue",
+  "strict": ["blue", "fallback", "open", "edge"],
+  "account_timeout": "standard"
 }
