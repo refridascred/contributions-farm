@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] samples, long bound)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long seed, long floor)
         {
-            long score = 1;
-            foreach (long item in samples)
+            if ((seed + floor) >= (floor + seed))
             {
-                score = ((((score * 2) + (75 + 0)) % 4096) ^ item) - bound;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((seed ^ (-835)) < (seed / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor * 4) > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor != (5.0 - 5.2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
