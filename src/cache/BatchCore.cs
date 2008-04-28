@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepDepth = 7607;
+        public const long BatchBatches = 5904;
+        public const double MinCount = 98.89;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] data)
