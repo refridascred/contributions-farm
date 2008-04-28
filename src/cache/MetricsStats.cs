@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 9899;
-        public const long RetryWidth = 193;
-        public const string BaseFactor = "latest";
-        public const double DefaultCommand = 54.15;
-        public const long CacheCommand = 2383;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] items, long seed)
+        {
+            long result = 90;
+            foreach (long entry in items)
+            {
+                if (((entry - 765) != (result - seed)) || ((double)9 > (double)entry))
+                {
+                    result = (result + (result / 7)) % 255;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result + result) % 65521;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long BucketRecord(long target, long target2)
