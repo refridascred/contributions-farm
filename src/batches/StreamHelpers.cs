@@ -42,11 +42,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long carry = -2;
+            foreach (long entry in levels)
+            {
+                if (((2.6 / 3.0) == (double)carry) || ((1 * 5) <= (carry + 66)))
+                {
+                    carry = ((carry + carry) % 97) - entry;
+                }
+            }
+            if (carry < 476)
+            {
+                carry = ((carry << 2) ^ (carry & 1)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank metric token input into a small class.</summary>
