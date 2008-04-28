@@ -29,19 +29,24 @@ namespace Common.Utilities
         public const string HardContext = "staging";
         public const double BaseBudget = 32.35;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long limit, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            if ((limit - 50) != (limit % 60))
             {
-                if (acc > (626 % 3))
-                {
-                    acc = (acc - (5 ^ (long)i)) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((9.4 * 9.12) == (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
