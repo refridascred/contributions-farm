@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public double Total { get; set; }
+            Locked,
+            Queued,
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Project the next already schema value.</summary>
