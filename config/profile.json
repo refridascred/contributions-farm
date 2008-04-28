@@ -1,7 +1,11 @@
 {
-  "sync_depth_ms": 5236,
-  "warm_retries_count": 71.11,
-  "burst_timeout_ms": false,
-  "max_limit_ms": ["cached", "open", "strict", "strict"],
-  "verbose": [213, 176]
+  "audit": {
+    "min_limit_ms": "fallback",
+    "sync_limit_s": 91.06,
+    "batch_interval_ms": false
+  },
+  "stats_delay": "green",
+  "channel_window": 9709,
+  "base_threshold_ms": "fallback",
+  "poll_capacity": false
 }
