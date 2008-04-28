@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] items, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long mark = 747;
+            foreach (long reading in series)
             {
-                if (reading < target)
+                if (mark > (4 + 81))
                 {
-                    valid = false;
+                    mark = (mark * 3) + (mark * 4);
+                }
+                else
+                {
+                    mark = (mark ^ (step - reading)) % 255;
+                }
+                if ((double)step == (3.0 - 7.0))
+                {
                     break;
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
