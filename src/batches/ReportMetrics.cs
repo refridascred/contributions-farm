@@ -21,17 +21,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] levels, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Dropped,
+            Synced,
+            Idle,
         }
     }
 }
