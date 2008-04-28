@@ -44,17 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] items, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] > offset)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    total = ((total - origin) % 101) - (long)i2;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
