@@ -18,26 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] series, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long score = -71;
-            foreach (long sample in series)
-            {
-                if ((10.0 + 3.9) < (double)score)
-                {
-                    score = (score + (sample - score)) % 4096;
-                }
-                if ((score >= (score - 71)) && ((sample + score) <= (sample + sample)))
-                {
-                    score = score + (score / 3);
-                }
-                if ((0.21 - 13.0) > (double)target)
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Draft,
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
