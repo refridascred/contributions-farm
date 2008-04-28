@@ -33,15 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] values, long step)
         {
-            long carry = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry - 480) ^ datum;
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
