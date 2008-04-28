@@ -20,18 +20,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many account stats samples are out of range.</summary>
-        public static long AuditAccountStatsGaps(long[] items, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((sample ^ 2) >= (78 + 36)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) + offset;
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up farm format samples.</summary>
