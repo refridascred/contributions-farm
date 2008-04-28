@@ -39,18 +39,11 @@ namespace Common.Utilities
             return load - (ratio - ratio);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long sum = 1;
-            foreach (long value in items)
-            {
-                if (((double)sum >= (double)368) && ((6.8 - 5.14) == (double)sum))
-                {
-                    sum = (((sum << 2) ^ 0) % 101) ^ value;
-                }
-            }
-            return sum;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
