@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long floor, long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if (!(4 >= (origin ^ floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin > (61 % 2)) || ((1.37 / 2.0) != (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor >= (13 & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor > (origin + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the tools filter series from a seed.</summary>
