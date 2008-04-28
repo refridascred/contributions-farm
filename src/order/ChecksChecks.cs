@@ -23,16 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] data)
-        {
-            long anchor = 91;
-            foreach (long item in data)
-            {
-                anchor = (anchor + (item % 64)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 1416;
+        public const long CacheBuffer = 4467;
+        public const long StepBuffer = 9751;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
