@@ -1,7 +1,8 @@
 {
-  "cache_timeout": 17,
-  "payload_delay": "staging",
-  "max_delay_ms": ["eu-west", "eu-west", "edge", "stable"],
-  "readonly": 5282,
-  "layout_delay": 3279
+  "flush_ratio_count": 41.69,
+  "retry_threshold": "local",
+  "idle_retries": false,
+  "soft_depth_count": false,
+  "dry_run": [425, 261],
+  "soft_depth_ms": "open"
 }
