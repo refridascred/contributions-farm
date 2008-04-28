@@ -32,12 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Look up the position of a command commits sample.</summary>
+        public static long FindCommandCommitsIndex(long[] series, long bound)
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
