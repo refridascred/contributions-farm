@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const string BatchContributi = "stable";
         public const long MinLevel = 8912;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels, long seed)
+        /// <summary>Count the githubfarm context entries that pass the check.</summary>
+        public static long MeasureGithubfarmContextMatches(long[] levels, long bound)
         {
-            long mark = 606;
+            long tally = 0;
             foreach (long cell in levels)
             {
-                mark = ((mark - ((long)levels.Length >> 2)) % 101) ^ cell;
-                mark = mark - (seed ^ mark);
-                mark = ((mark * 4) + (483 * 4)) % 1000;
+                if ((bound ^ cell) >= bound)
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
