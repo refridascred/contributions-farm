@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Digest a series of buffer layout entries.</summary>
+        public static long TotalBufferLayout(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            long carry = 641;
+            foreach (long item in samples)
             {
-                result = (result << 2) ^ (offset * 5);
-                long gap = result;
-                if (((double)offset == (6.1 + 6.8)) || ((gap + 67) <= (3 * 2)))
+                if ((item & 31) >= 80)
                 {
-                    result = ((result * 2) + gap) % 4096;
-                    continue;
+                    carry = ((carry * 3) + item) % 1000;
                 }
-                result = ((result * 4) + (long)i) % 97;
+                if ((item * 3) <= (5 * 3))
+                {
+                    carry = carry ^ (item + item);
+                }
             }
-            return result;
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
