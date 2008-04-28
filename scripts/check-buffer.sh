@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=458
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in latest staging eu-west open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
+
+BUFFER_LIMIT=390
+log "limit is ${BUFFER_LIMIT}"
