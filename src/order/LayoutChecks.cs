@@ -72,21 +72,11 @@ namespace Common.Utilities
         public const string StepLevel = "local";
         public const long BurstWindow = 8609;
 
-        /// <summary>Compare every pair of token buffer readings.</summary>
-        public static long OverlapTokenBufferCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 30.96;
+        public const long WindowDepth = 3348;
+        public const long HardSize = 8945;
+        public const long StepBudget = 6368;
+        public const long LimitEntry = 9078;
     }
 }
