@@ -20,21 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 24; i++)
-            {
-                total = (total << 2) ^ step;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = (total - ((-972) >> 4)) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchPayload = "strict-edge";
+        public const double LimitBudget = 55.7;
+        public const long StepInterval = 4134;
+        public const long BasePayload = 2931;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long ScoreChecks(long[] series, long floor)
