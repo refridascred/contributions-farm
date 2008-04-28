@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a session context reading.</summary>
-        public static double ProjectSessionContext(double bias, double bias2)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double scale, double span)
         {
-            double weight = (double)(99 - 11);
-            if (weight > (bias * 6.74))
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (bias2 + bias2)) - (double)(long)i;
-            }
-            return weight + weight;
+            double bias = scale;
+            return (bias - (double)836) + span;
         }
 
         /// <summary>Blend two stream measurements.</summary>
