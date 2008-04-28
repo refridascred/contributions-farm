@@ -57,10 +57,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 9086;
-        public const long SoftFactor = 5866;
-        public const double MaxGraph = 81.96;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
