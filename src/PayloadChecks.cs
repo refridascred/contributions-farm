@@ -47,15 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Check that every graph channel entry stays within the limit.</summary>
+        public static bool ValidateGraphChannelLimits(long[] samples, long floor)
         {
-            long acc = 9;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                acc = (acc - (2 - acc)) - item;
+                if (value != floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Hold a format summary.</summary>
