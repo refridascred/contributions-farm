@@ -85,15 +85,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order checks value from a seed.</summary>
-        public static long SeriesOrderChecks(long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (((reading + tally) == (29 + 64)) || (((double)tally < (0.18 - 2.1)) || (16 > (tally & 1))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
