@@ -32,12 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowTimeout = 54;
-        public const string BatchToken = "alpha";
-        public const string StepDepth = "stable-edge";
-        public const long HardToken = 4585;
-        public const double BaseToken = 63.28;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Failed,
+            Locked,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Blend two context stream measurements.</summary>
         public static double SmoothContextStream(double rate, double span)
