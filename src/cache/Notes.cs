@@ -16,11 +16,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySpan = 327;
-        public const string DefaultBudget = "strict";
-        public const double LimitLevel = 84.17;
-        public const long WindowSchema = 120;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((datum << 3) <= 0)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double rate, double offset)
