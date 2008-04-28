@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits - hits) <= hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
