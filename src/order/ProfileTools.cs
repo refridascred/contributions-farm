@@ -28,12 +28,19 @@ namespace Common.Utilities
         public const long StepLevel = 4479;
         public const string StepReport = "alpha-1";
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Validate route buffer readings against a bound.</summary>
+        public static bool GuardRouteBufferRange(long[] items, long target)
         {
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
