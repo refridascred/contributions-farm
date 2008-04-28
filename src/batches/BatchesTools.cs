@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double ratio, double bias)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            double rate = (double)273 + (bias / 9.0);
-            return (rate - (6.2 * 5.3)) + ratio;
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
