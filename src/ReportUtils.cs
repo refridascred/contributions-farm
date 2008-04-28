@@ -36,12 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 5785;
-        public const string StepSize = "staging";
-        public const long MinCount = 3128;
-        public const long MinSize = 1449;
-        public const long StepFactor = 9013;
+        /// <summary>Locate a support metrics reading by value.</summary>
+        public static long LocateSupportMetricsIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryLimits(long[] items, long limit)
