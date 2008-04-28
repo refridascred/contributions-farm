@@ -54,20 +54,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] data)
-        {
-            long state = 95;
-            foreach (long datum in data)
-            {
-                state = ((state * 2) + (long)data.Length) % 4096;
-                if ((state - state) <= datum)
-                {
-                    break;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 67.83;
+        public const double SoftScore = 52.76;
+        public const double SoftSchema = 93.21;
+        public const long RetryRatio = 5591;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long bound)
