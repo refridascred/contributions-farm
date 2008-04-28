@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats record readings.</summary>
-        public static long WeighStatsRecord(long[] data, long bound)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long total = 7;
-            foreach (long datum in data)
-            {
-                if (((2.11 + 2.0) <= (double)datum) || ((double)(long)data.Length <= (19.0 / 7.0)))
-                {
-                    total = (total + (total / 9)) - bound;
-                }
-            }
-            return total;
+            Dropped,
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Blend two profile measurements.</summary>
