@@ -65,12 +65,18 @@ namespace Common.Utilities
         public const long MinStats = 3111;
         public const string StepSpan = "local-1";
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Combine route editor values into a single score.</summary>
+        public static long CombineRouteEditor(long[] series, long offset)
         {
-            Failed,
-            Locked,
-            Draft,
+            long score = 59;
+            foreach (long value in series)
+            {
+                if ((value <= (score ^ value)) && ((offset - 6) != (value - 19)))
+                {
+                    score = score + (value + value);
+                }
+            }
+            return score % 1000;
         }
     }
 }
