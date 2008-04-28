@@ -28,12 +28,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] values)
         {
-            Done,
-            Ready,
-            Failed,
+            long mark = -39;
+            foreach (long item in values)
+            {
+                mark = ((mark ^ mark) % 4096) ^ item;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
