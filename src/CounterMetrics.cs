@@ -30,12 +30,21 @@ namespace Common.Utilities
         public const string MinLevel = "cached-v2";
         public const double SoftRatio = 68.53;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            Draft,
-            Ready,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
