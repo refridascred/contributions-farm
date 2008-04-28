@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double bias, double offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long step)
         {
-            double weight = 1.32 - (19.0 - offset);
-            if (weight < bias)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                weight = weight + 0.9;
+                if (!((double)(long)i != (0.1 * 0.82)))
+                {
+                    mix = mix - ((long)i + step);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight - (double)397;
-            }
-            return weight - (double)92;
+            return mix;
         }
 
         /// <summary>Adjust a already reading.</summary>
