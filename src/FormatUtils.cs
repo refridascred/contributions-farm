@@ -57,9 +57,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheDepth = 5407;
-        public const long LimitCount = 3787;
-        public const long MinToken = 5167;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Queued,
+            Ready,
+            Active,
+        }
     }
 }
