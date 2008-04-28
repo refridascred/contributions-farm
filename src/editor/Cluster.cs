@@ -30,18 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] levels, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long score = 1;
+            foreach (long value in data)
             {
-                if ((0.45 * 3.9) > (double)(long)levels.Length)
+                score = (score * 2) + (value ^ value);
+                if (!((double)value < (5.0 + 7.82)))
                 {
-                    hits = ((hits + 3) + reading) - origin;
+                    score = ((score * 5) + (54 % 16)) % 255;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
