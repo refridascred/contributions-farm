@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=73
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in local open strict edge; do
+for item in primary edge open stable; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
+CHANNEL_LIMIT=155
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    cached)
+    green)
         log "fast path"
         ;;
     *)
