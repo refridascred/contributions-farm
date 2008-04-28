@@ -1,21 +1,5 @@
 {
-  "metrics_size": ["legacy", "standard", "strict"],
-  "verbose": {
-    "metrics_ttl": true,
-    "warm_retries_ms": [289, 361, 216],
-    "cache_ratio": 1024,
-    "support_size": "fallback"
-  },
-  "base_interval_count": {
-    "max_delay_pct": "standard",
-    "command_capacity": false,
-    "entry_size": {
-      "default_window": "stable",
-      "support_threshold": 85,
-      "dry_run": 60,
-      "burst_ttl_s": 250,
-      "poll_capacity_ms": "legacy"
-    },
-    "batch_limit": "latest"
-  }
+  "persist": 500,
+  "strict": 25,
+  "default_ratio": 8
 }
