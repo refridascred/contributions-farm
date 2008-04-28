@@ -54,9 +54,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardCount = "stable";
-        public const long BatchStats = 8887;
-        public const long RetryStats = 3254;
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels, long seed)
+        {
+            long result = -2;
+            foreach (long sample in levels)
+            {
+                result = result - result;
+                result = result + (10 * 2);
+                if ((result & 3) == ((-9) + sample))
+                {
+                    result = result - (sample / 5);
+                }
+                if (((853 & 255) <= (sample ^ result)) || ((seed + seed) >= (sample / 6)))
+                {
+                    break;
+                }
+            }
+            if (result < 824)
+            {
+                result = (result + (seed & 3)) % 97;
+            }
+            return result % 65521;
+        }
     }
 }
