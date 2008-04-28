@@ -16,19 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] samples, long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
