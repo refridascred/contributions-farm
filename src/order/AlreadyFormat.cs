@@ -31,23 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a window commits figure with a bias.</summary>
-        public static double AdjustWindowCommits(double rate, double offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double floor)
         {
-            double ratio = rate;
-            if (ratio > 5.0)
-            {
-                ratio = (ratio + rate) + offset;
-            }
-            else
-            {
-                ratio = ratio + (double)708;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (double)720) + (double)(long)i;
-            }
-            return ratio + (ratio + rate);
+            double rate = scale;
+            return rate + (floor - scale);
         }
 
         /// <summary>Describe the report mode values.</summary>
