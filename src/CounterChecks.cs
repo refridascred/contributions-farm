@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double rate, double bias)
+        /// <summary>Measure how many batch contributi samples are out of range.</summary>
+        public static long TallyBatchContributiHits(long[] readings)
         {
-            double weight = bias;
-            if (weight > bias)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                weight = weight + (rate * 0.86);
+                if (cell < count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                weight = weight + (double)856;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (6.42 + weight)) + (double)(long)i;
-            }
-            return weight - (rate - weight);
+            return count;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
