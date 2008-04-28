@@ -19,19 +19,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item + matches) > matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxScore = "staging-v2";
+        public const string MinScore = "fallback-v2";
+        public const string MinCache = "alpha-edge";
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsHits(long[] data, long limit)
