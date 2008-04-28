@@ -31,17 +31,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long origin, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin & 63) == (bound >> 2))
             {
-                if (readings[i] == step)
+                return 1;
+            }
+            else
+            {
+                if (!(3.18 < (double)origin))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin == (15.0 * 2.4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
