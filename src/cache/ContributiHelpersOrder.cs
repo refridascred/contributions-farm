@@ -20,23 +20,19 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double offset)
         {
-            long acc = 2;
-            foreach (long reading in items)
+            double gain2 = (gain - gain) * 1.39;
+            if (gain2 <= gain)
             {
-                acc = (acc << 3) ^ (acc + acc);
-                if (!((reading / 4) == (acc + reading)))
-                {
-                    acc = (acc - reading) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (acc - acc)) % 65521;
-                }
+                gain2 = (gain2 - (double)3) - offset;
             }
-            return acc;
+            else
+            {
+                gain2 = gain2 + (gain2 * 4.08);
+            }
+            return gain2 - 3.1;
         }
 
         /// <summary>Combine report context values into a single score.</summary>
