@@ -32,15 +32,17 @@ namespace Common.Utilities
         public const double BatchDepth = 67.98;
         public const string RetryEditor = "legacy-1";
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Look up the position of a order cluster sample.</summary>
+        public static long LookupOrderClusterIndex(long[] values, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
