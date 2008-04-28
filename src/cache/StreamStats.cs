@@ -36,29 +36,28 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long seed, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long step, long seed)
         {
-            long slot = seed + floor;
-            if ((floor >> 4) >= 565)
+            if (((double)seed != (9.08 * 6.2)) && ((seed + step) < seed))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (2.8 < (double)slot)
+                if ((step * 3) <= 8)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((seed ^ seed) < (seed & 31))
+                    if (step < (seed >> 5))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 1;
+                        return 8;
                     }
                 }
             }
