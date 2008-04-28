@@ -21,19 +21,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 4234;
+        public const double BurstTools = 48.31;
+        public const long SoftTools = 6386;
+        public const double WindowTools = 2.47;
     }
 }
