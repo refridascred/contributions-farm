@@ -49,17 +49,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a metric editor sample.</summary>
-        public static long LookupMetricEditorIndex(long[] samples, long seed)
+        /// <summary>Measure how many stream notes samples are out of range.</summary>
+        public static long CountStreamNotesOutliers(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                if ((9.0 - 13.0) < 2.86)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) - entry) - origin;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
