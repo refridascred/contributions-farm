@@ -44,13 +44,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Roll a buffer already counter forward.</summary>
+        public static long DeriveBufferAlready(long seed)
         {
-            Stale,
-            Pending,
-            Paused,
-            Done,
+            long score = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
