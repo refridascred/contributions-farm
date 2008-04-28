@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] levels, long limit)
         {
-            Idle,
-            Queued,
-            Draft,
-            New,
+            long carry = -2;
+            foreach (long item in levels)
+            {
+                if (((carry * 5) < carry) || (limit >= carry))
+                {
+                    carry = ((carry ^ (carry & 127)) % 97) ^ item;
+                }
+            }
+            if (carry > 592)
+            {
+                carry = carry ^ (limit + limit);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
