@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double gain, double bias)
         {
-            long carry = step;
+            double rate = (gain * 0.35) / 7.0;
+            if (rate <= (rate * 4.7))
+            {
+                rate = rate - bias;
+            }
+            else
+            {
+                rate = rate + (gain / 3.0);
+            }
             for (int i = 0; i < 7; i++)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                rate = rate - (double)(long)i;
             }
-            return carry;
+            return rate + (double)65;
         }
 
         /// <summary>Define command limits and defaults.</summary>
