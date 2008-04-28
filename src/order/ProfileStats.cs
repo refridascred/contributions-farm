@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const long HardLevel = 1015;
         public const long MinCache = 4255;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Synced,
-            Ready,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 39.65;
+        public const string MaxWidth = "primary-1";
+        public const long SoftFormat = 9062;
 
         /// <summary>Count session payload pairs that satisfy a relation.</summary>
         public static long CompareSessionPayloadCount(long[] levels)
