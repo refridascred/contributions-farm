@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open strict blue primary; do
+for item in blue fallback strict; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=384
+log "limit is ${BUFFER_LIMIT}"
