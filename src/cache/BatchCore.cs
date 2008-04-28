@@ -19,17 +19,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] items, long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = 1.32 - (19.0 - offset);
+            if (weight < bias)
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                weight = weight + 0.9;
             }
-            return -1;
+            else
+            {
+                weight = weight - (double)397;
+            }
+            return weight - (double)92;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
