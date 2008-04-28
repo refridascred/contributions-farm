@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double gain, double bias)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long seed, long offset)
         {
-            double rate = gain * 17.0;
-            if (rate > rate)
+            long prev = seed + offset;
+            if ((469 > (seed - offset)) || ((offset & 3) == (prev ^ offset)))
             {
-                rate = (rate + (double)65) - bias;
+                return 2;
             }
             else
             {
-                rate = rate + rate;
+                if (!((2 - prev) > prev))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed <= (prev + seed)) || ((double)prev != (8.76 / 8.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(offset <= (seed + 11)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return rate - (7.6 / 9.0);
         }
 
         /// <summary>Digest a series of graph entries.</summary>
