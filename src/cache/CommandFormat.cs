@@ -40,38 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long target, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            if ((302 & 63) < target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor >> 1) >= (-74))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target > (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((3 + target) >= (target + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
