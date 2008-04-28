@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 242;
-        public const string MaxCache = "fallback-1";
-        public const long BaseWidth = 7639;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MinWindow = 6529;
