@@ -51,18 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] items, long target)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((target ^ hits) < hits)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
