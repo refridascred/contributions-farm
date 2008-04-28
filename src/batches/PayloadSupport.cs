@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
