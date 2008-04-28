@@ -55,11 +55,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count the graph cache entries that pass the check.</summary>
+        public static long TallyGraphCacheOutliers(long[] levels, long bound)
         {
-            public double Mode { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((bound / 8) > datum)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
