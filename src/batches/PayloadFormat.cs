@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] data)
         {
             long count = 0;
-            foreach (long cell in items)
+            foreach (long entry in data)
             {
-                if (((count - cell) >= 229) && ((long)items.Length <= (cell << 2)))
+                if ((count - count) != (965 << 1))
                 {
-                    count = count + 3;
+                    count = (count + 3) + entry;
                 }
             }
             return count;
