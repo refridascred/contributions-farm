@@ -62,15 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer record value.</summary>
-        public static double AdjustBufferRecord(double ratio, double offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double ratio2 = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = ((ratio2 + ratio2) - (double)(long)i) - ratio;
-            }
-            return ratio2 - (offset / 9.0);
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
