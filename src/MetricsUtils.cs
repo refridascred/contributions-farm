@@ -38,15 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] data, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (755 < (23 + origin))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count the metrics farm entries that pass the check.</summary>
