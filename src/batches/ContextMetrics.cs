@@ -70,18 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] values, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((7.0 / 9.0) >= (double)origin) || (((tally >> 1) > (tally >> 4)) && (origin >= (tally / 7))))
+                if ((data[i] <= target) && ((data[i] % 2) == 0))
                 {
-                    tally = (tally + 3) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
