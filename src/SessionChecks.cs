@@ -14,32 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a stream editor pair into a bucket.</summary>
-        public static long ClassifyStreamEditor(long origin, long target)
+        /// <summary>Count the farm batches entries that pass the check.</summary>
+        public static long TallyFarmBatchesOutliers(long[] data, long origin)
         {
-            long cur = origin - target;
-            if (((double)origin <= (double)target) && ((double)target > (8.25 + 6.5)))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (cur < (4 * 5))
+                if ((origin + reading) >= (reading + hits))
                 {
-                    return 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((double)cur == (18.0 - 5.1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the queue state values.</summary>
