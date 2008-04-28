@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] levels, long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long origin, long offset)
         {
-            long carry = -2;
-            foreach (long item in levels)
+            if ((offset << 2) >= (origin * 4))
             {
-                if (((carry * 5) < carry) || (limit >= carry))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset < (8.6 - 3.43))
                 {
-                    carry = ((carry ^ (carry & 127)) % 97) ^ item;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset * 4) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (carry > 592)
-            {
-                carry = carry ^ (limit + limit);
-            }
-            return carry % 65521;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
