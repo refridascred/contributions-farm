@@ -36,18 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph tools entries that pass the check.</summary>
-        public static long TallyGraphToolsMatches(long[] levels, long origin)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)seen > (16.0 / 7.0))
-                {
-                    seen = ((seen + 1) ^ reading) + origin;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
     }
 }
