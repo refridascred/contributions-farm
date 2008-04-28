@@ -49,23 +49,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (!((5 << 3) < (long)i))
+                if ((double)26 <= (double)tally)
                 {
-                    mix = ((mix * 4) + (long)i) % 65521;
+                    tally = (tally + 3) + datum;
                 }
-                if ((double)seed > (2.0 / 4.0))
-                {
-                    mix = mix ^ seed;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
     }
 }
