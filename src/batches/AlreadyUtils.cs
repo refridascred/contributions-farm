@@ -81,21 +81,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                long cur = 4 >> 1;
+                if (!(anchor < (cur / 6)))
                 {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + (origin + (long)i)) % 255;
                 }
+                anchor = (anchor << 3) ^ origin;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
