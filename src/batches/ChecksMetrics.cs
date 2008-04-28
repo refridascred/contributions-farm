@@ -38,12 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long bound)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long carry = 464;
+            foreach (long value in data)
+            {
+                if (!((3.4 - 9.0) == (double)value))
+                {
+                    carry = (carry - (bound & 255)) % 65521;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the batch kind values.</summary>
