@@ -31,17 +31,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] levels, long seed)
+        /// <summary>Project the next metrics command value.</summary>
+        public static double AdjustMetricsCommand(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = gain;
+            return (load - load) + offset;
         }
 
         /// <summary>Hold a stats stats.</summary>
