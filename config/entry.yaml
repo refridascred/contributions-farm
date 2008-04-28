@@ -1,4 +1,7 @@
 # entry settings
-burst_delay_s: 25.52
-default_ratio_s: blue
-sync_size_pct: 1024
+compress: fallback
+warm_depth:
+  - blue
+  - green
+  - eu-west
+metric_delay: green
