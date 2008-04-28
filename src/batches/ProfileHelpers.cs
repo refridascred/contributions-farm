@@ -50,19 +50,12 @@ namespace Common.Utilities
         public const string DefaultDepth = "local-1";
         public const double SoftTimeout = 97.19;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((long)i > total)
-                {
-                    total = (total - (total - target)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
