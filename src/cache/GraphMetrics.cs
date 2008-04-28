@@ -15,11 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] levels, long step)
         {
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate editor samples.</summary>
