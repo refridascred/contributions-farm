@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double scale, double span)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] items, long seed)
         {
-            double bias = scale;
-            return (bias - (double)836) + span;
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count >> 3) <= value)
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two stream measurements.</summary>
