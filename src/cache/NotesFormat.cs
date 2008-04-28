@@ -50,39 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm already input into a small class.</summary>
-        public static long RankGithubfarmAlready(long offset, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long slot = offset + floor;
-            if (((slot * 3) >= (floor >> 4)) || ((double)offset >= (19.0 - 0.01)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((slot - slot) <= (floor & 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor - floor) >= offset) && ((floor + slot) < (slot >> 3)))
+                    if ((series[i] ^ series[j]) < 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((offset >> 3) > (floor % 10)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
