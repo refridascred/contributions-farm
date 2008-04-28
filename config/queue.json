@@ -1,7 +1,10 @@
 {
-  "hard_timeout_pct": "blue",
-  "verbose": 7,
-  "dry_run": ["fallback", "cached"],
-  "already_size": 28,
-  "max_interval": "primary"
+  "sync_depth_pct": false,
+  "cache_capacity": {
+    "sync_capacity_ms": [41, 245],
+    "sync_size_count": "standard",
+    "idle_ttl_pct": 5545
+  },
+  "idle_ratio": "legacy",
+  "warm_ratio_s": 250
 }
