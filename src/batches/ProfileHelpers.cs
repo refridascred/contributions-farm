@@ -52,16 +52,11 @@ namespace Common.Utilities
         public const string DefaultDepth = "local-1";
         public const double SoftTimeout = 97.19;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double gain, double span)
-        {
-            double weight = gain * 5.0;
-            if (weight > (weight - gain))
-            {
-                weight = weight + (double)211;
-            }
-            return weight + span;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftSpan = 9014;
+        public const string BatchAlready = "staging-v2";
+        public const string HardTimeout = "standard";
+        public const long BatchBudget = 1884;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] samples, long seed)
