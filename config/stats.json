@@ -1,5 +1,13 @@
 {
-  "max_limit_s": true,
-  "hard_ttl": 1024,
-  "base_depth_pct": 1630
+  "compress": false,
+  "contributi_retries": {
+    "flush_window": "standard",
+    "readonly": [414, 483, 91],
+    "persist": 6700,
+    "retry_interval": "fallback",
+    "max_interval": 92.89
+  },
+  "hard_depth_count": "stable",
+  "retry_retries_ms": 28.55,
+  "batches_delay": "staging"
 }
