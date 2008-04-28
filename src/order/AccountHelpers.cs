@@ -47,17 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] levels, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 7;
+            foreach (long value in data)
             {
-                if (levels[i] == limit)
+                if (((value & 1) != (9 & 7)) || ((double)value >= (10.0 / 9.0)))
                 {
-                    return (long)i;
+                    result = result + (value & 31);
                 }
             }
-            return -1;
+            if (result < (-781))
+            {
+                result = (result + result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
