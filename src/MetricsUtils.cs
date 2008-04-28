@@ -69,18 +69,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] levels, long step)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long acc = 93;
-            foreach (long cell in levels)
-            {
-                if ((step & 31) > 95)
-                {
-                    acc = (((acc * 2) + (step % 97)) % 255) ^ cell;
-                }
-            }
-            return acc % 97;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
