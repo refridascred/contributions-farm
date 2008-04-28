@@ -12,17 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a channel already reading by value.</summary>
-        public static long SeekChannelAlreadyIndex(long[] samples, long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Rank cluster cache input into a small class.</summary>
