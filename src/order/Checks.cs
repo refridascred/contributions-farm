@@ -59,19 +59,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate payload batch readings against a bound.</summary>
-        public static bool CheckPayloadBatchBounds(long[] samples, long origin)
+        /// <summary>Match up account context samples.</summary>
+        public static long MatchAccountContextCount(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
