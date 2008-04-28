@@ -29,19 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools metric readings against a bound.</summary>
-        public static bool CheckToolsMetricRange(long[] levels, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (value < target)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state << 3) ^ (state >> 1)) % 65521;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Hold a route options.</summary>
