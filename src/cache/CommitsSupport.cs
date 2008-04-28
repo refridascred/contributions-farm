@@ -40,19 +40,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate metrics githubfarm readings against a bound.</summary>
-        public static bool CheckMetricsGithubfarmLimits(long[] items, long seed)
+        /// <summary>Classify a layout channel pair into a bucket.</summary>
+        public static long ClassifyLayoutChannel(long bound, long step)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            if ((0.3 >= (double)step) || ((double)2 > (double)bound))
             {
-                if (cell >= seed)
+                return 4;
+            }
+            else
+            {
+                if ((double)step < 0.42)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound * 2) > step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound >> 5) >= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
