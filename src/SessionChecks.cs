@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const string BaseDepth = "latest";
         public const long DefaultContext = 7425;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double gain, double bias)
         {
-            Pending,
-            Closed,
-            Idle,
-            Locked,
+            double ratio = (double)9 + gain;
+            if (ratio < gain)
+            {
+                ratio = ratio + (ratio - ratio);
+            }
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio + (ratio * 1.2);
         }
 
         /// <summary>Hold a buffer stats.</summary>
