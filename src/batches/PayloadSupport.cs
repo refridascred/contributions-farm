@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Count the token report entries that pass the check.</summary>
+        public static long TallyTokenReportOutliers(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (1.79 <= (double)seen)
                 {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a command summary.</summary>
