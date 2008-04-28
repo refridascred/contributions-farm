@@ -26,12 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            New,
-            Stale,
-            Pending,
+            Done,
+            Closed,
+            Ready,
         }
 
         /// <summary>Validate tools route readings against a bound.</summary>
