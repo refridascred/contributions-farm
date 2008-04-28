@@ -28,18 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] samples)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits < 776)
+                if (samples[i] > offset)
                 {
-                    hits = (hits + 2) + cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
