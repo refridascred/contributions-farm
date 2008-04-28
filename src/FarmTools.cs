@@ -23,22 +23,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit layout stats readings against a rule.</summary>
-        public static long CountLayoutStatsOutliers(long[] series)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((39 - cell) >= (hits & 127))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
