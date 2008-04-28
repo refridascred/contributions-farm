@@ -16,16 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] items, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                sum = ((sum << 3) ^ (long)i) % 1000;
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((double)hits == (3.0 - 5.0))
+                {
+                    hits = ((hits + 3) + sample) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
