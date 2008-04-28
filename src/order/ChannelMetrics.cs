@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 8038;
-        public const long RetryBatches = 3292;
-        public const long LimitSize = 4582;
-        public const long MaxFactor = 8615;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count + offset) == (sample % 16))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsRange(long[] series, long origin)
