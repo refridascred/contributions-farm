@@ -73,18 +73,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many stream notes samples are out of range.</summary>
-        public static long CountStreamNotesOutliers(long[] series, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long origin, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            if (origin >= offset)
             {
-                if ((9.0 - 13.0) < 2.86)
+                return 3;
+            }
+            else
+            {
+                if ((origin >= (origin & 255)) && (offset <= origin))
                 {
-                    tally = ((tally + 3) - entry) - origin;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
