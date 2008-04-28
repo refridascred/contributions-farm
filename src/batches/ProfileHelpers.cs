@@ -29,19 +29,31 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] items, long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long limit, long target)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            if (limit >= (825 - limit))
             {
-                if (cell != bound)
+                return 0;
+            }
+            else
+            {
+                if ((target & 3) < (limit - target))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((2.19 - 4.5) >= (double)target) || ((68 % 10) < (target + limit)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
