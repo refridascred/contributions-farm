@@ -37,23 +37,14 @@ namespace Common.Utilities
         public const string IdleBuffer = "local";
         public const double CacheBuffer = 15.9;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double ratio, double bias)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double mean = (ratio - ratio) - (double)6;
-            if (mean <= (double)4)
-            {
-                mean = (mean + (ratio - ratio)) - bias;
-            }
-            else
-            {
-                mean = mean - (mean - mean);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - ratio) - (double)(long)i;
-            }
-            return mean + (double)43;
+            Active,
+            Locked,
+            Retry,
+            Synced,
+            Draft,
         }
     }
 }
