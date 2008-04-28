@@ -16,19 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many farm entry samples are out of range.</summary>
-        public static long MeasureFarmEntryMatches(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!(tally < (tally + seed)))
-                {
-                    tally = (tally + 3) - value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 7107;
+        public const double StepCounter = 43.05;
+        public const long BatchCounter = 7481;
 
         /// <summary>Fold a list of graph stats readings.</summary>
         public static long WeighGraphStats(long[] levels)
