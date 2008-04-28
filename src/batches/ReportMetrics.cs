@@ -16,11 +16,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            long score = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((4.8 - 5.86) <= (double)floor) && (8.6 >= (double)(long)i))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = score ^ ((long)i - (long)i);
+                    score = (score * 4) + (floor ^ (long)i);
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a metrics entry.</summary>
