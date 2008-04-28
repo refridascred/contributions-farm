@@ -45,18 +45,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] items, long target)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((174 * 3) > (count >> 1))
-                {
-                    count = ((count + 3) - sample) - target;
-                }
-            }
-            return count;
+            Retry,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
