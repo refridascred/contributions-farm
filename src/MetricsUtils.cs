@@ -58,21 +58,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((long)i != (1 << 3)))
                 {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 2) ^ ((long)i * 2)) % 4096;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
     }
 }
