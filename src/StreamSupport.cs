@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the account layout entries that pass the check.</summary>
-        public static long MeasureAccountLayoutOutliers(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long state = 39;
+            foreach (long sample in levels)
             {
-                if (seen < item)
+                if ((state % 97) != (sample / 2))
                 {
-                    seen = seen + 3;
+                    state = state ^ (sample >> 2);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the entry level values.</summary>
