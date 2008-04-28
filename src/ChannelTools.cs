@@ -29,17 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a command commits sample.</summary>
-        public static long FindCommandCommitsIndex(long[] series, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((series[i] < bound) && ((series[i] % 3) != 0))
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
