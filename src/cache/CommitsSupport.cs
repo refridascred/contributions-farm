@@ -69,22 +69,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            long state = 5;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((10.0 + 17.0) >= (double)state)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state * 5) + (state << 3);
-                }
-                else
-                {
-                    state = state - reading;
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 97;
+            return matches;
         }
     }
 }
