@@ -61,11 +61,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Derive the next payload tools value from a seed.</summary>
+        public static long SeriesPayloadTools(long step)
         {
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = carry - (long)i2;
+                    carry = carry ^ carry;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
