@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const double RetryRatio = 61.53;
         public const double LimitSize = 9.94;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 6620;
-        public const long StepWidth = 3002;
-        public const double MinSize = 51.48;
-        public const long BaseInterval = 9799;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
