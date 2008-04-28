@@ -5,31 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long target, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            if ((floor % 64) > (floor << 3))
+            long sum = 91;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + floor) < target)
+                if (298 > ((long)items.Length - sum))
                 {
-                    return 2;
+                    sum = sum ^ 9;
                 }
                 else
                 {
-                    if (target > 36)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = ((sum << 3) ^ (item * 3)) % 97;
+                }
+                if (((double)item != (4.57 / 4.0)) || ((sum << 3) > (item - item)))
+                {
+                    break;
                 }
             }
+            if (sum > 1)
+            {
+                sum = (sum + (sum - sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
