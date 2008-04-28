@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable fallback open; do
+for item in stable edge strict open; do
     log "checking ${item}"
 done
 
