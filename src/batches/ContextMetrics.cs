@@ -17,22 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the payload commits entries that pass the check.</summary>
-        public static long TallyPayloadCommitsMatches(long[] items, long bound)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)bound >= 7.4)
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
