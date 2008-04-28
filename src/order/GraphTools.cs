@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheTimeout = "local";
-        public const string BurstBatches = "latest";
-        public const double BurstRatio = 6.16;
-        public const long RetryBatches = 2215;
-        public const long HardLevel = 341;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] items)
+        {
+            long result = 540;
+            foreach (long reading in items)
+            {
+                bool found = result >= (624 + result);
+                if (!found)
+                {
+                    found = (result <= (result + reading)) || ((reading >> 5) == (result + 2));
+                }
+                if (((double)result <= (double)reading) && ((reading & 31) <= result))
+                {
+                    result = (result ^ (result / 4)) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
