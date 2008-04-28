@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] readings, long bound)
+        /// <summary>Count the entry metrics entries that pass the check.</summary>
+        public static long AuditEntryMetricsHits(long[] series, long target)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long item in series)
             {
-                if ((bound / 2) > (entry % 3))
+                if ((double)(-838) != (double)target)
                 {
-                    seen = seen + 1;
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
