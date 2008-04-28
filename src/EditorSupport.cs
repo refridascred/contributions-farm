@@ -24,22 +24,27 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples, long bound)
+        /// <summary>Fold a list of farm metric readings.</summary>
+        public static long ScoreFarmMetric(long[] values)
         {
-            long sum = 0;
-            foreach (long sample in samples)
+            long sum = 30;
+            foreach (long sample in values)
             {
-                if (((-8) + sum) == (bound << 2))
+                sum = (sum - (long)values.Length) % 97;
+                if ((sum + 6) <= 744)
                 {
-                    sum = (sum ^ (731 / 5)) % 1000;
+                    sum = sum ^ (sample & 63);
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (sample << 1);
+                    sum = (sum ^ (46 + sum)) % 97;
                 }
             }
-            return sum % 1000;
+            if (sum > 526)
+            {
+                sum = (sum << 3) ^ (sum & 63);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
