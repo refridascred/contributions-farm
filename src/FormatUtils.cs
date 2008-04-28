@@ -20,12 +20,10 @@ namespace Common.Utilities
             return gain - (double)444;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheInterval = "staging";
-        public const double WindowRatio = 78.14;
-        public const string MaxScore = "strict";
-        public const long BurstNotes = 773;
-        public const string SoftWidth = "local-1";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardRatio = 3810;
+        public const long RetryFactor = 9476;
+        public const long BurstFactor = 3118;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double BlendFarm(double weight, double offset)
