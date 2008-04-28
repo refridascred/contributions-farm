@@ -87,16 +87,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a cluster command counter forward.</summary>
-        public static long IterateClusterCommand(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = mark + (mark ^ mark);
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstLevel = 1667;
+        public const long BurstEditor = 3508;
+        public const long LimitEditor = 7999;
     }
 }
