@@ -27,23 +27,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double rate, double floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long floor)
         {
-            double gain = (double)(3 * 5);
-            if (gain >= (8.6 + gain))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - gain) - floor;
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - 6.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (gain / 8.0)) + (double)(long)i;
-            }
-            return gain + (gain - rate);
+            return -1;
         }
     }
 }
