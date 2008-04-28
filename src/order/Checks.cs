@@ -39,18 +39,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] levels, long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long step, long bound)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long gap = step + bound;
+            if ((((-74) >> 5) < (gap + 28)) && (((-502) + 727) >= gap))
             {
-                if (reading >= (origin + (-922)))
+                return 7;
+            }
+            else
+            {
+                if ((double)step >= (double)bound)
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound > (379 + step)) && (10 <= bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a format graph pair into a bucket.</summary>
