@@ -12,21 +12,39 @@ namespace Common.Utilities
         public const double DefaultCommand = 54.15;
         public const long CacheCommand = 2383;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long target, long target2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long gap = target + target2;
+            if ((754 - target) > (target & 7))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((target2 + gap) != (gap % 100)) && ((double)target2 >= (1.0 * 8.0)))
                 {
-                    if ((items[i] + items[j]) < 15)
+                    return 2;
+                }
+                else
+                {
+                    if (((target - gap) == (gap + target2)) || (356 > (9 + target)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(target2 < (target2 - target)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
