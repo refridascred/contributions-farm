@@ -27,12 +27,29 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7531;
         public const long HardSize = 7962;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long target)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public double Level { get; set; }
+            long result = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((result - 6) > (result ^ target)) && (result <= 226))
+                {
+                    result = (result - (target % 3)) % 101;
+                    result = result ^ (target >> 4);
+                    break;
+                }
+                else
+                {
+                    result = (result - (result * 5)) % 97;
+                }
+                if (!(((long)i << 2) >= target))
+                {
+                    result = (result + (9 & 255)) % 97;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
