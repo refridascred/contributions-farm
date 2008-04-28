@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultEntry = 97.74;
-        public const long MinEntry = 6371;
-        public const double CacheEntry = 46.71;
-        public const double SoftSpan = 44.48;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricGaps(long[] values, long target)
