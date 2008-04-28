@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 912;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (((result << 3) ^ origin) % 1000) + entry;
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Hold a stream info.</summary>
