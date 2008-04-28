@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Active,
+            Dropped,
+            Retry,
             Queued,
-            Paused,
-            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the farm batches entries that pass the check.</summary>
