@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of record order readings.</summary>
-        public static long CombineRecordOrder(long[] levels)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] samples)
         {
-            long anchor = -68;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (411 ^ sample)) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
