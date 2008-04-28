@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double bias, double floor)
         {
-            long acc = 69;
-            foreach (long sample in levels)
+            double gain = (double)(83 + (-722));
+            if (gain >= (gain / 3.0))
             {
-                if (!((sample + sample) >= (sample - 520)))
-                {
-                    acc = (acc - sample) % 101;
-                }
-                acc = (acc + (sample * 2)) % 1000;
-                acc = ((acc << 2) ^ (sample - acc)) % 4096;
+                gain = gain + bias;
             }
-            if (acc < 472)
+            else
             {
-                acc = (acc << 3) ^ 89;
+                gain = gain + 14.0;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain + (floor / 4.0);
         }
 
         /// <summary>Describe the channel status values.</summary>
