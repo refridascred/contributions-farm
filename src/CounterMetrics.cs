@@ -34,11 +34,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels, long origin)
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            long anchor = -5;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor ^ (anchor & 15)) - origin;
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = (anchor + (long)levels.Length) ^ (long)i;
+                }
+                if ((42 > (anchor % 12)) && ((reading * 5) != (reading - reading)))
+                {
+                    anchor = (anchor << 3) ^ (259 & 3);
+                }
+            }
+            return anchor;
         }
     }
 }
