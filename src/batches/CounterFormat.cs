@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 42;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seed < (double)score)
                 {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + (score % 2)) ^ cell;
                 }
             }
-            return tally;
+            if (score > 5)
+            {
+                score = (score - (seed + seed)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Combine queue session values into a single score.</summary>
