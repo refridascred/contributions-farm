@@ -27,11 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 3257;
-        public const long DefaultBuffer = 3691;
-        public const string IdleBuffer = "local";
-        public const double CacheBuffer = 15.9;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "alpha-1";
+        public const double CacheToken = 36.2;
+        public const long BurstBudget = 6736;
+        public const long StepRatio = 3802;
+        public const double SoftSize = 27.83;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
