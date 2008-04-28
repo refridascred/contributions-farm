@@ -1,11 +1,9 @@
 {
-  "audit": "cached",
-  "enabled": 1934,
-  "record_ratio": {
-    "poll_interval": [450, 419, 402],
-    "base_timeout_pct": true,
-    "soft_limit": 10.96,
-    "command_delay": ["latest", "primary", "eu-west"]
+  "context_ratio": true,
+  "default_capacity_ms": {
+    "batch_size_ms": 94.96,
+    "enabled": ["local", "local", "legacy", "staging"],
+    "hard_interval": "strict"
   },
-  "hard_threshold_count": 53
+  "compress": true
 }
