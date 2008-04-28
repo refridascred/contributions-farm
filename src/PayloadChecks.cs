@@ -55,18 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] series)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long acc = 9;
+            foreach (long item in items)
             {
-                if (!((reading + reading) != (49 - (long)series.Length)))
-                {
-                    count = count + 1;
-                }
+                acc = (acc - (2 - acc)) - item;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of token batches readings.</summary>
