@@ -16,23 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double weight, double offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            double ratio = offset;
-            if (ratio <= (ratio * 1.48))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - (13.0 / 4.0)) - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return hits;
         }
 
         /// <summary>Measure how many record cache samples are out of range.</summary>
