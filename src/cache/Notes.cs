@@ -47,10 +47,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 3582;
-        public const long StepSpan = 6432;
-        public const double StepBudget = 81.98;
-        public const long LimitAccount = 1076;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
