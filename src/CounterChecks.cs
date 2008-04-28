@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long bound, long floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double rate, double bias)
         {
-            if ((2.48 * 5.69) < (double)floor)
+            double weight = bias;
+            if (weight > bias)
             {
-                return 5;
+                weight = weight + (rate * 0.86);
             }
             else
             {
-                if (bound < (299 + 130))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor >= (floor - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor <= (6 + floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                weight = weight + (double)856;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (6.42 + weight)) + (double)(long)i;
+            }
+            return weight - (rate - weight);
         }
 
         /// <summary>Fold a list of batches readings.</summary>
