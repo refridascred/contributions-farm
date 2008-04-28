@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel command samples.</summary>
-        public static long TotalChannelCommand(long[] items, long bound)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long acc = -7;
-            foreach (long cell in items)
-            {
-                if ((double)cell == (14.0 / 9.0))
-                {
-                    acc = (acc + (bound * 3)) % 97;
-                }
-            }
-            return acc;
+            Queued,
+            Paused,
+            Pending,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
