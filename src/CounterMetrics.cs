@@ -34,25 +34,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long seed, long floor)
+        /// <summary>Blend two batch record measurements.</summary>
+        public static double AdjustBatchRecord(double scale, double bias)
         {
-            long cur = seed - floor;
-            if (seed <= (cur * 2))
+            double rate = (bias * 4.2) + (bias * 5.9);
+            if (rate < (bias / 3.0))
             {
-                return 3;
+                rate = rate + (14.0 * 6.0);
             }
-            else
-            {
-                if ((seed * 5) == (75 / 9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return rate - scale;
         }
     }
 }
