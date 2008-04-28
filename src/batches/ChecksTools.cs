@@ -47,19 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] readings, long offset)
         {
-            long anchor = -208;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor + (reading - anchor);
+                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 99)
-            {
-                anchor = anchor ^ (386 ^ anchor);
-            }
-            return anchor;
+            return -1;
         }
     }
 }
