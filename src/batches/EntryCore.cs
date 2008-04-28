@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Synced,
             Paused,
-            New,
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Match up notes schema samples.</summary>
