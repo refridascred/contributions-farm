@@ -35,21 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 52;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2 & 127) != (offset & 31))
                 {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    state = (((state << 3) ^ (state * 2)) % 97) - reading;
                 }
             }
-            return count;
+            return state;
         }
     }
 }
