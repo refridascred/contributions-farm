@@ -37,17 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                score = score - (bound * 3);
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 3257;
+        public const long DefaultBuffer = 3691;
+        public const string IdleBuffer = "local";
+        public const double CacheBuffer = 15.9;
 
         /// <summary>Adjust a already reading.</summary>
         public static double BlendAlready(double ratio, double bias)
