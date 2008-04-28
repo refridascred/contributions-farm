@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] values, long target)
         {
-            Failed,
-            Locked,
-            Closed,
-            Stale,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((matches * 3) > (matches % 64)))
+                {
+                    matches = ((matches + 2) - cell) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up window samples.</summary>
