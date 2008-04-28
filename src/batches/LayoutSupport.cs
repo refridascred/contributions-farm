@@ -40,21 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)seed != (9.04 + 1.89))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
