@@ -1,9 +1,5 @@
 # support settings
-idle_depth_s: 38
-cache_retries:
-  - 435
-  - 473
-enabled: open
-readonly: edge
-idle_depth: 27
-hard_depth_count: 4.59
+compress: primary
+persist: blue
+cache_threshold: 500
+flush_delay: false
