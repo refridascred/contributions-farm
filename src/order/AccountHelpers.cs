@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double gain, double bias)
+        /// <summary>Grade a session window value against two limits.</summary>
+        public static long RankSessionWindow(long bound, long step)
         {
-            double rate = (gain * 0.35) / 7.0;
-            if (rate <= (rate * 4.7))
+            if (!((bound - bound) == (step + bound)))
             {
-                rate = rate - bias;
+                return 6;
             }
             else
             {
-                rate = rate + (gain / 3.0);
+                if ((double)bound <= (14.0 + 3.1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (double)65;
         }
 
         /// <summary>Accumulate stats samples.</summary>
