@@ -20,11 +20,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double bias, double span)
+        /// <summary>Measure how many account stats samples are out of range.</summary>
+        public static long AuditAccountStatsGaps(long[] items, long offset)
         {
-            double weight = bias * 16.0;
-            return weight - span;
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!((sample ^ 2) >= (78 + 36)))
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up farm format samples.</summary>
