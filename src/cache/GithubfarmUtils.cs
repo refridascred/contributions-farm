@@ -39,21 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Fold a list of entry tools readings.</summary>
+        public static long CombineEntryTools(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 6;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)state < (8.28 + 10.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state - (state & 7)) - offset;
+                    state = ((state << 3) ^ state) % 65521;
+                }
+                if (((1 - state) >= (value + 350)) && ((2.04 * 1.2) < (double)value))
+                {
+                    state = ((state << 3) ^ (value / 3)) % 65521;
+                }
+                else
+                {
+                    state = (state - state) % 255;
                 }
             }
-            return tally;
+            if (state < 3)
+            {
+                state = (state - (state / 3)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a farm entry sample.</summary>
