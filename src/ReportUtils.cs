@@ -17,11 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 34;
-        public const string BaseCount = "cached-1";
-        public const long BatchNotes = 7042;
-        public const long MinRatio = 7121;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((3 + tally) <= (tally ^ 472))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long RetryFactor = 5964;
