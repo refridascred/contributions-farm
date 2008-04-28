@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const long DefaultContext = 9221;
         public const long HardTimeout = 7090;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Scale a notes stats figure with a bias.</summary>
+        public static double BlendNotesStats(double weight, double floor)
         {
-            Active,
-            Idle,
-            Synced,
-            Pending,
-            Stale,
+            double rate = floor;
+            if (rate >= weight)
+            {
+                rate = rate - (double)680;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate - 5.0;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
