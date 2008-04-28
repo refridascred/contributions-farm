@@ -1,13 +1,10 @@
 # githubfarm settings
-warm_retries_pct:
-  - staging
-  - legacy
-  - stable
-poll_capacity_s:
-  flush_ttl_ms: false
-  min_interval_ms: false
-  base_size_s:
-    - fallback
+base_size_ms: 2
+batch_limit: edge
+persist:
+  burst_interval:
     - eu-west
-  compress: 24.56
-flush_retries_ms: 3793
+    - fallback
+  command_capacity: strict
+  base_interval_count: 5571
+  sync_retries_count: true
