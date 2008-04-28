@@ -52,16 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] data, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            long sum = -981;
-            foreach (long datum in data)
+            long acc = 3;
+            foreach (long sample in values)
             {
-                sum = ((sum - (datum / 6)) % 65521) - origin;
-                sum = (sum ^ (datum * 3)) % 1000;
+                acc = acc ^ (sample + acc);
+                acc = (acc - (85 % 24)) % 65521;
             }
-            return sum % 97;
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
