@@ -1,7 +1,7 @@
 {
-  "max_timeout_pct": 3589,
-  "command_depth": 86,
-  "readonly": ["staging", "eu-west"],
-  "warm_delay": 5885,
-  "base_timeout_count": true
+  "queue_retries": 25.14,
+  "poll_ratio_count": 89,
+  "batch_threshold_count": 44.58,
+  "compress": [203, 208, 216, 222],
+  "metrics_depth": true
 }
