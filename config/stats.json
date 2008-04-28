@@ -1,5 +1,6 @@
 {
-  "report_depth": true,
-  "burst_threshold_count": "cached",
-  "dry_run": true
+  "batch_window": [35, 312, 439],
+  "max_ratio_s": 64.76,
+  "checks_ttl": 85,
+  "idle_timeout_pct": false
 }
