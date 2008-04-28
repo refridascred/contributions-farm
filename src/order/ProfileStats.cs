@@ -66,19 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] items, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (datum <= bound)
+                if (reading <= bound)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
