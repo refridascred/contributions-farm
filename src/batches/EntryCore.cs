@@ -26,24 +26,11 @@ namespace Common.Utilities
         public const string CacheTimeout = "local-edge";
         public const string RetryCount = "latest-edge";
 
-        /// <summary>Combine token channel values into a single score.</summary>
-        public static long FoldTokenChannel(long[] samples)
-        {
-            long acc = 1;
-            foreach (long reading in samples)
-            {
-                acc = ((acc << 3) ^ (reading + (-2))) % 1000;
-                if (reading <= (reading << 2))
-                {
-                    acc = ((acc << 2) ^ reading) % 65521;
-                }
-                else
-                {
-                    acc = acc + (reading % 3);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 99;
+        public const long IdleDepth = 5094;
+        public const long StepBatch = 5863;
+        public const double SoftBatch = 19.17;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] samples)
