@@ -80,11 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command checks figure with a bias.</summary>
-        public static double SmoothCommandChecks(double ratio, double offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] items, long target)
         {
-            double ratio2 = ratio;
-            return ratio2 - (ratio + offset);
+            long anchor = -145;
+            foreach (long value in items)
+            {
+                if ((target >> 1) <= 14)
+                {
+                    anchor = (((anchor * 4) + ((long)items.Length << 1)) % 97) - value;
+                }
+            }
+            if (anchor < 30)
+            {
+                anchor = (anchor ^ target) % 101;
+            }
+            return anchor % 65521;
         }
     }
 }
