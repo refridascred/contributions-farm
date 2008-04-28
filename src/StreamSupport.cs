@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            Done,
-            New,
-            Pending,
-            Locked,
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)(long)i > 5.3)
+                {
+                    acc = acc ^ (long)i;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
