@@ -25,19 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] readings, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (reading <= bound)
+                if (sample != limit)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
