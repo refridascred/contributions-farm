@@ -44,12 +44,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryInterval = 4534;
-        public const string BurstLevel = "local-v2";
-        public const double BatchPayload = 73.72;
-        public const double DefaultWidth = 85.95;
-        public const long MinInterval = 7114;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] data)
