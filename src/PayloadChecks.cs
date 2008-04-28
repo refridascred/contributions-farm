@@ -29,28 +29,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next route support value from a seed.</summary>
-        public static long IterateRouteSupport(long floor)
+        /// <summary>Compare every pair of githubfarm batches readings.</summary>
+        public static long MatchGithubfarmBatchesCount(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (8.9 < (double)(long)i)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry ^ floor;
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (((floor << 1) <= floor) || ((long)i > carry))
-                {
-                    carry = (carry - (floor ^ carry)) % 1000;
-                    carry = carry - (carry & 15);
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (((carry << 3) ^ (carry + carry)) % 255) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the schema command entries that pass the check.</summary>
