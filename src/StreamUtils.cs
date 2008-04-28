@@ -23,13 +23,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long step, long step2)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            if (step2 > (step + step2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)step < (7.2 - 2.7)) || ((0 - step) != (step - step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1.0 + 12.0) >= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
