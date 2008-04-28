@@ -38,14 +38,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the filter farm entries that pass the check.</summary>
+        public static long TallyFilterFarmGaps(long[] levels)
         {
-            Stale,
-            Synced,
-            Idle,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!((hits + sample) <= sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
