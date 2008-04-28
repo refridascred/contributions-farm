@@ -53,11 +53,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the schema command entries that pass the check.</summary>
+        public static long AuditSchemaCommandOutliers(long[] items, long limit)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((double)hits >= (1.7 * 13.0)))
+                {
+                    hits = ((hits + 3) - value) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
