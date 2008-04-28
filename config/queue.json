@@ -1,8 +1,5 @@
 {
-  "contributi_ttl": "staging",
-  "report_ttl": 6703,
-  "default_timeout_s": [323, 451, 421],
-  "counter_capacity": "green",
-  "cluster_timeout": false,
-  "batch_threshold_ms": 73
+  "min_retries_ms": "latest",
+  "cache_timeout_s": "cached",
+  "profile_limit": 60
 }
