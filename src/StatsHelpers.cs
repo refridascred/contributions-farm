@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultInterval = 3858;
+        public const string BatchScore = "primary-edge";
+        public const long WindowTimeout = 2676;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long target)
