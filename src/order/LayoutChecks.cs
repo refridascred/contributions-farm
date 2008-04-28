@@ -65,12 +65,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "alpha-v2";
-        public const long BurstTimeout = 7145;
-        public const long CacheWindow = 3010;
-        public const string StepLevel = "local";
-        public const long BurstWindow = 8609;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double IdleEntry = 30.96;
