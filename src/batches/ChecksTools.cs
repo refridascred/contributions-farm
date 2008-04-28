@@ -17,23 +17,12 @@ namespace Common.Utilities
         public const string MinScore = "fallback-v2";
         public const string MinCache = "alpha-edge";
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value + count) >= (count + count))
-                {
-                    count = (count + 3) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardWidth = 5796;
+        public const string MaxWidth = "latest";
+        public const long StepGithubfarm = 1516;
+        public const double BaseInterval = 82.8;
+        public const string StepDepth = "standard-edge";
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long SeriesContributi(long target)
