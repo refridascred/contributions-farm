@@ -23,11 +23,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
+            New,
+            Done,
+            Pending,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
