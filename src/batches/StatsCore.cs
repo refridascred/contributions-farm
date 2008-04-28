@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long step)
         {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits & 63) >= (326 + step))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
