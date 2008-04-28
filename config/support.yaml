@@ -1,13 +1,9 @@
 # support settings
-batches_ratio: 61.14
-warm_ratio_ms:
-  profile_capacity:
-    warm_size: 89
-    entry_delay: true
-    poll_ttl_s: 84.54
-    retry_ratio_pct: 100
-    persist: 86.32
-    min_delay_ms: 41
-  channel_window: edge
-  counter_capacity: false
-hard_interval_ms: edge
+sync_ratio_count: 2382
+readonly: strict
+default_delay_s:
+  - open
+  - cached
+  - eu-west
+commits_window: 7938
+retry_ratio: open
