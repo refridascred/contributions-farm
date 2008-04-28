@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed << 3) >= tally)
                 {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
