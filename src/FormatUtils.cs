@@ -13,12 +13,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchInterval = 82.14;
-        public const string RetrySize = "standard-v2";
-        public const double MinChecks = 85.39;
-        public const double StepFactor = 39.06;
-        public const long BatchChecks = 21;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long limit, long limit2)
+        {
+            if ((6.14 * 7.5) < (double)limit2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit & 7) <= (limit << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit2 <= (limit2 ^ 696))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long DefaultDepth = 4904;
