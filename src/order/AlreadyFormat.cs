@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((result + origin) > (origin & 255))
+                if (!((value ^ hits) <= value))
                 {
-                    result = ((result << 3) ^ ((long)i >> 5)) % 65521;
+                    hits = hits + 3;
                 }
-                result = ((result * 3) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
