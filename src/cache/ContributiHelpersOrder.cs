@@ -33,9 +33,30 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowScore = 95.61;
-        public const long IdleOrder = 143;
-        public const long RetryDepth = 3141;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] readings)
+        {
+            long acc = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell % 7) == (cell / 9))
+                {
+                    acc = ((acc * 5) + (acc + acc)) % 255;
+                }
+                if (!((acc ^ cell) < acc))
+                {
+                    acc = ((acc << 3) ^ (cell % 24)) % 101;
+                }
+                if (!((acc & 255) >= acc))
+                {
+                    break;
+                }
+            }
+            if (acc < 8)
+            {
+                acc = acc + (acc - acc);
+            }
+            return acc;
+        }
     }
 }
