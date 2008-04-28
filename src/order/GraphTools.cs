@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long RetryBatches = 2215;
         public const long HardLevel = 341;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double bias3 = bias2 - bias;
-            return bias3 + (bias * 18.0);
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of order entries.</summary>
