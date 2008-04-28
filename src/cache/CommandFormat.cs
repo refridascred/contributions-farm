@@ -23,21 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Look up the position of a support batch sample.</summary>
+        public static long LocateSupportBatchIndex(long[] readings, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (readings[i] >= bound)
                 {
-                    result = (((result << 3) ^ (bound + bound)) % 97) ^ (long)i2;
+                    return (long)i;
                 }
-                result = (result ^ bound) % 97;
-                result = result - (267 >> 5);
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
