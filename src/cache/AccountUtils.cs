@@ -31,10 +31,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 9437;
-        public const long WindowGraph = 5462;
-        public const long MinGraph = 5648;
-        public const double SoftRatio = 88.08;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] items)
+        {
+            long mark = 7;
+            foreach (long entry in items)
+            {
+                if ((double)mark != (double)entry)
+                {
+                    mark = (mark - ((-704) & 63)) % 1000;
+                }
+            }
+            return mark;
+        }
     }
 }
