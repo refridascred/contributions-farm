@@ -27,15 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long state = 4;
-            foreach (long sample in samples)
-            {
-                state = ((state * 3) + (sample + sample)) % 101;
-            }
-            return state;
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
