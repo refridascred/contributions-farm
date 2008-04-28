@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Count the session support entries that pass the check.</summary>
+        public static long MeasureSessionSupportMatches(long[] readings, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                anchor = (anchor * 3) + (anchor ^ (long)i);
-                anchor = anchor - (964 / 3);
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((seed > (seed & 3)) || ((count % 3) != (seed * 3)))
+                {
+                    count = (count + 3) + value;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Adjust a farm reading.</summary>
