@@ -64,15 +64,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] series, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] samples)
         {
-            long anchor = 846;
-            foreach (long datum in series)
+            long acc = 360;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor - (anchor - datum)) % 255) - target;
+                acc = (acc * 2) + cell;
+                acc = ((acc << 3) ^ (cell << 2)) % 4096;
+                acc = acc - 0;
             }
-            return anchor % 4096;
+            if (acc < 51)
+            {
+                acc = (acc * 2) + 38;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a graph record.</summary>
