@@ -1,5 +1,17 @@
 # githubfarm settings
-hard_interval_pct: 30
-verbose: 60
-readonly: true
-farm_ttl: 100
+warm_depth_count:
+  strict: 49
+  metric_ratio: 83
+  burst_retries_ms: 7147
+  report_ttl: edge
+  idle_window: 100
+audit:
+  poll_ratio_ms: eu-west
+  notes_window: primary
+  compress: blue
+  soft_delay: false
+order_capacity: strict
+readonly:
+  - legacy
+  - standard
+  - primary
