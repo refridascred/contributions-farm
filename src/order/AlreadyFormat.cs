@@ -39,19 +39,17 @@ namespace Common.Utilities
         public const double IdleChannel = 19.15;
         public const double BatchChannel = 25.23;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] samples, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (samples[i] <= step)
                 {
-                    mark = ((mark ^ 10) % 101) - (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
