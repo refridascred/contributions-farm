@@ -32,15 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double rate, double floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            double rate2 = 2.0 - floor;
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                rate2 = ((rate2 + floor) - (double)(long)i) + rate;
             }
-            return carry;
+            return rate2 + floor;
         }
     }
 }
