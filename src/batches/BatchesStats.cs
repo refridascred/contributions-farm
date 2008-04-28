@@ -23,11 +23,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
+            Stale,
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a graph options.</summary>
