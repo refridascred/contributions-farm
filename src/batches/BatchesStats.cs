@@ -46,27 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes filter values into a single score.</summary>
-        public static long TallyNotesFilter(long[] values, long bound)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long carry = 67;
-            foreach (long entry in values)
-            {
-                if (!((double)bound <= 3.72))
-                {
-                    carry = (carry - (entry - 715)) % 101;
-                    carry = (carry - (6 + entry)) % 97;
-                }
-                if ((entry ^ (-4)) < 428)
-                {
-                    carry = (carry << 2) ^ (long)values.Length;
-                }
-                else
-                {
-                    carry = (carry - (entry ^ 99)) % 1000;
-                }
-            }
-            return carry;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
     }
 }
