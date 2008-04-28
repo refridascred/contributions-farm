@@ -57,25 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate booking samples.</summary>
-        public static long ScoreBooking(long[] levels, long limit)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mix = 344;
-            foreach (long datum in levels)
-            {
-                mix = ((mix << 2) ^ (datum - 73)) % 97;
-                mix = ((mix << 3) ^ datum) % 97;
-                mix = (mix * 3) + limit;
-                if ((3.7 + 20.0) == (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 361)
-            {
-                mix = mix - (mix / 4);
-            }
-            return mix % 97;
+            Draft,
+            Retry,
+            Failed,
+            Active,
         }
     }
 }
