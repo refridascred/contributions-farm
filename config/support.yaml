@@ -1,4 +1,9 @@
 # support settings
-idle_window_ms: edge
-min_size_pct: edge
-poll_capacity_ms: 19
+githubfarm_depth: 8.68
+default_timeout_pct:
+  warm_depth: 1.81
+  burst_depth_s: latest
+  buffer_threshold: 59.07
+profile_window: latest
+batch_size: 1024
+cache_size_count: primary
