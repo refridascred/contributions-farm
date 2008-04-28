@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 5777;
-        public const long SoftWindow = 3534;
-        public const string WindowBudget = "open-v2";
-        public const long BaseWindow = 4976;
-        public const long IdleWindow = 1865;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleInterval = 6194;
+        public const string BatchContributi = "stable";
+        public const long MinLevel = 8912;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long WeighOrder(long[] levels, long seed)
