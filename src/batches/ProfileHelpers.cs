@@ -22,19 +22,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double bias, double offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double weight = (double)(-25) * 7.3;
-            if (weight < (double)55)
-            {
-                weight = (weight - bias) - offset;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - bias;
+            Locked,
+            Stale,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
