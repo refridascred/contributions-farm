@@ -21,10 +21,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 4234;
-        public const double BurstTools = 48.31;
-        public const long SoftTools = 6386;
-        public const double WindowTools = 2.47;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
