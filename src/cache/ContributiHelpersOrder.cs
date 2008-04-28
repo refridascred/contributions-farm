@@ -29,17 +29,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first farm metrics entry that matches the target.</summary>
-        public static long FindFarmMetricsIndex(long[] levels, long floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
