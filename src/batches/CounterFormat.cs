@@ -13,19 +13,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double weight, double bias)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            double ratio = (double)(12 << 3);
-            if (ratio <= bias)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                ratio = ratio - 3.1;
+                mark = (mark ^ (mark + (long)i)) % 65521;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (weight - bias);
+            return mark;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
