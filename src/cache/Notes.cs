@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double bias, double floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] items)
         {
-            double gain = (double)(83 + (-722));
-            if (gain >= (gain / 3.0))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                gain = gain + bias;
+                if (6.0 >= (double)tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
             }
-            else
-            {
-                gain = gain + 14.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain + (floor / 4.0);
+            return tally;
         }
 
         /// <summary>Hold a layout stats.</summary>
