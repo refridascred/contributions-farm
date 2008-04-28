@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "open";
-        public const long RetryWidth = 3567;
-        public const double SoftCluster = 48.07;
-        public const long MinCluster = 1981;
-        public const long MinRatio = 207;
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many farm entry samples are out of range.</summary>
         public static long MeasureFarmEntryMatches(long[] data, long seed)
