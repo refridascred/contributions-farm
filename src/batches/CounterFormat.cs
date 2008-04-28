@@ -13,11 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long mix = 433;
+            foreach (long reading in samples)
+            {
+                mix = (mix + (reading / 9)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
