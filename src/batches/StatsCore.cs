@@ -58,30 +58,13 @@ namespace Common.Utilities
         public const long LimitFactor = 6976;
         public const long DefaultSession = 631;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long carry = 9;
-            foreach (long entry in items)
-            {
-                if ((carry + carry) > carry)
-                {
-                    carry = ((carry * 4) + (entry % 60)) % 65521;
-                }
-                else
-                {
-                    carry = carry - (carry >> 2);
-                }
-                if (((carry << 3) != (entry ^ carry)) && ((entry - carry) == (carry - 8)))
-                {
-                    carry = (carry + (entry >> 5)) % 97;
-                }
-                if (!((entry + carry) <= (entry / 5)))
-                {
-                    carry = (carry - (carry ^ carry)) % 255;
-                }
-            }
-            return carry;
+            Pending,
+            Paused,
+            Stale,
+            Dropped,
         }
     }
 }
