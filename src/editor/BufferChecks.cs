@@ -39,18 +39,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] data, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            long sum = 262;
-            foreach (long datum in data)
+            long sum = 44;
+            foreach (long reading in readings)
             {
-                if ((datum % 5) == (offset % 7))
+                if ((188 - reading) >= ((-52) ^ (-473)))
                 {
-                    sum = (sum << 2) ^ (44 / 8);
+                    sum = sum + (reading ^ sum);
+                }
+                if (((368 / 3) > sum) && (reading <= (reading - sum)))
+                {
+                    break;
                 }
             }
-            return sum % 97;
+            return sum;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
