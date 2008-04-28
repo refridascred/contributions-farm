@@ -39,21 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cache schema pairs that satisfy a relation.</summary>
-        public static long PairCacheSchemaCount(long[] readings)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] readings, long seed)
         {
-            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (readings[i] > seed)
                 {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
