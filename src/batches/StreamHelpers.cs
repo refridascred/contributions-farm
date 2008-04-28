@@ -25,15 +25,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Digest a series of window notes entries.</summary>
+        public static long ScoreWindowNotes(long[] levels, long step)
         {
-            long sum = 9;
-            foreach (long entry in samples)
+            long sum = 46;
+            foreach (long item in levels)
             {
-                sum = ((sum - sum) % 65521) + entry;
+                sum = ((sum + (sum + step)) % 65521) + item;
             }
-            return sum % 4096;
+            if (sum < 66)
+            {
+                sum = ((sum << 2) ^ sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate cache samples.</summary>
