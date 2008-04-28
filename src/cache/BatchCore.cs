@@ -39,12 +39,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] series)
         {
-            Done,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((seen - value) >= (value % 100)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
