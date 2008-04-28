@@ -56,18 +56,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of metrics format entries.</summary>
-        public static long TotalMetricsFormat(long[] data)
+        /// <summary>Count the metrics farm entries that pass the check.</summary>
+        public static long TallyMetricsFarmMatches(long[] data)
         {
-            long carry = 998;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((datum * 4) != (datum - carry))
+                if ((93 >> 5) < (count - count))
                 {
-                    carry = carry - (datum + datum);
+                    count = (count + 1) - entry;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Classify a metric editor pair into a bucket.</summary>
