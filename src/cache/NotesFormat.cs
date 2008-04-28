@@ -16,14 +16,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long step)
         {
-            Locked,
-            Idle,
-            Pending,
-            Draft,
-            Synced,
+            if (!(9.54 >= (double)step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound * 5) != (bound - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)step < (double)(-960)) && ((double)bound == (1.0 / 8.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound >= 9.78)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank githubfarm already input into a small class.</summary>
