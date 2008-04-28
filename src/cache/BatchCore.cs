@@ -37,19 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((double)(long)i != (0.1 * 0.82)))
-                {
-                    mix = mix - ((long)i + step);
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
+                score = score - (bound * 3);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Adjust a already reading.</summary>
