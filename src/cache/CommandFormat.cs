@@ -23,17 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (readings[i] >= target)
+                if ((item * 4) == (99 + 29))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
