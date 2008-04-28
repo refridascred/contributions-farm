@@ -75,19 +75,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((limit + 602) == (entry + entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstLevel = 3769;
+        public const long MaxNotes = 7073;
+        public const string DefaultNotes = "primary-v2";
+        public const long BatchTimeout = 3607;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitFactor = 6859;
