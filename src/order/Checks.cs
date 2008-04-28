@@ -39,13 +39,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] levels, long origin)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long reading in levels)
             {
-                if ((seen + 419) < sample)
+                if (reading >= (origin + (-922)))
                 {
                     seen = seen + 3;
                 }
