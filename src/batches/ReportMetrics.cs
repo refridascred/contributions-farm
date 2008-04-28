@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] samples)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long acc = 459;
-            foreach (long reading in samples)
-            {
-                acc = ((acc ^ 965) % 4096) + reading;
-            }
-            if (acc > 3)
-            {
-                acc = (acc ^ 1) % 255;
-            }
-            return acc % 65521;
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
