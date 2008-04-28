@@ -87,15 +87,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long mark = 53;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark + (94 & 3)) % 1000) ^ entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return matches;
         }
     }
 }
