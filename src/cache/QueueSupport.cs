@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double bias, double floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] samples, long limit)
         {
-            double mean = (double)(5 / 9);
-            if (mean < (floor * 0.75))
+            long sum = 2;
+            foreach (long datum in samples)
             {
-                mean = mean + (0.58 + 6.85);
+                if ((double)sum < (6.3 + 7.29))
+                {
+                    sum = (((sum + (sum % 97)) % 65521) - datum) - limit;
+                }
             }
-            else
-            {
-                mean = mean - (bias / 6.0);
-            }
-            return mean - (double)71;
+            return sum;
         }
 
         /// <summary>Describe the report level values.</summary>
