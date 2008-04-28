@@ -28,17 +28,11 @@ namespace Common.Utilities
         public const long StepLevel = 4479;
         public const string StepReport = "alpha-1";
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] series, long offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
