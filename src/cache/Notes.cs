@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many report stream samples are out of range.</summary>
-        public static long AuditReportStreamHits(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items, long floor)
         {
             long tally = 0;
-            foreach (long reading in data)
+            foreach (long sample in items)
             {
-                if ((double)tally == (9.1 + 6.3))
+                if (!(((sample - floor) > (sample / 2)) || (floor >= (tally >> 5))))
                 {
-                    tally = (tally + 2) + reading;
+                    tally = tally + 2;
                 }
             }
             return tally;
