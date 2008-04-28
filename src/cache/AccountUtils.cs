@@ -28,10 +28,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 93.67;
-        public const double LimitScore = 39.43;
-        public const double BatchContributi = 26.06;
-        public const string WindowContributi = "stable-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowScore = "stable-edge";
+        public const long BurstQueue = 1099;
+        public const long MinWidth = 6035;
     }
 }
