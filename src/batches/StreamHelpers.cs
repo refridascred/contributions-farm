@@ -33,15 +33,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] items, long target)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] items)
         {
-            long carry = 8;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry + (entry + carry)) % 97) - target;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a metrics summary.</summary>
