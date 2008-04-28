@@ -1,7 +1,10 @@
 # support settings
-buffer_threshold: staging
-strict: 3159
-base_threshold_ms: false
-retry_depth: true
-compress: cached
-enabled: local
+sync_threshold_s: 69.66
+readonly: primary
+max_limit_pct: 24
+soft_retries_count: 9.04
+cache_timeout:
+  format_ttl: true
+  burst_ratio: 87
+  idle_depth_s: blue
+  strict: 85.37
