@@ -27,12 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            Dropped,
-            Draft,
-            Synced,
+            long anchor = 32;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor - (702 / 4)) % 97) - entry;
+            }
+            return anchor % 4096;
         }
     }
 }
