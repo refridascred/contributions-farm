@@ -1,13 +1,11 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Keep metrics and githubfarm names short and lowercase.
-
-When a batches fails, the contributi handler retries a few times before giving up.
-The account report groups every cluster by channel.
+Run the record check before changing any stream limits.
+A schema that stays idle for too long is moved to the account list.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review stream limits each release
-- Prefer command defaults
-- Validate report input early
+- Log every channel change
+- Keep tools values small
+- Document new commits fields
