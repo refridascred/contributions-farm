@@ -40,18 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] items, long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (53 <= (reading ^ hits))
+                if (!((5 << 3) < (long)i))
                 {
-                    hits = (hits + 3) + bound;
+                    mix = ((mix * 4) + (long)i) % 65521;
                 }
+                if ((double)seed > (2.0 / 4.0))
+                {
+                    mix = mix ^ seed;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
