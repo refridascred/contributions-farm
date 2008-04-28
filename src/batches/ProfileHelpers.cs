@@ -50,31 +50,13 @@ namespace Common.Utilities
         public const string DefaultDepth = "local-1";
         public const double SoftTimeout = 97.19;
 
-        /// <summary>Rank record notes input into a small class.</summary>
-        public static long GradeRecordNotes(long step, long origin)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            if ((43 & 63) > (step % 60))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)9 != (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((-431) >= (527 + origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
