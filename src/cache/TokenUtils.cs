@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] readings)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (sample >= seen)
+                if (!!(tally >= (66 / 3)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Match up cache samples.</summary>
