@@ -42,9 +42,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 7815;
-        public const long BatchSchema = 8652;
-        public const long IdleSchema = 1139;
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
