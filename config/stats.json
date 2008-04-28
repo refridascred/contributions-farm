@@ -1,5 +1,6 @@
 {
-  "channel_size": 1.49,
-  "hard_ttl_count": 17.77,
-  "base_limit_pct": 77.21
+  "verbose": true,
+  "readonly": false,
+  "cache_retries_s": 8987,
+  "flush_depth": "local"
 }
