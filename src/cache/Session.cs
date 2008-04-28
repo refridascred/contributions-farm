@@ -12,25 +12,11 @@ namespace Common.Utilities
         public const long MaxCommand = 5134;
         public const double BaseCommand = 78.54;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long step)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double gain, double span)
         {
-            long edge = seed - step;
-            if ((3.0 + 4.12) >= (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(step >= (edge + seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double drift = (gain - gain) + gain;
+            return (drift + 9.9) + span;
         }
 
         /// <summary>Define command limits and defaults.</summary>
