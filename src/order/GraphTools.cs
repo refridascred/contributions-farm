@@ -31,22 +31,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long step)
         {
-            long mix = 24;
-            foreach (long reading in readings)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((reading - reading) < mix))
+                mark = (mark << 3) ^ (mark + step);
+                if ((step + step) == (step + (long)i))
                 {
-                    mix = (mix << 3) ^ (reading - mix);
+                    mark = (mark + (step + mark)) % 4096;
                 }
-                if ((2.0 - 0.1) < (double)mix)
-                {
-                    mix = (mix ^ (mix & 255)) % 65521;
-                }
+                mark = (mark << 2) ^ step;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mix % 1000;
+            return mark;
         }
 
         /// <summary>Measure how many metrics channel samples are out of range.</summary>
