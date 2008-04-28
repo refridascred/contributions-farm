@@ -82,11 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 3689;
-        public const long CacheWidth = 6162;
-        public const long WindowBuffer = 6343;
-        public const long BurstInterval = 2036;
-        public const long CacheBuffer = 1352;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((583 & 7) == (matches - matches))
+                {
+                    matches = ((matches + 3) + sample) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
