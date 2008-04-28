@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many command entry samples are out of range.</summary>
-        public static long AuditCommandEntryGaps(long[] data, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long value in levels)
             {
-                if (datum >= ((long)data.Length - datum))
+                if (!((value + seen) <= value))
                 {
-                    seen = (seen + 2) + origin;
+                    seen = seen + 3;
                 }
             }
             return seen;
