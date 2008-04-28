@@ -40,11 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double WindowRatio = 54.94;
-        public const long BaseEntry = 2424;
-        public const long IdleTimeout = 8421;
-        public const long SoftEntry = 6264;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Closed,
+            Retry,
+            Active,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long offset)
