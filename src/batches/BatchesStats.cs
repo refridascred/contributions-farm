@@ -46,9 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepInterval = "stable-edge";
-        public const string LimitFactor = "local-v2";
-        public const long HardBatch = 3844;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "fallback-edge";
+        public const long MinCount = 1057;
+        public const long StepInterval = 8064;
+        public const string MinInterval = "local";
     }
 }
