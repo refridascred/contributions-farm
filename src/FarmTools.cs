@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long seed, long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            if ((origin & 127) == (seed - seed))
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
+                mark = (mark + (target ^ mark)) % 97;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((seed % 8) >= (origin << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((15.0 * 1.49) <= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed & 3) > seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the batch phase values.</summary>
