@@ -39,13 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (436 < value)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
