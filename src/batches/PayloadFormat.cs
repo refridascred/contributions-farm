@@ -63,13 +63,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
