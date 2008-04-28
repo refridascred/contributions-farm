@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double weight, double floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            double rate = (double)358;
-            if (rate >= (double)65)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - (7.0 + rate)) + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (double)4;
-            }
-            return rate - (weight - weight);
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
