@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next layout window value from a seed.</summary>
-        public static long RollLayoutWindow(long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double weight, double floor)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            double rate = (double)358;
+            if (rate >= (double)65)
             {
-                if ((long)i != (seed * 5))
-                {
-                    state = state + (long)i;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                rate = (rate - (7.0 + rate)) + floor;
             }
-            return state;
+            else
+            {
+                rate = rate - (double)4;
+            }
+            return rate - (weight - weight);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
