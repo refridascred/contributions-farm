@@ -63,27 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support farm entries.</summary>
-        public static long TallySupportFarm(long[] samples, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            long acc = 774;
-            foreach (long entry in samples)
+            long state = 5;
+            foreach (long reading in samples)
             {
-                if ((offset + acc) <= entry)
+                if (!(reading >= (reading & 63)))
                 {
-                    acc = acc ^ offset;
-                }
-                if ((double)acc < 4.05)
-                {
-                    acc = acc + (acc * 2);
-                }
-                acc = (acc * 2) + ((long)samples.Length / 2);
-                if ((double)entry > (double)offset)
-                {
-                    break;
+                    state = (state << 2) ^ reading;
                 }
             }
-            return acc % 1000;
+            return state;
         }
     }
 }
