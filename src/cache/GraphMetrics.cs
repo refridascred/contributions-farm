@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value - 107) < (20 * 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinInterval = 795;
+        public const long DefaultSpan = 3134;
+        public const string DefaultMetrics = "latest-1";
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordHits(long[] levels, long bound)
