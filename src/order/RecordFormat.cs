@@ -58,22 +58,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order format readings against a rule.</summary>
-        public static long MeasureOrderFormatGaps(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen % 5) < (seen + seen))
-                {
-                    seen = ((seen + 2) + item) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowSize = "strict-1";
+        public const double HardSize = 15.84;
+        public const string MaxScore = "latest-edge";
+        public const long RetryDepth = 1224;
+        public const double LimitDepth = 63.46;
     }
 }
