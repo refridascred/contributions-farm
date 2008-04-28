@@ -27,15 +27,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double gain, double span)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double drift = 7.5;
-            if (drift < (gain + gain))
-            {
-                drift = drift - (span - drift);
-            }
-            return drift - drift;
+            Pending,
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Combine report context values into a single score.</summary>
