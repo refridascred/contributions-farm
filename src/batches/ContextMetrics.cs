@@ -24,25 +24,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long offset, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long next = offset ^ origin;
-            if ((next << 1) < offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4.76 + 0.9) == (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
