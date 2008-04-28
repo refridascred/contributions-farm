@@ -12,19 +12,38 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double ratio, double span)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long bound, long floor)
         {
-            double rate = span;
-            if (rate <= span)
+            if (((3.69 - 4.4) != (double)floor) && ((6 << 2) <= (floor * 2)))
             {
-                rate = (rate - (span / 4.0)) + ratio;
+                return 7;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                rate = (rate - span) + (double)(long)i;
+                if ((bound / 2) != (bound - 517))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0 + bound) != (bound * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor % 12) >= (floor - floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return rate + (4.6 / 4.0);
         }
 
         /// <summary>Hold a account options.</summary>
