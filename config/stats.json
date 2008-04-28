@@ -1,7 +1,6 @@
 {
-  "retry_interval_ms": false,
-  "sync_capacity_ms": [204, 98],
-  "verbose": 96,
-  "tools_limit": 24.15,
-  "default_interval": [206, 449, 496, 140]
+  "hard_window_pct": "edge",
+  "readonly": 100,
+  "checks_size": ["strict", "local", "cached"],
+  "layout_window": "standard"
 }
