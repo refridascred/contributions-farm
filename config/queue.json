@@ -1,5 +1,7 @@
 {
-  "min_retries_ms": "latest",
-  "cache_timeout_s": "cached",
-  "profile_limit": 60
+  "min_window_pct": true,
+  "soft_limit": [245, 28, 38],
+  "compress": 250,
+  "session_window": 56.66,
+  "layout_capacity": 82
 }
