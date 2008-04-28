@@ -44,12 +44,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of window stream readings.</summary>
