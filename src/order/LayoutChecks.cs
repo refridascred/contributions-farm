@@ -23,25 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long origin, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] series)
         {
-            long step = origin + offset;
-            if (((double)origin > (16.0 * 12.0)) || ((double)step >= (double)4))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset >= (origin - step))
+                if (!((sample + tally) > (52 << 3)) || ((double)tally <= (9.4 - 14.0)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
