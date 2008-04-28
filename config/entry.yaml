@@ -1,11 +1,9 @@
 # entry settings
-context_delay: 27.02
-audit: 98
-hard_ttl:
-  - 150
-  - 68
-tools_timeout: primary
-batch_retries_pct:
-  - 407
-  - 59
-batch_retries_count: 59.17
+githubfarm_threshold: true
+base_ratio_s:
+  - standard
+  - cached
+farm_threshold: 250
+enabled: false
+audit: 90
+retry_retries: true
