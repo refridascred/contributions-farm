@@ -92,22 +92,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] readings)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count <= (item + item)) || ((double)item >= (5.9 - 4.82)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
