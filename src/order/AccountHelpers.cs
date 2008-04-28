@@ -94,18 +94,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the editor contributi entries that pass the check.</summary>
-        public static long CountEditorContributiMatches(long[] values)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits + 7) < hits)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
