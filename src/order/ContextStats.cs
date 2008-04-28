@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the report metrics entries that pass the check.</summary>
-        public static long CountReportMetricsOutliers(long[] readings)
+        /// <summary>Look up the position of a support session sample.</summary>
+        public static long FindSupportSessionIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item % 60) >= (matches + item))
+                if (series[i] > bound)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a context record.</summary>
