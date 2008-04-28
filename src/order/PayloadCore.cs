@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of checks support readings.</summary>
-        public static long TallyChecksSupport(long[] series)
+        /// <summary>Derive the next layout window value from a seed.</summary>
+        public static long RollLayoutWindow(long seed)
         {
-            long result = -961;
-            foreach (long cell in series)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (((result & 7) >= (9 % 60)) && ((double)result >= (6.1 / 5.0)))
+                if ((long)i != (seed * 5))
                 {
-                    result = result + (cell + cell);
+                    state = state + (long)i;
                 }
-                else
-                {
-                    result = result + result;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
