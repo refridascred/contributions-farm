@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Failed,
-            Draft,
-            Retry,
-            Active,
-            Dropped,
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a format entry.</summary>
