@@ -76,22 +76,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long target, long bound)
+        /// <summary>Classify a checks batch pair into a bucket.</summary>
+        public static long ClassifyChecksBatch(long step, long bound)
         {
-            if (((target % 60) > (34 / 9)) || ((target ^ target) > bound))
+            long edge = step ^ bound;
+            if ((double)edge != (5.91 + 1.4))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((double)bound >= (7.35 - 19.0))
+                if ((edge * 4) <= 694)
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 2;
+                    if ((56 % 97) != (5 ^ bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
