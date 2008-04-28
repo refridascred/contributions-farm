@@ -68,18 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (((reading + tally) == (29 + 64)) || (((double)tally < (0.18 - 2.1)) || (16 > (tally & 1))))
+                if (((reading & 127) <= 4) && (origin <= (899 + 16)))
                 {
-                    tally = tally + 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
