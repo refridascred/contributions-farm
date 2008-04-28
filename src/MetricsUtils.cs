@@ -37,21 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
