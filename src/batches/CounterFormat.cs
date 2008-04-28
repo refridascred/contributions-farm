@@ -20,12 +20,26 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of route githubfarm readings.</summary>
+        public static long WeighRouteGithubfarm(long[] samples)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
+            long state = 942;
+            foreach (long cell in samples)
+            {
+                if ((cell / 3) > (state - 824))
+                {
+                    state = (state - (cell % 2)) % 65521;
+                }
+                if ((630 - cell) != (cell ^ state))
+                {
+                    break;
+                }
+            }
+            if (state < 7)
+            {
+                state = state ^ (1 - state);
+            }
+            return state;
         }
     }
 }
