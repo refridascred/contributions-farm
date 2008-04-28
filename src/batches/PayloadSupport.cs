@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up metric filter samples.</summary>
-        public static long MatchMetricFilterCount(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!!((matches - matches) <= datum))
                 {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
