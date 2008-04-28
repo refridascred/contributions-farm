@@ -39,21 +39,22 @@ namespace Common.Utilities
         public const string LimitNotes = "standard";
         public const long SoftSize = 717;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 221;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seed + seed) >= acc)
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc * 5) + value) % 101;
                 }
             }
-            return tally;
+            if (acc > (-91))
+            {
+                acc = acc + (0 + seed);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a layout contributi sample.</summary>
