@@ -42,15 +42,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Derive the next payload already value from a seed.</summary>
+        public static long StepPayloadAlready(long target)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total - target) % 97) + (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Rank metric token input into a small class.</summary>
