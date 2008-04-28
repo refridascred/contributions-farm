@@ -1,5 +1,10 @@
 {
-  "verbose": true,
-  "soft_timeout_s": ["primary", "latest"],
-  "hard_ratio": true
+  "commits_capacity": ["cached", "cached", "strict", "primary"],
+  "burst_threshold_ms": {
+    "flush_ttl_count": 63.94,
+    "hard_retries_pct": "eu-west",
+    "flush_retries_pct": true
+  },
+  "cache_interval_pct": ["blue", "open", "primary", "legacy"],
+  "cache_retries_ms": 64
 }
