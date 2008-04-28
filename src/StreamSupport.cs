@@ -16,17 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] levels, long step)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = offset * 10.0;
+            return (mean + (double)90) + gain;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
