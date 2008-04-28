@@ -33,18 +33,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of cluster metric readings.</summary>
-        public static long TotalClusterMetric(long[] levels, long target)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] values, long bound)
         {
-            long anchor = 159;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor % 60) < cell)
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
                 {
-                    anchor = anchor ^ target;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
