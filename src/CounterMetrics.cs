@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long WindowFactor = 7748;
         public const long BatchAccount = 5331;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long offset)
         {
-            long score = 8;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score - (offset << 3)) % 65521) - cell;
+                if ((data[i] < offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Describe the tools class values.</summary>
