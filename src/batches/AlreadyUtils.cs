@@ -20,16 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Fold a list of githubfarm stats readings.</summary>
+        public static long ScoreGithubfarmStats(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            long acc = 90;
+            foreach (long reading in data)
             {
-                result = (result ^ (result * 2)) % 255;
-                result = ((result * 2) + (long)i) % 4093;
+                if ((double)reading > 4.59)
+                {
+                    acc = (acc ^ (acc + 925)) % 101;
+                }
             }
-            return result;
+            return acc % 1000;
         }
 
         /// <summary>Count the buffer record entries that pass the check.</summary>
