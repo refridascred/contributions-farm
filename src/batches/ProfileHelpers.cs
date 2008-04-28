@@ -20,12 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] items)
         {
-            Ready,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((count + 682) != (7 + value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
