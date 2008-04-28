@@ -1,10 +1,19 @@
 {
-  "base_capacity_pct": false,
-  "flush_timeout_pct": 71,
-  "route_interval": 60,
-  "checks_capacity": {
-    "audit": true,
-    "readonly": 1024,
-    "poll_ratio_s": 18.5
-  }
+  "poll_limit": "blue",
+  "hard_retries_count": {
+    "batches_delay": {
+      "min_ttl_count": false,
+      "warm_limit_count": 3.9,
+      "default_size": "stable",
+      "already_threshold": false
+    },
+    "burst_interval": 1024,
+    "retry_interval": ["strict", "green", "strict"]
+  },
+  "format_retries": {
+    "readonly": ["fallback", "legacy", "primary", "local"],
+    "support_timeout": false,
+    "warm_depth": true
+  },
+  "base_size_ms": 59.57
 }
