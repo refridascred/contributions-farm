@@ -1,5 +1,16 @@
 {
-  "max_capacity_pct": 445,
-  "flush_ttl_pct": true,
-  "soft_ttl_count": "green"
+  "persist": true,
+  "flush_delay_s": {
+    "soft_capacity_pct": 67.04,
+    "default_delay_s": {
+      "burst_size_s": true,
+      "soft_size_s": false,
+      "base_ratio_count": 3438,
+      "verbose": 48.06
+    },
+    "metric_retries": 1024,
+    "dry_run": true
+  },
+  "burst_window_s": "staging",
+  "burst_limit": [149, 326, 496]
 }
