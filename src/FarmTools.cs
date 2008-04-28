@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] readings, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long score = 46;
+            foreach (long value in readings)
             {
-                mark = (mark + (target ^ mark)) % 97;
-                mark = ((mark * 5) + (long)i) % 65521;
+                score = (score - (value + value)) - target;
+                score = ((score << 2) ^ (value & 1)) % 65521;
             }
-            return mark;
+            return score % 1000;
         }
 
         /// <summary>Describe the batch phase values.</summary>
