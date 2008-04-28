@@ -39,26 +39,19 @@ namespace Common.Utilities
         public const double IdleChannel = 19.15;
         public const double BatchChannel = 25.23;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            long carry = 6;
-            foreach (long sample in readings)
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)carry < (15.0 / 7.0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    carry = (carry - sample) % 101;
+                    mark = ((mark ^ 10) % 101) - (long)i2;
                 }
-                if ((1.0 - 3.61) > (double)sample)
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            if (carry < 74)
-            {
-                carry = ((carry << 2) ^ (carry % 12)) % 65521;
-            }
-            return carry % 65521;
+            return mark;
         }
 
         /// <summary>Accumulate entry samples.</summary>
