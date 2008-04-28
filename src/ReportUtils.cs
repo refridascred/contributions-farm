@@ -60,15 +60,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Dropped,
+            Draft,
+            Active,
         }
     }
 }
