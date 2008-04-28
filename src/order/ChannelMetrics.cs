@@ -23,22 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] values)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((6.4 - 0.44) >= (double)reading)
+                if ((sample + sample) >= hits)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
