@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] data, long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long total = 3;
+            foreach (long value in samples)
             {
-                if (item >= floor)
+                if (((value + seed) == (22 >> 3)) && (((-31) - total) < (seed / 9)))
                 {
-                    valid = false;
-                    break;
+                    total = (total - (total + value)) % 101;
                 }
             }
-            return valid;
+            return total % 1000;
         }
 
         /// <summary>Describe the format status values.</summary>
