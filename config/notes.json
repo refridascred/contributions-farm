@@ -1,5 +1,5 @@
 {
-  "account_limit": "eu-west",
-  "idle_depth_ms": true,
-  "idle_delay_pct": [118, 77, 21, 153]
+  "compress": "local",
+  "cache_limit_pct": 6,
+  "base_timeout_ms": [323, 352, 53]
 }
