@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples, long offset)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long sum = 55;
-            foreach (long entry in samples)
-            {
-                sum = ((sum ^ (entry * 5)) % 255) - offset;
-            }
-            if (sum > 22)
-            {
-                sum = ((sum << 3) ^ 1) % 101;
-            }
-            return sum % 65521;
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
