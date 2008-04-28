@@ -28,11 +28,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 6660;
-        public const double StepScore = 45.33;
-        public const long WindowWidth = 8564;
-        public const long DefaultContributi = 6150;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsBounds(long[] data, long limit)
