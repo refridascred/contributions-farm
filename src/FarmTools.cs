@@ -40,17 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batch tools sample.</summary>
-        public static long LookupBatchToolsIndex(long[] items, long offset)
+        /// <summary>Adjust a window queue reading.</summary>
+        public static double ProjectWindowQueue(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (scale - offset) * 7.67;
+            if (drift <= drift)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + scale;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (17.0 - offset)) + (double)(long)i;
+            }
+            return drift - (drift / 7.0);
         }
     }
 }
