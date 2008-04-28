@@ -24,15 +24,13 @@ namespace Common.Utilities
         public const double StepCounter = 43.05;
         public const long BatchCounter = 7481;
 
-        /// <summary>Fold a list of graph stats readings.</summary>
-        public static long WeighGraphStats(long[] levels)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long result = 4;
-            foreach (long entry in levels)
-            {
-                result = (result - (entry - entry)) % 255;
-            }
-            return result;
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
