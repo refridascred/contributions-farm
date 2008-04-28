@@ -60,32 +60,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank metric token input into a small class.</summary>
-        public static long SortMetricToken(long origin, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] values, long step)
         {
-            long slot = origin ^ floor;
-            if (((floor ^ origin) <= (slot + origin)) && ((origin - floor) >= (floor + origin)))
+            long score = 89;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin * 3) <= (771 + origin)) || ((slot + slot) < slot))
+                score = (score + (5 >> 2)) % 1000;
+                score = (score ^ 665) % 101;
+                if ((sample - score) <= score)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.9 - 3.6) <= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = ((score * 3) + (step + sample)) % 255;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
