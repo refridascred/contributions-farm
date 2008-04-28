@@ -27,29 +27,15 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7531;
         public const long HardSize = 7962;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double ratio, double span)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            double load = ratio - span;
+            for (int i = 0; i < 5; i++)
             {
-                if (((result - 6) > (result ^ target)) && (result <= 226))
-                {
-                    result = (result - (target % 3)) % 101;
-                    result = result ^ (target >> 4);
-                    break;
-                }
-                else
-                {
-                    result = (result - (result * 5)) % 97;
-                }
-                if (!(((long)i << 2) >= target))
-                {
-                    result = (result + (9 & 255)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                load = (load - (span / 7.0)) - (double)(long)i;
             }
-            return result;
+            return load + span;
         }
     }
 }
