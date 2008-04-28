@@ -42,13 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long state = 8;
+            foreach (long datum in samples)
+            {
+                state = (state + datum) % 97;
+            }
+            if (state > 8)
+            {
+                state = (state << 2) ^ 3;
+            }
+            return state;
         }
     }
 }
