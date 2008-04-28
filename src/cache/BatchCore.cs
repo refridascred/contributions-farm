@@ -45,21 +45,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                double scale = 5.4;
-                if ((scale - scale) <= (scale * 6.61))
-                {
-                    scale = scale + (double)state;
-                }
-                scale = scale - 1.02;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitWidth = 4138;
+        public const long StepBudget = 352;
+        public const double MinSpan = 36.54;
+        public const double SoftDepth = 19.97;
     }
 }
