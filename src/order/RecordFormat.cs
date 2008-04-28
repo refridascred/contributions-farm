@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] items, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((174 * 3) > (count >> 1))
                 {
-                    total = ((total - origin) % 101) - (long)i2;
+                    count = ((count + 3) - sample) - target;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Audit order format readings against a rule.</summary>
