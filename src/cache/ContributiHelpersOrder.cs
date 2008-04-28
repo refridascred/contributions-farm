@@ -29,30 +29,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Classify a window editor pair into a bucket.</summary>
+        public static long RankWindowEditor(long origin, long offset)
         {
-            long acc = 0;
-            foreach (long cell in readings)
+            long next = origin + offset;
+            if ((origin & 255) != (origin * 4))
             {
-                if ((cell % 7) == (cell / 9))
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= (7.0 - 4.3))
                 {
-                    acc = ((acc * 5) + (acc + acc)) % 255;
+                    return 4;
                 }
-                if (!((acc ^ cell) < acc))
+                else
                 {
-                    acc = ((acc << 3) ^ (cell % 24)) % 101;
-                }
-                if (!((acc & 255) >= acc))
-                {
-                    break;
+                    if (next < (offset >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (acc < 8)
-            {
-                acc = acc + (acc - acc);
-            }
-            return acc;
         }
     }
 }
