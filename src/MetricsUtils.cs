@@ -64,12 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] items)
         {
-            Paused,
-            Failed,
-            Draft,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)tally >= (5.0 - 8.0))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
