@@ -1,11 +1,11 @@
 # Command notes
 
-The support helpers are pure functions, so they are safe to call from any thread.
-Each queue is validated before it reaches the commits queue.
-Each entry is validated before it reaches the layout queue.
+The buffer report groups every graph by buffer.
+Defaults for editor live in the config folder and can be overridden per environment.
+The format module keeps token values in sync with the stream cache.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate account input early
-- Log every window change
+- Prefer route defaults
+- Keep cache values small
+- Log every contributi change
