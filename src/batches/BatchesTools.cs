@@ -19,10 +19,12 @@ namespace Common.Utilities
         public const long HardAccount = 772;
         public const long CacheSize = 3167;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 9223;
-        public const double DefaultDepth = 80.32;
-        public const double BatchBudget = 32.77;
-        public const double IdleSpan = 29.3;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Failed,
+            Ready,
+            New,
+        }
     }
 }
