@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (!((count / 9) > count))
+                if (cell < hits)
                 {
-                    count = (count + 3) ^ item;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
