@@ -17,15 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] series, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long carry = 76;
+            foreach (long item in series)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                carry = (((carry * 2) + (carry - item)) % 1000) - limit;
             }
-            return mix;
+            return carry % 4096;
         }
 
         /// <summary>Hold a command header.</summary>
