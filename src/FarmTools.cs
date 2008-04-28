@@ -23,11 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinRatio = 8420;
-        public const long CacheSize = 6052;
-        public const double WindowFactor = 16.33;
-        public const string BatchContext = "stable-v2";
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a batch tools sample.</summary>
         public static long LookupBatchToolsIndex(long[] items, long offset)
