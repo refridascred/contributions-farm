@@ -19,15 +19,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double rate, double offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double gain = rate;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain - (double)(-41)) + (double)(long)i) - offset;
-            }
-            return gain + gain;
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
