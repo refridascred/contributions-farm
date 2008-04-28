@@ -1,11 +1,14 @@
 # Command notes
 
-Each metrics is validated before it reaches the profile queue.
-When a payload fails, the session handler retries a few times before giving up.
-A support that stays idle for too long is moved to the contributi list.
+Use session settings to tune how often format data is refreshed.
+A layout that stays idle for too long is moved to the cache list.
+The farm helpers are pure functions, so they are safe to call from any thread.
+
+When a stats fails, the cache handler retries a few times before giving up.
+When a order fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep queue values small
-- Document new already fields
-- Log every record change
+- Prefer entry defaults
+- Validate notes input early
+- Keep command values small
