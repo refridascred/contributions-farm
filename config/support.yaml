@@ -1,4 +1,6 @@
 # support settings
-readonly: false
-flush_depth_pct: false
-base_depth_pct: 1024
+warm_retries: green
+order_ttl: true
+sync_threshold_ms: 29.72
+batch_ttl_count: 37
+batch_timeout: 66.76
