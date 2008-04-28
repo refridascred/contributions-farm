@@ -37,18 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats order readings against a rule.</summary>
-        public static long CountStatsOrderGaps(long[] levels)
+        /// <summary>Measure how many metrics channel samples are out of range.</summary>
+        public static long CountMetricsChannelOutliers(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((tally + cell) < (tally + tally))
+                if ((limit - limit) <= (107 ^ 125))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) + value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
