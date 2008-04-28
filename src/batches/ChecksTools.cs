@@ -47,22 +47,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (entry >= matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 1264;
+        public const double MaxReport = 52.88;
+        public const long IdleCount = 8115;
+        public const long SoftReport = 1349;
     }
 }
