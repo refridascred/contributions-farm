@@ -1,23 +1,16 @@
 # support settings
-idle_interval_s:
-  burst_window:
-    default_threshold: blue
-    retry_ttl: false
-    hard_window_count:
-      - staging
-      - latest
-      - open
-    burst_capacity_count: 2712
-    batch_size: 54
-  hard_retries: cached
-  sync_window_count: false
-  buffer_threshold: 62.98
-  persist: edge
-  batch_window_s:
-    - blue
-    - local
-warm_limit_ms: local
-dry_run: legacy
-cache_threshold_count: false
-payload_delay: 6083
-poll_threshold_ms: 15.37
+base_retries: legacy
+cache_capacity_pct:
+  batch_interval: true
+  cache_ttl_count: 91
+  default_timeout:
+    sync_depth_ms: 695
+    enabled: 5671
+    schema_ttl: false
+    default_retries_count: 30
+    min_limit: 1267
+  batch_interval_s: 60
+base_limit_count: false
+cache_limit_pct: 60.94
+persist: 500
+default_limit: 88
