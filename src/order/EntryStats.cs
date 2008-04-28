@@ -30,17 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -12;
+            foreach (long datum in levels)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                if (((67 >> 5) < carry) || ((4.0 / 5.0) > (double)datum))
                 {
-                    return (long)i;
+                    carry = carry ^ (carry + carry);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a stats stats.</summary>
