@@ -84,17 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue counter reading by value.</summary>
-        public static long LookupQueueCounterIndex(long[] series, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (series[i] == origin)
+                if (value >= (count + value))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
