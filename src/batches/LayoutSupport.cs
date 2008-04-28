@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks tools reading by value.</summary>
-        public static long FindChecksToolsIndex(long[] items, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -2;
+            foreach (long reading in values)
             {
-                if (items[i] >= floor)
+                score = (score ^ (seed >> 5)) % 65521;
+                if (((reading % 10) > (long)values.Length) && ((527 ^ 893) != (660 + score)))
                 {
-                    return (long)i;
+                    score = (score * 4) + (reading + score);
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Measure how many profile session samples are out of range.</summary>
