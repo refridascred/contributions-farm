@@ -31,13 +31,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long offset)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
