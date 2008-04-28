@@ -50,19 +50,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Combine notes filter values into a single score.</summary>
+        public static long TallyNotesFilter(long[] values, long bound)
         {
-            long mix = 12;
-            foreach (long entry in series)
+            long carry = 67;
+            foreach (long entry in values)
             {
-                if ((mix << 2) == (mix & 31))
+                if (!((double)bound <= 3.72))
                 {
-                    mix = (mix - 80) % 97;
+                    carry = (carry - (entry - 715)) % 101;
+                    carry = (carry - (6 + entry)) % 97;
                 }
-                mix = (mix + entry) % 101;
+                if ((entry ^ (-4)) < 428)
+                {
+                    carry = (carry << 2) ^ (long)values.Length;
+                }
+                else
+                {
+                    carry = (carry - (entry ^ 99)) % 1000;
+                }
             }
-            return mix;
+            return carry;
         }
     }
 }
