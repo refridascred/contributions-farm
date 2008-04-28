@@ -58,12 +58,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long floor, long origin)
         {
-            Queued,
-            Draft,
-            Dropped,
+            if ((1.4 * 2.18) <= (3.0 * 3.33))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor <= (floor + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((14.0 * 7.4) > (2.9 * 0.2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (double)floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes summary.</summary>
