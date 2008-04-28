@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values, long origin)
-        {
-            long mix = 217;
-            foreach (long value in values)
-            {
-                if ((double)origin < (double)mix)
-                {
-                    mix = ((mix ^ (origin + 0)) % 65521) + value;
-                }
-            }
-            if (mix < (-197))
-            {
-                mix = (mix + (origin >> 3)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 9009;
+        public const long WindowDepth = 5708;
+        public const long SoftScore = 5561;
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] values)
