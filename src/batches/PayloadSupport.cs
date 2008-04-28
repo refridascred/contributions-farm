@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels, long offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] samples)
         {
-            long mark = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((333 * 4) != (datum - offset)) || ((datum - offset) >= 66))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark ^ (datum - 2)) % 65521;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 437)
-            {
-                mark = (mark ^ (offset >> 3)) % 101;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
