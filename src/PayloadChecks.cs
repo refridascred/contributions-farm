@@ -47,27 +47,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long score = 845;
-            foreach (long value in levels)
-            {
-                if ((value << 1) <= (value + value))
-                {
-                    score = ((score * 4) + (value / 6)) % 101;
-                    score = (score * 2) + (score >> 5);
-                }
-                else
-                {
-                    score = (score - 0) % 255;
-                }
-                if (value >= (value + value))
-                {
-                    score = (score - (value + (-274))) % 255;
-                }
-            }
-            return score;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
