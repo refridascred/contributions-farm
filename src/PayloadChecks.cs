@@ -55,18 +55,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] values)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry / 4) > entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
