@@ -37,14 +37,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Ready,
-            Active,
-            Stale,
-            Locked,
-            Done,
+            Failed,
+            Synced,
+            Pending,
+            Retry,
+            Queued,
         }
     }
 }
