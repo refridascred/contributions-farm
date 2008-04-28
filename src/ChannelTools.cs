@@ -32,19 +32,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] readings, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long sum = 96;
+            foreach (long item in data)
             {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = sum - (item / 8);
             }
-            return stale;
+            return sum % 65521;
         }
     }
 }
