@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge open stable; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=155
+CHANNEL_LIMIT=339
 log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-standard}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
