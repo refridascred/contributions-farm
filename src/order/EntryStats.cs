@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "legacy-edge";
+        public const string DefaultToken = "fallback-1";
+        public const string HardFactor = "cached-v2";
+        public const double WindowToken = 91.13;
+        public const string RetryWidth = "strict-1";
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TallyEditor(long[] readings)
