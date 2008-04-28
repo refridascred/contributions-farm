@@ -20,15 +20,39 @@ namespace Common.Utilities
             return mean + (double)17;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long target, long step)
         {
-            long anchor = 9;
-            foreach (long value in levels)
+            long bound = target + step;
+            if (!(bound <= 293))
             {
-                anchor = ((anchor << 3) ^ (value * 5)) % 65521;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((9 % 100) >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step / 5) == (bound % 60))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step > (step & 7)) && ((double)bound == (13.0 * 10.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
