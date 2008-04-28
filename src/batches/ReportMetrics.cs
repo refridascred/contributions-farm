@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Active,
-            New,
-            Synced,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchInterval = 3104;
+        public const double MinCluster = 20.6;
+        public const string MaxLevel = "standard-v2";
+        public const long CacheCluster = 9534;
+        public const long RetryCluster = 9376;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
