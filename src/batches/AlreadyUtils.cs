@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 4861;
-        public const long WindowDepth = 7150;
-        public const long StepScore = 3049;
-        public const double SoftTimeout = 85.97;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long RankOrder(long step, long target)
