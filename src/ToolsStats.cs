@@ -39,19 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry - count) > 925)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 95.44;
+        public const double DefaultContributi = 85.56;
+        public const string StepContributi = "fallback";
+        public const long IdleContributi = 5805;
+        public const long RetryContributi = 8914;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] series, long step)
