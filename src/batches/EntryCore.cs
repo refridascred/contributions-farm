@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 37.31;
-        public const long WindowGithubfarm = 9929;
-        public const long WindowScore = 9569;
-        public const string IdleGithubfarm = "cached";
-        public const long CacheLevel = 2483;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Synced,
+            Paused,
+            New,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double WindowWidth = 9.86;
