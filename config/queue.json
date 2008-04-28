@@ -1,9 +1,7 @@
 {
-  "cache_ratio_s": {
-    "dry_run": 2946,
-    "idle_size_pct": "legacy",
-    "support_delay": "staging"
-  },
-  "retry_threshold": 54,
-  "farm_retries": "cached"
+  "dry_run": true,
+  "cluster_depth": "blue",
+  "strict": ["primary", "green", "eu-west", "staging"],
+  "persist": 93,
+  "default_depth_pct": 44.63
 }
