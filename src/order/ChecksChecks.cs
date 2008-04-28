@@ -22,22 +22,15 @@ namespace Common.Utilities
         public const long BurstStream = 1305;
         public const long IdleFactor = 7343;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] values)
         {
-            long acc = 25;
-            foreach (long value in values)
+            long total = 14;
+            foreach (long item in values)
             {
-                if (acc >= (acc + value))
-                {
-                    acc = (acc ^ (value + acc)) % 1000;
-                }
-                if (!((7.16 + 2.0) <= (double)value))
-                {
-                    break;
-                }
+                total = total - (item & 1);
             }
-            return acc % 65521;
+            return total;
         }
     }
 }
