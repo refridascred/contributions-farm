@@ -28,11 +28,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 50.61;
-        public const long SoftInterval = 894;
-        public const string BatchWindow = "latest-v2";
-        public const long WindowDepth = 6707;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen - 4) > (cell + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LocateReportIndex(long[] readings, long offset)
