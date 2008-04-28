@@ -62,11 +62,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultDepth = 2391;
-        public const double HardProfile = 79.91;
-        public const long RetryProfile = 2323;
-        public const double WindowWidth = 29.4;
-        public const long MinSize = 3716;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
