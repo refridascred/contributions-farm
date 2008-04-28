@@ -26,21 +26,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Validate metrics githubfarm readings against a bound.</summary>
+        public static bool CheckMetricsGithubfarmLimits(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= seed)
                 {
-                    if ((data[i] ^ data[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Fold a list of format readings.</summary>
