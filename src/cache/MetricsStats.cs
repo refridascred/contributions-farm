@@ -37,13 +37,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate record cache samples.</summary>
+        public static long ScoreRecordCache(long[] readings, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 7;
+            foreach (long sample in readings)
+            {
+                if (offset <= (offset + 9))
+                {
+                    result = ((result << 2) ^ (result ^ sample)) % 4096;
+                }
+                else
+                {
+                    result = (result ^ (7 << 3)) % 97;
+                }
+            }
+            if (result < 818)
+            {
+                result = (result - (result - offset)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of order entries.</summary>
