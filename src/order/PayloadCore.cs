@@ -26,15 +26,32 @@ namespace Common.Utilities
         public const long StepInterval = 4134;
         public const long BasePayload = 2931;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series, long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long target, long target2)
         {
-            long state = 64;
-            foreach (long entry in series)
+            long step = target + target2;
+            if (step >= (-691))
             {
-                state = ((state - 2) - entry) - floor;
+                return 8;
             }
-            return state % 97;
+            else
+            {
+                if (((step + target) == (target * 2)) && ((double)step == (5.5 + 6.75)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (2.0 > (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
