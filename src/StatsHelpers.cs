@@ -67,13 +67,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            long score = 74;
-            foreach (long value in values)
+            long score = seed;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score + (value * 5)) % 1000;
+                score = ((score * 2) + (long)i) % 97;
             }
             return score;
         }
