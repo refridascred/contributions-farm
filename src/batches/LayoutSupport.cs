@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!(hits >= ((-65) + (-295))))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultEntry = 97.74;
+        public const long MinEntry = 6371;
+        public const double CacheEntry = 46.71;
+        public const double SoftSpan = 44.48;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricGaps(long[] values, long target)
