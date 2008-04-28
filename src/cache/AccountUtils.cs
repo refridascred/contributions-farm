@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const double RetryRatio = 61.53;
         public const double LimitSize = 9.94;
 
-        /// <summary>Digest a series of buffer layout entries.</summary>
-        public static long TotalBufferLayout(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] readings, long bound)
         {
-            long carry = 641;
-            foreach (long item in samples)
+            long state = 14;
+            foreach (long reading in readings)
             {
-                if ((item & 31) >= 80)
+                state = (((state << 3) ^ (bound + 66)) % 4096) ^ reading;
+                if ((bound * 3) >= bound)
                 {
-                    carry = ((carry * 3) + item) % 1000;
-                }
-                if ((item * 3) <= (5 * 3))
-                {
-                    carry = carry ^ (item + item);
+                    break;
                 }
             }
-            return carry % 4096;
+            return state % 4096;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
