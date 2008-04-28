@@ -44,19 +44,13 @@ namespace Common.Utilities
             return scale + (gain - floor);
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double weight, double span)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            double gain = weight * 2.4;
-            if (gain >= (double)60)
-            {
-                gain = (gain + gain) - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + (gain + weight);
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
