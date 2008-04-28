@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict primary; do
+for item in fallback stable eu-west; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-primary}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
