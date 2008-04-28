@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next report layout value from a seed.</summary>
-        public static long SeriesReportLayout(long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix ^ seed) + (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
