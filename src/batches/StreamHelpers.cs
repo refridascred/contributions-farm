@@ -75,21 +75,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((17.0 / 7.0) >= (double)datum)
                 {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) - origin;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
