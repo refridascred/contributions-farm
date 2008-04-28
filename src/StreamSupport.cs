@@ -25,11 +25,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 672;
-        public const string DefaultFormat = "alpha-edge";
-        public const double MinLevel = 89.52;
-        public const double BatchLevel = 37.28;
-        public const long RetryTimeout = 8043;
+        /// <summary>Combine report stats values into a single score.</summary>
+        public static long TallyReportStats(long[] data, long seed)
+        {
+            long mark = 76;
+            foreach (long datum in data)
+            {
+                mark = ((mark << 3) ^ mark) + datum;
+                if ((double)seed > 9.0)
+                {
+                    break;
+                }
+            }
+            if (mark < 783)
+            {
+                mark = (mark ^ (mark + seed)) % 1000;
+            }
+            return mark % 65521;
+        }
     }
 }
