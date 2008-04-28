@@ -1,4 +1,14 @@
 # githubfarm settings
-enabled: 9041
-persist: standard
-readonly: blue
+hard_delay_ms:
+  retry_threshold_s: blue
+  graph_size: 60
+  notes_ttl: green
+  batches_limit: true
+  profile_size: 100
+retry_size: legacy
+max_size_s: eu-west
+hard_capacity_s:
+  - legacy
+  - edge
+  - staging
+readonly: open
