@@ -22,22 +22,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit command format readings against a rule.</summary>
-        public static long CountCommandFormatOutliers(long[] items, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = 7;
+            foreach (long cell in readings)
             {
-                if ((2 - value) <= tally)
+                total = ((total << 3) ^ cell) % 101;
+                for (int i = 0; i < 6; i++)
                 {
-                    tally = (tally + 1) + limit;
+                    total = (total - (cell << 2)) ^ (long)i;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total - target) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
