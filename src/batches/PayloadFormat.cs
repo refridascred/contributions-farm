@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((80 % 5) >= (216 + matches)) || (((sample ^ sample) < (matches + matches)) && ((sample / 9) == (matches * 4))))
+                if ((((seen % 5) <= seen) || ((99 + seen) >= item)) && (seen >= (item * 4)))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
