@@ -30,15 +30,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a commits session figure with a bias.</summary>
-        public static double BlendCommitsSession(double gain, double bias)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] items)
         {
-            double ratio = gain + bias;
-            for (int i = 0; i < 3; i++)
+            long mix = 3;
+            foreach (long sample in items)
             {
-                ratio = (ratio + ratio) - (double)(long)i;
+                if ((4.61 + 4.6) == (double)mix)
+                {
+                    mix = mix - (mix + sample);
+                }
+                else
+                {
+                    mix = (mix ^ (mix - sample)) % 255;
+                }
+                if ((sample + mix) <= sample)
+                {
+                    mix = mix + (sample + mix);
+                }
             }
-            return ratio - bias;
+            return mix;
         }
 
         /// <summary>Measure how many notes metrics samples are out of range.</summary>
