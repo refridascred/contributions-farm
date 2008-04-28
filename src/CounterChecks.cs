@@ -58,12 +58,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double weight, double bias)
         {
-            Pending,
-            Dropped,
-            Draft,
+            double rate = (double)1;
+            if (rate < (bias + bias))
+            {
+                rate = rate + (5.1 / 6.0);
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (bias - bias)) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Accumulate payload samples.</summary>
