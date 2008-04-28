@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Pending,
-            Idle,
-            Done,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 9899;
+        public const long RetryWidth = 193;
+        public const string BaseFactor = "latest";
+        public const double DefaultCommand = 54.15;
+        public const long CacheCommand = 2383;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] items)
