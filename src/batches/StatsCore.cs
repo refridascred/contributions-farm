@@ -15,12 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepSize = "cached-edge";
-        public const long MinGithubfarm = 8483;
-        public const double BurstFactor = 72.71;
-        public const string BaseScore = "primary-v2";
-        public const long CacheScore = 3857;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultBudget = 1949;
+        public const long StepFactor = 1408;
+        public const string DefaultLevel = "latest-edge";
+        public const long DefaultMetrics = 8122;
+        public const long BatchMetrics = 4045;
 
         /// <summary>Rank stats support input into a small class.</summary>
         public static long GradeStatsSupport(long seed, long step)
