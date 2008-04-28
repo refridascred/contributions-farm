@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long bound, long floor)
         {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
+            long slot = bound ^ floor;
+            if ((bound - slot) > (34 + slot))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - 936) <= (floor - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
