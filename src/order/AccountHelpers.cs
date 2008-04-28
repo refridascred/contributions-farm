@@ -17,15 +17,13 @@ namespace Common.Utilities
         public const long BaseCounter = 35;
         public const long BatchCounter = 7547;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long sum = 91;
-            foreach (long item in levels)
-            {
-                sum = (sum + (sum + sum)) ^ item;
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine cache values into a single score.</summary>
