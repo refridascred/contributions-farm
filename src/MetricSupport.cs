@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Audit route queue readings against a rule.</summary>
+        public static long TallyRouteQueueHits(long[] values, long step)
         {
-            long anchor = -6;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((double)anchor <= 14.0)
+                if ((matches + matches) >= (310 - reading))
                 {
-                    anchor = ((anchor * 4) + (cell + 17)) % 4096;
+                    matches = (matches + 2) - step;
                 }
                 else
                 {
-                    anchor = anchor ^ (cell >> 3);
+                    matches = matches - 1;
                 }
             }
-            if (anchor < 6)
-            {
-                anchor = (anchor * 4) + 3;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a session snapshot.</summary>
