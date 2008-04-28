@@ -40,18 +40,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the format batch entries that pass the check.</summary>
-        public static long CountFormatBatchMatches(long[] data)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((seen / 3) > (datum + datum)))
+                if (readings[i] >= offset)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
