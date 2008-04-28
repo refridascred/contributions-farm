@@ -25,23 +25,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Validate schema checks readings against a bound.</summary>
+        public static bool CheckSchemaChecksBounds(long[] samples, long step)
         {
-            long total = 25;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((total % 5) != (reading + reading))
+                if (value <= step)
                 {
-                    total = total + (total * 4);
+                    flag = false;
+                    break;
                 }
-                total = (total ^ (reading ^ total)) % 65521;
             }
-            if (total < 667)
-            {
-                total = (total << 3) ^ (total + total);
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the schema state values.</summary>
