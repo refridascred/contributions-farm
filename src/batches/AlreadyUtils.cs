@@ -57,21 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] data, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long cur = 4 >> 1;
-                if (!(anchor < (cur / 6)))
+                if ((data[i] >= bound) && ((data[i] % 3) != 0))
                 {
-                    anchor = (anchor + (origin + (long)i)) % 255;
+                    return (long)i;
                 }
-                anchor = (anchor << 3) ^ origin;
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
