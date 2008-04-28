@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] series, long origin)
         {
-            long sum = 9;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                sum = ((sum * 4) + (6 - cell)) % 1000;
+                if (entry < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum < 74)
-            {
-                sum = ((sum * 5) + (sum * 2)) % 255;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
