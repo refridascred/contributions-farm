@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public long Level { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinBudget = 55.45;
+        public const string DefaultQueue = "staging";
+        public const double SoftTimeout = 6.05;
+        public const long HardSize = 1056;
 
         /// <summary>Accumulate record cache samples.</summary>
         public static long ScoreRecordCache(long[] readings, long offset)
