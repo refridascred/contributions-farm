@@ -29,18 +29,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            long result = 37;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((value + result) <= (value >> 2)) && ((4.5 - 11.0) > (double)value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 2) + result;
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return matches;
         }
     }
 }
