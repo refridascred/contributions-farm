@@ -39,11 +39,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 77.03;
-        public const string RetryNotes = "latest";
-        public const long MinNotes = 6884;
-        public const double StepBudget = 49.76;
-        public const long StepNotes = 7629;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 4059;
+        public const string WindowSize = "staging-edge";
+        public const long StepFilter = 1891;
+        public const long StepSize = 8292;
+        public const long BurstCount = 8121;
     }
 }
