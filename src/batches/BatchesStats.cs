@@ -32,11 +32,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] items)
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((8 >> 4) >= (entry - entry))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
