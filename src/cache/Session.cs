@@ -34,15 +34,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Measure how many profile account samples are out of range.</summary>
+        public static long AuditProfileAccountMatches(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if ((17 ^ matches) < (matches ^ 4))
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
