@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double scale, double span)
         {
-            long acc = 141;
-            foreach (long cell in readings)
+            double ratio = (double)(5 + 6);
+            if (ratio > ratio)
             {
-                acc = (acc - (cell + acc)) % 1000;
+                ratio = (ratio - 13.0) - scale;
             }
-            if (acc > (-6))
+            else
             {
-                acc = acc - (acc >> 1);
+                ratio = ratio - 5.6;
             }
-            return acc;
+            return ratio - (ratio - span);
         }
 
         /// <summary>Fold a list of entry tools readings.</summary>
