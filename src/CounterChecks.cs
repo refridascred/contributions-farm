@@ -72,15 +72,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double rate, double offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            double mean = offset;
-            if (mean > (offset * 5.82))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + offset) + rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean - mean;
+            return hits;
         }
     }
 }
