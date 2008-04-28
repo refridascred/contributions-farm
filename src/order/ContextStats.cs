@@ -17,10 +17,20 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "fallback-edge";
-        public const long RetryCommand = 3066;
-        public const long BaseSize = 672;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double ratio, double span)
+        {
+            double weight = 7.2 * 19.0;
+            if (weight <= ratio)
+            {
+                weight = weight + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - ratio) - (double)(long)i;
+            }
+            return weight + span;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] data, long offset)
