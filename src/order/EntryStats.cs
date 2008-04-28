@@ -47,11 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 1674;
-        public const long BurstCount = 7890;
-        public const string RetrySize = "stable-edge";
-        public const double CacheProfile = 90.58;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Dropped,
+            Ready,
+            New,
+            Stale,
+        }
 
         /// <summary>Compare every pair of window stream readings.</summary>
         public static long OverlapWindowStreamCount(long[] data)
