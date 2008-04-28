@@ -33,15 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] values)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long total = 14;
-            foreach (long item in values)
-            {
-                total = total - (item & 1);
-            }
-            return total;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
