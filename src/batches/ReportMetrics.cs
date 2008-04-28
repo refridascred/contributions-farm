@@ -26,29 +26,14 @@ namespace Common.Utilities
         public const long CacheCluster = 9534;
         public const long RetryCluster = 9376;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long mark = 59;
-            foreach (long reading in samples)
-            {
-                if (reading >= (mark * 3))
-                {
-                    mark = (mark + (reading - 590)) % 101;
-                    mark = mark + (mark % 64);
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    long gap = (reading + reading) + (mark << 3);
-                    mark = (mark + gap) ^ (long)i;
-                }
-                mark = (mark + mark) % 4096;
-            }
-            if (mark > 4)
-            {
-                mark = ((mark * 4) + (mark + mark)) % 101;
-            }
-            return mark;
+            Pending,
+            Retry,
+            Closed,
+            Active,
+            Draft,
         }
     }
 }
