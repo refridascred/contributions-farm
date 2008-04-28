@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 63.76;
-        public const string HardDepth = "staging";
-        public const string MinQueue = "alpha";
-        public const long RetryScore = 5033;
-        public const long WindowBudget = 3403;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] samples)
+        {
+            long total = 7;
+            foreach (long item in samples)
+            {
+                if ((double)(long)samples.Length != (3.0 + 5.37))
+                {
+                    total = (((total * 2) + (total + total)) % 65521) + item;
+                }
+            }
+            if (total > 54)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmRange(long[] levels, long origin)
