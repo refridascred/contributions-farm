@@ -73,18 +73,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] values, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((entry >= (count - offset)) || ((17.0 + 2.56) < (double)offset))
+                if (datum < seed)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
