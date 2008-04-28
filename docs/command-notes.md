@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-The channel module keeps tools values in sync with the checks cache.
+Defaults for batches live in the config folder and can be overridden per environment.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Review metric limits each release
-- Log every graph change
+- Prefer route defaults
+- Log every context change
+- Document new farm fields
