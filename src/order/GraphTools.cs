@@ -60,18 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi batches values into a single score.</summary>
-        public static long ScoreContributiBatches(long[] series, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] items, long target)
         {
-            long sum = 99;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (origin > (origin % 5))
+                if ((target ^ hits) < hits)
                 {
-                    sum = (sum + (value * 2)) % 4096;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
