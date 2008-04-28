@@ -23,12 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long target)
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
