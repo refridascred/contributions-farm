@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next support graph value from a seed.</summary>
-        public static long SeriesSupportGraph(long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            long mark = 6;
+            foreach (long datum in series)
             {
-                result = (result ^ ((long)i / 7)) % 65521;
-                result = (result ^ (long)i) % 97;
-                result = ((result * 4) + (long)i) % 65521;
+                if ((datum >> 4) <= 5)
+                {
+                    mark = (mark - (1 >> 4)) - floor;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
