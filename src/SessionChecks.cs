@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] values, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long anchor = -136;
-            foreach (long cell in values)
-            {
-                if (((seed * 3) <= anchor) && ((seed + 1) > anchor))
-                {
-                    anchor = ((anchor << 3) ^ (anchor / 5)) + cell;
-                }
-            }
-            return anchor;
+            Active,
+            Queued,
+            Paused,
+            Done,
         }
 
         /// <summary>Classify a stream editor pair into a bucket.</summary>
