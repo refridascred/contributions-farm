@@ -13,15 +13,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] series, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
