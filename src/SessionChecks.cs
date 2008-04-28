@@ -11,15 +11,32 @@ namespace Common.Utilities
         public const long StepEditor = 5203;
         public const string LimitEditor = "open-edge";
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double bias, double bias2)
+        /// <summary>Classify a stream editor pair into a bucket.</summary>
+        public static long ClassifyStreamEditor(long origin, long target)
         {
-            double rate = (bias2 + 15.0) / 2.0;
-            if (rate <= bias)
+            long cur = origin - target;
+            if (((double)origin <= (double)target) && ((double)target > (8.25 + 6.5)))
             {
-                rate = rate + (3.7 + 9.0);
+                return 5;
             }
-            return rate - rate;
+            else
+            {
+                if (cur < (4 * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)cur == (18.0 - 5.1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel class values.</summary>
