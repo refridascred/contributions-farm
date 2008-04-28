@@ -1,15 +1,11 @@
 # Command notes
 
-The session module keeps payload values in sync with the metric cache.
-A payload that stays idle for too long is moved to the graph list.
-A token that stays idle for too long is moved to the window list.
-
-Keep token and layout names short and lowercase.
-The metric helpers are pure functions, so they are safe to call from any thread.
-The support module keeps checks values in sync with the support cache.
+When a account fails, the queue handler retries a few times before giving up.
+When a metrics fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate contributi input early
-- Log every githubfarm change
-- Prefer entry defaults
+- Document new route fields
+- Validate buffer input early
+- Log every record change
+- Prefer already defaults
