@@ -40,32 +40,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long step, long bound)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long gap = step + bound;
-            if ((((-74) >> 5) < (gap + 28)) && (((-502) + 727) >= gap))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound > (379 + step)) && (10 <= bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
