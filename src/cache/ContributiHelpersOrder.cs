@@ -13,13 +13,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
             public long Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine report context values into a single score.</summary>
