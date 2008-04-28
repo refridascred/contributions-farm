@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const long StepLevel = 4479;
         public const string StepReport = "alpha-1";
 
-        /// <summary>Validate route buffer readings against a bound.</summary>
-        public static bool GuardRouteBufferRange(long[] items, long target)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= target)
+                if ((series[i] > offset) && ((series[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
