@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    weight REAL,
-    region TEXT,
-    active INTEGER NOT NULL DEFAULT 1
+    active INTEGER NOT NULL DEFAULT 1,
+    token TEXT,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
+CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
 
-INSERT INTO commits_records (level, weight, region, active) VALUES (50, 22.25, 'fallback', 58);
-INSERT INTO commits_records (level, weight, region, active) VALUES (41, 68.19, 'standard', 1);
+INSERT INTO commits_records (level, active, token, label) VALUES (45, 42, 'green', 'open');
+INSERT INTO commits_records (level, active, token, label) VALUES (90, 0, 'stable', 'eu-west');
