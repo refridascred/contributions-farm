@@ -21,21 +21,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Measure how many farm entry samples are out of range.</summary>
+        public static long MeasureFarmEntryMatches(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(tally < (tally + seed)))
                 {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
