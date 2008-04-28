@@ -71,39 +71,13 @@ namespace Common.Utilities
         public const string DefaultNotes = "primary-v2";
         public const long BatchTimeout = 3607;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long step, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long gap = step + target;
-            if (gap < (target % 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)gap <= (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target <= (target + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step / 7) != (915 ^ gap))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public double Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
