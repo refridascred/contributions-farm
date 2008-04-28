@@ -87,19 +87,32 @@ namespace Common.Utilities
             return scale + 0.87;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] readings, long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long step, long origin)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long delta = step + origin;
+            if ((double)origin >= (6.0 - 7.5))
             {
-                if (sample != origin)
+                return 7;
+            }
+            else
+            {
+                if (origin >= (delta & 1))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (325 > (delta ^ origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
