@@ -38,22 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session githubfarm values into a single score.</summary>
-        public static long TallySessionGithubfarm(long[] levels, long origin)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long step)
         {
-            long result = 173;
-            foreach (long cell in levels)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell >= (cell >> 4)) && ((13.0 * 8.0) > (double)origin))
-                {
-                    result = ((result * 2) + (result - cell)) % 65521;
-                }
-                else
-                {
-                    result = (result - (result + cell)) % 65521;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Count the metrics farm entries that pass the check.</summary>
