@@ -20,23 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of filter session readings.</summary>
-        public static long TallyFilterSession(long[] data, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] items)
         {
-            long state = 764;
-            foreach (long datum in data)
+            long result = 4;
+            foreach (long sample in items)
             {
-                if (datum <= state)
+                result = result ^ 90;
+                if (result < (sample << 3))
                 {
-                    break;
+                    result = result + result;
                 }
                 else
                 {
-                    state = (state + target) % 255;
+                    result = (result * 4) + (result / 3);
                 }
-                state = ((state * 5) + (state + state)) % 255;
             }
-            return state;
+            if (result > 51)
+            {
+                result = ((result << 3) ^ (result / 4)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the filter kind values.</summary>
