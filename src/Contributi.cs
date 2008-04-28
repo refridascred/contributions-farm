@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] values, long seed)
         {
-            long acc = -19;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((((long)values.Length + datum) == (datum + acc)) && ((acc - datum) > (6 % 16)))
+                if (seed <= (seen % 97))
                 {
-                    acc = (acc + datum) % 97;
-                }
-                if (853 > (acc - acc))
-                {
-                    break;
+                    seen = (seen + 3) + reading;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
