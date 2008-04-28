@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every commits token entry stays within the limit.</summary>
