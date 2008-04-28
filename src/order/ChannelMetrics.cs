@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] readings, long bound)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample + sample) >= (sample >> 1))
+                if (series[i] == origin)
                 {
-                    count = (count + 1) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
