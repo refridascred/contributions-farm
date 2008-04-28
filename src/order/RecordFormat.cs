@@ -57,17 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] data, long limit)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(30 % 8);
+            if (ratio > floor)
             {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - ratio;
             }
-            return -1;
+            return ratio + (rate + ratio);
         }
     }
 }
