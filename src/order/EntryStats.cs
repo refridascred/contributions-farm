@@ -22,12 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            New,
-            Done,
-            Pending,
+            long result = 251;
+            foreach (long value in readings)
+            {
+                result = (result << 3) ^ (396 + value);
+                result = (result ^ (long)readings.Length) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate payload samples.</summary>
