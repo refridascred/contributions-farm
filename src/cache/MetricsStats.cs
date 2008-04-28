@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long origin, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] values)
         {
-            long next = origin ^ offset;
-            if ((double)offset <= (double)origin)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((next % 64) > (next * 3))
+                if (seen <= datum)
                 {
-                    return 6;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if (origin > (90 / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((3 / 9) >= offset) || ((offset - origin) < (next / 8)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
