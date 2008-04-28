@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] readings, long target)
+        /// <summary>Derive the next report layout value from a seed.</summary>
+        public static long SeriesReportLayout(long seed)
         {
-            long score = 46;
-            foreach (long value in readings)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                score = (score - (value + value)) - target;
-                score = ((score << 2) ^ (value & 1)) % 65521;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = (mix ^ seed) + (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return score % 1000;
+            return mix;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
