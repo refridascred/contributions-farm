@@ -38,19 +38,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double gain, double bias)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double ratio = (double)9 + gain;
-            if (ratio < gain)
-            {
-                ratio = ratio + (ratio - ratio);
-            }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio + (ratio * 1.2);
+            Closed,
+            Dropped,
+            Failed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Combine already record values into a single score.</summary>
