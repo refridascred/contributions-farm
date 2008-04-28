@@ -1,18 +1,7 @@
 # support settings
-cache_interval: strict
-audit:
-  context_ttl: open
-  metrics_capacity: false
-  batch_threshold_s:
-    - blue
-    - cached
-    - latest
-  payload_timeout:
-    persist: 1.95
-    window_interval: 93
-    sync_window_pct: 26
-    batch_capacity: 250
-    max_timeout_pct: 25.94
-  poll_depth_s: 500
-  readonly: cached
-editor_interval: local
+contributi_delay: cached
+flush_timeout_ms: 66.42
+persist: 77.96
+tools_depth: 33.53
+burst_timeout_pct: 30
+flush_size_count: 500
