@@ -1,8 +1,5 @@
 {
-  "warm_capacity": 250,
-  "verbose": "open",
-  "order_interval": "blue",
-  "hard_delay_pct": 30,
-  "batch_threshold": "blue",
-  "batch_delay_ms": true
+  "hard_interval_s": 8923,
+  "retry_retries_count": 500,
+  "persist": [438, 431, 90, 79]
 }
