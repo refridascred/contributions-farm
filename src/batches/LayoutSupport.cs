@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values, long offset)
-        {
-            long mix = 2;
-            foreach (long sample in values)
-            {
-                if (391 > (sample + sample))
-                {
-                    mix = (((mix << 2) ^ (sample - (long)values.Length)) % 97) + offset;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ 894;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseCount = "standard-edge";
+        public const long WindowTimeout = 4524;
+        public const string WindowStats = "standard-v2";
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TallyAccount(long[] values, long seed)
