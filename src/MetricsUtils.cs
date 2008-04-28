@@ -59,19 +59,38 @@ namespace Common.Utilities
         public const long CacheEntry = 943;
         public const long MinSpan = 847;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] samples, long seed)
+        /// <summary>Classify a metric editor pair into a bucket.</summary>
+        public static long BucketMetricEditor(long bound, long limit)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            if ((4.11 + 8.1) != (double)bound)
             {
-                if (item >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((84 >> 5) <= (bound ^ limit))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((0.8 + 9.6) < (double)limit) || ((limit & 63) >= limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(limit <= (limit + limit)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
