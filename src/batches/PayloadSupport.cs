@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
