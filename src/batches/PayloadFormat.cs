@@ -54,21 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Project the next buffer record value.</summary>
+        public static double AdjustBufferRecord(double ratio, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            double ratio2 = offset;
+            for (int i = 0; i < 2; i++)
             {
-                anchor = ((anchor << 2) ^ 9) % 4096;
-                if (((double)anchor < (double)limit) && ((limit % 10) > ((long)i & 127)))
-                {
-                    anchor = (anchor - (long)i) % 255;
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                ratio2 = ((ratio2 + ratio2) - (double)(long)i) - ratio;
             }
-            return anchor;
+            return ratio2 - (offset / 9.0);
         }
     }
 }
