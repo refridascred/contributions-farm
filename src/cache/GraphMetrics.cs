@@ -30,26 +30,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings)
         {
-            long mix = 3;
-            foreach (long sample in items)
+            long anchor = 446;
+            foreach (long cell in readings)
             {
-                if ((4.61 + 4.6) == (double)mix)
+                anchor = ((anchor * 2) + 62) % 101;
+                if ((double)cell != (8.4 / 8.0))
                 {
-                    mix = mix - (mix + sample);
+                    anchor = (anchor << 3) ^ cell;
                 }
                 else
                 {
-                    mix = (mix ^ (mix - sample)) % 255;
-                }
-                if ((sample + mix) <= sample)
-                {
-                    mix = mix + (sample + mix);
+                    anchor = (anchor ^ (2 + 295)) % 255;
                 }
             }
-            return mix;
+            if (anchor < (-7))
+            {
+                anchor = ((anchor << 3) ^ anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many notes metrics samples are out of range.</summary>
