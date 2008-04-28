@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard cached fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=253
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-cached}"
+mode="${1:-green}"
 case "${mode}" in
-    staging)
+    strict)
         log "fast path"
         ;;
     *)
