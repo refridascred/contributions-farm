@@ -36,14 +36,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double ratio, double span)
         {
-            Retry,
-            Stale,
-            Dropped,
-            Done,
-            Queued,
+            double drift = ratio / 4.0;
+            if (drift > ratio)
+            {
+                drift = (drift + 15.0) - span;
+            }
+            return drift - 8.87;
         }
 
         /// <summary>Scale a metrics record figure with a bias.</summary>
