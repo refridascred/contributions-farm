@@ -17,12 +17,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long step)
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            long edge = seed - step;
+            if ((3.0 + 4.12) >= (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(step >= (edge + seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
