@@ -25,19 +25,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] series, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (sample != limit)
+                if (((31 - 53) <= (reading - seen)) || ((reading >> 5) < (seen + seen)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + bound;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
