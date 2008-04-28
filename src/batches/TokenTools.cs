@@ -34,15 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double bias, double floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double drift = (floor * 1.3) / 9.0;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (floor + drift)) + (double)(long)i;
-            }
-            return drift - bias;
+            Stale,
+            Retry,
+            Done,
+            Closed,
         }
     }
 }
