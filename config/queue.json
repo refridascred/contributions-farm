@@ -1,17 +1,12 @@
 {
-  "burst_retries": {
-    "cache_window": false,
-    "retry_limit": "cached",
-    "queue_limit": {
-      "audit": "stable",
-      "layout_window": 33,
-      "base_depth": "primary",
-      "readonly": "blue",
-      "batch_threshold_count": [243, 298, 95, 68]
-    },
-    "cache_delay_s": "local"
-  },
-  "command_retries": 100,
-  "min_threshold_count": 100,
-  "sync_ratio": "fallback"
+  "sync_capacity_ms": 78.54,
+  "min_threshold": [459, 351],
+  "idle_threshold_pct": {
+    "command_limit": false,
+    "readonly": 9128,
+    "burst_ttl_ms": "standard",
+    "audit": "open",
+    "idle_size_count": ["staging", "latest", "stable", "standard"],
+    "flush_depth_s": false
+  }
 }
