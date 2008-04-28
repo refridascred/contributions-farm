@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first stream counter entry that matches the target.</summary>
-        public static long SeekStreamCounterIndex(long[] items, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long limit, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long offset = limit ^ target;
+            if (!((3.7 * 6.1) >= (double)target))
             {
-                if (items[i] == limit)
+                return 7;
+            }
+            else
+            {
+                if ((target + 51) < (offset + target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
