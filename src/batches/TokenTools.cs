@@ -38,13 +38,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long offset)
         {
-            Stale,
-            Retry,
-            Done,
-            Closed,
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
