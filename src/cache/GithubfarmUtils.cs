@@ -53,19 +53,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] readings, long limit)
+        /// <summary>Grade a graph report value against two limits.</summary>
+        public static long GradeGraphReport(long step, long bound)
         {
-            long anchor = 61;
-            foreach (long value in readings)
+            if ((step + bound) == (bound + (-4)))
             {
-                anchor = ((anchor + anchor) % 101) + limit;
-                if ((double)value >= (9.03 + 7.4))
+                return 2;
+            }
+            else
+            {
+                if ((bound >= (60 ^ 97)) || ((5.6 / 5.0) >= (double)step))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the channel kind values.</summary>
