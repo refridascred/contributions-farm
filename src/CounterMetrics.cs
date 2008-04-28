@@ -29,21 +29,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a editor summary.</summary>
