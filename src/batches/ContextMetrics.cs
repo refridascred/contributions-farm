@@ -27,15 +27,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
