@@ -24,21 +24,19 @@ namespace Common.Utilities
         public const string WindowReport = "fallback-edge";
         public const long BatchReport = 3488;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Validate tools metric readings against a bound.</summary>
+        public static bool CheckToolsMetricRange(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value < target)
                 {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Blend two graph measurements.</summary>
