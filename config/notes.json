@@ -1,6 +1,7 @@
 {
-  "context_retries": false,
-  "account_depth": false,
-  "idle_retries_ms": "open",
-  "editor_limit": 51.45
+  "idle_timeout": 30,
+  "warm_limit": 86.04,
+  "soft_threshold_ms": false,
+  "account_ratio": 30,
+  "buffer_ratio": false
 }
