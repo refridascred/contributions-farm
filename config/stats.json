@@ -1,5 +1,6 @@
 {
-  "hard_window": "eu-west",
-  "default_interval_s": [341, 386],
-  "base_ttl": 41.8
+  "dry_run": 5205,
+  "verbose": 4.56,
+  "batch_ratio_pct": 100,
+  "idle_delay_count": 75
 }
