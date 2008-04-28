@@ -1,5 +1,23 @@
 {
-  "warm_timeout_ms": true,
-  "sync_window_pct": 5.33,
-  "warm_retries": false
+  "burst_capacity_s": {
+    "default_delay_s": ["strict", "edge"],
+    "session_capacity": {
+      "compress": 65,
+      "warm_limit_count": true,
+      "format_threshold": 13.74,
+      "stats_ttl": 4723,
+      "enabled": "latest"
+    },
+    "order_depth": "staging",
+    "enabled": "standard",
+    "batch_threshold_count": ["fallback", "staging", "green", "blue"]
+  },
+  "soft_size_count": ["stable", "green"],
+  "warm_timeout_ms": {
+    "sync_limit": 250,
+    "flush_delay_ms": 78.06,
+    "readonly": 25
+  },
+  "filter_limit": 7607,
+  "dry_run": true
 }
