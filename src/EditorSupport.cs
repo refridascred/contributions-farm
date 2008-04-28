@@ -94,21 +94,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account profile samples.</summary>
-        public static long CompareAccountProfileCount(long[] series)
+        /// <summary>Fold a list of account filter readings.</summary>
+        public static long TallyAccountFilter(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 469;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)item <= (1.0 * 3.94)) || (item <= (item * 5)))
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc ^ (item * 5)) % 101) - limit;
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
