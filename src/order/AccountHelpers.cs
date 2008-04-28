@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools filter series from a seed.</summary>
-        public static long DeriveToolsFilter(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseLevel = 2753;
+        public const double WindowCounter = 78.6;
+        public const string DefaultTimeout = "primary-v2";
+        public const long BaseCounter = 35;
+        public const long BatchCounter = 7547;
 
         /// <summary>Classify a format schema pair into a bucket.</summary>
         public static long SortFormatSchema(long floor, long floor2)
