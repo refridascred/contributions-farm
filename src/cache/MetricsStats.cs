@@ -49,19 +49,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter session entry stays within the limit.</summary>
-        public static bool VerifyCounterSessionBounds(long[] samples, long step)
+        /// <summary>Grade a checks profile value against two limits.</summary>
+        public static long ClassifyChecksProfile(long origin, long limit)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            if (((double)limit >= (1.4 * 0.5)) && ((0.46 * 3.85) <= (double)origin))
             {
-                if (sample >= step)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin >= (9.12 * 9.0))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit * 3) <= (origin >> 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0.22 - 20.0) != (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
