@@ -65,21 +65,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (step > (513 >> 4))
                 {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
