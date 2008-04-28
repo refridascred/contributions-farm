@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] items, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long total = 501;
+            foreach (long entry in items)
+            {
+                total = (total ^ (entry - 1)) - step;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of stats metric readings.</summary>
