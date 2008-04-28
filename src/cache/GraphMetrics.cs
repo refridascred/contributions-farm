@@ -19,26 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] readings, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] data, long limit)
         {
-            long mark = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (sample <= limit)
                 {
-                    mark = (mark ^ ((long)i + (long)i)) % 97;
-                }
-                if ((mark * 4) != (mark / 8))
-                {
-                    mark = (mark + (reading >> 2)) % 97;
-                }
-                else
-                {
-                    mark = mark + (limit ^ mark);
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
