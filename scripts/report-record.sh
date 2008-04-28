@@ -12,13 +12,13 @@ for i in $(seq 1 5); do
 done
 log "total ${total}"
 
-for item in latest blue local primary; do
+for item in legacy standard latest; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-local}"
 case "${mode}" in
-    staging)
+    eu-west)
         log "fast path"
         ;;
     *)
