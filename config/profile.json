@@ -1,14 +1,7 @@
 {
-  "strict": true,
-  "max_interval_ms": "strict",
-  "sync_depth": {
-    "flush_interval_pct": "blue",
-    "default_capacity_count": [468, 196, 52, 317],
-    "retry_threshold": "stable",
-    "poll_retries_pct": "blue",
-    "default_depth": "legacy"
-  },
-  "warm_limit_ms": ["primary", "cached"],
-  "flush_ttl_s": 2908,
-  "poll_limit_s": 18.65
+  "enabled": "stable",
+  "batch_threshold_s": 30,
+  "order_interval": "stable",
+  "soft_depth": "open",
+  "flush_interval_ms": ["primary", "blue", "cached", "edge"]
 }
