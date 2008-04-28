@@ -1,14 +1,12 @@
 {
-  "max_window_pct": 79,
-  "hard_ttl_count": 10.69,
-  "default_capacity": "strict",
-  "cache_ratio": 500,
-  "audit": {
-    "idle_capacity_s": 5279,
-    "retry_depth": "staging",
-    "enabled": "blue",
-    "already_timeout": "cached",
-    "session_retries": true
+  "burst_delay_pct": 250,
+  "base_ttl_ms": "latest",
+  "retry_delay": 1412,
+  "persist": {
+    "entry_timeout": false,
+    "min_ratio_ms": false,
+    "poll_interval_pct": 16.54
   },
-  "flush_delay": 5171
+  "warm_size": [67, 7, 35, 286],
+  "enabled": 6318
 }
