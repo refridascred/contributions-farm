@@ -16,11 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double gain, double offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] samples, long origin)
         {
-            double mean = offset * 10.0;
-            return (mean + (double)90) + gain;
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
