@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Audit window buffer readings against a rule.</summary>
+        public static long MeasureWindowBufferOutliers(long[] series, long target)
         {
-            Idle,
-            New,
-            Active,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((seen - target) >= (seen % 24)) || (((6.6 * 6.58) <= (double)entry) && (target > 533)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a report reading by value.</summary>
