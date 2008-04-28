@@ -1,8 +1,12 @@
 {
-  "report_interval": 60,
-  "audit": "primary",
-  "tools_ttl": 90,
-  "idle_retries": true,
-  "min_timeout_count": [441, 306, 112],
-  "retry_retries_ms": 99
+  "route_depth": "cached",
+  "min_limit_count": false,
+  "githubfarm_threshold": {
+    "dry_run": "primary",
+    "layout_timeout": 70.68,
+    "metrics_capacity": 21.44,
+    "warm_size_ms": "standard",
+    "strict": 831
+  },
+  "editor_interval": "green"
 }
