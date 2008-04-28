@@ -22,20 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] values, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (549 > ((long)i & 15))
+                if ((1 & 127) > value)
                 {
-                    continue;
+                    hits = (hits + 2) - origin;
                 }
-                carry = (carry << 3) ^ step;
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
