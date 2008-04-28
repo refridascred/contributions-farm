@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] values, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (item >= (2 >> 5))
+                long step = (long)i;
+                if (mix <= (step + step))
                 {
-                    matches = (matches + 3) - limit;
+                    step = (step ^ (step << 2)) % 4096;
+                    mix = ((mix << 2) ^ (958 * 3)) % 97;
+                    break;
                 }
+                else
+                {
+                    step = (step + (target % 7)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Blend two entry measurements.</summary>
