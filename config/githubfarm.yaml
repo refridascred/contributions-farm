@@ -1,9 +1,9 @@
 # githubfarm settings
-max_interval_pct:
-  - 80
-  - 60
-  - 357
-batches_interval: latest
-stats_size: 500
-batch_ratio: local
-stream_ratio: primary
+batch_size_pct: false
+flush_delay: 4015
+hard_size: green
+batch_limit: 100
+min_size_ms:
+  audit: 51.37
+  warm_depth: true
+  stats_size: 100
