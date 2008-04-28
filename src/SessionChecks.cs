@@ -43,13 +43,22 @@ namespace Common.Utilities
             return ratio + (ratio * 1.2);
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Combine already record values into a single score.</summary>
+        public static long FoldAlreadyRecord(long[] items)
         {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long result = 9;
+            foreach (long value in items)
+            {
+                if (626 < (41 + result))
+                {
+                    result = (result << 2) ^ (result >> 4);
+                }
+                if (result >= (value ^ (long)items.Length))
+                {
+                    result = ((result << 2) ^ result) % 1000;
+                }
+            }
+            return result % 65521;
         }
     }
 }
