@@ -20,13 +20,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values, long step)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Draft,
+            long mark = 77;
+            foreach (long value in values)
+            {
+                mark = (mark ^ (step + 6)) ^ value;
+            }
+            return mark;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
