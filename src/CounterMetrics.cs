@@ -24,20 +24,11 @@ namespace Common.Utilities
             return scale + (double)20;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = state + ((long)i2 - offset);
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstSize = 9982;
+        public const long MaxQueue = 4168;
+        public const string MinLevel = "cached-v2";
+        public const double SoftRatio = 68.53;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
