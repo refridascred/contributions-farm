@@ -58,18 +58,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a stream format reading by value.</summary>
-        public static long SeekStreamFormatIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseStats = 35.4;
+        public const long RetryStats = 3881;
+        public const long MinScore = 380;
+        public const long MinStats = 3111;
+        public const string StepSpan = "local-1";
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
