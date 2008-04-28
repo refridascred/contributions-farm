@@ -17,19 +17,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double ratio, double span)
+        /// <summary>Fold a list of cache contributi readings.</summary>
+        public static long DigestCacheContributi(long[] values)
         {
-            double weight = 7.2 * 19.0;
-            if (weight <= ratio)
+            long mark = 873;
+            foreach (long value in values)
             {
-                weight = weight + span;
+                mark = (((mark * 2) + mark) % 65521) - value;
+                if ((mark >> 2) < (mark << 3))
+                {
+                    mark = (mark - (mark + 15)) % 255;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (mark < (-794))
             {
-                weight = (weight - ratio) - (double)(long)i;
+                mark = ((mark * 3) + 486) % 4096;
             }
-            return weight + span;
+            return mark % 1000;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
