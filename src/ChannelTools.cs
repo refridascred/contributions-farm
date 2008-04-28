@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series, long step)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            long mark = 747;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (mark > (4 + 81))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark * 3) + (mark * 4);
-                }
-                else
-                {
-                    mark = (mark ^ (step - reading)) % 255;
-                }
-                if ((double)step == (3.0 - 7.0))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
