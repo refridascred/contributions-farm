@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items, long bound)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long floor, long step)
         {
-            long acc = 835;
-            foreach (long value in items)
+            if (step > (5 + (-46)))
             {
-                if ((acc ^ 309) < (acc * 4))
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ floor) <= step)
                 {
-                    acc = (acc + acc) - bound;
+                    return 8;
                 }
-                if ((acc >> 5) > acc)
+                else
                 {
-                    acc = (acc ^ value) % 101;
+                    if ((floor + floor) > (73 / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Blend two token measurements.</summary>
