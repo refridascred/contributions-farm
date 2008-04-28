@@ -1,14 +1,28 @@
 # githubfarm settings
-hard_delay_ms:
-  retry_threshold_s: blue
-  graph_size: 60
-  notes_ttl: green
-  batches_limit: true
-  profile_size: 100
-retry_size: legacy
-max_size_s: eu-west
-hard_capacity_s:
-  - legacy
-  - edge
-  - staging
-readonly: open
+warm_window_s:
+  - 294
+  - 215
+  - 244
+min_interval_count: 250
+cache_threshold_s:
+  audit:
+    soft_limit: 98.35
+    persist: 9390
+    hard_ttl_ms: staging
+  min_window_s: green
+  stream_capacity: 16
+  cache_capacity_pct:
+    - primary
+    - staging
+    - edge
+    - standard
+  enabled:
+    - edge
+    - stable
+    - edge
+  default_ttl_pct: primary
+compress: cached
+burst_delay_ms:
+  - 50
+  - 122
+stream_limit: primary
