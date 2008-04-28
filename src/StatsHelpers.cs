@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] samples, long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((2.9 / 4.0) == (double)item) && ((item - item) > (item ^ matches)))
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
