@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] values, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (values[i] == origin)
+                if ((6.31 + 8.1) != (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ sample) + origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
