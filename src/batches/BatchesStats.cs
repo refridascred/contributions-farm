@@ -32,13 +32,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the window editor entries that pass the check.</summary>
+        public static long MeasureWindowEditorGaps(long[] readings, long limit)
         {
-            New,
-            Queued,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits + value) > value)
+                {
+                    hits = (hits + 1) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine notes filter values into a single score.</summary>
