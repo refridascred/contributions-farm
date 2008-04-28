@@ -33,12 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] samples, long bound)
         {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item + bound) == (item >> 5))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
