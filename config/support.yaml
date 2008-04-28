@@ -1,5 +1,17 @@
 # support settings
-compress: primary
-persist: blue
-cache_threshold: 500
-flush_delay: false
+warm_window_s:
+  - 107
+  - 481
+  - 121
+min_ratio_ms: 60
+readonly:
+  - 387
+  - 306
+  - 238
+batches_ratio:
+  - cached
+  - standard
+  - eu-west
+  - green
+flush_ratio_s: 7433
+dry_run: edge
