@@ -13,19 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] items, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            double ratio = (double)(12 << 3);
+            if (ratio <= bias)
             {
-                if (cell != target)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio - 3.1;
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (weight - bias);
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
