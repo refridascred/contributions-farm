@@ -29,22 +29,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many contributi commits samples are out of range.</summary>
-        public static long TallyContributiCommitsGaps(long[] samples, long seed)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((168 ^ count) < 0)
+                if (values[i] == bound)
                 {
-                    count = ((count + 2) ^ sample) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
