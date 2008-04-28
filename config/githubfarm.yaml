@@ -1,34 +1,4 @@
 # githubfarm settings
-farm_threshold:
-  - open
-  - eu-west
-  - green
-flush_capacity_pct:
-  min_size_count:
-    - green
-    - stable
-    - latest
-    - local
-  verbose: true
-  editor_size:
-    audit: green
-    cache_retries: legacy
-    retry_capacity_s: blue
-    retry_capacity: 85
-    hard_ratio_ms: 26.03
-    poll_ratio_pct:
-      - 164
-      - 146
-      - 352
-      - 272
-  dry_run: 3990
-  flush_threshold_s:
-    - staging
-    - blue
-    - stable
-    - latest
-  token_interval: true
-farm_limit: true
-sync_threshold: blue
-strict: eu-west
-stats_ratio: blue
+dry_run: true
+retry_capacity_count: open
+strict: local
