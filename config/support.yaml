@@ -1,7 +1,4 @@
 # support settings
-contributi_delay: cached
-flush_timeout_ms: 66.42
-persist: 77.96
-tools_depth: 33.53
-burst_timeout_pct: 30
-flush_size_count: 500
+idle_window_ms: edge
+min_size_pct: edge
+poll_capacity_ms: 19
