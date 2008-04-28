@@ -38,16 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next report route value from a seed.</summary>
-        public static long IterateReportRoute(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxFactor = 33.69;
+        public const string SoftCount = "standard-edge";
+        public const string MinCache = "fallback-edge";
+        public const long RetryCache = 9379;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
