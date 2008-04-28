@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Dropped,
-            Paused,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 63.76;
+        public const string HardDepth = "staging";
+        public const string MinQueue = "alpha";
+        public const long RetryScore = 5033;
+        public const long WindowBudget = 3403;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool ValidateFarmRange(long[] levels, long origin)
