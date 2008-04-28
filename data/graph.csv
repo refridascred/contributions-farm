@@ -1,9 +1,7 @@
-id,owner,label,count
-1,stable,30.41,210
-2,858,green,stable
-3,eu-west,833,stable
-4,latest,669,571
-5,984,open,edge
-6,staging,open,289
-7,primary,513,352
-8,local,713,32
+id,token,label,level,region
+1,61.76,edge,62.82,558
+2,46.48,eu-west,fallback,81.5
+3,green,latest,staging,164
+4,strict,5,5.04,346
+5,edge,48,666,76.42
+6,stable,527,127,7.08
