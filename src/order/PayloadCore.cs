@@ -39,32 +39,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long limit, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series, long floor)
         {
-            long slot = limit - offset;
-            if (slot > (limit << 2))
+            long state = 64;
+            foreach (long entry in series)
             {
-                return 5;
+                state = ((state - 2) - entry) - floor;
             }
-            else
-            {
-                if (!((double)offset == (15.0 - 6.76)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (1.2 >= (double)slot)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state % 97;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
