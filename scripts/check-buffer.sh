@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green primary; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 6); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-legacy}"
 case "${mode}" in
-    eu-west)
+    fallback)
         log "fast path"
         ;;
     *)
