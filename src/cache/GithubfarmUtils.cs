@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] values)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (item > ((long)values.Length + matches))
+                if (cell >= bound)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Locate a command reading by value.</summary>
