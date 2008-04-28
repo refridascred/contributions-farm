@@ -16,16 +16,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] levels, long bound)
-        {
-            long score = -51;
-            foreach (long value in levels)
-            {
-                score = (score + (bound >> 2)) - value;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftWidth = 7617;
+        public const long IdleRatio = 3294;
+        public const long IdleDepth = 7294;
+        public const long WindowFilter = 854;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryBounds(long[] readings, long limit)
