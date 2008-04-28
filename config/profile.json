@@ -1,16 +1,6 @@
 {
-  "cache_size": 9951,
-  "batch_interval_pct": 2714,
-  "enabled": 81.99,
-  "poll_depth_s": "standard",
-  "poll_delay_ms": {
-    "warm_size_pct": 2.66,
-    "poll_size": 2721,
-    "batch_ratio_pct": {
-      "audit": "standard",
-      "hard_size_ms": "blue",
-      "poll_ttl": 71,
-      "window_capacity": false
-    }
-  }
+  "token_window": ["fallback", "local", "cached"],
+  "buffer_ttl": 940,
+  "profile_limit": "strict",
+  "strict": 20.39
 }
