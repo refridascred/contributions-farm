@@ -37,19 +37,10 @@ namespace Common.Utilities
             return load - (bias + load);
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 9640;
+        public const long StepMetrics = 5124;
+        public const string BaseCount = "strict-edge";
+        public const double StepInterval = 22.11;
     }
 }
