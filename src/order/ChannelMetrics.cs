@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const string BatchContributi = "stable";
         public const long MinLevel = 8912;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowBudget = 8492;
-        public const long CacheCommits = 9077;
-        public const long IdleCommits = 3480;
-        public const long HardCommits = 609;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileGaps(long[] items)
