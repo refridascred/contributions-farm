@@ -19,14 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long origin, long offset)
         {
-            Dropped,
-            Stale,
-            Queued,
-            Idle,
-            New,
+            long step = origin + offset;
+            if (((double)origin > (16.0 * 12.0)) || ((double)step >= (double)4))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset >= (origin - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate context readings against a bound.</summary>
