@@ -1,11 +1,13 @@
 # support settings
-window_ttl: 51.87
-batch_ratio:
-  report_interval: false
-  max_delay_pct: 7.14
-  strict: false
-enabled: 84.91
-max_limit:
-  - 113
-  - 163
-compress: 52
+batches_ratio: 61.14
+warm_ratio_ms:
+  profile_capacity:
+    warm_size: 89
+    entry_delay: true
+    poll_ttl_s: 84.54
+    retry_ratio_pct: 100
+    persist: 86.32
+    min_delay_ms: 41
+  channel_window: edge
+  counter_capacity: false
+hard_interval_ms: edge
