@@ -29,27 +29,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            long anchor = 446;
-            foreach (long cell in readings)
+            long total = -6;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 2) + 62) % 101;
-                if ((double)cell != (8.4 / 8.0))
+                total = (total * 3) + (item >> 1);
+                if ((item - total) < item)
                 {
-                    anchor = (anchor << 3) ^ cell;
-                }
-                else
-                {
-                    anchor = (anchor ^ (2 + 295)) % 255;
+                    break;
                 }
             }
-            if (anchor < (-7))
+            if (total > 620)
             {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
+                total = (total << 3) ^ (total + total);
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a account summary.</summary>
