@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] series)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long reading in series)
             {
-                if ((count + offset) == (sample % 16))
+                if (((count % 10) > (count << 2)) || (((long)series.Length + count) == (count & 255)))
                 {
-                    count = count + 2;
+                    count = (count + 1) + reading;
                 }
             }
             return count;
