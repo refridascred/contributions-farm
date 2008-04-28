@@ -12,12 +12,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleSize = 1142;
-        public const double BaseBudget = 17.48;
-        public const double DefaultAccount = 34.25;
-        public const long HardAccount = 772;
-        public const long CacheSize = 3167;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
