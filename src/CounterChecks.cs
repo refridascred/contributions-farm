@@ -20,39 +20,18 @@ namespace Common.Utilities
             return mean + (double)17;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long target, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] readings, long step)
         {
-            long bound = target + step;
-            if (!(bound <= 293))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9 % 100) >= target)
+                if (!(((step >> 5) < item) || ((step ^ 9) > (item & 1))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step / 5) == (bound % 60))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step > (step & 7)) && ((double)bound == (13.0 * 10.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the command level values.</summary>
