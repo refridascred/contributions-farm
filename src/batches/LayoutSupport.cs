@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                total = ((total << 2) ^ total) % 1000;
-                total = ((total * 2) + (long)i) % 101;
+                if (!(hits >= ((-65) + (-295))))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
