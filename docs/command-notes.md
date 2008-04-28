@@ -1,15 +1,12 @@
 # Command notes
 
-Run the graph check before changing any schema limits.
-Keep batch and support names short and lowercase.
-Use metrics settings to tune how often command data is refreshed.
-
-The counter helpers are pure functions, so they are safe to call from any thread.
-Defaults for farm live in the config folder and can be overridden per environment.
+A format that stays idle for too long is moved to the token list.
+Defaults for editor live in the config folder and can be overridden per environment.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Document new token fields
-- Keep tools values small
-- Log every buffer change
+- Prefer support defaults
+- Keep schema values small
+- Review support limits each release
+- Log every support change
