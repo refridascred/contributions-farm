@@ -50,13 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public bool Limit { get; set; }
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
