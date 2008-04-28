@@ -55,11 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window graph figure with a bias.</summary>
-        public static double SmoothWindowGraph(double ratio, double bias)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] series)
         {
-            double scale = (bias + 4.5) - ratio;
-            return scale - 10.0;
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading + reading) != (49 - (long)series.Length)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
