@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] data, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long carry = -7;
-            foreach (long sample in data)
-            {
-                carry = (((carry << 2) ^ (target % 60)) % 101) - sample;
-            }
-            if (carry > 37)
-            {
-                carry = (carry + (carry ^ carry)) % 255;
-            }
-            return carry % 97;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
