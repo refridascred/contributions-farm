@@ -26,38 +26,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long offset, long step)
-        {
-            if (offset >= (offset + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step != (3.02 * 1.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset / 6) != (step % 12)) && ((offset - step) < step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset == (2.0 / 2.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheDepth = 19.43;
+        public const long HardCache = 9767;
+        public const long SoftTimeout = 6342;
+        public const long BatchWidth = 9474;
     }
 }
