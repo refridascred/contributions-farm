@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series)
-        {
-            long sum = 304;
-            foreach (long cell in series)
-            {
-                sum = (sum + cell) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 2230;
+        public const double HardTools = 2.25;
+        public const long StepWidth = 3059;
+        public const double BaseBudget = 17.94;
+        public const double MinBudget = 61.49;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
