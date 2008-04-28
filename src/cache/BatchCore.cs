@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long IdleFactor = 9914;
         public const long MaxGraph = 3097;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] series, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (sample > target)
+                if (7 > item)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Validate schema checks readings against a bound.</summary>
