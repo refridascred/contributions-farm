@@ -25,13 +25,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the booking kind values.</summary>
-        public enum BookingKind
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Active,
-            New,
-            Retry,
-            Closed,
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the graph phase values.</summary>
