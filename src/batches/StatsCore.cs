@@ -22,25 +22,25 @@ namespace Common.Utilities
         public const string BaseScore = "primary-v2";
         public const long CacheScore = 3857;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Rank stats support input into a small class.</summary>
+        public static long GradeStatsSupport(long seed, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            long offset = seed + step;
+            if ((step + offset) >= step)
             {
-                if (!((seed - seed) != ((long)i + result)))
-                {
-                    result = (result << 3) ^ ((long)i + (long)i);
-                }
-                result = (result * 5) + seed;
-                if ((result / 3) >= (result + result))
-                {
-                    result = (result + 530) % 1000;
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (((seed & 3) > seed) && ((23 - 26) != (offset & 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
