@@ -56,16 +56,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result * 4) + result;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of contributi session readings.</summary>
