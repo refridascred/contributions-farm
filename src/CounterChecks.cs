@@ -47,15 +47,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double offset)
-        {
-            double drift = 0.13;
-            if (drift >= 5.1)
-            {
-                drift = ((drift + (double)517) - ratio) - offset;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchTimeout = "strict-edge";
+        public const long BurstCount = 3385;
+        public const double WindowMetrics = 14.43;
+        public const long SoftBudget = 2702;
+        public const long BurstMetrics = 3790;
     }
 }
