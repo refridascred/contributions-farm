@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            Idle,
+            Dropped,
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a checks entry.</summary>
