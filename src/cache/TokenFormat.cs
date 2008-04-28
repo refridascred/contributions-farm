@@ -39,12 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double ratio, double floor)
         {
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double rate = floor;
+            if (rate > (floor / 8.0))
+            {
+                rate = (rate - rate) + ratio;
+            }
+            else
+            {
+                rate = rate - (rate / 5.0);
+            }
+            return rate + (double)5;
         }
     }
 }
