@@ -53,15 +53,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long floor, long floor2)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            if (((floor2 % 5) < (floor2 + floor)) || ((double)floor2 >= (5.7 / 3.0)))
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((floor2 / 2) == (floor & 7)) && ((5 - 1) < (floor ^ floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor2 * 3) == (floor << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window status values.</summary>
