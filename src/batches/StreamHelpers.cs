@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the cache queue entries that pass the check.</summary>
+        public static long AuditCacheQueueHits(long[] data)
         {
-            Dropped,
-            New,
-            Ready,
-            Failed,
-            Paused,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + sample) <= (count & 31))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate editor samples.</summary>
