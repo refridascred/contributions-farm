@@ -48,12 +48,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            Idle,
+            Ready,
+            Pending,
+            Closed,
+            Dropped,
         }
     }
 }
