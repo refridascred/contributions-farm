@@ -39,10 +39,26 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryDepth = 6041;
-        public const string StepSize = "staging-v2";
-        public const long RetryTimeout = 9967;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long seed, long limit)
+        {
+            long offset = seed ^ limit;
+            if ((seed - 762) >= (seed + seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset > (19.0 + 4.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] values)
