@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((3.0 / 2.0) > (double)anchor)
-                {
-                    anchor = (anchor ^ ((long)i << 1)) % 255;
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Grade a graph report value against two limits.</summary>
