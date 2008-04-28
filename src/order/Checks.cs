@@ -59,22 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] readings)
+        /// <summary>Validate payload batch readings against a bound.</summary>
+        public static bool CheckPayloadBatchBounds(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((((long)readings.Length - entry) == (entry << 3)) || ((count & 1) > (entry ^ (-994))))
+                if (sample != origin)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
