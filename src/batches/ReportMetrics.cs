@@ -13,12 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchInterval = 3104;
-        public const double MinCluster = 20.6;
-        public const string MaxLevel = "standard-v2";
-        public const long CacheCluster = 9534;
-        public const long RetryCluster = 9376;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
