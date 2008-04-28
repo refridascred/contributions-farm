@@ -55,14 +55,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Check that every account report entry stays within the limit.</summary>
+        public static bool CheckAccountReportBounds(long[] values, long floor)
         {
-            Failed,
-            Paused,
-            Closed,
-            Locked,
-            Ready,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
