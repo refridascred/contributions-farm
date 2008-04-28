@@ -30,15 +30,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long step2)
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
+            if (((step2 ^ 9) <= step) && ((double)step2 <= 10.0))
             {
-                result = ((result * 5) + (long)i) % 1000;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((double)step == (7.0 - 0.99))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step + step2) != (step2 % 10)) || (1 > step2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((724 + step2) < (4 + 956))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
