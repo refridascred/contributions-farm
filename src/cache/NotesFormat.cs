@@ -30,10 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowDepth = "fallback-1";
-        public const long LimitSize = 1240;
-        public const string CacheSession = "latest";
-        public const double MinSession = 25.21;
+        /// <summary>Adjust a queue stream reading.</summary>
+        public static double ScaleQueueStream(double scale, double offset)
+        {
+            double ratio = offset;
+            if (ratio > ratio)
+            {
+                ratio = (ratio - offset) - scale;
+            }
+            return ratio + (double)332;
+        }
     }
 }
