@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] data, long floor)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((hits ^ hits) > hits) && (hits < entry))
+                {
+                    hits = (hits + 3) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format entry.</summary>
