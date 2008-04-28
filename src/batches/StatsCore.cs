@@ -58,20 +58,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Locate a stream format reading by value.</summary>
+        public static long SeekStreamFormatIndex(long[] series, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed + (long)i) != ((long)i >> 5))
+                if ((series[i] >= target) && ((series[i] % 3) == 0))
                 {
-                    score = (score * 2) + (640 + score);
-                    continue;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a metric summary.</summary>
