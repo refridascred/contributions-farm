@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] values)
+        /// <summary>Locate a already payload reading by value.</summary>
+        public static long LocateAlreadyPayloadIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen % 8) <= 52)
+                if (data[i] <= limit)
                 {
-                    seen = (seen + 2) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a command commits sample.</summary>
