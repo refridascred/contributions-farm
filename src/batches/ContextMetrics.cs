@@ -61,20 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload tools value from a seed.</summary>
-        public static long SeriesPayloadTools(long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((double)cell == (double)count)
                 {
-                    carry = carry - (long)i2;
-                    carry = carry ^ carry;
+                    count = count + 2;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
