@@ -52,15 +52,19 @@ namespace Common.Utilities
         public const long BurstMetric = 2901;
         public const long SoftWidth = 9364;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] data, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if (reading >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Grade a token order value against two limits.</summary>
