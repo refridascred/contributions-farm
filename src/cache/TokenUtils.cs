@@ -41,19 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] levels, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (value >= limit)
+                if ((seen ^ cell) == (24 - cell))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
