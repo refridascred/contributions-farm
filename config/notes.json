@@ -1,6 +1,6 @@
 {
-  "readonly": [371, 117, 336],
-  "min_delay_s": false,
-  "schema_threshold": "blue",
-  "default_limit_ms": "strict"
+  "compress": 63,
+  "max_interval": "edge",
+  "queue_limit": 69.26,
+  "buffer_capacity": 1.97
 }
