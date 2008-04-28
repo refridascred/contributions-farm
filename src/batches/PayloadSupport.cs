@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
