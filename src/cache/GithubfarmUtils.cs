@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            Idle,
+            New,
+            Active,
         }
 
         /// <summary>Blend two layout counter measurements.</summary>
