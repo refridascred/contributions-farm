@@ -32,12 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "stable-edge";
-        public const long DefaultCount = 893;
-        public const long BatchTimeout = 2912;
-        public const string LimitNotes = "standard";
-        public const long SoftSize = 717;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultTimeout = "alpha-edge";
+        public const long WindowFarm = 2522;
+        public const long MinFarm = 1316;
+        public const double LimitRatio = 29.93;
+        public const double DefaultSize = 53.92;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] series, long seed)
