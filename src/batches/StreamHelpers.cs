@@ -54,13 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            New,
-            Paused,
-            Pending,
-            Ready,
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
