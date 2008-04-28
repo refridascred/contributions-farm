@@ -1,6 +1,8 @@
-id,ratio,level,rank
-1,open,80.31,38.76
-2,blue,407,primary
-3,10.44,68.87,284
-4,34.58,85.56,48.56
-5,51,65.19,local
+id,region,owner,weight,state
+1,93,3,468,807
+2,84,primary,local,green
+3,72.94,25.82,48.18,732
+4,97,37.72,staging,primary
+5,blue,blue,staging,867
+6,primary,2.39,833,77.33
+7,96.75,268,26.78,376
