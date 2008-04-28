@@ -58,13 +58,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long limit)
         {
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
