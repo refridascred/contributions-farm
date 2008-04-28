@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] values)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long acc = 141;
+            foreach (long cell in readings)
             {
-                if (!(matches < (68 + value)))
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc - (cell + acc)) % 1000;
             }
-            return matches;
+            if (acc > (-6))
+            {
+                acc = acc - (acc >> 1);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of entry tools readings.</summary>
