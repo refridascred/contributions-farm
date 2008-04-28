@@ -93,19 +93,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "standard-1";
+        public const double DefaultContributi = 40.69;
+        public const long HardContributi = 5355;
+        public const long BatchContributi = 3591;
     }
 }
