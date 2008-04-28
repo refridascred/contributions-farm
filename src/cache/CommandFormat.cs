@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of channel schema entries.</summary>
-        public static long TotalChannelSchema(long[] items)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = 152;
-            foreach (long reading in items)
-            {
-                if (!((543 * 4) >= (score + 3)))
-                {
-                    score = (score + reading) % 4096;
-                }
-                else
-                {
-                    score = score ^ (reading ^ reading);
-                }
-            }
-            return score;
+            Done,
+            Locked,
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Iterate the cache already series from a seed.</summary>
