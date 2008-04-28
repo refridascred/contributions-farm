@@ -53,11 +53,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowSize = "strict-1";
-        public const double HardSize = 15.84;
-        public const string MaxScore = "latest-edge";
-        public const long RetryDepth = 1224;
-        public const double LimitDepth = 63.46;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long bound)
+        {
+            long delta = step - bound;
+            if ((bound * 5) > bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - delta) == (delta + delta))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step - bound) >= delta)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
