@@ -46,18 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] items, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((double)seed != (9.04 + 1.89))
+                if ((entry ^ entry) > (offset & 255))
                 {
-                    count = (count + 2) ^ cell;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
