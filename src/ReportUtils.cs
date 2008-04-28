@@ -79,18 +79,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] samples)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((count + entry) > (entry - count)))
-                {
-                    count = count + 1;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
     }
 }
