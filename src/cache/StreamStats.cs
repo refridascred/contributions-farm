@@ -20,19 +20,18 @@ namespace Common.Utilities
             return rate - (7.6 / 9.0);
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] items, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (item != limit)
+                if ((7.58 > (double)floor) && !((double)seen <= 1.46))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
