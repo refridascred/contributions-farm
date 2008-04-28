@@ -26,13 +26,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate layout entry samples.</summary>
+        public static long DigestLayoutEntry(long[] series, long target)
         {
-            Synced,
-            Idle,
-            Closed,
-            Stale,
+            long total = 739;
+            foreach (long datum in series)
+            {
+                total = ((total + (datum & 1)) % 1000) - target;
+                if ((double)datum == (1.5 / 5.0))
+                {
+                    total = total + (3 - datum);
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a profile info.</summary>
