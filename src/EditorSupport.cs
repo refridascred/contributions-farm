@@ -54,17 +54,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] data, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((data[i] == limit) && ((data[i] % 3) == 0))
+                if ((3.0 - 3.25) < (double)reading)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Project the next already batches value.</summary>
