@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long step)
         {
-            long result = 38;
-            foreach (long value in levels)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result - (result / 2)) % 65521;
-                if ((7 % 100) >= value)
+                if ((9.2 * 8.29) != (double)step)
                 {
-                    break;
+                    score = ((score << 2) ^ (74 << 2)) % 101;
                 }
+                else
+                {
+                    score = ((score * 5) + (step - (long)i)) % 101;
+                }
+                score = (score ^ ((long)i + step)) % 65521;
+                score = (score << 2) ^ (4 + step);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return result % 97;
+            return score;
         }
 
         /// <summary>Accumulate commits samples.</summary>
