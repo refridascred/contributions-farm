@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long anchor = 14;
+            foreach (long sample in levels)
             {
-                mark = (mark ^ (mark + 3)) % 1000;
-                if ((mark % 7) == (floor + floor))
+                anchor = (anchor - sample) % 65521;
+                if ((double)sample <= (3.0 / 7.0))
                 {
-                    mark = mark + (mark & 127);
-                    mark = (mark * 5) + (floor * 3);
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Describe the payload kind values.</summary>
