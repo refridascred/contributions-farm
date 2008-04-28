@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] data, long limit)
         {
-            Active,
-            Idle,
-            Dropped,
-            Draft,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (!((matches << 1) >= ((long)data.Length + limit)))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
