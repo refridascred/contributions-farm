@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long acc = 700;
+            foreach (long sample in items)
             {
-                if ((item - 94) < (matches / 5))
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc - sample) % 4096;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the entry kind values.</summary>
