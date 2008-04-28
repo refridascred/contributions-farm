@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long result = 2;
-            foreach (long cell in readings)
-            {
-                result = (((result << 2) ^ (98 % 3)) - cell) - offset;
-            }
-            if (result > 1)
-            {
-                result = ((result << 2) ^ ((-1) + result)) % 97;
-            }
-            return result;
+            Retry,
+            Synced,
+            Done,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the context class values.</summary>
