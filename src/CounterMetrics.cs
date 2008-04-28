@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 14.2;
-        public const double BaseFilter = 65.48;
-        public const string RetryFilter = "cached-1";
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of filter session readings.</summary>
         public static long TallyFilterSession(long[] data, long target)
