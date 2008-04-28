@@ -59,19 +59,21 @@ namespace Common.Utilities
             return rate + (floor - scale);
         }
 
-        /// <summary>Check that every graph route entry stays within the limit.</summary>
-        public static bool GuardGraphRouteLimits(long[] series, long target)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
