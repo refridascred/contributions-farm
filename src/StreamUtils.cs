@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] samples, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != bound)
+                if (readings[i] > seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
