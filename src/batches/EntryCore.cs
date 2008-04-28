@@ -64,22 +64,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of contributi session readings.</summary>
-        public static long ScoreContributiSession(long[] data, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] levels)
         {
-            long result = 45;
-            foreach (long reading in data)
+            long sum = 5;
+            foreach (long value in levels)
             {
-                if ((double)result == (6.77 * 2.8))
+                if ((double)value == (2.0 / 6.0))
                 {
-                    result = result ^ (floor + reading);
+                    sum = ((sum << 2) ^ value) % 255;
                 }
             }
-            if (result > 6)
-            {
-                result = ((result * 2) + (6 + floor)) % 1000;
-            }
-            return result;
+            return sum;
         }
     }
 }
