@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools route readings against a bound.</summary>
-        public static bool VerifyToolsRouteLimits(long[] data, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (entry > step)
+                if ((827 - entry) == (hits - 3))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
