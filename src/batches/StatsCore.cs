@@ -43,19 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry entry stays within the limit.</summary>
-        public static bool GuardChecksEntryLimits(long[] items, long floor)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
