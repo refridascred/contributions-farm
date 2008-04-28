@@ -23,30 +23,17 @@ namespace Common.Utilities
             return (mean + (double)90) + gain;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Locate a githubfarm support reading by value.</summary>
+        public static long FindGithubfarmSupportIndex(long[] values, long origin)
         {
-            long sum = 4;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (812 >= (sum & 7))
+                if (values[i] == origin)
                 {
-                    sum = sum + (sum / 5);
-                }
-                if ((sample + sum) == (sum ^ sum))
-                {
-                    sum = (sum - 681) % 65521;
-                }
-                else
-                {
-                    sum = (sum * 2) + (sample + (long)data.Length);
+                    return (long)i;
                 }
             }
-            if (sum < (-896))
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum;
+            return -1;
         }
     }
 }
