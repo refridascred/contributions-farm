@@ -20,39 +20,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long target, long target2)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            long gap = target + target2;
-            if ((754 - target) > (target & 7))
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target2 + gap) != (gap % 100)) && ((double)target2 >= (1.0 * 8.0)))
+                if (((total * 4) >= (5 ^ (-33))) && ((bound % 10) >= (34 - bound)))
                 {
-                    return 2;
+                    total = total - (long)i;
+                    total = (total ^ bound) % 1000;
+                    break;
                 }
-                else
-                {
-                    if (((target - gap) == (gap + target2)) || (356 > (9 + target)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(target2 < (target2 - target)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
