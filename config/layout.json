@@ -1,5 +1,15 @@
 {
-  "hard_interval_s": 8923,
-  "retry_retries_count": 500,
-  "persist": [438, 431, 90, 79]
+  "enabled": 20,
+  "cache_size": true,
+  "sync_timeout_ms": {
+    "githubfarm_timeout": "open",
+    "session_threshold": false,
+    "idle_threshold": "eu-west",
+    "poll_size": 60.06,
+    "checks_ratio": 11.04,
+    "flush_capacity": ["eu-west", "eu-west", "cached"]
+  },
+  "min_retries": "eu-west",
+  "cache_ratio_s": 12.18,
+  "audit": 89
 }
