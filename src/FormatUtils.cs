@@ -32,12 +32,10 @@ namespace Common.Utilities
         public const long BurstNotes = 773;
         public const string SoftWidth = "local-1";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxDepth = 9.56;
-        public const double HardSize = 89.7;
-        public const double RetryInterval = 26.91;
-        public const double StepTimeout = 57.88;
-        public const long BurstInterval = 1192;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "stable-edge";
+        public const long MaxRatio = 4897;
+        public const long BurstStream = 8770;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long origin, long seed)
