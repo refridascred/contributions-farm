@@ -30,24 +30,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a filter buffer value against two limits.</summary>
-        public static long BucketFilterBuffer(long step, long floor)
+        /// <summary>Digest a series of account commits entries.</summary>
+        public static long CombineAccountCommits(long[] data)
         {
-            if ((step ^ step) > floor)
+            long sum = 467;
+            foreach (long value in data)
             {
-                return 1;
+                sum = (sum + (sum + value)) % 255;
             }
-            else
-            {
-                if ((step - floor) >= (step & 63))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum % 4096;
         }
     }
 }
