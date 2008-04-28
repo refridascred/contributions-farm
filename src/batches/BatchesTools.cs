@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const double IdleDepth = 16.77;
         public const double RetryRatio = 16.07;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] data)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count ^ reading) > (count << 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Failed,
+            New,
+            Synced,
         }
     }
 }
