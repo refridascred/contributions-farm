@@ -49,38 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks profile value against two limits.</summary>
-        public static long ClassifyChecksProfile(long origin, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] items)
         {
-            if (((double)limit >= (1.4 * 0.5)) && ((0.46 * 3.85) <= (double)origin))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin >= (9.12 * 9.0))
+                if (entry < (191 + entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit * 3) <= (origin >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0.22 - 20.0) != (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
