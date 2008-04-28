@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] values, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
