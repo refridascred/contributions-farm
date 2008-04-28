@@ -23,22 +23,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of farm cache readings.</summary>
-        public static long FoldFarmCache(long[] samples)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] values, long floor)
         {
-            long acc = 297;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((double)entry > 5.0)
+                if (sample != floor)
                 {
-                    acc = (acc + entry) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc << 3)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return valid;
         }
     }
 }
