@@ -22,22 +22,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] levels, long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long carry = 68;
-            foreach (long sample in levels)
-            {
-                if ((carry % 97) <= (step >> 1))
-                {
-                    carry = ((carry ^ (carry ^ (-676))) % 97) - sample;
-                }
-                else
-                {
-                    carry = (carry * 4) + carry;
-                }
-            }
-            return carry % 65521;
+            Active,
+            New,
+            Draft,
+            Done,
+            Locked,
         }
 
         /// <summary>Blend two stream measurements.</summary>
