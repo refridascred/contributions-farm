@@ -95,18 +95,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support record entries that pass the check.</summary>
-        public static long TallySupportRecordGaps(long[] values, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (entry > 62)
+                if ((matches % 8) <= matches)
                 {
-                    seen = (seen + 1) - bound;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
