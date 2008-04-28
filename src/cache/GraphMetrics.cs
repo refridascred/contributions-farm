@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Find the first graph queue entry that matches the target.</summary>
+        public static long SeekGraphQueueIndex(long[] samples, long step)
         {
-            Idle,
-            Dropped,
-            Stale,
-            New,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
