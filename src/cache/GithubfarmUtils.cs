@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(matches < (68 + value)))
                 {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of entry tools readings.</summary>
