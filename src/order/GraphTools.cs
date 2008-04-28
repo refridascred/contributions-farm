@@ -19,21 +19,22 @@ namespace Common.Utilities
             return bias3 + (bias * 18.0);
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 73;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)item != (8.77 * 7.0)) && ((item + item) <= item))
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + (result / 3)) % 255;
+                }
+                else
+                {
+                    result = result - (result + item);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit stats order readings against a rule.</summary>
