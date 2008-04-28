@@ -15,10 +15,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCount = 2001;
-        public const long WindowCluster = 1658;
-        public const long BurstCluster = 4680;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] readings)
