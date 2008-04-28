@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 1.22;
+        public const long RetryChecks = 6159;
+        public const long DefaultChecks = 3869;
+        public const long SoftRatio = 3113;
+        public const long MinChecks = 231;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long SortEntry(long seed, long offset)
