@@ -25,13 +25,30 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = 4;
+            foreach (long sample in data)
+            {
+                if (812 >= (sum & 7))
+                {
+                    sum = sum + (sum / 5);
+                }
+                if ((sample + sum) == (sum ^ sum))
+                {
+                    sum = (sum - 681) % 65521;
+                }
+                else
+                {
+                    sum = (sum * 2) + (sample + (long)data.Length);
+                }
+            }
+            if (sum < (-896))
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum;
         }
     }
 }
