@@ -58,21 +58,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Compare every pair of stream format readings.</summary>
+        public static long PairStreamFormatCount(long[] items)
         {
-            long carry = 698;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value / 8) >= (value >> 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry - carry;
-                    break;
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = (carry ^ (carry - value)) % 97;
-                carry = (carry - (carry + value)) % 4096;
             }
-            return carry % 1000;
+            return seen;
         }
     }
 }
