@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token support pairs that satisfy a relation.</summary>
-        public static long OverlapTokenSupportCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 6700;
+        public const string MinScore = "staging-v2";
+        public const double CacheAlready = 44.78;
+        public const long WindowAlready = 4987;
+        public const long BurstBudget = 2076;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] levels)
