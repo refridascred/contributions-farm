@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            Failed,
+            Paused,
+            Locked,
+            Active,
+            Idle,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
