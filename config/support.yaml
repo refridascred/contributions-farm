@@ -1,12 +1,7 @@
 # support settings
-strict:
-  soft_retries_pct:
-    - staging
-    - primary
-    - edge
-  retry_threshold_pct: standard
-  dry_run: 1024
-  commits_timeout: true
-  idle_delay_s: 30
-sync_window: 11
-hard_threshold: blue
+buffer_threshold: staging
+strict: 3159
+base_threshold_ms: false
+retry_depth: true
+compress: cached
+enabled: local
