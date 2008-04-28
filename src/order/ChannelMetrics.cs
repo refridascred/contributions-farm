@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] series)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((count % 10) > (count << 2)) || (((long)series.Length + count) == (count & 255)))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
