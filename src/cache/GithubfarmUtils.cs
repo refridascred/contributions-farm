@@ -47,22 +47,29 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a graph report value against two limits.</summary>
-        public static long GradeGraphReport(long step, long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long seed, long offset)
         {
-            if ((step + bound) == (bound + (-4)))
+            if ((seed << 3) <= (seed * 3))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((bound >= (60 ^ 97)) || ((5.6 / 5.0) >= (double)step))
+                if ((double)offset <= 7.0)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    if ((offset << 3) < offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
