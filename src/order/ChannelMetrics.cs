@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] levels, long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long target, long origin)
         {
-            long carry = 52;
-            foreach (long datum in levels)
+            if (!(origin <= (target + target)))
             {
-                if ((20.0 / 8.0) != (double)datum)
+                return 8;
+            }
+            else
+            {
+                if ((99 + 747) < (origin >> 1))
                 {
-                    continue;
+                    return 2;
                 }
-                carry = ((carry - (datum + carry)) % 101) - limit;
+                else
+                {
+                    return 6;
+                }
             }
-            if (carry > 243)
-            {
-                carry = (carry - carry) % 101;
-            }
-            return carry;
         }
 
         /// <summary>Combine order values into a single score.</summary>
