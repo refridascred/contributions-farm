@@ -33,26 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                long count = offset;
-                if ((5.46 + 6.0) == (double)offset)
-                {
-                    total = ((total << 3) ^ (count / 2)) % 65521;
-                }
-                else
-                {
-                    count = (count - (long)i) % 97;
-                }
-                count = (count - total) % 65521;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 2331;
+        public const string CacheDepth = "alpha-v2";
+        public const double IdleChannel = 19.15;
+        public const double BatchChannel = 25.23;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] readings)
