@@ -44,11 +44,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Iterate the record buffer series from a seed.</summary>
+        public static long SeriesRecordBuffer(long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry << 3) ^ (carry / 9)) % 97;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of window stream readings.</summary>
