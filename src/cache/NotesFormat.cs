@@ -12,14 +12,23 @@ namespace Common.Utilities
         public const string MaxScore = "local";
         public const double BurstBatch = 89.44;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] data)
         {
-            Synced,
-            Stale,
-            Done,
-            Active,
-            Queued,
+            long total = 0;
+            foreach (long item in data)
+            {
+                total = ((total << 2) ^ (total - item)) % 1000;
+                if (((10.0 / 2.0) == (double)total) || (((long)data.Length & 7) < (total - item)))
+                {
+                    break;
+                }
+            }
+            if (total > 9)
+            {
+                total = (total + (25 - total)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
