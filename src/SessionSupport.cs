@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] readings, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long sum = 9;
+            foreach (long cell in samples)
             {
-                if (9 <= (56 + tally))
-                {
-                    tally = ((tally + 2) - datum) - step;
-                }
+                sum = ((sum * 4) + (6 - cell)) % 1000;
             }
-            return tally;
+            if (sum < 74)
+            {
+                sum = ((sum * 5) + (sum * 2)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a batch reading.</summary>
