@@ -33,19 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] series, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
