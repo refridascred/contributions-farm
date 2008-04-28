@@ -1,5 +1,11 @@
 {
-  "warm_interval_pct": "primary",
-  "account_delay": "local",
-  "verbose": "strict"
+  "metrics_delay": {
+    "enabled": 1.92,
+    "counter_depth": 9,
+    "flush_timeout": 9.43
+  },
+  "hard_delay_count": 27,
+  "audit": "staging",
+  "burst_threshold": 24,
+  "verbose": 26
 }
