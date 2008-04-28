@@ -28,11 +28,12 @@ namespace Common.Utilities
             return rate + 2.5;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
