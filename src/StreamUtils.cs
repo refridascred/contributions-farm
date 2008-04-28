@@ -44,11 +44,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstLevel = 3769;
-        public const long MaxNotes = 7073;
-        public const string DefaultNotes = "primary-v2";
-        public const long BatchTimeout = 3607;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
