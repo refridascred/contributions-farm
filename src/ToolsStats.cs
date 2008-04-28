@@ -60,15 +60,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Audit route payload readings against a rule.</summary>
+        public static long AuditRoutePayloadOutliers(long[] items, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if ((17.0 * 8.77) > (double)cell)
+                {
+                    hits = (hits + 3) - floor;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
