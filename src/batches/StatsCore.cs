@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const long DefaultMetrics = 8122;
         public const long BatchMetrics = 4045;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            New,
             Retry,
-            Draft,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
