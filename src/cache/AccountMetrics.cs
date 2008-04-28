@@ -35,22 +35,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] readings, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] readings)
         {
-            long score = 95;
+            long seen = 0;
             foreach (long value in readings)
             {
-                if (offset <= (offset - offset))
+                if (!((seen - 8) != (value >> 2)))
                 {
-                    score = (score ^ offset) % 1000;
-                }
-                else
-                {
-                    score = (score ^ (value + score)) % 4096;
+                    seen = seen + 2;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
