@@ -67,11 +67,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double bias, double span)
+        /// <summary>Compare every pair of githubfarm batch readings.</summary>
+        public static long MatchGithubfarmBatchCount(long[] items)
         {
-            double load = (double)(4 << 3);
-            return ((load + (load + 15.0)) + bias) + span;
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
