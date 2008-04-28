@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Validate record layout readings against a bound.</summary>
+        public static bool ValidateRecordLayoutLimits(long[] readings, long target)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the route phase values.</summary>
