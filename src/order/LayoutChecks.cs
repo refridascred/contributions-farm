@@ -12,12 +12,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 1174;
-        public const double SoftTimeout = 70.34;
-        public const long IdleRatio = 3987;
-        public const string RetryBudget = "standard";
-        public const long DefaultCount = 5124;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Closed,
+            Idle,
+            Retry,
+            Queued,
+            Active,
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextLimits(long[] series, long bound)
