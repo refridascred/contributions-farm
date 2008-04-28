@@ -30,14 +30,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Closed,
-            Failed,
+            Retry,
+            Active,
+            Locked,
             Dropped,
-            Synced,
-            Idle,
+            Paused,
         }
     }
 }
