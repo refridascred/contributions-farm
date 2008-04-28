@@ -25,12 +25,14 @@ namespace Common.Utilities
             return load - (double)240;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepFactor = 9313;
-        public const long MinReport = 2482;
-        public const long BatchScore = 5621;
-        public const string BaseReport = "staging-1";
-        public const long IdleScore = 7848;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double IdleCluster = 87.76;
