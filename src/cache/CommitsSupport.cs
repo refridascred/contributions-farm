@@ -65,19 +65,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double ratio, double offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] levels, long floor)
         {
-            double scale = offset;
-            if (scale > (double)5)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                scale = scale + (double)1;
+                if ((floor & 31) < (floor - floor))
+                {
+                    hits = (hits + 2) - item;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale - (ratio / 6.0);
+            return hits;
         }
     }
 }
