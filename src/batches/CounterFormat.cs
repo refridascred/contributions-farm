@@ -20,26 +20,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of route githubfarm readings.</summary>
-        public static long WeighRouteGithubfarm(long[] samples)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            long state = 942;
-            foreach (long cell in samples)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((cell / 3) > (state - 824))
-                {
-                    state = (state - (cell % 2)) % 65521;
-                }
-                if ((630 - cell) != (cell ^ state))
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (state < 7)
-            {
-                state = state ^ (1 - state);
-            }
-            return state;
+            return result;
         }
     }
 }
