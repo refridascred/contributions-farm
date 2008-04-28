@@ -29,19 +29,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double bias, double bias2)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            double drift = bias2;
-            if (drift <= (bias + drift))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Hold a account summary.</summary>
