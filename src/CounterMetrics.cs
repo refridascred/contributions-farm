@@ -34,26 +34,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] samples, long seed)
-        {
-            long total = 465;
-            foreach (long datum in samples)
-            {
-                if ((20 << 3) <= (total / 9))
-                {
-                    total = (total - (datum - total)) % 97;
-                }
-                if (((seed << 3) > (datum - total)) || ((seed ^ seed) <= 3))
-                {
-                    total = (total * 5) + (seed % 10);
-                }
-                if ((seed - seed) >= (seed + seed))
-                {
-                    total = (total + (seed + 77)) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchWidth = 4041;
+        public const long CacheSize = 9442;
+        public const double IdleInterval = 11.23;
+        public const string StepInterval = "local-edge";
+        public const long WindowDepth = 989;
     }
 }
