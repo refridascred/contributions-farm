@@ -1,36 +1,14 @@
 # support settings
-dry_run: 32.07
-command_capacity: 24.36
-hard_window_ms:
-  - primary
-  - fallback
-retry_capacity:
-  batches_capacity:
-    - 105
-    - 111
-  soft_size:
-    compress: 1024
-    verbose: 1024
-    min_timeout_ms: 5438
-    batch_depth_s: 4943
-  cache_retries_ms:
-    - local
-    - fallback
-    - open
-  warm_timeout: 26
-  enabled:
-    min_delay_count: primary
-    flush_threshold_count: standard
-    strict: open
-    githubfarm_window: 81.8
-    report_capacity: 39.99
-sync_timeout:
-  sync_interval: 43.94
-  flush_threshold_s: stable
-  cache_limit:
-    githubfarm_interval: 500
-    hard_capacity_s: 69.99
-    poll_interval_count: latest
-    metrics_threshold: 2751
-    poll_interval: primary
-min_limit_ms: 250
+flush_threshold_s: 500
+context_ratio: eu-west
+farm_size:
+  - cached
+  - green
+  - legacy
+max_ratio_s:
+  - local
+  - cached
+  - legacy
+  - strict
+idle_ratio_s: legacy
+poll_window_ms: strict
