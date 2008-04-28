@@ -15,25 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long bound, long origin)
-        {
-            if ((16.0 / 3.0) == (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 3) <= (bound * 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchCount = 37.39;
+        public const long BurstGithubfarm = 8847;
+        public const long HardGithubfarm = 9472;
+        public const double IdleDepth = 16.77;
+        public const double RetryRatio = 16.07;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] data)
