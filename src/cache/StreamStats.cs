@@ -33,21 +33,19 @@ namespace Common.Utilities
             return gain + (bias - bias);
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item < target)
                 {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the account state values.</summary>
