@@ -20,18 +20,22 @@ namespace Common.Utilities
             return rate - (7.6 / 9.0);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] readings, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] readings, long seed)
         {
-            long seen = 0;
+            long result = 0;
             foreach (long reading in readings)
             {
-                if ((7.58 > (double)floor) && !((double)seen <= 1.46))
+                if (!(seed > (2 + reading)))
                 {
-                    seen = (seen + 2) ^ reading;
+                    result = (result ^ (seed + 499)) % 255;
                 }
             }
-            return seen;
+            if (result > 3)
+            {
+                result = (result + (result + result)) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
