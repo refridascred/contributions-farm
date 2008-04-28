@@ -1,16 +1,15 @@
 {
-  "contributi_window": [14, 242, 280],
-  "route_window": [17, 422],
-  "poll_interval_s": "standard",
-  "retry_retries_pct": {
-    "max_size": "fallback",
-    "max_capacity_ms": {
-      "audit": 62,
-      "default_retries_s": true,
-      "hard_interval_ms": "strict"
+  "sync_interval_count": {
+    "strict": false,
+    "batch_size": [64, 324, 249, 312],
+    "poll_ttl": {
+      "compress": ["edge", "green"],
+      "max_timeout": 30,
+      "format_delay": "standard",
+      "strict": 46.74
     },
-    "batch_delay": 38.42
+    "readonly": 1024
   },
-  "support_capacity": 30,
-  "record_capacity": [458, 7]
+  "warm_timeout_pct": "latest",
+  "batch_interval_s": 500
 }
