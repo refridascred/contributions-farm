@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long seed, long origin)
+        /// <summary>Fold a list of checks support readings.</summary>
+        public static long TallyChecksSupport(long[] series)
         {
-            long span = seed - origin;
-            if (span < 42)
+            long result = -961;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed ^ seed) >= 91)
+                if (((result & 7) >= (9 % 60)) && ((double)result >= (6.1 / 5.0)))
                 {
-                    return 6;
+                    result = result + (cell + cell);
                 }
                 else
                 {
-                    if ((double)origin > (double)6)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((span + span) >= (origin ^ span))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = result + result;
                 }
             }
+            return result;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
