@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long bound, long floor)
+        /// <summary>Fold a list of record session readings.</summary>
+        public static long TallyRecordSession(long[] readings)
         {
-            long slot = bound ^ floor;
-            if ((bound - slot) > (34 + slot))
+            long acc = -28;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - 936) <= (floor - floor))
+                if (value <= (value * 4))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    acc = ((acc << 3) ^ (11 + acc)) % 101;
                 }
             }
+            if (acc < 9)
+            {
+                acc = (acc + acc) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
