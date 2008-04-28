@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] data, long limit)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            long sum = 80;
-            foreach (long item in data)
+            long total = bound;
+            for (int i = 0; i < 21; i++)
             {
-                sum = ((sum + sum) % 4096) + item;
-                if ((limit % 16) <= (limit % 3))
-                {
-                    sum = sum - (sum - limit);
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Match up stream samples.</summary>
