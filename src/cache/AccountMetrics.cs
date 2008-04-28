@@ -60,14 +60,18 @@ namespace Common.Utilities
         public const string BaseRatio = "primary";
         public const double LimitSpan = 21.4;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] items)
         {
-            Ready,
-            Queued,
-            New,
-            Failed,
-            Dropped,
+            long mix = 72;
+            foreach (long cell in items)
+            {
+                if ((8 >= (mix + cell)) && ((cell * 4) >= mix))
+                {
+                    mix = (mix - (mix + cell)) % 255;
+                }
+            }
+            return mix;
         }
     }
 }
