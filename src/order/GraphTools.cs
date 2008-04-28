@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count token batch pairs that satisfy a relation.</summary>
-        public static long PairTokenBatchCount(long[] levels)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seed * 2) > (sum % 2))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum << 2) ^ (5 - 45);
                 }
+                sum = (sum ^ ((-2) / 8)) % 1000;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Check that every report profile entry stays within the limit.</summary>
