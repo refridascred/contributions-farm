@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Active,
-            Idle,
-            Done,
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a metrics command counter forward.</summary>
