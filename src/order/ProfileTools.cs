@@ -17,12 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double gain, double offset)
         {
-            Synced,
-            Ready,
-            Locked,
+            double rate = offset + 4.09;
+            if (rate > 9.2)
+            {
+                rate = rate + (gain / 5.0);
+            }
+            return rate + 2.5;
         }
 
         /// <summary>Accumulate layout entry samples.</summary>
