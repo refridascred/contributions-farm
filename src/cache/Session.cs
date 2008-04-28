@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two token commits measurements.</summary>
-        public static double BlendTokenCommits(double gain, double bias)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double load = bias + gain;
-            if (load < (double)99)
-            {
-                load = load + 7.13;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (bias + load)) - (double)(long)i;
-            }
-            return load - (double)(-167);
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next graph format value from a seed.</summary>
