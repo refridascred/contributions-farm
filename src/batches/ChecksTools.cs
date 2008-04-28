@@ -22,22 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)seen != (11.0 + 2.0)) && (datum >= (986 * 2)))
+                if (549 > ((long)i & 15))
                 {
-                    seen = seen + 3;
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry << 3) ^ step;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
