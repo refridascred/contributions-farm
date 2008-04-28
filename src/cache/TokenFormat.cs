@@ -14,31 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long origin, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] samples)
         {
-            if (((seed / 7) != (origin % 100)) || (5 <= (seed + 70)))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + origin) == (seed - seed))
+                if ((15.0 * 1.5) == (double)datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.0 * 3.3) != (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the record status values.</summary>
