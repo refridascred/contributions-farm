@@ -1,6 +1,19 @@
 {
-  "cache_interval_count": 52.27,
-  "buffer_retries": 3.21,
-  "graph_depth": false,
-  "max_delay": 95
+  "enabled": true,
+  "payload_threshold": [79, 27, 295],
+  "hard_limit_pct": 86.21,
+  "flush_size_ms": ["local", "latest", "cached", "standard"],
+  "default_capacity_s": {
+    "verbose": [306, 29, 360, 249],
+    "default_size_ms": 32.03,
+    "route_threshold": {
+      "audit": 500,
+      "githubfarm_retries": 60,
+      "idle_window_pct": true,
+      "batch_size": "staging"
+    },
+    "poll_size": 100,
+    "filter_ttl": false
+  },
+  "record_capacity": "edge"
 }
