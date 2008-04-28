@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=327
-log "limit is ${COMMAND_LIMIT}"
-
-for item in primary fallback local strict; do
+for item in open strict; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+COMMAND_LIMIT=389
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    eu-west)
+    blue)
         log "fast path"
         ;;
     *)
