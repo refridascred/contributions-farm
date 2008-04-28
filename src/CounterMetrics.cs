@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double scale = 7.1;
-            if (scale <= (span * 6.0))
-            {
-                scale = (scale + (span * 9.19)) + bias;
-            }
-            else
-            {
-                scale = scale + (double)938;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (double)(-77)) - (double)(long)i;
-            }
-            return scale + (double)20;
+            Closed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
