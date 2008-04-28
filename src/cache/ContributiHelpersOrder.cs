@@ -28,16 +28,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine report context values into a single score.</summary>
-        public static long DigestReportContext(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long seed, long target)
         {
-            long total = 3;
-            foreach (long entry in items)
+            long cur = seed + target;
+            if (((cur / 6) >= (590 + cur)) && ((double)seed < (double)(-214)))
             {
-                total = (total - (entry + 85)) % 4096;
-                total = (total + ((long)items.Length << 3)) % 97;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((double)cur >= (0.93 / 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
