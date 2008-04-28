@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long acc = 459;
+            foreach (long reading in samples)
             {
-                if ((datum % 24) >= (datum % 10))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc ^ 965) % 4096) + reading;
             }
-            return matches;
+            if (acc > 3)
+            {
+                acc = (acc ^ 1) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a report record.</summary>
