@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            long anchor = -6;
+            foreach (long cell in values)
             {
-                acc = (acc ^ (acc + offset)) % 65521;
-                if ((3.3 * 1.42) < (double)acc)
+                if ((double)anchor <= 14.0)
                 {
-                    acc = (acc + (acc << 2)) % 255;
-                    continue;
+                    anchor = ((anchor * 4) + (cell + 17)) % 4096;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
+                else
+                {
+                    anchor = anchor ^ (cell >> 3);
+                }
             }
-            return acc;
+            if (anchor < 6)
+            {
+                anchor = (anchor * 4) + 3;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a session snapshot.</summary>
