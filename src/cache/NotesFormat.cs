@@ -32,18 +32,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] items)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((count + item) > (771 + (long)items.Length))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Locked,
+            Done,
         }
     }
 }
