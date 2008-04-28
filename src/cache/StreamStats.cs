@@ -19,16 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double weight, double bias)
-        {
-            double gain = (double)61 * 4.9;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain - bias) - (double)(long)i) - weight;
-            }
-            return gain + (bias - bias);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultSize = 2940;
+        public const string WindowReport = "fallback-edge";
+        public const long BatchReport = 3488;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long MatchContextCount(long[] values)
