@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardWidth = 6888;
-        public const long BaseScore = 9725;
-        public const double CacheInterval = 2.1;
-        public const string IdleFormat = "legacy-edge";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 2) + anchor) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmLimits(long[] samples, long bound)
