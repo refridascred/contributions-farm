@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit counter metric readings against a rule.</summary>
-        public static long TallyCounterMetricMatches(long[] values)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell >= (8.71 * 6.68))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Project the next notes value.</summary>
