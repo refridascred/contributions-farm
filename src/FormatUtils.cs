@@ -27,10 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultDepth = 4904;
-        public const double BatchDepth = 67.98;
-        public const string RetryEditor = "legacy-1";
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample / 2) < sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a order cluster sample.</summary>
         public static long LookupOrderClusterIndex(long[] values, long target)
