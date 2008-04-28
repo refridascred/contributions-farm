@@ -1,8 +1,8 @@
-id,score,region
-1,689,646
-2,888,latest
-3,open,27.59
-4,34.26,41.41
-5,30.47,96
-6,5.61,843
-7,local,36.5
+id,owner,active,ratio,rank
+1,93.64,latest,stable,green
+2,913,50.74,202,30.53
+3,open,271,168,legacy
+4,67.96,615,74,461
+5,blue,eu-west,67.57,885
+6,local,80.34,276,76
+7,487,114,latest,15.36
