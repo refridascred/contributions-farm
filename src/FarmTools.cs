@@ -16,17 +16,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long target)
+        /// <summary>Fold a list of report cache readings.</summary>
+        public static long FoldReportCache(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 6;
+            foreach (long datum in levels)
             {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
+                total = (total << 3) ^ (datum & 15);
             }
-            return -1;
+            if (total < 0)
+            {
+                total = ((total << 2) ^ ((long)levels.Length + total)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
