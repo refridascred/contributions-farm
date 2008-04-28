@@ -24,19 +24,14 @@ namespace Common.Utilities
             return mean - (floor + 4.5);
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long target)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Idle,
+            Pending,
+            Retry,
+            Queued,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
