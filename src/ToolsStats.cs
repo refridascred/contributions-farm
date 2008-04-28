@@ -63,17 +63,13 @@ namespace Common.Utilities
         public const long SoftFactor = 5866;
         public const double MaxGraph = 81.96;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] values, long step)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
