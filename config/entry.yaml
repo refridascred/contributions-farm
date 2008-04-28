@@ -1,4 +1,8 @@
 # entry settings
-base_limit_pct: green
-cache_ttl_count: true
-soft_capacity_ms: 4.32
+verbose: green
+sync_interval_s: 72.08
+strict:
+  - 23
+  - 8
+  - 215
+layout_size: 9.48
