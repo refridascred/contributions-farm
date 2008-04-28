@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long WindowTimeout = 4524;
         public const string WindowStats = "standard-v2";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] values, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] readings, long step)
         {
-            long score = -2;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score ^ (seed >> 5)) % 65521;
-                if (((reading % 10) > (long)values.Length) && ((527 ^ 893) != (660 + score)))
+                if ((readings[i] == step) && ((readings[i] % 5) != 0))
                 {
-                    score = (score * 4) + (reading + score);
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Measure how many profile session samples are out of range.</summary>
