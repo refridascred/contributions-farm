@@ -1,13 +1,6 @@
 {
-  "metric_interval": 73.48,
-  "poll_ratio": {
-    "poll_threshold_ms": true,
-    "schema_window": "cached",
-    "format_retries": 6752,
-    "cache_threshold_s": 1024
-  },
-  "sync_window_s": 73.66,
-  "hard_depth_count": "blue",
-  "poll_capacity_s": "strict",
-  "min_limit": 64
+  "compress": 60,
+  "default_size": "green",
+  "audit": "staging",
+  "poll_timeout": "strict"
 }
