@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const double IdleDepth = 16.77;
         public const double RetryRatio = 16.07;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Retry,
-            Failed,
-            New,
-            Synced,
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
