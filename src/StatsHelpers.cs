@@ -21,12 +21,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
+            Ready,
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
