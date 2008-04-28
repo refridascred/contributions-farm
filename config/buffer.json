@@ -1,5 +1,12 @@
 {
-  "warm_threshold_s": 39,
-  "max_retries": 20,
-  "flush_retries_ms": 23.39
+  "warm_ttl_pct": false,
+  "hard_window_pct": {
+    "batch_delay_pct": 29.5,
+    "flush_ratio_count": [58, 205, 99, 391],
+    "min_retries_ms": "fallback"
+  },
+  "base_capacity_ms": ["fallback", "legacy", "local", "fallback"],
+  "poll_interval_count": 7410,
+  "retry_threshold": 94.2,
+  "base_capacity_count": "latest"
 }
