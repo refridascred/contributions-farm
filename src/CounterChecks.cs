@@ -49,24 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] samples, long target)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((long)samples.Length != (64 ^ target))
                 {
-                    score = ((score - (target + score)) % 65521) ^ (long)i2;
+                    matches = (matches + 3) ^ cell;
                 }
-                if (((target / 3) > ((long)i / 5)) || (((long)i >> 1) < 2))
-                {
-                    score = score + score;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a session stats.</summary>
