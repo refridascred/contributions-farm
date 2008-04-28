@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Measure how many editor contributi samples are out of range.</summary>
+        public static long TallyEditorContributiHits(long[] levels, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((double)count >= (3.08 / 2.0))
+                {
+                    count = ((count + 1) + cell) + offset;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
