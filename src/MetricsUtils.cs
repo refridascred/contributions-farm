@@ -54,18 +54,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] items)
+        /// <summary>Count command filter pairs that satisfy a relation.</summary>
+        public static long PairCommandFilterCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)tally >= (5.0 - 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + reading;
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
