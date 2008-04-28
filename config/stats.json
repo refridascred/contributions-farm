@@ -1,10 +1,6 @@
 {
-  "cache_threshold_ms": 80,
-  "compress": {
-    "dry_run": false,
-    "flush_delay_pct": [163, 359, 469],
-    "batches_limit": "staging"
-  },
-  "session_retries": true,
-  "context_timeout": 13.9
+  "readonly": 81.16,
+  "compress": "local",
+  "enabled": 3627,
+  "window_depth": false
 }
