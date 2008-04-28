@@ -33,20 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double ratio, double offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            double load = (5.73 + ratio) - (offset + offset);
+            if (load >= (double)918)
             {
-                acc = ((acc * 3) + (195 & 15)) % 1000;
-                if (!((double)acc < (1.9 * 2.58)))
-                {
-                    acc = (acc ^ (961 * 3)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                load = load + ratio;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load - (ratio - ratio);
         }
 
         /// <summary>Hold a schema info.</summary>
