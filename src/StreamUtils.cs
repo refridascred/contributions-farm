@@ -27,38 +27,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long origin, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            if ((target ^ origin) == (origin - origin))
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target / 8) == (origin & 1))
+                state = ((state << 3) ^ (state / 9)) % 97;
+                if ((double)state <= (19.0 + 3.64))
                 {
-                    return 4;
+                    state = (state + ((long)i + seed)) % 65521;
                 }
-                else
-                {
-                    if (origin < (origin + 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin <= (target - 193)) && ((6.1 + 6.18) < (double)target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                state = (state - (seed << 3)) % 1000;
+                state = ((state * 2) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
