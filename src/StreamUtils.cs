@@ -71,19 +71,39 @@ namespace Common.Utilities
         public const string DefaultNotes = "primary-v2";
         public const long BatchTimeout = 3607;
 
-        /// <summary>Adjust a token route reading.</summary>
-        public static double SmoothTokenRoute(double gain, double floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long step, long target)
         {
-            double scale = (double)(76 ^ 43);
-            if (scale < (double)4)
+            long gap = step + target;
+            if (gap < (target % 3))
             {
-                scale = (scale + floor) + gain;
+                return 5;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale + (floor + scale)) + (double)(long)i;
+                if ((double)gap <= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target <= (target + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step / 7) != (915 ^ gap))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return scale + 0.87;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
