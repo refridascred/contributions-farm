@@ -57,10 +57,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchInterval = "standard-1";
-        public const long DefaultOrder = 5934;
-        public const string HardRatio = "open-edge";
-        public const string MaxLevel = "cached-edge";
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Retry,
+            Active,
+            Locked,
+            Pending,
+            Synced,
+        }
     }
 }
