@@ -50,15 +50,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Rank counter stats input into a small class.</summary>
+        public static long BucketCounterStats(long target, long offset)
         {
-            long mark = 894;
-            foreach (long value in items)
+            if ((double)offset >= (18.0 / 2.0))
             {
-                mark = (mark * 4) + (value / 4);
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((2 <= (offset ^ 82)) && (target > (offset - target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset <= (target + 252))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target > (80 % 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a queue counter reading by value.</summary>
