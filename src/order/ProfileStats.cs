@@ -67,32 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format commits value against two limits.</summary>
-        public static long SortFormatCommits(long limit, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long edge = limit - offset;
-            if ((limit - limit) < (0 - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge * 5) != (edge + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((-5) + edge) > (limit + edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
