@@ -42,19 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] levels, long limit)
         {
-            long state = 8;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                state = (state + datum) % 97;
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state > 8)
-            {
-                state = (state << 2) ^ 3;
-            }
-            return state;
+            return flag;
         }
     }
 }
