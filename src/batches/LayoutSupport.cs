@@ -19,13 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long total = target;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total << 2) ^ total) % 1000;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
