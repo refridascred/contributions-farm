@@ -1,14 +1,15 @@
 # Command notes
 
-Use session settings to tune how often format data is refreshed.
-A layout that stays idle for too long is moved to the cache list.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any schema limits.
+Keep batch and support names short and lowercase.
+Use metrics settings to tune how often command data is refreshed.
 
-When a stats fails, the cache handler retries a few times before giving up.
-When a order fails, the commits handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Validate notes input early
-- Keep command values small
+- Prefer profile defaults
+- Document new token fields
+- Keep tools values small
+- Log every buffer change
