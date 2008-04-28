@@ -24,12 +24,13 @@ namespace Common.Utilities
             return gain + (floor / 4.0);
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Dropped,
-            Closed,
-            Failed,
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Project the next already value.</summary>
