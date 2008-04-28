@@ -36,14 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] levels)
         {
-            Retry,
-            Active,
-            Locked,
-            Dropped,
-            Paused,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample - sample) > seen) || ((double)sample < (8.9 + 4.0)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
