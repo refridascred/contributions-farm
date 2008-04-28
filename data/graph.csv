@@ -1,9 +1,8 @@
-id,rank,score
-1,open,558
-2,19.21,5.31
-3,373,edge
-4,49.57,open
-5,70.82,703
-6,792,8
-7,blue,37.36
-8,38.78,438
+id,rank,score,ratio
+1,19.36,local,66.13
+2,primary,62.54,22.9
+3,open,staging,667
+4,open,blue,423
+5,155,eu-west,eu-west
+6,primary,strict,86.73
+7,302,92,5.85
