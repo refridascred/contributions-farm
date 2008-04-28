@@ -32,24 +32,15 @@ namespace Common.Utilities
         public const double BatchDepth = 67.98;
         public const string RetryEditor = "legacy-1";
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long origin, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            if ((seed <= (origin - 86)) || (((-87) + seed) >= (708 - origin)))
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((4 ^ origin) <= (seed + (-156)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result;
         }
 
         /// <summary>Accumulate window samples.</summary>
