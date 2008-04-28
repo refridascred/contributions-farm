@@ -48,13 +48,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Pending,
-            Ready,
-            Active,
-            New,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 7291;
+        public const string RetryStats = "stable-v2";
+        public const long BatchSize = 9154;
     }
 }
