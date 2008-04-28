@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowBudget = 1013;
-        public const string DefaultBudget = "stable-edge";
-        public const long RetryCommand = 973;
-        public const long MaxCommand = 5134;
-        public const double BaseCommand = 78.54;
+        /// <summary>Blend two token commits measurements.</summary>
+        public static double BlendTokenCommits(double gain, double bias)
+        {
+            double load = bias + gain;
+            if (load < (double)99)
+            {
+                load = load + 7.13;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (bias + load)) - (double)(long)i;
+            }
+            return load - (double)(-167);
+        }
 
         /// <summary>Derive the next graph format value from a seed.</summary>
         public static long DeriveGraphFormat(long offset)
