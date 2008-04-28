@@ -56,28 +56,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples)
-        {
-            long carry = 4;
-            foreach (long item in samples)
-            {
-                if ((item + 532) > (item >> 1))
-                {
-                    carry = (carry * 4) + (carry / 6);
-                }
-                carry = (carry ^ item) % 97;
-                if (((762 * 2) != (carry - carry)) || ((0.06 + 6.0) != (double)carry))
-                {
-                    carry = (carry + carry) % 65521;
-                }
-            }
-            if (carry > 733)
-            {
-                carry = carry - (carry / 2);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 9086;
+        public const long SoftFactor = 5866;
+        public const double MaxGraph = 81.96;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyLimits(long[] series, long seed)
