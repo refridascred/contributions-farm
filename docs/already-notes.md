@@ -1,13 +1,13 @@
 # Already notes
 
-Keep cluster and command names short and lowercase.
-Use filter settings to tune how often already data is refreshed.
+A commits that stays idle for too long is moved to the order list.
+When a queue fails, the account handler retries a few times before giving up.
 
-Keep window and tools names short and lowercase.
-Use order settings to tune how often route data is refreshed.
+Use record settings to tune how often context data is refreshed.
+Keep tools and metrics names short and lowercase.
 
 ## Guidelines
 
-- Keep editor values small
-- Validate metric input early
-- Review schema limits each release
+- Review profile limits each release
+- Document new payload fields
+- Prefer batch defaults
