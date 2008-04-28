@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Iterate the tools filter series from a seed.</summary>
+        public static long DeriveToolsFilter(long step)
         {
-            Dropped,
-            Closed,
-            Queued,
-            Idle,
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Classify a format schema pair into a bucket.</summary>
