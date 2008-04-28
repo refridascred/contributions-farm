@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 4493;
-        public const long IdleFactor = 28;
-        public const long WindowGithubfarm = 5234;
-        public const long BurstGithubfarm = 1435;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items, long bound)
+        {
+            long acc = 835;
+            foreach (long value in items)
+            {
+                if ((acc ^ 309) < (acc * 4))
+                {
+                    acc = (acc + acc) - bound;
+                }
+                if ((acc >> 5) > acc)
+                {
+                    acc = (acc ^ value) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double scale, double bias)
