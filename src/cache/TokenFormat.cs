@@ -14,21 +14,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of stats contributi readings.</summary>
-        public static long PairStatsContributiCount(long[] readings)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long origin, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((seed / 7) != (origin % 100)) || (5 <= (seed + 70)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed + origin) == (seed - seed))
                 {
-                    if ((readings[i] + readings[j]) != 16)
+                    return 2;
+                }
+                else
+                {
+                    if ((6.0 * 3.3) != (double)origin)
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the record status values.</summary>
