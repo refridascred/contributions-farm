@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const long IdleFactor = 9914;
         public const long MaxGraph = 3097;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] series, long target)
         {
-            Ready,
-            Queued,
-            Pending,
-            Done,
-            Active,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate route samples.</summary>
