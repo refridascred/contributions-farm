@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west standard; do
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in legacy cached eu-west latest; do
     log "checking ${item}"
 done
-
-mode="${1:-standard}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=132
-log "limit is ${BUFFER_LIMIT}"
