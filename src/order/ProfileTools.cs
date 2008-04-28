@@ -17,13 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Accumulate layout entry samples.</summary>
