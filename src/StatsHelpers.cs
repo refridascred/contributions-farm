@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                state = (state << 3) ^ (state - state);
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
