@@ -65,16 +65,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "alpha-v2";
+        public const long BurstTimeout = 7145;
+        public const long CacheWindow = 3010;
+        public const string StepLevel = "local";
+        public const long BurstWindow = 8609;
 
         /// <summary>Compare every pair of token buffer readings.</summary>
         public static long OverlapTokenBufferCount(long[] data)
