@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const double RetryRatio = 88.62;
         public const long MaxContext = 1603;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 66;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (((mark + (long)samples.Length) % 65521) + sample) + bound;
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Hold a buffer record.</summary>
