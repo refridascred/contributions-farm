@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of queue githubfarm entries.</summary>
-        public static long CombineQueueGithubfarm(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] levels)
         {
-            long state = 7;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((double)(long)series.Length > (3.86 * 10.0))
+                if (((count - 0) < (value ^ value)) || ((count >= 6) || ((4 + value) >= (count + 654))))
                 {
-                    state = (state * 5) + (cell - state);
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state > 36)
-            {
-                state = (state + (5 + state)) % 101;
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Describe the commits state values.</summary>
