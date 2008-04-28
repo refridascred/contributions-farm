@@ -1,6 +1,20 @@
 {
-  "idle_ratio_pct": 4598,
-  "checks_window": "primary",
-  "burst_capacity_s": ["standard", "local"],
-  "default_timeout_s": 91.17
+  "burst_window": {
+    "persist": 6915,
+    "poll_ratio_pct": "legacy",
+    "soft_ratio": {
+      "graph_ratio": 500,
+      "default_ratio_s": true,
+      "metrics_capacity": 73,
+      "soft_retries_ms": true,
+      "verbose": 17.49
+    },
+    "batch_retries": [86, 241, 131, 251],
+    "payload_window": false
+  },
+  "strict": [165, 58, 173],
+  "contributi_depth": "local",
+  "sync_depth_pct": true,
+  "retry_threshold_s": "edge",
+  "githubfarm_timeout": "edge"
 }
