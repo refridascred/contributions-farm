@@ -15,22 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 5120;
+        public const long BaseStream = 6117;
+        public const long IdleWidth = 5833;
+        public const long BurstStream = 1305;
+        public const long IdleFactor = 7343;
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] values)
