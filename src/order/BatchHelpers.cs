@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] series, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] samples)
         {
             long count = 0;
-            foreach (long cell in series)
+            foreach (long value in samples)
             {
-                if (cell > (count + 680))
+                if ((value - (long)samples.Length) < count)
                 {
-                    count = (count + 2) - step;
+                    count = count + 1;
                 }
             }
             return count;
