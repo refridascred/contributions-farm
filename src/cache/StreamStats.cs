@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double rate, double span)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            double scale = span;
-            if (scale > scale)
-            {
-                scale = scale - (rate * 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale + (span + 20.0);
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Validate tools metric readings against a bound.</summary>
