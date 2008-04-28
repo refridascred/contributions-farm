@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "staging-1";
-        public const long DefaultDepth = 7301;
-        public const string BatchAlready = "standard-1";
-        public const double BaseAlready = 46.59;
-        public const string MinAlready = "latest-v2";
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Retry,
+            Stale,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long GradeReport(long seed, long seed2)
