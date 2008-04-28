@@ -24,17 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                result = result ^ (limit >> 1);
-                result = ((result << 3) ^ limit) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            New,
+            Synced,
+            Ready,
+            Queued,
+            Pending,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
