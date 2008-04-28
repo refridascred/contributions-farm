@@ -18,24 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report payload readings.</summary>
-        public static long TallyReportPayload(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] series, long bound)
         {
-            long mix = 53;
-            foreach (long cell in readings)
+            long carry = 1;
+            foreach (long reading in series)
             {
-                mix = (((mix * 2) + ((-387) * 2)) % 1000) - cell;
-                mix = mix ^ (-45);
-                if ((double)mix > (15.0 + 3.0))
+                carry = (carry ^ (bound % 12)) % 255;
+                if ((reading % 10) >= (reading & 255))
                 {
-                    break;
+                    carry = (carry ^ bound) % 101;
+                }
+                else
+                {
+                    carry = carry ^ (reading << 1);
                 }
             }
-            if (mix > 0)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix % 4096;
+            return carry;
         }
 
         /// <summary>Count the filter farm entries that pass the check.</summary>
