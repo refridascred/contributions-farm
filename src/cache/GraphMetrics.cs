@@ -44,15 +44,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a buffer already counter forward.</summary>
-        public static long DeriveBufferAlready(long seed)
+        /// <summary>Measure how many notes metrics samples are out of range.</summary>
+        public static long MeasureNotesMetricsMatches(long[] readings, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if ((reading >> 2) >= offset)
+                {
+                    hits = hits + 3;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
