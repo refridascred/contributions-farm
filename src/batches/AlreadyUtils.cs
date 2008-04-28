@@ -45,11 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 85.56;
-        public const long DefaultRoute = 962;
-        public const string LimitRoute = "latest";
-        public const long HardSpan = 8210;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 1301;
+        public const string BaseSession = "strict-edge";
+        public const long StepSession = 5783;
+        public const long IdleWidth = 7334;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] values, long bound)
