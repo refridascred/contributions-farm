@@ -49,11 +49,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultDepth = 2983;
-        public const long MaxWidth = 6095;
-        public const long BaseTools = 8576;
-        public const double SoftFactor = 51.0;
-        public const string BatchDepth = "cached-edge";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((bound + item) > (tally >> 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
