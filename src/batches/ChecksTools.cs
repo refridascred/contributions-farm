@@ -17,12 +17,22 @@ namespace Common.Utilities
         public const string MinScore = "fallback-v2";
         public const string MinCache = "alpha-edge";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardWidth = 5796;
-        public const string MaxWidth = "latest";
-        public const long StepGithubfarm = 1516;
-        public const double BaseInterval = 82.8;
-        public const string StepDepth = "standard-edge";
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of cluster support entries.</summary>
         public static long ScoreClusterSupport(long[] levels)
