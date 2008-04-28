@@ -12,25 +12,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long step, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] series, long offset)
         {
-            long next = step ^ bound;
-            if (bound < (10 - next))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound > (3.85 * 2.8)) && (22 > (bound & 63)))
+                if ((0 * 3) == (99 + reading))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 3) - offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the stream status values.</summary>
