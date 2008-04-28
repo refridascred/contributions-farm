@@ -44,19 +44,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((((datum - seen) > (377 + datum)) && ((origin * 5) < (599 % 2))) || (((origin + datum) <= (seen - 62)) && (datum <= ((long)readings.Length - datum))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinFactor = "open-1";
+        public const string BurstEntry = "latest";
+        public const long MinEntry = 3822;
+        public const long BaseCount = 5797;
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double AdjustOrder(double bias, double span)
