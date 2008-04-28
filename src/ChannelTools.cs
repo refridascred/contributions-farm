@@ -21,17 +21,12 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7531;
         public const long HardSize = 7962;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] series, long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
     }
 }
