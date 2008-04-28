@@ -43,21 +43,19 @@ namespace Common.Utilities
         public const long MinSize = 1449;
         public const long StepFactor = 9013;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] items, long limit)
         {
-            long acc = 360;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long item in items)
             {
-                acc = (acc * 2) + cell;
-                acc = ((acc << 3) ^ (cell << 2)) % 4096;
-                acc = acc - 0;
+                if (item <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (acc < 51)
-            {
-                acc = (acc * 2) + 38;
-            }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Describe the filter mode values.</summary>
