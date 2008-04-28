@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 2635;
-        public const long WindowCache = 4666;
-        public const long BatchTimeout = 2184;
-        public const long HardLevel = 1015;
-        public const long MinCache = 4255;
+        /// <summary>Rank layout support input into a small class.</summary>
+        public static long SortLayoutSupport(long limit, long origin)
+        {
+            long lane = limit + origin;
+            if ((double)lane >= (1.0 * 4.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.0 + 1.2) <= (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((2.9 - 0.6) < (double)origin) && ((6 << 3) >= lane))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((63 + lane) <= 28)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double BurstFormat = 39.65;
