@@ -49,19 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Digest a series of stats batches entries.</summary>
+        public static long FoldStatsBatches(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            long carry = 786;
+            foreach (long datum in items)
             {
-                if (((long)i << 3) >= ((-7) / 4))
+                if (((datum >> 1) > 694) || ((carry / 5) >= (datum % 3)))
                 {
-                    score = (score ^ (bound - bound)) % 101;
+                    carry = ((carry << 2) ^ (datum % 24)) % 4096;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
