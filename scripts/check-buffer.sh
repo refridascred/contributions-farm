@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=288
+for item in standard cached fallback; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=253
 log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-strict}"
+mode="${1:-cached}"
 case "${mode}" in
-    primary)
+    staging)
         log "fast path"
         ;;
     *)
