@@ -35,14 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Match up support order samples.</summary>
+        public static long OverlapSupportOrderCount(long[] readings)
         {
-            Dropped,
-            Closed,
-            Ready,
-            Active,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
