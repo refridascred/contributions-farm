@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((item / 7) > (count / 5))
+                if (entry <= seed)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the token mode values.</summary>
