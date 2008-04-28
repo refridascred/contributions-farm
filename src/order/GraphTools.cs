@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long RetryBatches = 2215;
         public const long HardLevel = 341;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
+        public static long MatchContextBufferCount(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public double Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
