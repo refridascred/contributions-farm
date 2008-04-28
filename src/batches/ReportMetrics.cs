@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] readings, long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)35 / 8.0;
+            if (mean >= (floor * 5.33))
             {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
+                mean = mean + (4.0 - gain);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (4.0 + floor)) + (double)(long)i;
+            }
+            return mean - (double)384;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
