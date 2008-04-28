@@ -59,13 +59,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Retry,
-            New,
-            Active,
-            Idle,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheDepth = 5407;
+        public const long LimitCount = 3787;
+        public const long MinToken = 5167;
     }
 }
