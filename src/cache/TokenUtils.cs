@@ -31,19 +31,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double gain, double offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long step)
         {
-            double bias = (double)(337 - 664);
-            if (bias < bias)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                bias = (bias + offset) + gain;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)588) + (double)(long)i;
-            }
-            return bias + bias;
+            return mark;
         }
     }
 }
