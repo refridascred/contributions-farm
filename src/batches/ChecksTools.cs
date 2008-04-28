@@ -21,17 +21,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] values, long bound)
+        /// <summary>Accumulate command tools samples.</summary>
+        public static long DigestCommandTools(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = -440;
+            foreach (long item in readings)
             {
-                if (values[i] == bound)
+                if (13.0 > (double)origin)
                 {
-                    return (long)i;
+                    total = ((total + (total / 2)) % 255) - item;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
