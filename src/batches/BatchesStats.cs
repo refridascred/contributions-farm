@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long acc = 388;
-            foreach (long item in values)
-            {
-                if ((item << 2) <= (acc * 4))
-                {
-                    acc = (acc ^ (acc - item)) % 4096;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-            }
-            return acc % 65521;
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the graph class values.</summary>
