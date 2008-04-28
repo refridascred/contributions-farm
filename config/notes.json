@@ -1,7 +1,5 @@
 {
-  "idle_timeout": 30,
-  "warm_limit": 86.04,
-  "soft_threshold_ms": false,
-  "account_ratio": 30,
-  "buffer_ratio": false
+  "max_capacity_pct": 445,
+  "flush_ttl_pct": true,
+  "soft_ttl_count": "green"
 }
