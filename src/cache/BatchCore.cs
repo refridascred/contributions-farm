@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSupport = 51.94;
-        public const string BatchScore = "local-1";
-        public const string IdleBudget = "strict";
-        public const long CacheInterval = 8390;
-        public const long MaxInterval = 2801;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "stable-v2";
+        public const long IdleFactor = 9914;
+        public const long MaxGraph = 3097;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
