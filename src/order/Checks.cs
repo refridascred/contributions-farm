@@ -30,15 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] series, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if (item > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
