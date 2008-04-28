@@ -38,11 +38,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxFactor = 33.69;
-        public const string SoftCount = "standard-edge";
-        public const string MinCache = "fallback-edge";
-        public const long RetryCache = 9379;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Pending,
+            Closed,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
