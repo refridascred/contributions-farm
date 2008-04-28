@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] levels)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double load = bias + (0.28 * 11.0);
+            for (int i = 0; i < 9; i++)
             {
-                if ((2.6 + 6.0) <= (17.0 - 18.0))
-                {
-                    matches = (matches + 2) - reading;
-                }
+                load = (load + (bias2 - 5.2)) - (double)(long)i;
             }
-            return matches;
+            return load - (bias2 - bias2);
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
