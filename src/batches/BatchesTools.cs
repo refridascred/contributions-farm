@@ -29,12 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Failed,
-            Ready,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitInterval = 3149;
+        public const long WindowBudget = 3750;
+        public const string MaxCache = "stable";
+        public const long StepCache = 4623;
+        public const long BatchTimeout = 5910;
     }
 }
