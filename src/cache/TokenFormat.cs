@@ -13,21 +13,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            long state = 160;
+            foreach (long entry in values)
             {
-                carry = (carry * 3) + (carry << 2);
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((3.1 * 2.9) <= (double)state)
                 {
-                    long bound = floor;
-                    carry = ((carry ^ (floor + bound)) % 97) ^ (long)i2;
+                    state = state ^ state;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
+                state = (state - (entry & 127)) % 101;
             }
-            return carry;
+            return state % 97;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
