@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] data, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (!((matches << 1) >= ((long)data.Length + limit)))
+                if (entry > limit)
                 {
-                    matches = (matches + 2) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
