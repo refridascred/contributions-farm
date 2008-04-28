@@ -1,5 +1,8 @@
 {
-  "poll_delay_pct": 10.1,
-  "flush_window_ms": 9907,
-  "batch_retries_s": 1024
+  "burst_timeout_s": 79,
+  "buffer_limit": false,
+  "hard_capacity_count": 94,
+  "profile_window": "primary",
+  "sync_ttl_ms": 46.45,
+  "base_size": 97.31
 }
