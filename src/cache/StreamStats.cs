@@ -39,13 +39,38 @@ namespace Common.Utilities
         public const long CacheProfile = 9173;
         public const long StepSize = 7596;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long floor, long offset)
         {
-            Pending,
-            Paused,
-            Locked,
-            Done,
+            if (((9.43 / 2.0) >= (double)floor) && ((offset % 64) >= 876))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((floor >> 5) <= (offset & 63)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset >> 3) <= offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset >> 4) >= (floor ^ floor)) && ((double)offset == (0.8 + 1.6)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
