@@ -1,5 +1,6 @@
 {
-  "cache_size_count": 60,
-  "batch_size_count": false,
-  "order_window": "fallback"
+  "poll_limit_pct": "legacy",
+  "hard_ratio": "eu-west",
+  "max_capacity_s": 57.01,
+  "flush_size_count": true
 }
