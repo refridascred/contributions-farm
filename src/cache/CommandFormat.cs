@@ -20,24 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a token report value against two limits.</summary>
-        public static long ClassifyTokenReport(long step, long limit)
+        /// <summary>Fold a list of context farm readings.</summary>
+        public static long TallyContextFarm(long[] data, long origin)
         {
-            if ((limit >> 2) >= (limit ^ 6))
+            long carry = 93;
+            foreach (long value in data)
             {
-                return 3;
+                carry = ((carry - (carry * 4)) - value) - origin;
             }
-            else
-            {
-                if (776 < (step % 97))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Match up stream samples.</summary>
