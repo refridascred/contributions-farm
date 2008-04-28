@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] data, long floor)
         {
-            long mark = -869;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (reading < (mark / 2))
+                if (item >= floor)
                 {
-                    mark = ((mark * 2) + reading) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Look up the position of a cluster batches sample.</summary>
