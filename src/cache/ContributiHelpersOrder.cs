@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double ratio, double offset)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            double rate = ratio;
+            if (rate > rate)
+            {
+                rate = (rate + ratio) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (5.9 / 9.0)) - (double)(long)i;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Combine command values into a single score.</summary>
