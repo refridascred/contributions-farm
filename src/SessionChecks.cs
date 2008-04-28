@@ -29,12 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Derive the next report route value from a seed.</summary>
+        public static long IterateReportRoute(long step)
         {
-            Paused,
-            Draft,
-            Closed,
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
