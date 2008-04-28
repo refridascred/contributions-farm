@@ -14,21 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up notes schema samples.</summary>
-        public static long CompareNotesSchemaCount(long[] series)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(33 - 211);
+            if (mean > scale)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - bias;
             }
-            return seen;
+            return mean + (double)861;
         }
 
         /// <summary>Describe the account status values.</summary>
