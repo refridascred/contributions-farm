@@ -25,19 +25,11 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((7.8 + 5.1) < (double)seed)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryCount = 9749;
+        public const long DefaultFormat = 8281;
+        public const long WindowFormat = 1983;
+        public const long HardCount = 4591;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long bound, long floor)
