@@ -29,11 +29,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
