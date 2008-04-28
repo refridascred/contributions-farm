@@ -1,10 +1,6 @@
 {
-  "flush_window": 5152,
-  "batch_timeout": {
-    "warm_interval": ["local", "green", "standard"],
-    "base_timeout_ms": 76,
-    "poll_ratio": 500,
-    "compress": 100
-  },
-  "soft_ratio": 44
+  "idle_ratio_pct": 4598,
+  "checks_window": "primary",
+  "burst_capacity_s": ["standard", "local"],
+  "default_timeout_s": 91.17
 }
