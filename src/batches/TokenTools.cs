@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many order format samples are out of range.</summary>
-        public static long CountOrderFormatHits(long[] levels, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = 191;
+            foreach (long item in data)
             {
-                if (matches > (floor + (long)levels.Length))
+                if ((1.0 / 7.0) != (double)mark)
                 {
-                    matches = (matches + 2) - reading;
+                    mark = mark ^ (item >> 5);
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
