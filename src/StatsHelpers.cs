@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] levels)
+        /// <summary>Check that every metrics window entry stays within the limit.</summary>
+        public static bool VerifyMetricsWindowLimits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((827 - entry) == (hits - 3))
+                if (cell > limit)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the farm phase values.</summary>
