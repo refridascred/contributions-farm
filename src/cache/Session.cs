@@ -12,16 +12,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next graph format value from a seed.</summary>
-        public static long DeriveGraphFormat(long offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] items, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + (carry & 1)) % 101;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((items[i] >= target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the buffer editor entries that pass the check.</summary>
