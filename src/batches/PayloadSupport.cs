@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token report entries that pass the check.</summary>
-        public static long TallyTokenReportOutliers(long[] data)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (1.79 <= (double)seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) - sample;
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
