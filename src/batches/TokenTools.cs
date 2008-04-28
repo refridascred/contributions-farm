@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score - (18 + target)) % 255) ^ entry;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many farm entry samples are out of range.</summary>
