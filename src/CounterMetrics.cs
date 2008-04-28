@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] data, long floor)
         {
-            long mark = 7;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)mark > 2.0)
+                if (data[i] <= floor)
                 {
-                    break;
-                }
-                mark = mark ^ (datum >> 1);
-                if (((1.0 * 4.41) <= (double)datum) || ((double)mark >= (double)(-6)))
-                {
-                    mark = (mark + (mark - mark)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
