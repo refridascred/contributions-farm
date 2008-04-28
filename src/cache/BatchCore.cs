@@ -39,14 +39,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Paused,
-            Retry,
-            Locked,
-            Queued,
-            New,
+            Done,
+            Synced,
+            Failed,
         }
     }
 }
