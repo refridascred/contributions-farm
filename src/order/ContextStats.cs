@@ -33,20 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "fallback-edge";
+        public const long RetryCommand = 3066;
+        public const long BaseSize = 672;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] data, long offset)
