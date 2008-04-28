@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] data)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count - count) != (965 << 1))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
