@@ -21,12 +21,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double bias, double floor)
         {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            double drift = (floor * 1.3) / 9.0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (floor + drift)) + (double)(long)i;
+            }
+            return drift - bias;
         }
     }
 }
