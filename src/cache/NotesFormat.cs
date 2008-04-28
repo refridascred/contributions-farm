@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardDepth = "legacy-edge";
-        public const long IdleBatch = 9457;
-        public const long BaseBatch = 599;
-        public const string MaxScore = "local";
-        public const double BurstBatch = 89.44;
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] data)
