@@ -48,10 +48,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 9639;
-        public const long RetryDepth = 6686;
-        public const double BatchSupport = 51.88;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryDepth = 6041;
+        public const string StepSize = "staging-v2";
+        public const long RetryTimeout = 9967;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] values)
