@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinInterval = 795;
-        public const long DefaultSpan = 3134;
-        public const string DefaultMetrics = "latest-1";
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordHits(long[] levels, long bound)
