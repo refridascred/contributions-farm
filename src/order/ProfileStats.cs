@@ -19,38 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank githubfarm queue input into a small class.</summary>
-        public static long SortGithubfarmQueue(long limit, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] values)
         {
-            if ((limit ^ floor) > (976 >> 1))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + floor) < (floor / 3))
+                if ((hits & 3) < (hits << 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >> 2) == (1 + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((-314) << 1) > (268 + limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 1) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
