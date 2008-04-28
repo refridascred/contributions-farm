@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] readings, long seed)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
