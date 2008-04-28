@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next cluster profile value from a seed.</summary>
-        public static long SeriesClusterProfile(long target)
+        /// <summary>Validate stats token readings against a bound.</summary>
+        public static bool GuardStatsTokenBounds(long[] data, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                result = result + (result + 170);
-                result = ((result * 2) + (long)i) % 101;
+                if (item <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
