@@ -65,13 +65,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] readings, long origin)
         {
-            Closed,
-            Retry,
-            Idle,
-            Locked,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
