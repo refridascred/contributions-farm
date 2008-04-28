@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const string SoftEditor = "fallback-edge";
         public const string RetryInterval = "fallback-edge";
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] levels, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long mix = 38;
+            foreach (long sample in levels)
             {
-                if (cell >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix - (sample << 3)) % 65521) - target;
             }
-            return found;
+            return mix % 1000;
         }
 
         /// <summary>Audit cache order readings against a rule.</summary>
