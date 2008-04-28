@@ -1,11 +1,7 @@
 {
-  "buffer_threshold": {
-    "idle_timeout_count": "primary",
-    "warm_interval_s": "primary",
-    "soft_depth": true,
-    "dry_run": 77.65,
-    "burst_retries_ms": 33.55
-  },
-  "flush_ratio": 100,
-  "hard_ttl_count": 500
+  "sync_depth_ms": 5236,
+  "warm_retries_count": 71.11,
+  "burst_timeout_ms": false,
+  "max_limit_ms": ["cached", "open", "strict", "strict"],
+  "verbose": [213, 176]
 }
