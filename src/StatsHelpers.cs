@@ -57,15 +57,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long seed, long origin)
         {
-            long acc = 2;
-            foreach (long entry in samples)
+            if ((seed < origin) && ((8 ^ origin) == (origin + origin)))
             {
-                acc = ((acc + (acc % 16)) % 255) ^ entry;
+                return 2;
             }
-            return acc % 1000;
+            else
+            {
+                if (seed < (seed & 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed <= (seed << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
