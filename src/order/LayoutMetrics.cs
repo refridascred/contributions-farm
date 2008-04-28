@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            long score = 32;
-            foreach (long value in items)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                score = (((score << 2) ^ (seed / 2)) % 4096) + value;
+                if ((7.34 * 19.0) <= (double)(long)i)
+                {
+                    score = (score - step) % 255;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
             return score;
         }
