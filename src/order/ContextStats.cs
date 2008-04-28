@@ -20,17 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a cluster batches sample.</summary>
-        public static long LookupClusterBatchesIndex(long[] levels, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
