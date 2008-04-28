@@ -23,14 +23,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit layout stats readings against a rule.</summary>
+        public static long CountLayoutStatsOutliers(long[] series)
         {
-            Paused,
-            Pending,
-            Synced,
-            Failed,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((39 - cell) >= (hits & 127))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
