@@ -1,6 +1,8 @@
 {
-  "flush_retries_ms": false,
-  "soft_limit": 1930,
-  "channel_retries": "blue",
-  "max_interval_s": 68.43
+  "record_window": 40,
+  "max_delay": 60,
+  "verbose": [367, 329],
+  "max_ttl_pct": "eu-west",
+  "metrics_capacity": 42.84,
+  "poll_ttl_pct": "latest"
 }
