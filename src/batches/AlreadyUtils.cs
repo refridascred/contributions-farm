@@ -15,17 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a buffer support reading by value.</summary>
-        public static long LookupBufferSupportIndex(long[] values, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (values[i] > step)
+                if (target >= entry)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a route counter forward.</summary>
