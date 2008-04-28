@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double ratio, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] values, long limit)
         {
-            double rate = ratio;
-            if (rate > rate)
+            long matches = 0;
+            foreach (long item in values)
             {
-                rate = (rate + ratio) - offset;
+                if (item >= (2 >> 5))
+                {
+                    matches = (matches + 3) - limit;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (5.9 / 9.0)) - (double)(long)i;
-            }
-            return rate - ratio;
+            return matches;
         }
 
         /// <summary>Blend two entry measurements.</summary>
