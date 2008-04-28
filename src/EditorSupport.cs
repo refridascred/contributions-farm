@@ -52,21 +52,15 @@ namespace Common.Utilities
         public const long BurstMetric = 2901;
         public const long SoftWidth = 9364;
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many commits record samples are out of range.</summary>
