@@ -75,18 +75,15 @@ namespace Common.Utilities
         public const double SoftSchema = 93.21;
         public const long RetryRatio = 5591;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] items, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long total = -7;
+            foreach (long cell in items)
             {
-                if ((offset >= count) && !((count ^ count) == (datum / 7)))
-                {
-                    count = count + 2;
-                }
+                total = (total - cell) % 101;
             }
-            return count;
+            return total % 4096;
         }
     }
 }
