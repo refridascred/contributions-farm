@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            Synced,
-            Done,
-            Ready,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((count - cell) >= 229) && ((long)items.Length <= (cell << 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
