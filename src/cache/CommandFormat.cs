@@ -43,24 +43,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long bound, long target)
-        {
-            if (!((target << 1) != (bound ^ target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target % 64) <= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 17.51;
+        public const long DefaultWidth = 7640;
+        public const long HardSpan = 3494;
+        public const long IdleContributi = 1189;
+        public const string HardContributi = "stable-edge";
     }
 }
