@@ -46,22 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long bound)
         {
-            long total = 669;
-            foreach (long entry in data)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((-129) >> 1) > ((-9) + (long)data.Length))
-                {
-                    total = total - entry;
-                }
-                else
-                {
-                    total = (total + entry) % 101;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return total % 97;
+            return mix;
         }
 
         /// <summary>Blend two layout measurements.</summary>
