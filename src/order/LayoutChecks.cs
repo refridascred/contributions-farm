@@ -54,19 +54,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
