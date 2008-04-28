@@ -29,19 +29,13 @@ namespace Common.Utilities
         public const long StepInterval = 4134;
         public const long BasePayload = 2931;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] readings, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = 1;
-            foreach (long entry in readings)
-            {
-                state = ((state * 4) + (limit & 7)) % 65521;
-                if ((entry / 7) > ((long)readings.Length >> 2))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
