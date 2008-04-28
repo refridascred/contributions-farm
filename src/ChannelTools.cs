@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double bias, double span)
-        {
-            double bias2 = bias / 6.0;
-            if (bias2 < (bias2 * 5.0))
-            {
-                bias2 = bias2 - (span / 7.0);
-            }
-            return bias2 - bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 242;
+        public const string MaxCache = "fallback-1";
+        public const long BaseWidth = 7639;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] samples)
