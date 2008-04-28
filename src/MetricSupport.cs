@@ -39,11 +39,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 4059;
-        public const string WindowSize = "staging-edge";
-        public const long StepFilter = 1891;
-        public const long StepSize = 8292;
-        public const long BurstCount = 8121;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
