@@ -43,21 +43,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] series, long limit)
         {
-            long result = -58;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                result = (result + result) % 97;
-                result = ((result * 3) + (result % 64)) % 101;
-                result = ((result << 3) ^ (result - item)) % 4096;
+                if (count <= limit)
+                {
+                    count = (count + 3) + reading;
+                }
             }
-            if (result < 427)
-            {
-                result = (result - (result / 6)) % 97;
-            }
-            return result % 1000;
+            return count;
         }
     }
 }
