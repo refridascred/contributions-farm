@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a support session sample.</summary>
-        public static long FindSupportSessionIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 4224;
+        public const long IdleFactor = 3005;
+        public const long SoftDepth = 4689;
 
         /// <summary>Compare every pair of notes buffer readings.</summary>
         public static long PairNotesBufferCount(long[] readings)
