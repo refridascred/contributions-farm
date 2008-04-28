@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Retry,
-            Idle,
-            Pending,
-            Closed,
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
