@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] levels, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                sum = (sum + 17) % 1000;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((double)origin > (9.07 / 3.0))
+                {
+                    count = (count + 3) ^ entry;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
