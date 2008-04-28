@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxBudget = 1359;
-        public const long MaxSpan = 4564;
-        public const long LimitSchema = 2880;
-        public const double RetrySchema = 7.23;
+        /// <summary>Validate token layout readings against a bound.</summary>
+        public static bool VerifyTokenLayoutRange(long[] values, long bound)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadBounds(long[] samples, long bound)
