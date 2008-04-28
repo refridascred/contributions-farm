@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] items, long seed)
+        /// <summary>Grade a stream stats value against two limits.</summary>
+        public static long BucketStreamStats(long seed, long step)
         {
-            long result = 90;
-            foreach (long entry in items)
+            if (!((804 + step) == (seed - seed)))
             {
-                if (((entry - 765) != (result - seed)) || ((double)9 > (double)entry))
+                return 1;
+            }
+            else
+            {
+                if (!(step <= (seed + 605)))
                 {
-                    result = (result + (result / 7)) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed ^ step) == (seed & 63))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - 30) <= (345 + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (result < 7)
-            {
-                result = (result + result) % 65521;
-            }
-            return result % 65521;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
