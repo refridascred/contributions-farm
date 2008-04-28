@@ -54,19 +54,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mix = 894;
-            foreach (long item in data)
-            {
-                mix = (((mix * 3) + 29) % 101) + item;
-            }
-            if (mix > 4)
-            {
-                mix = ((mix << 2) ^ (mix ^ mix)) % 101;
-            }
-            return mix;
+            New,
+            Paused,
+            Pending,
+            Ready,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
