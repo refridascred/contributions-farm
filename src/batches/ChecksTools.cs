@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "alpha-1";
-        public const double SoftSpan = 82.48;
-        public const double BurstToken = 39.94;
-        public const long CacheToken = 8682;
-        public const string MaxSpan = "cached-v2";
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double rate, double floor)
+        {
+            double mean = floor - rate;
+            if (mean < (double)161)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - (floor - mean);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (9.02 - mean)) + (double)(long)i;
+            }
+            return mean - (floor + 4.5);
+        }
 
         /// <summary>Scale a notes stats figure with a bias.</summary>
         public static double BlendNotesStats(double weight, double floor)
