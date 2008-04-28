@@ -62,17 +62,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultDepth = 2391;
+        public const double HardProfile = 79.91;
+        public const long RetryProfile = 2323;
+        public const double WindowWidth = 29.4;
+        public const long MinSize = 3716;
     }
 }
