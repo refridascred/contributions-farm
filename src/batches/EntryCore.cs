@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const string CacheTimeout = "local-edge";
         public const string RetryCount = "latest-edge";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 99;
-        public const long IdleDepth = 5094;
-        public const long StepBatch = 5863;
-        public const double SoftBatch = 19.17;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long CompareCounterCount(long[] samples)
