@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double weight, double span)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double weight2 = span;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell < hits)
-                {
-                    hits = hits + 1;
-                }
+                weight2 = ((weight2 - span) + (double)(long)i) - weight;
             }
-            return hits;
+            return weight2 - span;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
