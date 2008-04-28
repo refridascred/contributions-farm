@@ -52,11 +52,20 @@ namespace Common.Utilities
         public const string DefaultDepth = "local-1";
         public const double SoftTimeout = 97.19;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftSpan = 9014;
-        public const string BatchAlready = "staging-v2";
-        public const string HardTimeout = "standard";
-        public const long BatchBudget = 1884;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((long)i > total)
+                {
+                    total = (total - (total - target)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] samples, long seed)
