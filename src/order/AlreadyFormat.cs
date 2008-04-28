@@ -74,28 +74,17 @@ namespace Common.Utilities
         public const double SoftSchema = 93.21;
         public const long RetryRatio = 5591;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] samples, long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark + mark) < (mark + bound))
+                if (samples[i] == step)
                 {
-                    mark = ((mark * 4) + (bound >> 3)) % 1000;
-                    break;
+                    return (long)i;
                 }
-                if ((mark / 3) != (long)i)
-                {
-                    mark = mark + (bound >> 2);
-                }
-                else
-                {
-                    mark = mark - (bound >> 3);
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
