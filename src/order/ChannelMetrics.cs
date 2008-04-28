@@ -32,19 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] series, long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            double ratio = (scale / 2.0) / 5.0;
+            if (ratio < (ratio / 7.0))
             {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio - (floor - scale);
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + floor;
         }
     }
 }
