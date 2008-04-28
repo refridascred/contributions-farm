@@ -24,18 +24,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = -45;
+            foreach (long reading in series)
             {
-                if (!(((count / 4) > entry) || ((entry * 3) >= (entry ^ 9))))
+                if (reading <= (-70))
                 {
-                    count = count + 3;
+                    state = ((state << 3) ^ (reading << 1)) % 1000;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Describe the filter phase values.</summary>
