@@ -53,14 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Idle,
-            Ready,
-            Pending,
-            Closed,
-            Dropped,
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
