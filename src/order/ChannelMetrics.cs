@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long LimitSize = 4582;
         public const long MaxFactor = 8615;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] values)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((sample + sample) >= hits)
+                if (sample > origin)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
