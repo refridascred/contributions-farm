@@ -64,12 +64,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double bias, double floor)
         {
-            Failed,
-            Closed,
-            Ready,
+            double ratio = (double)270 * 4.15;
+            if (ratio > (3.83 * 7.4))
+            {
+                ratio = ((ratio + (double)673) + bias) + floor;
+            }
+            return ratio - (3.61 - 10.0);
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
