@@ -15,18 +15,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] data, long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((bound << 1) != (bound >> 4))
             {
-                if (target >= entry)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound != (1.2 + 19.0))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a route counter forward.</summary>
