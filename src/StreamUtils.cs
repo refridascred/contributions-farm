@@ -32,22 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state << 3) ^ (state / 9)) % 97;
-                if ((double)state <= (19.0 + 3.64))
-                {
-                    state = (state + ((long)i + seed)) % 65521;
-                }
-                state = (state - (seed << 3)) % 1000;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "stable-edge";
+        public const long DefaultCount = 893;
+        public const long BatchTimeout = 2912;
+        public const string LimitNotes = "standard";
+        public const long SoftSize = 717;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] samples)
