@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the metric githubfarm entries that pass the check.</summary>
+        public static long TallyMetricGithubfarmOutliers(long[] values, long step)
         {
-            Locked,
-            Queued,
-            Idle,
-            Retry,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((step >> 3) != (hits << 3))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
