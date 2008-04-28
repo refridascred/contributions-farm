@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] data, long limit)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((3.56 - 16.0) >= (double)datum)
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the session phase values.</summary>
