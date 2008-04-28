@@ -40,10 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 0.15;
-        public const long StepTimeout = 4110;
-        public const long BatchBudget = 5060;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowWidth = 9.86;
+        public const long LimitDepth = 1401;
+        public const string CacheTimeout = "local-edge";
+        public const string RetryCount = "latest-edge";
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long offset)
