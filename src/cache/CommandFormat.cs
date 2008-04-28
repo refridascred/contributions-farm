@@ -60,22 +60,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the graph cache entries that pass the check.</summary>
-        public static long TallyGraphCacheOutliers(long[] levels, long bound)
+        /// <summary>Combine metrics entry values into a single score.</summary>
+        public static long DigestMetricsEntry(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long mix = 90;
+            foreach (long cell in levels)
             {
-                if ((bound / 8) > datum)
+                if ((0.8 / 5.0) < (double)cell)
                 {
-                    count = count + 1;
+                    mix = mix ^ (cell << 2);
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = mix - (mix + origin);
                 }
             }
-            return count;
+            return mix % 65521;
         }
     }
 }
