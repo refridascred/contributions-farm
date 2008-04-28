@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long acc = -650;
-            foreach (long item in samples)
+            long acc = 388;
+            foreach (long item in values)
             {
-                acc = ((acc * 2) + (acc + item)) % 1000;
-                if (acc < (9 - 11))
+                if ((item << 2) <= (acc * 4))
                 {
-                    acc = (acc - acc) % 65521;
-                }
-                if (!((29 >> 5) < (acc & 63)))
-                {
-                    acc = ((acc << 3) ^ (item + acc)) % 65521;
+                    acc = (acc ^ (acc - item)) % 4096;
                 }
                 else
                 {
-                    acc = acc - (481 - (long)samples.Length);
-                }
-                if ((item & 127) > item)
-                {
-                    break;
+                    acc = acc - acc;
                 }
             }
-            return acc;
+            return acc % 65521;
         }
 
         /// <summary>Hold a graph entry.</summary>
