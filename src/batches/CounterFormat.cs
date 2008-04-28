@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long carry = 5;
-            foreach (long cell in items)
-            {
-                carry = ((carry * 3) + (1 - cell)) + offset;
-                carry = carry ^ 489;
-            }
-            return carry;
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
