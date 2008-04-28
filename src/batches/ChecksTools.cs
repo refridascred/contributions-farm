@@ -21,18 +21,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate command tools samples.</summary>
-        public static long DigestCommandTools(long[] readings, long origin)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long total = -440;
-            foreach (long item in readings)
-            {
-                if (13.0 > (double)origin)
-                {
-                    total = ((total + (total / 2)) % 255) - item;
-                }
-            }
-            return total;
+            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
