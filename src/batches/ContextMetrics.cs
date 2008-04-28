@@ -18,13 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long seed, long offset)
         {
-            Draft,
-            Paused,
-            Stale,
-            Dropped,
+            if ((seed - offset) < (5 ^ seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset * 4) != (offset % 100))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit filter token readings against a rule.</summary>
