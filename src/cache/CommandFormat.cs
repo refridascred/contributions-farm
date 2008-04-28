@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of context farm readings.</summary>
-        public static long TallyContextFarm(long[] data, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] data, long limit)
         {
-            long carry = 93;
-            foreach (long value in data)
+            long sum = 80;
+            foreach (long item in data)
             {
-                carry = ((carry - (carry * 4)) - value) - origin;
+                sum = ((sum + sum) % 4096) + item;
+                if ((limit % 16) <= (limit % 3))
+                {
+                    sum = sum - (sum - limit);
+                }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Match up stream samples.</summary>
