@@ -28,19 +28,11 @@ namespace Common.Utilities
             return rate + 2.5;
         }
 
-        /// <summary>Accumulate layout entry samples.</summary>
-        public static long DigestLayoutEntry(long[] series, long target)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long total = 739;
-            foreach (long datum in series)
-            {
-                total = ((total + (datum & 1)) % 1000) - target;
-                if ((double)datum == (1.5 / 5.0))
-                {
-                    total = total + (3 - datum);
-                }
-            }
-            return total;
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
