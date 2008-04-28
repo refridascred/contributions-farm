@@ -32,38 +32,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a layout channel pair into a bucket.</summary>
-        public static long ClassifyLayoutChannel(long bound, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] series)
         {
-            if ((0.3 >= (double)step) || ((double)2 > (double)bound))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step < 0.42)
+                if ((hits >> 3) < (item + hits))
                 {
-                    return 6;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((bound * 2) > step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound >> 5) >= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
