@@ -61,21 +61,19 @@ namespace Common.Utilities
             return rate + (floor - scale);
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 95;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = ((state * 2) + (long)data.Length) % 4096;
+                if ((state - state) <= datum)
                 {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Classify a checks batch pair into a bucket.</summary>
