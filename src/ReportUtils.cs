@@ -42,15 +42,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            double gain = (double)(257 + (-592));
-            if (gain >= 0.9)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                gain = gain + (floor - bias);
+                mix = (mix + (floor & 127)) % 4096;
+                mix = ((mix * 3) + (floor ^ mix)) % 1000;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return gain - bias;
+            return mix;
         }
 
         /// <summary>Fold a list of report readings.</summary>
