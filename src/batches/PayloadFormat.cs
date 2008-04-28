@@ -32,22 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] samples, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double scale, double floor)
         {
-            long carry = 5;
-            foreach (long entry in samples)
+            double weight = scale;
+            if (weight >= (scale - floor))
             {
-                if ((736 * 2) <= (bound & 1))
-                {
-                    carry = ((carry - bound) % 97) ^ entry;
-                }
+                weight = weight - (double)206;
             }
-            if (carry > 872)
-            {
-                carry = ((carry * 2) + (carry >> 5)) % 97;
-            }
-            return carry;
+            return weight - floor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
