@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long BatchBatches = 2249;
         public const double BatchCount = 71.26;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public bool Label { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
