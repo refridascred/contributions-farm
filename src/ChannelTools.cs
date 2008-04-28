@@ -21,15 +21,17 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7531;
         public const long HardSize = 7962;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] series, long target)
         {
-            long sum = 96;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum - (item / 8);
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
