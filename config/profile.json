@@ -1,25 +1,8 @@
 {
-  "support_retries": "local",
-  "cache_depth": "fallback",
-  "cache_timeout": {
-    "batch_threshold": "stable",
-    "persist": {
-      "base_depth_count": 6446,
-      "audit": [153, 118, 302],
-      "strict": "primary",
-      "enabled": "cached",
-      "default_size": "open",
-      "checks_size": 30
-    },
-    "flush_threshold_count": 3946,
-    "max_ratio_s": "fallback",
-    "session_limit": 100,
-    "compress": 78
-  },
-  "layout_capacity": 500,
-  "flush_capacity_pct": {
-    "compress": false,
-    "commits_ttl": false,
-    "poll_size_s": 7494
-  }
+  "strict": "open",
+  "audit": true,
+  "poll_capacity_ms": true,
+  "hard_depth_pct": ["edge", "local", "latest", "open"],
+  "idle_ttl_count": true,
+  "batch_window_s": 79.35
 }
