@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback cached eu-west local; do
+for item in legacy green latest fallback; do
     log "checking ${item}"
 done
 
+CHANNEL_LIMIT=273
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 11); do
     total=$((total + i * 3))
 done
 log "total ${total}"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
