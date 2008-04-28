@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long target, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            if ((floor % 64) > (floor << 3))
             {
-                total = ((total << 3) ^ 43) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((target + floor) < target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target > 36)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
