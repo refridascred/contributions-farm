@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] series)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum << 3) <= 0)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Locked,
+            Synced,
+            Draft,
         }
 
         /// <summary>Adjust a record reading.</summary>
