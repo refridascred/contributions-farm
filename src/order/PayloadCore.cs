@@ -23,18 +23,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] items, long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((6.31 + 8.1) != (double)matches)
+                total = (total << 2) ^ step;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = ((matches + 2) ^ sample) + origin;
+                    total = (total - ((-972) >> 4)) ^ (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
