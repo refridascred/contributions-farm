@@ -79,9 +79,15 @@ namespace Common.Utilities
         public const string HardCounter = "primary-v2";
         public const long BurstSpan = 1704;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstLevel = 1667;
-        public const long BurstEditor = 3508;
-        public const long LimitEditor = 7999;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] items, long step)
+        {
+            long sum = -31;
+            foreach (long value in items)
+            {
+                sum = ((sum * 4) + (step ^ sum)) + value;
+            }
+            return sum;
+        }
     }
 }
