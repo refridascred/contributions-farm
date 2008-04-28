@@ -1,18 +1,9 @@
 # support settings
-audit: 1024
-cache_retries: 250
-min_capacity_s: false
-retry_limit: true
-editor_retries:
-  max_threshold_pct: blue
-  cache_ttl: 47.53
-  idle_delay_pct: 3384
-  batch_limit:
-    - 394
-    - 294
-  batch_threshold: 89
-retry_window_pct:
-  - edge
-  - edge
-  - cached
-  - latest
+warm_retries_count: primary
+warm_timeout_s: cached
+farm_delay: 1077
+retry_window: stable
+warm_limit:
+  min_size_pct: false
+  window_capacity: true
+  strict: fallback
