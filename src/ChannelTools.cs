@@ -23,22 +23,19 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7531;
         public const long HardSize = 7962;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] levels, long step)
+        /// <summary>Check that every notes checks entry stays within the limit.</summary>
+        public static bool GuardNotesChecksLimits(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((step * 3) >= (seen * 2))
+                if (cell != bound)
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
