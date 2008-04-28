@@ -1,6 +1,20 @@
 {
-  "batch_window": [35, 312, 439],
-  "max_ratio_s": 64.76,
-  "checks_ttl": 85,
-  "idle_timeout_pct": false
+  "batch_ttl_s": [110, 214, 257],
+  "batches_ratio": 8.52,
+  "poll_limit_pct": "open",
+  "verbose": 1024,
+  "batch_timeout_count": {
+    "editor_size": ["staging", "strict", "edge"],
+    "flush_ttl_s": 45.81,
+    "warm_depth_s": [161, 304, 85]
+  },
+  "audit": {
+    "retry_threshold_s": {
+      "enabled": 2735,
+      "retry_ratio_s": "open",
+      "soft_depth": 55.62
+    },
+    "default_ratio": "latest",
+    "persist": [358, 425]
+  }
 }
