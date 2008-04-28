@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] items)
+        /// <summary>Rank context buffer input into a small class.</summary>
+        public static long GradeContextBuffer(long step, long step2)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if (((double)step == (13.0 + 6.0)) || ((4.46 + 2.4) < (double)step))
             {
-                if ((4.38 * 11.0) < (double)hits)
+                return 1;
+            }
+            else
+            {
+                if (step >= (step2 & 3))
                 {
-                    hits = (hits + 2) + sample;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a record entry.</summary>
