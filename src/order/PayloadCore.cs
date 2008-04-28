@@ -29,32 +29,19 @@ namespace Common.Utilities
         public const long StepInterval = 4134;
         public const long BasePayload = 2931;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long target, long target2)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] readings, long limit)
         {
-            long step = target + target2;
-            if (step >= (-691))
+            long state = 1;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step + target) == (target * 2)) && ((double)step == (5.5 + 6.75)))
+                state = ((state * 4) + (limit & 7)) % 65521;
+                if ((entry / 7) > ((long)readings.Length >> 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (2.0 > (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
