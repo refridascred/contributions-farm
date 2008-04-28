@@ -21,19 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long seed, long target)
+        /// <summary>Grade a filter buffer value against two limits.</summary>
+        public static long BucketFilterBuffer(long step, long floor)
         {
-            long cur = seed + target;
-            if (((cur / 6) >= (590 + cur)) && ((double)seed < (double)(-214)))
+            if ((step ^ step) > floor)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((double)cur >= (0.93 / 6.0))
+                if ((step - floor) >= (step & 63))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
