@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] levels, long step)
         {
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (step <= (step & 127))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count session payload pairs that satisfy a relation.</summary>
