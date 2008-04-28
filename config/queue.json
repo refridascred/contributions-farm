@@ -1,23 +1,5 @@
 {
-  "idle_limit_pct": ["local", "local"],
-  "flush_capacity_pct": true,
-  "record_window": {
-    "graph_limit": {
-      "base_window": true,
-      "sync_ratio_ms": ["primary", "fallback"],
-      "schema_limit": 5927,
-      "readonly": 16.03,
-      "cache_limit_s": 28.22,
-      "idle_capacity_s": 6
-    },
-    "buffer_limit": 6,
-    "support_ttl": {
-      "batch_interval": 20.09,
-      "readonly": "legacy",
-      "hard_retries": 9.01,
-      "checks_limit": true,
-      "compress": "primary"
-    }
-  },
-  "soft_depth_pct": "standard"
+  "verbose": true,
+  "soft_timeout_s": ["primary", "latest"],
+  "hard_ratio": true
 }
