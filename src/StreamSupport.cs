@@ -23,17 +23,11 @@ namespace Common.Utilities
             return (mean + (double)90) + gain;
         }
 
-        /// <summary>Locate a githubfarm support reading by value.</summary>
-        public static long FindGithubfarmSupportIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 672;
+        public const string DefaultFormat = "alpha-edge";
+        public const double MinLevel = 89.52;
+        public const double BatchLevel = 37.28;
+        public const long RetryTimeout = 8043;
     }
 }
