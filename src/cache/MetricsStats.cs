@@ -58,25 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Check that every counter session entry stays within the limit.</summary>
+        public static bool VerifyCounterSessionBounds(long[] samples, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                anchor = (anchor - (875 << 1)) % 4096;
-                if (8 > (anchor + anchor))
+                if (sample >= step)
                 {
-                    anchor = (anchor - anchor) % 1000;
+                    ok = false;
                     break;
                 }
-                else
-                {
-                    anchor = anchor ^ floor;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Combine session window values into a single score.</summary>
