@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 9009;
-        public const long WindowDepth = 5708;
-        public const long SoftScore = 5561;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double rate, double bias)
+        {
+            double weight = rate;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = ((weight + 4.2) + (double)(long)i) + bias;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long FindGithubfarmIndex(long[] readings, long target)
