@@ -42,18 +42,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of metrics support entries.</summary>
-        public static long FoldMetricsSupport(long[] items)
-        {
-            long anchor = 172;
-            foreach (long entry in items)
-            {
-                if ((entry - entry) >= entry)
-                {
-                    anchor = (anchor << 3) ^ 78;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheTimeout = "stable";
+        public const string LimitRoute = "primary-edge";
+        public const long BaseRatio = 7545;
+        public const long CacheSpan = 6588;
+        public const long BaseCount = 6230;
     }
 }
