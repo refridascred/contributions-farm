@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long bound, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] items)
         {
-            if (17.0 < (double)bound)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) > 510)
+                if ((((matches - entry) > (59 << 3)) && ((27 >> 3) <= (entry + matches))) || ((double)2 != (double)entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.45 - 0.63) != (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound > (bound + offset)) && (763 >= bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
