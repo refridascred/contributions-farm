@@ -42,19 +42,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next payload already value from a seed.</summary>
-        public static long StepPayloadAlready(long target)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = ((total - target) % 97) + (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Rank metric token input into a small class.</summary>
