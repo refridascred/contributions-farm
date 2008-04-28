@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long WindowTimeout = 4524;
         public const string WindowStats = "standard-v2";
 
-        /// <summary>Adjust a stream window reading.</summary>
-        public static double BlendStreamWindow(double scale, double floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double bias = floor;
-            if (bias <= (bias * 3.97))
-            {
-                bias = bias + (2.7 - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + floor) - (double)(long)i;
-            }
-            return bias + scale;
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Define format limits and defaults.</summary>
