@@ -36,18 +36,39 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long origin, long target)
         {
-            long state = 333;
-            foreach (long reading in items)
+            long offset = origin ^ target;
+            if (offset < (-90))
             {
-                if ((reading >> 4) <= (616 >> 2))
+                return 2;
+            }
+            else
+            {
+                if (!(6.0 <= (double)offset))
                 {
-                    state = (state * 4) + (reading + reading);
+                    return 5;
+                }
+                else
+                {
+                    if ((double)84 == (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset + offset) != (origin % 60))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Scale a metrics record figure with a bias.</summary>
