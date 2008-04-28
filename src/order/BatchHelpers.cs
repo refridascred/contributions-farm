@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long BurstFactor = 5616;
         public const string CacheSpan = "alpha-1";
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
