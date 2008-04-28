@@ -1,13 +1,11 @@
 # Command notes
 
-Run the queue check before changing any entry limits.
-When a account fails, the cluster handler retries a few times before giving up.
-
-Each layout is validated before it reaches the cache queue.
-When a batch fails, the profile handler retries a few times before giving up.
+Use schema settings to tune how often channel data is refreshed.
+A account that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Validate command input early
-- Review payload limits each release
-- Keep profile values small
+- Document new metric fields
+- Review channel limits each release
+- Log every farm change
+- Keep window values small
