@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long IdleFactor = 9914;
         public const long MaxGraph = 3097;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] data)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (7 > item)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
