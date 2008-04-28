@@ -1,14 +1,18 @@
 # support settings
-sync_delay:
-  readonly:
-    - fallback
-    - fallback
-    - primary
-    - green
-  profile_ttl: 30
-  format_ratio: local
-  tools_depth: staging
-default_limit_ms:
-  - edge
-  - legacy
-route_size: 5198
+cache_interval: strict
+audit:
+  context_ttl: open
+  metrics_capacity: false
+  batch_threshold_s:
+    - blue
+    - cached
+    - latest
+  payload_timeout:
+    persist: 1.95
+    window_interval: 93
+    sync_window_pct: 26
+    batch_capacity: 250
+    max_timeout_pct: 25.94
+  poll_depth_s: 500
+  readonly: cached
+editor_interval: local
