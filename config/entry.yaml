@@ -1,5 +1,13 @@
 # entry settings
-persist: legacy
-metric_ratio: fallback
-schema_capacity: 59.44
-burst_size_count: 7295
+notes_ratio:
+  - stable
+  - blue
+sync_capacity: true
+counter_timeout:
+  channel_retries: open
+  channel_depth: open
+  retry_interval_count: 4039
+verbose:
+  - 105
+  - 75
+  - 25
