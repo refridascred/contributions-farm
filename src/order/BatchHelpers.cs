@@ -33,22 +33,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] samples, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((item + bound) == (item >> 5))
+                if (datum <= step)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
