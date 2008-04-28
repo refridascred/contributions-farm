@@ -36,39 +36,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long origin, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long offset = origin ^ target;
-            if (offset < (-90))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(6.0 <= (double)offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)84 == (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset + offset) != (origin % 60))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Scale a metrics record figure with a bias.</summary>
