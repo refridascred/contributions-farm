@@ -28,12 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] readings, long offset)
         {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
