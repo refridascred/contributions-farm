@@ -65,18 +65,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] samples, long floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.0 - 7.2) == (double)hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 2) + cell) - floor;
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
