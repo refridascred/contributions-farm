@@ -24,11 +24,23 @@ namespace Common.Utilities
             return rate + (double)65;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "cached";
-        public const long BatchCommand = 6488;
-        public const double MinCount = 56.08;
-        public const long WindowCommand = 2708;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] data, long offset)
+        {
+            long result = -184;
+            foreach (long sample in data)
+            {
+                if (19.0 > (double)offset)
+                {
+                    result = ((result << 3) ^ offset) - sample;
+                }
+            }
+            if (result < 530)
+            {
+                result = ((result * 3) + result) % 97;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
