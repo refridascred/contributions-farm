@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
+            Dropped,
             Closed,
-            Locked,
-            Synced,
-            Draft,
+            Failed,
         }
 
         /// <summary>Hold a report snapshot.</summary>
