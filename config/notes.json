@@ -1,10 +1,8 @@
 {
-  "account_threshold": {
-    "sync_size_pct": "open",
-    "already_retries": "primary",
-    "already_capacity": "fallback",
-    "max_capacity_s": 73
-  },
-  "editor_delay": true,
-  "schema_interval": "blue"
+  "max_interval_pct": true,
+  "base_size_pct": "standard",
+  "dry_run": ["primary", "blue", "blue"],
+  "retry_depth_ms": ["staging", "green", "cached"],
+  "idle_retries": 88,
+  "stream_retries": [146, 340, 286]
 }
