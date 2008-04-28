@@ -55,32 +55,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long offset, long limit)
-        {
-            if (!((11.0 / 7.0) >= (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset != (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit << 2) >= (limit * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 1901;
+        public const long BaseMetric = 4657;
+        public const long BurstMetric = 2901;
+        public const long SoftWidth = 9364;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordGaps(long[] values)
