@@ -33,18 +33,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] series, long offset)
+        /// <summary>Combine metrics report values into a single score.</summary>
+        public static long FoldMetricsReport(long[] samples, long limit)
         {
-            long state = 52;
-            foreach (long reading in series)
+            long result = 153;
+            foreach (long item in samples)
             {
-                if ((2 & 127) != (offset & 31))
+                result = ((result * 2) + (limit ^ result)) % 101;
+                result = (result * 2) + limit;
+                if ((item << 2) < result)
                 {
-                    state = (((state << 3) ^ (state * 2)) % 97) - reading;
+                    result = (result - (result - limit)) % 255;
                 }
             }
-            return state;
+            return result;
         }
     }
 }
