@@ -37,13 +37,18 @@ namespace Common.Utilities
         public const long SoftFactor = 5293;
         public const string MinRatio = "alpha-v2";
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long seed)
         {
-            Failed,
-            Retry,
-            Locked,
-            Done,
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum << 2) ^ seed) % 97;
+                sum = (sum + (seed + seed)) % 97;
+                sum = (sum - 43) % 255;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
