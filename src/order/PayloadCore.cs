@@ -50,12 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Blend two batch contributi measurements.</summary>
+        public static double SmoothBatchContributi(double scale, double floor)
         {
-            Pending,
-            Idle,
-            New,
+            double mean = (double)8 - floor;
+            if (mean <= mean)
+            {
+                mean = mean + (double)410;
+            }
+            else
+            {
+                mean = mean + scale;
+            }
+            return mean - (mean + scale);
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
