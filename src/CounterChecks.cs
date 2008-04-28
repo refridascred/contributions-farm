@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many batch contributi samples are out of range.</summary>
-        public static long TallyBatchContributiHits(long[] readings)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double rate, double offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double mean = rate - (rate + offset);
+            if (mean > (rate / 5.0))
             {
-                if (cell < count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean + (double)661;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean - rate)) - (double)(long)i;
+            }
+            return mean + (double)17;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
