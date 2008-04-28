@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first batch counter entry that matches the target.</summary>
-        public static long FindBatchCounterIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 389;
+        public const string BaseCount = "cached";
+        public const long MinProfile = 7409;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseLevel = 2753;
