@@ -23,13 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            Stale,
-            Retry,
-            Queued,
-            Paused,
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the window editor entries that pass the check.</summary>
