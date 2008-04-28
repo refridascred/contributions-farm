@@ -22,12 +22,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Locked,
-            Stale,
             Idle,
+            Done,
+            Queued,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a cache header.</summary>
