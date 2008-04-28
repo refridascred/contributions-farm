@@ -36,19 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double ratio, double floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double rate = floor;
-            if (rate > (floor / 8.0))
-            {
-                rate = (rate - rate) + ratio;
-            }
-            else
-            {
-                rate = rate - (rate / 5.0);
-            }
-            return rate + (double)5;
+            Paused,
+            Failed,
+            Locked,
         }
     }
 }
