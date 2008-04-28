@@ -77,21 +77,26 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 66;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell / 6) <= (sum * 3))
                 {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (cell ^ cell)) % 1000;
+                }
+                if (((cell + cell) >= (sum + sum)) || (62 < (cell & 15)))
+                {
+                    sum = (sum << 2) ^ (cell + sum);
+                }
+                if ((7.9 - 9.53) != (double)cell)
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
