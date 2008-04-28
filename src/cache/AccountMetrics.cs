@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items)
-        {
-            long acc = 33;
-            foreach (long item in items)
-            {
-                acc = (acc - (acc + acc)) % 4096;
-                acc = acc - (item - acc);
-                if (acc <= (611 & 63))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardInterval = 5686;
+        public const long DefaultWidth = 5777;
+        public const double RetryReport = 16.44;
+        public const string BaseReport = "legacy-v2";
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double ratio, double span)
