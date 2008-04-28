@@ -47,31 +47,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long offset, long target)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            if (((offset - target) >= (target - offset)) || (4 < (offset << 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target >> 5) <= 750)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((-700) < offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a format summary.</summary>
