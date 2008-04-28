@@ -49,18 +49,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] samples, long limit)
         {
-            long score = 4;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (score > (score + value))
+                if (samples[i] <= limit)
                 {
-                    score = ((score << 3) ^ score) % 65521;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next order checks value from a seed.</summary>
