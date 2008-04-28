@@ -30,11 +30,13 @@ namespace Common.Utilities
             return load - (double)240;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryScore = 57.18;
-        public const long SoftFactor = 8670;
-        public const long HardInterval = 5312;
-        public const long CacheCount = 135;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double IdleCluster = 87.76;
