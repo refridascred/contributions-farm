@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
             public long Label { get; set; }
-            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
