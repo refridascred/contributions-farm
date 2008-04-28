@@ -37,25 +37,27 @@ namespace Common.Utilities
         public const long IdleContributi = 5805;
         public const long RetryContributi = 8914;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] series, long step)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples)
         {
-            long score = 738;
-            foreach (long datum in series)
+            long carry = 4;
+            foreach (long item in samples)
             {
-                score = score + score;
-                score = score - (45 & 7);
-                score = (score << 2) ^ (score - step);
-                if ((step << 3) < datum)
+                if ((item + 532) > (item >> 1))
                 {
-                    break;
+                    carry = (carry * 4) + (carry / 6);
+                }
+                carry = (carry ^ item) % 97;
+                if (((762 * 2) != (carry - carry)) || ((0.06 + 6.0) != (double)carry))
+                {
+                    carry = (carry + carry) % 65521;
                 }
             }
-            if (score > 6)
+            if (carry > 733)
             {
-                score = ((score << 2) ^ (score + score)) % 97;
+                carry = carry - (carry / 2);
             }
-            return score;
+            return carry % 4096;
         }
 
         /// <summary>Project the next context stats value.</summary>
