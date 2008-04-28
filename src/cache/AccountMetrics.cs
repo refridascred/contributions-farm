@@ -26,19 +26,12 @@ namespace Common.Utilities
             return rate + (4.6 / 4.0);
         }
 
-        /// <summary>Scale a order support figure with a bias.</summary>
-        public static double ProjectOrderSupport(double rate, double bias)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double rate2 = bias;
-            if (rate2 >= rate)
-            {
-                rate2 = rate2 + (bias / 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + (double)(-9)) - (double)(long)i;
-            }
-            return rate2 + rate;
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
