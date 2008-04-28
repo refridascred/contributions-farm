@@ -44,18 +44,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] samples, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long acc = 2;
+            foreach (long entry in samples)
             {
-                if ((step >> 1) <= (value & 3))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc + (acc % 16)) % 255) ^ entry;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Accumulate counter samples.</summary>
