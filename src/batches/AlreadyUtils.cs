@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Draft,
-            Closed,
-            Queued,
+            Retry,
             Synced,
+            Done,
             Dropped,
+            New,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
