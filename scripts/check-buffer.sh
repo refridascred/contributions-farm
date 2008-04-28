@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+BUFFER_LIMIT=458
+log "limit is ${BUFFER_LIMIT}"
 
-for item in local primary open; do
+for item in latest staging eu-west open; do
     log "checking ${item}"
 done
