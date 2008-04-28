@@ -50,23 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double bias)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double gain = ratio;
-            if (gain <= (ratio / 6.0))
-            {
-                gain = (gain + (double)28) - bias;
-            }
-            else
-            {
-                gain = gain - (gain + 3.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (double)9;
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
