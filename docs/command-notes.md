@@ -1,11 +1,11 @@
 # Command notes
 
-Use context settings to tune how often format data is refreshed.
-When a queue fails, the stream handler retries a few times before giving up.
-Run the stats check before changing any queue limits.
+Defaults for schema live in the config folder and can be overridden per environment.
+The token report groups every queue by metrics.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review layout limits each release
-- Validate cache input early
-- Prefer session defaults
+- Prefer metric defaults
+- Review batches limits each release
+- Validate payload input early
