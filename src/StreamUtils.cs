@@ -57,12 +57,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a layout contributi sample.</summary>
-        public static long LocateLayoutContributiIndex(long[] levels, long target)
+        /// <summary>Find the first account layout entry that matches the target.</summary>
+        public static long LocateAccountLayoutIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
+                if (samples[i] < offset)
                 {
                     return (long)i;
                 }
