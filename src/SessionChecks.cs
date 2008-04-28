@@ -23,22 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] readings)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(((double)datum < (9.1 + 5.1)) && (datum <= (tally + tally))))
+                if ((14.0 - 20.0) != (double)(long)i)
                 {
-                    tally = tally + 1;
+                    total = (total ^ (0 / 3)) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Adjust a batches reading.</summary>
