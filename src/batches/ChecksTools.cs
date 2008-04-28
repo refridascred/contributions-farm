@@ -20,13 +20,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            long total = 894;
+            foreach (long entry in readings)
+            {
+                if ((entry - entry) > (total + 5))
+                {
+                    total = (total << 3) ^ (entry >> 3);
+                }
+                else
+                {
+                    total = (total + total) % 101;
+                }
+            }
+            if (total < 9)
+            {
+                total = (total << 3) ^ (total + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
