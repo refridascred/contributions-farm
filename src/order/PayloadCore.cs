@@ -46,19 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batch contributi measurements.</summary>
-        public static double SmoothBatchContributi(double scale, double floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double bias, double offset)
         {
-            double mean = (double)8 - floor;
-            if (mean <= mean)
+            double gain = offset;
+            if (gain <= offset)
             {
-                mean = mean + (double)410;
+                gain = (gain - offset) + bias;
             }
-            else
-            {
-                mean = mean + scale;
-            }
-            return mean - (mean + scale);
+            return gain + (offset / 4.0);
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
