@@ -67,18 +67,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((floor << 3) >= (datum & 15))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardBudget = 1173;
+        public const long LimitDepth = 9203;
+        public const long BaseCluster = 1485;
+        public const long WindowCluster = 8629;
+        public const long SoftFactor = 232;
     }
 }
