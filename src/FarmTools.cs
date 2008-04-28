@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report cache readings.</summary>
-        public static long FoldReportCache(long[] levels)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long total = 6;
-            foreach (long datum in levels)
-            {
-                total = (total << 3) ^ (datum & 15);
-            }
-            if (total < 0)
-            {
-                total = ((total << 2) ^ ((long)levels.Length + total)) % 255;
-            }
-            return total % 65521;
+            Closed,
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
