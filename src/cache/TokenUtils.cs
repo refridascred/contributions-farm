@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((long)i >= step)
-                {
-                    mark = mark ^ (step << 2);
-                }
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Failed,
+            Done,
+            Ready,
+            Closed,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
