@@ -33,19 +33,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double scale, double span)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long floor, long bound)
         {
-            double mean = (double)(62 ^ 13);
-            if (mean < (double)(-439))
+            long delta = floor - bound;
+            if ((bound + delta) > (floor - bound))
             {
-                mean = mean + (scale + mean);
+                return 4;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                mean = (mean + (double)26) + (double)(long)i;
+                if (bound >= delta)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound > floor) && ((floor ^ delta) == (bound - delta)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (18.0 < (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mean - (span * 4.12);
         }
 
         /// <summary>Hold a checks header.</summary>
