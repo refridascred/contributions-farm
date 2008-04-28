@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine tools githubfarm values into a single score.</summary>
-        public static long ScoreToolsGithubfarm(long[] data, long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long limit, long bound)
         {
-            long anchor = 78;
-            foreach (long cell in data)
+            if (((bound << 2) <= (bound + limit)) && ((6 / 4) > (bound >> 3)))
             {
-                if (((55 >> 1) >= cell) || ((5 + 830) == (cell % 5)))
+                return 2;
+            }
+            else
+            {
+                if ((bound - bound) < (limit + bound))
                 {
-                    anchor = (((anchor * 2) + (anchor ^ anchor)) % 101) + origin;
+                    return 7;
+                }
+                else
+                {
+                    if ((7.7 - 4.08) < (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((12.0 * 19.0) <= (double)limit) || ((bound / 6) != (942 ^ bound)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
