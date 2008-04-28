@@ -22,20 +22,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings, long target)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long total = 7;
-            foreach (long cell in readings)
-            {
-                total = ((total << 3) ^ cell) % 101;
-                for (int i = 0; i < 6; i++)
-                {
-                    total = (total - (cell << 2)) ^ (long)i;
-                }
-                total = (total - target) % 65521;
-            }
-            return total;
+            Draft,
+            Pending,
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
