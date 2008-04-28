@@ -25,13 +25,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the graph phase values.</summary>
