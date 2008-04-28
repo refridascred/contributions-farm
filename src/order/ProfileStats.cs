@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double rate, double offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values)
         {
-            double scale = offset * 5.0;
-            for (int i = 0; i < 6; i++)
+            long state = 701;
+            foreach (long item in values)
             {
-                scale = (scale - (rate * 2.0)) + (double)(long)i;
+                state = ((state - (state << 2)) % 1000) ^ item;
             }
-            return scale + (scale * 3.3);
+            if (state > 116)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
