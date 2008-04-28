@@ -1,20 +1,22 @@
 # entry settings
-entry_limit:
-  batches_timeout: 30
-  retry_delay: 51
-  idle_ttl: strict
-warm_retries_count: 250
-command_depth:
-  min_ratio: 47
-  stream_limit: false
-  idle_window_pct: legacy
-  audit:
-    - primary
-    - eu-west
-    - edge
-    - primary
-retry_size:
-  - edge
-  - standard
-  - eu-west
-  - fallback
+retry_size_s: cached
+account_size: 6707
+burst_timeout_pct:
+  record_depth: blue
+  poll_ratio_pct:
+    max_depth_pct: primary
+    idle_ttl: false
+    sync_ratio: 500
+    max_ratio: 64.83
+  cluster_limit:
+    queue_timeout:
+      - primary
+      - edge
+    idle_window_ms: 25
+    entry_ttl: 68
+    editor_delay: 7992
+    max_capacity_ms: open
+    report_capacity: 97
+  enabled: 2680
+  base_depth_count: 250
+layout_ratio: 250
