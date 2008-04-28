@@ -26,21 +26,11 @@ namespace Common.Utilities
         public const long BurstChannel = 3669;
         public const long HardChannel = 1119;
 
-        /// <summary>Compare every pair of contributi record readings.</summary>
-        public static long PairContributiRecordCount(long[] data)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
