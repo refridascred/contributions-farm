@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepWidth = 3113;
-        public const long MaxBatches = 8374;
-        public const long MinBatches = 8892;
-        public const long MinDepth = 4156;
+        /// <summary>Fold a list of record order readings.</summary>
+        public static long CombineRecordOrder(long[] levels)
+        {
+            long anchor = -68;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor << 2) ^ (411 ^ sample)) % 97;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long RetrySpan = 327;
