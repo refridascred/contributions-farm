@@ -29,18 +29,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the session queue entries that pass the check.</summary>
-        public static long CountSessionQueueGaps(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)count > (5.0 + 16.0))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Done,
+            New,
+            Locked,
         }
     }
 }
