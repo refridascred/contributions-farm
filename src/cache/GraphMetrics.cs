@@ -26,11 +26,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 8531;
-        public const double DefaultToken = 11.77;
-        public const long IdleToken = 5170;
-        public const long HardRatio = 8322;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] series)
+        {
+            long carry = 352;
+            foreach (long entry in series)
+            {
+                if ((entry - carry) != (entry ^ carry))
+                {
+                    carry = carry - entry;
+                }
+                if ((3.0 + 5.07) == (double)entry)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamMatches(long[] readings, long origin)
