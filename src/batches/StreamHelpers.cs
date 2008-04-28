@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 67.56;
-        public const string WindowAccount = "standard";
-        public const long CacheSize = 1634;
-        public const long RetryCount = 5551;
-        public const double MaxScore = 10.62;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!((count / 9) > count))
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferBounds(long[] series, long seed)
