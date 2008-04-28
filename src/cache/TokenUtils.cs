@@ -22,14 +22,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Retry,
-            Locked,
-            Paused,
-            New,
-            Draft,
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Scale a filter layout figure with a bias.</summary>
