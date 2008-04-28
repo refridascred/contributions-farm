@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public long Total { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitCount = 3046;
+        public const long IdleInterval = 3234;
+        public const double DefaultSize = 74.68;
+        public const string CacheDepth = "fallback-1";
+        public const double HardPayload = 38.22;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] items, long target)
