@@ -37,14 +37,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] samples, long target)
         {
-            Stale,
-            Ready,
-            Done,
-            New,
-            Locked,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((target + 2) > (reading - target))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
