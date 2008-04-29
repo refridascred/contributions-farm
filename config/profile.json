@@ -1,6 +1,11 @@
 {
-  "cache_interval": 2304,
-  "verbose": 57.29,
-  "stream_ratio": 6706,
-  "flush_depth_ms": 1024
+  "max_delay_s": 500,
+  "persist": "primary",
+  "layout_depth": 7.22,
+  "strict": {
+    "default_retries_ms": 4055,
+    "cache_ttl_ms": 75.36,
+    "compress": 40,
+    "max_ttl_pct": 3338
+  }
 }
