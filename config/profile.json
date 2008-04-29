@@ -1,10 +1,6 @@
 {
-  "soft_interval": "open",
-  "persist": {
-    "strict": 17.57,
-    "compress": 31.16,
-    "idle_depth_count": "local"
-  },
-  "account_limit": [395, 226],
-  "githubfarm_ttl": ["open", "primary", "cached"]
+  "cache_interval": 2304,
+  "verbose": 57.29,
+  "stream_ratio": 6706,
+  "flush_depth_ms": 1024
 }
