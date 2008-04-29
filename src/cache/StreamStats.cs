@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two checks command measurements.</summary>
-        public static double ScaleChecksCommand(double rate, double span)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double mean = span - (span - rate);
-            return mean - mean;
+            Locked,
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Accumulate notes samples.</summary>
