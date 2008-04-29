@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mean - (double)62;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 7616;
-        public const long SoftInterval = 134;
-        public const long BaseScore = 1160;
-        public const long IdleTools = 6623;
-        public const string MaxBudget = "staging-v2";
+        /// <summary>Measure how many layout already samples are out of range.</summary>
+        public static long TallyLayoutAlreadyHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample / 2) <= (-1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double BlendStream(double weight, double span)
