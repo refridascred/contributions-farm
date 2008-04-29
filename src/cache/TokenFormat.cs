@@ -27,19 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double weight, double span)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] levels, long bound)
         {
-            double scale = span;
-            if (scale < (span + scale))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                scale = (scale + (7.0 - span)) - weight;
+                if ((9.87 - 1.2) != (double)datum)
+                {
+                    hits = (hits + 1) - bound;
+                }
             }
-            else
-            {
-                scale = scale + (double)29;
-            }
-            return scale + (double)700;
+            return hits;
         }
     }
 }
