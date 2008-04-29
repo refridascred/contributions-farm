@@ -58,13 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] values)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Active,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((2.0 - 15.0) <= (double)cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
