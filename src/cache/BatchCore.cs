@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "staging-edge";
+        public const long StepLayout = 6608;
+        public const long BatchLayout = 4901;
+        public const long SoftSpan = 6674;
+        public const double LimitLayout = 40.31;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double MinStream = 41.32;
