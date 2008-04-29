@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] series, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)item != (double)286)
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            Stale,
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the layout status values.</summary>
