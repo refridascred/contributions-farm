@@ -27,15 +27,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] data, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            long sum = 879;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                sum = (((sum * 3) + target) % 101) + datum;
+                if (((long)series.Length & 7) >= seen)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
