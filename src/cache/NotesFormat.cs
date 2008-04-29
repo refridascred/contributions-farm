@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] readings, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long result = 505;
+            foreach (long entry in data)
             {
-                if ((count + origin) <= ((long)readings.Length >> 3))
-                {
-                    count = (count + 3) + value;
-                }
+                result = ((result << 3) ^ (result + entry)) % 4096;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
