@@ -32,21 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)datum >= (double)72)
                 {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) + step;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of batches tools readings.</summary>
