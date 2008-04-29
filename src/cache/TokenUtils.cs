@@ -32,18 +32,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] series, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long floor, long target)
         {
-            long mix = 111;
-            foreach (long cell in series)
+            long prev = floor - target;
+            if (!((double)target == (6.0 / 5.0)))
             {
-                if (origin >= (791 - (-9)))
+                return 7;
+            }
+            else
+            {
+                if ((prev - floor) < (target + prev))
                 {
-                    mix = ((mix << 3) ^ (long)series.Length) ^ cell;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mix;
         }
     }
 }
