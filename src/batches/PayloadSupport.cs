@@ -30,18 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((matches << 2) == (matches - matches)) && ((entry >> 4) >= (entry - entry)))
                 {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
