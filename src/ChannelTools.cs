@@ -33,21 +33,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "legacy-1";
+        public const long DefaultCluster = 7532;
+        public const double BurstWidth = 81.83;
     }
 }
