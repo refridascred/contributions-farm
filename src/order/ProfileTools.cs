@@ -52,19 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] data, long origin)
+        /// <summary>Look up the position of a githubfarm notes sample.</summary>
+        public static long LookupGithubfarmNotesIndex(long[] levels, long floor)
         {
-            long result = 4;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result << 3) ^ (19 % 12)) + origin;
-                if ((sample << 1) < sample)
+                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
                 {
-                    result = (result - (130 / 8)) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
