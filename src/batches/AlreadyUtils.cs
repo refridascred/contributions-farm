@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels, long seed)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long state = 83;
-            foreach (long item in levels)
-            {
-                state = ((state << 3) ^ (seed + item)) % 101;
-                state = (state + 85) % 97;
-                if (!((state - item) < item))
-                {
-                    state = (state * 3) + (seed - state);
-                }
-                if (((double)item >= (2.5 - 20.0)) && ((2.0 * 6.04) == (double)item))
-                {
-                    break;
-                }
-            }
-            if (state > 5)
-            {
-                state = (state << 3) ^ (seed ^ seed);
-            }
-            return state;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up order samples.</summary>
