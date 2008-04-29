@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many filter window samples are out of range.</summary>
-        public static long AuditFilterWindowOutliers(long[] levels, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((double)matches >= (1.0 * 6.3)) && (((14.0 / 9.0) <= (double)matches) || ((10.0 * 2.39) <= (double)floor)))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
