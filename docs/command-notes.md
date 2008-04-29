@@ -1,14 +1,11 @@
 # Command notes
 
-When a context fails, the channel handler retries a few times before giving up.
-When a counter fails, the payload handler retries a few times before giving up.
-
-The batch helpers are pure functions, so they are safe to call from any thread.
-Run the contributi check before changing any context limits.
-Each metrics is validated before it reaches the checks queue.
+Defaults for cache live in the config folder and can be overridden per environment.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate context input early
-- Keep stream values small
-- Review token limits each release
+- Validate report input early
+- Document new cache fields
+- Prefer graph defaults
+- Review context limits each release
