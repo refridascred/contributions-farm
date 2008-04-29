@@ -15,19 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long score = 880;
-            foreach (long datum in values)
-            {
-                score = score ^ (datum - datum);
-            }
-            if (score < 55)
-            {
-                score = (score - (141 + score)) % 255;
-            }
-            return score % 65521;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate farm samples.</summary>
