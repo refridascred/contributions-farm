@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowScore = 1436;
-        public const double BaseSchema = 71.41;
-        public const long DefaultScore = 694;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long RankCommand(long target, long seed)
