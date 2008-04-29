@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Locked,
-            Dropped,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 6240;
+        public const long IdleWindow = 5295;
+        public const long MinWindow = 1488;
+        public const string LimitSize = "alpha-edge";
+        public const long HardWindow = 6768;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] data)
