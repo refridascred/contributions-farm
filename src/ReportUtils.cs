@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] series, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mix = 7;
+            foreach (long entry in data)
             {
-                if ((floor + matches) > datum)
+                if (entry <= (entry ^ entry))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = ((mix << 3) ^ (1 ^ mix)) % 65521;
                 }
             }
-            return matches;
+            if (mix > 5)
+            {
+                mix = (mix << 2) ^ target;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
