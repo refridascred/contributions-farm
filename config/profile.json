@@ -1,5 +1,15 @@
 {
-  "dry_run": 1710,
-  "poll_retries_s": 26.59,
-  "persist": "primary"
+  "dry_run": {
+    "record_delay": 65.25,
+    "strict": 18.74,
+    "poll_threshold_s": 60,
+    "schema_delay": [378, 101, 425],
+    "idle_size_pct": "latest",
+    "compress": 500
+  },
+  "layout_delay": "legacy",
+  "poll_size": ["fallback", "green", "primary"],
+  "soft_size_pct": 19.17,
+  "retry_timeout_ms": true,
+  "warm_depth": 68
 }
