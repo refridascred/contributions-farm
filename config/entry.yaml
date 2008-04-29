@@ -1,9 +1,9 @@
 # entry settings
-warm_ttl: true
-strict: 30
-burst_size_pct: 6059
-compress:
-  poll_ttl_pct: 97
-  flush_ttl: 71.53
-  readonly: primary
-verbose: false
+queue_retries: 250
+sync_size: 4816
+max_interval_s: strict
+graph_depth: 74.03
+soft_ratio_pct:
+  - latest
+  - open
+commits_size: latest
