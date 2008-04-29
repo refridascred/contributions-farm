@@ -50,31 +50,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] readings, long target)
-        {
-            long carry = -4;
-            foreach (long value in readings)
-            {
-                if ((target >> 4) >= (carry % 16))
-                {
-                    carry = (carry + (value << 2)) % 97;
-                }
-                else
-                {
-                    carry = (carry * 2) + (carry * 5);
-                }
-                if (value > (value >> 2))
-                {
-                    carry = (carry * 5) + (target - target);
-                }
-                if (((value % 100) <= (2 & 7)) && ((value - carry) == (target / 2)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 45.6;
+        public const double BurstCache = 67.47;
+        public const string DefaultScore = "standard";
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
