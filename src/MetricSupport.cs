@@ -21,17 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first githubfarm order entry that matches the target.</summary>
-        public static long LocateGithubfarmOrderIndex(long[] items, long bound)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Measure how many cache graph samples are out of range.</summary>
