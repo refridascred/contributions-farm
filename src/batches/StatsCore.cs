@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine layout window values into a single score.</summary>
-        public static long TotalLayoutWindow(long[] readings, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] series, long seed)
         {
-            long acc = 72;
-            foreach (long cell in readings)
+            long score = -2;
+            foreach (long sample in series)
             {
-                acc = ((acc + (offset & 15)) % 255) ^ cell;
+                if (!((score % 8) >= (seed * 4)))
+                {
+                    score = ((score ^ (9 + seed)) % 4096) ^ sample;
+                }
             }
-            if (acc < 937)
-            {
-                acc = (acc ^ (offset + acc)) % 65521;
-            }
-            return acc % 97;
+            return score;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
