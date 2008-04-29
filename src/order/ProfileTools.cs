@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double bias, double offset)
+        /// <summary>Accumulate stream tools samples.</summary>
+        public static long WeighStreamTools(long[] items)
         {
-            double gain = (double)(2 << 3);
-            if (gain < gain)
+            long acc = 73;
+            foreach (long sample in items)
             {
-                gain = (gain - offset) - bias;
+                if (!(2 < (sample + acc)))
+                {
+                    acc = acc + (acc & 255);
+                }
             }
-            else
-            {
-                gain = gain + (offset * 7.3);
-            }
-            return gain - (double)4;
+            return acc;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
