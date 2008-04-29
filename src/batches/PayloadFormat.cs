@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metrics tools readings against a rule.</summary>
-        public static long CountMetricsToolsHits(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((entry >> 2) > (tally + tally)))
+                if (entry < (count + count))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
