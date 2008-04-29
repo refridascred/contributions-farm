@@ -25,17 +25,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                long seen = (8 ^ 152) + (floor >> 1);
-                mix = mix + (seen / 4);
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
