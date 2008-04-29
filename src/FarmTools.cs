@@ -38,15 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] series, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((value + step) > (value << 1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
