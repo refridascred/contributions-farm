@@ -92,10 +92,11 @@ namespace Common.Utilities
             return load + (load / 9.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 1794;
-        public const long WindowCount = 7230;
-        public const long StepLevel = 3103;
-        public const long RetryGraph = 8244;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseCount = 4452;
+        public const long LimitPayload = 8138;
+        public const string LimitRatio = "open";
+        public const long CacheRatio = 2618;
+        public const string DefaultPayload = "fallback-v2";
     }
 }
