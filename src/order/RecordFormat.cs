@@ -25,11 +25,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 93;
-        public const long LimitRoute = 8272;
-        public const long BaseFactor = 3396;
-        public const long RetryWidth = 6537;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long ScoreMetrics(long[] data, long bound)
