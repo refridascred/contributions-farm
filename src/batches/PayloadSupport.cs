@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] readings, long offset)
         {
-            double mean = weight;
-            return (mean + weight) + bias;
+            long mix = 827;
+            foreach (long reading in readings)
+            {
+                mix = (((mix << 3) ^ (offset >> 5)) % 4096) ^ reading;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
