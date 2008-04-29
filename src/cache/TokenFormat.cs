@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many batches command samples are out of range.</summary>
-        public static long AuditBatchesCommandGaps(long[] samples)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double load = (double)(0 & 255);
+            if (load <= floor)
             {
-                if ((item * 5) > item)
-                {
-                    hits = hits + 2;
-                }
+                load = load + ratio;
             }
-            return hits;
+            return load + (ratio * 9.11);
         }
 
         /// <summary>Accumulate channel payload samples.</summary>
