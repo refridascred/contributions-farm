@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] levels, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                total = total ^ (total << 1);
-                total = ((total << 3) ^ (origin + (-7))) % 97;
-                for (int i2 = 0; i2 < 6; i2++)
+                if (datum != origin)
                 {
-                    total = (((total * 3) + 753) % 4096) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
