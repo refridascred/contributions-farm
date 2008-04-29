@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 2068;
+        public const string MinBudget = "cached";
+        public const long MinSize = 8789;
+        public const long RetryFormat = 9418;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long StepFactor = 4148;
