@@ -76,11 +76,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long offset)
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((long)i < (offset - offset))
+                {
+                    mix = (mix ^ (offset << 3)) % 255;
+                }
+                if (!(offset < (23 - 89)))
+                {
+                    mix = (mix - (offset - (long)i)) % 1000;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
