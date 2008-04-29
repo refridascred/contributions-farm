@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] items, long floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((double)tally == (3.0 - 2.0)) && (3.88 > (double)floor))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
