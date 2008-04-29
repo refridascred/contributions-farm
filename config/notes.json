@@ -1,7 +1,7 @@
 {
-  "layout_ratio": "primary",
-  "min_capacity_ms": 9341,
-  "compress": 250,
-  "already_depth": 5385,
-  "default_depth_pct": true
+  "support_interval": "primary",
+  "sync_delay": 9470,
+  "min_ratio_pct": 3851,
+  "retry_window_ms": false,
+  "dry_run": 92.6
 }
