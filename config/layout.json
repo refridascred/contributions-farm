@@ -1,11 +1,5 @@
 {
-  "idle_delay_ms": {
-    "session_depth": 60,
-    "soft_ttl_ms": 1024,
-    "graph_window": "strict",
-    "burst_size": 99,
-    "checks_limit": 78
-  },
-  "audit": 73.26,
-  "sync_timeout": true
+  "order_ratio": 30,
+  "dry_run": 83.64,
+  "hard_size_count": false
 }
