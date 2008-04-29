@@ -59,11 +59,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stream route value.</summary>
-        public static double BlendStreamRoute(double ratio, double span)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            double mean = span;
-            return (mean + mean) + ratio;
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix - seed) % 97;
+                if (((long)i - (long)i) >= (seed % 16))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix - 9) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many githubfarm account samples are out of range.</summary>
