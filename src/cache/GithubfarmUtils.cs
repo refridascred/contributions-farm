@@ -43,18 +43,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] items, long offset)
+        /// <summary>Accumulate stats support samples.</summary>
+        public static long DigestStatsSupport(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = 32;
+            foreach (long sample in values)
             {
-                if (offset > (offset / 8))
+                if (!((double)acc < (19.0 / 8.0)))
                 {
-                    tally = (tally + 1) ^ cell;
+                    acc = ((((acc << 2) ^ 5) % 255) - sample) + seed;
                 }
             }
-            return tally;
+            if (acc > 121)
+            {
+                acc = acc + (10 + acc);
+            }
+            return acc;
         }
     }
 }
