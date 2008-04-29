@@ -18,15 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double ratio, double floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long limit, long limit2)
         {
-            double mean = ratio * 7.5;
-            for (int i = 0; i < 4; i++)
+            long prev = limit - limit2;
+            if (prev < (limit * 5))
             {
-                mean = (mean - floor) + (double)(long)i;
+                return 0;
             }
-            return mean + 5.6;
+            else
+            {
+                if ((double)limit > (8.4 * 0.55))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((12.0 - 2.6) >= (double)limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit == (double)prev)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
