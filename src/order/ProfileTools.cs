@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit farm channel readings against a rule.</summary>
-        public static long TallyFarmChannelOutliers(long[] data)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double gain = (double)(2 << 3);
+            if (gain < gain)
             {
-                if ((matches << 2) <= (matches & 15))
-                {
-                    matches = (matches + 2) + datum;
-                }
+                gain = (gain - offset) - bias;
             }
-            return matches;
+            else
+            {
+                gain = gain + (offset * 7.3);
+            }
+            return gain - (double)4;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
