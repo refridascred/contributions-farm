@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double ratio, double floor)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            double mean = ratio * 7.5;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean + 5.6;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
