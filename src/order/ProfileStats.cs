@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the githubfarm checks entries that pass the check.</summary>
-        public static long CountGithubfarmChecksGaps(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long anchor = 5;
+            foreach (long reading in values)
             {
-                if ((seen + 40) >= (datum + datum))
+                long step = (anchor - reading) << 1;
+                if (step >= (-33))
                 {
-                    seen = seen + 3;
+                    anchor = ((anchor << 3) ^ (reading + step)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor - (anchor >> 1);
+                }
+                if ((14.0 - 7.1) == (double)reading)
+                {
+                    anchor = anchor + (reading ^ anchor);
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
