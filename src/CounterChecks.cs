@@ -26,13 +26,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public bool Region { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 23.22;
+        public const long SoftChecks = 5089;
+        public const long BatchInterval = 3038;
+        public const long MaxChecks = 6118;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] values, long seed)
