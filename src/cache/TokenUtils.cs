@@ -23,14 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Closed,
-            Paused,
-            New,
-            Idle,
-            Retry,
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
