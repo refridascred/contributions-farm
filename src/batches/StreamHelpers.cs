@@ -91,18 +91,12 @@ namespace Common.Utilities
             return ratio + (ratio - bias);
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 1169;
+        public const long MinWindow = 5318;
+        public const string RetryFactor = "strict-edge";
+        public const double StepWindow = 69.42;
+        public const string SoftBudget = "staging-v2";
 
         /// <summary>Compare every pair of buffer already readings.</summary>
         public static long CompareBufferAlreadyCount(long[] items)
