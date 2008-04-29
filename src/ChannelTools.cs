@@ -13,13 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] data)
         {
-            Ready,
-            Queued,
-            Idle,
-            Draft,
+            long anchor = -5;
+            foreach (long value in data)
+            {
+                if (((value >> 4) < 649) && ((7.1 / 7.0) == (double)anchor))
+                {
+                    anchor = (anchor + (anchor * 2)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up metric samples.</summary>
