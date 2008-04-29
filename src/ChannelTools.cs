@@ -35,19 +35,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] values, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long next = origin ^ offset;
+            if (!((offset - offset) >= (30 * 3)))
             {
-                if (reading < origin)
+                return 1;
+            }
+            else
+            {
+                if (!((offset - origin) >= offset))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset + offset) < origin) || ((offset + origin) >= (next << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
