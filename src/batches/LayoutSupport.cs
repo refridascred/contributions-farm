@@ -23,11 +23,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowWidth = 3701;
-        public const long DefaultSpan = 327;
-        public const long DefaultOrder = 3335;
-        public const long HardDepth = 1143;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 9486;
+        public const long SoftScore = 6637;
+        public const long StepCache = 4530;
+        public const double CacheWidth = 3.09;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
