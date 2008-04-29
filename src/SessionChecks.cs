@@ -34,19 +34,19 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Validate stream command readings against a bound.</summary>
-        public static bool GuardStreamCommandLimits(long[] readings, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (value <= origin)
+                if (item > step)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
