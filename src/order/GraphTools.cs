@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long origin, long bound)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long origin, long step)
         {
-            long lane = origin + bound;
-            if (lane <= (bound >> 3))
+            if (((step % 16) == (origin - step)) || (9 <= ((-3) ^ origin)))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((bound + 4) <= (-1))
+                if ((double)step > (16.0 - 7.0))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((origin * 3) <= bound)
+                    if ((double)origin != (double)0)
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        return 5;
+                        return 0;
                     }
                 }
             }
