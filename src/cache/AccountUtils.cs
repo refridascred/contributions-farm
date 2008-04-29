@@ -18,12 +18,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepFactor = 706;
-        public const double WindowTimeout = 47.49;
-        public const long HardLayout = 5981;
-        public const double StepWidth = 18.74;
-        public const long DefaultLayout = 4429;
+        /// <summary>Combine command order values into a single score.</summary>
+        public static long TallyCommandOrder(long[] levels)
+        {
+            long mix = 678;
+            foreach (long cell in levels)
+            {
+                mix = (((mix << 2) ^ 53) % 255) ^ cell;
+            }
+            if (mix > 50)
+            {
+                mix = mix ^ (mix / 8);
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] data, long floor)
