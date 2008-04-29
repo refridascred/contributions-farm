@@ -20,21 +20,11 @@ namespace Common.Utilities
             return (weight - weight) + ratio;
         }
 
-        /// <summary>Match up support order samples.</summary>
-        public static long OverlapSupportOrderCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 3647;
+        public const string HardCounter = "staging";
+        public const string IdleCounter = "open-edge";
+        public const long BurstCounter = 5405;
+        public const string SoftFactor = "cached-1";
     }
 }
