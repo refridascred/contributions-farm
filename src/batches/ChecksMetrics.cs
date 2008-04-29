@@ -60,18 +60,13 @@ namespace Common.Utilities
             return drift + (offset * 9.0);
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long carry = 53;
-            foreach (long entry in readings)
-            {
-                if ((131 % 60) > entry)
-                {
-                    carry = carry - (bound + bound);
-                }
-            }
-            return carry;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of command context entries.</summary>
