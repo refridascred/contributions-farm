@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] series, long limit)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            long carry = 76;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (((carry * 2) + (carry - item)) % 1000) - limit;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Describe the profile class values.</summary>
