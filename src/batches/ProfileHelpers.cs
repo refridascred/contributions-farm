@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a buffer tools reading.</summary>
-        public static double ScaleBufferTools(double rate, double span)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long floor, long seed)
         {
-            double rate2 = 9.9 / 8.0;
-            if (rate2 <= (rate2 * 3.33))
+            long offset = floor ^ seed;
+            if ((seed >= 34) && ((5.88 + 8.69) < (double)offset))
             {
-                rate2 = rate2 + rate2;
+                return 4;
             }
             else
             {
-                rate2 = rate2 + (double)397;
+                if ((5.1 + 2.39) >= (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 - span;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
