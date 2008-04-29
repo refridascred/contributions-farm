@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftBudget = 4769;
-        public const double WindowAlready = 58.27;
-        public const long SoftAlready = 8360;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] series, long target)
