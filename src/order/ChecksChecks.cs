@@ -34,27 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((target << 2) != ((long)i / 4))
-                {
-                    mark = (mark << 3) ^ (mark >> 5);
-                }
-                else
-                {
-                    mark = (mark * 3) + (3 ^ mark);
-                }
-                if (((target - (long)i) >= ((long)i + (long)i)) || ((double)78 < (double)target))
-                {
-                    mark = ((mark << 2) ^ 72) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardTimeout = 12.09;
+        public const string WindowReport = "strict-v2";
+        public const long CacheReport = 4938;
+        public const double RetryWidth = 62.95;
+        public const string IdleCount = "strict-1";
     }
 }
