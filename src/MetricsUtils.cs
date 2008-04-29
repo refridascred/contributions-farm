@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((31 - 53) <= (reading - seen)) || ((reading >> 5) < (seen + seen)))
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFactor = 83.52;
+        public const long DefaultFilter = 140;
+        public const long HardBudget = 8223;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long FindChannelIndex(long[] readings, long seed)
