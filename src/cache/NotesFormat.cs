@@ -13,23 +13,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double bias, double offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long limit, long step)
         {
-            double scale = 5.79;
-            if (scale > (7.7 - scale))
+            long slot = limit ^ step;
+            if ((569 & 7) <= (limit >> 3))
             {
-                scale = (scale + (16.0 - 1.5)) - bias;
+                return 5;
             }
             else
             {
-                scale = scale + (double)3;
+                if ((step + slot) <= (limit - slot))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot + 5) != (59 - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step / 3) > (522 + 24))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (offset / 6.0)) + (double)(long)i;
-            }
-            return scale + (double)12;
         }
 
         /// <summary>Roll a order context counter forward.</summary>
