@@ -57,18 +57,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] data, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((double)bound > 1.2)
             {
-                if (!((step / 7) < item))
+                return 7;
+            }
+            else
+            {
+                if (!(bound <= (offset << 2)))
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (8.7 >= (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
