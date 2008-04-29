@@ -37,12 +37,11 @@ namespace Common.Utilities
         public const long BurstAlready = 2428;
         public const string SoftSize = "primary-edge";
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double weight, double offset)
-        {
-            double scale = weight;
-            return (scale + (4.86 * 9.6)) + offset;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 3.95;
+        public const long IdleReport = 1499;
+        public const long LimitSize = 3893;
+        public const string WindowTimeout = "latest-edge";
 
         /// <summary>Classify a metric editor pair into a bucket.</summary>
         public static long BucketMetricEditor(long bound, long limit)
