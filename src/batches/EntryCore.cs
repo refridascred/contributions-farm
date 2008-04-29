@@ -19,13 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Validate graph cluster readings against a bound.</summary>
+        public static bool ValidateGraphClusterRange(long[] values, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next farm value.</summary>
