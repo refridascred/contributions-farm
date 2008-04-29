@@ -37,11 +37,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 1979;
-        public const long IdleDepth = 3039;
-        public const double LimitDepth = 73.88;
-        public const long CacheFactor = 8885;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] series, long limit)
