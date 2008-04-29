@@ -40,38 +40,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metric stats pair into a bucket.</summary>
-        public static long SortMetricStats(long seed, long floor)
-        {
-            if ((floor > 645) || (floor < (seed + floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed == (double)304) && ((double)seed > (15.0 * 1.1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor * 3) == (floor + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((5.13 - 9.7) != (double)floor) || ((double)floor < (5.91 + 7.2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "primary-1";
+        public const long MaxRoute = 9194;
+        public const string DefaultTimeout = "legacy-edge";
     }
 }
