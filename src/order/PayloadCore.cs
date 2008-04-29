@@ -46,19 +46,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metric contributi entry stays within the limit.</summary>
-        public static bool CheckMetricContributiRange(long[] levels, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (entry < target)
+                if (cell < floor)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
