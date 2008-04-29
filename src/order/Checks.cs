@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryInterval = 43.87;
-        public const string RetryScore = "staging";
-        public const long BatchTimeout = 9086;
-        public const long MinMetrics = 8032;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "strict-v2";
+        public const long HardContext = 7639;
+        public const double BurstInterval = 13.67;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamMatches(long[] readings, long floor)
