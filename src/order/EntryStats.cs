@@ -43,18 +43,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit filter format readings against a rule.</summary>
-        public static long MeasureFilterFormatHits(long[] samples)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (1.7 >= (double)tally)
+                if (!((bound * 4) < (5 + bound)))
                 {
-                    tally = (tally + 1) ^ cell;
+                    mix = (mix + (mix / 4)) % 97;
+                    mix = (mix + (bound + mix)) % 1000;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
     }
 }
