@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] data)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample & 7) > (4 >> 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define command limits and defaults.</summary>
