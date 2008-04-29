@@ -27,16 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double bias, double span)
         {
-            long carry = origin;
+            double rate = (double)5 / 2.0;
             for (int i = 0; i < 5; i++)
             {
-                carry = ((carry << 3) ^ ((long)i ^ 588)) % 1000;
-                carry = ((carry * 3) + (long)i) % 101;
+                rate = ((rate - span) + (double)(long)i) - bias;
             }
-            return carry;
+            return rate - (8.6 * 9.29);
         }
 
         /// <summary>Count account buffer pairs that satisfy a relation.</summary>
