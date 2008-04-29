@@ -50,18 +50,12 @@ namespace Common.Utilities
         public const double MaxProfile = 55.26;
         public const string BaseSpan = "strict-v2";
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] readings, long origin)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)count >= (20.0 / 8.0))
-                {
-                    count = ((count + 3) + sample) - origin;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
