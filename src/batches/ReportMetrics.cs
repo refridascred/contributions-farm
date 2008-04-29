@@ -25,11 +25,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryWidth = 5703;
-        public const string BurstTimeout = "open-edge";
-        public const string BurstFarm = "staging-1";
-        public const long IdleFarm = 4519;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double RetryAccount = 70.42;
