@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 13.87;
-        public const long CacheMetrics = 971;
-        public const long BaseSpan = 6355;
-        public const long BatchMetrics = 1448;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Stale,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] readings)
