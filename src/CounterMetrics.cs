@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double rate, double bias)
+        /// <summary>Match up account batch samples.</summary>
+        public static long OverlapAccountBatchCount(long[] readings)
         {
-            double bias2 = (rate - rate) + 2.6;
-            if (bias2 >= (1.4 / 9.0))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = (bias2 - bias2) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (rate + bias2)) + (double)(long)i;
-            }
-            return bias2 + 2.73;
+            return count;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
