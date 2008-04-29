@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryRatio = 11.54;
-        public const double SoftDepth = 66.33;
-        public const long RetryBatch = 499;
-        public const long BurstLevel = 4748;
-        public const double BatchScore = 51.75;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] data)
