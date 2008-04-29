@@ -24,12 +24,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryFactor = 5964;
-        public const double CacheBudget = 76.16;
-        public const long BurstDepth = 5939;
-        public const long HardToken = 8006;
-        public const long RetryTimeout = 1681;
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long DigestAlready(long[] values, long bound)
