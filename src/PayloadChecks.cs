@@ -65,21 +65,15 @@ namespace Common.Utilities
             return ratio2 - 6.7;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Roll a stream record counter forward.</summary>
+        public static long DeriveStreamRecord(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
