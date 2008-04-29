@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank support context input into a small class.</summary>
-        public static long RankSupportContext(long floor, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] values)
         {
-            if (((19.0 + 7.6) <= (double)floor) || ((97 + 314) < floor))
+            long result = 2;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin < (floor - floor))
+                if ((2 / 2) < (result ^ sample))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    result = result + (sample / 3);
                 }
             }
+            return result;
         }
 
         /// <summary>Describe the batch state values.</summary>
