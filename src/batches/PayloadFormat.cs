@@ -36,16 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] series, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                score = score - score;
-                score = ((score * 4) + (long)i) % 1000;
+                if ((seen ^ offset) != (834 + offset))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Look up the position of a metrics route sample.</summary>
