@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long offset, long bound)
         {
-            long score = 42;
-            foreach (long cell in values)
+            if ((offset + 27) == (86 & 255))
             {
-                if ((double)seed < (double)score)
+                return 1;
+            }
+            else
+            {
+                if (((double)offset < 5.46) || (offset > (74 >> 5)))
                 {
-                    score = (score + (score % 2)) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    if (bound >= (bound << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (344 >= (offset & 63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (score > 5)
-            {
-                score = (score - (seed + seed)) % 255;
-            }
-            return score;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
