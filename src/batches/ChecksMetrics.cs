@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long limit, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            if ((seed >> 1) <= (limit * 4))
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (!((limit / 4) <= (seed + limit)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit * 4) < (limit / 9)) || ((double)limit == (19.0 - 9.2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a metrics record.</summary>
