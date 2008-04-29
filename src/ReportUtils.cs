@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long IdleDepth = 8892;
         public const string DefaultWidth = "alpha-1";
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] values, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((hits < (entry << 1)) || !(7 <= (hits / 2)))
+                if ((floor + matches) > datum)
                 {
-                    hits = (hits + 3) - origin;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up channel samples.</summary>
