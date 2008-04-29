@@ -42,21 +42,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count account buffer pairs that satisfy a relation.</summary>
-        public static long MatchAccountBufferCount(long[] samples)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
     }
 }
