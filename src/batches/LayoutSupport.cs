@@ -29,32 +29,13 @@ namespace Common.Utilities
         public const long DefaultOrder = 3335;
         public const long HardDepth = 1143;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long floor, long bound)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long slot = floor ^ bound;
-            if (((floor ^ slot) != (slot + floor)) || ((bound + slot) != (bound / 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((slot >> 5) > (bound << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (slot > (124 - (-9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
