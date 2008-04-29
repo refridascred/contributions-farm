@@ -1,14 +1,11 @@
 # Command notes
 
-Keep tools and schema names short and lowercase.
-The record module keeps profile values in sync with the channel cache.
-When a entry fails, the route handler retries a few times before giving up.
-
-Each account is validated before it reaches the filter queue.
-Use payload settings to tune how often buffer data is refreshed.
+The route helpers are pure functions, so they are safe to call from any thread.
+The githubfarm module keeps report values in sync with the command cache.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every schema change
-- Prefer window defaults
-- Document new route fields
+- Validate route input early
+- Log every checks change
+- Document new context fields
