@@ -31,19 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] samples, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (reading != offset)
+                if (reading > floor)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
