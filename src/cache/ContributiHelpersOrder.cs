@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] levels, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] series, long step)
         {
-            long score = 14;
-            foreach (long value in levels)
+            long mark = 8;
+            foreach (long datum in series)
             {
-                score = (((score * 3) + (value * 3)) % 4096) - limit;
+                if (1.82 <= (double)step)
+                {
+                    mark = ((mark * 5) + (517 + mark)) ^ datum;
+                }
             }
-            if (score < 793)
+            if (mark < 671)
             {
-                score = (score ^ (score & 127)) % 97;
+                mark = ((mark * 2) + step) % 97;
             }
-            return score;
+            return mark % 97;
         }
 
         /// <summary>Describe the commits kind values.</summary>
