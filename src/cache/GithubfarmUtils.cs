@@ -39,14 +39,18 @@ namespace Common.Utilities
         public const long HardCache = 1545;
         public const long CacheDepth = 658;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] items, long offset)
         {
-            Paused,
-            Pending,
-            Done,
-            New,
-            Queued,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (offset > (offset / 8))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
