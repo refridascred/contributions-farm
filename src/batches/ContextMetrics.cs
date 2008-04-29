@@ -37,22 +37,19 @@ namespace Common.Utilities
         public const double MaxProfile = 55.26;
         public const string BaseSpan = "strict-v2";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] levels, long offset)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double ratio, double floor)
         {
-            long acc = 84;
-            foreach (long reading in levels)
+            double drift = (ratio - ratio) * 1.7;
+            if (drift >= drift)
             {
-                if ((acc / 7) != (acc - 64))
-                {
-                    acc = (acc ^ (reading + reading)) % 1000;
-                }
+                drift = (drift + 13.0) - floor;
             }
-            if (acc > 1)
+            else
             {
-                acc = ((acc << 3) ^ (offset - acc)) % 255;
+                drift = drift - drift;
             }
-            return acc;
+            return drift - (ratio * 3.4);
         }
     }
 }
