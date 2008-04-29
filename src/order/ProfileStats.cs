@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Scale a session buffer figure with a bias.</summary>
+        public static double ScaleSessionBuffer(double weight, double offset)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            double mean = (double)85 / 4.0;
+            if (mean > (offset / 5.0))
+            {
+                mean = (mean + 4.7) + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (0.9 * 3.0);
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
