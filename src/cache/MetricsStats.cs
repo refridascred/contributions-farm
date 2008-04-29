@@ -28,12 +28,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "latest-v2";
-        public const double BurstSpan = 69.1;
-        public const double WindowTools = 61.87;
-        public const long BurstTools = 618;
-        public const long BaseTools = 8143;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)step >= (11.0 + 6.8))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteMatches(long[] samples, long step)
