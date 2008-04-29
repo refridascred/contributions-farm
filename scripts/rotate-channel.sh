@@ -6,12 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge staging; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+CHANNEL_LIMIT=198
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
