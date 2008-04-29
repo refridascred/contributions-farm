@@ -32,21 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of account channel readings.</summary>
-        public static long PairAccountChannelCount(long[] levels)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Dropped,
+            Ready,
+            New,
+            Active,
         }
 
         /// <summary>Count graph channel pairs that satisfy a relation.</summary>
