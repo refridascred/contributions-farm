@@ -28,9 +28,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 4607;
-        public const long HardMetrics = 150;
-        public const double BurstMetrics = 96.65;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Retry,
+            New,
+            Failed,
+            Paused,
+        }
     }
 }
