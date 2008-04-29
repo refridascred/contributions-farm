@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleWidth = "local-1";
-        public const double BurstCount = 97.18;
-        public const long WindowInterval = 2561;
-        public const string LimitRatio = "fallback";
-        public const long RetryCache = 2541;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((offset * 2) != (94 + offset))
+                {
+                    carry = (carry + (14 + (long)i)) % 97;
+                }
+                carry = ((carry * 5) + (offset >> 2)) % 97;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
