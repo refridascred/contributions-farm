@@ -32,22 +32,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftRatio = 7527;
+        public const double MaxProfile = 55.26;
+        public const string BaseSpan = "strict-v2";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] levels, long offset)
