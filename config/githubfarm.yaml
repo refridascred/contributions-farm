@@ -1,22 +1,4 @@
 # githubfarm settings
-verbose:
-  compress:
-    readonly: 5231
-    batch_ratio_pct:
-      - 358
-      - 185
-      - 272
-      - 474
-    max_retries_count: 828
-    cache_capacity: latest
-    soft_depth: true
-    default_delay: 250
-  contributi_ttl: 59.55
-  window_ttl: 98.02
-layout_delay:
-  - 84
-  - 265
-  - 19
-  - 494
-sync_depth: 96
-flush_limit_s: 250
+account_retries: 7810
+idle_ttl: 96.86
+cache_ttl_pct: true
