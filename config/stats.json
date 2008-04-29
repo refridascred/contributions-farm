@@ -1,6 +1,7 @@
 {
-  "dry_run": 80.15,
-  "format_ratio": [379, 154, 146],
-  "flush_depth_pct": "standard",
-  "sync_ratio_count": false
+  "retry_window_ms": "latest",
+  "window_size": "blue",
+  "warm_limit_count": 43.46,
+  "commits_size": 30,
+  "base_window": 23
 }
