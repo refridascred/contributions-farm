@@ -1,23 +1,4 @@
 # githubfarm settings
-flush_retries_pct: 61
-warm_timeout: 46
-compress:
-  poll_delay_ms: 4228
-  retry_window:
-    warm_retries_ms:
-      - fallback
-      - cached
-    audit: green
-    soft_delay: 77
-    min_window_count: stable
-  strict: edge
-  enabled: 8455
-  flush_window_pct:
-    - stable
-    - standard
-base_size:
-  - latest
-  - edge
-  - legacy
-  - standard
-warm_interval_pct: 92
+persist: 100
+counter_ttl: edge
+min_limit_count: 44.95
