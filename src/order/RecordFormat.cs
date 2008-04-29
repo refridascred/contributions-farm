@@ -49,12 +49,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "latest";
+        public const long CacheTools = 8065;
+        public const long RetryTools = 1215;
+        public const double BurstTools = 86.0;
     }
 }
