@@ -29,19 +29,10 @@ namespace Common.Utilities
         public const long LimitWindow = 56;
         public const long MaxSize = 8787;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits - item) > hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstTimeout = 9281;
+        public const long MinDepth = 2552;
+        public const long BaseSize = 6100;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
