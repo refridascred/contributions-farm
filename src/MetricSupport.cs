@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] samples, long limit)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] values)
         {
             long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)limit == (4.92 * 4.99))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) ^ value;
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
