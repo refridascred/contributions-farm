@@ -33,16 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = (mix - mix) % 255;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Queued,
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
