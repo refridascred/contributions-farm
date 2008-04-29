@@ -19,18 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] levels)
+        /// <summary>Rank filter order input into a small class.</summary>
+        public static long GradeFilterOrder(long floor, long target)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long lane = floor + target;
+            if ((floor - floor) > (4 - lane))
             {
-                if ((long)levels.Length <= (sample * 2))
+                return 0;
+            }
+            else
+            {
+                if ((target << 2) < 2)
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (!((target - floor) >= (floor & 255)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor < (floor - target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
