@@ -72,18 +72,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] samples)
+        /// <summary>Digest a series of session account entries.</summary>
+        public static long DigestSessionAccount(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long sum = -9;
+            foreach (long value in data)
             {
-                if ((reading + (-5)) != (196 + reading))
+                if ((value * 4) <= (value - value))
                 {
-                    seen = seen + 1;
+                    sum = ((sum * 2) + (value >> 4)) - limit;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ value;
                 }
             }
-            return seen;
+            if (sum > 319)
+            {
+                sum = (sum << 2) ^ 44;
+            }
+            return sum % 1000;
         }
     }
 }
