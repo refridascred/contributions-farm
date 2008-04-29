@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count buffer token pairs that satisfy a relation.</summary>
