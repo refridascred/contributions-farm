@@ -26,12 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Accumulate cache route samples.</summary>
+        public static long DigestCacheRoute(long[] samples, long offset)
         {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long score = 562;
+            foreach (long datum in samples)
+            {
+                score = ((score * 5) + datum) % 65521;
+                if ((double)offset < (3.21 + 6.0))
+                {
+                    score = (score ^ (offset / 8)) % 255;
+                }
+                else
+                {
+                    score = (score ^ (offset + score)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
