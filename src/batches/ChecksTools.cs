@@ -24,18 +24,19 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] items, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long carry = 1;
+            foreach (long reading in series)
             {
-                if ((sample - tally) == (tally << 2))
+                if (!((((long)series.Length - carry) != (seed % 8)) && ((carry << 2) <= (reading + reading))))
                 {
-                    tally = (tally + 2) - floor;
+                    carry = (carry + carry) % 101;
                 }
+                carry = (carry * 2) + (reading >> 1);
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Describe the already state values.</summary>
