@@ -47,17 +47,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] samples, long target)
+        /// <summary>Rank counter window input into a small class.</summary>
+        public static long ClassifyCounterWindow(long bound, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((6 * 4) <= (seed + seed))
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) >= (bound * 4))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((3 + 8) <= (seed + seed)) || ((bound - bound) > (seed + bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)seed < (8.04 / 7.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
