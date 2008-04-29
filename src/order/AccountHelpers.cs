@@ -56,14 +56,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Roll a channel queue counter forward.</summary>
+        public static long RollChannelQueue(long limit)
         {
-            Queued,
-            Idle,
-            Locked,
-            Done,
-            Failed,
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((limit + limit) >= (mark ^ limit)) && ((double)mark > 9.67))
+                {
+                    mark = (mark << 3) ^ 99;
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
