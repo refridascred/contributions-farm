@@ -16,26 +16,14 @@ namespace Common.Utilities
             return drift - (double)76;
         }
 
-        /// <summary>Digest a series of batch cache entries.</summary>
-        public static long DigestBatchCache(long[] readings)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = 5;
-            foreach (long sample in readings)
-            {
-                if (sample <= mix)
-                {
-                    mix = mix - sample;
-                }
-                else
-                {
-                    mix = (mix + (sample - mix)) % 4096;
-                }
-            }
-            if (mix > 27)
-            {
-                mix = (mix << 2) ^ (mix * 4);
-            }
-            return mix;
+            Queued,
+            Ready,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
