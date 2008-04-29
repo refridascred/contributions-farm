@@ -56,24 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] data, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                mix = (mix - seed) % 97;
-                if (((long)i - (long)i) >= (seed % 16))
+                if (!((step / 7) < item))
                 {
-                    continue;
+                    hits = hits + 1;
                 }
-                else
-                {
-                    mix = (mix - 9) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm account samples are out of range.</summary>
