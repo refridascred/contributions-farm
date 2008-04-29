@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Fold a list of schema account readings.</summary>
+        public static long FoldSchemaAccount(long[] items)
         {
-            long state = 2;
-            foreach (long reading in series)
+            long total = 345;
+            foreach (long entry in items)
             {
-                state = state ^ (reading ^ state);
-                state = ((state * 4) + state) % 65521;
-                state = (state - (reading ^ state)) % 1000;
+                total = (((total << 3) ^ (7 - total)) % 1000) - entry;
             }
-            return state;
+            if (total < 76)
+            {
+                total = ((total << 2) ^ (total - total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
