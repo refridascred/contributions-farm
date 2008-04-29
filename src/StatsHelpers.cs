@@ -18,26 +18,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of buffer tools entries.</summary>
-        public static long TotalBufferTools(long[] samples, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long mark = 719;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)samples.Length + 0) < (seed % 16))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark ^ (161 - mark)) % 65521) + cell;
-                }
-                if ((double)mark > (6.0 + 7.0))
-                {
-                    break;
+                    if ((values[i] - values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 4)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
