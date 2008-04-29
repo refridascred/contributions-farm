@@ -38,14 +38,15 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Roll a layout already counter forward.</summary>
+        public static long IterateLayoutAlready(long target)
         {
-            Active,
-            Done,
-            Draft,
-            Idle,
-            Ready,
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a graph record.</summary>
