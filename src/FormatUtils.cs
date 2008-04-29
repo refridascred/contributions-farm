@@ -34,12 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
+            Retry,
+            Idle,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Look up the position of a order cluster sample.</summary>
