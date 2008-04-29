@@ -45,21 +45,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of stats command readings.</summary>
-        public static long OverlapStatsCommandCount(long[] data)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
