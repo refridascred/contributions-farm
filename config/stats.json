@@ -1,7 +1,6 @@
 {
-  "cache_threshold_s": true,
-  "verbose": false,
-  "sync_timeout": ["staging", "standard"],
-  "poll_delay": "standard",
-  "audit": 30
+  "flush_timeout_pct": "local",
+  "burst_limit_count": 602,
+  "notes_delay": "stable",
+  "poll_ratio_count": "green"
 }
