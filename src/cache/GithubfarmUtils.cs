@@ -40,22 +40,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "cached-v2";
+        public const long RetryCount = 2340;
+        public const long BurstSize = 8547;
+        public const long MinLevel = 7029;
+        public const long RetryStats = 6373;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long DigestMetrics(long[] samples, long step)
