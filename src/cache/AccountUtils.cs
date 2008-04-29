@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a context support pair into a bucket.</summary>
-        public static long SortContextSupport(long origin, long offset)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            if ((origin - 4) == (origin ^ origin))
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                total = (total + 5) % 65521;
+                total = (total ^ (target & 15)) % 1000;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (origin >= (offset & 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
