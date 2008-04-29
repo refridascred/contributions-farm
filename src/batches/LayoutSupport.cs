@@ -54,12 +54,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long origin, long floor)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            if (origin < (origin ^ floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin << 2) < (origin >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin % 60) != (origin - 75))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
