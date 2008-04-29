@@ -51,20 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long target)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                state = (state ^ (state * 2)) % 1000;
-                if (state < (5 ^ state))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    state = (state - (state & 3)) % 255;
+                    mix = (mix + (target / 7)) ^ (long)i2;
                 }
-                state = ((state * 5) + (long)i) % 4093;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
     }
 }
