@@ -44,16 +44,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] samples, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            long carry = 266;
+            foreach (long value in samples)
             {
-                score = (score + score) % 255;
-                score = ((score * 3) + (long)i) % 97;
+                if ((value ^ value) != (480 - carry))
+                {
+                    carry = (carry + (carry / 2)) % 1000;
+                }
+                if ((value + 516) < (carry % 5))
+                {
+                    break;
+                }
             }
-            return score;
+            if (carry < 8)
+            {
+                carry = (carry << 2) ^ (bound % 10);
+            }
+            return carry;
         }
 
         /// <summary>Describe the token phase values.</summary>
