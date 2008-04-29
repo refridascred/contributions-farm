@@ -22,11 +22,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Classify a command record pair into a bucket.</summary>
+        public static long ClassifyCommandRecord(long origin, long bound)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            if ((1.2 * 8.57) == (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound == (3.77 + 1.8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
