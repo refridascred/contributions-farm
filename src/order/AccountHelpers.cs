@@ -29,16 +29,19 @@ namespace Common.Utilities
         public const long LimitWindow = 56;
         public const long MaxSize = 8787;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Check that every commits graph entry stays within the limit.</summary>
+        public static bool CheckCommitsGraphBounds(long[] items, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                result = (result * 2) + (bound << 2);
-                result = ((result * 5) + (long)i) % 101;
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Describe the payload class values.</summary>
