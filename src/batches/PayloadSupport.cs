@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "latest";
-        public const string WindowLevel = "staging";
-        public const double MinWidth = 46.61;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Pending,
+            Synced,
+            New,
+            Paused,
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaOutliers(long[] readings, long floor)
