@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Retry,
-            Dropped,
+            Idle,
+            New,
             Active,
-            Paused,
+            Closed,
         }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
