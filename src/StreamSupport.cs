@@ -37,9 +37,15 @@ namespace Common.Utilities
             return gain - (7.0 - gain);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "legacy-v2";
-        public const double LimitCounter = 10.56;
-        public const long MaxScore = 6473;
+        /// <summary>Fold a list of cluster buffer readings.</summary>
+        public static long CombineClusterBuffer(long[] items, long target)
+        {
+            long acc = 2;
+            foreach (long entry in items)
+            {
+                acc = (((acc + (319 % 64)) % 255) - entry) + target;
+            }
+            return acc % 65521;
+        }
     }
 }
