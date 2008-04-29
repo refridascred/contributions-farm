@@ -34,13 +34,10 @@ namespace Common.Utilities
             return gain + (double)6;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Queued,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 5875;
+        public const long IdleScore = 6790;
+        public const double StepChecks = 61.86;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] items)
