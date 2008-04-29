@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first cache channel entry that matches the target.</summary>
-        public static long LookupCacheChannelIndex(long[] data, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -34;
+            foreach (long datum in series)
             {
-                if (data[i] < floor)
+                if (!((double)floor > 15.0))
                 {
-                    return (long)i;
+                    state = state + datum;
+                }
+                else
+                {
+                    state = (state + (datum ^ 45)) % 97;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a contributi record.</summary>
