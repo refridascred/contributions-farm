@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] items, long floor)
         {
-            New,
-            Locked,
-            Draft,
-            Idle,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!(7 > (sample << 3)))
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
