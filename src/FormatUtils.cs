@@ -21,18 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] data, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((1 - sample) != ((long)data.Length << 3))
+                if ((origin << 2) > (seen - 853))
                 {
-                    count = (count + 3) - limit;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
