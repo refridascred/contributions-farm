@@ -1,11 +1,16 @@
 # githubfarm settings
-warm_capacity_count: open
-sync_size_count: false
-cache_retries_pct:
-  - 187
-  - 203
-retry_size_s: 897
-compress:
-  retry_window_s: 1.0
-  flush_depth: legacy
-  poll_limit_count: 60.86
+base_interval_ms: true
+sync_capacity_s: strict
+poll_delay_count:
+  base_timeout: 60
+  base_capacity:
+    - 101
+    - 162
+    - 166
+    - 6
+  enabled:
+    - 327
+    - 234
+  soft_retries: 500
+  idle_delay: 47
+  default_retries: 60.42
