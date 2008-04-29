@@ -19,23 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long total = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 2) ^ (total - item)) % 1000;
-                if (((10.0 / 2.0) == (double)total) || (((long)data.Length & 7) < (total - item)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 9)
-            {
-                total = (total + (25 - total)) % 97;
-            }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Hold a queue options.</summary>
