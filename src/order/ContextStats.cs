@@ -42,11 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] readings, long step)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!!((step & 1) < (datum - datum)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
