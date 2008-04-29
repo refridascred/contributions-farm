@@ -1,6 +1,6 @@
 {
-  "cache_ratio": "edge",
-  "flush_depth": "edge",
-  "warm_ttl_pct": "standard",
-  "idle_size": 60
+  "poll_delay": 98,
+  "idle_ratio_ms": [243, 463, 25],
+  "burst_timeout": 250,
+  "hard_depth": [67, 309, 177]
 }
