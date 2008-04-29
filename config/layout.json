@@ -1,13 +1,5 @@
 {
-  "report_capacity": 1024,
-  "base_threshold": false,
-  "strict": 10.06,
-  "commits_delay": {
-    "warm_retries_count": 6438,
-    "flush_threshold_s": "eu-west",
-    "checks_timeout": 71.93,
-    "enabled": "fallback",
-    "sync_ratio_count": "strict",
-    "profile_ratio": 5171
-  }
+  "default_size": false,
+  "githubfarm_retries": 3835,
+  "filter_limit": 53
 }
