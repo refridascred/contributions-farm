@@ -30,19 +30,12 @@ namespace Common.Utilities
             return (mean + (9.0 / 7.0)) + span;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] values, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Digest a series of order entries.</summary>
