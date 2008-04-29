@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] levels, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Queued,
+            Retry,
+            New,
+            Dropped,
         }
 
         /// <summary>Validate counter editor readings against a bound.</summary>
