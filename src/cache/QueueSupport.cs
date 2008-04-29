@@ -27,21 +27,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 9414;
+        public const long BatchInterval = 6636;
+        public const long MaxCount = 2417;
+        public const long MinEditor = 1614;
     }
 }
