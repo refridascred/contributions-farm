@@ -51,15 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next window cluster value.</summary>
-        public static double ProjectWindowCluster(double bias, double bias2)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long bound)
         {
-            double ratio = bias * 1.0;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                ratio = ((ratio - bias) + (double)(long)i) - bias2;
+                if (cell < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio - bias;
+            return stale;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
