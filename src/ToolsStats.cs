@@ -27,22 +27,38 @@ namespace Common.Utilities
         public const string WindowInterval = "legacy-edge";
         public const long BurstQueue = 2247;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] items, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long origin, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if ((origin - target) != (origin & 1))
             {
-                if ((double)datum >= (4.24 - 3.3))
+                return 8;
+            }
+            else
+            {
+                if (origin <= (target & 1))
                 {
-                    tally = (tally + 2) - seed;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((origin - origin) >= (target % 10))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target <= (origin + origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of record entries.</summary>
