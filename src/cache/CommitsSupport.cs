@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultCount = "cached";
-        public const string RetryReport = "latest";
-        public const long MaxTimeout = 6819;
-        public const string BurstInterval = "standard-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardBudget = 6516;
+        public const long DefaultRecord = 5413;
+        public const long HardRecord = 5970;
+        public const double DefaultScore = 81.05;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderRange(long[] levels, long origin)
