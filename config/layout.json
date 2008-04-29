@@ -1,26 +1,5 @@
 {
-  "poll_window": {
-    "max_limit_s": false,
-    "compress": "fallback",
-    "channel_ratio": {
-      "flush_capacity": 58,
-      "soft_ratio": 2247,
-      "idle_capacity_ms": true,
-      "compress": ["standard", "strict", "cached", "fallback"]
-    },
-    "soft_delay": {
-      "flush_size_s": "green",
-      "githubfarm_window": 28,
-      "farm_retries": 81
-    }
-  },
-  "persist": 3,
-  "enabled": {
-    "base_ratio_pct": 3888,
-    "audit": 21.37,
-    "window_retries": true,
-    "account_size": true,
-    "default_depth_count": false,
-    "sync_delay_ms": "eu-west"
-  }
+  "report_limit": true,
+  "record_window": ["standard", "strict", "green"],
+  "strict": "open"
 }
