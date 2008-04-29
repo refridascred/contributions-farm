@@ -14,24 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a channel filter value against two limits.</summary>
-        public static long GradeChannelFilter(long limit, long limit2)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] values, long bound)
         {
-            if ((768 - limit2) <= (limit << 2))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit2 & 255) > (limit2 << 3)) || ((double)limit2 >= 5.4))
+                if ((entry * 4) != (seen % 2))
                 {
-                    return 6;
+                    seen = (seen + 3) + bound;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the stream mode values.</summary>
