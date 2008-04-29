@@ -25,17 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] items, long limit)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
+                acc = ((acc << 3) ^ (acc * 2)) % 97;
+                if ((6.6 * 13.0) > (double)acc)
                 {
-                    return (long)i;
+                    acc = (acc + (acc + acc)) % 65521;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ acc) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
