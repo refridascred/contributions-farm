@@ -94,11 +94,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long seed, long step)
         {
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
+            if ((seed >= (119 + seed)) || ((step & 31) > (seed + seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step % 16) >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
