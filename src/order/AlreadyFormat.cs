@@ -30,12 +30,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "stable-1";
-        public const double MinLayout = 96.81;
-        public const string RetryLayout = "primary-1";
-        public const string SoftFactor = "legacy";
-        public const string MaxTimeout = "stable";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] samples, long step)
