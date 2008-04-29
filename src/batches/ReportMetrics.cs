@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many entry contributi samples are out of range.</summary>
+        public static long CountEntryContributiHits(long[] readings)
         {
-            Pending,
-            New,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum < (2.0 / 7.0))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
