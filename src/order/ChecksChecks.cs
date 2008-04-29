@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseInterval = 32.63;
-        public const string RetryPayload = "stable-edge";
-        public const double RetryTimeout = 48.05;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series)
+        {
+            long state = 71;
+            foreach (long value in series)
+            {
+                if (value < (value - state))
+                {
+                    state = state + 29;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long SeriesProfile(long origin)
