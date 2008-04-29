@@ -60,19 +60,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] series, long offset)
+        /// <summary>Rank batch channel input into a small class.</summary>
+        public static long SortBatchChannel(long floor, long floor2)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            if (((floor & 31) <= (floor + floor)) || ((double)floor < (double)floor2))
             {
-                if (cell >= offset)
+                return 5;
+            }
+            else
+            {
+                if ((4.17 + 5.56) <= (double)floor2)
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= (floor2 / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor - floor2) < (8 + floor2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
