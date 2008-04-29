@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((double)count == (7.7 / 7.0))
+                if (reading < target)
                 {
-                    count = (count + 1) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
