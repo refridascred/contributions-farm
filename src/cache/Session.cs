@@ -41,22 +41,39 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series, long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long seed, long offset)
         {
-            long mix = 35;
-            foreach (long value in series)
+            long edge = seed + offset;
+            if ((7.0 * 19.0) < (double)seed)
             {
-                if ((double)mix == (13.0 / 7.0))
+                return 1;
+            }
+            else
+            {
+                if ((0 - 351) > edge)
                 {
-                    mix = ((mix * 2) + value) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    mix = mix ^ (step % 97);
+                    if (8.0 > (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-87) * 3) <= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix;
         }
     }
 }
