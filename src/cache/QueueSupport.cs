@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] series, long bound)
         {
-            Active,
-            Idle,
-            Paused,
-            Queued,
-            Pending,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((3.02 - 7.0) > (double)bound)
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many layout already samples are out of range.</summary>
