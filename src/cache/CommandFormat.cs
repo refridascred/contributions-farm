@@ -24,20 +24,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long anchor = 779;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (anchor + entry)) % 65521;
-                anchor = ((anchor << 3) ^ 5) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor > 83)
-            {
-                anchor = (anchor ^ (anchor * 4)) % 101;
-            }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
