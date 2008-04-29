@@ -25,14 +25,10 @@ namespace Common.Utilities
         public const long RetrySupport = 8562;
         public const long DefaultSupport = 8027;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Dropped,
-            Idle,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseScore = 448;
+        public const string RetryWidth = "stable";
+        public const long BurstRatio = 1971;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
