@@ -61,38 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long origin, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] data, long seed)
         {
-            if ((origin - target) != (origin & 1))
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin <= (target & 1))
+                if (item != seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin - origin) >= (target % 10))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target <= (origin + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
