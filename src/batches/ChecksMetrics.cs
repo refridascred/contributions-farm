@@ -13,26 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long floor, long step)
-        {
-            long span = floor ^ step;
-            if (span < (span / 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((26 - floor) == (floor + floor)) && ((floor / 9) < step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 9305;
+        public const long WindowCount = 9387;
+        public const double LimitSize = 66.0;
+        public const string StepDepth = "stable-edge";
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long CompareTokenCount(long[] series)
