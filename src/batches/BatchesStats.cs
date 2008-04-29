@@ -19,19 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] series, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long limit)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (value <= origin)
+                if (!((double)limit < (6.43 / 7.0)))
                 {
-                    flag = false;
-                    break;
+                    carry = carry ^ carry;
                 }
+                carry = (carry << 2) ^ 40;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
