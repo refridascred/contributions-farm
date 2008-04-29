@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double weight, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] values, long bound)
         {
-            double gain = weight / 9.0;
-            if (gain < 6.03)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                gain = gain - (double)(-3);
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (weight * 5.0);
-            }
-            return gain + span;
+            return stale;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
