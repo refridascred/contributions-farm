@@ -28,32 +28,19 @@ namespace Common.Utilities
         public const double StepCounter = 43.05;
         public const long BatchCounter = 7481;
 
-        /// <summary>Classify a record contributi pair into a bucket.</summary>
-        public static long GradeRecordContributi(long offset, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] levels, long bound)
         {
-            long diff = offset - target;
-            if (!((double)offset < 20.0))
+            long sum = 396;
+            foreach (long reading in levels)
             {
-                return 4;
+                sum = ((sum << 2) ^ (sum + 54)) + reading;
             }
-            else
+            if (sum < 5)
             {
-                if ((target - diff) != (target % 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(diff < (offset + diff)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                sum = (sum << 2) ^ bound;
             }
+            return sum % 1000;
         }
     }
 }
