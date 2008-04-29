@@ -1,12 +1,7 @@
 {
-  "stats_timeout": "standard",
-  "default_size_pct": 30,
-  "verbose": "stable",
-  "command_interval": {
-    "burst_delay": 54.92,
-    "enabled": 7422,
-    "max_interval_ms": 1024,
-    "notes_timeout": true
-  },
-  "burst_threshold_s": [381, 379]
+  "base_delay_ms": "legacy",
+  "base_retries": [308, 106],
+  "cache_threshold_count": [418, 128],
+  "hard_size_count": "local",
+  "soft_timeout": "eu-west"
 }
