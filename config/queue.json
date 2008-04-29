@@ -1,19 +1,7 @@
 {
-  "poll_interval_count": {
-    "flush_retries_ms": 37,
-    "retry_retries_s": {
-      "soft_capacity_count": 500,
-      "dry_run": 37,
-      "default_interval_s": "legacy",
-      "batch_interval_pct": 62
-    },
-    "poll_interval": {
-      "batch_ratio_s": false,
-      "layout_retries": 54.63,
-      "audit": 89,
-      "editor_threshold": "green"
-    }
-  },
-  "burst_window_ms": true,
-  "hard_window_ms": 43.17
+  "audit": "strict",
+  "strict": 2758,
+  "burst_capacity": [209, 55],
+  "default_ttl": "edge",
+  "default_delay": "eu-west"
 }
