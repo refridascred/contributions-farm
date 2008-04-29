@@ -38,17 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] series, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (origin - origin)) % 101;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a route header.</summary>
