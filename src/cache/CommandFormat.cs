@@ -56,15 +56,14 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Roll a commits order counter forward.</summary>
-        public static long IterateCommitsOrder(long target)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Dropped,
+            Retry,
+            Paused,
+            Stale,
+            Done,
         }
     }
 }
