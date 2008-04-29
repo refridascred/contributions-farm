@@ -15,24 +15,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long step, long bound)
+        /// <summary>Roll a checks channel counter forward.</summary>
+        public static long SeriesChecksChannel(long floor)
         {
-            if (((double)bound <= (double)step) && ((step ^ bound) >= (0 << 3)))
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                state = (state ^ 9) % 65521;
+                state = ((state * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((530 + step) < (step - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
