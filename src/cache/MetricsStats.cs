@@ -30,18 +30,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((13.0 - 19.0) >= (double)tally)
+                if (!(((step >> 4) < (8 / 5)) || ((reading << 2) <= (reading << 3))))
                 {
-                    tally = (tally + 3) + cell;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Compare every pair of tools commits readings.</summary>
