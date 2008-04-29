@@ -1,8 +1,7 @@
 {
-  "hard_retries_ms": 91.0,
-  "base_interval_s": 4153,
-  "batch_retries_ms": "fallback",
-  "burst_capacity_ms": [418, 476, 114],
-  "verbose": 60,
-  "cache_window": 73
+  "min_size_count": 76.16,
+  "payload_threshold": [260, 181],
+  "soft_depth_pct": 35,
+  "idle_delay_pct": true,
+  "base_timeout": false
 }
