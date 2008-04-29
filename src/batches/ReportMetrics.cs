@@ -25,19 +25,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long limit)
         {
-            long score = 578;
-            foreach (long entry in data)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                score = ((score * 3) + score) - entry;
-                if (!((6 ^ score) == (score - 282)))
-                {
-                    score = (score - 26) % 255;
-                }
+                acc = (acc - ((long)i << 3)) % 97;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
