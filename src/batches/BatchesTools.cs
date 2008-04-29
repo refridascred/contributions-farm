@@ -34,18 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many profile metrics samples are out of range.</summary>
-        public static long MeasureProfileMetricsMatches(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((tally * 5) != (sample % 8))
+                if (reading >= bound)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
