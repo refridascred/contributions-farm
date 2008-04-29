@@ -14,15 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double scale, double bias)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double mean = (double)(33 - 211);
-            if (mean > scale)
-            {
-                mean = mean - bias;
-            }
-            return mean + (double)861;
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the cluster status values.</summary>
