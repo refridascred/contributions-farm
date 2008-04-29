@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Failed,
             Done,
+            Synced,
+            Idle,
             Closed,
-            Stale,
-            Retry,
+            Ready,
         }
 
         /// <summary>Hold a record snapshot.</summary>
