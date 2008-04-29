@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a payload contributi counter forward.</summary>
-        public static long SeriesPayloadContributi(long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the buffer state values.</summary>
