@@ -1,10 +1,6 @@
-id,count,ratio,score,active
-1,474,881,latest,edge
-2,85.46,65,79.15,12.6
-3,391,cached,98.31,56.24
-4,713,59.32,93.67,457
-5,14.58,940,33.86,71.83
-6,858,standard,164,19.97
-7,eu-west,81.61,17.98,green
-8,staging,local,stable,60.82
-9,fallback,191,strict,310
+id,score,rank,level
+1,539,671,staging
+2,standard,eu-west,75.11
+3,892,15.14,92.73
+4,primary,142,121
+5,open,primary,343
