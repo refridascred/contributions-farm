@@ -46,21 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 491;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry >> 2) == (3 - mark))
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark << 2) ^ (entry + target)) % 97;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
