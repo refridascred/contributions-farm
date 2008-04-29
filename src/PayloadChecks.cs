@@ -29,22 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long state = -321;
-            foreach (long datum in samples)
-            {
-                if (((double)datum > (5.79 + 2.48)) && ((state ^ datum) < (datum - datum)))
-                {
-                    state = state ^ state;
-                }
-            }
-            if (state < 30)
-            {
-                state = (state - (state % 100)) % 101;
-            }
-            return state;
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the batch buffer series from a seed.</summary>
