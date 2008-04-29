@@ -37,26 +37,14 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Combine metric layout values into a single score.</summary>
-        public static long ScoreMetricLayout(long[] series)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long carry = 7;
-            foreach (long cell in series)
-            {
-                if ((cell & 15) <= carry)
-                {
-                    carry = (carry * 2) + (carry + 4);
-                }
-                else
-                {
-                    carry = carry ^ (cell - cell);
-                }
-            }
-            if (carry > 6)
-            {
-                carry = carry ^ (long)series.Length;
-            }
-            return carry % 65521;
+            Active,
+            Done,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a command summary.</summary>
