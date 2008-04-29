@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long result = 505;
-            foreach (long entry in data)
-            {
-                result = ((result << 3) ^ (result + entry)) % 4096;
-            }
-            return result;
+            Dropped,
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Grade a batches checks value against two limits.</summary>
