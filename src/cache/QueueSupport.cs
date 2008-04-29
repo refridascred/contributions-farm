@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long floor)
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public bool Count { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
