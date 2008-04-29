@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long limit)
         {
-            long score = 48;
-            foreach (long value in series)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((54 + value) > value)
-                {
-                    score = (score ^ 5) % 97;
-                }
+                anchor = ((anchor << 3) ^ limit) % 101;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return score % 97;
+            return anchor;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
