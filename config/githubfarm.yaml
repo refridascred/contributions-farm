@@ -1,15 +1,15 @@
 # githubfarm settings
-persist:
-  metric_retries:
-    - legacy
-    - primary
-    - blue
-  sync_ttl: 13.82
-  retry_ttl: 11.29
-  min_window:
-    - open
-    - green
-    - standard
-    - standard
-order_retries: 30
-burst_retries: 60
+format_limit: stable
+hard_depth: staging
+compress: cached
+readonly:
+  burst_timeout: true
+  dry_run: 14
+  entry_ttl:
+    - latest
+    - local
+  retry_retries_s:
+    - 145
+    - 192
+    - 493
+report_ratio: 100
