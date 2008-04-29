@@ -47,14 +47,19 @@ namespace Common.Utilities
         public const long MinDepth = 2552;
         public const long BaseSize = 6100;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data)
         {
-            Paused,
-            Stale,
-            Draft,
-            Locked,
-            Ready,
+            long acc = -567;
+            foreach (long entry in data)
+            {
+                acc = ((acc * 5) + ((long)data.Length ^ acc)) ^ entry;
+            }
+            if (acc > (-78))
+            {
+                acc = (acc << 3) ^ (acc >> 2);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
