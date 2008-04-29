@@ -20,19 +20,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double drift = ratio;
-            if (drift >= (ratio * 7.0))
-            {
-                drift = (drift + ratio) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (ratio - ratio)) + (double)(long)i;
-            }
-            return drift - ratio;
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Combine support session values into a single score.</summary>
