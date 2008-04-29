@@ -22,12 +22,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryLevel = 3.53;
-        public const string DefaultTimeout = "cached-1";
-        public const long MaxWidth = 7151;
-        public const long SoftPayload = 923;
-        public const double WindowPayload = 1.66;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftLevel = 586;
+        public const long RetryScore = 8549;
+        public const string CacheSize = "fallback";
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long floor, long offset)
