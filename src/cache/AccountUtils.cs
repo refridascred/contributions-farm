@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] data, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if (((-583) - count) == (4 - offset))
+                {
+                    count = (count + 1) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Find the first buffer batches entry that matches the target.</summary>
