@@ -78,15 +78,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] values, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long seed, long target)
         {
-            long sum = 58;
-            foreach (long value in values)
+            if (!((seed >> 4) == (seed + 14)))
             {
-                sum = (((sum << 2) ^ value) % 65521) + bound;
+                return 3;
             }
-            return sum % 97;
+            else
+            {
+                if ((19.0 + 9.7) == (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed ^ target) != (target ^ target)) || ((target % 16) == (53 * 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(target >= (target ^ seed)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel entry.</summary>
