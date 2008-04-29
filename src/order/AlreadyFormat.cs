@@ -33,18 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a report session reading by value.</summary>
-        public static long FindReportSessionIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 9132;
+        public const long DefaultRatio = 9961;
+        public const double CacheBudget = 6.76;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] samples, long step)
