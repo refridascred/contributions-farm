@@ -41,16 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = (state ^ limit) % 101;
-                state = ((state * 2) + (long)i) % 65521;
+                if ((3.6 * 4.96) < (double)datum)
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Adjust a stats reading.</summary>
