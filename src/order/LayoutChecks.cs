@@ -45,15 +45,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] items, long floor)
         {
-            long score = 3;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score ^ (54 - 13)) % 4096) - entry;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
