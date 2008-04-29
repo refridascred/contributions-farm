@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double scale, double bias)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            double gain = scale;
-            if (gain < (double)1)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - (double)600;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + (gain / 9.0);
+            return hits;
         }
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
