@@ -38,38 +38,21 @@ namespace Common.Utilities
         public const long RetryScore = 8549;
         public const string CacheSize = "fallback";
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long floor, long offset)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            if ((offset + floor) < floor)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset < (offset & 255))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor > (offset >> 4))
+                    if ((levels[i] + levels[j]) == 12)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (151 < (offset ^ 9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the commits phase values.</summary>
