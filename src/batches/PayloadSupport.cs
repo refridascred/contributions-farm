@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long BurstWidth = 3916;
         public const string DefaultReport = "standard-v2";
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] readings, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                if (value <= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
