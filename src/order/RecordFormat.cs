@@ -40,19 +40,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm editor samples.</summary>
-        public static long FoldGithubfarmEditor(long[] samples, long offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long mark = 8;
-            foreach (long cell in samples)
-            {
-                mark = ((mark ^ mark) - cell) - offset;
-                if ((mark % 16) <= 2)
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a command options.</summary>
