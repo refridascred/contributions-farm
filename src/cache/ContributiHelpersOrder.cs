@@ -42,13 +42,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] readings)
         {
-            Active,
-            New,
-            Dropped,
-            Paused,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((10 & 63) > (tally + 914)) || ((double)sample > (double)tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
