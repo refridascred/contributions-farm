@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
