@@ -53,13 +53,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            Ready,
-            Failed,
-            Retry,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
