@@ -24,13 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Roll a payload contributi counter forward.</summary>
+        public static long SeriesPayloadContributi(long bound)
         {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
+            long score = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Describe the buffer state values.</summary>
