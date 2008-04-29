@@ -1,6 +1,5 @@
 {
-  "batch_threshold_ms": 9590,
-  "poll_ttl_count": true,
-  "batch_depth_ms": "strict",
-  "metrics_ratio": false
+  "flush_delay_ms": false,
+  "order_delay": 19.74,
+  "queue_depth": false
 }
