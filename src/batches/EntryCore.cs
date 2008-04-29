@@ -25,11 +25,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 1799;
-        public const long MaxChecks = 311;
-        public const long DefaultChecks = 8091;
-        public const double StepChecks = 8.05;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                long seen = (8 ^ 152) + (floor >> 1);
+                mix = mix + (seen / 4);
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a commits checks reading.</summary>
         public static double AdjustCommitsChecks(double bias, double floor)
