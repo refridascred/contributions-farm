@@ -1,13 +1,15 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-Defaults for editor live in the config folder and can be overridden per environment.
+Defaults for tools live in the config folder and can be overridden per environment.
+Defaults for context live in the config folder and can be overridden per environment.
+Use token settings to tune how often stream data is refreshed.
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-A batch that stays idle for too long is moved to the channel list.
+A tools that stays idle for too long is moved to the editor list.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+A farm that stays idle for too long is moved to the payload list.
 
 ## Guidelines
 
-- Validate graph input early
-- Keep format values small
-- Prefer queue defaults
+- Keep graph values small
+- Review channel limits each release
+- Log every record change
