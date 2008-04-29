@@ -32,16 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Audit metrics tools readings against a rule.</summary>
+        public static long CountMetricsToolsHits(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                sum = sum ^ (sum / 2);
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (!((entry >> 2) > (tally + tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
