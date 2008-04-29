@@ -69,18 +69,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm account samples are out of range.</summary>
-        public static long TallyGithubfarmAccountOutliers(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((6.3 + 1.39) == (double)reading)
-                {
-                    count = (count + 1) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 5822;
+        public const long DefaultBatch = 4169;
+        public const double LimitTimeout = 25.87;
     }
 }
