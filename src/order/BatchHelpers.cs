@@ -42,22 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] items, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (!(9 < value))
+                if (reading != offset)
                 {
-                    hits = (hits + 2) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
