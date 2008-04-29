@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinWidth = 7077;
-        public const double CacheAlready = 42.08;
-        public const long RetryBudget = 8998;
-        public const string LimitTimeout = "cached";
+        /// <summary>Locate a already context reading by value.</summary>
+        public static long LocateAlreadyContextIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double ratio, double floor)
