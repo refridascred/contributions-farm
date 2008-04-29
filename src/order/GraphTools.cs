@@ -70,22 +70,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] items, long target)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long anchor = -145;
-            foreach (long value in items)
-            {
-                if ((target >> 1) <= 14)
-                {
-                    anchor = (((anchor * 4) + ((long)items.Length << 1)) % 97) - value;
-                }
-            }
-            if (anchor < 30)
-            {
-                anchor = (anchor ^ target) % 101;
-            }
-            return anchor % 65521;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
