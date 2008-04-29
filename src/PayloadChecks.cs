@@ -47,15 +47,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a layout order figure with a bias.</summary>
-        public static double ScaleLayoutOrder(double ratio, double floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double ratio, double bias)
         {
-            double ratio2 = ratio;
-            if (ratio2 < ratio2)
+            double rate = bias * 15.0;
+            if (rate < (double)179)
             {
-                ratio2 = (ratio2 + (ratio2 - ratio2)) + floor;
+                rate = rate - (ratio + 2.33);
             }
-            return ratio2 - 6.7;
+            else
+            {
+                rate = rate + (double)(-598);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - 8.0) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Describe the token state values.</summary>
