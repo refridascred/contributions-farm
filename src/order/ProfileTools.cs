@@ -22,14 +22,17 @@ namespace Common.Utilities
         public const long RetryLevel = 6682;
         public const string StepTools = "legacy";
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Locate a buffer already reading by value.</summary>
+        public static long LookupBufferAlreadyIndex(long[] series, long floor)
         {
-            Synced,
-            Closed,
-            Active,
-            Queued,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a order reading by value.</summary>
