@@ -22,10 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 5368;
-        public const double MaxSize = 22.81;
-        public const double WindowDepth = 91.28;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Combine stats stream values into a single score.</summary>
         public static long WeighStatsStream(long[] readings, long step)
