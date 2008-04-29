@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] data, long floor)
+        /// <summary>Find the first batches filter entry that matches the target.</summary>
+        public static long FindBatchesFilterIndex(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < floor)
+                if ((series[i] == limit) && ((series[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the format kind values.</summary>
