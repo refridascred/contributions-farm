@@ -27,18 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many contributi record samples are out of range.</summary>
-        public static long CountContributiRecordGaps(long[] series, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (7.8 > (double)floor)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
