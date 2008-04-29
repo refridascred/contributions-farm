@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] data, long bound)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double scale2 = scale + (double)185;
+            if (scale2 < (scale * 17.0))
             {
-                if ((3.9 * 3.1) > (double)reading)
-                {
-                    tally = (tally + 2) + bound;
-                }
+                scale2 = scale2 - scale;
             }
-            return tally;
+            else
+            {
+                scale2 = scale2 + (floor * 6.82);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - floor) + (double)(long)i;
+            }
+            return scale2 + (floor / 9.0);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
