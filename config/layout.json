@@ -1,5 +1,13 @@
 {
-  "default_size": false,
-  "githubfarm_retries": 3835,
-  "filter_limit": 53
+  "max_interval_s": 77.02,
+  "record_ratio": "open",
+  "order_retries": 8240,
+  "farm_depth": "legacy",
+  "verbose": 12.66,
+  "sync_timeout": {
+    "retry_interval_ms": ["open", "stable", "legacy"],
+    "strict": false,
+    "default_delay_count": "standard",
+    "max_interval": false
+  }
 }
