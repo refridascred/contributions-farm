@@ -61,19 +61,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double scale, double bias)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] values)
         {
-            double mean = (double)((-607) - 81);
-            if (mean > (mean * 9.0))
+            long carry = 7;
+            foreach (long datum in values)
             {
-                mean = ((mean - (double)539) - scale) + bias;
+                if ((carry + carry) > (datum - carry))
+                {
+                    carry = (carry - (carry - (long)values.Length)) % 1000;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (carry > 4)
             {
-                mean = (mean + (mean / 7.0)) + (double)(long)i;
+                carry = ((carry << 3) ^ carry) % 101;
             }
-            return mean + mean;
+            return carry;
         }
 
         /// <summary>Count the counter batch entries that pass the check.</summary>
