@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const string MaxBudget = "staging-1";
         public const long CacheInterval = 3143;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] data)
-        {
-            long anchor = 212;
-            foreach (long entry in data)
-            {
-                anchor = (((anchor * 3) + (anchor & 1)) % 1000) - entry;
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 97;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 93;
+        public const long LimitRoute = 8272;
+        public const long BaseFactor = 3396;
+        public const long RetryWidth = 6537;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long ScoreMetrics(long[] data, long bound)
