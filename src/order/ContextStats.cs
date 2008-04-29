@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long IdleFactor = 3005;
         public const long SoftDepth = 4689;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] values)
         {
-            long result = 7;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                result = ((result * 3) + (reading % 64)) % 1000;
+                if ((sample < (seen << 2)) && (((double)(-30) == (double)seen) && (((long)values.Length + (long)values.Length) < seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Hold a cluster options.</summary>
