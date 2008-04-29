@@ -31,24 +31,15 @@ namespace Common.Utilities
         public const long MaxBudget = 1263;
         public const long CacheSize = 8841;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] series, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] values, long step)
         {
-            long result = 944;
-            foreach (long value in series)
+            long sum = 82;
+            foreach (long reading in values)
             {
-                result = (result + origin) % 65521;
-                if (((result / 7) >= origin) || ((result % 8) <= (value * 3)))
-                {
-                    result = ((result << 2) ^ origin) % 1000;
-                    result = ((result << 3) ^ (value ^ (long)series.Length)) % 255;
-                }
-                if (((value ^ value) >= 8) || ((origin + origin) <= (result / 9)))
-                {
-                    result = (result + (origin % 5)) % 4096;
-                }
+                sum = ((sum + (step / 8)) % 255) + reading;
             }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
