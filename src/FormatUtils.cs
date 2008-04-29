@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] readings, long target)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            double mean = (0.26 / 3.0) + (gain - gain);
+            for (int i = 0; i < 5; i++)
             {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = ((mean - (9.0 / 7.0)) + (double)(long)i) - bias;
             }
-            return ok;
+            return mean + 9.7;
         }
 
         /// <summary>Hold a account summary.</summary>
