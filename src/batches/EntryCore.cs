@@ -11,10 +11,21 @@ namespace Common.Utilities
         public const double StepRatio = 14.6;
         public const long IdleRatio = 6341;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchRatio = 36.93;
-        public const long WindowFactor = 5841;
-        public const string DefaultFilter = "strict-v2";
+        /// <summary>Fold a list of session report readings.</summary>
+        public static long TallySessionReport(long[] data, long offset)
+        {
+            long total = 2;
+            foreach (long entry in data)
+            {
+                if ((entry >> 3) == (total + total))
+                {
+                    total = (total + (total % 64)) - offset;
+                    total = ((total << 3) ^ (entry - 779)) % 4096;
+                }
+                total = (total * 5) + (total & 31);
+            }
+            return total;
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
