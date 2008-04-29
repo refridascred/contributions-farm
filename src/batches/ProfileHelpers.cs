@@ -67,18 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools graph samples are out of range.</summary>
-        public static long MeasureToolsGraphOutliers(long[] readings)
+        /// <summary>Blend two context graph measurements.</summary>
+        public static double ScaleContextGraph(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double drift = (double)(454 - 316);
+            if (drift <= floor)
             {
-                if ((entry * 4) <= (entry * 2))
-                {
-                    hits = hits + 3;
-                }
+                drift = drift - (scale * 2.3);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (double)0) - (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
