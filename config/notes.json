@@ -1,18 +1,5 @@
 {
-  "idle_interval": [342, 374, 48],
-  "readonly": 12.92,
-  "order_window": {
-    "compress": {
-      "editor_interval": [379, 332],
-      "flush_limit_s": "fallback",
-      "poll_delay": [15, 442, 350]
-    },
-    "counter_capacity": false,
-    "idle_depth_s": 39.41,
-    "burst_ttl_ms": "edge",
-    "hard_timeout_count": "fallback"
-  },
-  "poll_retries_count": 6278,
-  "persist": 678,
-  "retry_interval": "local"
+  "batch_delay_pct": 893,
+  "max_size_ms": 4445,
+  "min_limit_ms": 500
 }
