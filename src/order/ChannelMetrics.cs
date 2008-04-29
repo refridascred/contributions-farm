@@ -34,13 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] series)
         {
-            Locked,
-            Idle,
-            Failed,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample << 2) != (sample + sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
