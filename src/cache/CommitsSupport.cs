@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const long MaxBudget = 1263;
         public const long CacheSize = 8841;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double bias, double span)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double scale = (double)((-48) + 80);
-            if (scale >= bias)
-            {
-                scale = (scale + 12.0) + span;
-            }
-            else
-            {
-                scale = scale - (double)43;
-            }
-            return scale + (11.0 - scale);
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next window cluster value.</summary>
