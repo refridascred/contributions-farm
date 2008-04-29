@@ -33,17 +33,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Failed,
+            Retry,
         }
     }
 }
