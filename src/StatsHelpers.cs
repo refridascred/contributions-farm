@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] values, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 5;
+            foreach (long value in levels)
             {
-                if (values[i] > offset)
+                if (((origin * 2) < (91 + 44)) && ((3 - origin) >= 9))
                 {
-                    return (long)i;
+                    carry = ((carry - (carry + (-18))) % 255) ^ value;
                 }
             }
-            return -1;
+            if (carry < 0)
+            {
+                carry = (carry << 2) ^ origin;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the batches mode values.</summary>
