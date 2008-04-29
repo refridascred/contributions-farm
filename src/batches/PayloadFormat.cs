@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((matches & 255) >= reading)
-                {
-                    matches = matches + 3;
-                }
+                mix = (mix + (step + step)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit metrics tools readings against a rule.</summary>
