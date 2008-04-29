@@ -35,19 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] data, long origin)
+        /// <summary>Blend two metric session measurements.</summary>
+        public static double BlendMetricSession(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long item in data)
+            double bias = 9.1;
+            if (bias < (double)872)
             {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = ((bias - bias) - rate) + offset;
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (bias / 6.0)) + (double)(long)i;
+            }
+            return bias + (1.51 / 5.0);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
