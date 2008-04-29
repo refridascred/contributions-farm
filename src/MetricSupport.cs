@@ -13,12 +13,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            Active,
-            Dropped,
-            Ready,
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark + ((long)i * 4)) % 65521;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many cache graph samples are out of range.</summary>
