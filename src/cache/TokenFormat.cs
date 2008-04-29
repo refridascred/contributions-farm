@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] series, long step)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double scale, double floor)
         {
-            long total = 6;
-            foreach (long item in series)
-            {
-                total = (((total * 3) + (step % 5)) % 255) ^ item;
-            }
-            return total % 97;
+            double drift = floor * 7.13;
+            return (drift - (double)268) + scale;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
