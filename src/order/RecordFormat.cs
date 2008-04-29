@@ -43,14 +43,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Accumulate githubfarm editor samples.</summary>
+        public static long FoldGithubfarmEditor(long[] samples, long offset)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Failed,
-            Closed,
+            long mark = 8;
+            foreach (long cell in samples)
+            {
+                mark = ((mark ^ mark) - cell) - offset;
+                if ((mark % 16) <= 2)
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a command options.</summary>
