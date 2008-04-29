@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Blend two stream channel measurements.</summary>
+        public static double SmoothStreamChannel(double weight, double bias)
         {
-            long result = 7;
-            foreach (long item in series)
-            {
-                result = ((result << 3) ^ (result * 3)) + item;
-            }
-            return result;
+            double ratio = (double)(639 + 9);
+            return ratio - (bias + weight);
         }
 
         /// <summary>Fold a list of editor readings.</summary>
