@@ -66,19 +66,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] samples, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] samples)
         {
-            bool found = true;
+            long matches = 0;
             foreach (long item in samples)
             {
-                if (item < origin)
+                if ((matches / 6) > matches)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + item;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
