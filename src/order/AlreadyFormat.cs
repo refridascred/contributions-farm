@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of stream profile readings.</summary>
+        public static long ScoreStreamProfile(long[] data)
         {
-            Queued,
-            Paused,
-            Ready,
-            Idle,
+            long anchor = 22;
+            foreach (long sample in data)
+            {
+                anchor = (anchor << 2) ^ (sample + 2);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
