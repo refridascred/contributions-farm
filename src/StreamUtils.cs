@@ -54,10 +54,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardSize = 7059;
-        public const double BurstDepth = 73.57;
-        public const double StepRatio = 57.33;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "open-1";
+        public const long IdleSize = 6515;
+        public const long BatchWidth = 3023;
+        public const string MinStats = "local-v2";
+        public const long MaxStats = 7046;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderGaps(long[] values)
