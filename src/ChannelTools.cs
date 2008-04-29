@@ -51,9 +51,11 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "legacy-1";
-        public const long DefaultCluster = 7532;
-        public const double BurstWidth = 81.83;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
