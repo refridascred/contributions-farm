@@ -28,19 +28,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] series, long step)
+        /// <summary>Measure how many layout buffer samples are out of range.</summary>
+        public static long AuditLayoutBufferHits(long[] items)
         {
             long seen = 0;
-            foreach (long sample in series)
+            foreach (long item in items)
             {
-                if ((double)step >= (11.0 + 6.8))
+                if (((item + seen) <= item) || (((-240) + seen) > (item & 1)))
                 {
-                    seen = (seen + 2) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
