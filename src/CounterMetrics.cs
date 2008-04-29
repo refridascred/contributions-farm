@@ -45,15 +45,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] levels, long floor)
         {
-            long result = 57;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                result = ((result << 3) ^ item) % 255;
+                if ((cell >> 3) >= (floor - matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
