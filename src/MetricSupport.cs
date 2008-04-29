@@ -13,16 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = (mark + ((long)i * 4)) % 65521;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many cache graph samples are out of range.</summary>
