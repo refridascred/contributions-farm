@@ -49,26 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] values, long floor)
         {
-            long state = 9;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((state * 4) >= datum)
+                if (value >= floor)
                 {
-                    state = (state - (4 / 7)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (4 >> 1)) % 4096;
-                }
-                if ((8.8 - 8.9) != (double)datum)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return state % 65521;
+            return flag;
         }
     }
 }
