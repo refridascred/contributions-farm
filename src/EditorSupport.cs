@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long bound, long offset)
+        /// <summary>Combine githubfarm graph values into a single score.</summary>
+        public static long TotalGithubfarmGraph(long[] levels, long limit)
         {
-            long gap = bound ^ offset;
-            if ((offset + (-74)) >= (bound ^ offset))
+            long anchor = 66;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((86 + gap) >= (offset ^ gap))
+                if (anchor <= (limit % 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound & 255) != (bound * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset > 16.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = ((anchor - limit) % 65521) - value;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
