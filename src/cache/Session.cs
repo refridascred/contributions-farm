@@ -20,13 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] samples, long target)
         {
-            Stale,
-            Queued,
-            Active,
-            Locked,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((double)target == (5.48 * 14.0)) && ((tally + 653) != (value % 64)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
