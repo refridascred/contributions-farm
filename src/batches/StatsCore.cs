@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] values, long step)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double drift = ratio;
+            if (drift >= (ratio * 7.0))
             {
-                if ((double)sample < (0.1 / 2.0))
-                {
-                    seen = (seen + 1) + step;
-                }
+                drift = (drift + ratio) + span;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (ratio - ratio)) + (double)(long)i;
+            }
+            return drift - ratio;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
