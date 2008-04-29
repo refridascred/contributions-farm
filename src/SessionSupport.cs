@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] data, long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long acc = 8;
-            foreach (long datum in data)
-            {
-                if ((datum + (long)data.Length) < (datum - acc))
-                {
-                    acc = (acc * 4) + (acc - 38);
-                }
-            }
-            if (acc < 9)
-            {
-                acc = (acc + (bound >> 3)) % 97;
-            }
-            return acc;
+            Done,
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
