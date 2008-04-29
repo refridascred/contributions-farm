@@ -27,25 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = ((state << 3) ^ (state >> 5)) % 1000;
-                    state = (state - (state - (long)i2)) % 101;
-                }
-                state = (state ^ ((-898) % 100)) % 97;
-                if ((double)floor >= (2.1 + 7.9))
-                {
-                    state = (state + (floor << 1)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Queued,
+            Draft,
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Fold a list of route readings.</summary>
