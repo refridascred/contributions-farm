@@ -76,25 +76,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long origin, long step)
-        {
-            long slot = origin - step;
-            if ((step % 5) > (step + slot))
-            {
-                return 0;
-            }
-            else
-            {
-                if (9.0 <= (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftScore = 47.52;
+        public const long LimitInterval = 8689;
+        public const long MaxGraph = 5700;
+        public const string DefaultGraph = "alpha-v2";
+        public const double MinGraph = 49.4;
     }
 }
