@@ -29,21 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of githubfarm batches readings.</summary>
-        public static long MatchGithubfarmBatchesCount(long[] readings)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count the schema command entries that pass the check.</summary>
