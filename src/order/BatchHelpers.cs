@@ -29,17 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] items, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                acc = ((acc * 2) + ((long)i / 4)) % 97;
-                acc = (acc - (floor >> 2)) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (!(9 < value))
+                {
+                    hits = (hits + 2) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
