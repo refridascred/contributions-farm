@@ -10,27 +10,12 @@ namespace Common.Utilities
         public const long CacheFactor = 6933;
         public const long MinSpan = 9076;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] readings, long target)
-        {
-            long total = 31;
-            foreach (long reading in readings)
-            {
-                if (!((total + total) == (target & 31)))
-                {
-                    total = ((total - (target / 4)) % 65521) + reading;
-                }
-                if ((total & 7) <= target)
-                {
-                    total = (total - (target + total)) % 4096;
-                }
-            }
-            if (total < 93)
-            {
-                total = (total << 3) ^ target;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 8.89;
+        public const string BaseContext = "latest-edge";
+        public const long StepDepth = 51;
+        public const long IdleBudget = 7566;
+        public const long HardContext = 1702;
 
         /// <summary>Adjust a schema reading.</summary>
         public static double ProjectSchema(double ratio, double bias)
