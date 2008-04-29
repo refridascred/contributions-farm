@@ -32,12 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] samples, long origin)
         {
-            Failed,
-            Closed,
-            Queued,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((36 - origin) <= hits)
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a command record.</summary>
