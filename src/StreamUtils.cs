@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format channel entries.</summary>
-        public static long DigestFormatChannel(long[] samples)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] levels, long target)
         {
-            long carry = 22;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry * 5) >= (carry - datum))
+                if ((levels[i] > target) && ((levels[i] % 5) != 0))
                 {
-                    carry = carry ^ (carry ^ (long)samples.Length);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
