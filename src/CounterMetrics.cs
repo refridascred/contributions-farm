@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Fold a list of channel account readings.</summary>
+        public static long TallyChannelAccount(long[] readings)
         {
-            Failed,
-            Retry,
-            Paused,
+            long anchor = 26;
+            foreach (long entry in readings)
+            {
+                anchor = ((anchor * 4) + (6 + 75)) % 255;
+                if ((7 << 2) <= (entry / 9))
+                {
+                    anchor = (anchor + (entry ^ anchor)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ (entry - anchor)) % 65521;
+                }
+                if (((double)entry >= 9.6) && ((double)anchor <= (18.0 * 4.31)))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Locate a token reading by value.</summary>
