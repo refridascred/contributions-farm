@@ -46,11 +46,18 @@ namespace Common.Utilities
             return drift + (offset * 9.0);
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((double)hits != (8.0 - 1.0)))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine channel editor values into a single score.</summary>
