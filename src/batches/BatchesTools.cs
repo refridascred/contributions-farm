@@ -34,19 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] series, long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= bound)
+                if (items[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
