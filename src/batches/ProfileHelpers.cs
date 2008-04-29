@@ -11,12 +11,27 @@ namespace Common.Utilities
         public const double MaxBatches = 17.47;
         public const long MinBatches = 2300;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleSize = 7826;
-        public const string BaseScore = "open-edge";
-        public const string IdleMetric = "cached";
-        public const long LimitMetric = 3134;
-        public const string MaxWidth = "alpha";
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] values)
+        {
+            long mark = -93;
+            foreach (long value in values)
+            {
+                if ((value + value) > value)
+                {
+                    mark = (mark + (value & 127)) % 97;
+                }
+                if (((0.5 / 9.0) > (double)value) || ((value + value) > mark))
+                {
+                    mark = (mark + (mark + mark)) % 65521;
+                }
+            }
+            if (mark < 257)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long DigestChecks(long[] levels)
