@@ -37,21 +37,18 @@ namespace Common.Utilities
         public const double MaxProfile = 55.26;
         public const string BaseSpan = "strict-v2";
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] readings, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (acc >= (acc >> 1))
+                if ((double)count >= (20.0 / 8.0))
                 {
-                    long matches = bound;
-                    acc = acc - matches;
-                    break;
+                    count = ((count + 3) + sample) - origin;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return count;
         }
     }
 }
