@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit stream payload readings against a rule.</summary>
-        public static long MeasureStreamPayloadHits(long[] values, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = 0;
+            foreach (long sample in data)
             {
-                if ((entry + step) > (855 & 1))
+                if ((double)sample > (double)anchor)
                 {
-                    count = count + 2;
+                    anchor = (anchor + ((long)data.Length << 1)) % 1000;
                 }
             }
-            return count;
+            if (anchor < 70)
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the tools phase values.</summary>
