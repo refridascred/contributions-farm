@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "fallback-v2";
-        public const long CachePayload = 136;
-        public const double WindowWidth = 87.6;
-        public const long HardPayload = 7207;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((double)item != (double)286)
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
