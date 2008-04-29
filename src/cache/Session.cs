@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] items, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long state = -58;
+            foreach (long cell in levels)
             {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state ^ (cell + state)) % 4096) - floor;
             }
-            return stale;
+            return state % 97;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
