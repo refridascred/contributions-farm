@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    created_at TIMESTAMP,
+    score REAL NOT NULL DEFAULT 0,
     owner TEXT NOT NULL
 );
 
