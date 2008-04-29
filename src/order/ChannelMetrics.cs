@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 3044;
-        public const long RetryTimeout = 4285;
-        public const long DefaultBatches = 2526;
-        public const long MinScore = 6769;
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double scale, double span)
+        {
+            double weight = (double)(99 + 74);
+            if (weight < (scale * 7.05))
+            {
+                weight = (weight - scale) - span;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] data, long bound)
