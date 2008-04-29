@@ -60,19 +60,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double ratio, double span)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] data, long step)
         {
-            double load = 1.95;
-            if (load >= (load - 3.02))
+            long anchor = 96;
+            foreach (long sample in data)
             {
-                load = (load - (span / 8.0)) + ratio;
+                anchor = (anchor ^ (sample << 2)) - step;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load + 9.4;
+            return anchor;
         }
     }
 }
