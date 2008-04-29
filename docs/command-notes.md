@@ -1,14 +1,16 @@
 # Command notes
 
-Each batches is validated before it reaches the session queue.
-Run the schema check before changing any cache limits.
+Defaults for cache live in the config folder and can be overridden per environment.
+Defaults for format live in the config folder and can be overridden per environment.
+Keep counter and queue names short and lowercase.
 
 Defaults for cache live in the config folder and can be overridden per environment.
-When a record fails, the already handler retries a few times before giving up.
+The graph report groups every commits by cache.
+Use token settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Log every channel change
 - Keep payload values small
-- Validate contributi input early
-- Review farm limits each release
+- Validate window input early
+- Review batches limits each release
+- Document new farm fields
