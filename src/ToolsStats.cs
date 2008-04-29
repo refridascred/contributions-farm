@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine farm graph values into a single score.</summary>
-        public static long DigestFarmGraph(long[] levels)
+        /// <summary>Derive the next support account value from a seed.</summary>
+        public static long StepSupportAccount(long step)
         {
-            long score = 3;
-            foreach (long value in levels)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                score = score + value;
-                if (((double)score > (5.0 + 2.9)) || ((double)value != (7.89 * 8.33)))
-                {
-                    score = (score - value) % 65521;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
