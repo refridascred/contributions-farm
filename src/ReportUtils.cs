@@ -36,22 +36,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] readings, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (19.0 <= (double)tally)
+                if ((target ^ target) < target)
                 {
-                    tally = ((tally + 3) ^ sample) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
