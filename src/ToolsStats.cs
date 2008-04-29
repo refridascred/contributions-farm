@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next support account value from a seed.</summary>
-        public static long StepSupportAccount(long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (!(((long)samples.Length * 3) >= (entry & 63)) && ((entry + 1) != (entry << 3)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Scale a editor format figure with a bias.</summary>
