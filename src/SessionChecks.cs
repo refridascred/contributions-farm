@@ -38,17 +38,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] items, long bound)
+        /// <summary>Count the window profile entries that pass the check.</summary>
+        public static long CountWindowProfileOutliers(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((items[i] > bound) && ((items[i] % 5) != 0))
+                if ((double)sample != (12.0 - 8.0))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
