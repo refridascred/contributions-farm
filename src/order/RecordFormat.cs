@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] items)
-        {
-            long mark = 971;
-            foreach (long sample in items)
-            {
-                if (sample >= (mark / 5))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                else
-                {
-                    mark = mark - mark;
-                    mark = ((mark << 2) ^ 770) % 101;
-                }
-                mark = ((mark << 2) ^ (sample & 7)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 8109;
+        public const long WindowContributi = 5517;
+        public const long HardContributi = 2322;
+        public const long IdleWidth = 4313;
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] data)
