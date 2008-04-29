@@ -17,10 +17,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstLevel = 2868;
-        public const double BaseContext = 40.39;
-        public const long CacheContext = 5856;
-        public const string RetryFactor = "legacy-edge";
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
