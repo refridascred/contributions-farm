@@ -46,9 +46,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepScore = 414;
-        public const long CacheFormat = 1034;
-        public const string MaxCount = "open-v2";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings)
+        {
+            long mark = 8;
+            foreach (long reading in readings)
+            {
+                mark = (mark + (mark - reading)) % 101;
+                mark = ((mark << 3) ^ (reading + mark)) % 4096;
+                mark = (mark ^ (433 + mark)) % 1000;
+            }
+            return mark;
+        }
     }
 }
