@@ -25,11 +25,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstSpan = 1306;
-        public const long DefaultBatches = 7282;
-        public const long MinBatches = 1159;
-        public const long LimitDepth = 2750;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double RetryAccount = 70.42;
