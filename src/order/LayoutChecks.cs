@@ -43,18 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 8.96;
+        public const long SoftSupport = 4773;
+        public const long RetrySupport = 675;
+        public const double StepSupport = 12.04;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
