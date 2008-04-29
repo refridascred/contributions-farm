@@ -26,22 +26,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] readings)
+        /// <summary>Iterate the already buffer series from a seed.</summary>
+        public static long SeriesAlreadyBuffer(long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (436 < value)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (total + (offset ^ total)) % 101;
+                total = (total - (total - total)) % 1000;
+                total = ((total << 2) ^ (long)i) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a order info.</summary>
