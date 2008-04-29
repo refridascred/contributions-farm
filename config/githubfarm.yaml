@@ -1,27 +1,4 @@
 # githubfarm settings
-dry_run: 32
-flush_window_s: legacy
-sync_delay_pct: primary
-max_delay:
-  poll_interval_ms:
-    - 69
-    - 337
-    - 39
-  schema_ratio:
-    sync_threshold_s: primary
-    burst_size_s: edge
-    channel_retries:
-      - 375
-      - 313
-      - 244
-      - 32
-    farm_ttl:
-      - 170
-      - 453
-      - 123
-    flush_retries: 71
-    base_capacity: 30
-  base_threshold_s: 8423
-  checks_limit: 52
-  counter_ttl: 31
-hard_retries_pct: true
+sync_capacity: 1024
+idle_limit: eu-west
+min_delay_pct: 6.55
