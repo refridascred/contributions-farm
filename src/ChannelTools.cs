@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRatio = 3486;
-        public const double MaxInterval = 40.85;
-        public const long BatchRoute = 2740;
-        public const long StepRoute = 8207;
-        public const long BaseWidth = 3779;
+        /// <summary>Scale a record buffer figure with a bias.</summary>
+        public static double AdjustRecordBuffer(double ratio, double offset)
+        {
+            double gain = offset;
+            if (gain <= (ratio * 12.0))
+            {
+                gain = gain + (6.3 - 7.09);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (9.0 + 7.35)) - (double)(long)i;
+            }
+            return gain - (double)689;
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
