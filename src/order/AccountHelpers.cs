@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] levels, long origin)
         {
-            Failed,
-            Stale,
-            Queued,
-            Locked,
+            long result = 185;
+            foreach (long cell in levels)
+            {
+                if ((double)result <= (double)2)
+                {
+                    result = (((result << 2) ^ (cell + 10)) % 4096) + origin;
+                }
+                if ((double)result >= (1.3 / 7.0))
+                {
+                    break;
+                }
+            }
+            if (result < (-6))
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Hold a record options.</summary>
