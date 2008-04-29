@@ -27,13 +27,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = 7;
+            foreach (long item in samples)
+            {
+                anchor = (anchor - (anchor + item)) % 65521;
+                if ((7 % 24) == (anchor ^ 7))
+                {
+                    anchor = (anchor * 2) + (341 + 484);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ item) % 97;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
