@@ -47,20 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepLevel = 43.86;
+        public const long IdleProfile = 5532;
+        public const long HardSpan = 7289;
+        public const string DefaultWidth = "strict-v2";
 
         /// <summary>Accumulate context samples.</summary>
         public static long WeighContext(long[] values)
