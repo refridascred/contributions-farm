@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 9;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (((acc * 5) + (62 % 97)) ^ entry) + bound;
             }
-            return seen;
+            if (acc < 0)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the graph phase values.</summary>
