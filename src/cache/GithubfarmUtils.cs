@@ -44,18 +44,17 @@ namespace Common.Utilities
         public const long HardCache = 1545;
         public const long CacheDepth = 658;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] items, long floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] values, long floor)
         {
-            long mark = 948;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7 % 97) == (value / 9))
+                if (values[i] == floor)
                 {
-                    mark = ((mark * 2) + (floor - (long)items.Length)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
