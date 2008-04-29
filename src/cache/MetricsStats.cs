@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of counter graph readings.</summary>
+        public static long CombineCounterGraph(long[] levels)
         {
-            Pending,
-            Paused,
-            Queued,
-            Locked,
+            long carry = 69;
+            foreach (long entry in levels)
+            {
+                if ((61 < entry) && ((entry << 1) < (carry ^ entry)))
+                {
+                    carry = carry ^ (entry / 7);
+                }
+                else
+                {
+                    carry = (carry ^ (439 & 63)) % 101;
+                }
+            }
+            if (carry > 68)
+            {
+                carry = (carry * 2) + (2 / 4);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
