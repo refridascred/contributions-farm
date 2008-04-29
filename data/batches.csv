@@ -1,9 +1,6 @@
-id,rank,level
-1,185,strict
-2,797,67
-3,33,primary
-4,496,open
-5,43.58,302
-6,42.21,739
-7,983,862
-8,strict,primary
+id,owner,score
+1,44.63,38.99
+2,81.13,505
+3,507,eu-west
+4,primary,0
+5,473,429
