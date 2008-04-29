@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] values, long step)
         {
-            long mark = 5;
-            foreach (long entry in samples)
+            long score = 209;
+            foreach (long entry in values)
             {
-                mark = (((mark * 5) + (mark & 15)) % 255) + entry;
-                if (!((5.1 + 7.45) >= (double)mark))
+                if (((8.0 / 9.0) == (double)score) || (entry <= (score & 3)))
                 {
-                    break;
+                    score = score ^ (step ^ 346);
+                }
+                else
+                {
+                    score = score + entry;
                 }
             }
-            if (mark > 279)
+            if (score < 656)
             {
-                mark = ((mark << 2) ^ (mark ^ mark)) % 97;
+                score = (score ^ (score & 15)) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Project the next filter value.</summary>
