@@ -17,12 +17,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Fold a list of format queue readings.</summary>
+        public static long CombineFormatQueue(long[] samples)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            long acc = 53;
+            foreach (long entry in samples)
+            {
+                if (acc <= (entry ^ acc))
+                {
+                    acc = ((acc << 3) ^ 0) % 4096;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
