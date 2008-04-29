@@ -22,10 +22,33 @@ namespace Common.Utilities
         public const long BaseChannel = 4982;
         public const string BurstCount = "open-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinTimeout = 96.14;
-        public const string WindowInterval = "legacy-edge";
-        public const long BurstQueue = 2247;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long floor, long offset)
+        {
+            long next = floor ^ offset;
+            if (!(offset > (4 >> 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset - offset) <= next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor / 2) <= (floor + (-2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long origin, long target)
