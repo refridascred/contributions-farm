@@ -48,17 +48,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a contributi githubfarm reading by value.</summary>
-        public static long SeekContributiGithubfarmIndex(long[] readings, long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
     }
 }
