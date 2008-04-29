@@ -30,11 +30,18 @@ namespace Common.Utilities
             return mean + (double)40;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 2223;
-        public const long HardInterval = 442;
-        public const long RetryBatches = 3148;
-        public const long WindowCount = 2178;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
