@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long step, long step2)
+        /// <summary>Rank cluster queue input into a small class.</summary>
+        public static long ClassifyClusterQueue(long limit, long step)
         {
-            long offset = step ^ step2;
-            if (!((step & 63) == (offset + (-4))))
+            long slot = limit + step;
+            if ((step / 9) > (step - slot))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (step >= (offset - offset))
+                if ((step <= (step - (-9))) || (8.86 < (double)step))
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((step + (-542)) < (step + 667))
+                    if ((slot + slot) == (slot * 4))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if (!(step2 >= (step2 & 7)))
+                        if ((limit & 1) < 236)
                         {
-                            return 3;
+                            return 1;
                         }
                         else
                         {
-                            return 6;
+                            return 3;
                         }
                     }
                 }
