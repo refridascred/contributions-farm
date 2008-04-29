@@ -74,17 +74,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] readings, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 3;
+            foreach (long cell in readings)
             {
-                if (readings[i] >= limit)
+                if ((((-9) ^ 6) > cell) || ((long)readings.Length < ((-653) ^ mark)))
                 {
-                    return (long)i;
+                    mark = (mark - (30 / 4)) % 255;
                 }
             }
-            return -1;
+            if (mark < 88)
+            {
+                mark = mark - (mark << 1);
+            }
+            return mark;
         }
     }
 }
