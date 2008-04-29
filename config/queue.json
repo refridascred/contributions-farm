@@ -1,13 +1,11 @@
 {
-  "cache_delay": {
-    "profile_capacity": "stable",
-    "idle_ratio": 53,
-    "min_interval_ms": "eu-west",
-    "cache_threshold_ms": false
+  "route_limit": {
+    "base_window_ms": 47.32,
+    "verbose": 60,
+    "max_ttl": 2,
+    "min_threshold_ms": [11, 294, 81],
+    "format_threshold": 15
   },
-  "poll_ttl_count": "standard",
-  "default_timeout_count": "local",
-  "readonly": 50.0,
-  "stats_delay": false,
-  "verbose": ["eu-west", "primary"]
+  "poll_limit_count": ["local", "staging"],
+  "command_ttl": 54.04
 }
