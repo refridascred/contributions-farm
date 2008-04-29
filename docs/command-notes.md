@@ -1,11 +1,14 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-The githubfarm module keeps report values in sync with the command cache.
-Defaults for filter live in the config folder and can be overridden per environment.
+Each editor is validated before it reaches the session queue.
+The editor report groups every route by account.
+Use profile settings to tune how often already data is refreshed.
+
+Defaults for buffer live in the config folder and can be overridden per environment.
+A notes that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Validate route input early
 - Log every checks change
-- Document new context fields
+- Review format limits each release
+- Keep report values small
