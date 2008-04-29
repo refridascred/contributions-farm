@@ -41,18 +41,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + seen) < (11 + 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 50.25;
+        public const double BurstBuffer = 51.23;
+        public const long DefaultSize = 1020;
+        public const string CacheBuffer = "legacy-edge";
+        public const double HardInterval = 81.67;
     }
 }
