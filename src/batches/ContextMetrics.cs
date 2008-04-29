@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] values, long offset)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Dropped,
+            Draft,
+            Pending,
+            Stale,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
