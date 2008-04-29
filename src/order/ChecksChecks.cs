@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseInterval = 32.63;
+        public const string RetryPayload = "stable-edge";
+        public const double RetryTimeout = 48.05;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportMatches(long[] levels, long offset)
