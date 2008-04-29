@@ -1,8 +1,5 @@
 {
-  "readonly": 28.52,
-  "idle_limit": 100,
-  "already_threshold": "green",
-  "strict": 3873,
-  "window_threshold": 3869,
-  "batches_limit": 1960
+  "hard_delay_count": 74,
+  "sync_window": "green",
+  "enabled": false
 }
