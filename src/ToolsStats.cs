@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] samples)
+        /// <summary>Look up the position of a cache support sample.</summary>
+        public static long FindCacheSupportIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((long)samples.Length * 3) >= (entry & 63)) && ((entry + 1) != (entry << 3)))
+                if ((data[i] <= bound) && ((data[i] % 5) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Scale a editor format figure with a bias.</summary>
