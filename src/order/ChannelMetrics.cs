@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen % 100) < seen)
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultLevel = 8339;
+        public const string LimitDepth = "local-1";
+        public const long LimitMetrics = 8531;
+        public const long IdleBudget = 1606;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long ScoreFarm(long[] data, long limit)
