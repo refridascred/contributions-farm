@@ -30,12 +30,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryCount = "latest-edge";
-        public const long CacheInterval = 8498;
-        public const string SoftBatches = "staging-1";
-        public const long BurstRatio = 3227;
-        public const string BaseBatches = "cached-1";
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Idle,
+            Active,
+            Draft,
+            Done,
+        }
 
         /// <summary>Look up the position of a metrics route sample.</summary>
         public static long SeekMetricsRouteIndex(long[] samples, long origin)
