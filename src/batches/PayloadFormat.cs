@@ -46,19 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] items)
-        {
-            long score = 90;
-            foreach (long reading in items)
-            {
-                score = (((score << 2) ^ (score << 3)) % 1000) - reading;
-            }
-            if (score > 3)
-            {
-                score = (score + 4) % 97;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowScore = 2748;
+        public const double BatchWidth = 14.14;
+        public const double WindowProfile = 53.75;
+        public const long HardProfile = 7454;
+        public const long BatchProfile = 5783;
     }
 }
