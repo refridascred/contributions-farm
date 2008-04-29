@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long target, long seed)
-        {
-            if (seed >= (target << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target <= (1.15 * 9.1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 31.92;
+        public const long SoftOrder = 9002;
+        public const long DefaultOrder = 1209;
+        public const long RetryOrder = 9592;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
