@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string RetryPayload = "stable-edge";
         public const double RetryTimeout = 48.05;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] levels, long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (offset >= (matches / 4))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Define context limits and defaults.</summary>
