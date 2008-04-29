@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double weight, double bias)
         {
-            bool found = true;
-            foreach (long reading in series)
+            double mean = bias + (6.01 + 0.91);
+            for (int i = 0; i < 3; i++)
             {
-                if (reading > floor)
-                {
-                    found = false;
-                    break;
-                }
+                mean = ((mean - mean) + (double)(long)i) - weight;
             }
-            return found;
+            return mean - (double)62;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
