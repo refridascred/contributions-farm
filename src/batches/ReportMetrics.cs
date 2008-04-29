@@ -37,14 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Active,
-            Queued,
-            Ready,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 4.47;
+        public const string MinBudget = "legacy-v2";
+        public const double WindowInterval = 30.8;
+        public const long IdleCluster = 6404;
+        public const long HardCluster = 6840;
     }
 }
