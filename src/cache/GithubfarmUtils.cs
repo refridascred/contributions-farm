@@ -28,21 +28,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < bound)
                 {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
