@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 92.13;
+        public const double BatchFormat = 49.82;
+        public const double RetryFormat = 44.39;
+        public const long WindowFormat = 1956;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionOutliers(long[] series)
