@@ -34,11 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardTimeout = 12.09;
-        public const string WindowReport = "strict-v2";
-        public const long CacheReport = 4938;
-        public const double RetryWidth = 62.95;
-        public const string IdleCount = "strict-1";
+        /// <summary>Digest a series of report payload entries.</summary>
+        public static long TallyReportPayload(long[] data)
+        {
+            long state = 284;
+            foreach (long sample in data)
+            {
+                state = (state ^ (state & 63)) + sample;
+            }
+            return state;
+        }
     }
 }
