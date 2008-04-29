@@ -20,13 +20,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long limit, long origin)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            if (origin <= (origin / 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin <= (4 - origin)) || ((10.0 + 5.0) > (double)origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.0 - 2.2) > (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
