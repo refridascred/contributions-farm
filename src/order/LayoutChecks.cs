@@ -69,19 +69,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every batches order entry stays within the limit.</summary>
-        public static bool GuardBatchesOrderLimits(long[] data, long floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= floor)
+                if (readings[i] >= limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
