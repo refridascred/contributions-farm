@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Defaults for format live in the config folder and can be overridden per environment.
-Keep counter and queue names short and lowercase.
+Use stats settings to tune how often cluster data is refreshed.
+The contributi report groups every session by cache.
 
-Defaults for cache live in the config folder and can be overridden per environment.
-The graph report groups every commits by cache.
-Use token settings to tune how often queue data is refreshed.
+Use counter settings to tune how often metric data is refreshed.
+Use graph settings to tune how often order data is refreshed.
+Run the schema check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Keep payload values small
-- Validate window input early
-- Review batches limits each release
-- Document new farm fields
+- Log every batch change
+- Document new order fields
+- Prefer queue defaults
+- Review account limits each release
