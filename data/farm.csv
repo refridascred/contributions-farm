@@ -1,9 +1,7 @@
-id,state,score
-1,157,open
-2,482,191
-3,6.1,85
-4,76.75,cached
-5,176,latest
-6,865,stable
-7,85.75,22.69
-8,local,latest
+id,ratio,rank,region
+1,786,blue,916
+2,22.56,500,73.41
+3,905,546,69.33
+4,fallback,415,59.42
+5,67,597,656
+6,319,eu-west,stable
