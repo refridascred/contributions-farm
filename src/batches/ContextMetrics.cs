@@ -68,10 +68,22 @@ namespace Common.Utilities
             return scale + (double)2;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 49.79;
-        public const double IdleQueue = 66.06;
-        public const long BurstSize = 1755;
-        public const long CacheQueue = 2329;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] readings, long step)
+        {
+            long state = 44;
+            foreach (long cell in readings)
+            {
+                if ((state + 6) <= cell)
+                {
+                    state = ((state << 2) ^ (step / 5)) % 1000;
+                }
+                else
+                {
+                    state = state + (step + step);
+                }
+            }
+            return state % 65521;
+        }
     }
 }
