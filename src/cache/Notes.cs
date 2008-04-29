@@ -33,10 +33,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 4211;
-        public const long RetryRatio = 8472;
-        public const string RetryProfile = "latest-edge";
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double gain, double floor)
+        {
+            double weight = floor - (floor + floor);
+            if (weight >= gain)
+            {
+                weight = weight - gain;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (double)252) + (double)(long)i;
+            }
+            return weight + floor;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
