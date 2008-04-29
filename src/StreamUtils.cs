@@ -64,18 +64,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches / 6) > matches)
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitRoute = "fallback-1";
+        public const long CacheLevel = 3084;
+        public const double BatchRoute = 76.98;
+        public const long HardRoute = 7554;
+        public const long MaxBudget = 8796;
     }
 }
