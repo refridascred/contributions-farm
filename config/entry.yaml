@@ -1,11 +1,9 @@
 # entry settings
-min_ttl_count: false
-compress: true
-soft_ratio:
-  - 256
-  - 155
-notes_ratio: 1024
-retry_ttl_ms:
-  - blue
-  - legacy
-  - edge
+warm_ttl: true
+strict: 30
+burst_size_pct: 6059
+compress:
+  poll_ttl_pct: 97
+  flush_ttl: 71.53
+  readonly: primary
+verbose: false
