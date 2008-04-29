@@ -1,5 +1,7 @@
 {
-  "dry_run": 87,
-  "layout_retries": 1024,
-  "batch_delay": [82, 147, 32, 248]
+  "stats_depth": true,
+  "sync_depth": [138, 482],
+  "readonly": "latest",
+  "order_limit": 95,
+  "order_capacity": 60
 }
