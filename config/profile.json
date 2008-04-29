@@ -1,14 +1,7 @@
 {
-  "poll_depth": [489, 56, 109],
-  "cache_limit": 3117,
-  "sync_retries_s": [142, 312],
-  "support_depth": "local",
-  "tools_window": {
-    "flush_retries": 30,
-    "payload_size": "latest",
-    "audit": false,
-    "max_size": 26.34,
-    "tools_ratio": false,
-    "readonly": "standard"
-  }
+  "readonly": "edge",
+  "compress": 87.93,
+  "sync_limit_ms": "edge",
+  "cluster_depth": 41,
+  "default_ttl": true
 }
