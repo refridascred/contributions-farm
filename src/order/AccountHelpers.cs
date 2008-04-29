@@ -55,21 +55,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Classify a support tools pair into a bucket.</summary>
+        public static long RankSupportTools(long origin, long origin2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = origin - origin2;
+            if ((offset + offset) >= (57 * 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset == (9.01 + 4.92))
                 {
-                    if ((items[i] + items[j]) != 16)
+                    return 8;
+                }
+                else
+                {
+                    if (origin2 <= 342)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the layout mode values.</summary>
