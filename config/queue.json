@@ -1,5 +1,29 @@
 {
-  "cache_timeout_s": 2.45,
-  "persist": "fallback",
-  "strict": [12, 274, 38]
+  "metric_timeout": {
+    "max_window_count": ["legacy", "legacy"],
+    "flush_timeout_ms": "primary",
+    "batches_capacity": 31.51,
+    "min_timeout_s": false,
+    "cache_retries": "stable"
+  },
+  "burst_interval_s": true,
+  "context_limit": {
+    "idle_delay_s": true,
+    "metric_retries": ["staging", "primary"],
+    "burst_interval_ms": {
+      "batch_retries": "blue",
+      "idle_depth_count": 1024,
+      "poll_window": "green"
+    },
+    "schema_retries": 53.5
+  },
+  "cluster_limit": {
+    "burst_depth": true,
+    "hard_limit_count": "primary",
+    "soft_retries": 500,
+    "min_interval_count": false,
+    "warm_threshold_count": 50
+  },
+  "flush_limit_ms": "stable",
+  "burst_limit": ["green", "fallback"]
 }
