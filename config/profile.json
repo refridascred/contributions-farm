@@ -1,5 +1,7 @@
 {
-  "cache_interval": "eu-west",
-  "compress": 79.67,
-  "poll_threshold": "standard"
+  "warm_capacity_pct": ["open", "latest", "fallback", "staging"],
+  "persist": 89,
+  "checks_depth": true,
+  "retry_ratio_count": [485, 112],
+  "retry_threshold": ["local", "local", "edge", "green"]
 }
