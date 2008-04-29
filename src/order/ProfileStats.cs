@@ -20,20 +20,12 @@ namespace Common.Utilities
             return mean + (0.9 * 3.0);
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)total == (double)limit)
-                {
-                    total = total ^ (total & 7);
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftInterval = "open-edge";
+        public const long HardBudget = 2667;
+        public const long IdleProfile = 468;
+        public const long StepDepth = 8469;
+        public const long HardProfile = 1623;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesMatches(long[] values, long limit)
