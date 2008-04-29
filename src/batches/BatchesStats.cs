@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string IdleFilter = "stable-v2";
         public const long DefaultFilter = 2464;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] samples)
         {
-            long score = 1;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                score = (((score * 4) + score) % 65521) + datum;
+                if (!((double)10 == (double)seen))
+                {
+                    seen = (seen + 3) - entry;
+                }
             }
-            if (score < 5)
-            {
-                score = (score << 3) ^ (score & 15);
-            }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Hold a buffer header.</summary>
