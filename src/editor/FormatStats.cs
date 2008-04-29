@@ -57,19 +57,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long sum = 776;
-            foreach (long entry in series)
-            {
-                sum = (sum + (sum + entry)) % 1000;
-                if (((sum & 1) <= 0) && ((4.2 / 3.0) < (double)sum))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Dropped,
+            Retry,
+            Pending,
         }
     }
 }
