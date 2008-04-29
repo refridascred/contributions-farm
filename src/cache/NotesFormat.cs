@@ -13,21 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = 5.79;
+            if (scale > (7.7 - scale))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + (16.0 - 1.5)) - bias;
             }
-            return hits;
+            else
+            {
+                scale = scale + (double)3;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (offset / 6.0)) + (double)(long)i;
+            }
+            return scale + (double)12;
         }
 
         /// <summary>Define account limits and defaults.</summary>
