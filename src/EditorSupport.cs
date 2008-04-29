@@ -14,13 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long floor)
         {
-            Done,
-            Retry,
-            Stale,
-            Locked,
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)floor < 4.0)
+                {
+                    mark = mark - (floor * 4);
+                    mark = (mark + (mark - mark)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
