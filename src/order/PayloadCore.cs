@@ -45,12 +45,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Check that every metric contributi entry stays within the limit.</summary>
+        public static bool CheckMetricContributiRange(long[] levels, long target)
         {
-            Paused,
-            New,
-            Retry,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
