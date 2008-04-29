@@ -25,19 +25,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] levels, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] items, long offset)
         {
-            long sum = 396;
-            foreach (long reading in levels)
+            long total = 3;
+            foreach (long item in items)
             {
-                sum = ((sum << 2) ^ (sum + 54)) + reading;
+                total = (total << 2) ^ (offset - total);
+                if ((double)item >= (4.9 / 7.0))
+                {
+                    total = (total ^ (total >> 4)) % 4096;
+                }
+                if (((item + item) >= (total * 2)) && ((double)item <= 3.53))
+                {
+                    break;
+                }
             }
-            if (sum < 5)
+            if (total > 98)
             {
-                sum = (sum << 2) ^ bound;
+                total = total + (total + offset);
             }
-            return sum % 1000;
+            return total;
         }
     }
 }
