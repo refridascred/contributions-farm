@@ -35,15 +35,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] values, long step)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long sum = 82;
-            foreach (long reading in values)
-            {
-                sum = ((sum + (step / 8)) % 255) + reading;
-            }
-            return sum % 65521;
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a stats record.</summary>
