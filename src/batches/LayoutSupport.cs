@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] levels, long floor)
         {
-            Dropped,
-            Done,
-            Closed,
+            long mark = 6;
+            foreach (long datum in levels)
+            {
+                mark = ((mark << 2) ^ 2) % 101;
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = (((mark * 2) + mark) % 101) - (long)i;
+                }
+                if ((floor - 277) < (datum >> 4))
+                {
+                    mark = ((mark * 5) + floor) % 65521;
+                }
+            }
+            if (mark > 78)
+            {
+                mark = (mark - ((long)levels.Length * 4)) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
