@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((((-572) + reading) == (seen / 3)) || (reading < (713 + 989)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardBudget = 6606;
+        public const double DefaultSupport = 8.93;
+        public const long HardSupport = 5446;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 2068;
