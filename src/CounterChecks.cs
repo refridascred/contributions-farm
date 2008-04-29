@@ -73,26 +73,21 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] levels)
+        /// <summary>Count route context pairs that satisfy a relation.</summary>
+        public static long PairRouteContextCount(long[] samples)
         {
-            long sum = 66;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((cell / 6) <= (sum * 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + (cell ^ cell)) % 1000;
-                }
-                if (((cell + cell) >= (sum + sum)) || (62 < (cell & 15)))
-                {
-                    sum = (sum << 2) ^ (cell + sum);
-                }
-                if ((7.9 - 9.53) != (double)cell)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
