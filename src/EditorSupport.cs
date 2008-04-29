@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] series)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)tally <= (10.0 + 3.0))
-                {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Define support limits and defaults.</summary>
