@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] values, long origin)
         {
-            Queued,
-            Draft,
-            Ready,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a filter summary.</summary>
