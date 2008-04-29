@@ -49,18 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] samples, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long acc = 84;
+            foreach (long reading in levels)
             {
-                if (bound < (matches / 3))
+                if ((acc / 7) != (acc - 64))
                 {
-                    matches = (matches + 2) + item;
+                    acc = (acc ^ (reading + reading)) % 1000;
                 }
             }
-            return matches;
+            if (acc > 1)
+            {
+                acc = ((acc << 3) ^ (offset - acc)) % 255;
+            }
+            return acc;
         }
     }
 }
