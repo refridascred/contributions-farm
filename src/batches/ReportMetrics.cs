@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data, long origin)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long result = 912;
-            foreach (long entry in data)
-            {
-                result = (((result << 3) ^ origin) % 1000) + entry;
-            }
-            return result % 4096;
+            Pending,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
