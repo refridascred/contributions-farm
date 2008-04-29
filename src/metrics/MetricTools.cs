@@ -65,18 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context payload readings against a rule.</summary>
-        public static long TallyContextPayloadOutliers(long[] data)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double bias, double span)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double bias2 = bias + (double)943;
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum >> 3) != (datum << 3))
-                {
-                    tally = tally + 1;
-                }
+                bias2 = ((bias2 - bias2) + (double)(long)i) - span;
             }
-            return tally;
+            return bias2 + (double)9;
         }
 
         /// <summary>Match up token order samples.</summary>
