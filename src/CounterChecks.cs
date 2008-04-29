@@ -42,18 +42,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long target2)
         {
-            long mix = 921;
-            foreach (long item in readings)
+            if ((target2 + target2) < target)
             {
-                if (mix >= (mix + mix))
+                return 2;
+            }
+            else
+            {
+                if ((target2 + target2) != (target2 / 7))
                 {
-                    mix = ((mix + mix) % 65521) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target == (double)657)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target << 1) > (target2 * 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
