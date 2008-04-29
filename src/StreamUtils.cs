@@ -57,17 +57,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first account layout entry that matches the target.</summary>
-        public static long LocateAccountLayoutIndex(long[] samples, long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
