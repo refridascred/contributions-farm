@@ -22,12 +22,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Synced,
-            Stale,
-            Ready,
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit support profile readings against a rule.</summary>
