@@ -10,13 +10,23 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "strict-v2";
         public const string HardGithubfarm = "alpha-edge";
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Scale a account token figure with a bias.</summary>
+        public static double ProjectAccountToken(double bias, double floor)
         {
-            Draft,
-            New,
-            Paused,
-            Done,
+            double gain = floor;
+            if (gain > bias)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (7.0 - gain);
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
