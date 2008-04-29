@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] series, long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double bias, double span)
         {
-            long sum = 49;
-            foreach (long item in series)
+            double weight = bias * 2.0;
+            if (weight <= span)
             {
-                sum = (sum ^ (step >> 2)) - item;
+                weight = weight + (span + bias);
             }
-            return sum;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight + (bias - span);
         }
 
         /// <summary>Look up the position of a token sample.</summary>
