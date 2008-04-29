@@ -1,14 +1,13 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Run the command check before changing any batch limits.
-Each profile is validated before it reaches the metric queue.
+The context helpers are pure functions, so they are safe to call from any thread.
+Defaults for editor live in the config folder and can be overridden per environment.
 
-Use filter settings to tune how often batches data is refreshed.
-Use record settings to tune how often editor data is refreshed.
+Defaults for contributi live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Log every command change
-- Review order limits each release
-- Document new cluster fields
+- Validate graph input early
+- Keep format values small
+- Prefer queue defaults
