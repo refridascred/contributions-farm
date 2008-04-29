@@ -19,15 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double gain, double offset)
+        /// <summary>Iterate the order tools series from a seed.</summary>
+        public static long SeriesOrderTools(long bound)
         {
-            double mean = offset;
-            if (mean < (double)61)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                mean = (mean + (double)12) - gain;
+                mix = (mix * 5) + (bound / 7);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mean + (double)40;
+            return mix;
         }
 
         /// <summary>Hold a session header.</summary>
