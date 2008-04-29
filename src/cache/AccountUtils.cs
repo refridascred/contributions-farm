@@ -31,11 +31,18 @@ namespace Common.Utilities
         public const string MaxWidth = "standard-edge";
         public const long BurstCount = 5134;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit stream payload readings against a rule.</summary>
+        public static long AuditStreamPayloadOutliers(long[] items)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry - matches) < (entry & 127))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
