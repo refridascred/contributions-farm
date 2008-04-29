@@ -70,19 +70,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm schema entries.</summary>
-        public static long WeighGithubfarmSchema(long[] levels)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long carry = 3;
-            foreach (long value in levels)
-            {
-                carry = (carry << 2) ^ (value / 5);
-                if ((value / 9) <= 967)
-                {
-                    carry = carry - (carry + value);
-                }
-            }
-            return carry % 65521;
+            Queued,
+            Idle,
+            Locked,
+            Done,
+            Failed,
         }
     }
 }
