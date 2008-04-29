@@ -31,21 +31,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count contributi order pairs that satisfy a relation.</summary>
-        public static long PairContributiOrderCount(long[] items)
+        /// <summary>Accumulate graph layout samples.</summary>
+        public static long WeighGraphLayout(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -892;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7.0 + 3.9) >= (double)seed)
                 {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ (seed - total)) ^ reading;
+                }
+                if ((double)seed > (4.95 - 0.03))
+                {
+                    total = ((total << 3) ^ total) % 255;
+                }
+                else
+                {
+                    total = ((total * 2) + total) % 255;
                 }
             }
-            return count;
+            if (total < 2)
+            {
+                total = (total - (seed >> 3)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Hold a checks header.</summary>
