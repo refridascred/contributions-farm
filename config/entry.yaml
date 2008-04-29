@@ -1,25 +1,6 @@
 # entry settings
-flush_threshold: 4001
-audit: 76
-verbose:
-  channel_threshold: 39
-  channel_retries: 23
-  batch_threshold: open
-  max_depth_ms: latest
-  retry_limit:
-    batch_window: green
-    hard_threshold_ms: green
-    farm_capacity: 65
-    hard_ttl: 55
-  cache_timeout:
-    - green
-    - legacy
-commits_interval:
-  enabled: 10
-  burst_threshold_s:
-    - 357
-    - 495
-  sync_window:
-    - open
-    - strict
-hard_threshold_ms: 30
+contributi_delay: false
+base_threshold:
+  - 479
+  - 111
+schema_depth: 2232
