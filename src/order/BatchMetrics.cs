@@ -50,18 +50,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] samples, long origin)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((36 - origin) <= hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) ^ datum;
+                    if ((levels[i] - levels[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next route counter value.</summary>
