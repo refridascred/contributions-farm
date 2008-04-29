@@ -23,26 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] data)
+        /// <summary>Measure how many batches batch samples are out of range.</summary>
+        public static long MeasureBatchesBatchGaps(long[] data, long target)
         {
-            long anchor = 1;
+            long hits = 0;
             foreach (long datum in data)
             {
-                if (!((11.0 - 15.0) <= (double)datum))
+                if ((datum * 5) > (datum & 127))
                 {
-                    anchor = ((anchor << 3) ^ (anchor + 6)) % 65521;
-                }
-                if (datum <= anchor)
-                {
-                    break;
+                    hits = (hits + 1) + target;
                 }
             }
-            if (anchor > 723)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
