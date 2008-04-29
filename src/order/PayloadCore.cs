@@ -19,21 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Measure how many schema payload samples are out of range.</summary>
+        public static long MeasureSchemaPayloadOutliers(long[] series, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                mix = ((mix << 2) ^ origin) % 1000;
-                if ((mix % 2) == (mix - (long)i))
+                if ((bound + tally) <= (tally - tally))
                 {
-                    mix = ((mix * 5) + (mix >> 4)) % 1000;
-                    continue;
+                    tally = (tally + 3) - reading;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Project the next metric value.</summary>
