@@ -57,17 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer batches entry that matches the target.</summary>
-        public static long LocateBufferBatchesIndex(long[] series, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 52;
+            foreach (long reading in readings)
             {
-                if (series[i] > step)
+                if ((51 ^ mix) < (reading + (long)readings.Length))
                 {
-                    return (long)i;
+                    mix = (mix + reading) % 255;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
