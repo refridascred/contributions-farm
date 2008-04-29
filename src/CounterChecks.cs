@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first token batches entry that matches the target.</summary>
-        public static long SeekTokenBatchesIndex(long[] items, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 6;
+            foreach (long reading in series)
             {
-                if (items[i] <= seed)
+                if (reading > result)
                 {
-                    return (long)i;
+                    result = (result << 3) ^ floor;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Combine checks account values into a single score.</summary>
