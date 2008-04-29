@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long RetryInterval = 5011;
         public const double LimitLevel = 2.18;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "latest-v2";
+        public const double BurstSpan = 69.1;
+        public const double WindowTools = 61.87;
+        public const long BurstTools = 618;
+        public const long BaseTools = 8143;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteMatches(long[] samples, long step)
