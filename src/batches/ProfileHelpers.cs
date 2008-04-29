@@ -25,12 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Digest a series of support githubfarm entries.</summary>
+        public static long ScoreSupportGithubfarm(long[] items)
         {
-            public string Token { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long state = 742;
+            foreach (long cell in items)
+            {
+                state = (state + cell) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
