@@ -27,18 +27,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryScore = 8240;
+        public const long RetryFilter = 5169;
+        public const string LimitWidth = "strict-edge";
 
         /// <summary>Match up metric stream samples.</summary>
         public static long CompareMetricStreamCount(long[] readings)
