@@ -18,15 +18,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double scale, double offset)
+        /// <summary>Digest a series of buffer tools entries.</summary>
+        public static long TotalBufferTools(long[] samples, long seed)
         {
-            double scale2 = 4.45;
-            if (scale2 < (scale * 18.0))
+            long mark = 719;
+            foreach (long cell in samples)
             {
-                scale2 = (scale2 + scale2) - offset;
+                if (((long)samples.Length + 0) < (seed % 16))
+                {
+                    mark = ((mark ^ (161 - mark)) % 65521) + cell;
+                }
+                if ((double)mark > (6.0 + 7.0))
+                {
+                    break;
+                }
             }
-            return scale2 - scale;
+            if (mark > 4)
+            {
+                mark = mark ^ (mark + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
