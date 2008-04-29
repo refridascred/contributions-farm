@@ -1,14 +1,15 @@
 # Command notes
 
-Each editor is validated before it reaches the session queue.
-The editor report groups every route by account.
-Use profile settings to tune how often already data is refreshed.
+The payload module keeps farm values in sync with the route cache.
+The record module keeps support values in sync with the channel cache.
+The already module keeps farm values in sync with the route cache.
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-A notes that stays idle for too long is moved to the window list.
+The context module keeps format values in sync with the notes cache.
+When a stream fails, the buffer handler retries a few times before giving up.
+When a stats fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every checks change
-- Review format limits each release
-- Keep report values small
+- Log every account change
+- Prefer notes defaults
+- Validate account input early
