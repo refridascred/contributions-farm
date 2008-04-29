@@ -34,14 +34,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] levels, long seed)
         {
-            New,
-            Paused,
-            Dropped,
-            Queued,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
