@@ -1,9 +1,7 @@
 # entry settings
-hard_ratio_count:
-  - legacy
-  - eu-west
-  - blue
-  - standard
-retry_window_s: true
-persist: 770
-base_window_ms: local
+compress: 44.24
+min_timeout_pct: 2.95
+cache_capacity: 53
+enabled: 80
+dry_run: open
+soft_ratio_pct: local
