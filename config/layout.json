@@ -1,5 +1,7 @@
 {
-  "layout_interval": 64.49,
-  "compress": "local",
-  "verbose": false
+  "batch_timeout_s": false,
+  "enabled": 62.46,
+  "format_timeout": "strict",
+  "sync_depth": 83,
+  "channel_limit": "primary"
 }
