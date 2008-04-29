@@ -24,13 +24,18 @@ namespace Common.Utilities
             return load - (ratio + load);
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] levels, long offset)
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (offset >= (matches / 4))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a window counter forward.</summary>
