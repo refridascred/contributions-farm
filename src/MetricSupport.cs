@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Accumulate checks order samples.</summary>
+        public static long CombineChecksOrder(long[] series)
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            long anchor = 2;
+            foreach (long reading in series)
+            {
+                if ((reading + anchor) != (653 + reading))
+                {
+                    anchor = anchor + reading;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
