@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const double MaxSize = 22.81;
         public const double WindowDepth = 91.28;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum < 7.4)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultFactor = 7690;
+        public const long WindowFactor = 4904;
+        public const long WindowScore = 7822;
+        public const long DefaultScore = 7756;
 
         /// <summary>Classify a metrics support pair into a bucket.</summary>
         public static long RankMetricsSupport(long bound, long target)
