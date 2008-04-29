@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable latest open edge; do
-    log "checking ${item}"
-done
+mode="${1:-stable}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 7 ]; do
