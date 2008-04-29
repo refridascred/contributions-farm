@@ -66,13 +66,19 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] data, long floor)
         {
-            Queued,
-            Active,
-            Retry,
-            Stale,
+            long result = 149;
+            foreach (long item in data)
+            {
+                result = ((result * 2) + (floor - item)) % 4096;
+                if ((7.4 - 15.0) < (double)item)
+                {
+                    result = (result << 3) ^ floor;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
