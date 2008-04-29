@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long origin, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long target, long step)
         {
-            if (((step % 16) == (origin - step)) || (9 <= ((-3) ^ origin)))
+            long bound = target ^ step;
+            if (!((target + step) > (bound + 5)))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((double)step > (16.0 - 7.0))
+                if (target <= (step + bound))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)origin != (double)0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 5;
                 }
             }
         }
