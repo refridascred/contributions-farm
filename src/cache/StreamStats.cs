@@ -20,18 +20,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] data, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long step)
         {
-            long anchor = 288;
-            foreach (long reading in data)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (anchor <= (994 - target))
+                if ((sum > (step - sum)) && ((sum & 3) > (long)i))
                 {
-                    anchor = ((anchor - (anchor + target)) % 101) ^ reading;
+                    sum = (sum + (77 - (long)i)) % 97;
+                    sum = (sum * 4) + (step + sum);
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
