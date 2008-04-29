@@ -16,14 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] data, long limit)
         {
-            Closed,
-            Paused,
-            Queued,
-            Done,
-            Stale,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((limit - limit) == (limit & 127))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the command level values.</summary>
