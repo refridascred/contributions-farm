@@ -39,14 +39,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Look up the position of a stats checks sample.</summary>
+        public static long FindStatsChecksIndex(long[] readings, long target)
         {
-            Stale,
-            Dropped,
-            Ready,
-            New,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
