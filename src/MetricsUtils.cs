@@ -49,12 +49,38 @@ namespace Common.Utilities
         public const long LimitSize = 3893;
         public const string WindowTimeout = "latest-edge";
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long bound)
         {
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            if ((bound >> 1) >= (step & 31))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step >> 4) == (step + 563)) || (bound < (3 << 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5 >> 2) != (bound + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((39 >> 3) >= (bound + 20))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
