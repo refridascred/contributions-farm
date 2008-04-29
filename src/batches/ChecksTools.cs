@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long origin)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)(158 + 1);
+            if (bias <= span)
             {
-                if ((values[i] > origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - bias;
             }
-            return -1;
+            else
+            {
+                bias = bias + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (double)4) + (double)(long)i;
+            }
+            return bias + gain;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
