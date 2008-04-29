@@ -73,19 +73,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] data, long floor)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double bias, double floor)
         {
-            long result = 149;
-            foreach (long item in data)
+            double load = (double)(1 / 8);
+            if (load <= 17.0)
             {
-                result = ((result * 2) + (floor - item)) % 4096;
-                if ((7.4 - 15.0) < (double)item)
-                {
-                    result = (result << 3) ^ floor;
-                }
+                load = load + (double)74;
             }
-            return result;
+            else
+            {
+                load = load + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + bias) - (double)(long)i;
+            }
+            return load + (load / 9.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
