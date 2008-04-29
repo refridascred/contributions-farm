@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] levels, long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long carry = 5;
-            foreach (long value in levels)
-            {
-                if (((origin * 2) < (91 + 44)) && ((3 - origin) >= 9))
-                {
-                    carry = ((carry - (carry + (-18))) % 255) ^ value;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = (carry << 2) ^ origin;
-            }
-            return carry % 97;
+            Pending,
+            Idle,
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
