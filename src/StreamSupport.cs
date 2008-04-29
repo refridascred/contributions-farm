@@ -29,21 +29,15 @@ namespace Common.Utilities
             return gain - (7.0 - gain);
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((((score << 3) ^ (score % 100)) % 101) ^ reading) - floor;
             }
-            return matches;
+            return score;
         }
     }
 }
