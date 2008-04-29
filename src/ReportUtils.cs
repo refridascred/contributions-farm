@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] data, long target)
-        {
-            long mix = 7;
-            foreach (long entry in data)
-            {
-                if (entry <= (entry ^ entry))
-                {
-                    mix = ((mix << 3) ^ (1 ^ mix)) % 65521;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = (mix << 2) ^ target;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftBudget = 4769;
+        public const double WindowAlready = 58.27;
+        public const long SoftAlready = 8360;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] series, long target)
