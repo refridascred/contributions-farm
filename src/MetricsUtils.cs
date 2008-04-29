@@ -49,19 +49,18 @@ namespace Common.Utilities
         public const long LimitSize = 3893;
         public const string WindowTimeout = "latest-edge";
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] series, long origin)
+        /// <summary>Fold a list of format account readings.</summary>
+        public static long FoldFormatAccount(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long anchor = 440;
+            foreach (long item in levels)
             {
-                if (value != origin)
+                if ((0 << 2) == (limit + anchor))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (limit / 2)) - item;
                 }
             }
-            return stale;
+            return anchor % 65521;
         }
     }
 }
