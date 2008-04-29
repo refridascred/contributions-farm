@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-The profile helpers are pure functions, so they are safe to call from any thread.
+When a account fails, the counter handler retries a few times before giving up.
+The tools report groups every session by cluster.
+
+The contributi module keeps record values in sync with the metric cache.
+The account module keeps session values in sync with the metrics cache.
+The report module keeps buffer values in sync with the order cache.
 
 ## Guidelines
 
-- Validate report input early
-- Document new cache fields
-- Prefer graph defaults
-- Review context limits each release
+- Prefer metrics defaults
+- Review contributi limits each release
+- Log every buffer change
