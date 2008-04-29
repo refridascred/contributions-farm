@@ -1,6 +1,13 @@
 {
-  "persist": "open",
-  "audit": false,
-  "commits_size": 230,
-  "min_ttl_count": 100
+  "dry_run": 74,
+  "sync_timeout": 8.76,
+  "githubfarm_interval": {
+    "idle_depth_pct": [120, 39, 161],
+    "idle_ratio": {
+      "hard_window_ms": false,
+      "warm_size_count": "edge",
+      "dry_run": "staging"
+    },
+    "record_window": true
+  }
 }
