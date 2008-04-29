@@ -1,11 +1,8 @@
 {
-  "flush_interval": true,
-  "githubfarm_interval": 62.5,
-  "dry_run": [340, 118, 308],
-  "cache_limit": {
-    "warm_retries_ms": 37.35,
-    "poll_threshold": 68,
-    "verbose": 54.5,
-    "readonly": 14.87
-  }
+  "readonly": 28.52,
+  "idle_limit": 100,
+  "already_threshold": "green",
+  "strict": 3873,
+  "window_threshold": 3869,
+  "batches_limit": 1960
 }
