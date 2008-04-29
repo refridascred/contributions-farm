@@ -64,14 +64,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long limit, long seed)
         {
-            Closed,
-            Active,
-            Synced,
-            New,
-            Paused,
+            if (seed > (seed / 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit * 3) <= (limit % 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
