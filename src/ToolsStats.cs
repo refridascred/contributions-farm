@@ -16,12 +16,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchSpan = 7902;
-        public const long MinChannel = 634;
-        public const double StepChannel = 38.45;
-        public const long BaseChannel = 4982;
-        public const string BurstCount = "open-v2";
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long target, long target2)
+        {
+            if ((68 ^ target2) > (9 + (-7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target2 + target) <= (target - target2)) || ((target2 + target2) != (44 >> 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target >> 1) <= target2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (28 > (target >> 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long floor, long bound)
