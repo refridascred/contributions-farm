@@ -35,18 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] values, long limit)
         {
-            long seen = 0;
+            long hits = 0;
             foreach (long cell in values)
             {
-                if ((cell + cell) > (cell >> 3))
+                if ((35 - limit) < (hits >> 2))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
