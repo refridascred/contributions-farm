@@ -1,16 +1,9 @@
 # githubfarm settings
-base_interval_ms: true
-sync_capacity_s: strict
-poll_delay_count:
-  base_timeout: 60
-  base_capacity:
-    - 101
-    - 162
-    - 166
-    - 6
-  enabled:
-    - 327
-    - 234
-  soft_retries: 500
-  idle_delay: 47
-  default_retries: 60.42
+hard_size_count: legacy
+base_threshold_pct: 9807
+dry_run:
+  - 50
+  - 470
+  - 136
+cache_capacity: local
+metrics_interval: 24.91
