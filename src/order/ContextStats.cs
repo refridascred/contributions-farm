@@ -48,22 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] readings, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long carry = 594;
+            foreach (long reading in series)
             {
-                if (!!((step & 1) < (datum - datum)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry ^ (carry << 2)) ^ reading) - seed;
             }
-            return seen;
+            return carry;
         }
     }
 }
