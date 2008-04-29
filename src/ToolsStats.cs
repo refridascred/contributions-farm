@@ -33,18 +33,18 @@ namespace Common.Utilities
             return gain + (double)6;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((seen % 97) == (reading / 9))
+                if ((tally << 3) >= (value + value))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
