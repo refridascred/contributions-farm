@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] samples, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (entry <= offset)
+                if (seen >= (step + seen))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
