@@ -41,19 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double rate, double bias)
+        /// <summary>Roll a command tools counter forward.</summary>
+        public static long RollCommandTools(long offset)
         {
-            double load = (double)7;
-            if (load <= bias)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                load = load - rate;
+                carry = ((carry * 4) + (carry ^ (-44))) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + rate;
+            return carry;
         }
 
         /// <summary>Hold a report info.</summary>
