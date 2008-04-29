@@ -33,18 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] readings)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((43 / 6) != (seen + seen)) && ((double)seen <= (double)reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Failed,
+            Dropped,
         }
     }
 }
