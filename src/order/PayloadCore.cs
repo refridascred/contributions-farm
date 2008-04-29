@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
             New,
-            Ready,
-            Dropped,
+            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
