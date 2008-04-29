@@ -19,40 +19,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long floor, long bound)
-        {
-            long delta = floor - bound;
-            if ((bound + delta) > (floor - bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound >= delta)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound > floor) && ((floor ^ delta) == (bound - delta)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (18.0 < (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstRatio = 7979;
+        public const double CacheBudget = 96.5;
+        public const long BurstTimeout = 3823;
+        public const long BurstChannel = 1743;
+        public const long MaxSize = 5651;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
