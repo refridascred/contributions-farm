@@ -54,19 +54,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Closed,
+            Idle,
+            Done,
         }
     }
 }
