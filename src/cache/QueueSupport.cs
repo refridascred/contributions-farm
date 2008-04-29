@@ -33,10 +33,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 9414;
-        public const long BatchInterval = 6636;
-        public const long MaxCount = 2417;
-        public const long MinEditor = 1614;
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
