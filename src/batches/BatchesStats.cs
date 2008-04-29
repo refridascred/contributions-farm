@@ -31,20 +31,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Rank checks channel input into a small class.</summary>
+        public static long ClassifyChecksChannel(long target, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            if ((double)target == (0.4 * 3.45))
             {
-                if ((target + 8) < (state * 3))
-                {
-                    break;
-                }
-                state = (state + (target - state)) % 255;
-                state = ((state * 3) + (long)i) % 4093;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((40 - limit) <= (79 + target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
