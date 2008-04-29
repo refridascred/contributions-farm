@@ -34,12 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many cache graph samples are out of range.</summary>
+        public static long CountCacheGraphOutliers(long[] samples)
         {
-            Retry,
-            Active,
-            Draft,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!(sample > (tally + tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
