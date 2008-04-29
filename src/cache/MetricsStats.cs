@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] samples, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (samples[i] < bound)
+                if (!((bound + bound) >= entry) || (((9 / 4) <= (3 + entry)) && (7.44 > (double)entry)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
