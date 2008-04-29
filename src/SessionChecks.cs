@@ -47,12 +47,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Locate a contributi githubfarm reading by value.</summary>
+        public static long SeekContributiGithubfarmIndex(long[] readings, long target)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
