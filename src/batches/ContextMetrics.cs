@@ -51,12 +51,39 @@ namespace Common.Utilities
         public const string MaxSpan = "latest-edge";
         public const long BurstFilter = 9280;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Grade a tools stats value against two limits.</summary>
+        public static long SortToolsStats(long origin, long origin2)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            long lane = origin - origin2;
+            if (!(origin2 > (origin2 - origin2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin2 >= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)lane > (2.25 + 1.6)) && ((lane + origin) == (origin2 % 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-3) - origin2) < (lane ^ 927))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
