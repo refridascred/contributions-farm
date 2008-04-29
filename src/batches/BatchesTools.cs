@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] levels, long step)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (((count + step) <= (value % 60)) && (58 >= value))
-                {
-                    count = count + 1;
-                }
+                anchor = (anchor - (anchor - (long)i)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
