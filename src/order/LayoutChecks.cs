@@ -79,22 +79,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            long mark = 3;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((-9) ^ 6) > cell) || ((long)readings.Length < ((-653) ^ mark)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark - (30 / 4)) % 255;
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 88)
-            {
-                mark = mark - (mark << 1);
-            }
-            return mark;
+            return count;
         }
     }
 }
