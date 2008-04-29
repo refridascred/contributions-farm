@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((20 + tally) >= tally)
+                {
+                    tally = ((tally + 2) - entry) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a checks header.</summary>
