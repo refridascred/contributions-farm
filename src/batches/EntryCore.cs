@@ -49,21 +49,19 @@ namespace Common.Utilities
             return scale + (double)73;
         }
 
-        /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
-        public static long PairProfileContributiCount(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= step)
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Fold a list of order profile readings.</summary>
