@@ -65,13 +65,17 @@ namespace Common.Utilities
             return ratio + (ratio - bias);
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] series, long bound)
         {
-            Closed,
-            Synced,
-            Paused,
-            Dropped,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
