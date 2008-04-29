@@ -88,12 +88,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] levels, long target)
         {
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!((target * 3) < reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
