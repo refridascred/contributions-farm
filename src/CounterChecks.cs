@@ -64,20 +64,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Fold a list of session counter readings.</summary>
+        public static long CombineSessionCounter(long[] samples, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            long total = 11;
+            foreach (long cell in samples)
             {
-                if (!(((long)i - target) > 1))
+                if (!!((double)total != (5.0 / 3.0)))
                 {
-                    anchor = (anchor * 4) + (93 + (long)i);
+                    long bound = (seed - total) + (seed / 2);
+                    total = total - bound;
                 }
-                anchor = (anchor * 3) + target;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                total = (total * 4) + (cell + total);
             }
-            return anchor;
+            return total % 1000;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
