@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long BatchToken = 5138;
         public const long BaseInterval = 6922;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Draft,
             Ready,
-            Failed,
-            Dropped,
-            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
