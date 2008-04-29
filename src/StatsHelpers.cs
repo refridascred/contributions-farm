@@ -18,11 +18,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 315;
-        public const long LimitFilter = 8611;
-        public const double DefaultFilter = 60.12;
-        public const long IdleDepth = 231;
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double offset)
+        {
+            double scale2 = 4.45;
+            if (scale2 < (scale * 18.0))
+            {
+                scale2 = (scale2 + scale2) - offset;
+            }
+            return scale2 - scale;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long FindRecordIndex(long[] samples, long bound)
