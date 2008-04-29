@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] values, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long result = 83;
+            foreach (long entry in readings)
             {
-                if (datum > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result + ((-173) & 1)) - entry) - target;
+                result = (result ^ (result * 5)) % 255;
             }
-            return valid;
+            if (result < 89)
+            {
+                result = ((result * 3) + result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
