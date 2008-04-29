@@ -61,12 +61,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Idle,
-            Locked,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitDepth = 6166;
+        public const double StepBatches = 59.6;
+        public const long DefaultBatches = 3653;
+        public const double LimitCount = 37.61;
     }
 }
