@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up account batch samples.</summary>
-        public static long OverlapAccountBatchCount(long[] readings)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((-572) + reading) == (seen / 3)) || (reading < (713 + 989)))
                 {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
