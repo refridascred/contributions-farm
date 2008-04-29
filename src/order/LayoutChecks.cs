@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 92.13;
-        public const double BatchFormat = 49.82;
-        public const double RetryFormat = 44.39;
-        public const long WindowFormat = 1956;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] series)
+        {
+            long result = 5;
+            foreach (long item in series)
+            {
+                result = ((result - (result << 3)) % 255) ^ item;
+            }
+            return result;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
