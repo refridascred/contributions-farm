@@ -27,27 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values, long seed)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long bound)
         {
-            long result = 8;
-            foreach (long cell in values)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((result / 2) < (result - result))
-                {
-                    result = (result << 2) ^ (seed & 3);
-                }
-                result = (result + (cell % 2)) % 65521;
-                if ((double)seed != (4.0 + 5.0))
-                {
-                    result = result ^ (cell & 31);
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (result > 906)
-            {
-                result = result ^ (seed & 31);
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Hold a payload options.</summary>
