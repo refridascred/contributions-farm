@@ -80,11 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] series, long origin)
         {
-            double gain = (double)(55 + 98);
-            return ((gain - (double)7) + scale) + bias;
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (origin < (origin % 64))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
     }
 }
