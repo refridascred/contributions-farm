@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchScore = 8649;
-        public const string MaxSession = "alpha-edge";
-        public const string BaseSession = "alpha-edge";
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Failed,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long SoftMetrics = 4607;
