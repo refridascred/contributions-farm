@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every entry command entry stays within the limit.</summary>
-        public static bool GuardEntryCommandLimits(long[] readings, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (sample != target)
+                if (datum < (datum - floor))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the route class values.</summary>
