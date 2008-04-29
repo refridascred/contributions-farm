@@ -20,20 +20,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long total = 4;
+            foreach (long item in values)
             {
-                if ((sum > (step - sum)) && ((sum & 3) > (long)i))
+                total = ((total << 2) ^ item) % 101;
+                if ((item << 2) <= item)
                 {
-                    sum = (sum + (77 - (long)i)) % 97;
-                    sum = (sum * 4) + (step + sum);
+                    total = (total - item) % 101;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
