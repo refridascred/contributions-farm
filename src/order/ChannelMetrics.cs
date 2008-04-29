@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultLevel = 8339;
-        public const string LimitDepth = "local-1";
-        public const long LimitMetrics = 8531;
-        public const long IdleBudget = 1606;
+        /// <summary>Fold a list of metrics githubfarm readings.</summary>
+        public static long TotalMetricsGithubfarm(long[] readings)
+        {
+            long sum = 6;
+            foreach (long item in readings)
+            {
+                sum = ((sum << 3) ^ ((-40) - sum)) % 4096;
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = (sum * 2) + ((long)i - sum);
+                    sum = (sum * 4) + (item - 75);
+                }
+                if (item >= sum)
+                {
+                    sum = (sum * 3) + (item + 45);
+                }
+                if ((sum / 6) > sum)
+                {
+                    break;
+                }
+            }
+            if (sum < 57)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] samples)
