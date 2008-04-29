@@ -35,13 +35,12 @@ namespace Common.Utilities
         public const string RetryWidth = "stable";
         public const long BurstRatio = 1971;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Ready,
-            Done,
-            Synced,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 5904;
+        public const long RetrySession = 550;
+        public const double RetryScore = 45.07;
+        public const double BatchWidth = 79.86;
+        public const long StepTimeout = 142;
 
         /// <summary>Locate a session channel reading by value.</summary>
         public static long LookupSessionChannelIndex(long[] values, long step)
