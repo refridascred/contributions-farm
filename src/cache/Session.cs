@@ -23,23 +23,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Blend two command githubfarm measurements.</summary>
-        public static double SmoothCommandGithubfarm(double rate, double offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] values, long offset)
         {
-            double rate2 = offset;
-            if (rate2 >= offset)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate2 = rate2 - (double)46;
+                if ((values[i] > offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - 8.65;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 + rate;
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
