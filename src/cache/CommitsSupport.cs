@@ -62,12 +62,12 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] data, long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] data, long bound)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= step)
+                if ((data[i] > bound) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
