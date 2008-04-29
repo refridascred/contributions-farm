@@ -1,13 +1,6 @@
 {
-  "retry_window_ms": [320, 332],
-  "warm_retries": 47.34,
-  "base_ttl_s": true,
-  "flush_ttl": 1024,
-  "warm_ttl_count": 32.46,
-  "verbose": {
-    "min_delay": "eu-west",
-    "soft_ratio_pct": 22,
-    "cluster_window": 44,
-    "retry_ratio_ms": 7083
-  }
+  "warm_ratio_pct": "edge",
+  "sync_size_ms": 33.41,
+  "batch_ratio_s": false,
+  "base_interval": 30
 }
