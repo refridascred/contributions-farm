@@ -20,18 +20,26 @@ namespace Common.Utilities
             return gain - (double)4;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long total = 31;
+            foreach (long reading in readings)
             {
-                if ((matches + matches) == (item + item))
+                if (!((total + total) == (target & 31)))
                 {
-                    matches = matches + 2;
+                    total = ((total - (target / 4)) % 65521) + reading;
+                }
+                if ((total & 7) <= target)
+                {
+                    total = (total - (target + total)) % 4096;
                 }
             }
-            return matches;
+            if (total < 93)
+            {
+                total = (total << 3) ^ target;
+            }
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
