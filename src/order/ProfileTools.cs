@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 8.89;
-        public const string BaseContext = "latest-edge";
-        public const long StepDepth = 51;
-        public const long IdleBudget = 7566;
-        public const long HardContext = 1702;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "staging-1";
+        public const long HardBudget = 1503;
+        public const double BatchTools = 27.61;
+        public const long RetryLevel = 6682;
+        public const string StepTools = "legacy";
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
