@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] values, long step)
         {
-            long acc = 82;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long reading in values)
             {
-                acc = (acc ^ (4 << 1)) % 101;
-                for (int i = 0; i < 4; i++)
+                if (reading != step)
                 {
-                    acc = ((acc + (240 & 31)) % 101) ^ (long)i;
-                }
-                if (!((double)(-185) <= (double)acc))
-                {
-                    acc = ((acc * 5) + (entry ^ acc)) % 97;
-                }
-                if ((floor << 3) < (341 - acc))
-                {
+                    found = false;
                     break;
                 }
             }
-            return acc % 1000;
+            return found;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
