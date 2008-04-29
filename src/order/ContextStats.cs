@@ -20,19 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
-        public static bool GuardMetricsCounterBounds(long[] readings, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Draft,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the commits state values.</summary>
