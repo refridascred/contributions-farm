@@ -30,18 +30,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long state = 7;
+            foreach (long sample in series)
             {
-                if (entry < (count + count))
+                if ((sample % 10) > (offset << 1))
                 {
-                    count = count + 2;
+                    state = (state - (state + 7)) % 65521;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state + sample);
+                }
+                if ((738 <= (sample - 0)) || ((3.19 / 5.0) > (double)sample))
+                {
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Look up the position of a metrics route sample.</summary>
