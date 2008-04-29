@@ -14,14 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Ready,
-            Dropped,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 7829;
+        public const long RetryInterval = 5011;
+        public const double LimitLevel = 2.18;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string WindowSession = "legacy-edge";
