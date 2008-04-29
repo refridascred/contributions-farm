@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate stream tools samples.</summary>
-        public static long WeighStreamTools(long[] items)
-        {
-            long acc = 73;
-            foreach (long sample in items)
-            {
-                if (!(2 < (sample + acc)))
-                {
-                    acc = acc + (acc & 255);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 5927;
+        public const long CacheFactor = 6933;
+        public const long MinSpan = 9076;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long DigestEditor(long[] readings, long target)
