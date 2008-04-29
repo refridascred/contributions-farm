@@ -1,12 +1,11 @@
 {
-  "warm_ratio": true,
-  "schema_size": 45,
-  "cluster_window": "primary",
-  "hard_window_count": "fallback",
-  "min_depth_s": {
-    "idle_depth_count": "standard",
-    "burst_timeout_pct": true,
-    "sync_ttl_s": 8619
-  },
-  "hard_limit_ms": "staging"
+  "flush_interval": true,
+  "githubfarm_interval": 62.5,
+  "dry_run": [340, 118, 308],
+  "cache_limit": {
+    "warm_retries_ms": 37.35,
+    "poll_threshold": 68,
+    "verbose": 54.5,
+    "readonly": 14.87
+  }
 }
