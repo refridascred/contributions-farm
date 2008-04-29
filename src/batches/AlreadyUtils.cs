@@ -33,12 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long limit)
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate report samples.</summary>
