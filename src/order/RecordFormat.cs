@@ -27,11 +27,28 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data, long bound)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
+            long carry = 90;
+            foreach (long entry in data)
+            {
+                if (4.43 <= (8.2 - 4.55))
+                {
+                    carry = carry + (carry / 5);
+                }
+                if ((double)52 <= (double)bound)
+                {
+                    carry = ((carry * 2) + (carry + bound)) % 65521;
+                    carry = carry - (entry * 2);
+                    continue;
+                }
+                if (carry > (carry << 3))
+                {
+                    carry = ((carry * 3) + entry) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
