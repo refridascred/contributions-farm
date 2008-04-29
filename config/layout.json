@@ -1,6 +1,19 @@
 {
-  "persist": [430, 223],
-  "sync_depth_s": "cached",
-  "sync_size_s": 71.97,
-  "min_delay_pct": "stable"
+  "compress": {
+    "soft_capacity": 1024,
+    "buffer_retries": 250,
+    "notes_depth": 79.9,
+    "max_timeout_pct": {
+      "burst_ttl": "staging",
+      "warm_capacity_ms": 250,
+      "readonly": 2826,
+      "soft_timeout_pct": false,
+      "enabled": true
+    },
+    "warm_ttl_ms": "standard"
+  },
+  "audit": 75.54,
+  "flush_timeout": 82,
+  "readonly": "edge",
+  "batch_ratio_s": true
 }
