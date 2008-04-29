@@ -51,17 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseTimeout = 94.01;
+        public const double BatchInterval = 9.45;
+        public const string StepInterval = "latest-edge";
+        public const double RetrySchema = 94.8;
     }
 }
