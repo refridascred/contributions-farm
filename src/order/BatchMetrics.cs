@@ -55,13 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] series, long floor)
         {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((double)floor >= (3.22 * 5.53)) || (((floor + item) <= hits) || ((item << 2) < 97)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
