@@ -19,31 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long step, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] items, long limit)
         {
-            if (target >= (400 % 64))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((24 + target) != (target * 5))
+                if (datum < (datum - tally))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (step / 6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 2) - limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
