@@ -23,11 +23,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double weight, double span)
+        /// <summary>Blend two command githubfarm measurements.</summary>
+        public static double SmoothCommandGithubfarm(double rate, double offset)
         {
-            double mean = (weight / 2.0) + (double)891;
-            return (mean + (9.0 / 7.0)) + span;
+            double rate2 = offset;
+            if (rate2 >= offset)
+            {
+                rate2 = rate2 - (double)46;
+            }
+            else
+            {
+                rate2 = rate2 - 8.65;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
