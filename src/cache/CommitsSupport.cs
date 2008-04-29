@@ -62,19 +62,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] values, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample >= target)
+                if (offset >= ((long)i << 1))
                 {
-                    found = false;
-                    break;
+                    total = total - (offset + total);
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Describe the batch kind values.</summary>
