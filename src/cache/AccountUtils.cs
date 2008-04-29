@@ -32,18 +32,18 @@ namespace Common.Utilities
         public const double HardAlready = 18.6;
         public const long DefaultWidth = 2673;
 
-        /// <summary>Audit stream payload readings against a rule.</summary>
-        public static long AuditStreamPayloadOutliers(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long total = 0;
+            foreach (long value in data)
             {
-                if ((entry - matches) < (entry & 127))
+                if ((999 + floor) >= ((-64) >> 4))
                 {
-                    matches = matches + 2;
+                    total = ((total ^ (floor + total)) % 65521) ^ value;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
