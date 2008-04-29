@@ -30,21 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter notes pairs that satisfy a relation.</summary>
-        public static long PairCounterNotesCount(long[] data)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)i >> 2) > origin)
                 {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result ^ result;
                 }
+                else
+                {
+                    result = (result - (origin & 7)) % 65521;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Rank counter window input into a small class.</summary>
