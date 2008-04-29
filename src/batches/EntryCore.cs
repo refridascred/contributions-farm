@@ -74,13 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            Paused,
+            Locked,
+            Queued,
+            Done,
         }
     }
 }
