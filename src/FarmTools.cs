@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] values, long floor)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit window queue readings against a rule.</summary>
