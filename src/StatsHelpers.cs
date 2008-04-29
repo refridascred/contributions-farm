@@ -20,15 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double bias, double offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] series, long bound)
         {
-            double bias2 = (4.68 / 2.0) * 8.6;
-            if (bias2 <= offset)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                bias2 = (bias2 + (double)25) + bias;
+                if (datum <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias2 + (double)40;
+            return stale;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
