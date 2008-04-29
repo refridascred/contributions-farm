@@ -26,15 +26,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] series, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] data, long target)
         {
             long matches = 0;
-            foreach (long cell in series)
+            foreach (long reading in data)
             {
-                if ((target ^ target) < target)
+                if ((reading % 64) >= (matches % 12))
                 {
-                    matches = (matches + 2) ^ cell;
+                    matches = (matches + 1) + target;
                 }
             }
             return matches;
