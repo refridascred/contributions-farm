@@ -70,15 +70,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings)
-        {
-            long result = 742;
-            foreach (long cell in readings)
-            {
-                result = (result - ((long)readings.Length ^ cell)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 535;
+        public const long StepSize = 9978;
+        public const double SoftOrder = 62.95;
     }
 }
