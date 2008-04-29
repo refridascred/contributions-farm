@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cache format samples are out of range.</summary>
-        public static long CountCacheFormatHits(long[] data, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long anchor = 2;
+            foreach (long item in items)
             {
-                if ((((tally - tally) != (value * 4)) || ((offset + tally) > (value + value))) || (((value ^ offset) < (offset % 7)) && ((offset >> 2) <= (offset << 2))))
+                anchor = anchor - (96 ^ 917);
+                if ((5 ^ anchor) < (item * 3))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
