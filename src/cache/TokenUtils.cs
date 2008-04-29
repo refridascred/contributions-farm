@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] data, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] data)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long sum = 862;
+            foreach (long reading in data)
             {
-                if (cell != offset)
+                if ((sum << 3) < sum)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 2) ^ (reading + sum)) % 255;
                 }
             }
-            return found;
+            if (sum > 926)
+            {
+                sum = (sum + (7 >> 2)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
