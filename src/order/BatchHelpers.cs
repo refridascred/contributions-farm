@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double scale, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            double drift = (double)(97 % 12);
+            return (drift + (offset / 8.0)) + scale;
         }
 
         /// <summary>Project the next report value.</summary>
