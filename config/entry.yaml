@@ -1,9 +1,11 @@
 # entry settings
-tools_timeout: 2718
-sync_size_ms: staging
-dry_run: 250
-idle_window: 22.62
-sync_timeout_count:
+min_ttl_count: false
+compress: true
+soft_ratio:
+  - 256
+  - 155
+notes_ratio: 1024
+retry_ttl_ms:
+  - blue
+  - legacy
   - edge
-  - staging
-soft_interval: 31
