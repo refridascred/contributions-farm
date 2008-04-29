@@ -12,23 +12,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the batches token entries that pass the check.</summary>
-        public static long TallyBatchesTokenMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((hits + item) < (hits * 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "standard";
+        public const string DefaultBudget = "open-v2";
+        public const long BaseWidth = 9273;
+        public const long HardSize = 5786;
+        public const long WindowSpan = 8450;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextRange(long[] levels, long step)
