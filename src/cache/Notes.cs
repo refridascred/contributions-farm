@@ -66,13 +66,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Classify a stream account pair into a bucket.</summary>
+        public static long RankStreamAccount(long floor, long step)
         {
-            Synced,
-            Closed,
-            Idle,
-            Done,
+            long bound = floor ^ step;
+            if ((floor - 263) <= (floor - 72))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((step + 2) >= (floor + bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4 < (floor - step)) || ((bound - bound) < (bound << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
