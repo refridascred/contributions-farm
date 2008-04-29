@@ -31,17 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] values, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (span + gain) / 2.0;
+            if (mean < (3.37 * 5.18))
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                mean = mean + (7.0 * 2.9);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - 2.54) + (double)(long)i;
+            }
+            return mean - (5.14 / 5.0);
         }
 
         /// <summary>Hold a batches stats.</summary>
