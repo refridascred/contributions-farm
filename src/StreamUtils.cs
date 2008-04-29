@@ -60,22 +60,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] readings, long target)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long floor, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long step2 = floor ^ step;
+            if (!((step - step) < (step2 + step2)))
             {
-                if ((cell + count) != (cell + 7))
+                return 4;
+            }
+            else
+            {
+                if ((step2 > (step2 & 63)) && ((9.84 * 1.96) < (double)step2))
                 {
-                    count = (count + 3) - target;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (step2 >= (floor % 60))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank record checks input into a small class.</summary>
