@@ -33,18 +33,32 @@ namespace Common.Utilities
             return gain + (double)6;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] readings, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long slot = limit ^ offset;
+            if ((slot << 3) == (limit + 225))
             {
-                if ((tally << 3) >= (value + value))
+                return 3;
+            }
+            else
+            {
+                if ((double)slot >= (3.54 - 8.06))
                 {
-                    tally = (tally + 3) - limit;
+                    return 5;
+                }
+                else
+                {
+                    if (26 < (offset % 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
