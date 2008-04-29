@@ -1,21 +1,18 @@
 # githubfarm settings
-max_capacity_count: 60
-payload_interval: green
-poll_ratio_ms:
-  report_size:
-    - blue
-    - primary
-    - legacy
+metric_threshold:
+  min_interval: 46.25
+  max_window:
+    - stable
     - strict
-  editor_window: 26
-  burst_retries: true
-session_timeout:
-  audit:
-    - open
-    - local
-    - local
-    - staging
-  retry_depth: 68
-  stream_timeout: 69.69
-  cache_interval: 8308
-  persist: staging
+  max_capacity_ms:
+    poll_ttl_ms: 2412
+    verbose: eu-west
+    max_threshold_count: cached
+    compress: 166
+githubfarm_capacity: 38.52
+poll_capacity: 93
+stats_ratio:
+  - 64
+  - 237
+  - 377
+  - 115
