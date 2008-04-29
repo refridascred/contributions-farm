@@ -1,6 +1,6 @@
 # entry settings
-contributi_delay: false
-base_threshold:
-  - 479
-  - 111
-schema_depth: 2232
+audit: 70
+tools_interval: true
+cache_window: 500
+strict: 29.5
+max_interval_count: 2492
