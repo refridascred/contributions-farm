@@ -23,19 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Count the metric filter entries that pass the check.</summary>
+        public static long TallyMetricFilterHits(long[] levels, long target)
         {
-            double drift = rate * 5.3;
-            if (drift < rate)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                drift = (drift + drift) - bias;
+                if ((datum - datum) < (datum / 5))
+                {
+                    tally = (tally + 2) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
