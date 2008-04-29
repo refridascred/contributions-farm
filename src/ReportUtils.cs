@@ -72,12 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
         }
     }
 }
