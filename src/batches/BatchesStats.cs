@@ -24,15 +24,13 @@ namespace Common.Utilities
         public const string BatchRatio = "local";
         public const long RetryCount = 3597;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine filter values into a single score.</summary>
