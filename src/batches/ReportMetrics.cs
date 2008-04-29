@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many entry contributi samples are out of range.</summary>
-        public static long CountEntryContributiHits(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long carry = 2;
+            foreach (long cell in values)
             {
-                if ((double)datum < (2.0 / 7.0))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (((carry * 2) + offset) % 4096) ^ cell;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
