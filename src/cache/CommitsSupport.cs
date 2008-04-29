@@ -26,10 +26,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 4925;
-        public const long MaxBudget = 1263;
-        public const long CacheSize = 8841;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Closed,
+            Synced,
+            Idle,
+            Done,
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] values, long step)
