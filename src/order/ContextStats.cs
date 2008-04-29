@@ -42,24 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support batch pair into a bucket.</summary>
-        public static long ClassifySupportBatch(long offset, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            if (7.7 < (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((475 - 18) <= (target << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
