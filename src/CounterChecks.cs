@@ -32,15 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Idle,
-            Closed,
-            Draft,
-            Ready,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "alpha-edge";
+        public const double BaseRatio = 31.28;
+        public const double DefaultChecks = 18.54;
+        public const long DefaultScore = 4533;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long target, long target2)
