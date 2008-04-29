@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleWidth = "local-1";
+        public const double BurstCount = 97.18;
+        public const long WindowInterval = 2561;
+        public const string LimitRatio = "fallback";
+        public const long RetryCache = 2541;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
