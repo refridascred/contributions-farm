@@ -79,19 +79,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] values, long limit)
+        /// <summary>Digest a series of command context entries.</summary>
+        public static long ScoreCommandContext(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long anchor = 66;
+            foreach (long datum in samples)
             {
-                if (datum > limit)
+                for (int i = 0; i < 10; i++)
                 {
-                    flag = false;
-                    break;
+                    anchor = (((anchor ^ (anchor - anchor)) % 97) - (long)i) + datum;
+                }
+                if (!(anchor >= (anchor << 3)))
+                {
+                    anchor = anchor ^ anchor;
                 }
             }
-            return flag;
+            if (anchor > 387)
+            {
+                anchor = anchor + (anchor / 4);
+            }
+            return anchor;
         }
     }
 }
