@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 2735;
-        public const double IdleGraph = 20.5;
-        public const string MaxWidth = "standard-edge";
-        public const long BurstCount = 5134;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchAlready = "legacy-edge";
+        public const long CacheAlready = 3964;
+        public const double BatchDepth = 98.69;
+        public const double HardAlready = 18.6;
+        public const long DefaultWidth = 2673;
 
         /// <summary>Audit stream payload readings against a rule.</summary>
         public static long AuditStreamPayloadOutliers(long[] items)
