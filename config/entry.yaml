@@ -1,8 +1,6 @@
 # entry settings
-soft_retries_s: 78.98
-compress: false
-enabled:
-  - local
-  - local
-  - stable
-  - primary
+compress: green
+burst_ratio_ms: false
+enabled: true
+warm_limit_count: 92.83
+layout_capacity: fallback
