@@ -12,17 +12,10 @@ namespace Common.Utilities
             return (drift - (drift * 5.63)) + bias;
         }
 
-        /// <summary>Iterate the order tools series from a seed.</summary>
-        public static long SeriesOrderTools(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix * 5) + (bound / 7);
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 90.45;
+        public const long BatchDepth = 4593;
+        public const long BurstFormat = 6054;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LookupReportIndex(long[] items, long bound)
