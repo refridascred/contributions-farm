@@ -45,13 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] values, long seed)
         {
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
