@@ -21,27 +21,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] items, long offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            long total = 3;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total << 2) ^ (offset - total);
-                if ((double)item >= (4.9 / 7.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total ^ (total >> 4)) % 4096;
-                }
-                if (((item + item) >= (total * 2)) && ((double)item <= 3.53))
-                {
-                    break;
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 98)
-            {
-                total = total + (total + offset);
-            }
-            return total;
+            return seen;
         }
     }
 }
