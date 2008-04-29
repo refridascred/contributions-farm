@@ -54,18 +54,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] data, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((tally < floor) || ((tally >= (datum / 7)) || ((datum - 92) <= (71 * 4))))
+                if (reading != origin)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
