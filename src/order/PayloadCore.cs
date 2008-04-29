@@ -48,15 +48,13 @@ namespace Common.Utilities
             return gain + (offset / 4.0);
         }
 
-        /// <summary>Iterate the buffer editor series from a seed.</summary>
-        public static long SeriesBufferEditor(long floor)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public bool Mode { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
