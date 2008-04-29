@@ -1,6 +1,22 @@
 {
-  "flush_threshold_s": ["green", "cached", "staging", "legacy"],
-  "persist": 10.5,
-  "soft_threshold": "local",
-  "max_interval": "cached"
+  "idle_capacity_pct": 60,
+  "schema_limit": {
+    "warm_interval": {
+      "strict": 6239,
+      "hard_ttl_ms": true,
+      "default_size_ms": ["strict", "stable", "open", "staging"],
+      "filter_size": true
+    },
+    "dry_run": 87.97,
+    "strict": [42, 451, 412, 201],
+    "idle_interval_pct": {
+      "poll_retries_ms": 7328,
+      "poll_limit_ms": "staging",
+      "hard_window": 2821,
+      "dry_run": "open",
+      "record_capacity": 789
+    },
+    "account_limit": "staging"
+  },
+  "soft_timeout": 94.21
 }
