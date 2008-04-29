@@ -13,12 +13,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Project the next window support value.</summary>
+        public static double BlendWindowSupport(double scale, double bias)
         {
-            Retry,
-            Draft,
-            Active,
+            double mean = (double)657 + bias;
+            if (mean < (mean + 7.64))
+            {
+                mean = (mean + (mean / 3.0)) + scale;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
