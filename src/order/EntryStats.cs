@@ -65,21 +65,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of window stream readings.</summary>
-        public static long OverlapWindowStreamCount(long[] data)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= seed)
                 {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
