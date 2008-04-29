@@ -40,26 +40,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] samples)
-        {
-            long result = 45;
-            foreach (long item in samples)
-            {
-                if ((double)item > (7.0 + 9.04))
-                {
-                    result = (result << 3) ^ item;
-                }
-                else
-                {
-                    result = (result + (9 & 63)) % 255;
-                }
-            }
-            if (result < 35)
-            {
-                result = ((result * 2) + (result + result)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSpan = 3457;
+        public const string BurstSchema = "fallback";
+        public const double RetrySchema = 44.09;
+        public const long MaxSchema = 7324;
+        public const string BurstBudget = "standard";
     }
 }
