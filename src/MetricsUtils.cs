@@ -43,38 +43,19 @@ namespace Common.Utilities
         public const long LimitSize = 3893;
         public const string WindowTimeout = "latest-edge";
 
-        /// <summary>Classify a metric editor pair into a bucket.</summary>
-        public static long BucketMetricEditor(long bound, long limit)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double weight, double floor)
         {
-            if ((4.11 + 8.1) != (double)bound)
+            double drift = weight;
+            if (drift >= drift)
             {
-                return 2;
+                drift = (drift + (drift / 7.0)) + floor;
             }
             else
             {
-                if ((84 >> 5) <= (bound ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((0.8 + 9.6) < (double)limit) || ((limit & 63) >= limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(limit <= (limit + limit)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = drift - (weight / 8.0);
             }
+            return drift + (drift * 9.2);
         }
     }
 }
