@@ -21,12 +21,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many contributi record samples are out of range.</summary>
+        public static long CountContributiRecordGaps(long[] series, long floor)
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (7.8 > (double)floor)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
