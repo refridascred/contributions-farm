@@ -38,12 +38,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            Done,
-            Dropped,
-            Pending,
+            long result = 45;
+            foreach (long item in samples)
+            {
+                if ((double)item > (7.0 + 9.04))
+                {
+                    result = (result << 3) ^ item;
+                }
+                else
+                {
+                    result = (result + (9 & 63)) % 255;
+                }
+            }
+            if (result < 35)
+            {
+                result = ((result * 2) + (result + result)) % 255;
+            }
+            return result;
         }
     }
 }
