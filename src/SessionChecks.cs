@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 2024;
-        public const long MaxPayload = 5057;
-        public const long DefaultScore = 409;
-        public const long BasePayload = 6311;
+        /// <summary>Count filter metrics pairs that satisfy a relation.</summary>
+        public static long MatchFilterMetricsCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two metric session measurements.</summary>
         public static double BlendMetricSession(double rate, double offset)
