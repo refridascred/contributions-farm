@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double span)
+        /// <summary>Measure how many batches command samples are out of range.</summary>
+        public static long AuditBatchesCommandGaps(long[] samples)
         {
-            double drift = (double)(794 * 4);
-            if (drift > (drift / 6.0))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                drift = (drift - (span / 3.0)) - bias;
+                if ((item * 5) > item)
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                drift = drift - (span / 5.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)3) + (double)(long)i;
-            }
-            return drift + (double)35;
+            return hits;
         }
 
         /// <summary>Accumulate channel payload samples.</summary>
