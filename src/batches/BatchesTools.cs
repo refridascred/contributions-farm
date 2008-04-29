@@ -28,13 +28,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string CacheLevel = "latest-edge";
+        public const long LimitCache = 5443;
+        public const long SoftCache = 2081;
     }
 }
