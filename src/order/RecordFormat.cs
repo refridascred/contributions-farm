@@ -55,21 +55,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count githubfarm cluster pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmClusterCount(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 82;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((-697) <= score))
                 {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - (origin - entry)) % 101;
+                }
+                if (score < (entry << 1))
+                {
+                    score = score - 4;
+                }
+                else
+                {
+                    score = (score - origin) % 255;
+                }
+                if ((entry + score) != (score * 5))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Accumulate session samples.</summary>
