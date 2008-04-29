@@ -71,26 +71,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of command context entries.</summary>
-        public static long ScoreCommandContext(long[] samples)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long anchor = 66;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    anchor = (((anchor ^ (anchor - anchor)) % 97) - (long)i) + datum;
-                }
-                if (!(anchor >= (anchor << 3)))
-                {
-                    anchor = anchor ^ anchor;
-                }
-            }
-            if (anchor > 387)
-            {
-                anchor = anchor + (anchor / 4);
-            }
-            return anchor;
+            Active,
+            Idle,
+            Pending,
+            Dropped,
         }
     }
 }
