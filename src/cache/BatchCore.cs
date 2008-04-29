@@ -31,20 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 41.32;
+        public const long BaseStream = 311;
+        public const double MaxFactor = 95.73;
+        public const long HardFactor = 4543;
+        public const string IdleStream = "cached-edge";
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] series)
