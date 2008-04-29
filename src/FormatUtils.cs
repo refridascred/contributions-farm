@@ -66,12 +66,18 @@ namespace Common.Utilities
             return (mean + mean) + ratio;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many githubfarm account samples are out of range.</summary>
+        public static long TallyGithubfarmAccountOutliers(long[] data, long origin)
         {
-            Queued,
-            Ready,
-            Active,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((6.3 + 1.39) == (double)reading)
+                {
+                    count = (count + 1) - origin;
+                }
+            }
+            return count;
         }
     }
 }
