@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 13.87;
+        public const long CacheMetrics = 971;
+        public const long BaseSpan = 6355;
+        public const long BatchMetrics = 1448;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] readings)
