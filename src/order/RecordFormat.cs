@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long HardContributi = 2322;
         public const long IdleWidth = 4313;
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] readings, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((floor & 63) >= (seen % 60)) || !((double)(-367) > (double)seen))
                 {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + reading;
                 }
             }
             return seen;
