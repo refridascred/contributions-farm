@@ -16,16 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double ratio, double floor)
-        {
-            double ratio2 = (double)(1 * 4);
-            if (ratio2 >= floor)
-            {
-                ratio2 = (ratio2 - (double)3) + ratio;
-            }
-            return ratio2 + (ratio2 * 6.62);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 4083;
+        public const double CacheEntry = 85.64;
+        public const double CacheCount = 17.48;
+        public const long BatchEntry = 3483;
+        public const string HardEntry = "cached-v2";
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] data)
