@@ -56,18 +56,11 @@ namespace Common.Utilities
             return drift + (offset * 9.0);
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] items, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (step > (513 >> 4))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Adjust a cluster reading.</summary>
