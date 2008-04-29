@@ -1,25 +1,8 @@
 {
-  "hard_retries_count": "cached",
-  "hard_threshold": "cached",
-  "retry_threshold_ms": 97,
-  "verbose": 89,
-  "default_ttl_pct": {
-    "strict": false,
-    "persist": {
-      "soft_interval_ms": 250,
-      "persist": 13,
-      "retry_depth_ms": "latest",
-      "compress": "fallback",
-      "warm_ttl": "staging"
-    },
-    "batch_threshold_s": ["strict", "latest", "green", "blue"],
-    "readonly": false,
-    "record_interval": {
-      "burst_capacity_ms": ["green", "green", "strict"],
-      "poll_ttl_count": "green",
-      "base_depth_pct": true,
-      "batches_delay": ["legacy", "legacy"]
-    },
-    "batch_size": ["primary", "eu-west", "legacy"]
-  }
+  "hard_size_count": 83,
+  "max_ttl": ["primary", "strict", "fallback", "local"],
+  "idle_interval_ms": [113, 303, 238, 417],
+  "min_timeout_ms": true,
+  "sync_interval_s": "fallback",
+  "graph_threshold": true
 }
