@@ -38,18 +38,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long sum = 29;
-            foreach (long value in values)
-            {
-                if ((6.7 - 3.4) < (double)sum)
-                {
-                    sum = ((sum ^ (173 / 9)) % 255) + value;
-                }
-            }
-            return sum;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
