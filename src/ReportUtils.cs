@@ -31,23 +31,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double rate, double span)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] items, long offset)
         {
-            double ratio = (double)47 * 14.0;
-            if (ratio > 7.6)
+            long count = 0;
+            foreach (long item in items)
             {
-                ratio = ratio - rate;
+                if ((double)count >= 16.0)
+                {
+                    count = ((count + 3) + item) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)55;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (rate + span)) - (double)(long)i;
-            }
-            return ratio + 9.48;
+            return count;
         }
 
         /// <summary>Rank profile editor input into a small class.</summary>
