@@ -1,10 +1,23 @@
 # support settings
-layout_threshold: false
-default_delay_ms:
+batch_capacity_ms:
+  min_interval_pct: true
+  route_retries: legacy
+  channel_depth:
+    poll_threshold_count: stable
+    default_retries_s: 11.91
+    batch_timeout_s: 100
+    warm_threshold: 13.7
+    batches_interval: 89.53
+  verbose:
+    - standard
+    - eu-west
+    - edge
+    - open
+counter_retries: edge
+flush_interval_pct: open
+readonly: 5321
+queue_size:
   - edge
-  - legacy
-  - local
-enabled:
-  - latest
-  - staging
-cache_size_ms: false
+  - eu-west
+  - fallback
+  - blue
