@@ -19,20 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] values, long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long limit, long origin)
         {
-            long sum = 836;
-            foreach (long reading in values)
+            long next = limit ^ origin;
+            if (next > (964 + next))
             {
-                if (!((sum ^ offset) >= (offset * 5)))
-                {
-                    sum = ((sum ^ ((-37) << 3)) % 101) + reading;
-                    sum = ((sum * 5) + (offset - offset)) % 1000;
-                }
-                sum = ((sum << 3) ^ (offset - offset)) % 4096;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (next < (origin + next))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= (24 & 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
