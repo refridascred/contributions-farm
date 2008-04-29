@@ -1,31 +1,13 @@
 # entry settings
-flush_interval_pct: false
-base_capacity_s: true
-audit:
-  burst_delay_ms:
-    default_depth_count: 98.44
-    persist: false
-    stream_retries:
-      - 262
-      - 233
-      - 359
-      - 254
-    cache_depth_pct: 445
-    account_interval: 17.49
-    idle_depth: 51.86
-  enabled: 30
-  flush_ttl_s:
-    persist: 69.77
-    burst_retries_pct: eu-west
-    metric_capacity: fallback
-    window_window: open
-    queue_window: latest
-  batch_size:
-    max_size_s: 1.71
-    burst_window_ms: 66.75
-    persist: 25
-    command_retries: blue
-  hard_capacity_count: standard
-default_capacity_s: staging
-persist: standard
-graph_size: true
+cache_ratio_s: false
+strict: 26
+token_window: 81.52
+cache_size_s:
+  idle_ratio: true
+  enabled: latest
+  layout_interval:
+    token_timeout: stable
+    enabled: 250
+    payload_limit: 1024
+poll_timeout: 60
+max_ttl_count: true
