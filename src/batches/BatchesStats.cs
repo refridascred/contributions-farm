@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item + count) == (item - item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultWidth = 805;
+        public const double MaxDepth = 54.17;
+        public const string IdleFilter = "stable-v2";
+        public const long DefaultFilter = 2464;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long FoldCommand(long[] values)
