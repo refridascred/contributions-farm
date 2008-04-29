@@ -46,12 +46,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long bound, long floor)
         {
-            Idle,
-            Ready,
-            Pending,
+            if ((floor - floor) > bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((56 - 161) < bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= (bound + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >> 4) >= floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a metric editor pair into a bucket.</summary>
