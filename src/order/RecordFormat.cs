@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 7011;
-        public const string MaxBudget = "staging-1";
-        public const long CacheInterval = 3143;
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] items)
+        {
+            long mark = 971;
+            foreach (long sample in items)
+            {
+                if (sample >= (mark / 5))
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+                else
+                {
+                    mark = mark - mark;
+                    mark = ((mark << 2) ^ 770) % 101;
+                }
+                mark = ((mark << 2) ^ (sample & 7)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryRoute = 93;
