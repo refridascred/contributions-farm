@@ -31,10 +31,11 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstTimeout = 29.65;
-        public const string BaseInterval = "legacy-edge";
-        public const string LimitRatio = "stable-v2";
-        public const long WindowFilter = 6408;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Size { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
