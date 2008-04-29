@@ -60,12 +60,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] series)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!((matches & 31) <= reading))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
