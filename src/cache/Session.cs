@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate graph account readings against a bound.</summary>
-        public static bool GuardGraphAccountBounds(long[] items, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long seed)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = mix - (seed / 8);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Project the next order value.</summary>
