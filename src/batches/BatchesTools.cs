@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] series, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((series[i] >= seed) && ((series[i] % 3) != 0))
+                if ((tally > (tally + seed)) || ((2.2 - 13.0) <= (double)seed))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
