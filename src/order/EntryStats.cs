@@ -34,19 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] levels, long floor)
-        {
-            long sum = 0;
-            foreach (long datum in levels)
-            {
-                if (((floor << 2) > datum) && ((5.8 / 4.0) == (double)sum))
-                {
-                    sum = sum + (41 + sum);
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftScore = 2.45;
+        public const long StepSpan = 9993;
+        public const long WindowInterval = 4157;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
