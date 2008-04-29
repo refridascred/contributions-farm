@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchDepth = 9265;
+        public const long BatchTimeout = 1539;
+        public const long CacheContext = 7330;
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double SmoothAccount(double gain, double floor)
