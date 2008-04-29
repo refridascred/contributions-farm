@@ -89,26 +89,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] data, long origin)
-        {
-            long anchor = 42;
-            foreach (long item in data)
-            {
-                if ((double)item >= (8.0 * 4.49))
-                {
-                    long hits = (origin ^ (long)data.Length) << 3;
-                    anchor = (anchor ^ (hits - 494)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor - origin) % 1000;
-                    anchor = anchor ^ origin;
-                }
-                anchor = (anchor + (origin << 1)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "latest-edge";
+        public const long SoftSize = 7646;
+        public const string SoftCount = "primary-edge";
+        public const long StepLevel = 6046;
     }
 }
