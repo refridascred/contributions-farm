@@ -33,23 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload githubfarm samples.</summary>
-        public static long TallyPayloadGithubfarm(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] items, long floor)
         {
-            long acc = 486;
-            foreach (long item in items)
+            long state = 12;
+            foreach (long datum in items)
             {
-                acc = (acc ^ (item - 73)) % 65521;
-                if (acc >= item)
-                {
-                    acc = (acc - (acc ^ acc)) % 65521;
-                }
-                if ((item - 13) >= (item - acc))
-                {
-                    break;
-                }
+                state = (state + datum) + floor;
             }
-            return acc;
+            if (state < 17)
+            {
+                state = ((state * 3) + (state + 8)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
