@@ -56,18 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] samples, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!(((matches + 9) <= (floor % 12)) && (reading > (floor + floor))))
+                if ((double)item == (9.0 / 4.0))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
