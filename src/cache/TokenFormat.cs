@@ -23,11 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitLevel = 2232;
-        public const long WindowProfile = 2909;
-        public const string BatchProfile = "latest-edge";
-        public const long WindowInterval = 8350;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Done,
+            Draft,
+            Closed,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
