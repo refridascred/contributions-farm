@@ -26,13 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many schema window samples are out of range.</summary>
+        public static long MeasureSchemaWindowGaps(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry & 15) <= entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a metric stats pair into a bucket.</summary>
