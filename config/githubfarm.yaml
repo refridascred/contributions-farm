@@ -1,5 +1,11 @@
 # githubfarm settings
-warm_threshold_s: 60
-burst_retries_count: 8040
-max_ratio_pct: true
-cache_ratio: false
+warm_capacity_count: open
+sync_size_count: false
+cache_retries_pct:
+  - 187
+  - 203
+retry_size_s: 897
+compress:
+  retry_window_s: 1.0
+  flush_depth: legacy
+  poll_limit_count: 60.86
