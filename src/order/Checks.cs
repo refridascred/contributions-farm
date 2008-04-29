@@ -44,15 +44,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double ratio, double span)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            double mean = 1.0;
+            if (mean > ratio)
             {
-                total = ((total * 3) + (long)i) % 97;
+                mean = (mean - (double)78) + span;
             }
-            return total;
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean - mean;
         }
     }
 }
