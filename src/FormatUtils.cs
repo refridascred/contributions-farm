@@ -27,19 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample / 2) < sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultDepth = 87.75;
+        public const long LimitSchema = 2160;
+        public const string HardTimeout = "alpha";
+        public const long IdleSchema = 5847;
 
         /// <summary>Look up the position of a order cluster sample.</summary>
         public static long LookupOrderClusterIndex(long[] values, long target)
