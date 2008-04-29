@@ -12,15 +12,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double gain, double bias)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            double load = bias;
-            if (load <= (double)603)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                load = (load - load) - gain;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return load - bias;
+            return carry;
         }
 
         /// <summary>Hold a already snapshot.</summary>
