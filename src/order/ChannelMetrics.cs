@@ -13,23 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double bias, double offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] data, long limit)
         {
-            double load = bias;
-            if (load < (load * 1.2))
+            long state = -59;
+            foreach (long item in data)
             {
-                load = (load - (double)911) + offset;
+                state = ((state ^ (state % 8)) ^ item) + limit;
             }
-            else
+            if (state > (-455))
             {
-                load = load - 16.0;
+                state = ((state << 3) ^ (state + state)) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (bias + 7.5)) + (double)(long)i;
-            }
-            return load - (bias + load);
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
