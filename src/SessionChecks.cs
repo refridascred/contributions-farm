@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long total = 7;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)samples.Length != (3.0 + 5.37))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (((total * 2) + (total + total)) % 65521) + item;
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 54)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
