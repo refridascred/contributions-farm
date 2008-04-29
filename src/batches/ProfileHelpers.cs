@@ -33,19 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] samples, long bound)
+        /// <summary>Locate a farm support reading by value.</summary>
+        public static long LocateFarmSupportIndex(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < bound)
+                if ((items[i] <= bound) && ((items[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
