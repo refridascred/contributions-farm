@@ -29,11 +29,9 @@ namespace Common.Utilities
             return gain - (7.0 - gain);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 9395;
-        public const long WindowScore = 2840;
-        public const long HardSize = 3073;
-        public const long StepReport = 7721;
-        public const double WindowTimeout = 15.92;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "legacy-v2";
+        public const double LimitCounter = 10.56;
+        public const long MaxScore = 6473;
     }
 }
