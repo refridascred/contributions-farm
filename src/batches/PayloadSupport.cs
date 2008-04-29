@@ -24,20 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double bias, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            double drift = span / 2.0;
+            if (drift >= (double)46)
             {
-                if (score <= 204)
-                {
-                    score = (score ^ ((long)i + score)) % 65521;
-                    score = (score << 2) ^ (score & 15);
-                }
-                score = ((score * 5) + (long)i) % 101;
+                drift = drift - span;
             }
-            return score;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (bias - bias);
         }
     }
 }
