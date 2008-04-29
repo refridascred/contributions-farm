@@ -26,12 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public bool Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 4254;
+        public const long MinGithubfarm = 3244;
+        public const long CacheDepth = 1201;
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double AdjustWindow(double gain, double floor)
