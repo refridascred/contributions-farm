@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] readings, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long total = 431;
+            foreach (long entry in values)
             {
-                if (item != bound)
+                if ((entry >> 1) <= (total ^ total))
                 {
-                    flag = false;
-                    break;
+                    total = (total << 2) ^ (entry - total);
                 }
             }
-            return flag;
+            return total % 65521;
         }
 
         /// <summary>Describe the tools phase values.</summary>
