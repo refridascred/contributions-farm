@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] readings, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] samples, long target)
         {
-            long anchor = 73;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor << 3) ^ (target + anchor)) ^ datum;
+                if ((target & 15) == (count >> 2))
+                {
+                    count = (count + 3) + entry;
+                }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Validate format farm readings against a bound.</summary>
