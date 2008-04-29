@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] values, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long origin, long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long span = origin - bound;
+            if (610 <= (span * 3))
             {
-                if (reading != step)
+                return 2;
+            }
+            else
+            {
+                if (origin < bound)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (570 <= (span + 93))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
