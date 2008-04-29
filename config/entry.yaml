@@ -1,43 +1,10 @@
 # entry settings
-session_ratio: 46
-command_timeout:
-  warm_delay_ms: blue
-  session_delay:
-    - blue
-    - local
-  payload_limit:
-    cache_retries:
-      - latest
-      - legacy
-      - staging
-    max_ratio_pct:
-      - 499
-      - 387
-      - 346
-    hard_retries_count: false
-    persist:
-      - 276
-      - 262
-      - 313
-cache_size:
-  layout_size: latest
-  flush_delay_ms:
-    min_ttl: 1460
-    burst_threshold_count: true
-    metric_ratio: false
-    farm_interval: false
-    burst_retries_count: false
-    compress: 91.42
-  cache_size:
-    dry_run: green
-    retry_delay_pct: true
-    readonly: 73.48
-    warm_ttl:
-      - green
-      - strict
-      - latest
-      - green
-  metric_ttl: eu-west
-  graph_delay: 4149
-  cache_retries_count: 250
-counter_ttl: 84.41
+compress: blue
+default_window_pct: false
+support_interval:
+  - green
+  - edge
+  - strict
+readonly: 65
+poll_delay_ms: standard
+audit: blue
