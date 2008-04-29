@@ -19,31 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long step, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            if ((step > (limit + step)) && ((step & 15) >= (limit - limit)))
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (7.0 >= (double)limit)
+                mix = ((mix << 2) ^ origin) % 1000;
+                if ((mix % 2) == (mix - (long)i))
                 {
-                    return 1;
+                    mix = ((mix * 5) + (mix >> 4)) % 1000;
+                    continue;
                 }
-                else
-                {
-                    if ((step - limit) >= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Project the next metric value.</summary>
