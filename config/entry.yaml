@@ -1,4 +1,25 @@
 # entry settings
-cache_depth: open
-support_delay: 7
-burst_ratio_count: 60
+compress: local
+batch_capacity_pct:
+  min_delay_s:
+    min_delay_pct:
+      - 176
+      - 493
+      - 431
+      - 318
+    verbose: 285
+    idle_size_s: 500
+    base_timeout_s:
+      - 328
+      - 71
+      - 401
+  min_window_ms:
+    sync_limit_ms: true
+    burst_ratio_s: 1.18
+    batch_limit: false
+  warm_capacity_pct: green
+  retry_depth_count: 62
+verbose: true
+audit: fallback
+flush_interval: staging
+batch_window: open
