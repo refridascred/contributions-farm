@@ -13,30 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] samples, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] values)
         {
-            long state = 288;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (state > (step % 100))
+                if ((23 - 44) <= (matches + 3))
                 {
-                    state = ((state << 2) ^ (step % 60)) % 97;
+                    matches = (matches + 1) ^ sample;
                 }
                 else
                 {
-                    state = ((state * 5) + (step / 2)) % 97;
-                }
-                if ((entry + 16) > (entry + 5))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (state < 6)
-            {
-                state = (state + (state >> 5)) % 1000;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the token phase values.</summary>
