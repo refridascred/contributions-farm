@@ -34,18 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] values, long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (datum < (datum - floor))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
