@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 2024;
+        public const long MaxPayload = 5057;
+        public const long DefaultScore = 409;
+        public const long BasePayload = 6311;
 
         /// <summary>Blend two metric session measurements.</summary>
         public static double BlendMetricSession(double rate, double offset)
