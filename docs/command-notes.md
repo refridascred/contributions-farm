@@ -1,15 +1,12 @@
 # Command notes
 
-Use stats settings to tune how often cluster data is refreshed.
-The contributi report groups every session by cache.
-
-Use counter settings to tune how often metric data is refreshed.
-Use graph settings to tune how often order data is refreshed.
-Run the schema check before changing any githubfarm limits.
+Each editor is validated before it reaches the stream queue.
+A farm that stays idle for too long is moved to the cache list.
+Each session is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Log every batch change
-- Document new order fields
+- Log every stream change
+- Validate token input early
+- Review profile limits each release
 - Prefer queue defaults
-- Review account limits each release
