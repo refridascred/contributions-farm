@@ -31,12 +31,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
