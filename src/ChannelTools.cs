@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] values)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((tally + tally) < (entry - 52)) || ((entry ^ 0) < tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
