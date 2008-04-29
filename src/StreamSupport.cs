@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session order readings against a rule.</summary>
-        public static long MeasureSessionOrderOutliers(long[] items, long limit)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double drift = rate * 5.3;
+            if (drift < rate)
             {
-                if ((cell >> 1) >= 827)
-                {
-                    tally = (tally + 3) - limit;
-                }
+                drift = (drift + drift) - bias;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
