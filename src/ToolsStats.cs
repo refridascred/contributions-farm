@@ -16,38 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long target, long target2)
+        /// <summary>Scale a editor format figure with a bias.</summary>
+        public static double BlendEditorFormat(double rate, double span)
         {
-            if ((68 ^ target2) > (9 + (-7)))
+            double gain = 5.03 - span;
+            if (gain > (double)33)
             {
-                return 4;
+                gain = (gain - 3.0) - rate;
             }
             else
             {
-                if (((target2 + target) <= (target - target2)) || ((target2 + target2) != (44 >> 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target >> 1) <= target2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (28 > (target >> 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                gain = gain - (8.5 * 9.68);
             }
+            return gain + (double)6;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
