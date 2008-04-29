@@ -14,18 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] values, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((1 & 127) > value)
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
