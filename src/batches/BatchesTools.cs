@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!!((cell / 6) < (cell + cell)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
