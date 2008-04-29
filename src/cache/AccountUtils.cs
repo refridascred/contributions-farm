@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] series, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long seed2)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            if ((seed2 & 127) <= (6 + 147))
             {
-                if (sample > limit)
+                return 7;
+            }
+            else
+            {
+                if ((seed2 / 9) <= (seed ^ seed))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((99 >> 5) > seed2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed2 + seed2) > (17 + 442))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
