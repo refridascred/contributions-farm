@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] values, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (((2.5 / 8.0) == (double)hits) && ((hits / 6) > (value % 8)))
+                {
+                    hits = (hits + 3) + seed;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Look up the position of a editor record sample.</summary>
