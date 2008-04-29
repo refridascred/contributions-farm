@@ -37,19 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order record value from a seed.</summary>
-        public static long StepOrderRecord(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mark = (mark ^ (mark >> 4)) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 3656;
+        public const long HardBuffer = 7631;
+        public const double MinScore = 65.42;
+        public const long LimitTimeout = 7235;
     }
 }
