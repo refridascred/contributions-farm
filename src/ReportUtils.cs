@@ -70,23 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] samples)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] data)
         {
-            long total = 668;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total ^ total) % 65521;
-                if (item <= (item - item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total * 4) + (2 / 8)) % 255;
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 8)
-            {
-                total = total + (total ^ total);
-            }
-            return total;
+            return matches;
         }
     }
 }
