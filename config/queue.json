@@ -1,13 +1,7 @@
 {
-  "base_depth": "stable",
-  "base_interval_s": false,
-  "soft_threshold_count": 26.49,
-  "base_window_count": {
-    "burst_limit": 43.27,
-    "retry_capacity_ms": "latest",
-    "hard_depth": 1024,
-    "retry_ttl_ms": "eu-west",
-    "enabled": [200, 194],
-    "command_window": 44
-  }
+  "flush_interval_ms": "eu-west",
+  "enabled": 84.99,
+  "base_interval_count": "standard",
+  "layout_capacity": 34,
+  "max_threshold_s": true
 }
