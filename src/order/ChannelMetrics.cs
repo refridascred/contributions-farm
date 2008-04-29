@@ -29,18 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] series)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample << 2) != (sample + sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
