@@ -47,28 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] series, long bound)
         {
-            long anchor = 2;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (!((item % 2) <= anchor))
+                if (entry < bound)
                 {
-                    anchor = (anchor ^ (item << 3)) % 4096;
-                    anchor = ((anchor * 3) + (53 << 1)) % 65521;
-                }
-                anchor = (anchor ^ (item - item)) % 4096;
-                if (((double)item == (15.0 + 19.0)) && ((anchor << 2) != (item % 100)))
-                {
-                    anchor = (anchor - 916) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < 23)
-            {
-                anchor = anchor ^ (anchor >> 2);
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
