@@ -30,17 +30,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] samples, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long offset, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long cur = offset - limit;
+            if ((double)9 >= (double)cur)
             {
-                if (samples[i] > target)
+                return 5;
+            }
+            else
+            {
+                if (((4.0 * 10.0) == (double)offset) || (limit >= 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((9.0 - 0.75) > (5.0 * 17.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
