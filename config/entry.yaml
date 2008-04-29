@@ -1,7 +1,8 @@
 # entry settings
-flush_threshold: staging
-contributi_interval: 1024
-editor_interval: staging
-channel_capacity: 66.56
-persist: 20
-sync_delay_pct: edge
+session_ttl: 63.11
+retry_retries_ms:
+  burst_timeout_count: false
+  warm_interval: false
+  hard_size: 31.65
+  default_interval_ms: 87
+soft_retries_ms: 250
