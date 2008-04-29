@@ -63,19 +63,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] series, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] readings, long target)
         {
-            long total = 501;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                total = total - (step ^ reading);
-                if (((step >> 2) < (total - total)) || ((reading - 3) >= total))
+                if ((cell + count) != (cell + 7))
                 {
-                    total = (total * 5) + total;
+                    count = (count + 3) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Rank record checks input into a small class.</summary>
