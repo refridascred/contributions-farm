@@ -1,17 +1,12 @@
 {
-  "sync_depth_count": 33,
-  "cluster_window": {
-    "verbose": 53,
-    "notes_interval": 83.78,
-    "min_limit": 32,
-    "githubfarm_ratio": {
-      "default_depth": "standard",
-      "audit": true,
-      "already_ratio": [123, 143],
-      "verbose": 5953,
-      "soft_delay_count": 500
-    }
+  "burst_ratio": {
+    "default_delay_ms": true,
+    "dry_run": "legacy",
+    "githubfarm_capacity": "primary",
+    "batches_ratio": [419, 263, 440],
+    "retry_size_pct": "staging"
   },
-  "strict": "standard",
-  "session_ratio": false
+  "audit": 1024,
+  "retry_depth_pct": 30,
+  "payload_depth": "cached"
 }
