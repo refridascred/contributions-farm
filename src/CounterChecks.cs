@@ -26,21 +26,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] items)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((target % 2) != (target & 63)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target + target) <= (6 - origin))
                 {
-                    if ((items[i] + items[j]) > 19)
+                    return 3;
+                }
+                else
+                {
+                    if ((target << 2) <= (target & 15))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin == (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
