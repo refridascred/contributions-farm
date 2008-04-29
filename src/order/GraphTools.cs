@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine format stats values into a single score.</summary>
-        public static long TotalFormatStats(long[] levels)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long sum = 6;
-            foreach (long reading in levels)
-            {
-                sum = (sum + (sum & 7)) % 4096;
-                if (sum < (reading % 10))
-                {
-                    sum = (sum ^ (sum + reading)) % 101;
-                }
-                else
-                {
-                    sum = (sum - 50) % 1000;
-                }
-            }
-            if (sum > (-868))
-            {
-                sum = ((sum * 5) + ((-88) ^ sum)) % 101;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Locate a checks reading by value.</summary>
