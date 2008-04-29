@@ -23,19 +23,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the schema report entries that pass the check.</summary>
-        public static long CountSchemaReportMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((4.73 * 9.47) >= (double)seen)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowWidth = 3701;
+        public const long DefaultSpan = 327;
+        public const long DefaultOrder = 3335;
+        public const long HardDepth = 1143;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long RankSchema(long floor, long bound)
