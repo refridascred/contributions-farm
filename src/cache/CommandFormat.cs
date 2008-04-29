@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)entry > (11.0 / 7.0))
-                {
-                    matches = matches + 1;
-                }
+                mix = mix ^ target;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Accumulate command samples.</summary>
