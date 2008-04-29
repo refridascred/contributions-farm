@@ -23,32 +23,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a batches checks value against two limits.</summary>
-        public static long ClassifyBatchesChecks(long target, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long edge = target + floor;
-            if (((edge << 3) > (target + edge)) && ((double)edge > (20.0 - 16.0)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (edge <= (floor << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor + floor) > (floor % 60)) && ((edge + floor) >= edge))
+                    if ((items[i] - items[j]) == 18)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
