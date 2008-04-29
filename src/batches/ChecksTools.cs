@@ -42,21 +42,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count graph channel pairs that satisfy a relation.</summary>
-        public static long MatchGraphChannelCount(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = -399;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = ((state ^ (state + 240)) % 97) - offset;
+                if ((1.5 + 15.0) <= (double)item)
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state + (state + state)) % 101;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
