@@ -53,12 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] items, long target)
         {
-            Synced,
-            Pending,
-            Stale,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a already counter forward.</summary>
