@@ -30,18 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] levels, long bound)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((9.87 - 1.2) != (double)datum)
-                {
-                    hits = (hits + 1) - bound;
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Idle,
+            Done,
         }
     }
 }
