@@ -72,17 +72,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long seed)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            Retry,
+            Stale,
+            Ready,
         }
     }
 }
