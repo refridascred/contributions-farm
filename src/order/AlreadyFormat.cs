@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of stream profile readings.</summary>
-        public static long ScoreStreamProfile(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] data, long bound)
         {
-            long anchor = 22;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                anchor = (anchor << 2) ^ (sample + 2);
+                if ((3.9 * 3.1) > (double)reading)
+                {
+                    tally = (tally + 2) + bound;
+                }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
