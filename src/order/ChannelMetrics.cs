@@ -16,19 +16,30 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Project the next already batch value.</summary>
-        public static double ScaleAlreadyBatch(double rate, double span)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] samples)
         {
-            double weight = span * 4.21;
-            if (weight >= (double)801)
+            long mark = 82;
+            foreach (long item in samples)
             {
-                weight = weight - weight;
+                if ((item + mark) > mark)
+                {
+                    mark = mark - mark;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ ((-3) + mark)) % 97;
+                }
+                if ((-7) >= item)
+                {
+                    mark = ((mark << 3) ^ item) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ 7) % 255;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - rate) - (double)(long)i;
-            }
-            return weight - rate;
+            return mark % 65521;
         }
 
         /// <summary>Describe the account level values.</summary>
