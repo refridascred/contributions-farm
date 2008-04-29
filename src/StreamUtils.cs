@@ -38,20 +38,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 5449;
+        public const long BaseScore = 3610;
+        public const string BurstFactor = "local-1";
+        public const string MinSize = "local-1";
+        public const string IdleFilter = "local-edge";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BaseStats = "open-1";
