@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] samples, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long bound, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (4 > (bound + floor))
             {
-                if (samples[i] == target)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound <= 8.41)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
