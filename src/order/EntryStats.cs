@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the support editor entries that pass the check.</summary>
-        public static long TallySupportEditorOutliers(long[] values, long floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((floor <= (19 + hits)) && ((hits >> 2) < hits))
+                if (entry != offset)
                 {
-                    hits = (hits + 2) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
