@@ -51,10 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseTimeout = 94.01;
-        public const double BatchInterval = 9.45;
-        public const string StepInterval = "latest-edge";
-        public const double RetrySchema = 94.8;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Idle,
+            Queued,
+            Active,
+            Dropped,
+            Failed,
+        }
     }
 }
