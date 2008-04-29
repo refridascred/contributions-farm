@@ -35,15 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema editor samples.</summary>
-        public static long TallySchemaEditor(long[] samples)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long score = 94;
-            foreach (long item in samples)
-            {
-                score = (score + score) - item;
-            }
-            return score % 65521;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a order cluster sample.</summary>
