@@ -76,24 +76,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long step)
+        /// <summary>Count the counter batch entries that pass the check.</summary>
+        public static long CountCounterBatchGaps(long[] series)
         {
-            if ((bound >> 5) != (bound + 5))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 31) > (bound & 63))
+                if ((tally - tally) >= tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 2) ^ sample;
                 }
             }
+            return tally;
         }
     }
 }
