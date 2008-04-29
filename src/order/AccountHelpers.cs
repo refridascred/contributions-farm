@@ -14,10 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 3971;
-        public const string WindowFactor = "alpha-edge";
-        public const long MaxChannel = 2113;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BatchFactor = 50.02;
