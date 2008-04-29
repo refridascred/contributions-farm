@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema window samples are out of range.</summary>
-        public static long MeasureSchemaWindowGaps(long[] samples)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry & 15) <= entry)
+                if ((readings[i] == step) && ((readings[i] % 2) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
