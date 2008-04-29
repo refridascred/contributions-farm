@@ -23,11 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Done,
-            Stale,
+            Active,
+            New,
+            Draft,
             Locked,
         }
 
