@@ -16,11 +16,11 @@ namespace Common.Utilities
         public const long MinSize = 8789;
         public const long RetryFormat = 9418;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepFactor = 4148;
-        public const long LimitAccount = 6256;
-        public const double MaxBudget = 49.31;
-        public const double BaseSpan = 16.27;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstSpan = 76.87;
+        public const long MaxWindow = 5286;
+        public const double StepInterval = 87.57;
+        public const long HardWindow = 7232;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] series)
