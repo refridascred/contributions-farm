@@ -59,23 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] series, long offset)
         {
-            long result = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((result + sample) >= 453)
+                if (cell <= offset)
                 {
-                    result = ((result << 2) ^ sample) % 65521;
-                }
-                result = (result - (sample - result)) % 4096;
-                if (((sample + 11) < 417) || (result <= (result * 3)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return result;
+            return ok;
         }
     }
 }
