@@ -1,6 +1,6 @@
 {
-  "profile_window": "standard",
-  "enabled": false,
-  "base_interval": "primary",
-  "verbose": "local"
+  "persist": "open",
+  "audit": false,
+  "commits_size": 230,
+  "min_ttl_count": 100
 }
