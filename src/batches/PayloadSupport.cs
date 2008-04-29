@@ -17,14 +17,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            Done,
-            Pending,
-            Draft,
-            New,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the cache editor series from a seed.</summary>
