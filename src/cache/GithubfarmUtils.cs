@@ -28,32 +28,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long seed, long target)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] values)
         {
-            long edge = seed - target;
-            if ((double)seed < 4.65)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (edge >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + edge) != (seed & 63))
+                    if ((values[i] ^ values[j]) != 6)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
