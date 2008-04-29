@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] items)
+        /// <summary>Combine buffer cache values into a single score.</summary>
+        public static long FoldBufferCache(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long result = 7;
+            foreach (long value in series)
             {
-                if (6.0 >= (double)tally)
-                {
-                    tally = (tally + 3) + datum;
-                }
+                result = (((result - (191 + 10)) % 65521) + value) - target;
             }
-            return tally;
+            if (result < 22)
+            {
+                result = result - (result * 5);
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a layout stats.</summary>
