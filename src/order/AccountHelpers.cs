@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the farm account entries that pass the check.</summary>
-        public static long AuditFarmAccountOutliers(long[] samples)
+        /// <summary>Digest a series of farm schema entries.</summary>
+        public static long WeighFarmSchema(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = 11;
+            foreach (long cell in readings)
             {
-                if ((count * 5) < 687)
+                if (((long)readings.Length == (5 + state)) || ((331 - 0) > cell))
                 {
-                    count = (count + 1) - cell;
+                    state = (state - (state % 16)) % 4096;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
