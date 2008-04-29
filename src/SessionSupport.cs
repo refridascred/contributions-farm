@@ -23,19 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many batches batch samples are out of range.</summary>
-        public static long MeasureBatchesBatchGaps(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum * 5) > (datum & 127))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseScore = "alpha-edge";
+        public const long RetryTimeout = 984;
+        public const double LimitFilter = 84.09;
+        public const string BurstFactor = "strict-edge";
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] readings, long floor)
