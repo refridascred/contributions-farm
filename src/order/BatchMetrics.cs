@@ -75,10 +75,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 21.7;
-        public const string SoftWidth = "strict-edge";
-        public const string SoftFactor = "strict-v2";
+        /// <summary>Audit already record readings against a rule.</summary>
+        public static long CountAlreadyRecordGaps(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((5.0 * 8.3) <= (double)value) && (14 > (3 - value)))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next metrics route value from a seed.</summary>
         public static long SeriesMetricsRoute(long step)
