@@ -20,11 +20,15 @@ namespace Common.Utilities
         public const string DefaultCount = "open-1";
         public const long LimitWidth = 9548;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 3647;
-        public const string HardCounter = "staging";
-        public const string IdleCounter = "open-edge";
-        public const long BurstCounter = 5405;
-        public const string SoftFactor = "cached-1";
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
