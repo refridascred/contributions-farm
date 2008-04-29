@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two window cache measurements.</summary>
-        public static double BlendWindowCache(double scale, double bias)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double scale, double floor)
         {
-            double bias2 = bias;
-            if (bias2 >= (19.0 - scale))
+            double load = floor - (12.0 - 9.9);
+            if (load > scale)
             {
-                bias2 = bias2 + (double)5;
+                load = load - (2.0 / 9.0);
             }
             for (int i = 0; i < 7; i++)
             {
-                bias2 = (bias2 + bias2) + (double)(long)i;
+                load = (load - scale) + (double)(long)i;
             }
-            return bias2 + (double)38;
+            return load - (scale - floor);
         }
 
         /// <summary>Check that every payload schema entry stays within the limit.</summary>
