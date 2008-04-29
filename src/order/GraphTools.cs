@@ -19,19 +19,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] readings, long seed)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long bound)
         {
-            long total = 547;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total * 5) + sample) % 65521) - seed;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (total < (-1))
-            {
-                total = total ^ (8 % 12);
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
