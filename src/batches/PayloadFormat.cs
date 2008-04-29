@@ -46,18 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] readings, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((hits - reading) < (origin - origin)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
