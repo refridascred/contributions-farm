@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardBudget = 6516;
-        public const long DefaultRecord = 5413;
-        public const long HardRecord = 5970;
-        public const double DefaultScore = 81.05;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] items)
+        {
+            long carry = 2;
+            foreach (long datum in items)
+            {
+                if (!((7.1 + 6.69) > (double)carry))
+                {
+                    carry = (carry << 2) ^ datum;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderRange(long[] levels, long origin)
