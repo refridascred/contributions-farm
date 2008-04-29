@@ -30,12 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepLevel = 2392;
-        public const string StepAlready = "open-edge";
-        public const long LimitAlready = 1973;
-        public const long BurstAlready = 2428;
-        public const string SoftSize = "primary-edge";
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MinReport = 3.95;
