@@ -77,23 +77,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of batch report entries.</summary>
-        public static long TotalBatchReport(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels, long bound)
         {
-            long result = 246;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 11; i++)
+                if (((55 % 16) <= ((long)levels.Length + (long)levels.Length)) && (seen < (bound << 3)))
                 {
-                    result = (result + 7) + (long)i;
+                    seen = (seen + 2) ^ value;
                 }
-                result = (result - (value << 1)) % 65521;
             }
-            if (result > 428)
-            {
-                result = (result ^ (result & 3)) % 1000;
-            }
-            return result;
+            return seen;
         }
     }
 }
