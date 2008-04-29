@@ -34,18 +34,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many profile account samples are out of range.</summary>
-        public static long AuditProfileAccountMatches(long[] data)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((17 ^ matches) < (matches ^ 4))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Ready,
+            Failed,
+            Retry,
         }
     }
 }
