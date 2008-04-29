@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] data, long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mark = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((hits ^ hits) > hits) && (hits < entry))
+                if ((double)(long)i >= (double)seed)
                 {
-                    hits = (hits + 3) - floor;
+                    mark = mark - mark;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = (mark ^ seed) % 97;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a format entry.</summary>
