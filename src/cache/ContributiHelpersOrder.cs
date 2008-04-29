@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "local-1";
-        public const long WindowChannel = 391;
-        public const long RetryTimeout = 6663;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score ^ ((long)i - (long)i)) % 97;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double weight, double bias)
