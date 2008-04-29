@@ -20,18 +20,22 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!((reading + (-15)) != (reading * 3)))
+                if (!((value & 31) > value))
                 {
-                    hits = hits + 3;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a entry summary.</summary>
