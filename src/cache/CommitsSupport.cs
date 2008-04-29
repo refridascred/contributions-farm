@@ -62,13 +62,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] values, long target)
         {
-            New,
-            Queued,
-            Ready,
-            Draft,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the batch kind values.</summary>
