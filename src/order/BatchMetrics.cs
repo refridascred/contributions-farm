@@ -49,23 +49,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] values)
-        {
-            long carry = 7;
-            foreach (long datum in values)
-            {
-                if ((carry + carry) > (datum - carry))
-                {
-                    carry = (carry - (carry - (long)values.Length)) % 1000;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = ((carry << 3) ^ carry) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 21.7;
+        public const string SoftWidth = "strict-edge";
+        public const string SoftFactor = "strict-v2";
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long PairContributiCount(long[] series)
