@@ -46,14 +46,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] data)
         {
-            Queued,
-            Failed,
-            Retry,
-            Synced,
-            New,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
