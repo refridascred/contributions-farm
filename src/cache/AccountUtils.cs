@@ -18,12 +18,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchAlready = "legacy-edge";
-        public const long CacheAlready = 3964;
-        public const double BatchDepth = 98.69;
-        public const double HardAlready = 18.6;
-        public const long DefaultWidth = 2673;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepFactor = 706;
+        public const double WindowTimeout = 47.49;
+        public const long HardLayout = 5981;
+        public const double StepWidth = 18.74;
+        public const long DefaultLayout = 4429;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] data, long floor)
