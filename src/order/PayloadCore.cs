@@ -24,15 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batch buffer readings.</summary>
-        public static long TotalBatchBuffer(long[] series)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long mark = 37;
-            foreach (long item in series)
-            {
-                mark = (mark - (item + 149)) % 4096;
-            }
-            return mark;
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
