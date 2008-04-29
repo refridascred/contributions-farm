@@ -23,19 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double bias, double offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double drift = bias;
-            if (drift > (double)6)
-            {
-                drift = (drift + 3.0) - offset;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            return drift + (bias - 8.75);
+            Synced,
+            Pending,
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Iterate the buffer farm series from a seed.</summary>
