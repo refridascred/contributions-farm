@@ -48,13 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
-            public double Limit { get; set; }
+            Draft,
+            Ready,
+            Done,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
