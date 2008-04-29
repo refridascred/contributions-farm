@@ -14,17 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a stats contributi sample.</summary>
-        public static long LookupStatsContributiIndex(long[] readings, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) != 0))
+                if (datum > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
