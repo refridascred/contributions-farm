@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema payload samples are out of range.</summary>
-        public static long MeasureSchemaPayloadOutliers(long[] series, long bound)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            double mean = offset;
+            if (mean < (double)61)
             {
-                if ((bound + tally) <= (tally - tally))
-                {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = (mean + (double)12) - gain;
             }
-            return tally;
+            return mean + (double)40;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
