@@ -44,15 +44,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double weight, double span)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series, long step)
         {
-            double ratio = (double)(743 >> 3);
-            for (int i = 0; i < 4; i++)
+            long mix = 35;
+            foreach (long value in series)
             {
-                ratio = (((ratio + ratio) - (double)(long)i) + weight) - span;
+                if ((double)mix == (13.0 / 7.0))
+                {
+                    mix = ((mix * 2) + value) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ (step % 97);
+                }
             }
-            return ratio + 9.9;
+            return mix;
         }
     }
 }
