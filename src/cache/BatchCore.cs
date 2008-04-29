@@ -25,12 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "staging-edge";
-        public const long StepLayout = 6608;
-        public const long BatchLayout = 4901;
-        public const long SoftSpan = 6674;
-        public const double LimitLayout = 40.31;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] values, long limit)
+        {
+            long score = 0;
+            foreach (long cell in values)
+            {
+                if (6 < (score >> 5))
+                {
+                    score = (score - (cell + cell)) - limit;
+                }
+            }
+            if (score > 337)
+            {
+                score = ((score * 4) + (91 + (long)values.Length)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double MinStream = 41.32;
