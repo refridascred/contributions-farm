@@ -24,13 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] items, long bound)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
