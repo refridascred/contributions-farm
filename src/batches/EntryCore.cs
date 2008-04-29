@@ -33,14 +33,10 @@ namespace Common.Utilities
         public const long RetryScore = 8549;
         public const string CacheSize = "fallback";
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchLevel = 4435;
+        public const string IdleCount = "fallback";
+        public const string WindowScore = "open-1";
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
