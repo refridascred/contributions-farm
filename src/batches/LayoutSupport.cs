@@ -15,13 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Retry,
-            New,
-            Queued,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheLevel = 7.33;
+        public const long CacheAlready = 6328;
+        public const long MaxRatio = 7156;
+        public const string StepAlready = "cached-1";
+        public const long SoftAlready = 3692;
 
         /// <summary>Count counter notes pairs that satisfy a relation.</summary>
         public static long PairCounterNotesCount(long[] data)
