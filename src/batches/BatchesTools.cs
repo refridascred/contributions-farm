@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] series)
         {
-            Failed,
-            Closed,
-            Pending,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!!((cell / 6) < (cell + cell)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session mode values.</summary>
