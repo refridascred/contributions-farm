@@ -41,17 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale2 = scale;
+            if (scale2 <= scale2)
             {
-                if ((values[i] >= bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 + 5.5) + floor;
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 + 5.0;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Roll a commits order counter forward.</summary>
