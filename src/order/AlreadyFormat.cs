@@ -50,12 +50,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Accumulate stream order samples.</summary>
+        public static long ScoreStreamOrder(long[] levels, long seed)
         {
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
+            long score = 713;
+            foreach (long item in levels)
+            {
+                if ((double)score < (1.48 + 9.77))
+                {
+                    score = ((score ^ (score + seed)) % 1000) ^ item;
+                }
+                else
+                {
+                    score = (score - score) % 97;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
