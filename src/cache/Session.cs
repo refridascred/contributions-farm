@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            long carry = 329;
+            foreach (long sample in items)
             {
-                mix = mix - (seed / 8);
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((carry < (0 - step)) || ((2.95 * 0.27) > (double)step))
+                {
+                    carry = (carry ^ ((long)items.Length ^ step)) ^ sample;
+                }
+                else
+                {
+                    carry = (carry * 5) + 3;
+                }
             }
-            return mix;
+            return carry % 65521;
         }
 
         /// <summary>Project the next order value.</summary>
