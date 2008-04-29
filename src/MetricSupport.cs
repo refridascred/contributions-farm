@@ -19,23 +19,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data, long bound)
+        /// <summary>Look up the position of a metrics githubfarm sample.</summary>
+        public static long FindMetricsGithubfarmIndex(long[] levels, long step)
         {
-            long anchor = 864;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor ^ anchor) ^ sample;
-                if ((bound << 3) > (bound / 7))
+                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
                 {
-                    anchor = (anchor << 2) ^ bound;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + anchor;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
