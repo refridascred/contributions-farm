@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 96.49;
-        public const string MinInterval = "open-edge";
-        public const long MaxRatio = 6080;
-        public const string LimitNotes = "fallback";
-        public const long HardNotes = 7911;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels)
+        {
+            long carry = 48;
+            foreach (long item in levels)
+            {
+                if ((carry + carry) == ((-555) + 3))
+                {
+                    carry = ((carry * 2) + (item - 9)) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
