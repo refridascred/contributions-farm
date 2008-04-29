@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series, long seed)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] series, long target)
         {
-            long total = -99;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((8.0 * 9.7) != (double)(long)series.Length) || ((total / 5) < seed))
+                if (series[i] < target)
                 {
-                    total = (total ^ (total - reading)) % 97;
-                }
-                else
-                {
-                    total = (total << 3) ^ total;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
