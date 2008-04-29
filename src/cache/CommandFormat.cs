@@ -49,38 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank route cluster input into a small class.</summary>
-        public static long RankRouteCluster(long limit, long floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            if ((double)limit < 9.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit ^ limit) <= 4)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((57 + limit) != (limit - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((9 + floor) >= floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Ready,
+            Closed,
         }
     }
 }
