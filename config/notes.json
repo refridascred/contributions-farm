@@ -1,8 +1,6 @@
 {
-  "readonly": "legacy",
-  "flush_timeout_ms": 250,
-  "default_ratio_pct": 250,
-  "batch_depth_pct": 250,
-  "filter_size": 2867,
-  "format_interval": "latest"
+  "profile_window": "standard",
+  "enabled": false,
+  "base_interval": "primary",
+  "verbose": "local"
 }
