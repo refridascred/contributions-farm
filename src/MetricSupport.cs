@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Idle,
-            New,
-            Active,
-            Closed,
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the batches token entries that pass the check.</summary>
