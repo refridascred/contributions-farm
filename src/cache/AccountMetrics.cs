@@ -76,26 +76,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] samples, long floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long result = 99;
-            foreach (long value in samples)
-            {
-                if ((double)floor <= (0.43 - 8.48))
-                {
-                    result = (result + 91) ^ value;
-                }
-                else
-                {
-                    result = (result - (90 / 8)) % 255;
-                }
-            }
-            if (result > 22)
-            {
-                result = result - (floor / 8);
-            }
-            return result;
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
