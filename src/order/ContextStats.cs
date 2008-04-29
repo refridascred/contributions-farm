@@ -30,22 +30,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] items, long seed)
+        /// <summary>Adjust a queue profile reading.</summary>
+        public static double SmoothQueueProfile(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!((tally - 8) < reading))
-                {
-                    tally = (tally + 3) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double load = gain;
+            return (load + gain) + offset;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
