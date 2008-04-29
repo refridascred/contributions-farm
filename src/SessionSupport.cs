@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Closed,
-            Failed,
-            Dropped,
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
