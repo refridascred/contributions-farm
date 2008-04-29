@@ -1,8 +1,8 @@
 {
-  "max_ttl_ms": true,
-  "window_size": "standard",
-  "min_size_s": true,
-  "dry_run": 4331,
-  "default_size": 53,
-  "buffer_size": ["primary", "local", "edge", "primary"]
+  "readonly": 500,
+  "token_threshold": 98,
+  "strict": true,
+  "commits_depth": 236,
+  "cache_size": "standard",
+  "queue_threshold": [182, 152]
 }
