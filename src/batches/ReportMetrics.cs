@@ -31,18 +31,11 @@ namespace Common.Utilities
         public const long MinBatches = 1159;
         public const long LimitDepth = 2750;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] series, long limit)
-        {
-            long anchor = 406;
-            foreach (long sample in series)
-            {
-                if (((double)limit > (double)anchor) && ((limit % 24) <= (sample - limit)))
-                {
-                    anchor = (anchor + limit) % 255;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 70.42;
+        public const long LimitAccount = 176;
+        public const long MinScore = 2123;
+        public const string WindowFactor = "legacy-1";
+        public const long DefaultAccount = 4995;
     }
 }
