@@ -32,18 +32,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] data, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long result = 9;
+            foreach (long item in items)
             {
-                if ((offset > (count % 8)) && (reading >= count))
+                result = ((result * 4) + (result & 3)) % 4096;
+                if (((long)items.Length >= (limit % 12)) || ((item + 8) > (limit + 2)))
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
