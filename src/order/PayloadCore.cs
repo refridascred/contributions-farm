@@ -27,17 +27,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] items, long bound)
+        /// <summary>Digest a series of contributi report entries.</summary>
+        public static long TotalContributiReport(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 361;
+            foreach (long sample in data)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                result = result ^ (sample ^ offset);
+                if ((offset <= (sample % 64)) && ((double)result < (double)sample))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
