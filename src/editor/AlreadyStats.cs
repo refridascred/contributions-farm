@@ -19,24 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long origin2)
+        /// <summary>Find the first schema queue entry that matches the target.</summary>
+        public static long LocateSchemaQueueIndex(long[] readings, long target)
         {
-            if ((origin2 + origin2) >= (origin ^ 925))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin2 >= 2)
+                if (readings[i] >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
