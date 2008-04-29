@@ -17,23 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] values, long seed)
-        {
-            long sum = 66;
-            foreach (long cell in values)
-            {
-                if (((double)seed <= (double)(-24)) || (seed >= (long)values.Length))
-                {
-                    sum = sum ^ (cell - cell);
-                }
-            }
-            if (sum > 9)
-            {
-                sum = ((sum << 2) ^ (seed << 3)) % 65521;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchScore = 8649;
+        public const string MaxSession = "alpha-edge";
+        public const string BaseSession = "alpha-edge";
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] items, long target)
