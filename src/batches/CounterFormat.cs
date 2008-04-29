@@ -54,22 +54,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] readings)
+        /// <summary>Validate counter editor readings against a bound.</summary>
+        public static bool CheckCounterEditorBounds(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((matches + 31) <= (entry - entry))
+                if (sample > limit)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
