@@ -34,10 +34,19 @@ namespace Common.Utilities
             return gain + (double)6;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 5875;
-        public const long IdleScore = 6790;
-        public const double StepChecks = 61.86;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen % 97) == (reading / 9))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long WeighReport(long[] items)
