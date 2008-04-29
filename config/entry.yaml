@@ -1,8 +1,13 @@
 # entry settings
-audit: 62.16
-persist: 72.14
-compress:
+min_delay: open
+hard_delay_pct: 1024
+warm_capacity_s:
+  farm_timeout: 34
+  base_delay_ms: false
+  min_delay_count: fallback
+  verbose: standard
+cache_ttl:
+  - blue
   - open
-  - green
-profile_interval: false
-enabled: false
+  - primary
+contributi_capacity: local
