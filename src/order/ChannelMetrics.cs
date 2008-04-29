@@ -16,19 +16,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Project the next already batch value.</summary>
+        public static double ScaleAlreadyBatch(double rate, double span)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            double weight = span * 4.21;
+            if (weight >= (double)801)
             {
-                if (((double)origin > 5.0) || ((double)origin >= 1.93))
-                {
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                weight = weight - weight;
             }
-            return state;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - rate) - (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Describe the commits kind values.</summary>
