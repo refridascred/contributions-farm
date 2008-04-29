@@ -32,14 +32,26 @@ namespace Common.Utilities
         public const double BatchScore = 70.45;
         public const long CacheSupport = 6046;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] items, long origin)
         {
-            Synced,
-            Pending,
-            Queued,
-            Locked,
-            Paused,
+            long mark = 135;
+            foreach (long sample in items)
+            {
+                if ((double)(long)items.Length < (1.48 / 7.0))
+                {
+                    mark = ((mark * 2) + origin) % 97;
+                }
+                else
+                {
+                    mark = (mark + (mark - mark)) % 1000;
+                }
+                if ((3.8 - 5.1) <= (double)sample)
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
