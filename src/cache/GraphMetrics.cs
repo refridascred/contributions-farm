@@ -39,13 +39,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 4848;
+        public const string BurstMetrics = "latest-1";
+        public const long BaseScore = 4547;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long offset)
