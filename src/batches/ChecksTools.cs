@@ -45,9 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 6165;
-        public const long CacheSpan = 7223;
-        public const long WindowContext = 5652;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
