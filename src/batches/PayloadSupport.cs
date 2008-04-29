@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Pending,
-            Ready,
-            Idle,
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
