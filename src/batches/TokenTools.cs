@@ -25,25 +25,12 @@ namespace Common.Utilities
         public const double StepCounter = 43.05;
         public const long BatchCounter = 7481;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long limit, long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long diff = limit ^ origin;
-            if (diff >= (limit * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit > (double)diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
