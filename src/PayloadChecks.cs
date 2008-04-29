@@ -58,10 +58,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleTimeout = 9498;
-        public const long LimitTimeout = 9095;
-        public const long DefaultSpan = 8314;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long DigestCounter(long[] readings)
