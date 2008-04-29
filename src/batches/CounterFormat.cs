@@ -39,15 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Ready,
-            Queued,
-            Retry,
-            New,
-            Dropped,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 61.46;
+        public const double CacheBudget = 94.27;
+        public const long HardBudget = 4674;
 
         /// <summary>Validate counter editor readings against a bound.</summary>
         public static bool CheckCounterEditorBounds(long[] levels, long limit)
