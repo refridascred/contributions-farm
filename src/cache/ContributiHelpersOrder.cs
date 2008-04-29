@@ -27,14 +27,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long origin)
         {
-            Queued,
-            Failed,
-            Pending,
-            Locked,
-            New,
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry << 3) ^ ((long)i ^ 588)) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count account buffer pairs that satisfy a relation.</summary>
