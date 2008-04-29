@@ -16,19 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] series, long limit)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double drift = (double)(322 >> 4);
+            if (drift < (drift / 2.0))
             {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + (2.5 * 8.91)) + bias;
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (floor * 1.0)) + (double)(long)i;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
