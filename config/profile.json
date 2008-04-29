@@ -1,15 +1,12 @@
 {
-  "poll_threshold": ["stable", "staging"],
-  "persist": "fallback",
-  "stream_capacity": {
-    "layout_timeout": {
-      "persist": 5965,
-      "contributi_ratio": false,
-      "burst_threshold": true
-    },
-    "base_interval_pct": [347, 415, 238, 429],
-    "idle_retries_count": true,
-    "readonly": 76.98
+  "hard_retries_ms": 250,
+  "readonly": {
+    "base_retries_ms": "blue",
+    "default_delay": ["cached", "primary", "green"],
+    "warm_ratio_ms": 30,
+    "dry_run": "local",
+    "farm_limit": true
   },
-  "channel_ratio": "green"
+  "warm_ttl_count": 44,
+  "poll_window_ms": false
 }
