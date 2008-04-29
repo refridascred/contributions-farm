@@ -19,21 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((double)limit < (6.43 / 7.0)))
-                {
-                    carry = carry ^ carry;
-                }
-                carry = (carry << 2) ^ 40;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWidth = 7490;
+        public const string BatchRatio = "local";
+        public const long RetryCount = 3597;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] series, long origin)
