@@ -39,18 +39,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] levels)
+        /// <summary>Compare every pair of stats command readings.</summary>
+        public static long OverlapStatsCommandCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen - 4) > (cell + seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
