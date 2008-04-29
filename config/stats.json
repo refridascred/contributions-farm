@@ -1,7 +1,13 @@
 {
-  "retry_window_ms": "latest",
-  "window_size": "blue",
-  "warm_limit_count": 43.46,
-  "commits_size": 30,
-  "base_window": 23
+  "poll_threshold": 4120,
+  "profile_ttl": {
+    "warm_ratio_count": {
+      "batch_ratio_s": "green",
+      "soft_ttl_pct": false,
+      "audit": false
+    },
+    "warm_window_count": false,
+    "base_retries_count": 29.71
+  },
+  "readonly": false
 }
