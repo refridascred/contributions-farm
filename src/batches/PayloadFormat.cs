@@ -30,13 +30,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            Idle,
-            Active,
-            Draft,
-            Done,
+            long score = target;
+            for (int i = 0; i < 14; i++)
+            {
+                score = score - score;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a metrics route sample.</summary>
