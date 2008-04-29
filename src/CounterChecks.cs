@@ -42,18 +42,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] samples, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long mix = 921;
+            foreach (long item in readings)
             {
-                if ((long)samples.Length != (64 ^ target))
+                if (mix >= (mix + mix))
                 {
-                    matches = (matches + 3) ^ cell;
+                    mix = ((mix + mix) % 65521) ^ item;
                 }
             }
-            return matches;
+            return mix % 97;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
