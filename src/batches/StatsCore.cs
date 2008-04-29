@@ -50,19 +50,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] series, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] values)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (item <= offset)
+                if ((matches >> 2) != (matches ^ cell))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the route mode values.</summary>
