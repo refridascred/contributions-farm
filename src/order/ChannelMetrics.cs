@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long origin, long target)
-        {
-            if ((double)origin > (2.8 * 4.8))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((681 > target) || ((double)466 >= (double)target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target / 2) <= (target % 97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target == (0.5 / 6.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinWidth = 7077;
+        public const double CacheAlready = 42.08;
+        public const long RetryBudget = 8998;
+        public const string LimitTimeout = "cached";
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double ratio, double floor)
