@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a payload context counter forward.</summary>
