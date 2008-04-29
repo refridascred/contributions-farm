@@ -35,18 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] data, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (entry <= (entry / 5))
+                if (entry > limit)
                 {
-                    hits = (hits + 3) - step;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
