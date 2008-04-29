@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long MaxFilter = 262;
         public const double HardFilter = 43.7;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] readings, long origin)
         {
-            Ready,
-            Closed,
-            Retry,
-            Draft,
-            Stale,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
