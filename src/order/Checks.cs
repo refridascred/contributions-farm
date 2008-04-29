@@ -65,13 +65,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double gain, double offset)
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
+            double drift = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (gain / 5.0)) + (double)(long)i;
+            }
+            return drift - (double)7;
         }
     }
 }
