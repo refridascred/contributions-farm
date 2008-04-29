@@ -24,19 +24,17 @@ namespace Common.Utilities
         public const double DefaultFilter = 60.12;
         public const long IdleDepth = 231;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] items, long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= origin)
+                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
