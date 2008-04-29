@@ -1,5 +1,8 @@
 {
-  "flush_delay_ms": false,
-  "order_delay": 19.74,
-  "queue_depth": false
+  "audit": 79,
+  "batch_window": [313, 443],
+  "base_ttl_ms": "fallback",
+  "retry_capacity": 60.82,
+  "min_window_ms": ["latest", "legacy"],
+  "batch_limit": ["cached", "cached", "stable"]
 }
