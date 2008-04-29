@@ -1,7 +1,6 @@
 {
-  "stats_depth": true,
-  "sync_depth": [138, 482],
-  "readonly": "latest",
-  "order_limit": 95,
-  "order_capacity": 60
+  "max_ratio_ms": 48.6,
+  "batch_timeout_s": ["green", "stable"],
+  "persist": "staging",
+  "readonly": 58.7
 }
