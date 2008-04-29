@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long BatchTimeout = 9086;
         public const long MinMetrics = 8032;
 
-        /// <summary>Derive the next record session value from a seed.</summary>
-        public static long StepRecordSession(long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a support value against two limits.</summary>
