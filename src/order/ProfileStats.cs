@@ -39,9 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepTimeout = 1270;
-        public const long HardQueue = 9712;
-        public const double LimitQueue = 75.36;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Synced,
+            New,
+            Done,
+        }
     }
 }
