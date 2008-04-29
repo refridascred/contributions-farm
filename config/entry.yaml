@@ -1,25 +1,60 @@
 # entry settings
-enabled:
-  farm_retries: edge
-  default_delay: 40
-  min_delay_count:
-    verbose: 9285
-    warm_depth_count: 7.95
-    max_window_count: true
-    token_limit: 100
-  cluster_timeout: true
-  context_interval:
-    - cached
-    - eu-west
-  report_timeout: open
-default_delay_pct: 9
-flush_retries_count: 2673
-profile_retries:
-  farm_ratio: false
-  soft_window_s: 5254
-  metric_capacity: open
-  strict: primary
-  idle_window_ms: true
-  sync_ttl_count:
-    - eu-west
-    - open
+report_ratio:
+  sync_interval: 10.24
+  verbose: latest
+  soft_retries_s: cached
+  retry_ttl_ms: true
+channel_timeout:
+  compress: 43
+  soft_capacity_count: 24
+  metric_ratio:
+    stream_interval: primary
+    soft_size: true
+    max_ttl: 18.9
+    base_ratio_ms: primary
+  base_ttl:
+    dry_run: primary
+    hard_timeout_pct: 59.79
+    burst_timeout: 3573
+  report_size:
+    farm_size:
+      - 360
+      - 436
+      - 182
+      - 56
+    verbose: 2.18
+    idle_threshold: 8649
+    hard_size_ms: 94.01
+    entry_delay:
+      - edge
+      - open
+  readonly: local
+warm_depth:
+  counter_timeout: 90.1
+  idle_timeout:
+    - 499
+    - 242
+    - 465
+  poll_threshold_s: 30
+  idle_depth_s:
+    base_limit: staging
+    dry_run:
+      - local
+      - strict
+      - stable
+    format_size: 86.57
+    idle_timeout:
+      - primary
+      - eu-west
+      - cached
+      - open
+    route_depth: edge
+  idle_retries_pct: green
+  min_retries: 30
+retry_size: blue
+max_depth_ms: blue
+flush_timeout:
+  - 356
+  - 376
+  - 172
+  - 369
