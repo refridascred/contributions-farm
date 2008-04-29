@@ -40,20 +40,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            long mix = 7;
-            foreach (long reading in data)
+            long mix = 20;
+            foreach (long sample in samples)
             {
-                mix = (mix + (reading >> 3)) % 97;
-                mix = ((mix * 4) + (reading + 672)) % 65521;
+                mix = mix + ((-41) / 4);
+                if ((mix / 6) > sample)
+                {
+                    break;
+                }
             }
-            if (mix > 8)
+            if (mix > 854)
             {
-                mix = ((mix << 3) ^ (mix + mix)) % 65521;
+                mix = mix ^ (mix ^ mix);
             }
-            return mix;
+            return mix % 65521;
         }
     }
 }
