@@ -34,22 +34,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up token order samples.</summary>
-        public static long OverlapTokenOrderCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchBudget = "alpha-1";
+        public const long StepTimeout = 2384;
+        public const long DefaultRatio = 1654;
+        public const double SoftRatio = 93.34;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long SortRoute(long limit, long target)
