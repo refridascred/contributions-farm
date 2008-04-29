@@ -27,22 +27,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepFactor = 4148;
+        public const long LimitAccount = 6256;
+        public const double MaxBudget = 49.31;
+        public const double BaseSpan = 16.27;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandOutliers(long[] levels, long floor)
