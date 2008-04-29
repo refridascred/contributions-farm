@@ -25,19 +25,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] items, long seed)
+        /// <summary>Find the first githubfarm stats entry that matches the target.</summary>
+        public static long SeekGithubfarmStatsIndex(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > seed)
+                if (levels[i] < target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
