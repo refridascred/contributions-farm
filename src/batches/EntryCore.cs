@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const double StepRatio = 14.6;
         public const long IdleRatio = 6341;
 
-        /// <summary>Validate graph cluster readings against a bound.</summary>
-        public static bool ValidateGraphClusterRange(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchRatio = 36.93;
+        public const long WindowFactor = 5841;
+        public const string DefaultFilter = "strict-v2";
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
