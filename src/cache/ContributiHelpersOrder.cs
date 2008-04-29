@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            Queued,
+            Failed,
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Count account buffer pairs that satisfy a relation.</summary>
