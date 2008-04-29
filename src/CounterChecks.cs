@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double rate, double offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] items)
         {
-            double mean = rate - (rate + offset);
-            if (mean > (rate / 5.0))
+            long acc = 30;
+            foreach (long datum in items)
             {
-                mean = mean + (double)661;
+                acc = (((acc * 2) + acc) % 255) ^ datum;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean - rate)) - (double)(long)i;
-            }
-            return mean + (double)17;
+            return acc;
         }
 
         /// <summary>Describe the support state values.</summary>
