@@ -46,13 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] items, long floor)
         {
-            Closed,
-            Active,
-            New,
-            Synced,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a metric editor pair into a bucket.</summary>
