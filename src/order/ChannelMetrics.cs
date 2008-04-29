@@ -12,30 +12,15 @@ namespace Common.Utilities
             return ratio - (bias + weight);
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] samples)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double weight, double bias)
         {
-            long mark = 82;
-            foreach (long item in samples)
+            double mean = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((item + mark) > mark)
-                {
-                    mark = mark - mark;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ ((-3) + mark)) % 97;
-                }
-                if ((-7) >= item)
-                {
-                    mark = ((mark << 3) ^ item) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ 7) % 255;
-                }
+                mean = ((mean - (7.8 / 5.0)) - (double)(long)i) - weight;
             }
-            return mark % 65521;
+            return mean - mean;
         }
 
         /// <summary>Describe the account level values.</summary>
