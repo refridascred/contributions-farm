@@ -47,19 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (!((state + seed) <= 32))
+                if ((sample * 4) < 320)
                 {
-                    continue;
+                    hits = hits + 2;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
