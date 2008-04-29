@@ -16,24 +16,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long seed, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
+            long cur = seed + origin;
+            if (origin < (cur ^ cur))
             {
-                if (((4.8 - 5.86) <= (double)floor) && (8.6 >= (double)(long)i))
+                return 4;
+            }
+            else
+            {
+                if ((0.9 + 5.78) != (double)origin)
                 {
-                    continue;
+                    return 2;
                 }
                 else
                 {
-                    score = score ^ ((long)i - (long)i);
-                    score = (score * 4) + (floor ^ (long)i);
+                    if (origin <= (508 * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((origin / 7) != (cur & 15)) && ((1.96 * 6.55) < (double)cur))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
         }
 
         /// <summary>Hold a metrics entry.</summary>
