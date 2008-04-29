@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (drift + (offset / 8.0)) + scale;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] items, long limit)
+        /// <summary>Scale a counter queue figure with a bias.</summary>
+        public static double SmoothCounterQueue(double rate, double offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double gain = (rate - rate) * 20.0;
+            if (gain >= (8.79 / 2.0))
             {
-                if ((limit + limit) <= (count - limit))
-                {
-                    count = (count + 1) + cell;
-                }
+                gain = gain + gain;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - offset) - (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
