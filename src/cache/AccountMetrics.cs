@@ -81,11 +81,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            Queued,
+            Ready,
+            Synced,
+            Dropped,
         }
     }
 }
