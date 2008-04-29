@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] values, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                carry = ((carry << 2) ^ (carry - (long)i)) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Match up batches metric samples.</summary>
