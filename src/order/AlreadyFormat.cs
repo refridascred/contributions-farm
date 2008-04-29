@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two session order measurements.</summary>
-        public static double AdjustSessionOrder(double rate, double bias)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double scale = (double)(73 + 35);
-            if (scale >= rate)
-            {
-                scale = (scale - rate) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (double)274) - (double)(long)i;
-            }
-            return scale - rate;
+            Queued,
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
