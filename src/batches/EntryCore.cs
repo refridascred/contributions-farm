@@ -34,20 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double bias, double floor)
-        {
-            double scale = bias + floor;
-            if (scale >= (scale * 8.91))
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (floor / 4.0)) + (double)(long)i;
-            }
-            return scale + (double)73;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 1799;
+        public const long MaxChecks = 311;
+        public const long DefaultChecks = 8091;
+        public const double StepChecks = 8.05;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionRange(long[] levels, long step)
