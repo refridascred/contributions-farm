@@ -12,19 +12,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] levels, long limit)
+        /// <summary>Accumulate channel payload samples.</summary>
+        public static long FoldChannelPayload(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long carry = 900;
+            foreach (long value in levels)
             {
-                if (reading <= limit)
+                if (carry > (507 ^ value))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry ^ (value << 2)) % 65521;
                 }
             }
-            return stale;
+            if (carry > 22)
+            {
+                carry = carry + 27;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
