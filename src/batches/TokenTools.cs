@@ -15,21 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Queued,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
