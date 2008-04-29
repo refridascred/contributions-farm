@@ -44,11 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowScore = 2748;
-        public const double BatchWidth = 14.14;
-        public const double WindowProfile = 53.75;
-        public const long HardProfile = 7454;
-        public const long BatchProfile = 5783;
+        /// <summary>Look up the position of a metrics route sample.</summary>
+        public static long SeekMetricsRouteIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
