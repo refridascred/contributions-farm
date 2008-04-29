@@ -1,5 +1,10 @@
 # entry settings
-flush_retries_pct: 25.75
-dry_run: 77.87
-compress: 90
-burst_capacity_ms: 66
+cache_depth: edge
+dry_run:
+  enabled: 30
+  readonly: 85
+  poll_depth: 5875
+  already_delay: 97.85
+  sync_delay_pct: staging
+report_retries: primary
+min_retries_count: 11
