@@ -1,6 +1,12 @@
 {
-  "default_delay_s": false,
-  "soft_timeout_pct": "strict",
-  "enabled": 27,
-  "githubfarm_ttl": "stable"
+  "warm_ratio": true,
+  "schema_size": 45,
+  "cluster_window": "primary",
+  "hard_window_count": "fallback",
+  "min_depth_s": {
+    "idle_depth_count": "standard",
+    "burst_timeout_pct": true,
+    "sync_ttl_s": 8619
+  },
+  "hard_limit_ms": "staging"
 }
