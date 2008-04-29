@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long seed)
+        /// <summary>Validate report route readings against a bound.</summary>
+        public static bool CheckReportRouteRange(long[] data, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((double)(long)i >= (double)seed)
+                if (entry <= seed)
                 {
-                    mark = mark - mark;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark ^ seed) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Roll a payload contributi counter forward.</summary>
