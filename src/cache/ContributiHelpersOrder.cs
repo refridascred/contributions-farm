@@ -27,15 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double bias, double span)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] series, long limit)
         {
-            double rate = (double)5 / 2.0;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                rate = ((rate - span) + (double)(long)i) - bias;
+                if (item < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate - (8.6 * 9.29);
+            return stale;
         }
 
         /// <summary>Count account buffer pairs that satisfy a relation.</summary>
