@@ -43,11 +43,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 8.96;
-        public const long SoftSupport = 4773;
-        public const long RetrySupport = 675;
-        public const double StepSupport = 12.04;
+        /// <summary>Count tools already pairs that satisfy a relation.</summary>
+        public static long PairToolsAlreadyCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
