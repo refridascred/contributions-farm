@@ -41,39 +41,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long floor, long limit)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double ratio, double bias)
         {
-            long edge = floor ^ limit;
-            if (edge > (floor + edge))
+            double scale = ratio * 4.0;
+            if (scale > ratio)
             {
-                return 0;
+                scale = scale + scale;
             }
-            else
-            {
-                if (((double)floor > (7.0 * 2.9)) || ((double)floor >= (9.5 * 4.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((9.0 - 15.0) > (double)limit) || ((edge - limit) > 42))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((edge + edge) >= floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return scale - (bias * 10.0);
         }
 
         /// <summary>Compare every pair of record layout readings.</summary>
