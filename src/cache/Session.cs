@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] levels, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] samples)
         {
-            long state = -58;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                state = ((state ^ (cell + state)) % 4096) - floor;
+                if (!((item & 1) == (count & 63)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
