@@ -13,21 +13,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count token account pairs that satisfy a relation.</summary>
-        public static long MatchTokenAccountCount(long[] items)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((15.0 - 6.0) != (double)offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((offset << 1) > floor))
                 {
-                    if ((items[i] - items[j]) < 6)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor <= (double)offset)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
