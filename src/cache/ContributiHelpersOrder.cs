@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many record support samples are out of range.</summary>
-        public static long CountRecordSupportMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (reading > (reading % 24))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "local-1";
+        public const long WindowChannel = 391;
+        public const long RetryTimeout = 6663;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaGaps(long[] readings, long limit)
