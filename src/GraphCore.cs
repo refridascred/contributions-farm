@@ -26,11 +26,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Compare every pair of session cluster readings.</summary>
+        public static long MatchSessionClusterCount(long[] readings)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first metric payload entry that matches the target.</summary>
