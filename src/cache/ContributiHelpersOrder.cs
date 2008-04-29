@@ -27,19 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] series, long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < limit)
+                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
