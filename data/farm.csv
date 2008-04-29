@@ -1,6 +1,9 @@
-id,state,active,region
-1,cached,16.89,50.63
-2,local,82.38,blue
-3,open,640,cached
-4,427,eu-west,77.21
-5,green,560,399
+id,active,token,owner
+1,stable,229,blue
+2,96.56,37.47,12.16
+3,edge,861,blue
+4,50.83,stable,886
+5,49.93,stable,57.2
+6,22.98,71.04,0.02
+7,60.09,783,269
+8,local,17,16.89
