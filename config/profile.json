@@ -1,27 +1,7 @@
 {
-  "idle_capacity_ms": {
-    "dry_run": 2592,
-    "burst_ratio_pct": 5336,
-    "compress": 30,
-    "schema_capacity": ["local", "blue"]
-  },
-  "enabled": 51,
-  "retry_size_s": true,
-  "record_window": {
-    "idle_retries_s": {
-      "verbose": false,
-      "cache_timeout": "edge",
-      "flush_threshold_s": 35.31,
-      "retry_timeout": 97.85,
-      "retry_capacity": ["fallback", "staging", "legacy", "blue"]
-    },
-    "record_threshold": {
-      "default_limit": [9, 178, 184, 252],
-      "stream_size": 6057,
-      "dry_run": 3279,
-      "layout_size": 62.97,
-      "warm_ttl_s": [76, 437, 409, 28]
-    },
-    "hard_depth_count": "latest"
-  }
+  "sync_timeout_ms": ["blue", "stable"],
+  "persist": 30,
+  "schema_threshold": 28.44,
+  "max_retries": 12,
+  "batch_ttl_pct": "eu-west"
 }
