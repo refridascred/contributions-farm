@@ -21,21 +21,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(445 * 4);
+            if (drift <= (drift / 6.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + ratio) - offset;
             }
-            return seen;
+            return drift - (ratio * 2.0);
         }
     }
 }
