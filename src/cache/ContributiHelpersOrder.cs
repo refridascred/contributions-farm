@@ -42,15 +42,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Active,
+            New,
+            Dropped,
+            Paused,
         }
     }
 }
