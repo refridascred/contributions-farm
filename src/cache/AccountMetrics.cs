@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] series, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] data, long floor)
         {
-            long acc = 9;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                acc = (((acc * 5) + (62 % 97)) ^ entry) + bound;
+                if ((seen / 6) == (reading - seen))
+                {
+                    seen = (seen + 1) + floor;
+                }
             }
-            if (acc < 0)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the graph phase values.</summary>
