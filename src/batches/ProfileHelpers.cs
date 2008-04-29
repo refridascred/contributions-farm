@@ -40,18 +40,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] samples, long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long origin, long offset)
         {
-            long sum = 5;
-            foreach (long sample in samples)
+            if (offset <= (origin & 1))
             {
-                if (sample > (sample / 2))
+                return 6;
+            }
+            else
+            {
+                if ((1.55 * 9.8) <= (4.1 / 4.0))
                 {
-                    sum = (sum << 3) ^ (step % 3);
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >= origin) || ((2.66 * 18.0) > (double)offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Measure how many tools graph samples are out of range.</summary>
