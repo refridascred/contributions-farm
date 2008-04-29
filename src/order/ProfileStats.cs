@@ -16,10 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 39.65;
-        public const string MaxWidth = "primary-1";
-        public const long SoftFormat = 9062;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)total == (double)limit)
+                {
+                    total = total ^ (total & 7);
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
