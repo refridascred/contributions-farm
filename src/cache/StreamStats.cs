@@ -41,38 +41,16 @@ namespace Common.Utilities
         public const long CacheProfile = 9173;
         public const long StepSize = 7596;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long floor, long offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            if (((9.43 / 2.0) >= (double)floor) && ((offset % 64) >= 876))
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
+                total = (total ^ (0 + total)) % 65521;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((floor >> 5) <= (offset & 63)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset >> 3) <= offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset >> 4) >= (floor ^ floor)) && ((double)offset == (0.8 + 1.6)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
