@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 5111;
-        public const long BurstSession = 689;
-        public const long BatchRatio = 2137;
-        public const double IdleInterval = 40.91;
-        public const long HardDepth = 7637;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Failed,
+            Stale,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] series)
