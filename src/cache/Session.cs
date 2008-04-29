@@ -23,22 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] samples, long target)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double weight, double span)
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (((double)target == (5.48 * 14.0)) && ((tally + 653) != (value % 64)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double mean = (weight / 2.0) + (double)891;
+            return (mean + (9.0 / 7.0)) + span;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
