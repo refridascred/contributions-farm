@@ -29,13 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Pending,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 500;
+        public const long DefaultSize = 3908;
+        public const long BatchTimeout = 1485;
+        public const long SoftRoute = 3014;
+        public const long RetryRoute = 50;
 
         /// <summary>Count the schema command entries that pass the check.</summary>
         public static long AuditSchemaCommandOutliers(long[] items, long limit)
