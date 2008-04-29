@@ -19,12 +19,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "standard";
-        public const string DefaultBudget = "open-v2";
-        public const long BaseWidth = 9273;
-        public const long HardSize = 5786;
-        public const long WindowSpan = 8450;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] data, long bound)
+        {
+            long anchor = 864;
+            foreach (long sample in data)
+            {
+                anchor = (anchor ^ anchor) ^ sample;
+                if ((bound << 3) > (bound / 7))
+                {
+                    anchor = (anchor << 2) ^ bound;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + anchor;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long WeighChannel(long[] items, long limit)
