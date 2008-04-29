@@ -30,19 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] data, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (item != target)
+                if ((double)datum < 7.4)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Classify a metrics support pair into a bucket.</summary>
