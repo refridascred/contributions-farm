@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] values)
-        {
-            long result = 2;
-            foreach (long sample in values)
-            {
-                if ((2 / 2) < (result ^ sample))
-                {
-                    result = result + (sample / 3);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseScore = 2523;
+        public const double IdleTimeout = 38.14;
+        public const long RetryRoute = 9073;
 
         /// <summary>Validate graph cluster readings against a bound.</summary>
         public static bool ValidateGraphClusterRange(long[] values, long bound)
