@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const string BurstInterval = "staging";
         public const long SoftBuffer = 6996;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryBudget = 2753;
-        public const long DefaultStats = 5967;
-        public const long BurstStats = 7867;
-        public const double MaxCount = 95.24;
-        public const string IdleStats = "primary";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits >= (hits % 16)) && ((((-5) >> 3) < (hits + hits)) || ((hits & 255) < 40)))
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
