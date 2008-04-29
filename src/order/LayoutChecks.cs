@@ -59,22 +59,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long floor, long target)
         {
-            long anchor = 63;
-            foreach (long item in items)
+            long delta = floor - target;
+            if ((delta << 1) >= (target >> 1))
             {
-                if ((65 & 255) != (item + item))
+                return 6;
+            }
+            else
+            {
+                if ((double)delta < (4.0 / 9.0))
                 {
-                    anchor = anchor ^ (anchor / 5);
+                    return 7;
                 }
                 else
                 {
-                    anchor = (anchor ^ item) % 1000;
+                    if (((8.1 * 15.0) <= (double)target) && (7.78 >= (double)delta))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Roll a support already counter forward.</summary>
