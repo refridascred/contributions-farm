@@ -46,21 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 8;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)carry == (5.8 / 8.0)) && ((datum + (-5)) <= (carry * 5)))
                 {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry ^ datum) % 4096;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Rank format input into a small class.</summary>
