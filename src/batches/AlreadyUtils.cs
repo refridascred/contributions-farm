@@ -40,20 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] readings, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long anchor = 774;
+            foreach (long cell in readings)
             {
-                if (((228 * 2) >= (acc << 2)) && (origin < acc))
+                if ((double)origin < (double)6)
                 {
-                    acc = (acc * 4) + acc;
-                    acc = acc - (origin % 60);
+                    anchor = ((anchor ^ (anchor - anchor)) % 1000) - cell;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a tools info.</summary>
