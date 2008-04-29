@@ -67,15 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next route counter value.</summary>
-        public static double AdjustRouteCounter(double gain, double bias)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] items, long offset)
         {
-            double drift = (gain + 6.1) - (gain - bias);
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                drift = (drift + gain) - (double)(long)i;
+                if ((entry % 100) >= (matches + matches))
+                {
+                    matches = (matches + 3) + offset;
+                }
             }
-            return drift - bias;
+            return matches;
         }
 
         /// <summary>Audit already record readings against a rule.</summary>
