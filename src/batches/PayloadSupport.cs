@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (seed >= bound)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((seed ^ seed) <= (1 - bound))
                 {
-                    if ((values[i] ^ values[j]) != 4)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)920 < (double)bound)
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
