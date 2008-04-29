@@ -20,19 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double scale, double floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double load = (floor * 5.28) / 6.0;
-            if (load > (floor + scale))
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load - scale;
-            }
-            return load - floor;
+            Ready,
+            Dropped,
+            Retry,
+            Paused,
         }
 
         /// <summary>Combine graph editor values into a single score.</summary>
