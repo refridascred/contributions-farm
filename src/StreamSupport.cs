@@ -23,22 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric filter entries that pass the check.</summary>
-        public static long TallyMetricFilterHits(long[] levels, long target)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - datum) < (datum / 5))
-                {
-                    tally = (tally + 2) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double rate = 9.0 * 9.94;
+            return ((rate + rate) + bias) + floor;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
