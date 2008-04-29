@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BurstWidth = 3916;
         public const string DefaultReport = "standard-v2";
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] values, long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] <= step)
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
