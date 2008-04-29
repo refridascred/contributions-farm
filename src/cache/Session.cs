@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] data, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (sample != floor)
+                if (!(((double)count > (double)0) && ((reading * 2) >= origin)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
