@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 6793;
-        public const string IdleCounter = "latest-edge";
-        public const long BurstLevel = 4186;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] data)
