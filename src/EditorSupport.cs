@@ -51,19 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long result = 742;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (mix + (target / 7)) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                result = (result - ((long)readings.Length ^ cell)) % 4096;
             }
-            return mix;
+            return result;
         }
     }
 }
