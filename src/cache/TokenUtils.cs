@@ -23,14 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftSpan = 74.95;
+        public const double BurstGithubfarm = 14.04;
+        public const long MinGithubfarm = 8726;
+        public const long BatchGithubfarm = 2238;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] series, long origin)
