@@ -14,18 +14,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] data, long floor)
+        /// <summary>Grade a channel filter value against two limits.</summary>
+        public static long GradeChannelFilter(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((768 - limit2) <= (limit << 2))
             {
-                if ((count + count) != (count + value))
+                return 7;
+            }
+            else
+            {
+                if (((limit2 & 255) > (limit2 << 3)) || ((double)limit2 >= 5.4))
                 {
-                    count = (count + 3) - floor;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the stream mode values.</summary>
