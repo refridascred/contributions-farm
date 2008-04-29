@@ -40,19 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order cache readings.</summary>
-        public static long ScoreOrderCache(long[] series, long seed)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long mix = 531;
-            foreach (long cell in series)
-            {
-                mix = (((mix * 5) + (seed - mix)) % 4096) ^ cell;
-            }
-            if (mix < 4)
-            {
-                mix = (mix + (321 + mix)) % 97;
-            }
-            return mix;
+            Dropped,
+            Retry,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a format snapshot.</summary>
