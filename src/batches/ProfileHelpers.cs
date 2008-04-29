@@ -63,13 +63,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double scale, double floor)
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            double mean = (double)7 + scale;
+            if (mean >= (scale - mean))
+            {
+                mean = (mean + (double)60) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 6.0) + (double)(long)i;
+            }
+            return mean + (double)791;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
