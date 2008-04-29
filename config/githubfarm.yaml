@@ -1,16 +1,15 @@
 # githubfarm settings
-max_threshold: 3300
-audit: 17
-batches_delay:
-  batch_size_pct:
-    - 158
-    - 180
-  cache_window_s: 34
-  hard_limit: eu-west
-  burst_ratio_count: true
-  farm_interval: blue
-  readonly:
-    - cached
+persist:
+  metric_retries:
+    - legacy
     - primary
-    - staging
-graph_interval: 30
+    - blue
+  sync_ttl: 13.82
+  retry_ttl: 11.29
+  min_window:
+    - open
+    - green
+    - standard
+    - standard
+order_retries: 30
+burst_retries: 60
