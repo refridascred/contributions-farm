@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "fallback";
-        public const long LimitCount = 434;
-        public const long MaxBudget = 9157;
-        public const string BaseSpan = "strict-1";
+        /// <summary>Adjust a metric metrics reading.</summary>
+        public static double AdjustMetricMetrics(double rate, double floor)
+        {
+            double drift = floor;
+            if (drift >= (rate - rate))
+            {
+                drift = drift - (drift + floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift + floor;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long CacheCounter = 7107;
