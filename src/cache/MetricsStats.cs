@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 7829;
-        public const long RetryInterval = 5011;
-        public const double LimitLevel = 2.18;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] readings)
+        {
+            long carry = 332;
+            foreach (long sample in readings)
+            {
+                carry = ((carry << 2) ^ (sample + sample)) % 1000;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string HardTools = "latest-v2";
