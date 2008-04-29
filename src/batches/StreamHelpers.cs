@@ -70,23 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((matches & 31) <= reading))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 3293;
+        public const double LimitLayout = 84.07;
+        public const long CacheLevel = 876;
+        public const long MinLayout = 7640;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderOutliers(long[] levels, long target)
