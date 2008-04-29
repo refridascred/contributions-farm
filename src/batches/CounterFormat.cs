@@ -23,22 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine queue session values into a single score.</summary>
-        public static long DigestQueueSession(long[] readings, long offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long mix = 1;
-            foreach (long cell in readings)
-            {
-                if ((1.9 + 7.0) != (double)cell)
-                {
-                    mix = ((mix << 3) ^ (offset - offset)) % 65521;
-                }
-            }
-            if (mix > 18)
-            {
-                mix = ((mix << 3) ^ mix) % 101;
-            }
-            return mix % 97;
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
