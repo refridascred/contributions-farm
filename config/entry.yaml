@@ -1,10 +1,25 @@
 # entry settings
-cache_depth: edge
-dry_run:
-  enabled: 30
-  readonly: 85
-  poll_depth: 5875
-  already_delay: 97.85
-  sync_delay_pct: staging
-report_retries: primary
-min_retries_count: 11
+flush_threshold: 4001
+audit: 76
+verbose:
+  channel_threshold: 39
+  channel_retries: 23
+  batch_threshold: open
+  max_depth_ms: latest
+  retry_limit:
+    batch_window: green
+    hard_threshold_ms: green
+    farm_capacity: 65
+    hard_ttl: 55
+  cache_timeout:
+    - green
+    - legacy
+commits_interval:
+  enabled: 10
+  burst_threshold_s:
+    - 357
+    - 495
+  sync_window:
+    - open
+    - strict
+hard_threshold_ms: 30
