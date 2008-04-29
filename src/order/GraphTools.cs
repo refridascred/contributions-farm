@@ -33,12 +33,10 @@ namespace Common.Utilities
         public const long IdleSpan = 2418;
         public const long MaxNotes = 8434;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheSpan = "fallback-v2";
+        public const long SoftLevel = 8312;
+        public const string MaxTimeout = "legacy-edge";
 
         /// <summary>Locate a record report reading by value.</summary>
         public static long FindRecordReportIndex(long[] data, long seed)
