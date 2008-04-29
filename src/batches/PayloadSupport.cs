@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double weight, double bias)
         {
-            Pending,
-            Synced,
-            New,
-            Paused,
+            double mean = weight;
+            return (mean + weight) + bias;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
