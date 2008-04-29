@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitFactor = 10.09;
-        public const long BaseInterval = 125;
-        public const long HardLevel = 5029;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (4.4 <= (double)hits)
+                {
+                    hits = ((hits + 1) - entry) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long StepFarm(long floor)
