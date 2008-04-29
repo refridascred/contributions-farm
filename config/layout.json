@@ -1,10 +1,5 @@
 {
-  "base_window": false,
-  "profile_limit": false,
-  "default_timeout_ms": "legacy",
-  "enabled": {
-    "audit": [264, 439, 357, 159],
-    "hard_retries_s": 50.93,
-    "max_ratio_pct": ["latest", "fallback", "local"]
-  }
+  "warm_depth": "latest",
+  "account_limit": "edge",
+  "counter_threshold": false
 }
