@@ -35,19 +35,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total - target) % 97) ^ (long)i2;
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
