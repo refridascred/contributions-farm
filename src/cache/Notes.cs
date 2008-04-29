@@ -54,26 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] samples, long bound)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long carry = 266;
-            foreach (long value in samples)
-            {
-                if ((value ^ value) != (480 - carry))
-                {
-                    carry = (carry + (carry / 2)) % 1000;
-                }
-                if ((value + 516) < (carry % 5))
-                {
-                    break;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = (carry << 2) ^ (bound % 10);
-            }
-            return carry;
+            Locked,
+            Active,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a account options.</summary>
