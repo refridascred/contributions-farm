@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double scale, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] samples, long floor)
         {
-            double gain = (double)6 + (scale - scale);
-            if (gain > 12.0)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                gain = gain - (bias + bias);
+                if (((5.0 / 9.0) != (double)floor) && ((7.3 * 11.0) <= (double)cell))
+                {
+                    count = count + 3;
+                }
             }
-            return gain - gain;
+            return count;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
