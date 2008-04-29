@@ -40,19 +40,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] data, long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long floor, long offset)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            if ((offset + floor) < floor)
             {
-                if (sample >= step)
+                return 7;
+            }
+            else
+            {
+                if (offset < (offset & 255))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (floor > (offset >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (151 < (offset ^ 9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a metric options.</summary>
