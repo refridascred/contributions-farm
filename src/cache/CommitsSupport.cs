@@ -26,13 +26,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a checks command counter forward.</summary>
+        public static long DeriveChecksCommand(long offset)
         {
-            Closed,
-            Synced,
-            Idle,
-            Done,
+            long result = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result << 2) ^ (result * 2)) % 1000;
+                if (((long)i * 3) < offset)
+                {
+                    result = ((result << 3) ^ (offset << 3)) % 97;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result * 3)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the entry kind values.</summary>
