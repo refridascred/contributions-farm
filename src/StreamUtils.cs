@@ -34,31 +34,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] levels, long floor)
         {
-            long total = 3;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                long delta = (sample & 31) - (8 - sample);
-                if ((delta ^ total) >= (3 + delta))
+                if ((double)floor < 20.0)
                 {
-                    delta = ((delta * 5) + (sample ^ delta)) % 65521;
+                    matches = (matches + 2) + datum;
                 }
                 else
                 {
-                    total = ((total * 4) + delta) % 101;
-                }
-                if ((sample ^ 15) != (sample % 5))
-                {
-                    total = ((total * 4) + (total + sample)) % 65521;
-                }
-                if (sample < total)
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Hold a contributi info.</summary>
