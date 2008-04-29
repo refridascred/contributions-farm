@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a buffer session figure with a bias.</summary>
-        public static double ScaleBufferSession(double ratio, double offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] data, long limit)
         {
-            double load = 4.2;
-            if (load < (8.0 - 13.0))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                load = (load + ratio) + offset;
+                if ((double)tally != (9.9 * 5.0))
+                {
+                    tally = ((tally + 3) ^ sample) + limit;
+                }
             }
-            else
-            {
-                load = load - (double)78;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load - (ratio + load);
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
