@@ -35,16 +35,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                state = state - 5;
-                state = ((state * 3) + (long)i) % 4093;
+                if (!((184 ^ item) >= (item ^ 9)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the route class values.</summary>
