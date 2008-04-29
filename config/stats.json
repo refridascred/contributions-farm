@@ -1,15 +1,14 @@
 {
-  "dry_run": false,
-  "compress": {
-    "already_timeout": ["blue", "eu-west"],
-    "burst_limit_s": {
-      "readonly": [83, 92],
-      "batch_timeout": ["blue", "latest"],
-      "entry_threshold": 8285,
-      "strict": false
-    },
-    "stream_delay": 250,
-    "cache_delay_s": "strict"
+  "buffer_timeout": [98, 449, 254],
+  "burst_threshold_pct": "green",
+  "entry_ttl": 30,
+  "warm_timeout": {
+    "poll_ratio": "local",
+    "strict": false,
+    "retry_threshold_pct": 32.94,
+    "buffer_depth": ["edge", "stable"],
+    "session_limit": "local",
+    "max_threshold_ms": "eu-west"
   },
-  "poll_interval_s": 250
+  "flush_delay": 41
 }
