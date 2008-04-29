@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long LimitWindow = 56;
         public const long MaxSize = 8787;
 
-        /// <summary>Check that every commits graph entry stays within the limit.</summary>
-        public static bool CheckCommitsGraphBounds(long[] items, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] values)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (cell <= limit)
+                if ((hits - item) > hits)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the payload class values.</summary>
