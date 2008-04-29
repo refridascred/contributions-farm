@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of metric buffer entries.</summary>
-        public static long TallyMetricBuffer(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] readings, long bound)
         {
-            long mix = 72;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((8.8 * 1.83) <= (15.0 + 3.94))
+                if (!(((matches ^ 53) < bound) || ((bound + bound) >= (7 + matches))))
                 {
-                    mix = ((mix * 4) + cell) % 65521;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Roll a record counter forward.</summary>
