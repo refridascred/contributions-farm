@@ -22,26 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] samples, long limit)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mix = 35;
-            foreach (long entry in samples)
-            {
-                if ((double)entry >= (8.0 + 6.0))
-                {
-                    mix = ((mix + (537 >> 1)) % 4096) + limit;
-                }
-                if ((entry * 3) < mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 78)
-            {
-                mix = ((mix << 3) ^ (mix << 1)) % 101;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
