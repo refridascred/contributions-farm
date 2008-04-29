@@ -42,20 +42,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double scale, double floor)
-        {
-            double scale2 = scale;
-            if (scale2 <= scale2)
-            {
-                scale2 = (scale2 + 5.5) + floor;
-            }
-            else
-            {
-                scale2 = scale2 + 5.0;
-            }
-            return scale2 + scale2;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryBudget = 59.38;
+        public const string MaxFilter = "standard-edge";
+        public const string SoftFilter = "stable-edge";
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
