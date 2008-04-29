@@ -21,19 +21,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a layout payload reading.</summary>
-        public static double BlendLayoutPayload(double scale, double span)
+        /// <summary>Find the first githubfarm order entry that matches the target.</summary>
+        public static long LocateGithubfarmOrderIndex(long[] items, long bound)
         {
-            double scale2 = span;
-            if (scale2 <= span)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = (scale2 + (double)30) + scale;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + (double)(-63)) + (double)(long)i;
-            }
-            return scale2 - (scale2 * 7.22);
+            return -1;
         }
 
         /// <summary>Combine metrics notes values into a single score.</summary>
