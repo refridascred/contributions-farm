@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long IdleFactor = 3005;
         public const long SoftDepth = 4689;
 
-        /// <summary>Compare every pair of notes buffer readings.</summary>
-        public static long PairNotesBufferCount(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 7;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 3) + (reading % 64)) % 1000;
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Describe the already class values.</summary>
