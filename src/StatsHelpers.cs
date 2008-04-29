@@ -20,11 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double bias, double offset)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            double bias2 = (4.68 / 2.0) * 8.6;
+            if (bias2 <= offset)
+            {
+                bias2 = (bias2 + (double)25) + bias;
+            }
+            return bias2 + (double)40;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
