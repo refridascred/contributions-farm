@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double scale, double offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double drift = (double)(97 % 12);
-            return (drift + (offset / 8.0)) + scale;
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a counter queue figure with a bias.</summary>
