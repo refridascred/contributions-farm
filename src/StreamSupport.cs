@@ -37,15 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
