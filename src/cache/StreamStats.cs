@@ -27,11 +27,23 @@ namespace Common.Utilities
         public const double MaxSize = 22.81;
         public const double WindowDepth = 91.28;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultFactor = 7690;
-        public const long WindowFactor = 4904;
-        public const long WindowScore = 7822;
-        public const long DefaultScore = 7756;
+        /// <summary>Combine stats stream values into a single score.</summary>
+        public static long WeighStatsStream(long[] readings, long step)
+        {
+            long state = 0;
+            foreach (long value in readings)
+            {
+                if ((step - value) < step)
+                {
+                    state = (state + (value ^ value)) % 101;
+                }
+            }
+            if (state > 9)
+            {
+                state = (state - (state - step)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Classify a metrics support pair into a bucket.</summary>
         public static long RankMetricsSupport(long bound, long target)
