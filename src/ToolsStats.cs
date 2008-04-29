@@ -84,19 +84,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] data, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long anchor = 2;
+            foreach (long item in items)
             {
-                if (item != seed)
+                if (!((item % 2) <= anchor))
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor ^ (item << 3)) % 4096;
+                    anchor = ((anchor * 3) + (53 << 1)) % 65521;
+                }
+                anchor = (anchor ^ (item - item)) % 4096;
+                if (((double)item == (15.0 + 19.0)) && ((anchor << 2) != (item % 100)))
+                {
+                    anchor = (anchor - 916) % 1000;
                 }
             }
-            return stale;
+            if (anchor < 23)
+            {
+                anchor = anchor ^ (anchor >> 2);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
