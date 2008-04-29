@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!(((matches ^ 53) < bound) || ((bound + bound) >= (7 + matches))))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSpan = 945;
+        public const long BatchDepth = 7726;
+        public const long SoftSupport = 1546;
+        public const long MaxDepth = 8348;
+        public const string BaseInterval = "latest-1";
 
         /// <summary>Roll a record counter forward.</summary>
         public static long SeriesRecord(long target)
