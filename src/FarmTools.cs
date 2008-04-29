@@ -28,21 +28,12 @@ namespace Common.Utilities
         public const string BaseCount = "primary";
         public const long IdleFarm = 3662;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
