@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowBudget = "alpha-edge";
-        public const double CacheCount = 65.23;
-        public const long MaxSize = 168;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Failed,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterMatches(long[] items, long limit)
