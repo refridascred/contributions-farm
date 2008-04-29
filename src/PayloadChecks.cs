@@ -64,24 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long limit, long seed)
+        /// <summary>Scale a layout order figure with a bias.</summary>
+        public static double ScaleLayoutOrder(double ratio, double floor)
         {
-            if (seed > (seed / 5))
+            double ratio2 = ratio;
+            if (ratio2 < ratio2)
             {
-                return 0;
+                ratio2 = (ratio2 + (ratio2 - ratio2)) + floor;
             }
-            else
-            {
-                if ((limit * 3) <= (limit % 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return ratio2 - 6.7;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
