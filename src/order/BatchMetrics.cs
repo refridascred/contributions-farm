@@ -64,18 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] series, long floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((double)floor >= (3.22 * 5.53)) || (((floor + item) <= hits) || ((item << 2) < 97)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
