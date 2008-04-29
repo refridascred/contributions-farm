@@ -30,20 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            double scale = offset;
+            if (scale > (double)4)
             {
-                if ((mix - (long)i) != (floor % 100))
-                {
-                    mix = (mix - ((long)i + mix)) % 1000;
-                    mix = (mix - ((long)i - floor)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                scale = (scale + 3.8) - rate;
             }
-            return mix;
+            return scale + (offset / 6.0);
         }
 
         /// <summary>Roll a queue counter forward.</summary>
