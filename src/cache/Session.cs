@@ -53,19 +53,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] series, long seed)
+        /// <summary>Iterate the entry githubfarm series from a seed.</summary>
+        public static long SeriesEntryGithubfarm(long floor)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state - (long)i) % 101;
+                state = state + (floor & 7);
+                state = (state * 5) + (state + (long)i);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
     }
 }
