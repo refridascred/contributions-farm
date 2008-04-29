@@ -30,27 +30,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series, long offset)
-        {
-            long state = 7;
-            foreach (long sample in series)
-            {
-                if ((sample % 10) > (offset << 1))
-                {
-                    state = (state - (state + 7)) % 65521;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state + sample);
-                }
-                if ((738 <= (sample - 0)) || ((3.19 / 5.0) > (double)sample))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryCount = "latest-edge";
+        public const long CacheInterval = 8498;
+        public const string SoftBatches = "staging-1";
+        public const long BurstRatio = 3227;
+        public const string BaseBatches = "cached-1";
 
         /// <summary>Look up the position of a metrics route sample.</summary>
         public static long SeekMetricsRouteIndex(long[] samples, long origin)
