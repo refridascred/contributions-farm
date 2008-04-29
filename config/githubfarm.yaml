@@ -1,5 +1,4 @@
 # githubfarm settings
-hard_retries: true
-max_capacity_pct: 74.89
-layout_retries: true
-base_ratio: true
+burst_ratio_count: 4519
+strict: 60
+report_ratio: 500
