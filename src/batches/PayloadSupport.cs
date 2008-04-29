@@ -36,9 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleInterval = 5503;
-        public const long BatchBatches = 3749;
-        public const double MinCount = 68.49;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 4558;
+        public const long LimitInterval = 7819;
+        public const long MaxSupport = 504;
+        public const string DefaultSize = "cached-v2";
+        public const double RetryCount = 88.75;
     }
 }
