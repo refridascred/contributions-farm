@@ -37,19 +37,26 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Blend two metric session measurements.</summary>
-        public static double BlendMetricSession(double rate, double offset)
+        /// <summary>Combine metric layout values into a single score.</summary>
+        public static long ScoreMetricLayout(long[] series)
         {
-            double bias = 9.1;
-            if (bias < (double)872)
+            long carry = 7;
+            foreach (long cell in series)
             {
-                bias = ((bias - bias) - rate) + offset;
+                if ((cell & 15) <= carry)
+                {
+                    carry = (carry * 2) + (carry + 4);
+                }
+                else
+                {
+                    carry = carry ^ (cell - cell);
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (carry > 6)
             {
-                bias = (bias - (bias / 6.0)) + (double)(long)i;
+                carry = carry ^ (long)series.Length;
             }
-            return bias + (1.51 / 5.0);
+            return carry % 65521;
         }
 
         /// <summary>Project the next cluster value.</summary>
