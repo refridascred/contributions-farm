@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long carry = 5;
-            foreach (long value in data)
-            {
-                carry = (carry << 3) ^ (value & 3);
-            }
-            if (carry > 1)
-            {
-                carry = carry - (9 & 1);
-            }
-            return carry;
+            Pending,
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the graph class values.</summary>
