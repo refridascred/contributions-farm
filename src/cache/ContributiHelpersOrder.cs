@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] series, long step)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            long mark = 8;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (1.82 <= (double)step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark * 5) + (517 + mark)) ^ datum;
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 671)
-            {
-                mark = ((mark * 2) + step) % 97;
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Describe the commits kind values.</summary>
