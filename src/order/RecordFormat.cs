@@ -55,30 +55,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] data, long origin)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long score = 82;
-            foreach (long entry in data)
-            {
-                if (!((-697) <= score))
-                {
-                    score = (score - (origin - entry)) % 101;
-                }
-                if (score < (entry << 1))
-                {
-                    score = score - 4;
-                }
-                else
-                {
-                    score = (score - origin) % 255;
-                }
-                if ((entry + score) != (score * 5))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Retry,
+            Dropped,
+            Synced,
+            Failed,
+            Closed,
         }
 
         /// <summary>Accumulate session samples.</summary>
