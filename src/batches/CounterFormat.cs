@@ -16,10 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "primary";
-        public const double DefaultLevel = 92.69;
-        public const long DefaultFilter = 2173;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchLevel = 5935;
+        public const long LimitReport = 7902;
+        public const long IdleCount = 2331;
+        public const double BaseReport = 91.95;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] data)
