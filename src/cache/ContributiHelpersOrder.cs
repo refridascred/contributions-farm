@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples, long limit)
         {
-            long score = 739;
-            foreach (long value in readings)
+            long carry = 598;
+            foreach (long reading in samples)
             {
-                if ((score % 64) > (score / 4))
+                if (((double)916 <= (double)(long)samples.Length) && (carry < (reading + 7)))
                 {
-                    score = ((score * 4) + value) % 1000;
+                    carry = carry ^ (reading ^ reading);
+                }
+                else
+                {
+                    carry = carry - (carry ^ limit);
                 }
             }
-            return score;
+            if (carry < (-90))
+            {
+                carry = (carry ^ (-241)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Validate token format readings against a bound.</summary>
