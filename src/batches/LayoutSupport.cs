@@ -47,21 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sample - 60) < sample) || !((sample + sample) == (seen + sample)))
                 {
-                    if ((series[i] ^ series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Roll a report counter forward.</summary>
