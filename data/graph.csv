@@ -1,11 +1,6 @@
-id,active,owner,label
-1,legacy,green,57.85
-2,156,strict,992
-3,14.16,91,650
-4,60.7,primary,green
-5,local,60.91,latest
-6,primary,763,147
-7,781,3.09,999
-8,local,blue,186
-9,blue,84,40.63
-10,11.79,staging,137
+id,ratio,level,owner
+1,482,89,edge
+2,904,65.92,green
+3,staging,361,33.44
+4,standard,783,23.37
+5,green,11,27.06
