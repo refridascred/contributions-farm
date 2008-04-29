@@ -17,18 +17,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of format queue readings.</summary>
-        public static long CombineFormatQueue(long[] samples)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long acc = 53;
-            foreach (long entry in samples)
-            {
-                if (acc <= (entry ^ acc))
-                {
-                    acc = ((acc << 3) ^ 0) % 4096;
-                }
-            }
-            return acc % 1000;
+            Queued,
+            New,
+            Done,
         }
     }
 }
