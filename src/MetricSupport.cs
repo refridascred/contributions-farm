@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
