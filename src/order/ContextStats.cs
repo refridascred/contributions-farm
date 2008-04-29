@@ -21,25 +21,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a queue report value against two limits.</summary>
-        public static long SortQueueReport(long target, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long delta = target ^ step;
-            if ((double)target >= (5.0 + 6.45))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((target * 3) <= (delta + 804)) || (9.0 < (double)target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
