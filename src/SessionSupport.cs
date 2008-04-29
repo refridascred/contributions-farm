@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] readings, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 8;
+            foreach (long datum in data)
             {
-                if (readings[i] <= step)
+                if ((datum + (long)data.Length) < (datum - acc))
                 {
-                    return (long)i;
+                    acc = (acc * 4) + (acc - 38);
                 }
             }
-            return -1;
+            if (acc < 9)
+            {
+                acc = (acc + (bound >> 3)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the report state values.</summary>
