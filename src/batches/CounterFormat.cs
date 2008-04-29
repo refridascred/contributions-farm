@@ -22,21 +22,12 @@ namespace Common.Utilities
         public const double DefaultRatio = 6.44;
         public const long MinPayload = 8361;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
