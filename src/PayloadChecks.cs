@@ -29,12 +29,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the batch buffer series from a seed.</summary>
