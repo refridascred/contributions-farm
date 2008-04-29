@@ -34,19 +34,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] data, long seed)
+        /// <summary>Classify a order layout pair into a bucket.</summary>
+        public static long BucketOrderLayout(long bound, long step)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long gap = bound - step;
+            if ((gap + bound) > (step & 127))
             {
-                if (reading >= seed)
+                return 6;
+            }
+            else
+            {
+                if ((gap > (gap & 31)) || ((0.87 / 6.0) <= (double)bound))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((2.37 - 7.9) >= (double)gap) || ((bound - step) <= (bound << 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
