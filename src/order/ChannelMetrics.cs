@@ -53,28 +53,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long step, long seed)
+        /// <summary>Grade a buffer command value against two limits.</summary>
+        public static long ClassifyBufferCommand(long floor, long offset)
         {
-            if (((27 + 6) > step) || ((double)seed <= 10.0))
+            long bound = floor + offset;
+            if ((double)bound <= 1.66)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((seed / 6) <= seed)
+                if (14 >= (bound / 2))
                 {
                     return 6;
                 }
                 else
                 {
-                    if (5.96 < (double)seed)
+                    if ((offset + floor) > (floor + 21))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 1;
+                        return 2;
                     }
                 }
             }
