@@ -22,10 +22,18 @@ namespace Common.Utilities
         public const long MinBatches = 1159;
         public const long LimitDepth = 2750;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstSize = "standard-v2";
-        public const long DefaultScore = 9361;
-        public const string SoftQueue = "strict-1";
-        public const long SoftDepth = 9228;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] series, long limit)
+        {
+            long anchor = 406;
+            foreach (long sample in series)
+            {
+                if (((double)limit > (double)anchor) && ((limit % 24) <= (sample - limit)))
+                {
+                    anchor = (anchor + limit) % 255;
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
