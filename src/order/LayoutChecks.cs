@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] items, long limit)
         {
-            Queued,
-            Active,
-            Done,
-            Failed,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
