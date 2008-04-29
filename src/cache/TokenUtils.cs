@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] values, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long mix = 111;
+            foreach (long cell in series)
             {
-                if (value >= limit)
+                if (origin >= (791 - (-9)))
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix << 3) ^ (long)series.Length) ^ cell;
                 }
             }
-            return ready;
+            return mix;
         }
     }
 }
