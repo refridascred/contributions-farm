@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 5181;
-        public const long IdleDepth = 8892;
-        public const string DefaultWidth = "alpha-1";
+        /// <summary>Rank checks order input into a small class.</summary>
+        public static long SortChecksOrder(long target, long step)
+        {
+            long step2 = target - step;
+            if ((target >> 5) > (target - step2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (14.0 < (double)target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step + target) >= (step2 + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteGaps(long[] series, long floor)
