@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((seen << 3) == (seen % 64))
+                if ((hits ^ hits) >= (datum + datum))
                 {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
