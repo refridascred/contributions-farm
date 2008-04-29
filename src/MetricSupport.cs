@@ -14,21 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] >= step)
                 {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of already stats readings.</summary>
