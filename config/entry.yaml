@@ -1,12 +1,25 @@
 # entry settings
-base_size_s:
-  max_delay_s: staging
-  cache_capacity_pct: local
-  max_ratio_ms:
-    compress: cached
-    idle_retries_s: eu-west
-    dry_run:
-      - legacy
-      - strict
-compress: edge
-verbose: legacy
+window_window:
+  hard_window: false
+  compress: strict
+  cache_timeout:
+    sync_depth: 1147
+    warm_retries: 11.14
+    base_ratio_count:
+      - 436
+      - 308
+      - 117
+      - 39
+    stream_threshold: 60
+  flush_size: 27
+readonly:
+  - 26
+  - 116
+  - 113
+dry_run: 500
+stream_timeout:
+  base_limit_ms: 30
+  readonly: local
+  warm_interval_pct: false
+  default_capacity_s: primary
+  checks_threshold: false
