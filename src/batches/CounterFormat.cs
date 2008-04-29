@@ -14,17 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] levels, long floor)
+        /// <summary>Digest a series of batch channel entries.</summary>
+        public static long CombineBatchChannel(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 840;
+            foreach (long item in readings)
             {
-                if (levels[i] < floor)
+                if ((item + step) < score)
                 {
-                    return (long)i;
+                    score = (score - step) % 1000;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Hold a stream info.</summary>
