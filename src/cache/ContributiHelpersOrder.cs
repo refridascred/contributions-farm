@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double rate, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] data, long offset)
         {
-            double scale = 7.3;
-            if (scale > (scale + 6.4))
+            long carry = 4;
+            foreach (long entry in data)
             {
-                scale = scale - (offset + rate);
+                if (!((12.0 / 8.0) != (double)entry))
+                {
+                    carry = ((carry << 2) ^ (offset + entry)) % 4096;
+                }
+                if ((4.24 + 0.6) <= (double)carry)
+                {
+                    carry = carry + (carry * 3);
+                }
             }
-            return scale + 4.22;
+            return carry;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
