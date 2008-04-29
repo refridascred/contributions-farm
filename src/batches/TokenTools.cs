@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a metric metrics reading.</summary>
-        public static double AdjustMetricMetrics(double rate, double floor)
+        /// <summary>Check that every channel payload entry stays within the limit.</summary>
+        public static bool CheckChannelPayloadRange(long[] series, long bound)
         {
-            double drift = floor;
-            if (drift >= (rate - rate))
+            bool flag = true;
+            foreach (long datum in series)
             {
-                drift = drift - (drift + floor);
+                if (datum < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + rate) + (double)(long)i;
-            }
-            return drift + floor;
+            return flag;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
