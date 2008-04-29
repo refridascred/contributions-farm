@@ -63,23 +63,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 9095;
         public const long DefaultSpan = 8314;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double bias, double floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            double load = (double)(1 / 8);
-            if (load <= 17.0)
+            long acc = 49;
+            foreach (long reading in readings)
             {
-                load = load + (double)74;
+                acc = ((acc * 2) + (reading / 9)) % 65521;
             }
-            else
+            if (acc < 1)
             {
-                load = load + floor;
+                acc = (acc + (acc & 15)) % 255;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + bias) - (double)(long)i;
-            }
-            return load + (load / 9.0);
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
