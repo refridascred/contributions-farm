@@ -1,6 +1,6 @@
 {
-  "soft_limit": "fallback",
-  "default_interval": 2439,
-  "sync_window_s": 35,
-  "verbose": "blue"
+  "default_delay_s": false,
+  "soft_timeout_pct": "strict",
+  "enabled": 27,
+  "githubfarm_ttl": "stable"
 }
