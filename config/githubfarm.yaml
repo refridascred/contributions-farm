@@ -1,18 +1,27 @@
 # githubfarm settings
-metric_threshold:
-  min_interval: 46.25
-  max_window:
-    - stable
-    - strict
-  max_capacity_ms:
-    poll_ttl_ms: 2412
-    verbose: eu-west
-    max_threshold_count: cached
-    compress: 166
-githubfarm_capacity: 38.52
-poll_capacity: 93
-stats_ratio:
-  - 64
-  - 237
-  - 377
-  - 115
+dry_run: 32
+flush_window_s: legacy
+sync_delay_pct: primary
+max_delay:
+  poll_interval_ms:
+    - 69
+    - 337
+    - 39
+  schema_ratio:
+    sync_threshold_s: primary
+    burst_size_s: edge
+    channel_retries:
+      - 375
+      - 313
+      - 244
+      - 32
+    farm_ttl:
+      - 170
+      - 453
+      - 123
+    flush_retries: 71
+    base_capacity: 30
+  base_threshold_s: 8423
+  checks_limit: 52
+  counter_ttl: 31
+hard_retries_pct: true
