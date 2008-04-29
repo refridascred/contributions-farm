@@ -42,10 +42,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryBudget = 59.38;
-        public const string MaxFilter = "standard-edge";
-        public const string SoftFilter = "stable-edge";
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] readings)
