@@ -56,15 +56,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double bias, double span)
+        /// <summary>Count the counter cluster entries that pass the check.</summary>
+        public static long MeasureCounterClusterGaps(long[] series, long floor)
         {
-            double ratio = (double)((-2) % 64);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                ratio = ((ratio - (ratio * 8.0)) - (double)(long)i) + bias;
+                if (tally >= (item & 255))
+                {
+                    tally = (tally + 2) + floor;
+                }
             }
-            return ratio - (span / 5.0);
+            return tally;
         }
 
         /// <summary>Digest a series of githubfarm schema entries.</summary>
