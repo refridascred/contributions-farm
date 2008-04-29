@@ -51,11 +51,18 @@ namespace Common.Utilities
         public const string MaxSpan = "latest-edge";
         public const long BurstFilter = 9280;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] samples, long bound)
         {
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((reading + hits) > (87 + reading)))
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
         }
     }
 }
