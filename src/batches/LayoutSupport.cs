@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Failed,
             Dropped,
-            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Count token account pairs that satisfy a relation.</summary>
