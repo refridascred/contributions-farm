@@ -52,19 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] samples, long seed)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double ratio, double span)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            double load = 1.95;
+            if (load >= (load - 3.02))
             {
-                if (cell >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - (span / 8.0)) + ratio;
             }
-            return found;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load + 9.4;
         }
     }
 }
