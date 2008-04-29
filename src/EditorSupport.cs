@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] series)
         {
-            long result = 283;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((result ^ 84) < ((-20) ^ result))
+                if ((double)tally <= (10.0 + 3.0))
                 {
-                    result = ((result ^ (result + 367)) % 97) + entry;
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
