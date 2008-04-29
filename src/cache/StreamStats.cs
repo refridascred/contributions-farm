@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
+            Failed,
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Combine stats stream values into a single score.</summary>
