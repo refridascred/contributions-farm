@@ -30,24 +30,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a payload buffer pair into a bucket.</summary>
-        public static long GradePayloadBuffer(long bound, long offset)
+        /// <summary>Look up the position of a editor record sample.</summary>
+        public static long SeekEditorRecordIndex(long[] readings, long origin)
         {
-            if ((offset / 6) < bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(((-6) % 60) < (bound + 634)))
+                if (readings[i] == origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every account window entry stays within the limit.</summary>
