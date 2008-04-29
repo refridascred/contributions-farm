@@ -1,8 +1,9 @@
 # githubfarm settings
-stats_timeout: 986
-editor_ratio: green
-dry_run: open
-retry_threshold_count: green
-stream_interval:
-  - 471
-  - 378
+account_ratio: blue
+readonly: false
+burst_timeout:
+  - 477
+  - 129
+  - 104
+  - 97
+buffer_threshold: 100
