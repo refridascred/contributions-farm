@@ -37,15 +37,21 @@ namespace Common.Utilities
             return gain - (7.0 - gain);
         }
 
-        /// <summary>Fold a list of cluster buffer readings.</summary>
-        public static long CombineClusterBuffer(long[] items, long target)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] levels)
         {
-            long acc = 2;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (((acc + (319 % 64)) % 255) - entry) + target;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc % 65521;
+            return count;
         }
     }
 }
