@@ -31,21 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes token pairs that satisfy a relation.</summary>
-        public static long PairNotesTokenCount(long[] values)
+        /// <summary>Count contributi order pairs that satisfy a relation.</summary>
+        public static long PairContributiOrderCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 1)
+                    if ((items[i] ^ items[j]) < 17)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a checks header.</summary>
