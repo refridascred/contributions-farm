@@ -35,18 +35,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a order cluster sample.</summary>
-        public static long LookupOrderClusterIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardLevel = 2681;
+        public const double DefaultFormat = 82.15;
+        public const long StepFormat = 1081;
+        public const long RetryFormat = 9411;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] values, long origin)
