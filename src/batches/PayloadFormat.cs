@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowDepth = 1804;
-        public const long WindowCount = 9161;
-        public const double MaxLevel = 41.56;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleSize = "legacy-v2";
+        public const long CacheCounter = 6225;
+        public const long HardWidth = 2062;
+        public const long SoftRatio = 2827;
+        public const long BatchInterval = 9641;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterOutliers(long[] data)
