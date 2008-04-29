@@ -24,11 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
