@@ -1,15 +1,17 @@
 # entry settings
-dry_run: 37
-base_depth_pct: 82
-idle_ttl_ms: true
-idle_ratio: 28.65
-retry_limit_ms:
-  base_delay_count:
-    channel_ratio: blue
-    max_timeout_ms: 4.37
-    session_delay: standard
-    default_window_ms: 30
-  warm_size_ms: 58.63
-  max_depth_ms: 8563
-  account_ttl: 23.94
-  sync_ratio: true
+base_delay_s: blue
+default_ratio_pct: 27.59
+poll_timeout:
+  idle_size_count: 100
+  readonly: staging
+  idle_ratio: 20
+  hard_window_count:
+    batches_delay: 83
+    max_delay: 7038
+    format_window: 1024
+    retry_threshold_count:
+      - local
+      - standard
+      - fallback
+      - eu-west
+cache_timeout_pct: 9392
