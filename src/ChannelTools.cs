@@ -48,17 +48,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long target)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
     }
 }
