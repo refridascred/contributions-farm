@@ -51,13 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] values, long seed)
         {
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
