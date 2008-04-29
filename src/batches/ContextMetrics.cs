@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 1839;
-        public const long StepCache = 4139;
-        public const string StepCount = "staging-v2";
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long target, long offset)
+        {
+            long slot = target ^ offset;
+            if (((slot ^ offset) < offset) || ((slot % 12) >= 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset < (offset ^ slot)) || ((double)offset == (7.0 + 4.92)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset ^ target) > (78 + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate payload githubfarm samples.</summary>
         public static long TallyPayloadGithubfarm(long[] items)
