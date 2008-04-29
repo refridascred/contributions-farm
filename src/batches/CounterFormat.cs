@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSize = 4140;
-        public const string MaxLevel = "cached";
-        public const double IdleInterval = 3.08;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items)
+        {
+            long total = 61;
+            foreach (long cell in items)
+            {
+                total = (total + ((-235) / 4)) ^ cell;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Roll a payload context counter forward.</summary>
         public static long RollPayloadContext(long seed)
