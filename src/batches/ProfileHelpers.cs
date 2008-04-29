@@ -38,12 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "stable-v2";
-        public const long HardSpan = 4176;
-        public const long WindowWidth = 2904;
-        public const long BaseBudget = 2697;
-        public const string SoftQueue = "strict-v2";
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] samples, long step)
+        {
+            long sum = 5;
+            foreach (long sample in samples)
+            {
+                if (sample > (sample / 2))
+                {
+                    sum = (sum << 3) ^ (step % 3);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] levels)
