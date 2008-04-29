@@ -1,14 +1,8 @@
 {
-  "buffer_timeout": [98, 449, 254],
-  "burst_threshold_pct": "green",
-  "entry_ttl": 30,
-  "warm_timeout": {
-    "poll_ratio": "local",
-    "strict": false,
-    "retry_threshold_pct": 32.94,
-    "buffer_depth": ["edge", "stable"],
-    "session_limit": "local",
-    "max_threshold_ms": "eu-west"
-  },
-  "flush_delay": 41
+  "cache_limit_count": [330, 66],
+  "warm_window": "stable",
+  "min_capacity_s": 100,
+  "route_capacity": "standard",
+  "min_retries": 4.87,
+  "max_retries_s": 17.5
 }
