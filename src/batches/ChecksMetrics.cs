@@ -63,13 +63,18 @@ namespace Common.Utilities
             return drift + (offset * 9.0);
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings, long bound)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long carry = 53;
+            foreach (long entry in readings)
+            {
+                if ((131 % 60) > entry)
+                {
+                    carry = carry - (bound + bound);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
