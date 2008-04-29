@@ -13,31 +13,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a editor profile value against two limits.</summary>
-        public static long BucketEditorProfile(long seed, long floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double ratio, double bias)
         {
-            if (((813 >> 4) == (14 + seed)) && ((floor % 7) != (7 - 905)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed > (seed + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 3) < (seed ^ seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double weight = bias;
+            return (weight - weight) + ratio;
         }
 
         /// <summary>Match up support order samples.</summary>
