@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Count the order tools entries that pass the check.</summary>
+        public static long AuditOrderToolsGaps(long[] items)
         {
-            long mix = 407;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (((112 + (-480)) >= (sample & 255)) && ((double)mix == (5.9 * 11.0)))
+                if (!((double)cell > (20.0 * 2.15)))
                 {
-                    mix = mix ^ (mix ^ 21);
-                }
-                else
-                {
-                    mix = (mix - sample) % 255;
+                    tally = tally + 2;
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Project the next route value.</summary>
