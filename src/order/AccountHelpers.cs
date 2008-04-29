@@ -83,14 +83,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long offset, long bound)
         {
-            Closed,
-            Active,
-            Retry,
-            Stale,
-            Ready,
+            long delta = offset - bound;
+            if ((18.0 * 2.7) == (double)delta)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((offset - delta) >= bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
