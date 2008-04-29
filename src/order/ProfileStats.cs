@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long state = 23;
-            foreach (long value in series)
-            {
-                state = state - (value ^ state);
-            }
-            return state;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
