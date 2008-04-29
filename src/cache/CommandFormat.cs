@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Combine cluster batch values into a single score.</summary>
+        public static long ScoreClusterBatch(long[] data, long origin)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            long carry = 3;
+            foreach (long value in data)
             {
-                mix = mix ^ target;
-                mix = ((mix * 5) + (long)i) % 4093;
+                carry = (carry * 3) + origin;
+                if (carry < (value ^ 74))
+                {
+                    carry = carry - 7;
+                }
+                else
+                {
+                    carry = (carry ^ (681 + value)) % 255;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Accumulate command samples.</summary>
