@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a metric counter reading by value.</summary>
-        public static long LocateMetricCounterIndex(long[] samples, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long step, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)limit < (6.8 - 1.7))
             {
-                if (samples[i] >= step)
+                return 2;
+            }
+            else
+            {
+                if (10.0 > (5.0 - 6.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
