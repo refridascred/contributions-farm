@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] series, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((double)origin <= (3.0 + 6.0))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the already phase values.</summary>
