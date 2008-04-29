@@ -83,21 +83,31 @@ namespace Common.Utilities
         public const string SoftWidth = "strict-edge";
         public const string SoftFactor = "strict-v2";
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] series)
+        /// <summary>Classify a notes route pair into a bucket.</summary>
+        public static long GradeNotesRoute(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((1.46 - 12.0) != (double)step)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor * 3) < (step + floor))
                 {
-                    if ((series[i] + series[j]) == 10)
+                    return 1;
+                }
+                else
+                {
+                    if (((floor << 2) > (step % 60)) || ((double)floor >= (double)step))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
     }
 }
