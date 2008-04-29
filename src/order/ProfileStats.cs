@@ -31,13 +31,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Count layout profile pairs that satisfy a relation.</summary>
+        public static long CompareLayoutProfileCount(long[] levels)
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count batches session pairs that satisfy a relation.</summary>
