@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Classify a layout stats pair into a bucket.</summary>
+        public static long GradeLayoutStats(long step, long seed)
         {
-            Ready,
-            Dropped,
-            Queued,
+            long span = step + seed;
+            if (!(step >= seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((span / 9) >= (span ^ step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7.0 + 7.25) <= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
