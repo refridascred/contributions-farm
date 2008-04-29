@@ -34,21 +34,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count tools already pairs that satisfy a relation.</summary>
-        public static long PairToolsAlreadyCount(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((double)2 < (double)entry) && (hits >= entry)))
                 {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
