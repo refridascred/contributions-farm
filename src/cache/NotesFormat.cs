@@ -16,21 +16,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Grade a batches checks value against two limits.</summary>
+        public static long ClassifyBatchesChecks(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = target + floor;
+            if (((edge << 3) > (target + edge)) && ((double)edge > (20.0 - 16.0)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (edge <= (floor << 2))
                 {
-                    if ((levels[i] - levels[j]) != 8)
+                    return 6;
+                }
+                else
+                {
+                    if (((floor + floor) > (floor % 60)) && ((edge + floor) >= edge))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a account entry pair into a bucket.</summary>
