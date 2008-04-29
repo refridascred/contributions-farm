@@ -37,9 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 4571;
-        public const long MaxSession = 6490;
-        public const long IdleSession = 2795;
+        /// <summary>Measure how many cache format samples are out of range.</summary>
+        public static long CountCacheFormatHits(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((((tally - tally) != (value * 4)) || ((offset + tally) > (value + value))) || (((value ^ offset) < (offset % 7)) && ((offset >> 2) <= (offset << 2))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
