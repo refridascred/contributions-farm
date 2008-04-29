@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long seed)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry << 3) ^ (carry + (long)i);
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
