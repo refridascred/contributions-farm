@@ -1,9 +1,15 @@
 # githubfarm settings
-account_ratio: blue
-readonly: false
-burst_timeout:
-  - 477
-  - 129
-  - 104
-  - 97
-buffer_threshold: 100
+persist: 41
+retry_threshold_pct:
+  burst_retries_count: blue
+  readonly: fallback
+  flush_interval_count: fallback
+  profile_retries: 3909
+burst_retries_ms: 5892
+min_delay_s: false
+burst_delay_s: 2562
+poll_size:
+  persist: 68.14
+  readonly: latest
+  hard_delay: primary
+  max_retries_pct: 84.06
