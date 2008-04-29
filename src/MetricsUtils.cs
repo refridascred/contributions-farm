@@ -40,12 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] readings, long limit)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((7 > (limit % 97)) || ((value - value) >= (value + limit)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of format account readings.</summary>
