@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxToken = "legacy-edge";
-        public const string DefaultToken = "fallback-1";
-        public const string HardFactor = "cached-v2";
-        public const double WindowToken = 91.13;
-        public const string RetryWidth = "strict-1";
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long floor, long step)
+        {
+            long gap = floor - step;
+            if (((step ^ gap) > (floor + step)) || ((floor - step) >= 69))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((gap % 5) <= (step ^ floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (gap < 2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
