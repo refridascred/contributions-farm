@@ -1,8 +1,13 @@
 {
-  "readonly": 500,
-  "token_threshold": 98,
-  "strict": true,
-  "commits_depth": 236,
-  "cache_size": "standard",
-  "queue_threshold": [182, 152]
+  "persist": "stable",
+  "enabled": 16,
+  "flush_timeout": "legacy",
+  "token_ttl": {
+    "command_ratio": false,
+    "schema_retries": 4713,
+    "warm_window_s": 5142,
+    "verbose": [44, 308, 242],
+    "counter_capacity": "strict",
+    "burst_size": 23.28
+  }
 }
