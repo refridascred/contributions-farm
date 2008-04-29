@@ -1,14 +1,11 @@
 # Command notes
 
-When a account fails, the counter handler retries a few times before giving up.
-The tools report groups every session by cluster.
-
-The contributi module keeps record values in sync with the metric cache.
-The account module keeps session values in sync with the metrics cache.
-The report module keeps buffer values in sync with the order cache.
+A tools that stays idle for too long is moved to the support list.
+Each token is validated before it reaches the report queue.
+The report report groups every account by channel.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Review contributi limits each release
-- Log every buffer change
+- Document new stream fields
+- Log every checks change
+- Prefer graph defaults
