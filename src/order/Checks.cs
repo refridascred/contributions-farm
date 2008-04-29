@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            Active,
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
