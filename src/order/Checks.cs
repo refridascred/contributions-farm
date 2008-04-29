@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 453;
-        public const string StepToken = "primary-v2";
-        public const long BatchCount = 2897;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count notes token pairs that satisfy a relation.</summary>
         public static long PairNotesTokenCount(long[] values)
