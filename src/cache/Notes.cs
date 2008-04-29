@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine buffer cache values into a single score.</summary>
-        public static long FoldBufferCache(long[] series, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long result = 7;
-            foreach (long value in series)
-            {
-                result = (((result - (191 + 10)) % 65521) + value) - target;
-            }
-            if (result < 22)
-            {
-                result = result - (result * 5);
-            }
-            return result % 65521;
+            Queued,
+            Locked,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a stats options.</summary>
