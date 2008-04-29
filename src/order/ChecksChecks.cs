@@ -24,19 +24,13 @@ namespace Common.Utilities
             return load - (ratio + load);
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double rate, double span)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double bias = span;
-            if (bias >= (double)62)
-            {
-                bias = bias + (2.8 / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - rate) + (double)(long)i;
-            }
-            return bias - span;
+            public long Count { get; set; }
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
