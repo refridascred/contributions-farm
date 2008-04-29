@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double scale, double floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long target, long bound)
         {
-            double load = floor - (12.0 - 9.9);
-            if (load > scale)
+            long next = target + bound;
+            if (((target - bound) != (target * 5)) || ((double)next < (5.0 * 6.2)))
             {
-                load = load - (2.0 / 9.0);
+                return 3;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = (load - scale) + (double)(long)i;
+                if ((double)target > (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return load - (scale - floor);
         }
 
         /// <summary>Check that every payload schema entry stays within the limit.</summary>
