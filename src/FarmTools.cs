@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value < floor)
                 {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Audit window queue readings against a rule.</summary>
