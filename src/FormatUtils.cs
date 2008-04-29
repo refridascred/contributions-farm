@@ -27,11 +27,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultDepth = 87.75;
-        public const long LimitSchema = 2160;
-        public const string HardTimeout = "alpha";
-        public const long IdleSchema = 5847;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long floor, long origin)
+        {
+            if ((origin - origin) <= (origin / 9))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((0.31 + 0.93) == (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.0 / 9.0) >= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a order cluster sample.</summary>
         public static long LookupOrderClusterIndex(long[] values, long target)
