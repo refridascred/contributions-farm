@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const long RetrySupport = 8562;
         public const long DefaultSupport = 8027;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 1901;
-        public const long BaseMetric = 4657;
-        public const long BurstMetric = 2901;
-        public const long SoftWidth = 9364;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterLimits(long[] data, long seed)
