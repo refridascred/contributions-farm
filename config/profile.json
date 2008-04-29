@@ -1,15 +1,6 @@
 {
-  "flush_size": {
-    "channel_limit": 62.74,
-    "already_capacity": 63.78,
-    "cache_capacity": ["green", "green"],
-    "poll_window_ms": 1024,
-    "dry_run": "blue",
-    "stats_retries": 7475
-  },
-  "sync_size_s": ["standard", "primary"],
-  "min_retries": true,
-  "default_threshold": 21,
-  "audit": 16.84,
-  "burst_ttl_count": 100
+  "compress": ["green", "green"],
+  "readonly": [87, 211, 106, 172],
+  "default_limit": 51,
+  "cache_size_s": ["eu-west", "local", "fallback"]
 }
