@@ -23,16 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next notes command value from a seed.</summary>
-        public static long DeriveNotesCommand(long seed)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor - (anchor % 8)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
