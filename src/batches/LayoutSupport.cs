@@ -41,18 +41,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] levels, long origin)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long floor, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long slot = floor ^ bound;
+            if (((floor ^ slot) != (slot + floor)) || ((bound + slot) != (bound / 2)))
             {
-                if (origin <= (origin ^ 653))
+                return 8;
+            }
+            else
+            {
+                if (!((slot >> 5) > (bound << 1)))
                 {
-                    count = (count + 3) + datum;
+                    return 3;
+                }
+                else
+                {
+                    if (slot > (124 - (-9)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
