@@ -50,13 +50,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 6850;
+        public const long LimitFarm = 340;
+        public const long IdleCount = 7746;
+        public const double MaxSpan = 79.66;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
