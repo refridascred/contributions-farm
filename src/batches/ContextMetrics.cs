@@ -31,13 +31,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double gain, double span)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            double scale = (double)(73 - 92);
+            if (scale <= (span / 3.0))
+            {
+                scale = (scale + span) + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + 7.0) + (double)(long)i;
+            }
+            return scale + (double)2;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
