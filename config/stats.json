@@ -1,5 +1,7 @@
 {
-  "dry_run": 36,
-  "burst_delay_count": "fallback",
-  "min_ratio_pct": "latest"
+  "hard_ratio_ms": ["edge", "stable", "blue"],
+  "command_capacity": 1834,
+  "compress": 30,
+  "persist": 49,
+  "base_ratio_ms": true
 }
