@@ -31,13 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Fold a list of batch buffer readings.</summary>
+        public static long TotalBatchBuffer(long[] series)
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long mark = 37;
+            foreach (long item in series)
+            {
+                mark = (mark - (item + 149)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
