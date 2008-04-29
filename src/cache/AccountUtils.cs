@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] series, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long target)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((floor + floor) <= (count + count))
-                {
-                    count = (count + 1) + cell;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Find the first buffer batches entry that matches the target.</summary>
