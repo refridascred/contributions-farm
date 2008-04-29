@@ -43,19 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] data, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (item >= limit)
+                if ((seen + seen) < 9)
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 1) ^ sample) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Project the next command value.</summary>
