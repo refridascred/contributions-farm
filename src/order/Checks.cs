@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryContext = "strict-v2";
-        public const long HardContext = 7639;
-        public const double BurstInterval = 13.67;
+        /// <summary>Compare every pair of token queue readings.</summary>
+        public static long PairTokenQueueCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamMatches(long[] readings, long floor)
