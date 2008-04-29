@@ -1,6 +1,42 @@
 # support settings
-metrics_delay: 69
-report_size: 78.82
-verbose: green
-entry_limit: true
-compress: strict
+strict:
+  flush_timeout_count:
+    soft_threshold_s: true
+    retry_delay_ms:
+      - 34
+      - 63
+      - 314
+      - 433
+    cache_window_s: 30
+    batch_capacity_count: 6900
+    audit: true
+  order_size: eu-west
+  idle_interval:
+    - 463
+    - 455
+    - 254
+queue_threshold:
+  flush_threshold_s: 4402
+  idle_delay: false
+  cache_size_pct:
+    - primary
+    - eu-west
+    - latest
+    - legacy
+readonly:
+  idle_timeout:
+    - 5
+    - 458
+    - 287
+    - 197
+  base_interval_count: 66.28
+  layout_capacity: staging
+  flush_timeout: 2157
+  warm_interval_s: latest
+  poll_timeout_pct:
+    cache_retries_ms: 5.03
+    counter_size: true
+    verbose: 23.87
+    retry_retries_s: 20.74
+cluster_ttl: 2314
+audit: 48
