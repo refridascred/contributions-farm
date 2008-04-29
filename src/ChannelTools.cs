@@ -13,19 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] data, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
