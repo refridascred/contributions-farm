@@ -91,21 +91,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((double)bound < 1.9) && ((double)total <= (9.06 - 7.06)))
-                {
-                    total = total ^ ((long)i << 3);
-                    break;
-                }
-                total = (total ^ (total + bound)) % 1000;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
