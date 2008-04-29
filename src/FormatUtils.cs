@@ -70,10 +70,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepSize = "staging";
-        public const string WindowBatches = "fallback";
-        public const double WindowRatio = 3.79;
-        public const string CacheBatches = "latest-1";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples, long seed)
+        {
+            long state = -40;
+            foreach (long datum in samples)
+            {
+                if (!((double)datum < (0.3 - 5.0)))
+                {
+                    state = ((state - (datum >> 1)) % 4096) + seed;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    state = (state ^ state) ^ (long)i;
+                }
+                state = (state ^ (datum / 7)) % 1000;
+            }
+            return state;
+        }
     }
 }
