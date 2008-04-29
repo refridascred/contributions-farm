@@ -1,25 +1,31 @@
 # entry settings
-window_window:
-  hard_window: false
-  compress: strict
-  cache_timeout:
-    sync_depth: 1147
-    warm_retries: 11.14
-    base_ratio_count:
-      - 436
-      - 308
-      - 117
-      - 39
-    stream_threshold: 60
-  flush_size: 27
-readonly:
-  - 26
-  - 116
-  - 113
-dry_run: 500
-stream_timeout:
-  base_limit_ms: 30
-  readonly: local
-  warm_interval_pct: false
-  default_capacity_s: primary
-  checks_threshold: false
+flush_interval_pct: false
+base_capacity_s: true
+audit:
+  burst_delay_ms:
+    default_depth_count: 98.44
+    persist: false
+    stream_retries:
+      - 262
+      - 233
+      - 359
+      - 254
+    cache_depth_pct: 445
+    account_interval: 17.49
+    idle_depth: 51.86
+  enabled: 30
+  flush_ttl_s:
+    persist: 69.77
+    burst_retries_pct: eu-west
+    metric_capacity: fallback
+    window_window: open
+    queue_window: latest
+  batch_size:
+    max_size_s: 1.71
+    burst_window_ms: 66.75
+    persist: 25
+    command_retries: blue
+  hard_capacity_count: standard
+default_capacity_s: staging
+persist: standard
+graph_size: true
