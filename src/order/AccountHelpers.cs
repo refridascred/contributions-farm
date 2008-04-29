@@ -67,25 +67,19 @@ namespace Common.Utilities
             return ratio - (span / 5.0);
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long offset, long bound)
+        /// <summary>Digest a series of githubfarm schema entries.</summary>
+        public static long WeighGithubfarmSchema(long[] levels)
         {
-            long delta = offset - bound;
-            if ((18.0 * 2.7) == (double)delta)
+            long carry = 3;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((offset - delta) >= bound))
+                carry = (carry << 2) ^ (value / 5);
+                if ((value / 9) <= 967)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    carry = carry - (carry + value);
                 }
             }
+            return carry % 65521;
         }
     }
 }
