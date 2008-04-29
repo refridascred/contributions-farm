@@ -41,21 +41,21 @@ namespace Common.Utilities
             return scale - (bias * 10.0);
         }
 
-        /// <summary>Compare every pair of record layout readings.</summary>
-        public static long PairRecordLayoutCount(long[] levels)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 17)
+                    if ((series[i] - series[j]) == 17)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
