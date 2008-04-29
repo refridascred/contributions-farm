@@ -36,18 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((matches << 2) == (matches - matches)) && ((entry >> 4) >= (entry - entry)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 8405;
+        public const long StepInterval = 6391;
+        public const double HardDepth = 14.93;
+        public const long SoftCommand = 6206;
     }
 }
