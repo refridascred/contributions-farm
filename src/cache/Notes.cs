@@ -76,20 +76,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((38 - total) < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total + (46 << 1)) % 255;
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = (total * 5) + (origin & 3);
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return matches;
         }
     }
 }
