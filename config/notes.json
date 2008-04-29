@@ -1,11 +1,13 @@
 {
-  "hard_delay": false,
-  "readonly": {
-    "dry_run": "edge",
-    "warm_retries_count": false,
-    "channel_limit": false,
-    "audit": 9789,
-    "base_ttl_count": [336, 26]
+  "cache_delay_ms": {
+    "githubfarm_threshold": 85,
+    "hard_threshold_count": 500,
+    "hard_size_count": false,
+    "idle_ttl_s": true
   },
-  "verbose": 43.61
+  "max_depth": 63,
+  "context_ratio": "strict",
+  "default_size_count": 26.08,
+  "soft_retries_ms": [188, 160],
+  "sync_window_ms": [367, 403, 300]
 }
