@@ -1,7 +1,5 @@
 # githubfarm settings
-soft_threshold_ms: true
-batch_ratio_s: edge
-audit: false
-batch_size: 44
-batch_threshold: 19.14
-idle_capacity: 87.6
+commits_ttl: 30
+base_ratio_count: 40.74
+min_ttl_ms: fallback
+account_timeout: legacy
