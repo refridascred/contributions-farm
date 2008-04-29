@@ -27,16 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
+            long acc = 55;
+            foreach (long item in series)
             {
-                mark = (mark - (mark + mark)) % 65521;
-                mark = ((mark * 3) + (long)i) % 97;
+                acc = (acc ^ item) % 255;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
