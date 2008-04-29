@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double weight, double span)
         {
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
+            double mean = (double)(46 % 3);
+            if (mean > (8.65 * 9.4))
+            {
+                mean = mean + 5.3;
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - (weight + mean);
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
