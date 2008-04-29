@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Stale,
-            Closed,
-            Failed,
-            Active,
-            Paused,
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
