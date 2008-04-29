@@ -25,22 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] values, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long score = 0;
-            foreach (long cell in values)
-            {
-                if (6 < (score >> 5))
-                {
-                    score = (score - (cell + cell)) - limit;
-                }
-            }
-            if (score > 337)
-            {
-                score = ((score * 4) + (91 + (long)values.Length)) % 255;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
