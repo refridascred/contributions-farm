@@ -1,7 +1,8 @@
 # entry settings
-compress: 44.24
-min_timeout_pct: 2.95
-cache_capacity: 53
-enabled: 80
-dry_run: open
-soft_ratio_pct: local
+soft_retries_s: 78.98
+compress: false
+enabled:
+  - local
+  - local
+  - stable
+  - primary
