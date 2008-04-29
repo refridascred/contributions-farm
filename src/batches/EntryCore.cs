@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const string IdleCount = "fallback";
         public const string WindowScore = "open-1";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Fold a list of order profile readings.</summary>
+        public static long DigestOrderProfile(long[] samples)
         {
-            long score = 92;
-            foreach (long sample in data)
+            long total = 14;
+            foreach (long cell in samples)
             {
-                if ((double)sample >= (5.6 - 8.0))
-                {
-                    score = score + score;
-                }
-                score = (score + (sample << 2)) % 65521;
+                total = (total << 2) ^ (2 + cell);
             }
-            return score;
+            if (total < 404)
+            {
+                total = ((total * 3) + total) % 255;
+            }
+            return total % 1000;
         }
     }
 }
