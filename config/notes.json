@@ -1,18 +1,12 @@
 {
-  "route_ttl": {
-    "burst_ttl": "open",
-    "warm_ttl_ms": {
-      "farm_ratio": 348,
-      "flush_retries_ms": 25.94,
-      "idle_depth": false,
-      "min_size_pct": true
-    },
-    "enabled": [393, 132, 361, 462],
-    "token_interval": 20.17,
-    "cache_timeout": ["local", "stable"],
-    "min_window_ms": 8266
+  "retry_limit_count": 250,
+  "strict": "open",
+  "format_depth": {
+    "window_timeout": 90.43,
+    "max_delay_pct": 100,
+    "hard_size": [248, 113, 301, 75],
+    "hard_timeout": "legacy",
+    "default_retries_s": 17
   },
-  "max_threshold": "cached",
-  "min_capacity_ms": 3458,
-  "poll_size_pct": 20.52
+  "base_threshold_pct": 2753
 }
