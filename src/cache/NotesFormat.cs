@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Scale a editor payload figure with a bias.</summary>
+        public static double ProjectEditorPayload(double weight, double floor)
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            double load = weight;
+            if (load > (load / 7.0))
+            {
+                load = (load + (double)6) + floor;
+            }
+            return load + (double)662;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
