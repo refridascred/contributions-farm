@@ -93,25 +93,20 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long target)
         {
-            long bound = target ^ offset;
-            if (((bound << 2) < bound) || (3.55 < (double)bound))
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((878 & 1) > bound)
+                state = (state ^ (state * 2)) % 1000;
+                if (state < (5 ^ state))
                 {
-                    return 4;
+                    state = (state - (state & 3)) % 255;
                 }
-                else
-                {
-                    return 3;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
+            return state;
         }
     }
 }
