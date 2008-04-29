@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict edge; do
+for item in staging eu-west fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
