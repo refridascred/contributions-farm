@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record buffer figure with a bias.</summary>
-        public static double AdjustRecordBuffer(double ratio, double offset)
-        {
-            double gain = offset;
-            if (gain <= (ratio * 12.0))
-            {
-                gain = gain + (6.3 - 7.09);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (9.0 + 7.35)) - (double)(long)i;
-            }
-            return gain - (double)689;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 96.49;
+        public const string MinInterval = "open-edge";
+        public const long MaxRatio = 6080;
+        public const string LimitNotes = "fallback";
+        public const long HardNotes = 7911;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
