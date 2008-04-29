@@ -16,11 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchLevel = 5935;
-        public const long LimitReport = 7902;
-        public const long IdleCount = 2331;
-        public const double BaseReport = 91.95;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheSpan = 9256;
+        public const long StepTimeout = 931;
+        public const double DefaultRatio = 6.44;
+        public const long MinPayload = 8361;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] data)
