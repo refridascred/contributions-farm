@@ -41,15 +41,17 @@ namespace Common.Utilities
             return scale - (bias * 10.0);
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double weight, double span)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] items, long limit)
         {
-            double mean = 8.2;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = ((mean + (weight / 3.0)) + (double)(long)i) - span;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean - 7.3;
+            return -1;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
