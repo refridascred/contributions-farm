@@ -63,12 +63,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 6660;
+        public const long LimitBudget = 7055;
+        public const long HardContributi = 1904;
+        public const long StepSize = 9165;
     }
 }
