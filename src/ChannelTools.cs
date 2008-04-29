@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a graph commits value against two limits.</summary>
-        public static long ClassifyGraphCommits(long offset, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] samples, long floor)
         {
-            long prev = offset ^ origin;
-            if (!((double)offset > 1.0))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((prev & 3) > prev)
+                if ((double)floor > (19.0 - 14.0))
                 {
-                    return 4;
+                    count = (count + 1) + entry;
                 }
                 else
                 {
-                    if ((origin >> 1) >= (57 - prev))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((9.5 / 5.0) >= (double)offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the tools class values.</summary>
