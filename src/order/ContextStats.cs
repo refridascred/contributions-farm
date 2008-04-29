@@ -21,13 +21,25 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Grade a queue report value against two limits.</summary>
+        public static long SortQueueReport(long target, long step)
         {
-            Stale,
-            Active,
-            Dropped,
-            Synced,
+            long delta = target ^ step;
+            if ((double)target >= (5.0 + 6.45))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target * 3) <= (delta + 804)) || (9.0 < (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Classify a support batch pair into a bucket.</summary>
