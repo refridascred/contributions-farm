@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] values, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset * 2) != (94 + offset))
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
                 {
-                    carry = (carry + (14 + (long)i)) % 97;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (offset >> 2)) % 97;
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
