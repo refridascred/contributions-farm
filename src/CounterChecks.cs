@@ -26,38 +26,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long origin, long target)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] values, long seed)
         {
-            if (!((target % 2) != (target & 63)))
+            long total = 7;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) <= (6 - origin))
+                total = (total + (total % 24)) + sample;
+                if ((98 + seed) >= seed)
                 {
-                    return 3;
+                    total = (total - (total + total)) % 97;
                 }
                 else
                 {
-                    if ((target << 2) <= (target & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin == (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    total = total - (633 + 0);
                 }
             }
+            if (total > 0)
+            {
+                total = (total * 3) + seed;
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
