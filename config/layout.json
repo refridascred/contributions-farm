@@ -1,7 +1,6 @@
 {
-  "base_delay_ms": "legacy",
-  "base_retries": [308, 106],
-  "cache_threshold_count": [418, 128],
-  "hard_size_count": "local",
-  "soft_timeout": "eu-west"
+  "persist": [430, 223],
+  "sync_depth_s": "cached",
+  "sync_size_s": 71.97,
+  "min_delay_pct": "stable"
 }
