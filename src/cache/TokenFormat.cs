@@ -22,22 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel payload samples.</summary>
-        public static long FoldChannelPayload(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] series, long seed)
         {
-            long carry = 900;
-            foreach (long value in levels)
+            long total = -99;
+            foreach (long reading in series)
             {
-                if (carry > (507 ^ value))
+                if (((8.0 * 9.7) != (double)(long)series.Length) || ((total / 5) < seed))
                 {
-                    carry = (carry ^ (value << 2)) % 65521;
+                    total = (total ^ (total - reading)) % 97;
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
                 }
             }
-            if (carry > 22)
-            {
-                carry = carry + 27;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
