@@ -20,22 +20,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long seed)
         {
-            long mark = 6;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((cell + cell) != (cell % 24))
+                if (item != seed)
                 {
-                    mark = (mark - (35 ^ mark)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark > 630)
-            {
-                mark = (mark + (4 << 2)) % 97;
-            }
-            return mark % 65521;
+            return ok;
         }
 
         /// <summary>Roll a route counter forward.</summary>
