@@ -23,10 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseRatio = 3214;
-        public const long LimitSupport = 4302;
-        public const long CacheLevel = 4331;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Closed,
+            Paused,
+            New,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] series, long origin)
