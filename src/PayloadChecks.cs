@@ -58,20 +58,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleTimeout = 9498;
+        public const long LimitTimeout = 9095;
+        public const long DefaultSpan = 8314;
 
         /// <summary>Adjust a context reading.</summary>
         public static double BlendContext(double bias, double floor)
