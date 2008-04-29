@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const long DefaultFilter = 140;
         public const long HardBudget = 8223;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] readings, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (readings[i] <= seed)
+                if ((reading & 3) != (count & 1))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
