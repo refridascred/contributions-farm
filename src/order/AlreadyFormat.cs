@@ -42,22 +42,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate stream order samples.</summary>
-        public static long ScoreStreamOrder(long[] levels, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] samples, long step)
         {
-            long score = 713;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((double)score < (1.48 + 9.77))
+                if (((-8) + datum) < datum)
                 {
-                    score = ((score ^ (score + seed)) % 1000) ^ item;
-                }
-                else
-                {
-                    score = (score - score) % 97;
+                    count = (count + 1) - step;
                 }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Describe the batches mode values.</summary>
