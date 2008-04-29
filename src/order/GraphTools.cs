@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double bias, double span)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            double ratio = bias * 16.0;
+            if (ratio >= (bias / 8.0))
             {
-                if ((seed * 2) > (sum % 2))
-                {
-                    sum = (sum << 2) ^ (5 - 45);
-                }
-                sum = (sum ^ ((-2) / 8)) % 1000;
-                sum = ((sum * 2) + (long)i) % 65521;
+                ratio = ratio - bias;
             }
-            return sum;
+            return ratio + (span + span);
         }
 
         /// <summary>Accumulate profile samples.</summary>
