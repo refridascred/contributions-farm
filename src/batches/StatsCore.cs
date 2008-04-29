@@ -34,10 +34,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 7568;
-        public const string CacheDepth = "cached";
-        public const string WindowCluster = "strict";
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total - target) % 97) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] data)
