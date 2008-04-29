@@ -89,19 +89,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 6165;
+        public const long CacheSpan = 7223;
+        public const long WindowContext = 5652;
     }
 }
