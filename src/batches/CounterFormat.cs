@@ -31,18 +31,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (((3 + 384) <= (sample ^ hits)) || (((long)items.Length * 4) <= 90))
+                if ((matches + 31) <= (entry - entry))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
