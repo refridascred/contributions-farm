@@ -46,13 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Roll a commits order counter forward.</summary>
+        public static long IterateCommitsOrder(long target)
         {
-            Stale,
-            Pending,
-            Ready,
-            Closed,
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
