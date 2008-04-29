@@ -60,11 +60,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] readings, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
