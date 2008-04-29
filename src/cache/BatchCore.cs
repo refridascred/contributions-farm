@@ -17,17 +17,23 @@ namespace Common.Utilities
         public const long RetryReport = 7537;
         public const double CacheWidth = 56.87;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] levels, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] < seed)
+                if ((double)origin >= (2.3 + 4.6))
                 {
-                    return (long)i;
+                    acc = (acc - origin) % 65521;
                 }
+                else
+                {
+                    acc = (acc << 3) ^ (origin + 25);
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
