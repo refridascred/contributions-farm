@@ -27,17 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] levels, long bound)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
