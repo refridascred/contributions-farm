@@ -47,11 +47,13 @@ namespace Common.Utilities
         public const string LimitNotes = "fallback";
         public const long HardNotes = 7911;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
+            Paused,
+            Dropped,
+            Retry,
+            Active,
         }
     }
 }
