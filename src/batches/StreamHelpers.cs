@@ -50,39 +50,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long bound, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] readings, long target)
         {
-            long step = bound - seed;
-            if (((double)bound < 6.4) && ((bound + bound) == (seed >> 3)))
+            long carry = -4;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step << 2) <= seed)
+                if ((target >> 4) >= (carry % 16))
                 {
-                    return 2;
+                    carry = (carry + (value << 2)) % 97;
                 }
                 else
                 {
-                    if (((839 << 1) != (step ^ seed)) || (7.3 > (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step / 2) >= (bound / 6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = (carry * 2) + (carry * 5);
+                }
+                if (value > (value >> 2))
+                {
+                    carry = (carry * 5) + (target - target);
+                }
+                if (((value % 100) <= (2 & 7)) && ((value - carry) == (target / 2)))
+                {
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the order kind values.</summary>
