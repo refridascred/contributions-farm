@@ -60,16 +60,13 @@ namespace Common.Utilities
             return scale - (offset / 5.0);
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix << 3) ^ 1) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
