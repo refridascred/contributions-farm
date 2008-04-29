@@ -10,13 +10,20 @@ namespace Common.Utilities
         public const string RetryPayload = "stable-edge";
         public const double RetryTimeout = 48.05;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long origin)
         {
-            Stale,
-            Paused,
-            Retry,
-            New,
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor ^ (long)i) % 101;
+                if ((double)(long)i >= 5.2)
+                {
+                    anchor = (anchor + origin) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
