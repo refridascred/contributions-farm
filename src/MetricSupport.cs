@@ -14,17 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] items, long step)
+        /// <summary>Count the batches token entries that pass the check.</summary>
+        public static long TallyBatchesTokenMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (items[i] >= step)
+                if ((hits + item) < (hits * 3))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of already stats readings.</summary>
