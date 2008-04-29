@@ -48,31 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long offset, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] values, long target)
         {
-            if ((double)bound > 1.2)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(bound <= (offset << 2)))
+                if (datum >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (8.7 >= (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
