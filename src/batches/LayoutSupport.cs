@@ -30,23 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i >> 2) > origin)
-                {
-                    result = result ^ result;
-                }
-                else
-                {
-                    result = (result - (origin & 7)) % 65521;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank counter window input into a small class.</summary>
