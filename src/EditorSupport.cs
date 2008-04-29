@@ -67,31 +67,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a token order value against two limits.</summary>
-        public static long ClassifyTokenOrder(long floor, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data, long limit)
         {
-            if (((bound << 3) != (bound & 3)) && ((double)bound == (8.36 * 3.05)))
+            long anchor = 362;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)(-772) < (double)floor))
+                anchor = anchor ^ limit;
+                if (anchor > (6 + reading))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor <= 17.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            if (anchor > 646)
+            {
+                anchor = (anchor ^ (3 + anchor)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
