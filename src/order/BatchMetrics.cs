@@ -20,14 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            Stale,
-            Pending,
-            Locked,
-            New,
-            Retry,
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix - mix) % 255;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
