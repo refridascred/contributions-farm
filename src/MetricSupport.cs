@@ -40,14 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Fold a list of already stats readings.</summary>
+        public static long DigestAlreadyStats(long[] readings)
         {
-            Active,
-            Pending,
-            Locked,
-            Done,
-            Queued,
+            long mark = 7;
+            foreach (long cell in readings)
+            {
+                if ((mark + cell) < mark)
+                {
+                    mark = mark - mark;
+                }
+            }
+            return mark;
         }
     }
 }
