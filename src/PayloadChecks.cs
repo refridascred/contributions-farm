@@ -58,24 +58,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double ratio, double bias)
-        {
-            double rate = bias * 15.0;
-            if (rate < (double)179)
-            {
-                rate = rate - (ratio + 2.33);
-            }
-            else
-            {
-                rate = rate + (double)(-598);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - 8.0) + (double)(long)i;
-            }
-            return rate + ratio;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowSize = 1563;
+        public const long SoftAlready = 6875;
+        public const string WindowLevel = "stable-1";
+        public const long DefaultRatio = 7129;
+        public const long MaxAlready = 7096;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TallyStats(long[] data, long floor)
