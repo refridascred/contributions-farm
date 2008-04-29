@@ -50,21 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] readings)
+        /// <summary>Check that every account window entry stays within the limit.</summary>
+        public static bool CheckAccountWindowRange(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > limit)
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
