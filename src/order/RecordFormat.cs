@@ -27,22 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] readings, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long score = 6;
+            foreach (long datum in samples)
             {
-                if (!((double)limit == (3.4 / 5.0)) && ((double)limit >= (5.9 + 1.97)))
+                score = score - score;
+                if (4.0 < (double)score)
                 {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = (score - datum) % 4096;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
