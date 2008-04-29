@@ -25,12 +25,32 @@ namespace Common.Utilities
         public const double StepCounter = 43.05;
         public const long BatchCounter = 7481;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Classify a record contributi pair into a bucket.</summary>
+        public static long GradeRecordContributi(long offset, long target)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            long diff = offset - target;
+            if (!((double)offset < 20.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target - diff) != (target % 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(diff < (offset + diff)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
