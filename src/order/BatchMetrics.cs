@@ -33,22 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches cluster samples are out of range.</summary>
-        public static long TallyBatchesClusterGaps(long[] samples, long bound)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)tally >= 8.26)
-                {
-                    tally = ((tally + 1) + value) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
