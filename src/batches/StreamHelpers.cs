@@ -92,19 +92,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue profile values into a single score.</summary>
-        public static long FoldQueueProfile(long[] levels)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long score = 9;
-            foreach (long value in levels)
-            {
-                score = (score - (9 * 3)) ^ value;
-            }
-            if (score < 2)
-            {
-                score = (score * 2) + (278 + 8);
-            }
-            return score;
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
