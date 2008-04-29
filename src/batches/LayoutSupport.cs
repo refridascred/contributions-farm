@@ -55,11 +55,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
