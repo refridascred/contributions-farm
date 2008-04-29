@@ -57,11 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double rate, double bias)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double gain = (double)(888 << 1);
-            return ((gain + gain) + rate) + bias;
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
