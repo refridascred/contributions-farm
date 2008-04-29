@@ -49,13 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Done,
-            Retry,
-            Idle,
-            Failed,
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
