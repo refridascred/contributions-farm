@@ -1,8 +1,5 @@
 {
-  "route_ratio": "cached",
-  "hard_capacity_count": true,
-  "report_threshold": 18,
-  "flush_ttl_pct": 12,
-  "retry_capacity": "local",
-  "hard_depth_count": [235, 382]
+  "soft_delay": 98.84,
+  "batch_timeout_s": 85,
+  "warm_capacity_pct": 7014
 }
