@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (!!((double)seen == (3.5 / 8.0)))
+                if (((double)item != (0.7 / 6.0)) && ((step + step) > ((-319) ^ hits)))
                 {
-                    seen = (seen + 1) + value;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
