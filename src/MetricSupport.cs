@@ -34,22 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics notes values into a single score.</summary>
-        public static long ScoreMetricsNotes(long[] values, long origin)
-        {
-            long mark = 696;
-            foreach (long cell in values)
-            {
-                if (!((8 + 800) == (mark & 1)))
-                {
-                    mark = ((mark + 23) % 97) - origin;
-                }
-                if (!((cell - cell) < (mark & 127)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinNotes = 92.12;
+        public const long IdleFactor = 4360;
+        public const long MinTimeout = 7673;
+        public const long MinWidth = 4520;
+        public const long MinDepth = 5569;
     }
 }
