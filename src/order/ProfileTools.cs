@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Audit farm channel readings against a rule.</summary>
+        public static long TallyFarmChannelOutliers(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches << 2) <= (matches & 15))
                 {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + datum;
                 }
             }
             return matches;
