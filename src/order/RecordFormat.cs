@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Locked,
-            Closed,
-            Failed,
-            Stale,
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
