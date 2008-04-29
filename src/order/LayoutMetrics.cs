@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((cell + 24) <= ((long)items.Length ^ count))
+                if (hits > (hits - step))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
