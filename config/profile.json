@@ -1,7 +1,6 @@
 {
-  "dry_run": "legacy",
-  "warm_limit": 9833,
-  "compress": "latest",
-  "verbose": 70.96,
-  "batch_ratio": true
+  "flush_threshold_s": ["green", "cached", "staging", "legacy"],
+  "persist": 10.5,
+  "soft_threshold": "local",
+  "max_interval": "cached"
 }
