@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double weight, double bias)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double mean = bias + (6.01 + 0.91);
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - mean) + (double)(long)i) - weight;
-            }
-            return mean - (double)62;
+            Active,
+            Idle,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many layout already samples are out of range.</summary>
