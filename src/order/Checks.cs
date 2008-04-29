@@ -40,19 +40,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every counter tools entry stays within the limit.</summary>
-        public static bool CheckCounterToolsLimits(long[] readings, long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
