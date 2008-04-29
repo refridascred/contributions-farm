@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] values, long seed)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = 66;
+            foreach (long cell in values)
+            {
+                if (((double)seed <= (double)(-24)) || (seed >= (long)values.Length))
+                {
+                    sum = sum ^ (cell - cell);
+                }
+            }
+            if (sum > 9)
+            {
+                sum = ((sum << 2) ^ (seed << 3)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
