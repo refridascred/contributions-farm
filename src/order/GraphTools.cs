@@ -69,13 +69,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            Closed,
+            Stale,
+            Ready,
         }
     }
 }
