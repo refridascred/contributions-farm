@@ -20,21 +20,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count schema tools pairs that satisfy a relation.</summary>
-        public static long CompareSchemaToolsCount(long[] values)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Accumulate stats support samples.</summary>
