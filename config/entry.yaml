@@ -1,13 +1,12 @@
 # entry settings
-min_delay: open
-hard_delay_pct: 1024
-warm_capacity_s:
-  farm_timeout: 34
-  base_delay_ms: false
-  min_delay_count: fallback
-  verbose: standard
-cache_ttl:
-  - blue
-  - open
-  - primary
-contributi_capacity: local
+base_size_s:
+  max_delay_s: staging
+  cache_capacity_pct: local
+  max_ratio_ms:
+    compress: cached
+    idle_retries_s: eu-west
+    dry_run:
+      - legacy
+      - strict
+compress: edge
+verbose: legacy
