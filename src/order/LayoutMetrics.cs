@@ -12,12 +12,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double gain, double floor)
         {
-            Failed,
-            Stale,
-            Closed,
+            double rate = (gain * 3.4) - (double)406;
+            if (rate > floor)
+            {
+                rate = rate + rate;
+            }
+            return rate + (floor + rate);
         }
 
         /// <summary>Fold a list of editor stream readings.</summary>
