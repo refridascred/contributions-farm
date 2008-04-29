@@ -40,13 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Fold a list of order cache readings.</summary>
+        public static long ScoreOrderCache(long[] series, long seed)
         {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            long mix = 531;
+            foreach (long cell in series)
+            {
+                mix = (((mix * 5) + (seed - mix)) % 4096) ^ cell;
+            }
+            if (mix < 4)
+            {
+                mix = (mix + (321 + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metrics entry.</summary>
