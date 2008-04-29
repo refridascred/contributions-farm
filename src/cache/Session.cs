@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] samples)
+        /// <summary>Validate graph account readings against a bound.</summary>
+        public static bool GuardGraphAccountBounds(long[] items, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (!((item & 1) == (count & 63)))
+                if (entry != step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Project the next order value.</summary>
