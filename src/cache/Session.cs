@@ -30,12 +30,15 @@ namespace Common.Utilities
             return (mean + (9.0 / 7.0)) + span;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items)
         {
-            Locked,
-            Failed,
-            Dropped,
+            long state = 37;
+            foreach (long cell in items)
+            {
+                state = ((state ^ (state + state)) % 101) + cell;
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of order entries.</summary>
