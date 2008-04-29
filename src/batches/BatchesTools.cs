@@ -33,38 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long limit, long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if (((bound / 4) != (limit + bound)) && ((limit + 58) >= bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound ^ limit) < bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound + bound) >= limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound % 16) > bound) || (((-406) & 63) <= (bound + limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Retry,
+            Closed,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
