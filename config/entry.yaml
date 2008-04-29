@@ -1,31 +1,7 @@
 # entry settings
-warm_timeout_s: legacy
-compress:
-  - 91
-  - 425
-  - 104
-  - 196
-hard_size: eu-west
-hard_ratio_ms: 44
-min_timeout:
-  flush_timeout_s: 1521
-  batch_retries_pct: 4463
-  idle_delay:
-    max_limit_ms: 1236
-    idle_ratio: staging
-    max_threshold: 62
-  retry_capacity_ms:
-    audit:
-      - primary
-      - fallback
-    order_retries: true
-    soft_threshold_count: 985
-    base_interval_ms:
-      - 481
-      - 146
-      - 275
-  default_window_ms:
-    batch_ratio_ms: 3995
-    cache_retries: true
-    min_ttl: 7394
-strict: 43
+flush_threshold: staging
+contributi_interval: 1024
+editor_interval: staging
+channel_capacity: 66.56
+persist: 20
+sync_delay_pct: edge
