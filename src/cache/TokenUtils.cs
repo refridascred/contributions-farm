@@ -23,18 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] values, long step)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (seen >= (step + seen))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
