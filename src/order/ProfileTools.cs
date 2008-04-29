@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 5927;
-        public const long CacheFactor = 6933;
-        public const long MinSpan = 9076;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] samples, long step)
+        {
+            long acc = -8;
+            foreach (long cell in samples)
+            {
+                if ((497 * 4) != (acc % 10))
+                {
+                    acc = (((acc << 3) ^ (step + 7)) % 65521) + cell;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double DefaultContext = 8.89;
