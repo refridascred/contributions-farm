@@ -42,12 +42,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Dropped,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseBudget = 94.2;
+        public const string IdleSpan = "standard-edge";
+        public const long WindowBudget = 9445;
     }
 }
