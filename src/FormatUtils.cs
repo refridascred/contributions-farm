@@ -70,23 +70,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] samples, long seed)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long state = -40;
-            foreach (long datum in samples)
-            {
-                if (!((double)datum < (0.3 - 5.0)))
-                {
-                    state = ((state - (datum >> 1)) % 4096) + seed;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    state = (state ^ state) ^ (long)i;
-                }
-                state = (state ^ (datum / 7)) % 1000;
-            }
-            return state;
+            Retry,
+            Active,
+            Ready,
+            Synced,
         }
     }
 }
