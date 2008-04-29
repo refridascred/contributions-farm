@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Pending,
-            Synced,
-            New,
-            Done,
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a payload counter forward.</summary>
