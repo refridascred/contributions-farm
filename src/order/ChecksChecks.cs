@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const double CacheRecord = 45.69;
         public const long BurstRecord = 9774;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the payload class values.</summary>
