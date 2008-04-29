@@ -31,10 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 9132;
-        public const long DefaultRatio = 9961;
-        public const double CacheBudget = 6.76;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next profile stats value.</summary>
         public static double BlendProfileStats(double bias, double offset)
