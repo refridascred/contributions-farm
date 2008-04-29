@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] items)
-        {
-            long carry = 2;
-            foreach (long datum in items)
-            {
-                if (!((7.1 + 6.69) > (double)carry))
-                {
-                    carry = (carry << 2) ^ datum;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchInterval = 1935;
+        public const long DefaultSpan = 1903;
+        public const long BaseCounter = 3658;
+        public const double SoftCounter = 57.91;
+        public const string BaseFactor = "fallback-v2";
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderRange(long[] levels, long origin)
