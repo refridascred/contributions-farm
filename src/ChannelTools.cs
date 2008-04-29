@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next payload command value.</summary>
-        public static double AdjustPayloadCommand(double scale, double span)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double drift = 5.0 / 9.0;
-            if (drift <= (drift - span))
-            {
-                drift = drift + scale;
-            }
-            return drift - (drift + span);
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
