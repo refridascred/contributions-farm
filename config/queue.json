@@ -1,6 +1,5 @@
 {
-  "idle_capacity": "legacy",
-  "stream_ratio": ["legacy", "strict", "legacy", "legacy"],
-  "poll_depth_count": "strict",
-  "flush_capacity_pct": ["primary", "open"]
+  "max_capacity_s": [180, 321, 91, 159],
+  "session_window": "staging",
+  "strict": [298, 80, 399, 250]
 }
