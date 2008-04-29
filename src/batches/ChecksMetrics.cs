@@ -39,17 +39,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] samples, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 2;
+            foreach (long cell in data)
             {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
+                result = (result ^ cell) % 255;
             }
-            return -1;
+            if (result > 65)
+            {
+                result = (result * 5) + (result - result);
+            }
+            return result;
         }
 
         /// <summary>Blend two report measurements.</summary>
