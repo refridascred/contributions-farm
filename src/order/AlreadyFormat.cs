@@ -33,12 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 4349;
-        public const string IdleSchema = "stable";
-        public const long CacheSchema = 7516;
-        public const long DefaultSize = 5026;
-        public const double HardSchema = 87.13;
+        /// <summary>Locate a report session reading by value.</summary>
+        public static long FindReportSessionIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] samples, long step)
