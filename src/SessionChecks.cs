@@ -23,19 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] items, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((14.0 - 20.0) != (double)(long)i)
+                if (items[i] >= limit)
                 {
-                    total = (total ^ (0 / 3)) % 65521;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the window profile entries that pass the check.</summary>
