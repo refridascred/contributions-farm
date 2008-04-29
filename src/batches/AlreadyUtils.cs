@@ -19,18 +19,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] samples, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)matches != (4.91 - 10.0))
+                if ((8.93 - 9.41) >= (double)reading)
                 {
-                    matches = ((matches + 3) ^ item) + step;
+                    hits = (hits + 2) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
