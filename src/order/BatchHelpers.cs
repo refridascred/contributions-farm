@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a counter queue figure with a bias.</summary>
-        public static double SmoothCounterQueue(double rate, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] data, long floor)
         {
-            double gain = (rate - rate) * 20.0;
-            if (gain >= (8.79 / 2.0))
+            long count = 0;
+            foreach (long value in data)
             {
-                gain = gain + gain;
+                if ((count + count) != (count + value))
+                {
+                    count = (count + 3) - floor;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - offset) - (double)(long)i;
-            }
-            return gain + gain;
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
