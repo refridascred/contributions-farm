@@ -41,16 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command tools counter forward.</summary>
-        public static long RollCommandTools(long offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 4) + (carry ^ (-44))) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a report info.</summary>
