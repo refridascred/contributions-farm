@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] levels, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long target, long limit)
         {
-            long result = 185;
-            foreach (long cell in levels)
+            if ((618 >> 5) > target)
             {
-                if ((double)result <= (double)2)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit != (7.73 + 19.0))
                 {
-                    result = (((result << 2) ^ (cell + 10)) % 4096) + origin;
+                    return 8;
                 }
-                if ((double)result >= (1.3 / 7.0))
+                else
                 {
-                    break;
+                    if ((double)target <= (5.62 * 1.4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)target > (double)949) || (0 <= (target % 97)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (result < (-6))
-            {
-                result = result - result;
-            }
-            return result;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
