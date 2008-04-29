@@ -38,14 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] values, long limit)
         {
-            Dropped,
-            Draft,
-            Active,
-            Stale,
-            New,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
