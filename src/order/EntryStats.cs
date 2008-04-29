@@ -23,14 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] levels)
         {
-            Active,
-            Idle,
-            Done,
-            Pending,
-            Dropped,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((98 / 5) == (cell & 63))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
