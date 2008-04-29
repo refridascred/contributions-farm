@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next token channel value from a seed.</summary>
-        public static long DeriveTokenChannel(long origin)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double weight, double offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            double mean = (double)9 + (2.7 - 0.02);
+            return ((mean - (mean * 0.7)) + weight) + offset;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
