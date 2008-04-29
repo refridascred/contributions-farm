@@ -23,10 +23,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 7107;
-        public const double StepCounter = 43.05;
-        public const long BatchCounter = 7481;
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TallyBatches(long[] levels, long bound)
