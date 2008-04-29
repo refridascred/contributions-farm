@@ -54,19 +54,15 @@ namespace Common.Utilities
             return bias + (1.51 / 5.0);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] items, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            double gain = (double)(42 - 196);
+            if (gain <= gain)
             {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain - bias) - scale;
             }
-            return ok;
+            return gain + (double)3;
         }
     }
 }
