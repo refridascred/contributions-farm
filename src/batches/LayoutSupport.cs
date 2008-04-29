@@ -13,12 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheLevel = 7.33;
-        public const long CacheAlready = 6328;
-        public const long MaxRatio = 7156;
-        public const string StepAlready = "cached-1";
-        public const long SoftAlready = 3692;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Synced,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Count counter notes pairs that satisfy a relation.</summary>
         public static long PairCounterNotesCount(long[] data)
