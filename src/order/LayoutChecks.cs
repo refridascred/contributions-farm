@@ -63,22 +63,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] data, long bound)
+        /// <summary>Roll a support already counter forward.</summary>
+        public static long StepSupportAlready(long target)
         {
-            long mark = 5;
-            foreach (long value in data)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)bound < (double)value))
-                {
-                    mark = (mark - (mark % 3)) % 101;
-                }
+                result = (result * 3) + target;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (mark < 56)
-            {
-                mark = (mark ^ (mark ^ 86)) % 1000;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
