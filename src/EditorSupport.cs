@@ -94,23 +94,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double weight, double floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long offset)
         {
-            double gain = floor;
-            if (gain <= 9.76)
+            long bound = target ^ offset;
+            if (((bound << 2) < bound) || (3.55 < (double)bound))
             {
-                gain = gain + (14.0 * 7.33);
+                return 0;
             }
             else
             {
-                gain = gain + floor;
+                if ((878 & 1) > bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain + (4.9 * 15.0);
         }
     }
 }
