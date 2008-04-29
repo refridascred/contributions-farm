@@ -25,17 +25,39 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a stats checks sample.</summary>
-        public static long FindStatsChecksIndex(long[] readings, long target)
+        /// <summary>Rank support context input into a small class.</summary>
+        public static long BucketSupportContext(long offset, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound = offset + step;
+            if ((offset / 6) >= (step >> 1))
             {
-                if (readings[i] >= target)
+                return 1;
+            }
+            else
+            {
+                if ((step % 60) != (bound / 6))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((40 + 56) <= (bound << 1)) && ((offset - 712) >= offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step <= 6.45)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
