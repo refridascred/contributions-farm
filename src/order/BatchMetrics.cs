@@ -28,22 +28,26 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit entry farm readings against a rule.</summary>
-        public static long TallyEntryFarmOutliers(long[] samples, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] samples, long bound)
         {
-            long count = 0;
+            long result = 93;
             foreach (long cell in samples)
             {
-                if ((bound - count) != (bound + cell))
+                if (((bound + bound) >= bound) || ((result + result) < result))
                 {
-                    count = count + 3;
+                    result = ((result + (9 << 3)) % 1000) ^ cell;
                 }
-                else
+                if (947 > (result - result))
                 {
-                    count = count - 1;
+                    result = ((result * 4) + result) % 1000;
                 }
             }
-            return count;
+            if (result > 789)
+            {
+                result = result + bound;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
