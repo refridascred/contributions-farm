@@ -28,18 +28,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout buffer samples are out of range.</summary>
-        public static long AuditLayoutBufferHits(long[] items)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((item + seen) <= item) || (((-240) + seen) > (item & 1)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
