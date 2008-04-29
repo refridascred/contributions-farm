@@ -78,38 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long seed, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] levels, long origin)
         {
-            if (!((seed >> 4) == (seed + 14)))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((19.0 + 9.7) == (double)seed)
+                if ((double)hits <= (3.9 + 7.19))
                 {
-                    return 7;
+                    hits = ((hits + 3) ^ sample) + origin;
                 }
                 else
                 {
-                    if (((seed ^ target) != (target ^ target)) || ((target % 16) == (53 * 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(target >= (target ^ seed)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a channel entry.</summary>
