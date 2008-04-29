@@ -49,18 +49,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many already metric samples are out of range.</summary>
-        public static long TallyAlreadyMetricHits(long[] data, long floor)
+        /// <summary>Combine channel editor values into a single score.</summary>
+        public static long WeighChannelEditor(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long result = 53;
+            foreach (long sample in data)
             {
-                if ((double)floor >= (double)cell)
+                if (origin > (origin >> 2))
                 {
-                    matches = matches + 2;
+                    result = (result ^ sample) % 65521;
                 }
             }
-            return matches;
+            return result;
         }
     }
 }
