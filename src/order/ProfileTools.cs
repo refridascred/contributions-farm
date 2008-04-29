@@ -41,21 +41,15 @@ namespace Common.Utilities
             return scale - (bias * 10.0);
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = 8.2;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = ((mean + (weight / 3.0)) + (double)(long)i) - span;
             }
-            return seen;
+            return mean - 7.3;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
