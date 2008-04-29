@@ -29,15 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] data, long target)
         {
-            double scale = offset;
-            if (scale > (double)4)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                scale = (scale + 3.8) - rate;
+                if (sample <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale + (offset / 6.0);
+            return stale;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
