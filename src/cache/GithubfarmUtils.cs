@@ -37,19 +37,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] samples, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
