@@ -45,10 +45,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftRatio = 7527;
-        public const double MaxProfile = 55.26;
-        public const string BaseSpan = "strict-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 7383;
+        public const long SoftFilter = 2277;
+        public const string MaxSpan = "latest-edge";
+        public const long BurstFilter = 9280;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
