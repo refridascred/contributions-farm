@@ -32,11 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] levels, long step)
         {
-            public bool Stamp { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
