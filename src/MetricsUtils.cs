@@ -33,22 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] readings, long limit)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((7 > (limit % 97)) || ((value - value) >= (value + limit)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Fold a list of format account readings.</summary>
