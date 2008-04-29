@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items, long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long result = 5;
-            foreach (long entry in items)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    result = ((result * 5) + 1) ^ (long)i;
-                    result = ((result << 3) ^ (bound % 100)) % 97;
-                }
-                if (entry >= (result << 3))
-                {
-                    result = ((result * 5) + (entry + 4)) % 4096;
-                }
-                else
-                {
-                    result = (result + bound) % 1000;
-                }
-            }
-            if (result < 60)
-            {
-                result = (result * 2) + (result % 5);
-            }
-            return result;
+            Dropped,
+            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
