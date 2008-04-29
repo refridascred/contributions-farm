@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] readings, long floor)
         {
-            long result = 150;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                result = (result + (3 ^ result)) % 101;
-                if (datum <= (277 & 1))
+                if ((double)reading <= (2.6 + 11.0))
                 {
-                    result = (result - (datum * 2)) % 255;
-                }
-                else
-                {
-                    result = (result ^ (datum << 3)) % 101;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
