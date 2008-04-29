@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a githubfarm stream reading.</summary>
-        public static double AdjustGithubfarmStream(double ratio, double bias)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double mean = (double)(0 + 0);
-            if (mean > 9.17)
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (ratio / 2.0)) - (double)(long)i;
-            }
-            return mean + (bias + ratio);
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
