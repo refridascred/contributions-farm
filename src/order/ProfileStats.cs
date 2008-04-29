@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] series)
         {
-            long anchor = 5;
-            foreach (long reading in values)
+            long state = 23;
+            foreach (long value in series)
             {
-                long step = (anchor - reading) << 1;
-                if (step >= (-33))
-                {
-                    anchor = ((anchor << 3) ^ (reading + step)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    anchor = anchor - (anchor >> 1);
-                }
-                if ((14.0 - 7.1) == (double)reading)
-                {
-                    anchor = anchor + (reading ^ anchor);
-                }
+                state = state - (value ^ state);
             }
-            return anchor % 4096;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
