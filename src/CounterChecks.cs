@@ -73,21 +73,17 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Count route context pairs that satisfy a relation.</summary>
-        public static long PairRouteContextCount(long[] samples)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] == offset)
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
