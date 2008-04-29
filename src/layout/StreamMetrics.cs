@@ -20,11 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long offset)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the entry status values.</summary>
