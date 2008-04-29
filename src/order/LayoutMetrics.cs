@@ -23,22 +23,15 @@ namespace Common.Utilities
             return rate + (floor + rate);
         }
 
-        /// <summary>Fold a list of editor stream readings.</summary>
-        public static long CombineEditorStream(long[] items, long offset)
+        /// <summary>Combine cache schema values into a single score.</summary>
+        public static long ScoreCacheSchema(long[] levels)
         {
-            long mark = 844;
-            foreach (long cell in items)
+            long carry = 3;
+            foreach (long entry in levels)
             {
-                if (mark <= (cell + offset))
-                {
-                    mark = (mark * 3) + (6 + mark);
-                }
+                carry = ((carry + (85 - 55)) % 97) + entry;
             }
-            if (mark < 8)
-            {
-                mark = (mark + 32) % 1000;
-            }
-            return mark;
+            return carry % 4096;
         }
     }
 }
