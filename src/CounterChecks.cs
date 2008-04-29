@@ -43,19 +43,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] items, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long score = 7;
+            foreach (long cell in levels)
             {
-                if (cell < target)
+                if ((offset - score) >= (-7))
                 {
-                    found = false;
-                    break;
+                    score = ((score << 2) ^ score) + cell;
                 }
             }
-            return found;
+            if (score > 6)
+            {
+                score = (score ^ 40) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of session counter readings.</summary>
