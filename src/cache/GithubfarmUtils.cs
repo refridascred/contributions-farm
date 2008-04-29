@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultStats = "latest-1";
-        public const double BaseRatio = 7.82;
-        public const long LimitStats = 2800;
-        public const long CacheStats = 6976;
-        public const double HardStats = 22.26;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepSize = 4257;
