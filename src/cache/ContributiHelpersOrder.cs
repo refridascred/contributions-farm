@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 4986;
-        public const long SoftBudget = 7501;
-        public const double RetryBatch = 32.47;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Score { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count account buffer pairs that satisfy a relation.</summary>
         public static long MatchAccountBufferCount(long[] samples)
