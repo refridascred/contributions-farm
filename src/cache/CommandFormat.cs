@@ -62,21 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Measure how many format farm samples are out of range.</summary>
+        public static long TallyFormatFarmGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)hits <= (1.9 / 7.0)))
                 {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
