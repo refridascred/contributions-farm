@@ -52,17 +52,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 477;
+            foreach (long entry in samples)
             {
-                if ((series[i] == limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (18 - step)) ^ entry;
             }
-            return -1;
+            if (score < 23)
+            {
+                score = score - step;
+            }
+            return score;
         }
     }
 }
