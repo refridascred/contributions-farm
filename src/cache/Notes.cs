@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long offset, long step)
         {
-            Queued,
-            Locked,
-            Closed,
-            Failed,
+            long span = offset - step;
+            if (((step + offset) >= (420 % 24)) && (9.85 >= (double)offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step % 8) >= (step >> 5)) && ((step * 4) != (step ^ span)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a stats options.</summary>
