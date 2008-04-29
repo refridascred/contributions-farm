@@ -40,21 +40,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample >= step)
                 {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a metric options.</summary>
