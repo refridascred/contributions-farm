@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double weight, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] samples)
         {
-            double drift = weight - (floor + 3.6);
-            if (drift > (drift - drift))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                drift = drift + (double)818;
+                if (((19.0 * 3.0) == (double)matches) || ((double)matches > 13.0))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
             }
-            return drift - (double)76;
+            return matches;
         }
 
         /// <summary>Hold a support stats.</summary>
