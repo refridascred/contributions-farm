@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double offset)
+        /// <summary>Derive the next token channel value from a seed.</summary>
+        public static long DeriveTokenChannel(long origin)
         {
-            double gain = (3.2 + offset) - (2.0 + 8.0);
-            if (gain <= bias)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                gain = gain - offset;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain - (bias - gain);
-            }
-            return gain + offset;
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
