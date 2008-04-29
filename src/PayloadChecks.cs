@@ -58,12 +58,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowSize = 1563;
-        public const long SoftAlready = 6875;
-        public const string WindowLevel = "stable-1";
-        public const long DefaultRatio = 7129;
-        public const long MaxAlready = 7096;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] series, long step)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long TallyStats(long[] data, long floor)
