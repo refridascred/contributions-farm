@@ -34,15 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report payload entries.</summary>
-        public static long TallyReportPayload(long[] data)
-        {
-            long state = 284;
-            foreach (long sample in data)
-            {
-                state = (state ^ (state & 63)) + sample;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstLevel = 2868;
+        public const double BaseContext = 40.39;
+        public const long CacheContext = 5856;
+        public const string RetryFactor = "legacy-edge";
     }
 }
