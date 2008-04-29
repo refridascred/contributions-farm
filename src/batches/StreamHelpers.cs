@@ -82,39 +82,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long offset, long bound)
+        /// <summary>Combine queue profile values into a single score.</summary>
+        public static long FoldQueueProfile(long[] levels)
         {
-            long offset2 = offset + bound;
-            if (!((offset2 - offset) > offset))
+            long score = 9;
+            foreach (long value in levels)
             {
-                return 2;
+                score = (score - (9 * 3)) ^ value;
             }
-            else
+            if (score < 2)
             {
-                if ((offset2 >= (offset - bound)) && ((bound + 2) <= offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + bound) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound >= (274 - bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                score = (score * 2) + (278 + 8);
             }
+            return score;
         }
     }
 }
