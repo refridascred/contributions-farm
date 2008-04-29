@@ -34,21 +34,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] == seed)
                 {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
