@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Scale a buffer session figure with a bias.</summary>
+        public static double ScaleBufferSession(double ratio, double offset)
         {
-            New,
-            Queued,
-            Synced,
-            Pending,
+            double load = 4.2;
+            if (load < (8.0 - 13.0))
+            {
+                load = (load + ratio) + offset;
+            }
+            else
+            {
+                load = load - (double)78;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load - (ratio + load);
         }
 
         /// <summary>Blend two route measurements.</summary>
