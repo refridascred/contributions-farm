@@ -1,8 +1,7 @@
 {
-  "persist": "staging",
-  "batch_timeout": [480, 80, 171],
-  "min_limit_pct": 33.79,
-  "flush_depth": 59.52,
-  "enabled": 9.74,
-  "burst_depth": 96.04
+  "already_ratio": 1968,
+  "readonly": ["standard", "eu-west", "green", "green"],
+  "route_size": "staging",
+  "token_ratio": false,
+  "support_ratio": "local"
 }
