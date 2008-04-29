@@ -14,15 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double bias, double span)
+        /// <summary>Look up the position of a stats contributi sample.</summary>
+        public static long LookupStatsContributiIndex(long[] readings, long step)
         {
-            double bias2 = span / 6.0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = ((bias2 + (double)776) + (double)(long)i) + bias;
+                if ((readings[i] <= step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (double)(-599);
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
