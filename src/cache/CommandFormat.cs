@@ -33,18 +33,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] series, long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > limit)
+                if ((values[i] >= bound) && ((values[i] % 5) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the layout phase values.</summary>
