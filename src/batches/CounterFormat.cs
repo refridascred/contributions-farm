@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a report token counter forward.</summary>
-        public static long RollReportToken(long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Dropped,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
