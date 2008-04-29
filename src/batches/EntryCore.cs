@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Rank support context input into a small class.</summary>
+        public static long RankSupportContext(long floor, long origin)
         {
-            Stale,
-            Idle,
-            Synced,
-            Paused,
+            if (((19.0 + 7.6) <= (double)floor) || ((97 + 314) < floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin < (floor - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the batch state values.</summary>
