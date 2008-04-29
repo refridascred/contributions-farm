@@ -1,8 +1,7 @@
 {
-  "hard_size_count": 83,
-  "max_ttl": ["primary", "strict", "fallback", "local"],
-  "idle_interval_ms": [113, 303, 238, 417],
-  "min_timeout_ms": true,
-  "sync_interval_s": "fallback",
-  "graph_threshold": true
+  "poll_threshold": 3.0,
+  "flush_threshold_count": 64.22,
+  "strict": "staging",
+  "stats_interval": 5479,
+  "retry_ratio_s": 58
 }
