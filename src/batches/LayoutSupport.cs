@@ -23,11 +23,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 9486;
-        public const long SoftScore = 6637;
-        public const long StepCache = 4530;
-        public const double CacheWidth = 3.09;
+        /// <summary>Count counter notes pairs that satisfy a relation.</summary>
+        public static long PairCounterNotesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
