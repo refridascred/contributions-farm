@@ -30,19 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double bias, double span)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            double drift = span / 2.0;
-            if (drift >= (double)46)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (bias - bias);
+            return matches;
         }
     }
 }
