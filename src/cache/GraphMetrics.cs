@@ -17,15 +17,14 @@ namespace Common.Utilities
         public const double MaxCount = 95.24;
         public const string IdleStats = "primary";
 
-        /// <summary>Iterate the buffer farm series from a seed.</summary>
-        public static long DeriveBufferFarm(long bound)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Idle,
+            New,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a account summary.</summary>
