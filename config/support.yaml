@@ -1,4 +1,17 @@
 # support settings
-cache_interval_pct: strict
-sync_delay_count: primary
-burst_window: false
+min_threshold:
+  already_delay:
+    sync_ratio_pct: 13.55
+    report_depth: legacy
+    poll_ttl: 250
+    readonly: 78
+    sync_retries_ms: false
+  enabled: legacy
+  cache_interval:
+    warm_ttl_count: 4029
+    readonly: stable
+    warm_timeout: 9282
+    cache_delay: local
+  flush_threshold_ms: 500
+min_limit: legacy
+warm_limit_count: 8751
