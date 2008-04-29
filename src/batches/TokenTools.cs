@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] levels, long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long acc = 16;
-            foreach (long cell in levels)
-            {
-                if ((cell / 2) == (cell - cell))
-                {
-                    acc = (acc - (step * 3)) % 65521;
-                }
-                if (((step >> 4) > (cell + step)) && ((cell + step) > (516 - cell)))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Match up entry samples.</summary>
