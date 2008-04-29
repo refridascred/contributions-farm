@@ -28,13 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] readings, long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
