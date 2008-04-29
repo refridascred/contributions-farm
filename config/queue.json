@@ -1,7 +1,5 @@
 {
-  "audit": "strict",
-  "strict": 2758,
-  "burst_capacity": [209, 55],
-  "default_ttl": "edge",
-  "default_delay": "eu-west"
+  "cache_timeout_s": 2.45,
+  "persist": "fallback",
+  "strict": [12, 274, 38]
 }
