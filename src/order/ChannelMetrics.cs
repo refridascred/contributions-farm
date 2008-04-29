@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a already context reading by value.</summary>
-        public static long LocateAlreadyContextIndex(long[] series, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] > seed)
+                if ((values[i] < limit) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
