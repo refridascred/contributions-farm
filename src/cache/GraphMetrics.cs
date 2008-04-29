@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first graph queue entry that matches the target.</summary>
-        public static long SeekGraphQueueIndex(long[] samples, long step)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 5;
+            foreach (long entry in samples)
             {
-                if (samples[i] < step)
+                mark = (((mark * 5) + (mark & 15)) % 255) + entry;
+                if (!((5.1 + 7.45) >= (double)mark))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mark > 279)
+            {
+                mark = ((mark << 2) ^ (mark ^ mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Project the next filter value.</summary>
