@@ -29,19 +29,11 @@ namespace Common.Utilities
             return gain - (7.0 - gain);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] readings, long offset)
-        {
-            long total = 7;
-            foreach (long reading in readings)
-            {
-                total = ((total - reading) % 4096) - offset;
-            }
-            if (total < 90)
-            {
-                total = (total - total) % 4096;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepLevel = 41.39;
+        public const long IdleLevel = 4381;
+        public const string WindowScore = "staging-edge";
+        public const double MaxPayload = 0.49;
+        public const string HardWidth = "primary-v2";
     }
 }
