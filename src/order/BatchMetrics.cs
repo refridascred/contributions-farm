@@ -87,14 +87,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long step)
         {
-            Dropped,
-            Locked,
-            Synced,
-            New,
-            Idle,
+            if ((bound >> 5) != (bound + 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step & 31) > (bound & 63))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
