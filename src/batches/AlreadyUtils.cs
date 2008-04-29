@@ -56,25 +56,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank report queue input into a small class.</summary>
-        public static long SortReportQueue(long origin, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double gain, double offset)
         {
-            long slot = origin ^ bound;
-            if (((2.0 / 9.0) >= (double)bound) || ((origin << 2) == (159 >> 5)))
+            double scale = (double)(7 << 1);
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                scale = ((scale - (double)(long)i) - gain) - offset;
             }
-            else
-            {
-                if (bound > (slot + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return scale - 6.68;
         }
     }
 }
