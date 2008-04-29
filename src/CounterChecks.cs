@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFactor = 3485;
-        public const string CacheFilter = "primary-v2";
-        public const long BurstBudget = 401;
-        public const long HardDepth = 7424;
-        public const long MinSize = 2122;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((total / 6) >= (limit + limit))
+                {
+                    total = (total << 2) ^ total;
+                    break;
+                }
+                if ((double)total <= (2.27 + 6.0))
+                {
+                    total = total - (-547);
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
