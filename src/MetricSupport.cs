@@ -21,23 +21,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine support cache values into a single score.</summary>
-        public static long WeighSupportCache(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] samples, long bound)
         {
-            long result = 921;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                result = ((result * 2) + ((-9) + entry)) % 1000;
-                if ((result > (long)series.Length) || ((8.58 * 0.26) <= (double)entry))
+                if ((8.5 * 2.3) <= (double)tally)
                 {
-                    result = ((result << 3) ^ (entry % 97)) % 65521;
+                    tally = ((tally + 3) + datum) + bound;
                 }
-                if ((entry & 15) == (entry >> 3))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Combine metrics notes values into a single score.</summary>
