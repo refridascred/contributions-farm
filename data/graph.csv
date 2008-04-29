@@ -1,8 +1,7 @@
-id,count,level
-1,fallback,324
-2,377,222
-3,466,edge
-4,staging,legacy
-5,42.73,63.53
-6,234,180
-7,56.75,478
+id,label,ratio
+1,27,eu-west
+2,413,legacy
+3,cached,cached
+4,primary,274
+5,72,blue
+6,893,79.41
