@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long floor, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values, long step)
         {
-            long gap = floor - step;
-            if (((step ^ gap) > (floor + step)) || ((floor - step) >= 69))
+            long mix = 45;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap % 5) <= (step ^ floor))
+                if (2.9 >= (double)mix)
                 {
-                    return 4;
+                    mix = (((mix << 3) ^ (37 - 991)) % 101) - step;
                 }
                 else
                 {
-                    if (gap < 2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = (mix - (value & 1)) % 1000;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Hold a report stats.</summary>
