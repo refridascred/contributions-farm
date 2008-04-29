@@ -45,11 +45,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public double Token { get; set; }
-            public bool Score { get; set; }
+            Queued,
+            Failed,
+            Retry,
+            Synced,
+            New,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
