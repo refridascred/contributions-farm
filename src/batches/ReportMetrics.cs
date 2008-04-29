@@ -16,13 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Dropped,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstSpan = 1306;
+        public const long DefaultBatches = 7282;
+        public const long MinBatches = 1159;
+        public const long LimitDepth = 2750;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BurstSize = "standard-v2";
