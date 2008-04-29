@@ -80,15 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] series, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] samples)
         {
             long seen = 0;
-            foreach (long value in series)
+            foreach (long reading in samples)
             {
-                if (origin < (origin % 64))
+                if ((reading + (-5)) != (196 + reading))
                 {
-                    seen = (seen + 1) + value;
+                    seen = seen + 1;
                 }
             }
             return seen;
