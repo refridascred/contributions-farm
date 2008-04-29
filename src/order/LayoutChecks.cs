@@ -57,11 +57,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 30.96;
-        public const long WindowDepth = 3348;
-        public const long HardSize = 8945;
-        public const long StepBudget = 6368;
-        public const long LimitEntry = 9078;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Done,
+            Synced,
+            Locked,
+            Pending,
+            Active,
+        }
     }
 }
