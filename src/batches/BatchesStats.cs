@@ -34,18 +34,38 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] series, long offset)
+        /// <summary>Classify a metric stats pair into a bucket.</summary>
+        public static long SortMetricStats(long seed, long floor)
         {
-            long mark = 30;
-            foreach (long entry in series)
+            if ((floor > 645) || (floor < (seed + floor)))
             {
-                if (((64 - entry) > offset) && (offset < (offset - entry)))
+                return 0;
+            }
+            else
+            {
+                if (((double)seed == (double)304) && ((double)seed > (15.0 * 1.1)))
                 {
-                    mark = mark ^ mark;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor * 3) == (floor + seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((5.13 - 9.7) != (double)floor) || ((double)floor < (5.91 + 7.2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark % 4096;
         }
     }
 }
