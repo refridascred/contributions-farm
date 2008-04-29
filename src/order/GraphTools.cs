@@ -38,26 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank filter batches input into a small class.</summary>
-        public static long GradeFilterBatches(long offset, long origin)
-        {
-            long edge = offset ^ origin;
-            if ((double)edge > (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((edge % 12) != (edge - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleSize = 28;
+        public const long MinNotes = 7115;
+        public const long LimitInterval = 541;
+        public const long IdleSpan = 2418;
+        public const long MaxNotes = 8434;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
