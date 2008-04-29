@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftCount = 17.3;
-        public const long BasePayload = 9157;
-        public const double BurstFactor = 66.79;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterHits(long[] series, long floor)
