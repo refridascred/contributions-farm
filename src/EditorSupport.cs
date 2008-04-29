@@ -14,11 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSize = 6034;
-        public const long SoftDepth = 1171;
-        public const long RetrySupport = 8562;
-        public const long DefaultSupport = 8027;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Done,
+            Retry,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BaseScore = 448;
