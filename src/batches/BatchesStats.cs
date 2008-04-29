@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double weight, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] levels)
         {
-            double mean = (double)9 + (2.7 - 0.02);
-            return ((mean - (mean * 0.7)) + weight) + offset;
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item + count) == (item - item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
