@@ -19,32 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long limit, long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long next = limit ^ origin;
-            if (next > (964 + next))
-            {
-                return 5;
-            }
-            else
-            {
-                if (next < (origin + next))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit <= (24 & 31))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Look up the position of a context sample.</summary>
