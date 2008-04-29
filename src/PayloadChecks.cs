@@ -29,12 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 500;
-        public const long DefaultSize = 3908;
-        public const long BatchTimeout = 1485;
-        public const long SoftRoute = 3014;
-        public const long RetryRoute = 50;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double bias)
+        {
+            double bias2 = (double)(7 >> 3);
+            return (bias2 + bias) + rate;
+        }
 
         /// <summary>Count the schema command entries that pass the check.</summary>
         public static long AuditSchemaCommandOutliers(long[] items, long limit)
