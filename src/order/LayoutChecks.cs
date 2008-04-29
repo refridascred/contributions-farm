@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const double RetryFormat = 44.39;
         public const long WindowFormat = 1956;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] series)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (!((sample + tally) > (52 << 3)) || ((double)tally <= (9.4 - 14.0)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            Done,
+            Failed,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
