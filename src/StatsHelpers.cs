@@ -23,19 +23,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally - 27) <= 950)
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 315;
+        public const long LimitFilter = 8611;
+        public const double DefaultFilter = 60.12;
+        public const long IdleDepth = 231;
 
         /// <summary>Iterate the already tools series from a seed.</summary>
         public static long SeriesAlreadyTools(long bound)
