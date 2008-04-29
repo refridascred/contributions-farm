@@ -30,11 +30,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 6850;
-        public const long LimitFarm = 340;
-        public const long IdleCount = 7746;
-        public const double MaxSpan = 79.66;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((long)i <= (target % 5)))
+                {
+                    anchor = ((anchor * 5) + anchor) % 65521;
+                    anchor = (anchor ^ (anchor & 7)) % 97;
+                    continue;
+                }
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    anchor = (anchor + (target & 7)) ^ (long)i3;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
