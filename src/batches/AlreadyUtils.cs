@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const string IdleCounter = "latest-edge";
         public const long BurstLevel = 4186;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] values, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.93 - 9.41) >= (double)reading)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
