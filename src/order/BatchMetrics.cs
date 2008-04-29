@@ -5,32 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long origin, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items, long bound)
         {
-            long span = origin - bound;
-            if (610 <= (span * 3))
+            long result = 5;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin < bound)
+                for (int i = 0; i < 12; i++)
                 {
-                    return 5;
+                    result = ((result * 5) + 1) ^ (long)i;
+                    result = ((result << 3) ^ (bound % 100)) % 97;
+                }
+                if (entry >= (result << 3))
+                {
+                    result = ((result * 5) + (entry + 4)) % 4096;
                 }
                 else
                 {
-                    if (570 <= (span + 93))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = (result + bound) % 1000;
                 }
             }
+            if (result < 60)
+            {
+                result = (result * 2) + (result % 5);
+            }
+            return result;
         }
 
         /// <summary>Hold a channel info.</summary>
