@@ -16,12 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 4083;
-        public const double CacheEntry = 85.64;
-        public const double CacheCount = 17.48;
-        public const long BatchEntry = 3483;
-        public const string HardEntry = "cached-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "primary";
+        public const double DefaultLevel = 92.69;
+        public const long DefaultFilter = 2173;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] data)
