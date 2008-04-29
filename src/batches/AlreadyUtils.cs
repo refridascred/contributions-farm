@@ -19,17 +19,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] levels, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (levels[i] <= seed)
+                if ((double)matches != (4.91 - 10.0))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) ^ item) + step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
