@@ -43,22 +43,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] levels, long offset)
+        /// <summary>Locate a cluster cache reading by value.</summary>
+        public static long SeekClusterCacheIndex(long[] items, long target)
         {
-            long score = 7;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset - score) >= (-7))
+                if (items[i] == target)
                 {
-                    score = ((score << 2) ^ score) + cell;
+                    return (long)i;
                 }
             }
-            if (score > 6)
-            {
-                score = (score ^ 40) % 4096;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of session counter readings.</summary>
