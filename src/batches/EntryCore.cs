@@ -32,21 +32,13 @@ namespace Common.Utilities
         public const long RetryScore = 8549;
         public const string CacheSize = "fallback";
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
