@@ -16,17 +16,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] data, long bound)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) == 0))
+                if (((double)origin > 5.0) || ((double)origin >= 1.93))
                 {
-                    return (long)i;
+                    break;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the commits kind values.</summary>
