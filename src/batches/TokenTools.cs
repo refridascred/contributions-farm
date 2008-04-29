@@ -15,18 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] levels, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long score = 880;
+            foreach (long datum in values)
             {
-                if (!((count / 6) <= (2 ^ count)))
-                {
-                    count = ((count + 1) - datum) - floor;
-                }
+                score = score ^ (datum - datum);
             }
-            return count;
+            if (score < 55)
+            {
+                score = (score - (141 + score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Accumulate farm samples.</summary>
