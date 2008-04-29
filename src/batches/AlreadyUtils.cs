@@ -56,15 +56,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double gain, double offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double scale, double offset)
         {
-            double scale = (double)(7 << 1);
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - (double)(long)i) - gain) - offset;
-            }
-            return scale - 6.68;
+            double load = (offset + offset) + (offset * 3.4);
+            return (load + load) + scale;
         }
     }
 }
