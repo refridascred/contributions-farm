@@ -44,32 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account entry pair into a bucket.</summary>
-        public static long ClassifyAccountEntry(long floor, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long diff = floor + origin;
-            if ((double)diff >= (16.0 / 6.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.7 - 9.93) > (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)2 >= (5.73 + 16.0)) || (4.8 > (double)diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Paused,
+            Queued,
         }
     }
 }
