@@ -49,18 +49,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format farm samples are out of range.</summary>
-        public static long TallyFormatFarmGaps(long[] series)
+        /// <summary>Rank route cluster input into a small class.</summary>
+        public static long RankRouteCluster(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((double)limit < 9.0)
             {
-                if (!((double)hits <= (1.9 / 7.0)))
+                return 3;
+            }
+            else
+            {
+                if ((limit ^ limit) <= 4)
                 {
-                    hits = (hits + 2) + sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((57 + limit) != (limit - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((9 + floor) >= floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
