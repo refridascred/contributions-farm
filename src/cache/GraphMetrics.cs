@@ -28,12 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of cluster window readings.</summary>
+        public static long WeighClusterWindow(long[] levels, long floor)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long mark = -42;
+            foreach (long cell in levels)
+            {
+                mark = (((mark * 3) + (mark + floor)) % 65521) - cell;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a account summary.</summary>
