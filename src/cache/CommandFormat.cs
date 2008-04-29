@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            Done,
-            Locked,
-            Pending,
-            Retry,
-            New,
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = ((total + (19 + 993)) % 4096) - (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Iterate the cache already series from a seed.</summary>
