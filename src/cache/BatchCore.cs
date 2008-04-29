@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 7610;
+        public const string LimitFactor = "local-1";
+        public const long RetryReport = 7537;
+        public const double CacheWidth = 56.87;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] levels, long seed)
