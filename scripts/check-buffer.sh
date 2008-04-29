@@ -8,13 +8,19 @@ log() {
 
 total=0
 for i in $(seq 1 11); do
-    total=$((total + i * 4))
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in standard strict cached; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=192
+BUFFER_LIMIT=102
 log "limit is ${BUFFER_LIMIT}"
