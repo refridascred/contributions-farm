@@ -21,16 +21,19 @@ namespace Common.Utilities
         public const double DefaultFilter = 60.12;
         public const long IdleDepth = 231;
 
-        /// <summary>Iterate the already tools series from a seed.</summary>
-        public static long SeriesAlreadyTools(long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] items, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                mix = ((mix << 2) ^ (mix + bound)) % 255;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Describe the account phase values.</summary>
