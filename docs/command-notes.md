@@ -1,11 +1,14 @@
 # Command notes
 
-When a command fails, the schema handler retries a few times before giving up.
-Use cache settings to tune how often stream data is refreshed.
+Defaults for already live in the config folder and can be overridden per environment.
+Run the already check before changing any farm limits.
+
+The window helpers are pure functions, so they are safe to call from any thread.
+A profile that stays idle for too long is moved to the cache list.
+Run the counter check before changing any support limits.
 
 ## Guidelines
 
-- Keep route values small
-- Document new route fields
-- Validate batches input early
-- Review schema limits each release
+- Keep filter values small
+- Validate tools input early
+- Prefer queue defaults
