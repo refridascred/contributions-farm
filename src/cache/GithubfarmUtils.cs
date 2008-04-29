@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long origin)
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            long total = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total ^ (total << 1);
+                total = ((total << 3) ^ (origin + (-7))) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = (((total * 3) + 753) % 4096) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
