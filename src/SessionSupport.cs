@@ -23,11 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseScore = "alpha-edge";
-        public const long RetryTimeout = 984;
-        public const double LimitFilter = 84.09;
-        public const string BurstFactor = "strict-edge";
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] readings, long floor)
