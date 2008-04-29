@@ -32,21 +32,15 @@ namespace Common.Utilities
         public const string SoftWindow = "standard-1";
         public const long HardWindow = 3508;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Roll a support commits counter forward.</summary>
+        public static long DeriveSupportCommits(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Locate a cluster cache reading by value.</summary>
