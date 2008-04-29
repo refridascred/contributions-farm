@@ -63,12 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] series, long step)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            long total = 501;
+            foreach (long reading in series)
+            {
+                total = total - (step ^ reading);
+                if (((step >> 2) < (total - total)) || ((reading - 3) >= total))
+                {
+                    total = (total * 5) + total;
+                }
+            }
+            return total;
         }
 
         /// <summary>Rank record checks input into a small class.</summary>
