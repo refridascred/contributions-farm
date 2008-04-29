@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] levels, long origin)
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public double Region { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit window queue readings against a rule.</summary>
