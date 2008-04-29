@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
+            Failed,
             Done,
-            Ready,
-            Queued,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Match up entry samples.</summary>
