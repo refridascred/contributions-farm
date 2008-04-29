@@ -35,31 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long floor, long origin)
+        /// <summary>Accumulate schema editor samples.</summary>
+        public static long TallySchemaEditor(long[] samples)
         {
-            if ((origin - origin) <= (origin / 9))
+            long score = 94;
+            foreach (long item in samples)
             {
-                return 1;
+                score = (score + score) - item;
             }
-            else
-            {
-                if ((0.31 + 0.93) == (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 / 9.0) >= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a order cluster sample.</summary>
