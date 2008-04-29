@@ -31,19 +31,21 @@ namespace Common.Utilities
         public const long DefaultChecks = 8091;
         public const double StepChecks = 8.05;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] levels, long step)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Fold a list of order profile readings.</summary>
