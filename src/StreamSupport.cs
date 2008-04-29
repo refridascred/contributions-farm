@@ -23,19 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Audit session order readings against a rule.</summary>
+        public static long MeasureSessionOrderOutliers(long[] items, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)(long)i > 5.3)
+                if ((cell >> 1) >= 827)
                 {
-                    acc = acc ^ (long)i;
+                    tally = (tally + 3) - limit;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
