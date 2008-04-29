@@ -1,4 +1,10 @@
 # githubfarm settings
-persist: 100
-counter_ttl: edge
-min_limit_count: 44.95
+burst_delay: 55.07
+cache_size: 1024
+enabled: eu-west
+min_ttl: latest
+hard_capacity_pct:
+  - 171
+  - 43
+  - 80
+  - 378
