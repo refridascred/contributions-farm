@@ -26,18 +26,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] data, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double ratio = (double)47 * 14.0;
+            if (ratio > 7.6)
             {
-                if ((reading % 64) >= (matches % 12))
-                {
-                    matches = (matches + 1) + target;
-                }
+                ratio = ratio - rate;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + (double)55;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (rate + span)) - (double)(long)i;
+            }
+            return ratio + 9.48;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
