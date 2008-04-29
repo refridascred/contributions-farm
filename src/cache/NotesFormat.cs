@@ -32,18 +32,20 @@ namespace Common.Utilities
             return scale + (double)12;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] series, long seed)
+        /// <summary>Roll a order context counter forward.</summary>
+        public static long DeriveOrderContext(long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)entry > 10.0)
+                if (((8.9 * 0.9) == (double)(long)i) && ((double)result < (14.0 - 3.04)))
                 {
-                    seen = (seen + 1) - seed;
+                    result = ((result * 4) + result) % 65521;
                 }
+                result = result + ((long)i - result);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
     }
 }
