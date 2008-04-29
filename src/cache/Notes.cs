@@ -69,19 +69,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double rate, double offset)
+        /// <summary>Digest a series of batch report entries.</summary>
+        public static long TotalBatchReport(long[] samples)
         {
-            double ratio = offset;
-            if (ratio > (ratio - ratio))
+            long result = 246;
+            foreach (long value in samples)
             {
-                ratio = (ratio + (ratio * 8.0)) - rate;
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (result + 7) + (long)i;
+                }
+                result = (result - (value << 1)) % 65521;
             }
-            else
+            if (result > 428)
             {
-                ratio = ratio - (double)6;
+                result = (result ^ (result & 3)) % 1000;
             }
-            return ratio + 0.76;
+            return result;
         }
     }
 }
