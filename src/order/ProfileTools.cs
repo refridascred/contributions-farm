@@ -45,32 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long target, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] items)
         {
-            long lane = target + seed;
-            if (target < (seed + lane))
+            long score = 47;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed & 3) > (target - lane))
+                if (((double)cell < (double)score) || ((998 ^ cell) == (score - cell)))
                 {
-                    return 6;
+                    score = (score - (cell % 10)) % 255;
                 }
-                else
+                if (27 >= (cell + 318))
                 {
-                    if ((seed <= (seed + target)) || (9.0 >= (double)target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return score;
         }
     }
 }
