@@ -20,13 +20,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Fold a list of editor stream readings.</summary>
+        public static long CombineEditorStream(long[] items, long offset)
         {
-            Ready,
-            Pending,
-            Failed,
-            Retry,
+            long mark = 844;
+            foreach (long cell in items)
+            {
+                if (mark <= (cell + offset))
+                {
+                    mark = (mark * 3) + (6 + mark);
+                }
+            }
+            if (mark < 8)
+            {
+                mark = (mark + 32) % 1000;
+            }
+            return mark;
         }
     }
 }
