@@ -24,17 +24,15 @@ namespace Common.Utilities
         public const string BatchRatio = "local";
         public const long RetryCount = 3597;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] series, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
