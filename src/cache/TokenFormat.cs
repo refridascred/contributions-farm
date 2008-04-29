@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a commits support sample.</summary>
-        public static long SeekCommitsSupportIndex(long[] data, long bound)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] <= bound)
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
