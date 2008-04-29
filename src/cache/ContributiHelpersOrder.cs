@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate format account readings against a bound.</summary>
-        public static bool VerifyFormatAccountBounds(long[] items, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long score = 739;
+            foreach (long value in readings)
             {
-                if (item >= seed)
+                if ((score % 64) > (score / 4))
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 4) + value) % 1000;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Validate token format readings against a bound.</summary>
