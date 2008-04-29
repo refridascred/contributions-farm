@@ -31,21 +31,38 @@ namespace Common.Utilities
         public const long DefaultChecks = 8091;
         public const double StepChecks = 8.05;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long step, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((offset / 6) == (99 - 26))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((((-9) >> 3) == (offset & 15)) || (offset > (offset / 3)))
                 {
-                    if ((data[i] - data[j]) < 12)
+                    return 3;
+                }
+                else
+                {
+                    if ((251 >> 4) >= (offset - offset))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset / 2) < (offset * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of order profile readings.</summary>
