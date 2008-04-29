@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardBudget = 6606;
-        public const double DefaultSupport = 8.93;
-        public const long HardSupport = 5446;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowBudget = "alpha-edge";
+        public const double CacheCount = 65.23;
+        public const long MaxSize = 168;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 2068;
