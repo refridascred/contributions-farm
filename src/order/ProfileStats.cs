@@ -36,19 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] levels, long seed)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Score { get; set; }
+            public bool Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a command record.</summary>
