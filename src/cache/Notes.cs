@@ -6,27 +6,35 @@ namespace Common.Utilities
     public static class Notes
     {
         /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long offset, long offset2)
+        public static long ClassifyContributi(long step, long step2)
         {
-            if ((offset2 > (offset + offset)) && ((offset2 >> 2) > offset2))
+            long offset = step ^ step2;
+            if (!((step & 63) == (offset + (-4))))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((4 ^ offset) >= 10)
+                if (step >= (offset - offset))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((offset + offset2) >= ((-619) ^ offset))
+                    if ((step + (-542)) < (step + 667))
                     {
                         return 8;
                     }
                     else
                     {
-                        return 6;
+                        if (!(step2 >= (step2 & 7)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
