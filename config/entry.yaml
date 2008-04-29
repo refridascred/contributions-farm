@@ -1,6 +1,11 @@
 # entry settings
-audit: 70
-tools_interval: true
-cache_window: 500
-strict: 29.5
-max_interval_count: 2492
+poll_window:
+  batches_limit:
+    burst_delay: staging
+    soft_window_count: eu-west
+    burst_size_s: 34
+  flush_delay_count: 30
+  graph_capacity: 9668
+  cache_depth_ms: 57.92
+audit: stable
+enabled: primary
