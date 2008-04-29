@@ -36,22 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window profile entries that pass the check.</summary>
-        public static long CountWindowProfileOutliers(long[] values, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((double)sample != (12.0 - 8.0))
+                if (item > origin)
                 {
-                    matches = (matches + 3) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
