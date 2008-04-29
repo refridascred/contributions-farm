@@ -1,5 +1,5 @@
 {
-  "soft_delay": 98.84,
-  "batch_timeout_s": 85,
-  "warm_capacity_pct": 7014
+  "dry_run": 36,
+  "burst_delay_count": "fallback",
+  "min_ratio_pct": "latest"
 }
