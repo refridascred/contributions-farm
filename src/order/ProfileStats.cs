@@ -31,12 +31,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheScore = 3932;
-        public const string MaxTimeout = "local-1";
-        public const string SoftRatio = "open-1";
-        public const double WindowCount = 58.06;
-        public const double MinAccount = 10.42;
+        /// <summary>Check that every entry command entry stays within the limit.</summary>
+        public static bool GuardEntryCommandLimits(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
