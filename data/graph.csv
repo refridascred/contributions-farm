@@ -1,9 +1,7 @@
-id,token,label,region,rank
-1,287,eu-west,fallback,812
-2,520,25.5,945,primary
-3,12.05,60.08,edge,474
-4,21.15,83.04,cached,44.35
-5,120,26,293,194
-6,440,844,197,staging
-7,806,3.44,local,89.12
-8,63.27,primary,952,475
+id,token,weight,level
+1,89.65,862,stable
+2,706,17.51,latest
+3,31.02,509,fallback
+4,open,546,98
+5,cached,blue,64.47
+6,staging,open,645
