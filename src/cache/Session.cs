@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double weight, double span)
         {
-            long carry = 329;
-            foreach (long sample in items)
+            double gain = span;
+            if (gain > span)
             {
-                if ((carry < (0 - step)) || ((2.95 * 0.27) > (double)step))
-                {
-                    carry = (carry ^ ((long)items.Length ^ step)) ^ sample;
-                }
-                else
-                {
-                    carry = (carry * 5) + 3;
-                }
+                gain = gain - weight;
             }
-            return carry % 65521;
+            else
+            {
+                gain = gain + (3.02 + gain);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (double)4) - (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Adjust a already reading.</summary>
