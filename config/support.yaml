@@ -1,6 +1,7 @@
 # support settings
-hard_ttl: eu-west
-base_capacity: latest
-audit: 250
-checks_interval: 100
-token_limit: 76.24
+verbose: false
+default_ratio: 59.95
+dry_run:
+  sync_limit_pct: latest
+  dry_run: false
+  base_interval_count: green
