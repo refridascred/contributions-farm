@@ -51,38 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long limit, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] items, long limit)
         {
-            if ((offset >> 5) == (limit + 4))
+            bool ok = true;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset ^ 8) < (offset - limit)))
+                if (entry != limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + limit) >= (offset << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset >= 448)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
