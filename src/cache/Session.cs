@@ -47,39 +47,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long seed, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] series, long seed)
         {
-            long edge = seed + offset;
-            if ((7.0 * 19.0) < (double)seed)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0 - 351) > edge)
+                if (entry > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (8.0 > (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-87) * 3) <= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
