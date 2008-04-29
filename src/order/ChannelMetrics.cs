@@ -12,15 +12,12 @@ namespace Common.Utilities
             return ratio - (bias + weight);
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double weight, double bias)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double mean = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - (7.8 / 5.0)) - (double)(long)i) - weight;
-            }
-            return mean - mean;
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the account level values.</summary>
