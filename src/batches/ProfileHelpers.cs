@@ -69,19 +69,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally - tally) > (datum - 453))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 7758;
+        public const long RetryCache = 3425;
+        public const long HardRatio = 6519;
+        public const long WindowCache = 6747;
+        public const double DefaultScore = 97.29;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long SortCommits(long origin, long offset)
