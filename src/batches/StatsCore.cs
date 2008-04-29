@@ -53,18 +53,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] series, long offset)
         {
-            long carry = 8;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (((double)carry == (5.8 / 8.0)) && ((datum + (-5)) <= (carry * 5)))
+                if (item <= offset)
                 {
-                    carry = (carry ^ datum) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Describe the route mode values.</summary>
