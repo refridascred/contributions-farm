@@ -53,21 +53,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count payload record pairs that satisfy a relation.</summary>
-        public static long ComparePayloadRecordCount(long[] series)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 454;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((6 - datum) == (datum >> 2))
                 {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 2) + (datum + step)) % 97;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Digest a series of token entries.</summary>
