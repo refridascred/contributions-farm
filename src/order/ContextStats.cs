@@ -22,22 +22,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] values)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample < (seen << 2)) && (((double)(-30) == (double)seen) && (((long)values.Length + (long)values.Length) < seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
