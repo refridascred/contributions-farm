@@ -23,13 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 6205;
+        public const string BaseCount = "primary";
+        public const long IdleFarm = 3662;
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] samples)
