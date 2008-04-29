@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits + item) == ((-3) + item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 3044;
+        public const long RetryTimeout = 4285;
+        public const long DefaultBatches = 2526;
+        public const long MinScore = 6769;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long BucketContext(long limit, long limit2)
