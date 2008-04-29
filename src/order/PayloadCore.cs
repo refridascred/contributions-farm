@@ -37,16 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double bias, double offset)
-        {
-            double gain = offset;
-            if (gain <= offset)
-            {
-                gain = (gain - offset) + bias;
-            }
-            return gain + (offset / 4.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "staging-1";
+        public const long BurstTools = 6087;
+        public const long DefaultTools = 3163;
+        public const long RetryTools = 4834;
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
