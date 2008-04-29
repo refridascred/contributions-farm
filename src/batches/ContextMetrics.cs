@@ -52,12 +52,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
