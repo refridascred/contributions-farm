@@ -20,14 +20,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Find the first buffer batches entry that matches the target.</summary>
+        public static long LocateBufferBatchesIndex(long[] series, long step)
         {
-            Dropped,
-            New,
-            Ready,
-            Locked,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
