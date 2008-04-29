@@ -46,19 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long sum = -839;
-            foreach (long reading in data)
-            {
-                sum = ((sum * 4) + (sum - sum)) + reading;
-                if ((9.2 + 6.0) > (double)sum)
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            Closed,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Classify a metric editor pair into a bucket.</summary>
