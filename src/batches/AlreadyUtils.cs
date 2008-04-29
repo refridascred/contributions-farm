@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] values, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long score = 1;
-            foreach (long datum in values)
+            long score = 48;
+            foreach (long value in series)
             {
-                if (!(((score + datum) > seed) || ((datum & 15) > (datum % 12))))
+                if ((54 + value) > value)
                 {
-                    score = ((score << 2) ^ datum) % 4096;
-                }
-                if ((7 << 3) > seed)
-                {
-                    score = ((score << 2) ^ (80 % 16)) % 1000;
-                }
-                else
-                {
-                    score = ((score * 5) + 890) % 65521;
+                    score = (score ^ 5) % 97;
                 }
             }
-            if (score < 451)
-            {
-                score = (score << 3) ^ (seed + score);
-            }
-            return score;
+            return score % 97;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
