@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxScore = 4177;
+        public const long LimitWidth = 4823;
+        public const double WindowLevel = 36.47;
+        public const double BurstDepth = 78.88;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
