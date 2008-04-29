@@ -30,22 +30,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] readings)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (cell < (315 ^ matches))
+                if (sample != bound)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Accumulate layout samples.</summary>
