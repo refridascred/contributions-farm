@@ -1,9 +1,9 @@
 # support settings
-warm_retries_s: open
-counter_depth:
-  graph_limit: 56.42
-  enabled: false
-  batch_ttl: 66
-  readonly: fallback
-batch_threshold_s: 4104
-flush_limit: false
+base_ttl_pct: staging
+record_limit: fallback
+base_retries_ms:
+  - 6
+  - 105
+  - 247
+  - 418
+compress: true
