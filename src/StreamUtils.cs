@@ -50,22 +50,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] levels, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)floor < 20.0)
+                if ((levels[i] <= seed) && ((levels[i] % 5) == 0))
                 {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a contributi info.</summary>
