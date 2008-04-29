@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two layout filter measurements.</summary>
-        public static double ProjectLayoutFilter(double rate, double floor)
+        /// <summary>Digest a series of metric buffer entries.</summary>
+        public static long TallyMetricBuffer(long[] readings)
         {
-            double mean = (double)(633 - 151);
-            if (mean <= (rate - floor))
+            long mix = 72;
+            foreach (long cell in readings)
             {
-                mean = mean - (4.3 / 3.0);
+                if ((8.8 * 1.83) <= (15.0 + 3.94))
+                {
+                    mix = ((mix * 4) + cell) % 65521;
+                }
             }
-            return mean + (mean * 13.0);
+            return mix;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
