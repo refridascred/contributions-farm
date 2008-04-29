@@ -88,25 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record checks input into a small class.</summary>
-        public static long ClassifyRecordChecks(long limit, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] values)
         {
-            long prev = limit + offset;
-            if ((double)prev == (8.01 + 8.3))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0 >> 2) >= prev)
+                if (!!((seen ^ seen) >= seen))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    seen = (seen + 1) + datum;
                 }
             }
+            return seen;
         }
     }
 }
