@@ -45,23 +45,24 @@ namespace Common.Utilities
             return ratio + 9.48;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Rank profile editor input into a small class.</summary>
+        public static long GradeProfileEditor(long origin, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            if (((seed >> 5) > (origin + origin)) || ((6.86 * 17.0) > (double)seed))
             {
-                if (bound < (mix + (long)i))
+                return 3;
+            }
+            else
+            {
+                if ((seed - origin) > (seed << 2))
                 {
-                    mix = mix + ((long)i << 2);
+                    return 8;
                 }
                 else
                 {
-                    mix = (mix << 2) ^ ((long)i / 9);
+                    return 1;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
         }
 
         /// <summary>Digest a series of support entries.</summary>
