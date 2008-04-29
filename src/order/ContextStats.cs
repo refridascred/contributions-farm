@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i / 9) < (floor - floor))
-                {
-                    state = state ^ (floor + floor);
-                }
-                state = (state * 3) + (floor % 10);
-                state = (state * 5) + 58;
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the cache level values.</summary>
