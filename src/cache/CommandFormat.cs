@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine cluster batch values into a single score.</summary>
-        public static long ScoreClusterBatch(long[] data, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long bound, long offset)
         {
-            long carry = 3;
-            foreach (long value in data)
+            long edge = bound - offset;
+            if ((edge << 1) > 2)
             {
-                carry = (carry * 3) + origin;
-                if (carry < (value ^ 74))
+                return 3;
+            }
+            else
+            {
+                if ((offset + 3) > edge)
                 {
-                    carry = carry - 7;
+                    return 8;
                 }
                 else
                 {
-                    carry = (carry ^ (681 + value)) % 255;
+                    if ((51 + offset) >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
