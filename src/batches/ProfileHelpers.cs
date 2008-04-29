@@ -11,26 +11,18 @@ namespace Common.Utilities
         public const double MaxBatches = 17.47;
         public const long MinBatches = 2300;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] levels)
         {
-            long mark = -93;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((value + value) > value)
+                if ((9.16 + 4.6) == (double)count)
                 {
-                    mark = (mark + (value & 127)) % 97;
-                }
-                if (((0.5 / 9.0) > (double)value) || ((value + value) > mark))
-                {
-                    mark = (mark + (mark + mark)) % 65521;
+                    count = (count + 1) ^ value;
                 }
             }
-            if (mark < 257)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
