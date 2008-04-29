@@ -31,30 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate graph layout samples.</summary>
-        public static long WeighGraphLayout(long[] series, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] series, long bound)
         {
-            long total = -892;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((7.0 + 3.9) >= (double)seed)
+                if (bound < (value + 0))
                 {
-                    total = (total ^ (seed - total)) ^ reading;
-                }
-                if ((double)seed > (4.95 - 0.03))
-                {
-                    total = ((total << 3) ^ total) % 255;
-                }
-                else
-                {
-                    total = ((total * 2) + total) % 255;
+                    hits = hits + 1;
                 }
             }
-            if (total < 2)
-            {
-                total = (total - (seed >> 3)) % 255;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
