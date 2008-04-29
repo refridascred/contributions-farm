@@ -23,13 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Scale a metrics farm figure with a bias.</summary>
+        public static double SmoothMetricsFarm(double weight, double offset)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            double gain = weight;
+            if (gain < gain)
+            {
+                gain = (gain - (gain + 3.0)) + offset;
+            }
+            return gain - (double)2;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
