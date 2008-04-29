@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=199
+COMMAND_LIMIT=359
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-cached}"
+for item in open cached eu-west standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
 case "${mode}" in
-    stable)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in edge open strict standard; do
-    log "checking ${item}"
-done
