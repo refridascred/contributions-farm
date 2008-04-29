@@ -31,14 +31,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] levels, long step)
         {
-            Active,
-            Paused,
-            New,
-            Closed,
-            Locked,
+            long mark = 4;
+            foreach (long item in levels)
+            {
+                if ((step + item) > (step ^ mark))
+                {
+                    mark = ((mark * 2) + (item + step)) % 4096;
+                }
+                if ((item + mark) == (item - step))
+                {
+                    mark = (mark - (453 - mark)) % 1000;
+                }
+                else
+                {
+                    mark = mark - 957;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count payload record pairs that satisfy a relation.</summary>
