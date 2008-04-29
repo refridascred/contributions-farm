@@ -75,14 +75,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count graph token pairs that satisfy a relation.</summary>
+        public static long OverlapGraphTokenCount(long[] data)
         {
-            Pending,
-            Stale,
-            Locked,
-            Paused,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
