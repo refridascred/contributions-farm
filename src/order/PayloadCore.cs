@@ -30,11 +30,11 @@ namespace Common.Utilities
             return mean + (double)40;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "staging-1";
-        public const long BurstTools = 6087;
-        public const long DefaultTools = 3163;
-        public const long RetryTools = 4834;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 2223;
+        public const long HardInterval = 442;
+        public const long RetryBatches = 3148;
+        public const long WindowCount = 2178;
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
