@@ -32,15 +32,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] data, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((offset > (count % 8)) && (reading >= count))
+                {
+                    count = count + 2;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
