@@ -31,9 +31,39 @@ namespace Common.Utilities
             return scale + 4.22;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 7382;
-        public const double BurstRatio = 84.86;
-        public const long BurstGraph = 2237;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long step, long offset)
+        {
+            long bound = step ^ offset;
+            if ((double)bound >= (9.0 - 1.61))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset & 7) >= offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((14 ^ offset) == (offset + offset)) || ((step - bound) <= (58 ^ 42)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset + 0) == (305 >> 2)) || ((offset - bound) > (35 * 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
