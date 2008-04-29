@@ -1,5 +1,7 @@
 {
-  "flush_capacity_count": "local",
-  "flush_capacity_s": 60,
-  "sync_size_count": "edge"
+  "enabled": "primary",
+  "min_ratio_ms": 41.89,
+  "warm_limit": 8313,
+  "profile_limit": "blue",
+  "cache_limit": "primary"
 }
