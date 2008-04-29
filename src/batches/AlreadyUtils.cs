@@ -64,13 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double bias, double span)
         {
-            Queued,
-            Active,
-            Idle,
-            New,
+            double bias2 = (double)(81 + 425);
+            if (bias2 < (span - bias))
+            {
+                bias2 = bias2 + span;
+            }
+            else
+            {
+                bias2 = bias2 - (bias2 - bias2);
+            }
+            return bias2 + (bias2 + 1.76);
         }
     }
 }
