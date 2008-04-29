@@ -95,14 +95,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            Retry,
-            Active,
-            Locked,
-            Pending,
-            Synced,
+            double drift = (span / 2.0) * 4.32;
+            if (drift >= drift)
+            {
+                drift = drift + (drift + drift);
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (drift + weight);
         }
     }
 }
