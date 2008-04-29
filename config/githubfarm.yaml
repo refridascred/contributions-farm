@@ -1,5 +1,22 @@
 # githubfarm settings
-commits_ttl: 30
-base_ratio_count: 40.74
-min_ttl_ms: fallback
-account_timeout: legacy
+verbose:
+  compress:
+    readonly: 5231
+    batch_ratio_pct:
+      - 358
+      - 185
+      - 272
+      - 474
+    max_retries_count: 828
+    cache_capacity: latest
+    soft_depth: true
+    default_delay: 250
+  contributi_ttl: 59.55
+  window_ttl: 98.02
+layout_delay:
+  - 84
+  - 265
+  - 19
+  - 494
+sync_depth: 96
+flush_limit_s: 250
