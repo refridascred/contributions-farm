@@ -20,20 +20,18 @@ namespace Common.Utilities
             return gain + (gain / 9.0);
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Measure how many already cache samples are out of range.</summary>
+        public static long MeasureAlreadyCacheMatches(long[] values, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (((double)datum != (double)(long)values.Length) || (((2.69 - 2.58) < (double)offset) || ((offset << 1) <= offset)))
                 {
-                    score = (((score * 3) + (score & 255)) % 65521) ^ (long)i2;
+                    count = count + 3;
                 }
-                score = (score * 2) + (target - target);
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Match up order samples.</summary>
