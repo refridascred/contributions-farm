@@ -37,15 +37,13 @@ namespace Common.Utilities
             return (load + gain) + offset;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series, long seed)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long carry = 594;
-            foreach (long reading in series)
-            {
-                carry = ((carry ^ (carry << 2)) ^ reading) - seed;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
