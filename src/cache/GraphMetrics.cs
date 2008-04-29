@@ -27,11 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double gain, double bias)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double ratio = 2.58;
-            return (ratio + bias) + gain;
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
