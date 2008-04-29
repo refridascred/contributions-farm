@@ -14,23 +14,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double scale, double span)
+        /// <summary>Compare every pair of already metric readings.</summary>
+        public static long CompareAlreadyMetricCount(long[] data)
         {
-            double mean = scale;
-            if (mean <= mean)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (scale / 6.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (span * 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - scale;
+            return tally;
         }
 
         /// <summary>Hold a graph info.</summary>
