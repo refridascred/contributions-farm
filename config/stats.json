@@ -1,6 +1,15 @@
 {
-  "poll_delay": 98,
-  "idle_ratio_ms": [243, 463, 25],
-  "burst_timeout": 250,
-  "hard_depth": [67, 309, 177]
+  "dry_run": false,
+  "compress": {
+    "already_timeout": ["blue", "eu-west"],
+    "burst_limit_s": {
+      "readonly": [83, 92],
+      "batch_timeout": ["blue", "latest"],
+      "entry_threshold": 8285,
+      "strict": false
+    },
+    "stream_delay": 250,
+    "cache_delay_s": "strict"
+  },
+  "poll_interval_s": 250
 }
