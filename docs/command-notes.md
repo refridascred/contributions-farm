@@ -1,11 +1,10 @@
 # Command notes
 
-When a account fails, the layout handler retries a few times before giving up.
-Keep tools and support names short and lowercase.
-A session that stays idle for too long is moved to the order list.
+Run the contributi check before changing any support limits.
+A commits that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Document new queue fields
-- Validate profile input early
-- Keep tools values small
+- Validate filter input early
+- Document new stream fields
+- Log every githubfarm change
