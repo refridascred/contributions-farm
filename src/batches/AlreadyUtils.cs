@@ -41,21 +41,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 52;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (((result << 3) ^ (long)series.Length) % 255) + item;
             }
-            return count;
+            if (result > 2)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
