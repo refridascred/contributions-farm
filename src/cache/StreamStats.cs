@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long BatchToken = 5138;
         public const long BaseInterval = 6922;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long mix = 5;
-            foreach (long cell in data)
-            {
-                mix = (mix << 2) ^ (cell & 1);
-            }
-            if (mix > 139)
-            {
-                mix = mix - (mix ^ 0);
-            }
-            return mix;
+            Draft,
+            Ready,
+            Failed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
