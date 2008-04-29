@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Retry,
+            Synced,
+            Failed,
+            Stale,
             Draft,
             Locked,
-            Synced,
-            Paused,
         }
 
         /// <summary>Hold a order stats.</summary>
