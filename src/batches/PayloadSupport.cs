@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] readings, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (4.4 <= (double)hits)
+                if ((sample & 7) > (4 >> 2))
                 {
-                    hits = ((hits + 1) - entry) - floor;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
