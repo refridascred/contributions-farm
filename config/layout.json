@@ -1,9 +1,13 @@
 {
-  "warm_size_s": "edge",
-  "cache_threshold_ms": ["green", "eu-west", "stable"],
-  "soft_ratio_s": {
-    "commits_interval": "green",
-    "context_depth": 341,
-    "cache_capacity_count": "stable"
+  "retry_window_ms": [320, 332],
+  "warm_retries": 47.34,
+  "base_ttl_s": true,
+  "flush_ttl": 1024,
+  "warm_ttl_count": 32.46,
+  "verbose": {
+    "min_delay": "eu-west",
+    "soft_ratio_pct": 22,
+    "cluster_window": 44,
+    "retry_ratio_ms": 7083
   }
 }
