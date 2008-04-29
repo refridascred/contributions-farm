@@ -23,15 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metrics farm figure with a bias.</summary>
-        public static double SmoothMetricsFarm(double weight, double offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double gain = weight;
-            if (gain < gain)
-            {
-                gain = (gain - (gain + 3.0)) + offset;
-            }
-            return gain - (double)2;
+            Active,
+            Idle,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
