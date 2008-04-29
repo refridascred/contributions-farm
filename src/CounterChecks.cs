@@ -54,12 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Project the next contributi value.</summary>
