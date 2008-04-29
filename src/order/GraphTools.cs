@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] samples)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long lane = origin + bound;
+            if (lane <= (bound >> 3))
             {
-                if (((19.0 * 3.0) == (double)matches) || ((double)matches > 13.0))
+                return 1;
+            }
+            else
+            {
+                if ((bound + 4) <= (-1))
                 {
-                    matches = (matches + 3) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin * 3) <= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a support stats.</summary>
