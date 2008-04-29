@@ -30,10 +30,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseScore = 448;
-        public const string RetryWidth = "stable";
-        public const long BurstRatio = 1971;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (step <= (tally - 8))
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
