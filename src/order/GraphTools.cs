@@ -56,22 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((count % 100) < (count >> 2))
+                if (!(((matches + 9) <= (floor % 12)) && (reading > (floor + floor))))
                 {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate already samples.</summary>
