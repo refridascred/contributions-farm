@@ -25,21 +25,21 @@ namespace Common.Utilities
         public const long SoftBudget = 7501;
         public const double RetryBatch = 32.47;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Count account buffer pairs that satisfy a relation.</summary>
+        public static long MatchAccountBufferCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 15)
+                    if ((samples[i] ^ samples[j]) < 6)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
