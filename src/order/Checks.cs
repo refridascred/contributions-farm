@@ -19,17 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] series, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] < step)
+                long step2 = carry;
+                if (!((37 * 3) != (carry + step2)))
                 {
-                    return (long)i;
+                    carry = (carry - (step2 + (long)i)) % 4096;
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Accumulate graph layout samples.</summary>
