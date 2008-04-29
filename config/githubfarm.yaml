@@ -1,18 +1,5 @@
 # githubfarm settings
-filter_interval:
-  batch_retries: true
-  default_retries_s: open
-  cache_timeout: staging
-  already_limit: local
-notes_ratio: 86
-farm_threshold: 100
-enabled: eu-west
-command_ratio:
-  verbose: 500
-  githubfarm_timeout: false
-  flush_timeout:
-    - staging
-    - staging
-    - local
-    - latest
-burst_threshold_count: false
+hard_retries: true
+max_capacity_pct: 74.89
+layout_retries: true
+base_ratio: true
