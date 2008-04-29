@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] levels)
+        /// <summary>Audit counter route readings against a rule.</summary>
+        public static long AuditCounterRouteOutliers(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((9.16 + 4.6) == (double)count)
+                if ((double)tally > (5.7 / 6.0))
                 {
-                    count = (count + 1) ^ value;
+                    tally = ((tally + 2) ^ reading) - target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate schema samples.</summary>
