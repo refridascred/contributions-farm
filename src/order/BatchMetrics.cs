@@ -49,11 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepLevel = 43.86;
-        public const long IdleProfile = 5532;
-        public const long HardSpan = 7289;
-        public const string DefaultWidth = "strict-v2";
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long WeighContext(long[] values)
