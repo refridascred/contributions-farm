@@ -41,11 +41,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 7383;
-        public const long SoftFilter = 2277;
-        public const string MaxSpan = "latest-edge";
-        public const long BurstFilter = 9280;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphHits(long[] samples, long bound)
