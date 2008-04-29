@@ -1,6 +1,7 @@
 {
-  "compress": 63,
-  "max_interval": "edge",
-  "queue_limit": 69.26,
-  "buffer_capacity": 1.97
+  "farm_timeout": "edge",
+  "persist": 83,
+  "flush_retries_s": 61.03,
+  "hard_retries_ms": "edge",
+  "sync_window_count": "fallback"
 }
