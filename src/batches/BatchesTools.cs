@@ -42,19 +42,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] series, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] series, long step)
         {
-            bool found = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (item <= offset)
+                if (((datum - step) < (datum - 728)) || ((9 ^ datum) >= (datum % 12)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
