@@ -30,13 +30,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] items, long seed)
         {
-            Locked,
-            Idle,
-            Done,
-            Failed,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!((tally - 8) < reading))
+                {
+                    tally = (tally + 3) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
