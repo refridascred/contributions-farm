@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Derive the next order record value from a seed.</summary>
+        public static long StepOrderRecord(long seed)
         {
-            Pending,
-            Failed,
-            Dropped,
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = (mark ^ (mark >> 4)) ^ (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
