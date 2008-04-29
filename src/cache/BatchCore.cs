@@ -25,24 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc << 3) ^ (acc * 2)) % 97;
-                if ((6.6 * 13.0) > (double)acc)
-                {
-                    acc = (acc + (acc + acc)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ acc) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
