@@ -14,10 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryInterval = "legacy-edge";
-        public const double StepTimeout = 96.67;
-        public const string LimitWindow = "latest-1";
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double bias, double span)
+        {
+            double bias2 = span / 6.0;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = ((bias2 + (double)776) + (double)(long)i) + bias;
+            }
+            return bias2 + (double)(-599);
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long DeriveContributi(long floor)
