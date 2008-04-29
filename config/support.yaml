@@ -1,6 +1,6 @@
 # support settings
-token_threshold: eu-west
-metric_ttl: eu-west
-metrics_retries: 500
-route_threshold: strict
-idle_depth_pct: false
+compress: true
+route_size: cached
+poll_timeout_s: 31.77
+window_capacity: 2522
+poll_interval_s: 500
