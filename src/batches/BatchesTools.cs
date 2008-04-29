@@ -37,22 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] levels, long bound)
+        /// <summary>Measure how many profile metrics samples are out of range.</summary>
+        public static long MeasureProfileMetricsMatches(long[] items)
         {
-            long state = 4;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((state << 1) < value) || ((3.6 * 8.5) <= (double)value))
+                if ((tally * 5) != (sample % 8))
                 {
-                    state = (((state << 2) ^ state) % 255) + bound;
-                }
-                else
-                {
-                    state = (state + (state % 3)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            return state % 4096;
+            return tally;
         }
     }
 }
