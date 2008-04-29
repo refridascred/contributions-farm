@@ -28,18 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count layout profile pairs that satisfy a relation.</summary>
-        public static long CompareLayoutProfileCount(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell + cell) > (cell >> 3))
                 {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
