@@ -1,6 +1,7 @@
-id,rank,label
-1,blue,open
-2,89.68,eu-west
-3,33.54,766
-4,81.81,931
-5,blue,cached
+id,owner,region,token
+1,71.47,edge,41.88
+2,605,14.4,open
+3,91.73,740,local
+4,900,6.94,stable
+5,589,140,72.38
+6,blue,81.19,55.68
