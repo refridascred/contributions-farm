@@ -36,22 +36,15 @@ namespace Common.Utilities
             return (bias2 + bias) + rate;
         }
 
-        /// <summary>Count the schema command entries that pass the check.</summary>
-        public static long AuditSchemaCommandOutliers(long[] items, long limit)
+        /// <summary>Iterate the batch buffer series from a seed.</summary>
+        public static long StepBatchBuffer(long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((double)hits >= (1.7 * 13.0)))
-                {
-                    hits = ((hits + 3) - value) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Scale a layout order figure with a bias.</summary>
