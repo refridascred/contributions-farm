@@ -35,18 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the session batch entries that pass the check.</summary>
-        public static long CountSessionBatchGaps(long[] values, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (origin < (long)values.Length)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
+            Locked,
+            Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
