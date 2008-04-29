@@ -53,15 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session format values into a single score.</summary>
-        public static long FoldSessionFormat(long[] readings)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double scale, double bias)
         {
-            long anchor = 55;
-            foreach (long value in readings)
+            double mean = (double)((-607) - 81);
+            if (mean > (mean * 9.0))
             {
-                anchor = ((anchor ^ (anchor & 255)) % 4096) + value;
+                mean = ((mean - (double)539) - scale) + bias;
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean / 7.0)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
