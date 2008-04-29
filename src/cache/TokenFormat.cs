@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long result = 150;
+            foreach (long datum in items)
             {
-                if ((entry & 7) == (seen - entry))
+                result = (result + (3 ^ result)) % 101;
+                if (datum <= (277 & 1))
                 {
-                    seen = seen + 3;
+                    result = (result - (datum * 2)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (datum << 3)) % 101;
                 }
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
