@@ -45,10 +45,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitWidth = 4138;
-        public const long StepBudget = 352;
-        public const double MinSpan = 36.54;
-        public const double SoftDepth = 19.97;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepScore = 414;
+        public const long CacheFormat = 1034;
+        public const string MaxCount = "open-v2";
     }
 }
