@@ -12,19 +12,38 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long offset, long offset2)
         {
-            long total = 4;
-            foreach (long item in values)
+            if ((offset + offset2) <= offset)
             {
-                total = ((total << 2) ^ item) % 101;
-                if ((item << 2) <= item)
+                return 8;
+            }
+            else
+            {
+                if ((((-4) + (-352)) != (offset2 / 7)) || (offset >= (offset >> 4)))
                 {
-                    total = (total - item) % 101;
+                    return 0;
+                }
+                else
+                {
+                    if (((5.69 + 9.5) > (double)offset) && ((double)offset > 4.76))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset * 5) >= (offset + 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
