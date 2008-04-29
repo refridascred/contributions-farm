@@ -18,16 +18,11 @@ namespace Common.Utilities
         public const long LimitMetric = 3134;
         public const string MaxWidth = "alpha";
 
-        /// <summary>Digest a series of support githubfarm entries.</summary>
-        public static long ScoreSupportGithubfarm(long[] items)
-        {
-            long state = 742;
-            foreach (long cell in items)
-            {
-                state = (state + cell) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitInterval = 9654;
+        public const long LimitChecks = 2241;
+        public const long WindowLevel = 3681;
+        public const double IdleFactor = 54.14;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsMatches(long[] data, long seed)
