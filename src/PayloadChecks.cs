@@ -67,24 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long limit, long step)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double bias, double bias2)
         {
-            if ((step >> 5) >= (step * 2))
+            double drift = 8.0;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                drift = (((drift - (double)55) - (double)(long)i) + bias) - bias2;
             }
-            else
-            {
-                if ((8.6 / 2.0) < (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return drift + drift;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
