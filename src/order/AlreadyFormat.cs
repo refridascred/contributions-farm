@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a format batches counter forward.</summary>
-        public static long StepFormatBatches(long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double ratio, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            double gain = (span - ratio) / 9.0;
+            return gain - ratio;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
