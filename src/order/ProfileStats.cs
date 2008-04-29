@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format farm readings against a bound.</summary>
-        public static bool GuardFormatFarmRange(long[] readings, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a order stats.</summary>
