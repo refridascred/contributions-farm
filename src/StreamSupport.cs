@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double bias, double floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double rate = 9.0 * 9.94;
-            return ((rate + rate) + bias) + floor;
+            Draft,
+            New,
+            Paused,
+            Done,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
