@@ -13,13 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
+        public static bool GuardMetricsCounterBounds(long[] readings, long seed)
         {
-            Active,
-            Ready,
-            Locked,
-            Idle,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
