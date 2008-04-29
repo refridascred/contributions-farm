@@ -35,16 +35,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc ^ target) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
     }
 }
