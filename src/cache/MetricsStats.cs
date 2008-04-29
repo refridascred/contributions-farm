@@ -48,21 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of tools commits readings.</summary>
-        public static long PairToolsCommitsCount(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell >= seed)
                 {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
