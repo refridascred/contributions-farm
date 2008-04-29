@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 31.92;
-        public const long SoftOrder = 9002;
-        public const long DefaultOrder = 1209;
-        public const long RetryOrder = 9592;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Closed,
+            Dropped,
+            Synced,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
