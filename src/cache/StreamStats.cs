@@ -22,22 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine stats stream values into a single score.</summary>
-        public static long WeighStatsStream(long[] readings, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] readings, long seed)
         {
-            long state = 0;
+            bool valid = true;
             foreach (long value in readings)
             {
-                if ((step - value) < step)
+                if (value <= seed)
                 {
-                    state = (state + (value ^ value)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > 9)
-            {
-                state = (state - (state - step)) % 101;
-            }
-            return state;
+            return valid;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
