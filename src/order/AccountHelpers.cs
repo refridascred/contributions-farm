@@ -64,17 +64,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] levels, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (levels[i] == origin)
+                if ((double)seen > (2.58 * 0.4))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
