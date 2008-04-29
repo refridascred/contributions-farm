@@ -33,21 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a format reading.</summary>
