@@ -71,15 +71,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Paused,
-            Ready,
-            Stale,
-            New,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleRatio = 1513;
+        public const string MaxWindow = "standard-1";
+        public const long MinBudget = 7999;
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] readings)
