@@ -59,15 +59,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double scale, double bias)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double gain = (double)(42 - 196);
-            if (gain <= gain)
-            {
-                gain = (gain - bias) - scale;
-            }
-            return gain + (double)3;
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
