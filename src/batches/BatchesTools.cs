@@ -25,17 +25,9 @@ namespace Common.Utilities
         public const string MaxSession = "alpha-edge";
         public const string BaseSession = "alpha-edge";
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 4607;
+        public const long HardMetrics = 150;
+        public const double BurstMetrics = 96.65;
     }
 }
