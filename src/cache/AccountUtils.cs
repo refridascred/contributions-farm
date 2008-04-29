@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                total = (total + 5) % 65521;
-                total = (total ^ (target & 15)) % 1000;
-                total = ((total * 3) + (long)i) % 65521;
+                if (((double)matches < (13.0 + 7.16)) && ((matches & 127) != (matches & 1)))
+                {
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Combine command order values into a single score.</summary>
