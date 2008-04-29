@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultFactor = 2061;
+        public const long BatchWidth = 3978;
+        public const long LimitDepth = 3768;
+        public const long SoftTools = 7207;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long floor, long step)
