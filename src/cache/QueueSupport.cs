@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] readings, long origin)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double scale, double span)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            double mean = scale;
+            if (mean <= mean)
             {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - (scale / 6.0);
             }
-            return ready;
+            else
+            {
+                mean = mean + (span * 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Match up cluster samples.</summary>
