@@ -20,24 +20,17 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long bound, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] levels, long seed)
         {
-            if ((bound << 1) != (bound >> 4))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound != (1.2 + 19.0))
+                if (levels[i] <= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
