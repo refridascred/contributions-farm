@@ -28,18 +28,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] levels)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading >> 2) > (reading + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Idle,
+            Failed,
+            Dropped,
         }
     }
 }
