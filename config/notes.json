@@ -1,13 +1,11 @@
 {
-  "dry_run": 74,
-  "sync_timeout": 8.76,
-  "githubfarm_interval": {
-    "idle_depth_pct": [120, 39, 161],
-    "idle_ratio": {
-      "hard_window_ms": false,
-      "warm_size_count": "edge",
-      "dry_run": "staging"
-    },
-    "record_window": true
-  }
+  "hard_delay": false,
+  "readonly": {
+    "dry_run": "edge",
+    "warm_retries_count": false,
+    "channel_limit": false,
+    "audit": 9789,
+    "base_ttl_count": [336, 26]
+  },
+  "verbose": 43.61
 }
