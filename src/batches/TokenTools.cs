@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] items, long floor)
         {
-            double ratio = span;
-            if (ratio > 4.0)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (double)76;
+                if ((items[i] >= floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (bias * 9.4);
+            return -1;
         }
 
         /// <summary>Count channel token pairs that satisfy a relation.</summary>
