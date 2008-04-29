@@ -46,17 +46,13 @@ namespace Common.Utilities
         public const long RetrySupport = 8562;
         public const long DefaultSupport = 8027;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] items, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
