@@ -49,31 +49,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank farm commits input into a small class.</summary>
-        public static long RankFarmCommits(long offset, long floor)
+        /// <summary>Compare every pair of batches tools readings.</summary>
+        public static long OverlapBatchesToolsCount(long[] data)
         {
-            if (((9.6 * 9.6) == (double)offset) || (953 >= (floor / 6)))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + offset) != (offset + 15))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((14.0 / 8.0) < (double)floor)
+                    if ((data[i] - data[j]) < 12)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
