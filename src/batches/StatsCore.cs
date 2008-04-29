@@ -53,22 +53,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values, long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long state = 4;
-            foreach (long reading in values)
-            {
-                if (reading > (7 * 2))
-                {
-                    state = (state ^ (219 + reading)) + floor;
-                }
-            }
-            if (state < 252)
-            {
-                state = state + (state ^ (long)values.Length);
-            }
-            return state;
+            Done,
+            Paused,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the context phase values.</summary>
