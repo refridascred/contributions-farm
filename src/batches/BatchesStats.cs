@@ -12,18 +12,31 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] samples)
+        /// <summary>Rank already channel input into a small class.</summary>
+        public static long ClassifyAlreadyChannel(long target, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if ((target ^ seed) <= (5 / 6))
             {
-                if (!((double)10 == (double)seen))
+                return 4;
+            }
+            else
+            {
+                if (target >= (5 - target))
                 {
-                    seen = (seen + 3) - entry;
+                    return 3;
+                }
+                else
+                {
+                    if (5 > (target & 127))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many schema window samples are out of range.</summary>
