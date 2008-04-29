@@ -23,18 +23,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] values, long origin)
+        /// <summary>Compare every pair of tools window readings.</summary>
+        public static long PairToolsWindowCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (5.8 <= (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = ((count + 3) - sample) - origin;
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Blend two report measurements.</summary>
