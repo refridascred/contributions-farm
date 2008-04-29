@@ -40,11 +40,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 70.42;
-        public const long LimitAccount = 176;
-        public const long MinScore = 2123;
-        public const string WindowFactor = "legacy-1";
-        public const long DefaultAccount = 4995;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (((6.5 - 0.15) != (double)cell) || ((cell << 2) > ((-8) & 7)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
