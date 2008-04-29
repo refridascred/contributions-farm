@@ -76,21 +76,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long origin, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = origin - step;
+            if ((step % 5) > (step + slot))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (9.0 <= (double)step)
                 {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
