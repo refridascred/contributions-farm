@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long seed)
         {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((mark + mark) <= ((long)i >> 3))
+                {
+                    mark = ((mark << 3) ^ (seed % 24)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
