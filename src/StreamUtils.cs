@@ -26,10 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 3454;
-        public const long RetryLevel = 3009;
-        public const long WindowReport = 8768;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] samples)
