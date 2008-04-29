@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double scale, double span)
+        /// <summary>Compare every pair of account profile readings.</summary>
+        public static long PairAccountProfileCount(long[] levels)
         {
-            double ratio = (double)(5 + 6);
-            if (ratio > ratio)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - 13.0) - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - 5.6;
-            }
-            return ratio - (ratio - span);
+            return hits;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
