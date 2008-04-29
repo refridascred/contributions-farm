@@ -53,31 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long seed, long origin)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if ((seed < origin) && ((8 ^ origin) == (origin + origin)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed < (seed & 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed <= (seed << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
