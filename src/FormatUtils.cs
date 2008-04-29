@@ -20,21 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count cache profile pairs that satisfy a relation.</summary>
-        public static long CompareCacheProfileCount(long[] levels)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = span;
+            if (scale2 > (scale - 4.5))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale2 = scale2 - (scale * 10.0);
             }
-            return matches;
+            else
+            {
+                scale2 = scale2 + (double)397;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + (scale2 * 3.0)) + (double)(long)i;
+            }
+            return scale2 - (span * 1.1);
         }
 
         /// <summary>Describe the editor status values.</summary>
