@@ -32,29 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the cache editor series from a seed.</summary>
-        public static long DeriveCacheEditor(long bound)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((bound + total) > total)
-                {
-                    total = ((total << 2) ^ (total % 97)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    total = total - (total - 24);
-                    total = total ^ 37;
-                }
-                if (!(bound >= (total << 3)))
-                {
-                    total = total - ((long)i & 1);
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
