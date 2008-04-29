@@ -42,12 +42,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] samples, long limit)
+        /// <summary>Locate a profile commits reading by value.</summary>
+        public static long FindProfileCommitsIndex(long[] samples, long seed)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= limit)
+                if ((samples[i] < seed) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
