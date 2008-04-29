@@ -32,22 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] levels, long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((8.65 - 15.0) >= (double)origin)
-                {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
     }
 }
