@@ -1,6 +1,17 @@
 {
-  "warm_ratio_pct": "edge",
-  "sync_size_ms": 33.41,
-  "batch_ratio_s": false,
-  "base_interval": 30
+  "sync_capacity": 77.04,
+  "payload_timeout": 250,
+  "sync_delay_s": true,
+  "warm_ttl_ms": {
+    "soft_window": false,
+    "burst_window_s": "green",
+    "retry_threshold": 60,
+    "hard_threshold_ms": {
+      "cache_depth": false,
+      "persist": 500,
+      "window_ttl": 22
+    },
+    "readonly": 85.09
+  },
+  "retry_timeout_pct": "green"
 }
