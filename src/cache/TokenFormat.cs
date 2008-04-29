@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleLevel = 194;
-        public const string MaxDepth = "local-v2";
-        public const long BaseFilter = 2832;
-        public const long BurstTimeout = 3052;
-        public const string WindowFilter = "standard-v2";
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public bool Level { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorBounds(long[] levels, long limit)
