@@ -20,12 +20,33 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 8179;
-        public const string BatchTools = "local-v2";
-        public const long MinSize = 8165;
-        public const long LimitDepth = 5100;
-        public const double MaxTools = 58.51;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long bound, long target)
+        {
+            long cur = bound ^ target;
+            if (6.0 <= (double)cur)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (0.6 + 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (cur >= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepSize = 4257;
