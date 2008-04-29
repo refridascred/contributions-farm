@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] samples, long limit)
         {
-            Draft,
-            Done,
-            Synced,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)limit == (4.92 * 4.99))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
