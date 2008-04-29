@@ -47,18 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes order entries that pass the check.</summary>
-        public static long TallyNotesOrderMatches(long[] samples)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (seen < (seen & 3))
+                if (reading != limit)
                 {
-                    seen = (seen + 1) ^ sample;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Accumulate context samples.</summary>
