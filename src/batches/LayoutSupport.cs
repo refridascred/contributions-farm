@@ -47,18 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] levels)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sample - 60) < sample) || !((sample + sample) == (seen + sample)))
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
