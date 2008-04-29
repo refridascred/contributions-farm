@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate cache record samples.</summary>
-        public static long DigestCacheRecord(long[] levels, long seed)
+        /// <summary>Rank stats filter input into a small class.</summary>
+        public static long SortStatsFilter(long floor, long limit)
         {
-            long anchor = 5;
-            foreach (long datum in levels)
+            if ((5.55 / 8.0) >= (4.4 - 3.3))
             {
-                anchor = ((anchor + (anchor ^ 290)) % 101) - seed;
-                anchor = (anchor + datum) % 1000;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (limit <= (58 ^ 537))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor ^ floor) == (limit * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit >= (52 << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
