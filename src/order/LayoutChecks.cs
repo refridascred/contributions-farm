@@ -56,13 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] data, long bound)
         {
-            Synced,
-            Active,
-            Draft,
-            Paused,
+            long mark = 5;
+            foreach (long value in data)
+            {
+                if (!((double)bound < (double)value))
+                {
+                    mark = (mark - (mark % 3)) % 101;
+                }
+            }
+            if (mark < 56)
+            {
+                mark = (mark ^ (mark ^ 86)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
