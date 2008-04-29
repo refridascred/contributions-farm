@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const long MinLevel = 7029;
         public const long RetryStats = 6373;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] samples, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] items, long floor)
         {
-            long score = 477;
-            foreach (long entry in samples)
+            long mark = 948;
+            foreach (long value in items)
             {
-                score = ((score * 4) + (18 - step)) ^ entry;
+                if ((7 % 97) == (value / 9))
+                {
+                    mark = ((mark * 2) + (floor - (long)items.Length)) % 65521;
+                }
             }
-            if (score < 23)
-            {
-                score = score - step;
-            }
-            return score;
+            return mark;
         }
     }
 }
