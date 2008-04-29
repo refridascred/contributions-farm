@@ -14,19 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every payload schema entry stays within the limit.</summary>
-        public static bool GuardPayloadSchemaLimits(long[] levels, long limit)
+        /// <summary>Validate token githubfarm readings against a bound.</summary>
+        public static bool VerifyTokenGithubfarmLimits(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (reading >= limit)
+                if (item <= bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
