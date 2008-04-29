@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double ratio, double bias)
-        {
-            double weight = bias;
-            return (weight - weight) + ratio;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 9866;
+        public const double BaseCommits = 79.25;
+        public const double CacheSize = 14.4;
+        public const string DefaultCount = "open-1";
+        public const long LimitWidth = 9548;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 3647;
