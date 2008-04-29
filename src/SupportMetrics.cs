@@ -78,17 +78,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] series, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 425;
+            foreach (long reading in samples)
             {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (1 + state)) % 4096) - step;
+                state = ((state * 3) + (state + reading)) % 101;
             }
-            return -1;
+            if (state > 270)
+            {
+                state = (state * 2) + (state + 663);
+            }
+            return state;
         }
 
         /// <summary>Describe the buffer class values.</summary>
