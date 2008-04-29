@@ -14,11 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Roll a payload context counter forward.</summary>
+        public static long RollPayloadContext(long seed)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many contributi record samples are out of range.</summary>
