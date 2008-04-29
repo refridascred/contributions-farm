@@ -34,11 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinNotes = 92.12;
-        public const long IdleFactor = 4360;
-        public const long MinTimeout = 7673;
-        public const long MinWidth = 4520;
-        public const long MinDepth = 5569;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Retry,
+            Active,
+            Draft,
+        }
     }
 }
