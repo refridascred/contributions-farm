@@ -42,12 +42,28 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 5.8;
-        public const string IdleSpan = "fallback-1";
-        public const long DefaultTimeout = 5649;
-        public const long BatchReport = 9825;
-        public const long BurstSize = 5397;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels, long bound)
+        {
+            long mix = 672;
+            foreach (long value in levels)
+            {
+                if ((value - mix) > (long)levels.Length)
+                {
+                    mix = (mix + (mix & 15)) % 101;
+                }
+                else
+                {
+                    mix = (mix + (value + 50)) % 101;
+                }
+                mix = ((mix << 3) ^ ((long)levels.Length / 3)) % 101;
+                if ((mix * 3) != (60 ^ value))
+                {
+                    mix = (mix + (bound - mix)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ScaleLayout(double bias, double floor)
