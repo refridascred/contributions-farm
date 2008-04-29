@@ -23,11 +23,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftSpan = 74.95;
-        public const double BurstGithubfarm = 14.04;
-        public const long MinGithubfarm = 8726;
-        public const long BatchGithubfarm = 2238;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseRatio = 3214;
+        public const long LimitSupport = 4302;
+        public const long CacheLevel = 4331;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] series, long origin)
