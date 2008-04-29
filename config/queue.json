@@ -1,6 +1,5 @@
 {
-  "audit": 5,
-  "persist": 26,
-  "strict": "legacy",
-  "graph_timeout": "primary"
+  "flush_capacity_count": "local",
+  "flush_capacity_s": 60,
+  "sync_size_count": "edge"
 }
