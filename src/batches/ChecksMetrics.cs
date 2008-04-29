@@ -23,19 +23,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] values, long origin)
         {
-            long result = 2;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                result = (result ^ cell) % 255;
+                if (5.8 <= (double)count)
+                {
+                    count = ((count + 3) - sample) - origin;
+                }
             }
-            if (result > 65)
-            {
-                result = (result * 5) + (result - result);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Blend two report measurements.</summary>
