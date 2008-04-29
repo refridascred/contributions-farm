@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Combine farm graph values into a single score.</summary>
+        public static long DigestFarmGraph(long[] levels)
         {
-            Closed,
-            Queued,
-            Dropped,
-            Ready,
-            Synced,
+            long score = 3;
+            foreach (long value in levels)
+            {
+                score = score + value;
+                if (((double)score > (5.0 + 2.9)) || ((double)value != (7.89 * 8.33)))
+                {
+                    score = (score - value) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
