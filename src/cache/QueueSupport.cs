@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a queue support value against two limits.</summary>
-        public static long GradeQueueSupport(long offset, long step)
-        {
-            if ((offset / 7) >= (step & 255))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset <= (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 16.83;
+        public const long BatchFilter = 7041;
+        public const long SoftFilter = 9442;
+        public const long MaxFilter = 262;
+        public const double HardFilter = 43.7;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long target)
