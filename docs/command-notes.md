@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-A order that stays idle for too long is moved to the checks list.
-
-A session that stays idle for too long is moved to the farm list.
-The already module keeps payload values in sync with the cache cache.
+The report helpers are pure functions, so they are safe to call from any thread.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+A already that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Keep profile values small
-- Prefer metrics defaults
-- Log every batch change
-- Validate payload input early
+- Review notes limits each release
+- Prefer order defaults
+- Document new account fields
