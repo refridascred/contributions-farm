@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a layout channel reading.</summary>
-        public static double SmoothLayoutChannel(double ratio, double offset)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double span)
         {
-            double load = offset;
-            return load - (ratio + offset);
+            double ratio = span;
+            if (ratio > 4.0)
+            {
+                ratio = ratio + (double)76;
+            }
+            return ratio + (bias * 9.4);
         }
 
         /// <summary>Hold a record snapshot.</summary>
