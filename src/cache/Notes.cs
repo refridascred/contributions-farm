@@ -21,10 +21,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseTimeout = 82.0;
-        public const double BatchScore = 70.45;
-        public const long CacheSupport = 6046;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 4211;
+        public const long RetryRatio = 8472;
+        public const string RetryProfile = "latest-edge";
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TallyFilter(long[] items, long origin)
