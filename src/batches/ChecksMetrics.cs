@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultFactor = 2061;
-        public const long BatchWidth = 3978;
-        public const long LimitDepth = 3768;
-        public const long SoftTools = 7207;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Ready,
+            Closed,
+            Active,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long GradeWindow(long floor, long step)
