@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
             Failed,
-            New,
-            Idle,
             Dropped,
-            Done,
+            Pending,
         }
 
         /// <summary>Define already limits and defaults.</summary>
