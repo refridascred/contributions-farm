@@ -57,21 +57,26 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 26;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry / 2) >= ((-173) + total))
                 {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total ^ (total * 2)) % 97;
+                }
+                if ((8.48 - 2.5) > (double)entry)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total < 3)
+            {
+                total = ((total << 3) ^ (total << 1)) % 1000;
+            }
+            return total;
         }
     }
 }
