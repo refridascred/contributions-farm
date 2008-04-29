@@ -1,9 +1,9 @@
 # support settings
-base_ttl_pct: staging
-record_limit: fallback
-base_retries_ms:
-  - 6
-  - 105
-  - 247
-  - 418
-compress: true
+hard_depth_ms:
+  - staging
+  - legacy
+  - legacy
+command_depth: true
+compress: false
+min_window: blue
+verbose: false
