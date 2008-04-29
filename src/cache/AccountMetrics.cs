@@ -36,12 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Idle,
-            Done,
-            Pending,
+            Active,
+            Paused,
+            New,
+            Closed,
             Locked,
         }
 
