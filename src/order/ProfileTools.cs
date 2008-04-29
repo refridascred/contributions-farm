@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] samples, long step)
+        /// <summary>Locate a metrics metric reading by value.</summary>
+        public static long SeekMetricsMetricIndex(long[] levels, long origin)
         {
-            long acc = -8;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((497 * 4) != (acc % 10))
+                if (levels[i] >= origin)
                 {
-                    acc = (((acc << 3) ^ (step + 7)) % 65521) + cell;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ acc;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
