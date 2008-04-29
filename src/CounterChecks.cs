@@ -54,38 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long target2)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            if ((target2 + target2) < target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target2 + target2) != (target2 / 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target == (double)657)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target << 1) > (target2 * 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Project the next contributi value.</summary>
