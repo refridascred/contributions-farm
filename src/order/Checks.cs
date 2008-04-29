@@ -57,11 +57,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long limit)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two session measurements.</summary>
