@@ -1,12 +1,9 @@
 {
-  "burst_ratio": {
-    "default_delay_ms": true,
-    "dry_run": "legacy",
-    "githubfarm_capacity": "primary",
-    "batches_ratio": [419, 263, 440],
-    "retry_size_pct": "staging"
-  },
-  "audit": 1024,
-  "retry_depth_pct": 30,
-  "payload_depth": "cached"
+  "warm_size_s": "edge",
+  "cache_threshold_ms": ["green", "eu-west", "stable"],
+  "soft_ratio_s": {
+    "commits_interval": "green",
+    "context_depth": 341,
+    "cache_capacity_count": "stable"
+  }
 }
