@@ -39,15 +39,13 @@ namespace Common.Utilities
         public const long HardChecks = 3277;
         public const long SoftChecks = 9624;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long sum = 815;
-            foreach (long value in items)
-            {
-                sum = ((sum + (sum - 847)) % 65521) ^ value;
-            }
-            return sum % 65521;
+            Stale,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
