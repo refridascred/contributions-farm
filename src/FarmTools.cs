@@ -23,13 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Active,
-            Idle,
-            Failed,
-            Queued,
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
