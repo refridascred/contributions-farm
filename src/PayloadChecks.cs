@@ -64,25 +64,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long offset, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long slot = offset + floor;
-            if ((1.9 / 8.0) == (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3.4 - 1.6) <= (double)slot)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Closed,
+            Active,
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
