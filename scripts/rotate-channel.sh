@@ -7,10 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 9); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=371
-log "limit is ${CHANNEL_LIMIT}"
+for item in latest open edge fallback; do
+    log "checking ${item}"
+done
