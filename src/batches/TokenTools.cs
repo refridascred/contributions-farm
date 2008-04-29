@@ -12,21 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count buffer token pairs that satisfy a relation.</summary>
-        public static long PairBufferTokenCount(long[] values)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
