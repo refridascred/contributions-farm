@@ -46,18 +46,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of format account readings.</summary>
-        public static long FoldFormatAccount(long[] levels, long limit)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long anchor = 440;
-            foreach (long item in levels)
-            {
-                if ((0 << 2) == (limit + anchor))
-                {
-                    anchor = ((anchor << 2) ^ (limit / 2)) - item;
-                }
-            }
-            return anchor % 65521;
+            Retry,
+            Stale,
+            Draft,
+            New,
+            Locked,
         }
     }
 }
