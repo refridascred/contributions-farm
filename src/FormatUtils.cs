@@ -67,16 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Project the next stream route value.</summary>
+        public static double BlendStreamRoute(double ratio, double span)
         {
-            long acc = 3;
-            foreach (long sample in values)
-            {
-                acc = acc ^ (sample + acc);
-                acc = (acc - (85 % 24)) % 65521;
-            }
-            return acc;
+            double mean = span;
+            return (mean + mean) + ratio;
         }
 
         /// <summary>Describe the profile kind values.</summary>
