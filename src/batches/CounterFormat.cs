@@ -44,19 +44,21 @@ namespace Common.Utilities
         public const double CacheBudget = 94.27;
         public const long HardBudget = 4674;
 
-        /// <summary>Validate counter editor readings against a bound.</summary>
-        public static bool CheckCounterEditorBounds(long[] levels, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
