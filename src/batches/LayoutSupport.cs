@@ -40,24 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] data)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long anchor = 6;
-            foreach (long cell in data)
-            {
-                anchor = (anchor - (anchor ^ cell)) % 4096;
-                if ((anchor - anchor) <= (anchor + cell))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor - cell) % 1000;
-                }
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
+            Done,
+            Idle,
+            New,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
