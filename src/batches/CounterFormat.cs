@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] levels, long origin)
         {
-            Idle,
-            Locked,
-            Stale,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
