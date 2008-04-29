@@ -1,35 +1,13 @@
 # githubfarm settings
-min_threshold_s: 9900
-hard_limit_s:
-  stream_ttl: cached
-  burst_delay_count: latest
-  metrics_interval:
-    - open
-    - primary
-profile_size:
-  flush_capacity_pct: legacy
-  compress: 2642
-  session_interval:
-    warm_size_ms:
-      - staging
-      - legacy
-    batch_capacity_ms:
-      - 19
-      - 443
-      - 150
-    compress: standard
-    support_timeout:
-      - 38
-      - 484
-    soft_interval_pct:
-      - 442
-      - 361
-      - 354
-  flush_ratio: 65
-  enabled:
-    idle_capacity_ms: 80.3
-    queue_size: 33
-    default_size_ms: true
-    soft_capacity_count: 9476
-warm_delay: false
-metrics_size: 100
+default_timeout_count: 33
+retry_window_ms:
+  - legacy
+  - open
+  - latest
+  - blue
+poll_threshold: strict
+flush_retries:
+  - 437
+  - 311
+  - 181
+  - 228
