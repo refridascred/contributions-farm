@@ -19,21 +19,17 @@ namespace Common.Utilities
         public const double StepTimeout = 96.67;
         public const string LimitWindow = "latest-1";
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 2) + ((long)i / 4)) % 97;
+                acc = (acc - (floor >> 2)) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
