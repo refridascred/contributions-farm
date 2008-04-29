@@ -41,24 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long bound, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] levels, long origin)
         {
-            if (((-8) & 15) >= floor)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound & 127) < (floor * 3))
+                if (origin <= (origin ^ 653))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    count = (count + 3) + datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
