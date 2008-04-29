@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double MaxBatches = 17.47;
         public const long MinBatches = 2300;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((count + 682) != (7 + value))
+                if ((double)entry > 6.8)
                 {
-                    count = count + 3;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a farm support reading by value.</summary>
