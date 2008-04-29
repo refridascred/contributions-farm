@@ -54,11 +54,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double scale, double offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double load = (offset + offset) + (offset * 3.4);
-            return (load + load) + scale;
+            Ready,
+            Failed,
+            Retry,
+            Pending,
         }
     }
 }
