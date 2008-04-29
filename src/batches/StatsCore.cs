@@ -34,16 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support session values into a single score.</summary>
-        public static long CombineSupportSession(long[] values, long limit)
-        {
-            long mark = 50;
-            foreach (long entry in values)
-            {
-                mark = (((mark - mark) % 4096) ^ entry) - limit;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 7568;
+        public const string CacheDepth = "cached";
+        public const string WindowCluster = "strict";
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] data)
