@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] data, long seed)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
