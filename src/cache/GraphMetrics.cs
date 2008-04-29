@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitLevel = "primary";
-        public const string BurstInterval = "staging";
-        public const long SoftBuffer = 6996;
+        /// <summary>Compare every pair of commits filter readings.</summary>
+        public static long PairCommitsFilterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterMatches(long[] values)
