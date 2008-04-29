@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const double WindowToken = 91.13;
         public const string RetryWidth = "strict-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 681;
-        public const long IdleToken = 4935;
-        public const string HardSize = "staging-1";
-        public const long WindowInterval = 3293;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long DigestPayload(long[] levels)
