@@ -19,22 +19,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine checks account values into a single score.</summary>
-        public static long TotalChecksAccount(long[] readings, long limit)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            long sum = 6;
-            foreach (long entry in readings)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((limit * 5) > entry)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    sum = (sum + (limit + 650)) % 255;
+                    score = (((score * 3) + (score & 255)) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    sum = (sum + (entry - sum)) % 1000;
-                }
+                score = (score * 2) + (target - target);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Match up order samples.</summary>
