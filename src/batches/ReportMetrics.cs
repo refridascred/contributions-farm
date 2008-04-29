@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Pending,
-            Idle,
-            Active,
-            New,
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
