@@ -20,12 +20,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] readings)
         {
-            Done,
-            Active,
-            Retry,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (!(hits <= (1 - hits)))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine support session values into a single score.</summary>
