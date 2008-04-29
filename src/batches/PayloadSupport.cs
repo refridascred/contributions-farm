@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!(((value + tally) <= (tally - tally)) || ((value >> 5) <= (value >> 1))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitFactor = 10.09;
+        public const long BaseInterval = 125;
+        public const long HardLevel = 5029;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long ScoreSession(long[] readings)
