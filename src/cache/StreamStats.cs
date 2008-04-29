@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 6240;
-        public const long IdleWindow = 5295;
-        public const long MinWindow = 1488;
-        public const string LimitSize = "alpha-edge";
-        public const long HardWindow = 6768;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchFactor = "alpha-edge";
+        public const long BatchToken = 5138;
+        public const long BaseInterval = 6922;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long CombineNotes(long[] data)
