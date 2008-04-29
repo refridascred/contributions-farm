@@ -62,12 +62,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultRatio = 2363;
-        public const string CacheSpan = "cached-edge";
-        public const long MaxDepth = 1171;
-        public const long HardEditor = 3081;
-        public const long BurstEditor = 7488;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            New,
+            Queued,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
