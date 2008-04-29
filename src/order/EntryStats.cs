@@ -19,18 +19,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items, long floor)
         {
-            long carry = -12;
-            foreach (long datum in levels)
+            long result = 18;
+            foreach (long value in items)
             {
-                if (((67 >> 5) < carry) || ((4.0 / 5.0) > (double)datum))
+                if (((103 % 10) == (result - value)) && ((floor + 4) > result))
                 {
-                    carry = carry ^ (carry + carry);
+                    result = (result + (989 + (long)items.Length)) % 255;
                 }
             }
-            return carry;
+            if (result < 4)
+            {
+                result = result + (11 / 5);
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a record snapshot.</summary>
