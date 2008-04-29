@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinGithubfarm = "standard-v2";
-        public const string WindowGithubfarm = "strict-v2";
-        public const string HardGithubfarm = "alpha-edge";
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a account token figure with a bias.</summary>
         public static double ProjectAccountToken(double bias, double floor)
