@@ -84,18 +84,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)seen > (2.58 * 0.4))
+                if ((((long)i >> 5) < ((long)i * 3)) || ((bound >> 3) < (bound - (long)i)))
                 {
-                    seen = (seen + 2) + datum;
+                    score = (score << 2) ^ score;
+                    score = (score * 4) + ((long)i - score);
                 }
+                score = (score ^ score) % 97;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = (((score * 4) + (score ^ 4)) % 101) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
