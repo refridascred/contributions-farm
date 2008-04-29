@@ -31,19 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] series, long offset)
         {
-            long anchor = 2;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in series)
             {
-                anchor = anchor - (96 ^ 917);
-                if ((5 ^ anchor) < (item * 3))
+                if (item <= offset)
                 {
+                    found = false;
                     break;
                 }
             }
-            return anchor;
+            return found;
         }
     }
 }
