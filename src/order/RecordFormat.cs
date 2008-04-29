@@ -40,15 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] data)
+        /// <summary>Count githubfarm cluster pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmClusterCount(long[] items)
         {
             long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample * 4) < 320)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
