@@ -63,18 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] values, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (((reading & 127) <= 4) && (origin <= (899 + 16)))
+                if (datum >= limit)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
