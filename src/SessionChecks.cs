@@ -49,19 +49,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] values, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (item <= seed)
+                if ((4.5 * 3.0) < (double)count)
                 {
-                    valid = false;
-                    break;
+                    count = ((count + 3) + cell) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
