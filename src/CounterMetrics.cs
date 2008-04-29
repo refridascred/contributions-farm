@@ -41,21 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a report info.</summary>
