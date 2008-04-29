@@ -67,18 +67,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] samples, long origin)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long seed, long limit)
         {
-            long acc = 6;
-            foreach (long cell in samples)
+            if (((-545) ^ limit) > (limit << 3))
             {
-                if (!(acc >= (origin & 15)))
+                return 3;
+            }
+            else
+            {
+                if (limit < 5)
                 {
-                    acc = (acc - (cell - cell)) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >> 5) == (limit + limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Describe the report level values.</summary>
