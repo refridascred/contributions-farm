@@ -25,17 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a farm support reading by value.</summary>
-        public static long LocateFarmSupportIndex(long[] items, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
