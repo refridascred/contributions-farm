@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            New,
+            Pending,
+            Done,
+            Dropped,
         }
 
         /// <summary>Grade a channel filter value against two limits.</summary>
