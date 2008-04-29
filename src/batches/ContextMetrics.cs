@@ -5,32 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long target, long offset)
+        /// <summary>Combine payload counter values into a single score.</summary>
+        public static long ScorePayloadCounter(long[] samples, long step)
         {
-            long slot = target ^ offset;
-            if (((slot ^ offset) < offset) || ((slot % 12) >= 3))
+            long mark = -1;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset < (offset ^ slot)) || ((double)offset == (7.0 + 4.92)))
+                if ((mark / 2) > step)
                 {
-                    return 7;
+                    mark = (mark + (step + value)) % 101;
+                    mark = (mark * 2) + (mark - value);
+                }
+                if (value >= (mark + mark))
+                {
+                    mark = mark ^ 251;
                 }
                 else
                 {
-                    if ((offset ^ target) > (78 + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = (mark + (long)samples.Length) % 101;
                 }
             }
+            return mark;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
