@@ -30,17 +30,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] values, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                if ((mix - (long)i) != (floor % 100))
                 {
-                    return (long)i;
+                    mix = (mix - ((long)i + mix)) % 1000;
+                    mix = (mix - ((long)i - floor)) % 101;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
