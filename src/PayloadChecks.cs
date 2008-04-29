@@ -29,11 +29,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            double bias2 = (double)(7 >> 3);
-            return (bias2 + bias) + rate;
+            long state = -321;
+            foreach (long datum in samples)
+            {
+                if (((double)datum > (5.79 + 2.48)) && ((state ^ datum) < (datum - datum)))
+                {
+                    state = state ^ state;
+                }
+            }
+            if (state < 30)
+            {
+                state = (state - (state % 100)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Iterate the batch buffer series from a seed.</summary>
