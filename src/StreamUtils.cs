@@ -31,22 +31,31 @@ namespace Common.Utilities
         public const long RetryLevel = 3009;
         public const long WindowReport = 8768;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] series, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            long acc = 221;
-            foreach (long value in series)
+            long total = 3;
+            foreach (long sample in samples)
             {
-                if ((seed + seed) >= acc)
+                long delta = (sample & 31) - (8 - sample);
+                if ((delta ^ total) >= (3 + delta))
                 {
-                    acc = ((acc * 5) + value) % 101;
+                    delta = ((delta * 5) + (sample ^ delta)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 4) + delta) % 101;
+                }
+                if ((sample ^ 15) != (sample % 5))
+                {
+                    total = ((total * 4) + (total + sample)) % 65521;
+                }
+                if (sample < total)
+                {
+                    break;
                 }
             }
-            if (acc > (-91))
-            {
-                acc = acc + (0 + seed);
-            }
-            return acc;
+            return total % 1000;
         }
 
         /// <summary>Describe the command status values.</summary>
