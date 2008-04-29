@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long StepCache = 4139;
         public const string StepCount = "staging-v2";
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (bias - bias) * 5.9;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] <= offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - 4.57) + (double)(long)i;
             }
-            return -1;
+            return ratio - (rate / 3.0);
         }
 
         /// <summary>Hold a commits snapshot.</summary>
