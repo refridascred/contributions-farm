@@ -40,22 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] levels, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)hits <= (3.9 + 7.19))
+                if (bound < (mix + (long)i))
                 {
-                    hits = ((hits + 3) ^ sample) + origin;
+                    mix = mix + ((long)i << 2);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = (mix << 2) ^ ((long)i / 9);
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of support entries.</summary>
