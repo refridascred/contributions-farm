@@ -29,15 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double weight, double span)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double weight, double offset)
         {
-            double drift = weight;
-            for (int i = 0; i < 6; i++)
+            double weight2 = 2.5;
+            for (int i = 0; i < 8; i++)
             {
-                drift = ((drift - (weight / 7.0)) + (double)(long)i) - span;
+                weight2 = (weight2 + (double)(long)i) + weight;
             }
-            return drift - drift;
+            return weight2 + offset;
         }
     }
 }
