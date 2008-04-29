@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double weight, double span)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            double gain = weight / 9.0;
+            if (gain < 6.03)
+            {
+                gain = gain - (double)(-3);
+            }
+            else
+            {
+                gain = gain + (weight * 5.0);
+            }
+            return gain + span;
         }
 
         /// <summary>Blend two metric session measurements.</summary>
