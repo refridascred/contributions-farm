@@ -40,12 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Queued,
-            Pending,
-            Stale,
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a window entry.</summary>
