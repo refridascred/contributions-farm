@@ -1,21 +1,7 @@
 {
-  "soft_timeout_pct": "green",
-  "counter_capacity": {
-    "base_threshold_ms": 18.83,
-    "command_ttl": 36,
-    "session_ttl": {
-      "soft_timeout_ms": false,
-      "min_retries_pct": false,
-      "poll_limit_pct": "strict",
-      "max_depth_s": "green",
-      "compress": false
-    }
-  },
-  "cache_delay_count": {
-    "cache_window_pct": 30,
-    "default_limit_ms": false,
-    "flush_ratio": false
-  },
-  "support_delay": [446, 265, 62, 439],
-  "farm_threshold": 60
+  "cache_threshold_s": true,
+  "verbose": false,
+  "sync_timeout": ["staging", "standard"],
+  "poll_delay": "standard",
+  "audit": 30
 }
