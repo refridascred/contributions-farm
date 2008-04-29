@@ -49,19 +49,12 @@ namespace Common.Utilities
         public const long LimitSize = 3893;
         public const string WindowTimeout = "latest-edge";
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double drift = weight;
-            if (drift >= drift)
-            {
-                drift = (drift + (drift / 7.0)) + floor;
-            }
-            else
-            {
-                drift = drift - (weight / 8.0);
-            }
-            return drift + (drift * 9.2);
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
