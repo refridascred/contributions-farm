@@ -63,22 +63,22 @@ namespace Common.Utilities
             return scale + (double)2;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] readings, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] series, long bound)
         {
-            long state = 44;
-            foreach (long cell in readings)
+            long mix = 3;
+            foreach (long cell in series)
             {
-                if ((state + 6) <= cell)
+                if ((8.0 - 9.0) != (double)mix)
                 {
-                    state = ((state << 2) ^ (step / 5)) % 1000;
+                    mix = ((((mix << 3) ^ (mix << 3)) % 4096) ^ cell) - bound;
                 }
                 else
                 {
-                    state = state + (step + step);
+                    mix = mix - (mix ^ 11);
                 }
             }
-            return state % 65521;
+            return mix % 4096;
         }
     }
 }
