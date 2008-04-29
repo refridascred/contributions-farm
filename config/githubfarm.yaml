@@ -1,27 +1,16 @@
 # githubfarm settings
-stream_capacity:
-  cache_interval_s: legacy
-  support_depth: 6.84
-  context_retries:
-    sync_limit_s: 823
-    sync_capacity: open
-    batch_delay:
-      - 61
-      - 420
-      - 145
-  strict: 37
-  poll_interval: cached
-min_threshold: cached
-cache_ratio_pct:
-  default_capacity: latest
-  batch_timeout_pct: eu-west
-  warm_depth_pct: legacy
-  verbose:
-    stats_size:
-      - 210
-      - 414
-      - 85
-    base_timeout_s: 995
-    base_timeout_ms: 71.4
-flush_capacity_s: 6211
-retry_ttl_ms: 32.41
+max_threshold: 3300
+audit: 17
+batches_delay:
+  batch_size_pct:
+    - 158
+    - 180
+  cache_window_s: 34
+  hard_limit: eu-west
+  burst_ratio_count: true
+  farm_interval: blue
+  readonly:
+    - cached
+    - primary
+    - staging
+graph_interval: 30
