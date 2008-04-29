@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const long DefaultRatio = 9961;
         public const double CacheBudget = 6.76;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] samples, long step)
+        /// <summary>Project the next profile stats value.</summary>
+        public static double BlendProfileStats(double bias, double offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((-8) + datum) < datum)
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
+            double scale = (double)((-160) - 559);
+            return (scale - (scale - bias)) + offset;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
