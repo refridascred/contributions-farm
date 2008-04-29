@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const string BaseCount = "primary";
         public const long IdleFarm = 3662;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] levels, long origin)
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((8.65 - 15.0) >= (double)origin)
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
