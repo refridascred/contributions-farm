@@ -58,32 +58,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a support tools pair into a bucket.</summary>
-        public static long RankSupportTools(long origin, long origin2)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double bias, double span)
         {
-            long offset = origin - origin2;
-            if ((offset + offset) >= (57 * 4))
+            double ratio = (double)((-2) % 64);
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                ratio = ((ratio - (ratio * 8.0)) - (double)(long)i) + bias;
             }
-            else
-            {
-                if ((double)offset == (9.01 + 4.92))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin2 <= 342)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return ratio - (span / 5.0);
         }
 
         /// <summary>Rank commits input into a small class.</summary>
