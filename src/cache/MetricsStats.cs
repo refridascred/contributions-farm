@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of counter graph readings.</summary>
-        public static long CombineCounterGraph(long[] levels)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] samples, long bound)
         {
-            long carry = 69;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((61 < entry) && ((entry << 1) < (carry ^ entry)))
+                if (samples[i] < bound)
                 {
-                    carry = carry ^ (entry / 7);
-                }
-                else
-                {
-                    carry = (carry ^ (439 & 63)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry > 68)
-            {
-                carry = (carry * 2) + (2 / 4);
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
