@@ -34,15 +34,19 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Roll a layout already counter forward.</summary>
-        public static long IterateLayoutAlready(long target)
+        /// <summary>Validate stream command readings against a bound.</summary>
+        public static bool GuardStreamCommandLimits(long[] readings, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
