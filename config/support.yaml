@@ -1,25 +1,6 @@
 # support settings
-min_delay_s: eu-west
-batch_size_ms: 11.35
-profile_timeout:
-  schema_timeout: cached
-  verbose: 65.84
-  max_delay_ms: standard
-context_timeout:
-  cache_delay_s: 250
-  readonly:
-    - 450
-    - 36
-    - 388
-  soft_delay_count: true
-  warm_ttl: eu-west
-  layout_size: true
-  warm_retries_s:
-    - 390
-    - 35
-    - 276
-flush_timeout_s:
-  - 298
-  - 180
-  - 345
-  - 56
+hard_ttl: eu-west
+base_capacity: latest
+audit: 250
+checks_interval: 100
+token_limit: 76.24
