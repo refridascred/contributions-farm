@@ -32,24 +32,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long target2)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] samples)
         {
-            if ((6 + 52) != (target + target2))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target2 - target) >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
