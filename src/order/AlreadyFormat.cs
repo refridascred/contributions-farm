@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double floor)
+        /// <summary>Roll a format batches counter forward.</summary>
+        public static long StepFormatBatches(long floor)
         {
-            double scale2 = scale + (double)185;
-            if (scale2 < (scale * 17.0))
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                scale2 = scale2 - scale;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                scale2 = scale2 + (floor * 6.82);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - floor) + (double)(long)i;
-            }
-            return scale2 + (floor / 9.0);
+            return acc;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
