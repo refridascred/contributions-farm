@@ -1,5 +1,8 @@
 {
-  "strict": false,
-  "warm_threshold_pct": 1024,
-  "filter_threshold": "staging"
+  "hard_retries_ms": 91.0,
+  "base_interval_s": 4153,
+  "batch_retries_ms": "fallback",
+  "burst_capacity_ms": [418, 476, 114],
+  "verbose": 60,
+  "cache_window": 73
 }
