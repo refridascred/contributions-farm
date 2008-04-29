@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long StepLevel = 4479;
         public const string StepReport = "alpha-1";
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftWidth = 7975;
+        public const long RetryProfile = 6956;
+        public const string HardProfile = "legacy-1";
+        public const string BatchProfile = "local";
+        public const long HardTimeout = 5365;
 
         /// <summary>Compare every pair of record layout readings.</summary>
         public static long PairRecordLayoutCount(long[] levels)
