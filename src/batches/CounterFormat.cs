@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long total = 61;
-            foreach (long cell in items)
-            {
-                total = (total + ((-235) / 4)) ^ cell;
-            }
-            return total % 65521;
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a payload context counter forward.</summary>
