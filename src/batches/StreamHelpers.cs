@@ -56,18 +56,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] series, long limit)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long step = bound - seed;
+            if (((double)bound < 6.4) && ((bound + bound) == (seed >> 3)))
             {
-                if ((limit ^ reading) > (tally >> 1))
+                return 0;
+            }
+            else
+            {
+                if ((step << 2) <= seed)
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (((839 << 1) != (step ^ seed)) || (7.3 > (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step / 2) >= (bound / 6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
