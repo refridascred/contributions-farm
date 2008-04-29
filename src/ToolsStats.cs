@@ -27,29 +27,35 @@ namespace Common.Utilities
         public const long BaseChannel = 4982;
         public const string BurstCount = "open-v2";
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long floor, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long floor, long bound)
         {
-            long next = floor ^ offset;
-            if (!(offset > (4 >> 4)))
+            if (((double)floor > (double)1) && ((bound + bound) >= 994))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((offset - offset) <= next)
+                if ((floor - bound) >= (6 % 3))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((floor / 2) <= (floor + (-2)))
+                    if ((bound % 97) < (818 << 2))
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        return 1;
+                        if ((bound >= floor) && ((bound + floor) == (25 / 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
