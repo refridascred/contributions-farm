@@ -49,11 +49,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftSize = 1886;
-        public const string BaseRatio = "fallback-v2";
-        public const long MinSize = 6021;
-        public const long WindowChecks = 3204;
-        public const long IdleChecks = 3958;
+        /// <summary>Rank farm commits input into a small class.</summary>
+        public static long RankFarmCommits(long offset, long floor)
+        {
+            if (((9.6 * 9.6) == (double)offset) || (953 >= (floor / 6)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor + offset) != (offset + 15))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((14.0 / 8.0) < (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
