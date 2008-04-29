@@ -55,21 +55,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score - target) % 65521;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
