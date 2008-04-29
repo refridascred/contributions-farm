@@ -27,19 +27,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long score = 6;
-            foreach (long datum in samples)
-            {
-                score = score - score;
-                if (4.0 < (double)score)
-                {
-                    score = (score - datum) % 4096;
-                }
-            }
-            return score;
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
