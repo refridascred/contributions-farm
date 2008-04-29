@@ -76,11 +76,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            long acc = 3;
+            foreach (long sample in series)
+            {
+                acc = (acc << 3) ^ sample;
+            }
+            return acc % 4096;
         }
     }
 }
