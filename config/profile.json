@@ -1,17 +1,7 @@
 {
-  "warm_ratio": false,
-  "contributi_retries": true,
-  "flush_ratio_s": {
-    "hard_delay": 4.5,
-    "burst_limit": "legacy",
-    "max_size": "blue",
-    "hard_depth_s": {
-      "cache_interval": false,
-      "graph_limit": 54,
-      "sync_capacity_count": 30,
-      "retry_ttl": false,
-      "filter_capacity": 18
-    },
-    "window_retries": 500
-  }
+  "dry_run": "legacy",
+  "warm_limit": 9833,
+  "compress": "latest",
+  "verbose": 70.96,
+  "batch_ratio": true
 }
