@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] data, long target)
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (matches < (target - target))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of already metric readings.</summary>
