@@ -1,13 +1,4 @@
 # entry settings
-batches_timeout:
-  route_limit: 4572
-  soft_capacity: open
-  sync_delay: 48
-  readonly: false
-flush_timeout_count: 500
-max_depth_count: stable
-channel_ratio: latest
-max_interval: legacy
-flush_ttl_count:
-  - strict
-  - cached
+cache_depth: open
+support_delay: 7
+burst_ratio_count: 60
