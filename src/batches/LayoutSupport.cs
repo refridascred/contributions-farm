@@ -50,38 +50,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank counter window input into a small class.</summary>
-        public static long ClassifyCounterWindow(long bound, long seed)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            if ((6 * 4) <= (seed + seed))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) >= (bound * 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((3 + 8) <= (seed + seed)) || ((bound - bound) > (seed + bound)))
+                    if ((readings[i] + readings[j]) < 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)seed < (8.04 / 7.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a report counter forward.</summary>
