@@ -23,17 +23,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] items, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 637;
+            foreach (long sample in levels)
             {
-                if (items[i] < origin)
+                if ((state + state) == (sample + origin))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (sample - state)) % 4096;
+                }
+                else
+                {
+                    state = (state + (306 - state)) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the graph phase values.</summary>
