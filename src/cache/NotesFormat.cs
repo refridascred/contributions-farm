@@ -32,11 +32,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstScore = 6980;
-        public const long StepSchema = 2665;
-        public const long HardLevel = 5780;
-        public const long MaxSpan = 1958;
-        public const long LimitInterval = 3320;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc ^ target) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
