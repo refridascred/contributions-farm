@@ -19,21 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of already metric readings.</summary>
-        public static long CompareAlreadyMetricCount(long[] data)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long target, long target2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = target + target2;
+            if (bound > (bound + bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((target2 / 7) == (bound + target)))
                 {
-                    if ((data[i] - data[j]) != 8)
+                    return 2;
+                }
+                else
+                {
+                    if (((target2 * 4) < (8 * 3)) || (((-763) / 6) <= (target2 + target2)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + bound) < (target << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a graph info.</summary>
