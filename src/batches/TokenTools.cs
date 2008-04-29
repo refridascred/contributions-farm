@@ -16,13 +16,21 @@ namespace Common.Utilities
             return ratio + (bias * 9.4);
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Count channel token pairs that satisfy a relation.</summary>
+        public static long OverlapChannelTokenCount(long[] items)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
