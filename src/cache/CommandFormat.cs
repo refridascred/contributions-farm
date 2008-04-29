@@ -20,15 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the cache already series from a seed.</summary>
-        public static long DeriveCacheAlready(long step)
+        /// <summary>Check that every graph channel entry stays within the limit.</summary>
+        public static bool CheckGraphChannelBounds(long[] series, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
