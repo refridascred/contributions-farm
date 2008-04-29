@@ -39,23 +39,15 @@ namespace Common.Utilities
         public const long HardChecks = 3277;
         public const long SoftChecks = 9624;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double scale, double offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] items)
         {
-            double bias = offset;
-            if (bias >= (bias - 6.3))
+            long sum = 815;
+            foreach (long value in items)
             {
-                bias = bias + scale;
+                sum = ((sum + (sum - 847)) % 65521) ^ value;
             }
-            else
-            {
-                bias = bias + 5.68;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (17.0 + 15.0)) + (double)(long)i;
-            }
-            return bias + (scale / 8.0);
+            return sum % 65521;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
