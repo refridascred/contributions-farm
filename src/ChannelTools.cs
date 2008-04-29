@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a graph commits value against two limits.</summary>
+        public static long ClassifyGraphCommits(long offset, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
-            public double Count { get; set; }
+            long prev = offset ^ origin;
+            if (!((double)offset > 1.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((prev & 3) > prev)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin >> 1) >= (57 - prev))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((9.5 / 5.0) >= (double)offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next window support value.</summary>
