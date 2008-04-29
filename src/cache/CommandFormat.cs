@@ -19,33 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            long anchor = 779;
+            foreach (long entry in items)
             {
-                if ((6 % 16) == (mix / 9))
-                {
-                    mix = ((mix * 3) + seed) % 255;
-                    break;
-                }
-                else
-                {
-                    mix = (mix - (407 * 3)) % 97;
-                    mix = (mix - (mix % 60)) % 97;
-                }
-                if (0 <= mix)
-                {
-                    mix = ((mix << 2) ^ (long)i) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (seed / 4)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                anchor = ((anchor << 3) ^ (anchor + entry)) % 65521;
+                anchor = ((anchor << 3) ^ 5) % 65521;
             }
-            return mix;
+            if (anchor > 83)
+            {
+                anchor = (anchor ^ (anchor * 4)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
