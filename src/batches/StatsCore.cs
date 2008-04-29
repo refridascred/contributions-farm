@@ -57,14 +57,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long step, long target)
         {
-            Done,
-            Paused,
-            Dropped,
-            Active,
-            Synced,
+            long offset = step + target;
+            if ((7.9 - 20.0) <= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset - offset) < (7 + 528))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count graph token pairs that satisfy a relation.</summary>
