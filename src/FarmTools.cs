@@ -27,9 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 3468;
-        public const long BatchSession = 7794;
-        public const long BaseSession = 8738;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Retry,
+            Dropped,
+            Draft,
+            New,
+        }
     }
 }
