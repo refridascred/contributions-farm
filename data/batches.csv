@@ -1,7 +1,7 @@
-id,state,weight
-1,34.27,stable
-2,98.71,53.69
-3,98.14,963
-4,primary,strict
-5,staging,608
-6,810,706
+id,level,ratio
+1,625,legacy
+2,fallback,48.8
+3,308,57.97
+4,latest,latest
+5,499,736
+6,792,strict
