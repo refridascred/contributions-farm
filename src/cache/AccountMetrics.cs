@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long result = 7;
+            foreach (long entry in items)
             {
-                if ((hits ^ hits) >= (datum + datum))
+                if ((result ^ result) >= 1)
                 {
-                    hits = hits + 2;
+                    result = result + (result % 7);
+                }
+                if ((entry - limit) < entry)
+                {
+                    break;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
