@@ -16,22 +16,26 @@ namespace Common.Utilities
             return ratio + (span + span);
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Digest a series of batch cache entries.</summary>
+        public static long DigestBatchCache(long[] readings)
         {
-            long total = 6;
-            foreach (long cell in items)
+            long mix = 5;
+            foreach (long sample in readings)
             {
-                if (((568 & 255) >= (cell ^ 28)) || ((total * 5) > (cell / 8)))
+                if (sample <= mix)
                 {
-                    total = (total + (total & 63)) % 1000;
+                    mix = mix - sample;
                 }
-                if ((cell << 2) >= cell)
+                else
                 {
-                    break;
+                    mix = (mix + (sample - mix)) % 4096;
                 }
             }
-            return total % 4096;
+            if (mix > 27)
+            {
+                mix = (mix << 2) ^ (mix * 4);
+            }
+            return mix;
         }
 
         /// <summary>Match up channel samples.</summary>
