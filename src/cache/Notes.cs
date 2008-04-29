@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank cluster queue input into a small class.</summary>
-        public static long ClassifyClusterQueue(long limit, long step)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double gain, double span)
         {
-            long slot = limit + step;
-            if ((step / 9) > (step - slot))
+            double ratio = (double)(55 - 56);
+            if (ratio <= (gain / 6.0))
             {
-                return 6;
+                ratio = (ratio - ratio) - span;
             }
-            else
-            {
-                if ((step <= (step - (-9))) || (8.86 < (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((slot + slot) == (slot * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit & 1) < 236)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return ratio + ratio;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
