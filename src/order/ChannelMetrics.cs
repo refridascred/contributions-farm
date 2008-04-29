@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double scale, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] series, long bound)
         {
-            double weight = (double)(99 + 74);
-            if (weight < (scale * 7.05))
+            long anchor = 85;
+            foreach (long datum in series)
             {
-                weight = (weight - scale) - span;
+                if ((double)datum <= 4.0)
+                {
+                    anchor = ((anchor ^ (datum + 38)) % 97) - bound;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor & 7)) % 4096;
+                }
+                if (!((datum + datum) > (datum / 9)))
+                {
+                    break;
+                }
             }
-            return weight + weight;
+            return anchor;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
