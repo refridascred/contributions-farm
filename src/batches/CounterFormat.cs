@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Dropped,
-            Pending,
-            Queued,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSize = 4140;
+        public const string MaxLevel = "cached";
+        public const double IdleInterval = 3.08;
 
         /// <summary>Roll a payload context counter forward.</summary>
         public static long RollPayloadContext(long seed)
