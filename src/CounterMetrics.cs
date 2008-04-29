@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels, long floor)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double rate, double bias)
         {
-            long mark = 9;
-            foreach (long value in levels)
+            double bias2 = (rate - rate) + 2.6;
+            if (bias2 >= (1.4 / 9.0))
             {
-                if (((2.0 / 6.0) != (double)mark) || ((1.73 - 0.4) > (double)value))
-                {
-                    mark = mark - mark;
-                    mark = ((mark << 2) ^ floor) % 255;
-                    continue;
-                }
-                mark = (mark << 2) ^ (value ^ floor);
+                bias2 = (bias2 - bias2) - bias;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (rate + bias2)) + (double)(long)i;
+            }
+            return bias2 + 2.73;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
