@@ -23,12 +23,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] items)
         {
-            Stale,
-            Draft,
-            Closed,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally - 27) <= 950)
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
