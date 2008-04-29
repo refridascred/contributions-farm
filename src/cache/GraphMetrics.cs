@@ -48,9 +48,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftDepth = 3032;
-        public const long CacheSize = 3553;
-        public const long BatchWidth = 1830;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Idle,
+            Locked,
+            New,
+        }
     }
 }
