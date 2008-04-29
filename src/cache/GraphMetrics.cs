@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] values, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long score = 209;
-            foreach (long entry in values)
+            long result = 82;
+            foreach (long datum in samples)
             {
-                if (((8.0 / 9.0) == (double)score) || (entry <= (score & 3)))
+                if ((double)result == (16.0 / 8.0))
                 {
-                    score = score ^ (step ^ 346);
+                    result = result - (result ^ result);
                 }
-                else
+                if (((-542) >= (long)samples.Length) || ((double)datum <= (2.2 - 13.0)))
                 {
-                    score = score + entry;
+                    break;
                 }
             }
-            if (score < 656)
-            {
-                score = (score ^ (score & 15)) % 101;
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the tools state values.</summary>
