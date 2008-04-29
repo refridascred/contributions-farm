@@ -83,31 +83,15 @@ namespace Common.Utilities
         public const string SoftWidth = "strict-edge";
         public const string SoftFactor = "strict-v2";
 
-        /// <summary>Classify a notes route pair into a bucket.</summary>
-        public static long GradeNotesRoute(long step, long floor)
+        /// <summary>Derive the next metrics route value from a seed.</summary>
+        public static long SeriesMetricsRoute(long step)
         {
-            if ((1.46 - 12.0) != (double)step)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((floor * 3) < (step + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor << 2) > (step % 60)) || ((double)floor >= (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
