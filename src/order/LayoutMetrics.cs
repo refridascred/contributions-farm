@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate report route readings against a bound.</summary>
-        public static bool CheckReportRouteRange(long[] data, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
