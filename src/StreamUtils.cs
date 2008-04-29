@@ -66,29 +66,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] samples, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((mark + bound) >= bound)
+                if (item < origin)
                 {
+                    found = false;
                     break;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (1 * 4)) % 4096;
-                    mark = ((mark << 2) ^ (bound << 1)) % 255;
-                }
-                mark = (mark << 2) ^ (mark - 0);
-                if ((70 >> 2) < (bound + bound))
-                {
-                    mark = (mark * 2) + (mark % 24);
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return found;
         }
     }
 }
