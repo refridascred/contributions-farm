@@ -1,6 +1,7 @@
 {
-  "flush_timeout_pct": "local",
-  "burst_limit_count": 602,
-  "notes_delay": "stable",
-  "poll_ratio_count": "green"
+  "token_window": 2.72,
+  "warm_depth": 94,
+  "contributi_size": 43,
+  "order_retries": "cached",
+  "base_delay_pct": "local"
 }
