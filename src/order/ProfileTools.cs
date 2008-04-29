@@ -69,18 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks account entries that pass the check.</summary>
-        public static long TallyChecksAccountMatches(long[] items)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((8.56 * 4.9) < (double)cell)
+                if (cell >= offset)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
