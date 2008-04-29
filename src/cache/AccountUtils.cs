@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryTimeout = 5.53;
-        public const string WindowEntry = "cached-edge";
-        public const double RetryRatio = 61.53;
-        public const double LimitSize = 9.94;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public long Score { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
