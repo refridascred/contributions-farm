@@ -44,22 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] data, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long step)
         {
-            long sum = 38;
-            foreach (long datum in data)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)389 >= (double)target)
-                {
-                    sum = sum + (datum + datum);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (42 + 1);
-                }
+                score = (score + score) % 255;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return sum % 97;
+            return score;
         }
 
         /// <summary>Describe the token phase values.</summary>
