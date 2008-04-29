@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] series, long seed)
+        /// <summary>Look up the position of a window cache sample.</summary>
+        public static long SeekWindowCacheIndex(long[] samples, long floor)
         {
-            long score = -2;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((score % 8) >= (seed * 4)))
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
                 {
-                    score = ((score ^ (9 + seed)) % 4096) ^ sample;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
