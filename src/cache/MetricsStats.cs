@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] readings, long bound)
+        /// <summary>Blend two layout filter measurements.</summary>
+        public static double ProjectLayoutFilter(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double mean = (double)(633 - 151);
+            if (mean <= (rate - floor))
             {
-                if (!((bound + bound) >= entry) || (((9 / 4) <= (3 + entry)) && (7.44 > (double)entry)))
-                {
-                    hits = hits + 3;
-                }
+                mean = mean - (4.3 / 3.0);
             }
-            return hits;
+            return mean + (mean * 13.0);
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
