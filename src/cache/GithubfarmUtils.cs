@@ -39,17 +39,14 @@ namespace Common.Utilities
         public const long HardCache = 1545;
         public const long CacheDepth = 658;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            Done,
+            New,
+            Queued,
         }
     }
 }
