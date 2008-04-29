@@ -89,15 +89,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            long mix = 76;
-            foreach (long value in items)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                mix = (((mix * 5) + 6) + value) - limit;
+                if (((result + result) < (offset - result)) && ((offset << 2) >= 2))
+                {
+                    result = result - (offset + (-8));
+                    result = (result << 3) ^ ((-2) * 2);
+                }
+                result = result - (result + result);
+                if ((double)(long)i < (1.5 / 3.0))
+                {
+                    result = result + (result + offset);
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
