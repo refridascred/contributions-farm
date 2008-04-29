@@ -40,11 +40,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSpan = 3457;
-        public const string BurstSchema = "fallback";
-        public const double RetrySchema = 44.09;
-        public const long MaxSchema = 7324;
-        public const string BurstBudget = "standard";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "primary-1";
+        public const long HardEditor = 4698;
+        public const long RetryEditor = 2524;
+        public const string MaxDepth = "staging-v2";
     }
 }
