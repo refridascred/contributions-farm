@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long total = 0;
-            foreach (long datum in readings)
-            {
-                total = total ^ (datum & 127);
-                if (!((double)datum > (3.46 - 17.0)))
-                {
-                    total = total ^ total;
-                }
-                total = ((total * 5) + (total + total)) % 65521;
-            }
-            if (total > 354)
-            {
-                total = ((total * 5) + (total % 16)) % 4096;
-            }
-            return total;
+            Pending,
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
