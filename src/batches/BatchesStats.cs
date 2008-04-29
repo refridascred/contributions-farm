@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultWidth = 805;
-        public const double MaxDepth = 54.17;
-        public const string IdleFilter = "stable-v2";
-        public const long DefaultFilter = 2464;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferOutliers(long[] samples)
