@@ -84,9 +84,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 5822;
-        public const long DefaultBatch = 4169;
-        public const double LimitTimeout = 25.87;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] data, long origin)
+        {
+            long anchor = 42;
+            foreach (long item in data)
+            {
+                if ((double)item >= (8.0 * 4.49))
+                {
+                    long hits = (origin ^ (long)data.Length) << 3;
+                    anchor = (anchor ^ (hits - 494)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor - origin) % 1000;
+                    anchor = anchor ^ origin;
+                }
+                anchor = (anchor + (origin << 1)) % 4096;
+            }
+            return anchor;
+        }
     }
 }
