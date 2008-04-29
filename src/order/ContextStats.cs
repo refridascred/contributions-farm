@@ -35,17 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] levels, long limit)
+        /// <summary>Count the session batch entries that pass the check.</summary>
+        public static long CountSessionBatchGaps(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (levels[i] == limit)
+                if (origin < (long)values.Length)
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
