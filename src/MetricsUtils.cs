@@ -43,11 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 3.95;
-        public const long IdleReport = 1499;
-        public const long LimitSize = 3893;
-        public const string WindowTimeout = "latest-edge";
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Fold a list of format account readings.</summary>
         public static long FoldFormatAccount(long[] levels, long limit)
