@@ -23,18 +23,15 @@ namespace Common.Utilities
             return rate + (floor + rate);
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((43 / 6) != (seen + seen)) && ((double)seen <= (double)reading))
                 {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
