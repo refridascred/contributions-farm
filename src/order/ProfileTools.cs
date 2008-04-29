@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a metrics metric reading by value.</summary>
-        public static long SeekMetricsMetricIndex(long[] levels, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin >> 4) >= (origin + 151))
             {
-                if (levels[i] >= origin)
+                return 2;
+            }
+            else
+            {
+                if ((2.0 >= (double)origin) || ((floor % 10) != (8 / 6)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + floor) > (origin % 12)) || ((floor * 2) > floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
