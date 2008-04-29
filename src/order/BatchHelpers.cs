@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double scale, double bias)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Done,
+            double gain = (double)6 + (scale - scale);
+            if (gain > 12.0)
+            {
+                gain = gain - (bias + bias);
+            }
+            return gain - gain;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
