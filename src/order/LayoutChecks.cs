@@ -70,31 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long limit, long target)
+        /// <summary>Combine cache entry values into a single score.</summary>
+        public static long CombineCacheEntry(long[] readings, long origin)
         {
-            if ((target << 1) > limit)
+            long score = 616;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit != (1.44 - 6.17))
+                if (!((double)origin < (6.0 * 12.0)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit ^ limit) == (target - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = (score + (origin + reading)) % 1000;
                 }
             }
+            return score;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
