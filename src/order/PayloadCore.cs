@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] items, long floor)
+        /// <summary>Project the next route cache value.</summary>
+        public static double ProjectRouteCache(double gain, double bias)
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!(7 > (sample << 3)))
-                {
-                    count = (count + 2) - floor;
-                }
-            }
-            return count;
+            double drift = gain;
+            return (drift - (drift * 5.63)) + bias;
         }
 
         /// <summary>Iterate the order tools series from a seed.</summary>
