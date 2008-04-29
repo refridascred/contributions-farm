@@ -37,19 +37,21 @@ namespace Common.Utilities
         public const double MaxProfile = 55.26;
         public const string BaseSpan = "strict-v2";
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double ratio, double floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long bound)
         {
-            double drift = (ratio - ratio) * 1.7;
-            if (drift >= drift)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift + 13.0) - floor;
+                if (acc >= (acc >> 1))
+                {
+                    long matches = bound;
+                    acc = acc - matches;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (ratio * 3.4);
+            return acc;
         }
     }
 }
