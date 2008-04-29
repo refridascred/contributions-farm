@@ -28,9 +28,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string CacheLevel = "latest-edge";
-        public const long LimitCache = 5443;
-        public const long SoftCache = 2081;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] levels, long bound)
+        {
+            long state = 4;
+            foreach (long value in levels)
+            {
+                if (((state << 1) < value) || ((3.6 * 8.5) <= (double)value))
+                {
+                    state = (((state << 2) ^ state) % 255) + bound;
+                }
+                else
+                {
+                    state = (state + (state % 3)) % 4096;
+                }
+            }
+            return state % 4096;
+        }
     }
 }
