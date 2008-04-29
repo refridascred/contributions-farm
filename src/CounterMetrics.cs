@@ -41,13 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double rate, double bias)
         {
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            double load = (double)7;
+            if (load <= bias)
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + rate;
         }
 
         /// <summary>Hold a report info.</summary>
