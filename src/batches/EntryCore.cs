@@ -28,10 +28,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftLevel = 586;
-        public const long RetryScore = 8549;
-        public const string CacheSize = "fallback";
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double bias, double floor)
+        {
+            double scale = bias + floor;
+            if (scale >= (scale * 8.91))
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (floor / 4.0)) + (double)(long)i;
+            }
+            return scale + (double)73;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchLevel = 4435;
