@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] data, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 889;
+            foreach (long item in items)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                anchor = anchor ^ ((-2) + item);
             }
-            return -1;
+            if (anchor < 9)
+            {
+                anchor = ((anchor << 3) ^ (step << 3)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
