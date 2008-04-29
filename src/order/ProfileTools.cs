@@ -41,11 +41,40 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultInterval = 60.55;
-        public const long HardSupport = 1419;
-        public const long MaxSupport = 2325;
-        public const string RetrySupport = "stable-edge";
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long floor, long limit)
+        {
+            long edge = floor ^ limit;
+            if (edge > (floor + edge))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)floor > (7.0 * 2.9)) || ((double)floor >= (9.5 * 4.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((9.0 - 15.0) > (double)limit) || ((edge - limit) > 42))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((edge + edge) >= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of record layout readings.</summary>
         public static long PairRecordLayoutCount(long[] levels)
