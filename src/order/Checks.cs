@@ -27,12 +27,15 @@ namespace Common.Utilities
         public const string StepToken = "primary-v2";
         public const long BatchCount = 2897;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 9186;
-        public const long IdleFactor = 8934;
-        public const long CacheCount = 3559;
-        public const string WindowFilter = "standard-edge";
-        public const string StepFilter = "latest-edge";
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Closed,
+            Retry,
+            New,
+            Pending,
+            Active,
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
