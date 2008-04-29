@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (drift + (offset / 8.0)) + scale;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] items, long limit)
         {
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((limit + limit) <= (count - limit))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
