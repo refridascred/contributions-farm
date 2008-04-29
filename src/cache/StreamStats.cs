@@ -22,13 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Ready,
-            Paused,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 5368;
+        public const double MaxSize = 22.81;
+        public const double WindowDepth = 91.28;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmOutliers(long[] data)
