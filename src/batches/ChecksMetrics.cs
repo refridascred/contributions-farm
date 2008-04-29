@@ -49,31 +49,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long floor, long origin)
+        /// <summary>Measure how many already metric samples are out of range.</summary>
+        public static long TallyAlreadyMetricHits(long[] data, long floor)
         {
-            if ((origin > (6 + origin)) && ((floor + floor) <= (601 >> 5)))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.3 - 13.0) < (double)origin)
+                if ((double)floor >= (double)cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin <= (origin - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
