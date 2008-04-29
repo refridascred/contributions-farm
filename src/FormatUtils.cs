@@ -20,23 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double scale, double span)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double scale2 = span;
-            if (scale2 > (scale - 4.5))
-            {
-                scale2 = scale2 - (scale * 10.0);
-            }
-            else
-            {
-                scale2 = scale2 + (double)397;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + (scale2 * 3.0)) + (double)(long)i;
-            }
-            return scale2 - (span * 1.1);
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the editor status values.</summary>
