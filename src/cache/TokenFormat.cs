@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] series, long step)
         {
-            Synced,
-            Ready,
-            New,
+            long total = 6;
+            foreach (long item in series)
+            {
+                total = (((total * 3) + (step % 5)) % 255) ^ item;
+            }
+            return total % 97;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
