@@ -1,7 +1,6 @@
 # support settings
-verbose: false
-default_ratio: 59.95
-dry_run:
-  sync_limit_pct: latest
-  dry_run: false
-  base_interval_count: green
+dry_run: 94
+warm_delay_s: 2255
+schema_ttl: false
+flush_capacity_pct: 34
+readonly: 5330
