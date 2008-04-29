@@ -27,15 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] data, long seed)
+        /// <summary>Digest a series of batches cluster entries.</summary>
+        public static long ScoreBatchesCluster(long[] items, long limit)
         {
-            long sum = 280;
-            foreach (long value in data)
+            long result = 35;
+            foreach (long datum in items)
             {
-                sum = ((sum + (238 + seed)) % 255) + value;
+                if ((191 + datum) >= limit)
+                {
+                    result = (result ^ (datum - datum)) % 1000;
+                }
+                else
+                {
+                    result = (result ^ ((long)items.Length / 5)) % 97;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Accumulate queue samples.</summary>
