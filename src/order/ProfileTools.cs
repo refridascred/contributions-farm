@@ -48,35 +48,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch channel input into a small class.</summary>
-        public static long SortBatchChannel(long floor, long floor2)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long target, long seed)
         {
-            if (((floor & 31) <= (floor + floor)) || ((double)floor < (double)floor2))
+            long lane = target + seed;
+            if (target < (seed + lane))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((4.17 + 5.56) <= (double)floor2)
+                if ((seed & 3) > (target - lane))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (floor >= (floor2 / 8))
+                    if ((seed <= (seed + target)) || (9.0 >= (double)target))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        if ((floor - floor2) < (8 + floor2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 3;
                     }
                 }
             }
