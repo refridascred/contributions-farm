@@ -42,12 +42,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long step, long floor)
         {
-            Draft,
-            Ready,
-            Done,
+            if (464 >= (step ^ floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-13) & 3) <= (step % 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor) > floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step ^ 534) < (floor / 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
