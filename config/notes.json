@@ -1,18 +1,10 @@
 {
-  "dry_run": [20, 1, 439, 469],
-  "default_ttl_s": {
-    "enabled": {
-      "min_timeout": 19.82,
-      "cache_retries": 80.63,
-      "idle_retries": 46,
-      "batches_ratio": 9128,
-      "burst_window_s": false,
-      "batch_interval_ms": 53.93
-    },
-    "batch_capacity_pct": "green",
-    "compress": 4.62,
-    "burst_delay": true
-  },
-  "max_delay_count": "cached",
-  "token_size": "latest"
+  "entry_timeout": [478, 429, 148, 67],
+  "verbose": "standard",
+  "token_ttl": {
+    "batch_retries": false,
+    "batch_size_count": true,
+    "strict": 67.77,
+    "poll_ttl": [83, 367, 344]
+  }
 }
