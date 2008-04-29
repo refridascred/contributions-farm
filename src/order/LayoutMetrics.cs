@@ -23,15 +23,21 @@ namespace Common.Utilities
             return rate + (floor + rate);
         }
 
-        /// <summary>Combine cache schema values into a single score.</summary>
-        public static long ScoreCacheSchema(long[] levels)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            long carry = 3;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry + (85 - 55)) % 97) + entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry % 4096;
+            return seen;
         }
     }
 }
