@@ -1,10 +1,10 @@
 {
-  "max_capacity_s": 31,
-  "cache_ttl": "stable",
-  "audit": 1991,
-  "readonly": {
-    "sync_depth_count": "edge",
-    "warm_timeout_count": [266, 302, 367],
-    "base_interval_s": "fallback"
-  }
+  "soft_interval": "open",
+  "persist": {
+    "strict": 17.57,
+    "compress": 31.16,
+    "idle_depth_count": "local"
+  },
+  "account_limit": [395, 226],
+  "githubfarm_ttl": ["open", "primary", "cached"]
 }
