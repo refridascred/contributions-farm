@@ -56,21 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 17)
+                    if ((data[i] ^ data[j]) != 16)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
