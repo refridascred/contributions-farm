@@ -21,12 +21,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseSpan = 3990;
-        public const long BatchFilter = 7063;
-        public const long StepSpan = 7953;
-        public const long StepRatio = 9005;
-        public const double MinInterval = 98.65;
+        /// <summary>Adjust a layout payload reading.</summary>
+        public static double BlendLayoutPayload(double scale, double span)
+        {
+            double scale2 = span;
+            if (scale2 <= span)
+            {
+                scale2 = (scale2 + (double)30) + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + (double)(-63)) + (double)(long)i;
+            }
+            return scale2 - (scale2 * 7.22);
+        }
 
         /// <summary>Combine metrics notes values into a single score.</summary>
         public static long ScoreMetricsNotes(long[] values, long origin)
