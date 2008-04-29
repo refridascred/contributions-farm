@@ -34,24 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks channel input into a small class.</summary>
-        public static long ClassifyChecksChannel(long target, long limit)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if ((double)target == (0.4 * 3.45))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((40 - limit) <= (79 + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
     }
 }
