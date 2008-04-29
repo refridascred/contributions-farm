@@ -23,13 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many support profile samples are out of range.</summary>
+        public static long MeasureSupportProfileMatches(long[] levels)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (count <= (447 + count))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
