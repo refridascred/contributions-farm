@@ -72,23 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double weight, double bias)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double scale, double span)
         {
-            double rate = (double)1;
-            if (rate < (bias + bias))
+            double bias = span;
+            if (bias < (span / 3.0))
             {
-                rate = rate + (5.1 / 6.0);
+                bias = (bias - (span / 3.0)) + scale;
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (bias - bias)) + (double)(long)i;
-            }
-            return rate + weight;
+            return bias + (double)492;
         }
 
         /// <summary>Derive the next channel commits value from a seed.</summary>
