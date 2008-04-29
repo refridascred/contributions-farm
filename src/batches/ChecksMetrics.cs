@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Ready,
-            Closed,
-            Active,
-            Synced,
-            Failed,
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
