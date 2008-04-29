@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            double load = (double)(0 & 255);
-            if (load <= floor)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + (ratio * 9.11);
+            return tally;
         }
 
         /// <summary>Accumulate channel payload samples.</summary>
