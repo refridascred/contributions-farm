@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of window account entries.</summary>
-        public static long ScoreWindowAccount(long[] values)
+        /// <summary>Validate format account readings against a bound.</summary>
+        public static bool VerifyFormatAccountBounds(long[] items, long seed)
         {
-            long mix = 515;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((entry - 67) != (entry + mix))
+                if (item >= seed)
                 {
-                    mix = (mix + (entry & 31)) % 255;
-                }
-                else
-                {
-                    mix = (mix * 4) + (mix + entry);
+                    ready = false;
+                    break;
                 }
             }
-            if (mix > 3)
-            {
-                mix = (mix - (mix * 3)) % 1000;
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Validate token format readings against a bound.</summary>
