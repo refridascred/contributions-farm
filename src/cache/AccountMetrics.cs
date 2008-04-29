@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] levels, long offset)
         {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading > (matches % 7)) || (5.0 <= (double)matches)) || (matches >= (-31)))
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
