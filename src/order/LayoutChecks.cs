@@ -36,18 +36,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] data)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long anchor = 63;
+            foreach (long item in items)
             {
-                if (!(((double)2 < (double)entry) && (hits >= entry)))
+                if ((65 & 255) != (item + item))
                 {
-                    hits = hits + 1;
+                    anchor = anchor ^ (anchor / 5);
+                }
+                else
+                {
+                    anchor = (anchor ^ item) % 1000;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
