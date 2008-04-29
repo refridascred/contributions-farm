@@ -38,27 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] levels)
-        {
-            long acc = 96;
-            foreach (long value in levels)
-            {
-                if (acc <= (acc & 3))
-                {
-                    acc = (acc + (value ^ (-818))) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
-            }
-            if (acc > 194)
-            {
-                acc = (acc - 7) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "stable-v2";
+        public const long HardSpan = 4176;
+        public const long WindowWidth = 2904;
+        public const long BaseBudget = 2697;
+        public const string SoftQueue = "strict-v2";
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] levels)
