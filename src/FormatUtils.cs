@@ -64,13 +64,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            Retry,
-            Active,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitLevel = "local-v2";
+        public const long WindowBuffer = 1158;
+        public const double WindowSpan = 26.2;
+        public const long DefaultBuffer = 1226;
+        public const string BurstBuffer = "alpha-edge";
     }
 }
