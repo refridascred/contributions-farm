@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const long StepCache = 4139;
         public const string StepCount = "staging-v2";
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double rate, double bias)
+        /// <summary>Accumulate payload githubfarm samples.</summary>
+        public static long TallyPayloadGithubfarm(long[] items)
         {
-            double ratio = (bias - bias) * 5.9;
-            for (int i = 0; i < 6; i++)
+            long acc = 486;
+            foreach (long item in items)
             {
-                ratio = (ratio - 4.57) + (double)(long)i;
+                acc = (acc ^ (item - 73)) % 65521;
+                if (acc >= item)
+                {
+                    acc = (acc - (acc ^ acc)) % 65521;
+                }
+                if ((item - 13) >= (item - acc))
+                {
+                    break;
+                }
             }
-            return ratio - (rate / 3.0);
+            return acc;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
