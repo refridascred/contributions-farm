@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long limit, long seed)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Draft,
-            Retry,
+            if ((seed >> 1) <= (limit * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((limit / 4) <= (seed + limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((limit * 4) < (limit / 9)) || ((double)limit == (19.0 - 9.2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics record.</summary>
