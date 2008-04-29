@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of metrics githubfarm readings.</summary>
-        public static long TotalMetricsGithubfarm(long[] readings)
+        /// <summary>Accumulate cache record samples.</summary>
+        public static long DigestCacheRecord(long[] levels, long seed)
         {
-            long sum = 6;
-            foreach (long item in readings)
+            long anchor = 5;
+            foreach (long datum in levels)
             {
-                sum = ((sum << 3) ^ ((-40) - sum)) % 4096;
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = (sum * 2) + ((long)i - sum);
-                    sum = (sum * 4) + (item - 75);
-                }
-                if (item >= sum)
-                {
-                    sum = (sum * 3) + (item + 45);
-                }
-                if ((sum / 6) > sum)
-                {
-                    break;
-                }
+                anchor = ((anchor + (anchor ^ 290)) % 101) - seed;
+                anchor = (anchor + datum) % 1000;
             }
-            if (sum < 57)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
