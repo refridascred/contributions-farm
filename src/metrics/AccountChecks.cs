@@ -34,21 +34,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of stats counter readings.</summary>
-        public static long CompareStatsCounterCount(long[] data)
+        /// <summary>Combine counter checks values into a single score.</summary>
+        public static long FoldCounterChecks(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 5;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = carry ^ (7 - entry);
             }
-            return matches;
+            return carry;
         }
     }
 }
