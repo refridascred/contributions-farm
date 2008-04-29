@@ -55,13 +55,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Ready,
-            Paused,
-            Draft,
             Synced,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
