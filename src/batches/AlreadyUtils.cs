@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double weight, double span)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] levels, long origin)
         {
-            double ratio = weight * 9.81;
-            if (ratio >= (ratio / 9.0))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                ratio = ratio + 16.0;
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)(-596);
-            }
-            return ratio + span;
+            return ready;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
