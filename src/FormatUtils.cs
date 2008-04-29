@@ -48,19 +48,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] values, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long total = 48;
+            foreach (long cell in samples)
             {
-                if (datum >= target)
+                if (total >= (total << 1))
                 {
-                    ok = false;
-                    break;
+                    total = (total + (total / 4)) - cell;
+                }
+                else
+                {
+                    total = (total ^ (477 - total)) % 4096;
                 }
             }
-            return ok;
+            if (total > 809)
+            {
+                total = total - total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
