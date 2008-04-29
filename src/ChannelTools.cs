@@ -28,21 +28,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 1432;
+        public const long BurstWidth = 3310;
+        public const double WindowBudget = 61.5;
+        public const double BaseSize = 21.05;
     }
 }
