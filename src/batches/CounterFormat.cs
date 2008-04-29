@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long offset, long bound)
-        {
-            if ((offset + 27) == (86 & 255))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)offset < 5.46) || (offset > (74 >> 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= (bound << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (344 >= (offset & 63))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "latest-1";
+        public const double BaseRatio = 5.42;
+        public const long DefaultStats = 2441;
+        public const string BaseStats = "stable";
+        public const long CacheStats = 1898;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double LimitCommand = 61.46;
