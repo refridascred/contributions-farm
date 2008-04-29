@@ -20,28 +20,10 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((bound - score) >= (score - (long)i))
-                {
-                    continue;
-                }
-                if (!((double)bound <= (17.0 / 6.0)))
-                {
-                    score = (score - ((long)i * 5)) % 97;
-                }
-                if (!!(bound <= (671 - bound)))
-                {
-                    score = score - (score >> 3);
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxCount = "fallback-v2";
+        public const long BurstSpan = 2070;
+        public const long CacheFactor = 3227;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
