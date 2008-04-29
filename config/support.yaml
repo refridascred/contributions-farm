@@ -1,36 +1,5 @@
 # support settings
-retry_ttl_count: fallback
-sync_ttl_pct:
-  - green
-  - primary
-  - stable
-audit: 41.06
-retry_depth:
-  flush_ttl_ms: 72
-  enabled:
-    base_window: 0.39
-    verbose:
-      - latest
-      - staging
-      - local
-      - stable
-    tools_capacity: 60
-    idle_size: 20.65
-    queue_window:
-      - edge
-      - latest
-    batch_interval_s: 30
-  window_limit: 6
-  retry_depth_pct:
-    - 475
-    - 134
-    - 383
-support_delay:
-  - latest
-  - blue
-  - strict
-  - local
-sync_interval_count:
-  base_delay: 42
-  burst_interval: 6996
-  cluster_depth: cached
+max_size: 43.69
+stats_ratio: 250
+format_ttl: 67
+soft_window_ms: 35.3
