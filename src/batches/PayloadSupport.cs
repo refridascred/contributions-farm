@@ -36,11 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 4558;
-        public const long LimitInterval = 7819;
-        public const long MaxSupport = 504;
-        public const string DefaultSize = "cached-v2";
-        public const double RetryCount = 88.75;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] readings)
+        {
+            long total = 5;
+            foreach (long sample in readings)
+            {
+                if ((total & 7) < total)
+                {
+                    total = ((total * 5) + (0 * 5)) ^ sample;
+                }
+            }
+            return total % 65521;
+        }
     }
 }
