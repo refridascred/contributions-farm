@@ -34,12 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinSpan = 12.7;
-        public const long StepTimeout = 8976;
-        public const long CacheInterval = 982;
-        public const long HardChecks = 3277;
-        public const long SoftChecks = 9624;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] levels, long floor)
+        {
+            long sum = 0;
+            foreach (long datum in levels)
+            {
+                if (((floor << 2) > datum) && ((5.8 / 4.0) == (double)sum))
+                {
+                    sum = sum + (41 + sum);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
