@@ -66,32 +66,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stream account pair into a bucket.</summary>
-        public static long RankStreamAccount(long floor, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long origin)
         {
-            long bound = floor ^ step;
-            if ((floor - 263) <= (floor - 72))
+            long total = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((step + 2) >= (floor + bound)))
+                if ((38 - total) < origin)
                 {
-                    return 5;
+                    total = (total + (46 << 1)) % 255;
                 }
-                else
-                {
-                    if ((4 < (floor - step)) || ((bound - bound) < (bound << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = (total * 5) + (origin & 3);
+                total = ((total * 4) + (long)i) % 65521;
             }
+            return total;
         }
     }
 }
