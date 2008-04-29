@@ -61,39 +61,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long limit, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values, long floor)
         {
-            long offset = limit - target;
-            if ((offset << 2) != (offset / 4))
+            long state = 4;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit <= (7.94 - 9.0))
+                if (reading > (7 * 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= (limit & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit - limit) < 7)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    state = (state ^ (219 + reading)) + floor;
                 }
             }
+            if (state < 252)
+            {
+                state = state + (state ^ (long)values.Length);
+            }
+            return state;
         }
 
         /// <summary>Describe the context phase values.</summary>
