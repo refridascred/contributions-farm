@@ -84,17 +84,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] values, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] == bound)
+                long hits = origin << 1;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    hits = ((hits - (origin * 5)) % 65521) ^ (long)i2;
                 }
+                if (((long)i + hits) > (hits - hits))
+                {
+                    continue;
+                }
+                else
+                {
+                    long gap = (hits + origin) - (30 & 1);
+                    mark = ((mark << 2) ^ (hits + gap)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
