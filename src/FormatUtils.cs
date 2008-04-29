@@ -79,10 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "latest-edge";
-        public const long SoftSize = 7646;
-        public const string SoftCount = "primary-edge";
-        public const long StepLevel = 6046;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepSize = "staging";
+        public const string WindowBatches = "fallback";
+        public const double WindowRatio = 3.79;
+        public const string CacheBatches = "latest-1";
     }
 }
