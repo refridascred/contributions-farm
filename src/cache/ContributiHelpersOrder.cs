@@ -27,12 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Validate token format readings against a bound.</summary>
+        public static bool ValidateTokenFormatBounds(long[] readings, long seed)
         {
-            Dropped,
-            Ready,
-            Synced,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
