@@ -58,17 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] levels, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long cell in samples)
             {
-                if (levels[i] <= limit)
+                if (!(acc >= (origin & 15)))
                 {
-                    return (long)i;
+                    acc = (acc - (cell - cell)) % 4096;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the report level values.</summary>
