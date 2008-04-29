@@ -33,21 +33,13 @@ namespace Common.Utilities
         public const double StepInterval = 87.57;
         public const long HardWindow = 7232;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
