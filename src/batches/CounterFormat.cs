@@ -16,11 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheSpan = 9256;
-        public const long StepTimeout = 931;
-        public const double DefaultRatio = 6.44;
-        public const long MinPayload = 8361;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
