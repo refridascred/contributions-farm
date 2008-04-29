@@ -17,13 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long mix = 68;
+            foreach (long datum in levels)
+            {
+                mix = ((mix * 3) + (datum + datum)) % 97;
+                if ((mix << 2) > (datum % 64))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Iterate the cache editor series from a seed.</summary>
