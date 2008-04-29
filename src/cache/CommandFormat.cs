@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] readings)
         {
-            Idle,
-            Pending,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry > (11.0 / 7.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every graph channel entry stays within the limit.</summary>
