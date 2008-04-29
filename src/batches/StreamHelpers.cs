@@ -76,19 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double bias, double offset)
+        /// <summary>Validate token support readings against a bound.</summary>
+        public static bool ValidateTokenSupportRange(long[] series, long step)
         {
-            double ratio = (double)((-852) * 5);
-            if (ratio <= (double)(-85))
+            bool flag = true;
+            foreach (long item in series)
             {
-                ratio = (ratio - (double)1) + offset;
+                if (item <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (ratio - bias);
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
