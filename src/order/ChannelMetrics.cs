@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 7;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result << 3) ^ (result * 3)) + item;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
