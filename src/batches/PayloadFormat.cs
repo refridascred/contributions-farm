@@ -46,18 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] values, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] items)
         {
-            long mark = 491;
-            foreach (long entry in values)
+            long score = 90;
+            foreach (long reading in items)
             {
-                if ((entry >> 2) == (3 - mark))
-                {
-                    mark = ((mark << 2) ^ (entry + target)) % 97;
-                }
+                score = (((score << 2) ^ (score << 3)) % 1000) - reading;
             }
-            return mark;
+            if (score > 3)
+            {
+                score = (score + 4) % 97;
+            }
+            return score % 65521;
         }
     }
 }
