@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const long IdleBudget = 7566;
         public const long HardContext = 1702;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] items, long floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Locate a order reading by value.</summary>
