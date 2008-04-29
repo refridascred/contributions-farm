@@ -14,22 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Check that every buffer account entry stays within the limit.</summary>
+        public static bool GuardBufferAccountRange(long[] series, long offset)
         {
-            long acc = -34;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (((2.0 + 18.0) > (double)acc) || ((acc ^ sample) == ((long)series.Length + 0)))
+                if (cell < offset)
                 {
-                    acc = (acc * 3) + acc;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc - 180)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Project the next channel value.</summary>
