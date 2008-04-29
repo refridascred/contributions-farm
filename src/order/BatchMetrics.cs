@@ -64,13 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Project the next route counter value.</summary>
+        public static double AdjustRouteCounter(double gain, double bias)
         {
-            public string Mode { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            double drift = (gain + 6.1) - (gain - bias);
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + gain) - (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Define order limits and defaults.</summary>
