@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] levels, long origin)
         {
-            long result = 5;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result - (result << 3)) % 255) ^ item;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
