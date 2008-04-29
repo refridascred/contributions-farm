@@ -22,14 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] readings, long limit)
         {
-            Ready,
-            Locked,
-            Closed,
-            Queued,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell >= 3.6)
+                {
+                    tally = (tally + 2) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
