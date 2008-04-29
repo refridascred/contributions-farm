@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] values, long seed)
         {
-            long result = 646;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((result + result) > (item ^ item))
+                if ((double)seed > (double)entry)
                 {
-                    result = (result * 4) + (long)readings.Length;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    result = ((result * 2) + 144) % 101;
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
