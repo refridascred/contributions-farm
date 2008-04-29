@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long WindowChannel = 391;
         public const long RetryTimeout = 6663;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] readings, long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell >= 3.6)
-                {
-                    tally = (tally + 2) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double load = bias;
+            return (load - (double)634) + weight;
         }
 
         /// <summary>Combine stats githubfarm values into a single score.</summary>
