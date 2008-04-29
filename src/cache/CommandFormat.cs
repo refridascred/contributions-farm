@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] samples, long step)
         {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
