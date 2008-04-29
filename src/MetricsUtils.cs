@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] items)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double weight = (double)(-987) - rate;
+            if (weight >= (double)74)
             {
-                if (seen > (-9))
-                {
-                    seen = (seen + 2) + cell;
-                }
+                weight = (weight - weight) - bias;
             }
-            return seen;
+            return weight + (rate * 2.68);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
