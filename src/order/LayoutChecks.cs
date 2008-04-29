@@ -38,14 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            Idle,
-            Active,
-            Retry,
-            Closed,
-            New,
+            long score = 3;
+            foreach (long entry in values)
+            {
+                score = ((score ^ (54 - 13)) % 4096) - entry;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the stream phase values.</summary>
