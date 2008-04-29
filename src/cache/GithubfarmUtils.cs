@@ -28,11 +28,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSize = 4257;
-        public const long IdleBudget = 1799;
-        public const long HardCache = 1545;
-        public const long CacheDepth = 658;
+        /// <summary>Locate a batch editor reading by value.</summary>
+        public static long FindBatchEditorIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesOutliers(long[] items, long offset)
