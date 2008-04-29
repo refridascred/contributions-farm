@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] items, long step)
         {
-            Done,
-            Draft,
-            Failed,
-            Locked,
+            long result = -63;
+            foreach (long datum in items)
+            {
+                result = ((result - (datum + result)) % 97) + step;
+            }
+            return result;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
