@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleSize = "legacy-v2";
-        public const long CacheCounter = 6225;
-        public const long HardWidth = 2062;
-        public const long SoftRatio = 2827;
-        public const long BatchInterval = 9641;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Draft,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterOutliers(long[] data)
