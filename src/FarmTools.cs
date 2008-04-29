@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window queue readings against a rule.</summary>
-        public static long AuditWindowQueueGaps(long[] data)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (0.15 > (double)seen)
+                if ((data[i] > target) && ((data[i] % 2) == 0))
                 {
-                    seen = (seen + 3) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
