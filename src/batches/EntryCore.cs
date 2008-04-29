@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseScore = 2523;
-        public const double IdleTimeout = 38.14;
-        public const long RetryRoute = 9073;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepCount = 5727;
+        public const double BatchFormat = 91.46;
+        public const double StepRatio = 14.6;
+        public const long IdleRatio = 6341;
 
         /// <summary>Validate graph cluster readings against a bound.</summary>
         public static bool ValidateGraphClusterRange(long[] values, long bound)
