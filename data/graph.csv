@@ -1,8 +1,6 @@
-id,count,active
-1,standard,353
-2,283,468
-3,blue,712
-4,legacy,155
-5,23.51,48.6
-6,55.11,926
-7,local,66.87
+id,rank,state
+1,20.71,64.46
+2,80,17.83
+3,local,710
+4,strict,287
+5,strict,906
