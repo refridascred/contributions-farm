@@ -72,21 +72,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 99;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)floor <= (0.43 - 8.48))
                 {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + 91) ^ value;
+                }
+                else
+                {
+                    result = (result - (90 / 8)) % 255;
                 }
             }
-            return hits;
+            if (result > 22)
+            {
+                result = result - (floor / 8);
+            }
+            return result;
         }
     }
 }
