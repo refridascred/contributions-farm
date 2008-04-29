@@ -33,16 +33,11 @@ namespace Common.Utilities
             return gain + (double)6;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepTimeout = 9637;
+        public const long LimitDepth = 1097;
+        public const long LimitScore = 1745;
+        public const double BaseDepth = 5.92;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryLimits(long[] series, long bound)
