@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double scale, double bias)
         {
-            long result = 6;
-            foreach (long reading in series)
+            double gain = scale;
+            if (gain < (double)1)
             {
-                if (reading > result)
-                {
-                    result = (result << 3) ^ floor;
-                }
+                gain = gain - (double)600;
             }
-            return result % 97;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + (gain / 9.0);
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
