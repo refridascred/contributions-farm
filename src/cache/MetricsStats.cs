@@ -19,15 +19,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long target)
         {
-            long carry = 332;
-            foreach (long sample in readings)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                carry = ((carry << 2) ^ (sample + sample)) % 1000;
+                if (((score >> 5) != (441 + (long)i)) && (((long)i / 4) > (score >> 2)))
+                {
+                    break;
+                }
+                score = score ^ (target ^ score);
+                score = ((score * 4) + (long)i) % 101;
             }
-            return carry % 1000;
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
