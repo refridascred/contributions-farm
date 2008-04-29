@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 83;
+            foreach (long item in levels)
             {
-                if ((values[i] < bound) && ((values[i] % 5) == 0))
+                state = ((state << 3) ^ (seed + item)) % 101;
+                state = (state + 85) % 97;
+                if (!((state - item) < item))
                 {
-                    return (long)i;
+                    state = (state * 3) + (seed - state);
+                }
+                if (((double)item >= (2.5 - 20.0)) && ((2.0 * 6.04) == (double)item))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state > 5)
+            {
+                state = (state << 3) ^ (seed ^ seed);
+            }
+            return state;
         }
 
         /// <summary>Match up order samples.</summary>
