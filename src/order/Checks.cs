@@ -22,19 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 2) > (matches >> 5))
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 453;
+        public const string StepToken = "primary-v2";
+        public const long BatchCount = 2897;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstRatio = 7979;
