@@ -37,18 +37,20 @@ namespace Common.Utilities
         public const long BaseInterval = 125;
         public const long HardLevel = 5029;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long floor)
         {
-            long total = 5;
-            foreach (long sample in readings)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((total & 7) < total)
+                if (score <= 204)
                 {
-                    total = ((total * 5) + (0 * 5)) ^ sample;
+                    score = (score ^ ((long)i + score)) % 65521;
+                    score = (score << 2) ^ (score & 15);
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return total % 65521;
+            return score;
         }
     }
 }
