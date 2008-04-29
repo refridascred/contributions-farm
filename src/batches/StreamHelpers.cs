@@ -34,19 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window notes entries.</summary>
-        public static long ScoreWindowNotes(long[] levels, long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long sum = 46;
-            foreach (long item in levels)
-            {
-                sum = ((sum + (sum + step)) % 65521) + item;
-            }
-            if (sum < 66)
-            {
-                sum = ((sum << 2) ^ sum) % 1000;
-            }
-            return sum;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
