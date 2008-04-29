@@ -1,5 +1,8 @@
 {
-  "persist": 500,
-  "strict": 25,
-  "default_ratio": 8
+  "metrics_delay": "legacy",
+  "stats_capacity": "eu-west",
+  "dry_run": 6888,
+  "channel_ttl": 59.01,
+  "sync_ratio_pct": 1024,
+  "context_limit": 45.55
 }
