@@ -80,18 +80,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the counter batch entries that pass the check.</summary>
-        public static long CountCounterBatchGaps(long[] series)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally - tally) >= tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) ^ sample;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
