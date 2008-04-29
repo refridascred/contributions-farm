@@ -32,13 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] samples)
         {
-            public double Owner { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally << 3) == (500 + cell))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
