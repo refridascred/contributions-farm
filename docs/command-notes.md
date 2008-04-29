@@ -1,15 +1,14 @@
 # Command notes
 
-The payload module keeps farm values in sync with the route cache.
-The record module keeps support values in sync with the channel cache.
-The already module keeps farm values in sync with the route cache.
+Each batches is validated before it reaches the session queue.
+Run the schema check before changing any cache limits.
 
-The context module keeps format values in sync with the notes cache.
-When a stream fails, the buffer handler retries a few times before giving up.
-When a stats fails, the buffer handler retries a few times before giving up.
+Defaults for cache live in the config folder and can be overridden per environment.
+When a record fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every account change
-- Prefer notes defaults
-- Validate account input early
+- Log every channel change
+- Keep payload values small
+- Validate contributi input early
+- Review farm limits each release
