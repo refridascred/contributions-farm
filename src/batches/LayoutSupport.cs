@@ -30,11 +30,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long anchor = 6;
+            foreach (long cell in data)
+            {
+                anchor = (anchor - (anchor ^ cell)) % 4096;
+                if ((anchor - anchor) <= (anchor + cell))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor - cell) % 1000;
+                }
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Rank counter window input into a small class.</summary>
