@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] levels, long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the token mode values.</summary>
