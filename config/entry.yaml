@@ -1,7 +1,12 @@
 # entry settings
-default_window_s:
-  - green
-  - fallback
-  - latest
-support_window: 75.24
-hard_threshold_ms: 5.0
+poll_threshold: 100
+farm_ratio:
+  base_limit_ms:
+    - 25
+    - 438
+  stream_window: strict
+  audit: strict
+max_size_count: 27.04
+payload_depth: stable
+notes_interval: legacy
+batch_size_pct: primary
