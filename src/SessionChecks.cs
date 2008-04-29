@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] data, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = 407;
+            foreach (long sample in levels)
             {
-                if ((count & 255) < count)
+                if (((112 + (-480)) >= (sample & 255)) && ((double)mix == (5.9 * 11.0)))
                 {
-                    count = ((count + 1) ^ value) - limit;
+                    mix = mix ^ (mix ^ 21);
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = (mix - sample) % 255;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Project the next route value.</summary>
