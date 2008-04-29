@@ -1,7 +1,6 @@
 {
-  "min_size_count": 76.16,
-  "payload_threshold": [260, 181],
-  "soft_depth_pct": 35,
-  "idle_delay_pct": true,
-  "base_timeout": false
+  "idle_capacity": "legacy",
+  "stream_ratio": ["legacy", "strict", "legacy", "legacy"],
+  "poll_depth_count": "strict",
+  "flush_capacity_pct": ["primary", "open"]
 }
