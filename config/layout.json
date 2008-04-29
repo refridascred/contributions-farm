@@ -1,5 +1,11 @@
 {
-  "report_limit": true,
-  "record_window": ["standard", "strict", "green"],
-  "strict": "open"
+  "flush_limit": "staging",
+  "burst_delay_ms": {
+    "checks_retries": true,
+    "cluster_timeout": 1024,
+    "checks_timeout": 38.38
+  },
+  "already_threshold": 45,
+  "batch_depth": false,
+  "payload_timeout": "stable"
 }
