@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "fallback-v2";
+        public const long CachePayload = 136;
+        public const double WindowWidth = 87.6;
+        public const long HardPayload = 7207;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
