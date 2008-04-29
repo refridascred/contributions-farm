@@ -38,18 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] values, long origin)
         {
-            long total = 0;
-            foreach (long value in data)
+            long result = -715;
+            foreach (long entry in values)
             {
-                if ((999 + floor) >= ((-64) >> 4))
+                if (12.0 <= (double)origin)
                 {
-                    total = ((total ^ (floor + total)) % 65521) ^ value;
+                    result = ((result << 2) ^ (entry ^ (-169))) % 65521;
                 }
             }
-            return total;
+            if (result < 472)
+            {
+                result = result ^ (result / 6);
+            }
+            return result;
         }
     }
 }
