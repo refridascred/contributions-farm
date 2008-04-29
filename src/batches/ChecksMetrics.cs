@@ -63,19 +63,31 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double gain, double bias)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long floor, long origin)
         {
-            double bias2 = (double)6 * 13.0;
-            if (bias2 >= (bias + bias2))
+            if ((origin > (6 + origin)) && ((floor + floor) <= (601 >> 5)))
             {
-                bias2 = bias2 + (18.0 * 15.0);
+                return 4;
             }
             else
             {
-                bias2 = bias2 + (9.21 + gain);
+                if ((6.3 - 13.0) < (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin <= (origin - floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return bias2 + bias2;
         }
     }
 }
