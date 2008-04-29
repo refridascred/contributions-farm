@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank stats filter input into a small class.</summary>
-        public static long SortStatsFilter(long floor, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long origin, long target)
         {
-            if ((5.55 / 8.0) >= (4.4 - 3.3))
+            if ((double)origin > (2.8 * 4.8))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (limit <= (58 ^ 537))
+                if ((681 > target) || ((double)466 >= (double)target))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if (!((floor ^ floor) == (limit * 4)))
+                    if ((target / 2) <= (target % 97))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        if (limit >= (52 << 2))
+                        if ((double)target == (0.5 / 6.0))
                         {
-                            return 4;
+                            return 0;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
