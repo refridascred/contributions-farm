@@ -43,19 +43,14 @@ namespace Common.Utilities
             return (scale - (scale - bias)) + offset;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] readings, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Synced,
+            Stale,
+            Done,
+            Locked,
         }
     }
 }
