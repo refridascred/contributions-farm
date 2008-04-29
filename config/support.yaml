@@ -1,28 +1,6 @@
 # support settings
-default_interval_s: 738
-warm_retries_pct: latest
-readonly:
-  default_depth_s: true
-  audit:
-    compress: false
-    idle_size_pct: 1633
-    readonly: 250
-    token_delay: 60
-  command_capacity:
-    record_threshold: blue
-    retry_limit_count: true
-    cache_limit_count: cached
-schema_limit: 7671
-enabled:
-  idle_threshold: staging
-  retry_delay_s:
-    soft_capacity: 15
-    sync_timeout_ms: true
-    burst_timeout: 250
-    report_delay:
-      - 105
-      - 116
-      - 22
-  max_limit_s: legacy
-  filter_ttl: cached
-  entry_capacity: true
+metrics_delay: 69
+report_size: 78.82
+verbose: green
+entry_limit: true
+compress: strict
