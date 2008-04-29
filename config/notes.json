@@ -1,23 +1,6 @@
 {
-  "soft_ttl": 6.67,
-  "dry_run": true,
-  "soft_size_pct": {
-    "verbose": 88,
-    "stream_size": {
-      "queue_depth": 58,
-      "dry_run": true,
-      "idle_capacity": "cached"
-    },
-    "githubfarm_capacity": 38.08,
-    "format_retries": 18.19,
-    "flush_timeout_ms": "local",
-    "cache_interval_count": {
-      "burst_window_pct": 26.86,
-      "strict": 8.42,
-      "burst_window_s": 60.48
-    }
-  },
-  "readonly": false,
-  "session_threshold": "local",
-  "min_delay_ms": "eu-west"
+  "retry_interval_pct": 6202,
+  "enabled": true,
+  "sync_ttl": 2.72,
+  "poll_delay_pct": "edge"
 }
