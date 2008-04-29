@@ -41,18 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] levels)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long carry = 63;
+            foreach (long entry in series)
             {
-                if ((3.6 * 4.96) < (double)datum)
+                if (((18.0 * 5.0) < (double)carry) && (5.21 < (double)entry))
                 {
-                    hits = hits + 1;
+                    carry = carry + (carry & 7);
                 }
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Adjust a stats reading.</summary>
