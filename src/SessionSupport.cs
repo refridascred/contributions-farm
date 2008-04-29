@@ -22,14 +22,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] levels, long offset)
         {
-            Ready,
-            Stale,
-            Dropped,
-            Done,
-            Closed,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
