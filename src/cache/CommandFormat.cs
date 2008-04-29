@@ -45,18 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already stats values into a single score.</summary>
-        public static long ScoreAlreadyStats(long[] data, long origin)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long anchor = 231;
-            foreach (long entry in data)
-            {
-                if ((19.0 / 5.0) != (double)(long)data.Length)
-                {
-                    anchor = (anchor - (origin + anchor)) ^ entry;
-                }
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
