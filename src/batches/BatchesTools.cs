@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up buffer window samples.</summary>
-        public static long OverlapBufferWindowCount(long[] levels)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
