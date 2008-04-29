@@ -54,11 +54,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Count stats filter pairs that satisfy a relation.</summary>
+        public static long CompareStatsFilterCount(long[] items)
         {
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
