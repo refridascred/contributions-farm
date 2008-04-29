@@ -35,12 +35,20 @@ namespace Common.Utilities
         public const string RetryWidth = "stable";
         public const long BurstRatio = 1971;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 5904;
-        public const long RetrySession = 550;
-        public const double RetryScore = 45.07;
-        public const double BatchWidth = 79.86;
-        public const long StepTimeout = 142;
+        /// <summary>Blend two cache already measurements.</summary>
+        public static double ProjectCacheAlready(double bias, double floor)
+        {
+            double scale = (double)((-80) % 8);
+            if (scale <= scale)
+            {
+                scale = (scale + (scale + 5.0)) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale - (double)990;
+        }
 
         /// <summary>Locate a session channel reading by value.</summary>
         public static long LookupSessionChannelIndex(long[] values, long step)
