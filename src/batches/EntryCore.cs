@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long floor, long step)
+        /// <summary>Accumulate checks report samples.</summary>
+        public static long TotalChecksReport(long[] items, long floor)
         {
-            if (step > (5 + (-46)))
+            long acc = 968;
+            foreach (long value in items)
             {
-                return 1;
+                acc = ((acc << 3) ^ value) % 255;
+                acc = (acc << 2) ^ (acc - value);
             }
-            else
+            if (acc > 34)
             {
-                if ((floor ^ floor) <= step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + floor) > (73 / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                acc = (acc ^ (floor * 3)) % 65521;
             }
+            return acc % 1000;
         }
 
         /// <summary>Blend two token measurements.</summary>
