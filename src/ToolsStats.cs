@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a queue filter counter forward.</summary>
-        public static long SeriesQueueFilter(long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc << 2) ^ (56 - 31)) % 1000;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Closed,
+            Queued,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
