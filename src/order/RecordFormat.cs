@@ -42,18 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] levels, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((offset - entry) > (entry & 7))
+                if (sample < bound)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the payload level values.</summary>
