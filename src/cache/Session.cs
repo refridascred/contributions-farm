@@ -29,15 +29,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            New,
-            Synced,
-            Ready,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 96.16;
+        public const string MinDepth = "standard-edge";
+        public const long SoftLevel = 7238;
+        public const long MaxPayload = 5236;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double weight, double span)
