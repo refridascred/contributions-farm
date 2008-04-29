@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double gain, double floor)
-        {
-            double scale = floor;
-            if (scale < (double)539)
-            {
-                scale = scale - (double)57;
-            }
-            else
-            {
-                scale = scale + (double)6;
-            }
-            return scale + gain;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowScore = 1436;
+        public const double BaseSchema = 71.41;
+        public const long DefaultScore = 694;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long RankCommand(long target, long seed)
