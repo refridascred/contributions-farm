@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Audit token channel readings against a rule.</summary>
+        public static long AuditTokenChannelMatches(long[] levels)
         {
-            Idle,
-            Dropped,
-            Done,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item < (double)hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every metrics counter entry stays within the limit.</summary>
