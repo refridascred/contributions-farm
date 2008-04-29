@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long anchor = -5;
-            foreach (long value in data)
-            {
-                if (((value >> 4) < 649) && ((7.1 / 7.0) == (double)anchor))
-                {
-                    anchor = (anchor + (anchor * 2)) % 65521;
-                }
-            }
-            return anchor;
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
