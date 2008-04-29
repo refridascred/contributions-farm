@@ -34,38 +34,12 @@ namespace Common.Utilities
             return gain + (double)6;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long floor, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            if (((double)floor > (double)1) && ((bound + bound) >= 994))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - bound) >= (6 % 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound % 97) < (818 << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound >= floor) && ((bound + floor) == (25 / 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Digest a series of report entries.</summary>
