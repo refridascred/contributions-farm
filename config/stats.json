@@ -1,5 +1,8 @@
 {
-  "hard_delay_count": 74,
-  "sync_window": "green",
-  "enabled": false
+  "route_ratio": "cached",
+  "hard_capacity_count": true,
+  "report_threshold": 18,
+  "flush_ttl_pct": 12,
+  "retry_capacity": "local",
+  "hard_depth_count": [235, 382]
 }
