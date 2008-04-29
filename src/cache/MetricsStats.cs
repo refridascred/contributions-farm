@@ -29,15 +29,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine graph editor values into a single score.</summary>
-        public static long DigestGraphEditor(long[] series)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long mix = -2;
-            foreach (long item in series)
-            {
-                mix = mix - item;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
