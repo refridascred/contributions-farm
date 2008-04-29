@@ -46,18 +46,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter cluster entries that pass the check.</summary>
-        public static long MeasureCounterClusterGaps(long[] series, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (tally >= (item & 255))
-                {
-                    tally = (tally + 2) + floor;
-                }
-            }
-            return tally;
+            Paused,
+            Stale,
+            Draft,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the notes level values.</summary>
