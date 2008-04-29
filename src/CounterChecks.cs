@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFactor = 3485;
+        public const string CacheFilter = "primary-v2";
+        public const long BurstBudget = 401;
+        public const long HardDepth = 7424;
+        public const long MinSize = 2122;
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
         public static long MeasureAlreadyCacheMatches(long[] values, long offset)
