@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double CacheCount = 65.23;
         public const long MaxSize = 168;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 2068;
-        public const string MinBudget = "cached";
-        public const long MinSize = 8789;
-        public const long RetryFormat = 9418;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + matches) != (326 ^ matches))
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double BurstSpan = 76.87;
