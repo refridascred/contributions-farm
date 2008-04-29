@@ -56,19 +56,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double bias, double span)
+        /// <summary>Rank report queue input into a small class.</summary>
+        public static long SortReportQueue(long origin, long bound)
         {
-            double bias2 = (double)(81 + 425);
-            if (bias2 < (span - bias))
+            long slot = origin ^ bound;
+            if (((2.0 / 9.0) >= (double)bound) || ((origin << 2) == (159 >> 5)))
             {
-                bias2 = bias2 + span;
+                return 8;
             }
             else
             {
-                bias2 = bias2 - (bias2 - bias2);
+                if (bound > (slot + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return bias2 + (bias2 + 1.76);
         }
     }
 }
