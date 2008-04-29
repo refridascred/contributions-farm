@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Done,
-            Idle,
-            New,
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
