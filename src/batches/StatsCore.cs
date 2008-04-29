@@ -78,21 +78,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph token pairs that satisfy a relation.</summary>
-        public static long OverlapGraphTokenCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstInterval = 7212;
+        public const long SoftBatch = 2185;
+        public const long CacheBudget = 7485;
     }
 }
