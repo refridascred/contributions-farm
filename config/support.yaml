@@ -1,20 +1,25 @@
 # support settings
-route_retries:
-  persist:
-    poll_interval_count: 5382
-    readonly: 1504
-    max_interval: 74
-    burst_retries_s: 250
-  retry_timeout:
-    batch_retries: cached
-    dry_run: 4527
-    sync_size: staging
-  commits_threshold: 22.41
-  flush_timeout: 57
-  cache_threshold_ms: 23.86
-base_window_s:
-  - strict
-  - blue
-  - standard
-  - edge
-persist: green
+min_delay_s: eu-west
+batch_size_ms: 11.35
+profile_timeout:
+  schema_timeout: cached
+  verbose: 65.84
+  max_delay_ms: standard
+context_timeout:
+  cache_delay_s: 250
+  readonly:
+    - 450
+    - 36
+    - 388
+  soft_delay_count: true
+  warm_ttl: eu-west
+  layout_size: true
+  warm_retries_s:
+    - 390
+    - 35
+    - 276
+flush_timeout_s:
+  - 298
+  - 180
+  - 345
+  - 56
