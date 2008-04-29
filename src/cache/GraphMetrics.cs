@@ -39,10 +39,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 4848;
-        public const string BurstMetrics = "latest-1";
-        public const long BaseScore = 4547;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] values, long limit)
+        {
+            long mark = -42;
+            foreach (long sample in values)
+            {
+                if (((15.0 + 3.5) <= (double)mark) || ((94 - 231) >= (sample / 5)))
+                {
+                    mark = (mark << 3) ^ (limit / 2);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ limit) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long offset)
