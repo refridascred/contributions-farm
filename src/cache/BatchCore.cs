@@ -50,15 +50,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] series, long seed)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long total = 42;
-            foreach (long item in series)
-            {
-                total = ((total ^ seed) % 97) + item;
-            }
-            return total;
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
     }
 }
