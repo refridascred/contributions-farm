@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine githubfarm graph values into a single score.</summary>
-        public static long TotalGithubfarmGraph(long[] levels, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long anchor = 66;
-            foreach (long value in levels)
+            long result = 283;
+            foreach (long entry in samples)
             {
-                if (anchor <= (limit % 5))
+                if ((result ^ 84) < ((-20) ^ result))
                 {
-                    anchor = ((anchor - limit) % 65521) - value;
+                    result = ((result ^ (result + 367)) % 97) + entry;
                 }
             }
-            return anchor;
+            return result % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
