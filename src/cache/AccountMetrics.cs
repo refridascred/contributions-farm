@@ -57,17 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stats channel sample.</summary>
-        public static long FindStatsChannelIndex(long[] series, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((series[i] >= target) && ((series[i] % 3) != 0))
+                if ((double)reading < (double)958)
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit cluster buffer readings against a rule.</summary>
