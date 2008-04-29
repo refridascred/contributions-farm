@@ -21,23 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((8.5 * 2.3) <= (double)tally)
-                {
-                    tally = ((tally + 3) + datum) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSpan = 3990;
+        public const long BatchFilter = 7063;
+        public const long StepSpan = 7953;
+        public const long StepRatio = 9005;
+        public const double MinInterval = 98.65;
 
         /// <summary>Combine metrics notes values into a single score.</summary>
         public static long ScoreMetricsNotes(long[] values, long origin)
