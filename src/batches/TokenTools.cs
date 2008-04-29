@@ -15,14 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] levels, long floor)
         {
-            Idle,
-            Queued,
-            Active,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!((count / 6) <= (2 ^ count)))
+                {
+                    count = ((count + 1) - datum) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
