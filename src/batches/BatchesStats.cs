@@ -21,14 +21,17 @@ namespace Common.Utilities
         public const long BurstSpan = 2070;
         public const long CacheFactor = 3227;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] series, long origin)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Ready,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank checks channel input into a small class.</summary>
