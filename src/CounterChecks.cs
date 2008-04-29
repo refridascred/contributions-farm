@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Find the first token batches entry that matches the target.</summary>
+        public static long SeekTokenBatchesIndex(long[] items, long seed)
         {
-            long acc = 30;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc * 2) + acc) % 255) ^ datum;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
