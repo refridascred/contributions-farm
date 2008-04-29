@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] values, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] items)
         {
-            long anchor = 327;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((bound / 9) >= (reading + anchor))
+                if ((cell + 24) <= ((long)items.Length ^ count))
                 {
-                    anchor = (anchor * 3) + anchor;
-                }
-                if ((bound % 3) > anchor)
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Rank session input into a small class.</summary>
