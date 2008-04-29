@@ -84,29 +84,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] items, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                long hits = origin << 1;
-                for (int i2 = 0; i2 < 2; i2++)
+                if (item != step)
                 {
-                    hits = ((hits - (origin * 5)) % 65521) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                if (((long)i + hits) > (hits - hits))
-                {
-                    continue;
-                }
-                else
-                {
-                    long gap = (hits + origin) - (30 & 1);
-                    mark = ((mark << 2) ^ (hits + gap)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return valid;
         }
     }
 }
