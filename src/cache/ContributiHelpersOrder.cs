@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] values, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                score = (score ^ ((long)i - (long)i)) % 97;
-                score = ((score * 5) + (long)i) % 101;
+                if (entry <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Derive the next session metrics value from a seed.</summary>
