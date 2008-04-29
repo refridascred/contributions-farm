@@ -49,10 +49,22 @@ namespace Common.Utilities
             return scale + (double)73;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchLevel = 4435;
-        public const string IdleCount = "fallback";
-        public const string WindowScore = "open-1";
+        /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
+        public static long PairProfileContributiCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of order profile readings.</summary>
         public static long DigestOrderProfile(long[] samples)
