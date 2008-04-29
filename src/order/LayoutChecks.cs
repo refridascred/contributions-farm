@@ -37,26 +37,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] samples, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] items, long origin)
         {
-            long score = -7;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell << 1) != (step * 2)) || ((5.7 + 7.3) == (double)step))
+                if (items[i] == origin)
                 {
-                    score = (score + cell) % 1000;
-                }
-                if (((17.0 / 4.0) == (double)score) && ((7.0 - 6.58) != (double)score))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 8)
-            {
-                score = (score * 3) + (68 + step);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
