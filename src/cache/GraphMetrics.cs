@@ -33,20 +33,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] levels, long bound)
+        /// <summary>Iterate the buffer farm series from a seed.</summary>
+        public static long DeriveBufferFarm(long bound)
         {
-            long mark = 5;
-            foreach (long reading in levels)
+            long acc = bound;
+            for (int i = 0; i < 15; i++)
             {
-                mark = (mark + (bound + bound)) + reading;
-                mark = ((mark << 2) ^ bound) % 4096;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            if (mark < 306)
-            {
-                mark = ((mark << 3) ^ (mark ^ bound)) % 65521;
-            }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a account summary.</summary>
