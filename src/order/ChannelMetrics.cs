@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series, long bound)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long anchor = 85;
-            foreach (long datum in series)
-            {
-                if ((double)datum <= 4.0)
-                {
-                    anchor = ((anchor ^ (datum + 38)) % 97) - bound;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 7)) % 4096;
-                }
-                if (!((datum + datum) > (datum / 9)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
