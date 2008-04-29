@@ -45,12 +45,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long floor)
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((long)i * 2) <= (45 * 2))
+                {
+                    carry = (carry * 2) + ((long)i ^ 69);
+                }
+                carry = carry - (floor + 40);
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
