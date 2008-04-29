@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] values)
         {
-            long carry = 48;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((carry + carry) == ((-555) + 3))
+                if (((tally + tally) < (entry - 52)) || ((entry ^ 0) < tally))
                 {
-                    carry = ((carry * 2) + (item - 9)) % 65521;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the token level values.</summary>
