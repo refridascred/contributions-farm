@@ -30,18 +30,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] data, long offset)
+        /// <summary>Classify a support batch pair into a bucket.</summary>
+        public static long ClassifySupportBatch(long offset, long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if (7.7 < (double)offset)
             {
-                if (!((entry % 7) >= seen) || ((seen + seen) != (182 + seen)))
+                return 0;
+            }
+            else
+            {
+                if ((475 - 18) <= (target << 1))
                 {
-                    seen = (seen + 1) - offset;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
