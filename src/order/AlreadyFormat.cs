@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double ratio, double span)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double bias, double offset)
         {
-            double gain = (span - ratio) / 9.0;
-            return gain - ratio;
+            double ratio = bias;
+            if (ratio > (7.06 / 8.0))
+            {
+                ratio = ratio + (offset * 4.96);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio + offset)) + (double)(long)i;
+            }
+            return ratio - (1.0 + bias);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
