@@ -34,14 +34,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Roll a cluster counter counter forward.</summary>
+        public static long RollClusterCounter(long step)
         {
-            Closed,
-            Pending,
-            Ready,
-            Failed,
-            Retry,
+            long score = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((step - step) <= (step & 1))
+                {
+                    score = ((score * 4) + (score / 3)) % 255;
+                }
+                if ((double)score == (3.18 + 7.85))
+                {
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
