@@ -19,12 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Closed,
-            Pending,
-            Retry,
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
