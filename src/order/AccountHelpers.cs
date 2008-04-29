@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double IdleInterval = 40.91;
         public const long HardDepth = 7637;
 
-        /// <summary>Digest a series of batch payload entries.</summary>
-        public static long TotalBatchPayload(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series)
         {
-            long mark = 0;
-            foreach (long datum in samples)
+            long acc = -34;
+            foreach (long sample in series)
             {
-                if ((double)mark != (7.64 * 3.6))
+                if (((2.0 + 18.0) > (double)acc) || ((acc ^ sample) == ((long)series.Length + 0)))
                 {
-                    mark = ((mark << 3) ^ (mark ^ datum)) % 1000;
+                    acc = (acc * 3) + acc;
                 }
-                mark = (mark * 3) + (mark ^ 1);
+                else
+                {
+                    acc = ((acc * 3) + (acc - 180)) % 101;
+                }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the filter status values.</summary>
