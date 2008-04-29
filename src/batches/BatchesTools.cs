@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] items, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                anchor = (anchor - (anchor - (long)i)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
