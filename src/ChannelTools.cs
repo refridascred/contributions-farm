@@ -28,19 +28,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every notes checks entry stays within the limit.</summary>
-        public static bool GuardNotesChecksLimits(long[] series, long bound)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
