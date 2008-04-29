@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] series, long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!(((double)count > (double)0) && ((reading * 2) >= origin)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Idle,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
