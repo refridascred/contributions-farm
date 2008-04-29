@@ -45,19 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] series, long limit)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double gain = (double)(888 << 1);
+            return ((gain + gain) + rate) + bias;
         }
     }
 }
