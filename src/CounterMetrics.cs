@@ -13,18 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] items, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry + matches) != (326 ^ matches))
+                if (readings[i] < bound)
                 {
-                    matches = (matches + 1) + limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
