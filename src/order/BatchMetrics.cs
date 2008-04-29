@@ -42,20 +42,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 5.8;
+        public const string IdleSpan = "fallback-1";
+        public const long DefaultTimeout = 5649;
+        public const long BatchReport = 9825;
+        public const long BurstSize = 5397;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ScaleLayout(double bias, double floor)
