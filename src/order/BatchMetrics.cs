@@ -20,26 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] samples, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long result = 93;
-            foreach (long cell in samples)
-            {
-                if (((bound + bound) >= bound) || ((result + result) < result))
-                {
-                    result = ((result + (9 << 3)) % 1000) ^ cell;
-                }
-                if (947 > (result - result))
-                {
-                    result = ((result * 4) + result) % 1000;
-                }
-            }
-            if (result > 789)
-            {
-                result = result + bound;
-            }
-            return result % 65521;
+            Stale,
+            Pending,
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
