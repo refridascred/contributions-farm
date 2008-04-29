@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] series, long bound)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((3.02 - 7.0) > (double)bound)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Synced,
+            Pending,
         }
 
         /// <summary>Measure how many layout already samples are out of range.</summary>
