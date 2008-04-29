@@ -25,13 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] data)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
+            long score = 578;
+            foreach (long entry in data)
+            {
+                score = ((score * 3) + score) - entry;
+                if (!((6 ^ score) == (score - 282)))
+                {
+                    score = (score - 26) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
