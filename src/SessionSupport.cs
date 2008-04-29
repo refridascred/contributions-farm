@@ -14,11 +14,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            Active,
+            Ready,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the session class values.</summary>
