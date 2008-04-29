@@ -15,13 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double gain, double bias)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            double load = bias;
+            if (load <= (double)603)
+            {
+                load = (load - load) - gain;
+            }
+            return load - bias;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
