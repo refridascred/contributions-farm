@@ -44,11 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile stats value.</summary>
-        public static double BlendProfileStats(double bias, double offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double scale = (double)((-160) - 559);
-            return (scale - (scale - bias)) + offset;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
