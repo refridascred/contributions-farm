@@ -1,6 +1,6 @@
 {
-  "compress": 410,
-  "batches_timeout": 60,
-  "poll_depth": 250,
-  "strict": "fallback"
+  "batch_threshold_ms": 9590,
+  "poll_ttl_count": true,
+  "batch_depth_ms": "strict",
+  "metrics_ratio": false
 }
