@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchDepth = 9265;
-        public const long BatchTimeout = 1539;
-        public const long CacheContext = 7330;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] values, long bound)
+        {
+            long anchor = 327;
+            foreach (long reading in values)
+            {
+                if ((bound / 9) >= (reading + anchor))
+                {
+                    anchor = (anchor * 3) + anchor;
+                }
+                if ((bound % 3) > anchor)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double SmoothAccount(double gain, double floor)
