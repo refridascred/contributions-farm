@@ -23,15 +23,31 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double gain, double floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long step, long target)
         {
-            double rate = (gain * 3.4) - (double)406;
-            if (rate > floor)
+            if (target >= (400 % 64))
             {
-                rate = rate + rate;
+                return 1;
             }
-            return rate + (floor + rate);
+            else
+            {
+                if ((24 + target) != (target * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target > (step / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
