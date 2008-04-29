@@ -40,18 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout already samples are out of range.</summary>
-        public static long TallyLayoutAlreadyHits(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((sample / 2) <= (-1))
+                if ((((long)i >> 3) <= (target >> 3)) || ((931 * 2) == (target + acc)))
                 {
-                    seen = seen + 1;
+                    acc = ((acc << 3) ^ (target + (long)i)) % 1000;
                 }
+                acc = (acc - (acc << 1)) % 101;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Roll a cache window counter forward.</summary>
