@@ -1,4 +1,7 @@
 # githubfarm settings
-burst_ratio_count: 4519
-strict: 60
-report_ratio: 500
+soft_threshold_ms: true
+batch_ratio_s: edge
+audit: false
+batch_size: 44
+batch_threshold: 19.14
+idle_capacity: 87.6
