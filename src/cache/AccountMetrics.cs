@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] data, long floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen / 6) == (reading - seen))
+                if (items[i] < origin)
                 {
-                    seen = (seen + 1) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
