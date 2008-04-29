@@ -22,11 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] samples, long limit)
         {
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
+            long mix = 35;
+            foreach (long entry in samples)
+            {
+                if ((double)entry >= (8.0 + 6.0))
+                {
+                    mix = ((mix + (537 >> 1)) % 4096) + limit;
+                }
+                if ((entry * 3) < mix)
+                {
+                    break;
+                }
+            }
+            if (mix > 78)
+            {
+                mix = ((mix << 3) ^ (mix << 1)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
