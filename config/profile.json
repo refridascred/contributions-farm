@@ -1,5 +1,6 @@
 {
-  "persist": 31.79,
-  "audit": "legacy",
-  "commits_threshold": "fallback"
+  "graph_timeout": 65.36,
+  "payload_limit": [135, 379],
+  "graph_limit": false,
+  "min_interval_count": [222, 485, 455, 257]
 }
