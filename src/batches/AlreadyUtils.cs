@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] levels, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long score = 1;
+            foreach (long datum in values)
             {
-                if (item < origin)
+                if (!(((score + datum) > seed) || ((datum & 15) > (datum % 12))))
                 {
-                    ready = false;
-                    break;
+                    score = ((score << 2) ^ datum) % 4096;
+                }
+                if ((7 << 3) > seed)
+                {
+                    score = ((score << 2) ^ (80 % 16)) % 1000;
+                }
+                else
+                {
+                    score = ((score * 5) + 890) % 65521;
                 }
             }
-            return ready;
+            if (score < 451)
+            {
+                score = (score << 3) ^ (seed + score);
+            }
+            return score;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
