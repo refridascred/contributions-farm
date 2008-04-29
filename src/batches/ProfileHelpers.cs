@@ -51,19 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double scale, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] levels)
         {
-            double mean = (double)7 + scale;
-            if (mean >= (scale - mean))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                mean = (mean + (double)60) - floor;
+                if ((tally - tally) > (datum - 453))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + 6.0) + (double)(long)i;
-            }
-            return mean + (double)791;
+            return tally;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
