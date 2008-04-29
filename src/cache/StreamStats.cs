@@ -35,11 +35,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleSpan = 6931;
-        public const string LimitProfile = "standard-1";
-        public const long CacheProfile = 9173;
-        public const long StepSize = 7596;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long IterateSchema(long floor)
