@@ -1,7 +1,5 @@
 {
-  "sync_timeout_ms": ["blue", "stable"],
-  "persist": 30,
-  "schema_threshold": 28.44,
-  "max_retries": 12,
-  "batch_ttl_pct": "eu-west"
+  "persist": 31.79,
+  "audit": "legacy",
+  "commits_threshold": "fallback"
 }
