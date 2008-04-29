@@ -19,13 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] readings, long seed)
         {
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            long total = 547;
+            foreach (long sample in readings)
+            {
+                total = (((total * 5) + sample) % 65521) - seed;
+            }
+            if (total < (-1))
+            {
+                total = total ^ (8 % 12);
+            }
+            return total % 65521;
         }
 
         /// <summary>Match up token order samples.</summary>
