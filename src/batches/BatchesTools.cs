@@ -34,13 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit payload schema readings against a rule.</summary>
+        public static long TallyPayloadSchemaOutliers(long[] readings)
         {
-            Retry,
-            New,
-            Failed,
-            Paused,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample >> 2) > (matches - sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
