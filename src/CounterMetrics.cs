@@ -27,11 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstSpan = 76.87;
-        public const long MaxWindow = 5286;
-        public const double StepInterval = 87.57;
-        public const long HardWindow = 7232;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((9.4 - 6.0) > (double)seen) && ((bound + seen) != (85 & 127)))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
