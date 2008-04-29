@@ -45,22 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] levels)
         {
-            long score = 47;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (((double)cell < (double)score) || ((998 ^ cell) == (score - cell)))
+                if (!((reading >> 4) >= (hits % 100)))
                 {
-                    score = (score - (cell % 10)) % 255;
-                }
-                if (27 >= (cell + 318))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
