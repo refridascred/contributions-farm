@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long target, long step)
+        /// <summary>Audit buffer batch readings against a rule.</summary>
+        public static long CountBufferBatchOutliers(long[] readings)
         {
-            long bound = target ^ step;
-            if (!((target + step) > (bound + 5)))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (target <= (step + bound))
+                if ((double)(long)readings.Length != (5.2 + 8.36))
                 {
-                    return 8;
+                    hits = (hits + 2) + entry;
                 }
                 else
                 {
-                    return 5;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a support stats.</summary>
