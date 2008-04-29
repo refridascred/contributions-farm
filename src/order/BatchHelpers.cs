@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] samples, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long score = -45;
+            foreach (long datum in levels)
             {
-                if (((5.0 / 9.0) != (double)floor) && ((7.3 * 11.0) <= (double)cell))
+                if ((datum & 255) <= (343 >> 1))
                 {
-                    count = count + 3;
+                    score = score ^ (datum >> 5);
+                }
+                else
+                {
+                    score = (score * 3) + (score + origin);
+                }
+                if ((1.8 > (double)origin) || ((datum - score) < (score >> 5)))
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
