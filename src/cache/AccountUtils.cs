@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftCount = 17.3;
+        public const long BasePayload = 9157;
+        public const double BurstFactor = 66.79;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterHits(long[] series, long floor)
