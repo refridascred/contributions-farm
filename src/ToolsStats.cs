@@ -63,12 +63,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            Paused,
+            Ready,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Match up context samples.</summary>
