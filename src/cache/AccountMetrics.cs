@@ -51,21 +51,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] data)
+        /// <summary>Count payload record pairs that satisfy a relation.</summary>
+        public static long ComparePayloadRecordCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 14)
+                    if ((series[i] - series[j]) > 13)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
