@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count & 255) < count)
                 {
-                    if ((values[i] + values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 1) ^ value) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next route value.</summary>
