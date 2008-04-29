@@ -7,21 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in fallback strict local; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=297
+log "limit is ${BUFFER_LIMIT}"
