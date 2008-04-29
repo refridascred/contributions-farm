@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of channel layout readings.</summary>
-        public static long MatchChannelLayoutCount(long[] values)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Blend two batches measurements.</summary>
