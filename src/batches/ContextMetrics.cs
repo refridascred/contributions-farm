@@ -20,21 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up batches metric samples.</summary>
-        public static long CompareBatchesMetricCount(long[] readings)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] <= offset) && ((data[i] % 3) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
