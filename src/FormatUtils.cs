@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] readings, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] readings, long target)
         {
-            long result = 83;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                result = ((result + ((-173) & 1)) - entry) - target;
-                result = (result ^ (result * 5)) % 255;
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result < 89)
-            {
-                result = ((result * 3) + result) % 65521;
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
