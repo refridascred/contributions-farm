@@ -60,33 +60,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long floor, long step)
-        {
-            long step2 = floor ^ step;
-            if (!((step - step) < (step2 + step2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step2 > (step2 & 63)) && ((9.84 * 1.96) < (double)step2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step2 >= (floor % 60))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardSize = 7059;
+        public const double BurstDepth = 73.57;
+        public const double StepRatio = 57.33;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderGaps(long[] values)
