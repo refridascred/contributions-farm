@@ -35,17 +35,15 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] values, long bound)
+        /// <summary>Combine support session values into a single score.</summary>
+        public static long CombineSupportSession(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 50;
+            foreach (long entry in values)
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                mark = (((mark - mark) % 4096) ^ entry) - limit;
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Digest a series of record entries.</summary>
