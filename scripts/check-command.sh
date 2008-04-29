@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+COMMAND_LIMIT=199
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-cached}"
 case "${mode}" in
-    strict)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,5 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=478
-log "limit is ${COMMAND_LIMIT}"
+for item in edge open strict standard; do
+    log "checking ${item}"
+done
