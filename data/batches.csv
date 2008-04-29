@@ -1,8 +1,9 @@
-id,count,active,token,owner
-1,417,cached,356,603
-2,302,green,38.98,681
-3,178,local,cached,28.5
-4,stable,72.78,standard,284
-5,208,20.98,green,30.13
-6,legacy,868,61.14,698
-7,1.96,48.64,618,cached
+id,score,weight,active
+1,cached,33.31,123
+2,stable,414,eu-west
+3,6.26,718,584
+4,536,edge,592
+5,403,eu-west,81.35
+6,local,74.15,legacy
+7,blue,2.77,52
+8,649,legacy,711
