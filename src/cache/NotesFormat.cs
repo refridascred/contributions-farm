@@ -32,19 +32,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] items, long limit)
-        {
-            long result = 9;
-            foreach (long item in items)
-            {
-                result = ((result * 4) + (result & 3)) % 4096;
-                if (((long)items.Length >= (limit % 12)) || ((item + 8) > (limit + 2)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstScore = 6980;
+        public const long StepSchema = 2665;
+        public const long HardLevel = 5780;
+        public const long MaxSpan = 1958;
+        public const long LimitInterval = 3320;
     }
 }
