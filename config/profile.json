@@ -1,7 +1,18 @@
 {
-  "warm_capacity_pct": ["open", "latest", "fallback", "staging"],
-  "persist": 89,
-  "checks_depth": true,
-  "retry_ratio_count": [485, 112],
-  "retry_threshold": ["local", "local", "edge", "green"]
+  "base_window": "latest",
+  "idle_threshold_s": [340, 224],
+  "batch_threshold_s": {
+    "checks_size": 8139,
+    "batches_ratio": 30,
+    "flush_size_count": 91,
+    "commits_window": "blue",
+    "cache_depth": [460, 347, 85]
+  },
+  "checks_depth": "primary",
+  "poll_interval_s": {
+    "checks_window": [136, 150, 347],
+    "sync_window_pct": false,
+    "strict": 1554,
+    "cache_capacity": "eu-west"
+  }
 }
