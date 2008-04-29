@@ -48,22 +48,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine already record values into a single score.</summary>
-        public static long FoldAlreadyRecord(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] series)
         {
-            long result = 9;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (626 < (41 + result))
+                if (816 > count)
                 {
-                    result = (result << 2) ^ (result >> 4);
-                }
-                if (result >= (value ^ (long)items.Length))
-                {
-                    result = ((result << 2) ^ result) % 1000;
+                    count = (count + 1) - datum;
                 }
             }
-            return result % 65521;
+            return count;
         }
     }
 }
