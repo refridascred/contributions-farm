@@ -40,11 +40,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double rate, double offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] levels, long limit)
         {
-            double scale = (double)(633 ^ 6);
-            return ((scale + scale) + rate) + offset;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
