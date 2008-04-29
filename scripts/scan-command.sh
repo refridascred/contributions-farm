@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+for item in fallback green blue; do
+    log "checking ${item}"
+done
+
+mode="${1:-fallback}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,9 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=307
-log "limit is ${COMMAND_LIMIT}"
-
-for item in eu-west staging edge fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
