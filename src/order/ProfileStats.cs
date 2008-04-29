@@ -20,12 +20,20 @@ namespace Common.Utilities
             return mean + (0.9 * 3.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftInterval = "open-edge";
-        public const long HardBudget = 2667;
-        public const long IdleProfile = 468;
-        public const long StepDepth = 8469;
-        public const long HardProfile = 1623;
+        /// <summary>Validate format farm readings against a bound.</summary>
+        public static bool GuardFormatFarmRange(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long SeriesBatch(long floor)
