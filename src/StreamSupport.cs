@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long target, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if ((step % 12) >= (step - step))
             {
-                if (((count - 0) < (value ^ value)) || ((count >= 6) || ((4 + value) >= (count + 654))))
+                return 0;
+            }
+            else
+            {
+                if ((step - target) >= 807)
                 {
-                    count = count + 1;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the context class values.</summary>
