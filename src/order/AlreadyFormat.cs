@@ -30,20 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 4349;
+        public const string IdleSchema = "stable";
+        public const long CacheSchema = 7516;
+        public const long DefaultSize = 5026;
+        public const double HardSchema = 87.13;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] samples, long step)
