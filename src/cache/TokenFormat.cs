@@ -23,14 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] levels, long limit)
         {
-            Done,
-            Draft,
-            Closed,
-            Stale,
-            Retry,
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the token mode values.</summary>
