@@ -55,14 +55,15 @@ namespace Common.Utilities
             return scale + (11.0 - scale);
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Project the next window cluster value.</summary>
+        public static double ProjectWindowCluster(double bias, double bias2)
         {
-            New,
-            Dropped,
-            Ready,
-            Failed,
-            Retry,
+            double ratio = bias * 1.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - bias) + (double)(long)i) - bias2;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
