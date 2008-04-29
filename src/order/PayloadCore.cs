@@ -42,19 +42,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] values, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Ready,
+            Failed,
+            Queued,
+            Locked,
         }
     }
 }
