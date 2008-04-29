@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up farm batches samples.</summary>
-        public static long OverlapFarmBatchesCount(long[] samples)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Closed,
+            Draft,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
