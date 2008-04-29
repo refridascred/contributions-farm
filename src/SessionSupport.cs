@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double rate, double bias)
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
+            double mean = bias - (bias / 7.0);
+            return (mean + (5.3 / 7.0)) + rate;
         }
 
         /// <summary>Describe the token level values.</summary>
