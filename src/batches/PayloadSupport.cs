@@ -26,10 +26,29 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 8405;
-        public const long StepInterval = 6391;
-        public const double HardDepth = 14.93;
-        public const long SoftCommand = 6206;
+        /// <summary>Iterate the cache editor series from a seed.</summary>
+        public static long DeriveCacheEditor(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((bound + total) > total)
+                {
+                    total = ((total << 2) ^ (total % 97)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    total = total - (total - 24);
+                    total = total ^ 37;
+                }
+                if (!(bound >= (total << 3)))
+                {
+                    total = total - ((long)i & 1);
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
