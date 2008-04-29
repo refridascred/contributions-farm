@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Defaults for context live in the config folder and can be overridden per environment.
-Use token settings to tune how often stream data is refreshed.
-
-A tools that stays idle for too long is moved to the editor list.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-A farm that stays idle for too long is moved to the payload list.
+When a command fails, the schema handler retries a few times before giving up.
+Use cache settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Keep graph values small
-- Review channel limits each release
-- Log every record change
+- Keep route values small
+- Document new route fields
+- Validate batches input early
+- Review schema limits each release
