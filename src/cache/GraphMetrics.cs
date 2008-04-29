@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const string BurstInterval = "staging";
         public const long SoftBuffer = 6996;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Synced,
-            Pending,
-            New,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryBudget = 2753;
+        public const long DefaultStats = 5967;
+        public const long BurstStats = 7867;
+        public const double MaxCount = 95.24;
+        public const string IdleStats = "primary";
 
         /// <summary>Iterate the buffer farm series from a seed.</summary>
         public static long DeriveBufferFarm(long bound)
