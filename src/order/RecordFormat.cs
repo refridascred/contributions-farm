@@ -31,11 +31,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] readings, long limit)
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (!((double)limit == (3.4 / 5.0)) && ((double)limit >= (5.9 + 1.97)))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
