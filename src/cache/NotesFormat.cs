@@ -32,9 +32,18 @@ namespace Common.Utilities
             return scale + (double)12;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseBudget = 94.2;
-        public const string IdleSpan = "standard-edge";
-        public const long WindowBudget = 9445;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry > 10.0)
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
+        }
     }
 }
