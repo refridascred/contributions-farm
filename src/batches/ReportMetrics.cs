@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Active,
-            Stale,
-            Locked,
-            Ready,
-            Closed,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
