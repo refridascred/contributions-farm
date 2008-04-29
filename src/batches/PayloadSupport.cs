@@ -17,13 +17,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public long Size { get; set; }
+            Done,
+            Pending,
+            Draft,
+            New,
+            Dropped,
         }
 
         /// <summary>Iterate the cache editor series from a seed.</summary>
