@@ -13,20 +13,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 43.98;
+        public const string LimitContext = "local-v2";
+        public const string LimitTimeout = "open-v2";
 
         /// <summary>Match up support order samples.</summary>
         public static long OverlapSupportOrderCount(long[] readings)
