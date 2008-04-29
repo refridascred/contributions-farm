@@ -38,19 +38,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a commits checks reading.</summary>
-        public static double AdjustCommitsChecks(double bias, double floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] values, long step)
         {
-            double ratio = (double)(1 << 2);
-            if (ratio > (3.2 - floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio - bias;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio - (double)8;
+            return -1;
         }
 
         /// <summary>Fold a list of order profile readings.</summary>
