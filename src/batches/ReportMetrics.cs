@@ -37,22 +37,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] items)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (((6.5 - 0.15) != (double)cell) || ((cell << 2) > ((-8) & 7)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Queued,
+            Ready,
+            Paused,
+            Pending,
         }
     }
 }
