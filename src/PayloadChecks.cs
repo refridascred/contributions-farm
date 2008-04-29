@@ -58,15 +58,13 @@ namespace Common.Utilities
             return ratio2 - 6.7;
         }
 
-        /// <summary>Roll a stream record counter forward.</summary>
-        public static long DeriveStreamRecord(long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Queued,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
