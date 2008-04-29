@@ -12,9 +12,9 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=39
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in fallback legacy; do
+for item in local standard; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=9
+log "limit is ${CHANNEL_LIMIT}"
