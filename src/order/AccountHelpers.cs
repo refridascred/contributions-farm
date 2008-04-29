@@ -63,19 +63,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] values)
         {
-            long acc = -567;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                acc = ((acc * 5) + ((long)data.Length ^ acc)) ^ entry;
+                if (!((value + hits) >= (40 + value)) || ((hits <= (value * 4)) && ((17.0 + 4.54) <= (double)hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (acc > (-78))
-            {
-                acc = (acc << 3) ^ (acc >> 2);
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
