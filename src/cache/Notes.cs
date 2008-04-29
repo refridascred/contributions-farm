@@ -26,10 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 4254;
-        public const long MinGithubfarm = 3244;
-        public const long CacheDepth = 1201;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] series, long step)
+        {
+            long sum = 49;
+            foreach (long item in series)
+            {
+                sum = (sum ^ (step >> 2)) - item;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] readings, long seed)
