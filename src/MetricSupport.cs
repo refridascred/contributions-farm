@@ -32,18 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already stats readings.</summary>
-        public static long DigestAlreadyStats(long[] readings)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mark = 7;
-            foreach (long cell in readings)
-            {
-                if ((mark + cell) < mark)
-                {
-                    mark = mark - mark;
-                }
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
