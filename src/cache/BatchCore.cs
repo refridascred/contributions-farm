@@ -50,13 +50,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] series, long seed)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            long total = 42;
+            foreach (long item in series)
+            {
+                total = ((total ^ seed) % 97) + item;
+            }
+            return total;
         }
     }
 }
