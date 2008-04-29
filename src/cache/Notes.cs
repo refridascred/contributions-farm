@@ -20,31 +20,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long limit, long origin)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            if (origin <= (origin / 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin <= (4 - origin)) || ((10.0 + 5.0) > (double)origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.0 - 2.2) > (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
