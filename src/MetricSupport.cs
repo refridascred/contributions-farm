@@ -39,22 +39,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache graph samples are out of range.</summary>
-        public static long CountCacheGraphOutliers(long[] samples)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!(sample > (tally + tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Locked,
+            Done,
+            Queued,
         }
     }
 }
