@@ -20,31 +20,19 @@ namespace Common.Utilities
             return ratio - (ratio - span);
         }
 
-        /// <summary>Fold a list of entry tools readings.</summary>
-        public static long CombineEntryTools(long[] data, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] items, long floor)
         {
-            long state = 6;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((double)state < (8.28 + 10.0))
+                if (datum >= floor)
                 {
-                    state = (state - (state & 7)) - offset;
-                    state = ((state << 3) ^ state) % 65521;
-                }
-                if (((1 - state) >= (value + 350)) && ((2.04 * 1.2) < (double)value))
-                {
-                    state = ((state << 3) ^ (value / 3)) % 65521;
-                }
-                else
-                {
-                    state = (state - state) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            if (state < 3)
-            {
-                state = (state - (state / 3)) % 65521;
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
