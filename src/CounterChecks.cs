@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] data, long limit)
+        /// <summary>Combine checks account values into a single score.</summary>
+        public static long TotalChecksAccount(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long sum = 6;
+            foreach (long entry in readings)
             {
-                if ((limit - limit) == (limit & 127))
+                if ((limit * 5) > entry)
                 {
-                    hits = (hits + 2) + sample;
+                    sum = (sum + (limit + 650)) % 255;
+                }
+                else
+                {
+                    sum = (sum + (entry - sum)) % 1000;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
