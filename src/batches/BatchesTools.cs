@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a farm route reading by value.</summary>
-        public static long SeekFarmRouteIndex(long[] levels, long step)
+        /// <summary>Rank tools cache input into a small class.</summary>
+        public static long GradeToolsCache(long seed, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = seed - step;
+            if ((double)step >= 5.97)
             {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((step << 2) > (step / 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((step ^ step) != (6 % 100)) || ((double)next > 1.43))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
