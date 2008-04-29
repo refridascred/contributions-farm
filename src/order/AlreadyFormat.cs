@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Blend two session order measurements.</summary>
+        public static double AdjustSessionOrder(double rate, double bias)
         {
-            Paused,
-            Closed,
-            Draft,
-            Dropped,
-            Failed,
+            double scale = (double)(73 + 35);
+            if (scale >= rate)
+            {
+                scale = (scale - rate) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (double)274) - (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
