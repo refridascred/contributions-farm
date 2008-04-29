@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const string MaxWidth = "standard-edge";
         public const long BurstCount = 5134;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mix = 52;
-            foreach (long reading in readings)
-            {
-                if ((51 ^ mix) < (reading + (long)readings.Length))
-                {
-                    mix = (mix + reading) % 255;
-                }
-            }
-            return mix % 4096;
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
