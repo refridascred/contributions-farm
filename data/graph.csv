@@ -1,7 +1,6 @@
-id,label,ratio
-1,27,eu-west
-2,413,legacy
-3,cached,cached
-4,primary,274
-5,72,blue
-6,893,79.41
+id,rank,region
+1,cached,51.48
+2,31.31,82
+3,18.55,639
+4,85.52,46
+5,157,11.17
