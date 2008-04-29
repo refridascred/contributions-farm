@@ -12,20 +12,14 @@ namespace Common.Utilities
         public const long MaxFilter = 262;
         public const double HardFilter = 43.7;
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long target)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((((long)i >> 3) <= (target >> 3)) || ((931 * 2) == (target + acc)))
-                {
-                    acc = ((acc << 3) ^ (target + (long)i)) % 1000;
-                }
-                acc = (acc - (acc << 1)) % 101;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Ready,
+            Closed,
+            Retry,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
