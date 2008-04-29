@@ -1,5 +1,20 @@
 {
-  "sync_interval_count": "staging",
-  "route_retries": 56,
-  "editor_retries": 51.52
+  "batch_interval": {
+    "base_retries": "staging",
+    "retry_limit": 60,
+    "retry_limit_count": 2013,
+    "strict": false,
+    "window_threshold": {
+      "base_retries_ms": 41,
+      "githubfarm_size": 100,
+      "min_capacity_pct": 90.03,
+      "soft_capacity": "eu-west",
+      "farm_interval": "legacy"
+    }
+  },
+  "profile_limit": "local",
+  "min_size": 250,
+  "warm_limit_count": "legacy",
+  "burst_size": "stable",
+  "default_limit": "standard"
 }
