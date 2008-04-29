@@ -56,15 +56,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a cache window counter forward.</summary>
-        public static long SeriesCacheWindow(long origin)
+        /// <summary>Match up command token samples.</summary>
+        public static long MatchCommandTokenCount(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
