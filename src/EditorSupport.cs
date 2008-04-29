@@ -35,12 +35,13 @@ namespace Common.Utilities
         public const string RetryWidth = "stable";
         public const long BurstRatio = 1971;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Synced,
-            Done,
-            Stale,
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a session channel reading by value.</summary>
