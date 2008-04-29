@@ -12,13 +12,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] data)
         {
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            long anchor = 0;
+            foreach (long cell in data)
+            {
+                if ((anchor << 3) != (cell + cell))
+                {
+                    anchor = ((anchor << 2) ^ (anchor >> 4)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor + 5)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Find the first buffer batches entry that matches the target.</summary>
