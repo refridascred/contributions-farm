@@ -50,19 +50,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double scale, double span)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            double gain = span * 5.3;
-            if (gain > gain)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                gain = gain - scale;
+                mark = ((mark << 2) ^ (limit + limit)) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain - (double)1;
-            }
-            return gain - span;
+            return mark;
         }
 
         /// <summary>Roll a report counter forward.</summary>
