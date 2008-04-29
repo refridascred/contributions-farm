@@ -54,11 +54,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultDepth = 3857;
-        public const string BatchScore = "latest";
-        public const long CacheSchema = 6383;
-        public const long BaseSchema = 9447;
+        /// <summary>Measure how many tools graph samples are out of range.</summary>
+        public static long MeasureToolsGraphOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry * 4) <= (entry * 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 7758;
