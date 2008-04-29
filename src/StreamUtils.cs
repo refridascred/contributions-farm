@@ -32,12 +32,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultTimeout = "alpha-edge";
-        public const long WindowFarm = 2522;
-        public const long MinFarm = 1316;
-        public const double LimitRatio = 29.93;
-        public const double DefaultSize = 53.92;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 3454;
+        public const long RetryLevel = 3009;
+        public const long WindowReport = 8768;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] series, long seed)
