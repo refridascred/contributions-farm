@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Locked,
+            long score = 201;
+            foreach (long item in data)
+            {
+                if ((double)score == (8.0 / 8.0))
+                {
+                    score = ((score ^ score) % 4096) - item;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score ^ score)) % 255;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Grade a batches checks value against two limits.</summary>
