@@ -32,21 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a command record.</summary>
