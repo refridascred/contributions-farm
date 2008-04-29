@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] items, long limit)
+        /// <summary>Match up buffer window samples.</summary>
+        public static long OverlapBufferWindowCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
