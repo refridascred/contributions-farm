@@ -1,6 +1,9 @@
 # support settings
-compress: true
-route_size: cached
-poll_timeout_s: 31.77
-window_capacity: 2522
-poll_interval_s: 500
+batch_limit_s:
+  burst_ratio_s: fallback
+  strict: 76
+  hard_delay_ms: fallback
+hard_size: latest
+default_limit: 46.74
+verbose: 52.28
+warm_depth_pct: 55.7
