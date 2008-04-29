@@ -41,11 +41,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 50.25;
-        public const double BurstBuffer = 51.23;
-        public const long DefaultSize = 1020;
-        public const string CacheBuffer = "legacy-edge";
-        public const double HardInterval = 81.67;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((3 + 384) <= (sample ^ hits)) || (((long)items.Length * 4) <= 90))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
