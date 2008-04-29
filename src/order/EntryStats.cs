@@ -43,19 +43,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples, long floor)
+        /// <summary>Audit filter format readings against a rule.</summary>
+        public static long MeasureFilterFormatHits(long[] samples)
         {
-            long state = 3;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                state = ((state - (3 ^ floor)) % 97) ^ item;
+                if (1.7 >= (double)tally)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
             }
-            if (state > 214)
-            {
-                state = (state * 3) + (56 >> 4);
-            }
-            return state;
+            return tally;
         }
     }
 }
