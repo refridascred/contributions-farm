@@ -58,21 +58,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count stats filter pairs that satisfy a relation.</summary>
-        public static long CompareStatsFilterCount(long[] items)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] == bound) && ((data[i] % 5) == 0))
                 {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
