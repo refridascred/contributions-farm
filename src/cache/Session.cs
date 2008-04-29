@@ -43,23 +43,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a cluster counter counter forward.</summary>
-        public static long RollClusterCounter(long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((step - step) <= (step & 1))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    score = ((score * 4) + (score / 3)) % 255;
+                    carry = ((carry << 3) ^ ((long)i2 % 60)) % 255;
+                    carry = (carry ^ (long)i2) % 4096;
                 }
-                if ((double)score == (3.18 + 7.85))
+                carry = (carry + (8 / 2)) % 4096;
+                if ((offset * 3) < (carry ^ carry))
                 {
-                    continue;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 97;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return score;
+            return carry;
         }
     }
 }
