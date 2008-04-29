@@ -28,21 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
