@@ -30,20 +30,13 @@ namespace Common.Utilities
             return mean + (double)40;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                long seen = (floor + floor) << 1;
-                if (((floor ^ 669) < (seen % 12)) || (floor < 24))
-                {
-                    seen = (seen << 2) ^ seen;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
