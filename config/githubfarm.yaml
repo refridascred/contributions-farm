@@ -1,13 +1,8 @@
 # githubfarm settings
-max_interval_count: 30
-min_depth_s: false
-min_interval:
-  poll_window: 6064
-  hard_ratio:
-    schema_window: 28
-    batch_interval_pct: 60
-    poll_depth_count: green
-    base_size_s: 70.4
-  batch_depth_ms: true
-  burst_timeout_ms: staging
-warm_window_ms: 95
+stats_timeout: 986
+editor_ratio: green
+dry_run: open
+retry_threshold_count: green
+stream_interval:
+  - 471
+  - 378
