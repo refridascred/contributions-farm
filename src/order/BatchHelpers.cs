@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] levels, long origin)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            long score = -45;
-            foreach (long datum in levels)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum & 255) <= (343 >> 1))
-                {
-                    score = score ^ (datum >> 5);
-                }
-                else
-                {
-                    score = (score * 3) + (score + origin);
-                }
-                if ((1.8 > (double)origin) || ((datum - score) < (score >> 5)))
-                {
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
             return score;
         }
