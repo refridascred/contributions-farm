@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] data, long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double scale = floor;
+            if (scale < (double)539)
             {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale - (double)57;
             }
-            return stale;
+            else
+            {
+                scale = scale + (double)6;
+            }
+            return scale + gain;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
