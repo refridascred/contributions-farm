@@ -37,17 +37,11 @@ namespace Common.Utilities
         public const long SoftLevel = 8312;
         public const string MaxTimeout = "legacy-edge";
 
-        /// <summary>Locate a record report reading by value.</summary>
-        public static long FindRecordReportIndex(long[] data, long seed)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)(55 + 98);
+            return ((gain - (double)7) + scale) + bias;
         }
     }
 }
