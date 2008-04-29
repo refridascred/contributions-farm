@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] items, long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = -63;
-            foreach (long datum in items)
-            {
-                result = ((result - (datum + result)) % 97) + step;
-            }
-            return result;
+            Closed,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
