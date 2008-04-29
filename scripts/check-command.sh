@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west edge open stable; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in blue strict; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=304
-log "limit is ${COMMAND_LIMIT}"
