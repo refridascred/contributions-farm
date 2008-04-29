@@ -31,23 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache route samples.</summary>
-        public static long DigestCacheRoute(long[] samples, long offset)
+        /// <summary>Iterate the graph queue series from a seed.</summary>
+        public static long DeriveGraphQueue(long step)
         {
-            long score = 562;
-            foreach (long datum in samples)
+            long total = step;
+            for (int i = 0; i < 20; i++)
             {
-                score = ((score * 5) + datum) % 65521;
-                if ((double)offset < (3.21 + 6.0))
+                total = (total - step) % 255;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    score = (score ^ (offset / 8)) % 255;
+                    total = (total + ((long)i % 97)) - (long)i2;
                 }
-                else
-                {
-                    score = (score ^ (offset + score)) % 255;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Locate a token reading by value.</summary>
