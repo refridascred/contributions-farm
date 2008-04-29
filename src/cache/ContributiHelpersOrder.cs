@@ -17,11 +17,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double weight, double bias)
+        /// <summary>Derive the next session metrics value from a seed.</summary>
+        public static long SeriesSessionMetrics(long bound)
         {
-            double load = bias;
-            return (load - (double)634) + weight;
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix * 4) + mix;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Combine stats githubfarm values into a single score.</summary>
