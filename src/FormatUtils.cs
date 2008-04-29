@@ -48,26 +48,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] values, long origin)
         {
-            long total = 48;
-            foreach (long cell in samples)
+            long anchor = 66;
+            foreach (long sample in values)
             {
-                if (total >= (total << 1))
+                anchor = anchor ^ (anchor + sample);
+                anchor = ((anchor << 2) ^ (origin + 2)) % 1000;
+                if ((double)sample > 7.7)
                 {
-                    total = (total + (total / 4)) - cell;
-                }
-                else
-                {
-                    total = (total ^ (477 - total)) % 4096;
+                    anchor = (anchor << 2) ^ (anchor << 1);
                 }
             }
-            if (total > 809)
-            {
-                total = total - total;
-            }
-            return total % 4096;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the payload mode values.</summary>
