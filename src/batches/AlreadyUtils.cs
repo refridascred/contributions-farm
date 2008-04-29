@@ -58,17 +58,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] data, long bound)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
