@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Ready,
-            Dropped,
-            Draft,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 1839;
+        public const long StepCache = 4139;
+        public const string StepCount = "staging-v2";
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long SeekFilterIndex(long[] data, long offset)
