@@ -53,19 +53,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] samples, long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= seed)
+                if (data[i] < offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
