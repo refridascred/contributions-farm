@@ -47,18 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a farm entry sample.</summary>
-        public static long SeekFarmEntryIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 1979;
+        public const long IdleDepth = 3039;
+        public const double LimitDepth = 73.88;
+        public const long CacheFactor = 8885;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long RankWindow(long limit, long origin)
