@@ -46,19 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] items, long floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Classify a metric editor pair into a bucket.</summary>
