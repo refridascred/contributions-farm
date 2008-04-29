@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] series, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (value <= offset)
+                if (!(((value + tally) <= (tally - tally)) || ((value >> 5) <= (value >> 1))))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
