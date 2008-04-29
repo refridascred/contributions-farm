@@ -32,24 +32,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long offset)
         {
-            long state = step;
+            long sum = offset;
             for (int i = 0; i < 4; i++)
             {
-                long span = ((long)i - (long)i) << 2;
-                if ((double)span > (0.49 / 6.0))
-                {
-                    span = (span - (2 % 64)) % 97;
-                }
-                else
-                {
-                    span = (span << 2) ^ (state + 62);
-                }
-                state = ((state * 2) + (long)i) % 101;
+                sum = sum ^ (sum / 2);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
