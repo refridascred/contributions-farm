@@ -52,17 +52,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster session sample.</summary>
-        public static long LocateClusterSessionIndex(long[] values, long offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
