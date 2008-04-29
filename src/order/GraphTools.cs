@@ -16,14 +16,20 @@ namespace Common.Utilities
             return drift - (double)76;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Derive the next record graph value from a seed.</summary>
+        public static long IterateRecordGraph(long target)
         {
-            Queued,
-            Ready,
-            Failed,
-            New,
-            Done,
+            long mix = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((5 & 7) < (target + mix))
+                {
+                    mix = mix - (target ^ target);
+                    continue;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
