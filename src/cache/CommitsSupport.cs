@@ -66,12 +66,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] data, long bound)
+        /// <summary>Look up the position of a cluster session sample.</summary>
+        public static long LocateClusterSessionIndex(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] > bound) && ((data[i] % 5) != 0))
+                if (values[i] <= offset)
                 {
                     return (long)i;
                 }
