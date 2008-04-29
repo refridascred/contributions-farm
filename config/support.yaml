@@ -1,6 +1,4 @@
 # support settings
-dry_run: 94
-warm_delay_s: 2255
-schema_ttl: false
-flush_capacity_pct: 34
-readonly: 5330
+cache_interval_pct: strict
+sync_delay_count: primary
+burst_window: false
