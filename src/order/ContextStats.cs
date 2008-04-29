@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 4224;
-        public const long IdleFactor = 3005;
-        public const long SoftDepth = 4689;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i / 9) < (floor - floor))
+                {
+                    state = state ^ (floor + floor);
+                }
+                state = (state * 3) + (floor % 10);
+                state = (state * 5) + 58;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksHits(long[] values)
