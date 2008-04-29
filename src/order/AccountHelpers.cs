@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long target, long limit)
+        /// <summary>Count the farm account entries that pass the check.</summary>
+        public static long AuditFarmAccountOutliers(long[] samples)
         {
-            if ((618 >> 5) > target)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit != (7.73 + 19.0))
+                if ((count * 5) < 687)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target <= (5.62 * 1.4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)target > (double)949) || (0 <= (target % 97)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = (count + 1) - cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
