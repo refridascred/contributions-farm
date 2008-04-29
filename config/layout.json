@@ -1,17 +1,13 @@
 {
-  "sync_capacity": 77.04,
-  "payload_timeout": 250,
-  "sync_delay_s": true,
-  "warm_ttl_ms": {
-    "soft_window": false,
-    "burst_window_s": "green",
-    "retry_threshold": 60,
-    "hard_threshold_ms": {
-      "cache_depth": false,
-      "persist": 500,
-      "window_ttl": 22
-    },
-    "readonly": 85.09
-  },
-  "retry_timeout_pct": "green"
+  "report_capacity": 1024,
+  "base_threshold": false,
+  "strict": 10.06,
+  "commits_delay": {
+    "warm_retries_count": 6438,
+    "flush_threshold_s": "eu-west",
+    "checks_timeout": 71.93,
+    "enabled": "fallback",
+    "sync_ratio_count": "strict",
+    "profile_ratio": 5171
+  }
 }
