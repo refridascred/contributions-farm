@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] values, long bound)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
