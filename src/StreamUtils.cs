@@ -27,15 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long acc = 55;
-            foreach (long item in series)
-            {
-                acc = (acc ^ item) % 255;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
