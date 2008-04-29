@@ -38,21 +38,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Rank filter batches input into a small class.</summary>
+        public static long GradeFilterBatches(long offset, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = offset ^ origin;
+            if ((double)edge > (double)origin)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((edge % 12) != (edge - origin))
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
