@@ -47,15 +47,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long limit, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            if ((6 - limit) != (floor ^ limit))
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((floor & 15) < limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
