@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values, long step)
+        /// <summary>Count the support editor entries that pass the check.</summary>
+        public static long TallySupportEditorOutliers(long[] values, long floor)
         {
-            long mix = 45;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (2.9 >= (double)mix)
+                if ((floor <= (19 + hits)) && ((hits >> 2) < hits))
                 {
-                    mix = (((mix << 3) ^ (37 - 991)) % 101) - step;
+                    hits = (hits + 2) - cell;
                 }
                 else
                 {
-                    mix = (mix - (value & 1)) % 1000;
+                    hits = hits - 1;
                 }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Hold a report stats.</summary>
