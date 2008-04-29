@@ -1,11 +1,14 @@
 {
-  "route_limit": {
-    "base_window_ms": 47.32,
-    "verbose": 60,
-    "max_ttl": 2,
-    "min_threshold_ms": [11, 294, 81],
-    "format_threshold": 15
+  "persist": "stable",
+  "cache_delay_count": 1453,
+  "enabled": {
+    "report_timeout": ["cached", "strict", "primary"],
+    "base_ratio": "local",
+    "dry_run": 1024,
+    "min_timeout_s": 98.87,
+    "hard_size": false,
+    "cache_interval_pct": false
   },
-  "poll_limit_count": ["local", "staging"],
-  "command_ttl": 54.04
+  "max_retries_ms": true,
+  "compress": "fallback"
 }
