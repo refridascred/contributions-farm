@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor << 3) ^ limit) % 101;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 6793;
+        public const string IdleCounter = "latest-edge";
+        public const long BurstLevel = 4186;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaHits(long[] values, long offset)
