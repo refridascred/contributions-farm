@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long bound, long limit)
+        /// <summary>Grade a queue support value against two limits.</summary>
+        public static long GradeQueueSupport(long offset, long step)
         {
-            long span = bound + limit;
-            if (span < (882 ^ limit))
+            if ((offset / 7) >= (step & 255))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (((limit + bound) >= (bound - limit)) || ((bound << 1) >= 1))
+                if ((double)offset <= (double)step)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((776 ^ span) <= (428 + span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (2 > (span >> 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
