@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] items, long target)
         {
-            Failed,
-            Idle,
-            Active,
-            Closed,
-            Locked,
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
