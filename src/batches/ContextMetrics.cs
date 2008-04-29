@@ -45,17 +45,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a counter payload reading by value.</summary>
-        public static long LocateCounterPayloadIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 49.79;
+        public const double IdleQueue = 66.06;
+        public const long BurstSize = 1755;
+        public const long CacheQueue = 2329;
     }
 }
