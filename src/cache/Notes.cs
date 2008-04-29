@@ -69,13 +69,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double rate, double offset)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
+            double ratio = offset;
+            if (ratio > (ratio - ratio))
+            {
+                ratio = (ratio + (ratio * 8.0)) - rate;
+            }
+            else
+            {
+                ratio = ratio - (double)6;
+            }
+            return ratio + 0.76;
         }
     }
 }
