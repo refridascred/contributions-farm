@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const string DefaultCount = "open-1";
         public const long LimitWidth = 9548;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (((long)series.Length - reading) < count)
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
