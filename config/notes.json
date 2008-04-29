@@ -1,6 +1,5 @@
 {
-  "retry_interval_pct": 6202,
-  "enabled": true,
-  "sync_ttl": 2.72,
-  "poll_delay_pct": "edge"
+  "dry_run": 87,
+  "layout_retries": 1024,
+  "batch_delay": [82, 147, 32, 248]
 }
