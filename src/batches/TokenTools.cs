@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Adjust a layout channel reading.</summary>
+        public static double SmoothLayoutChannel(double ratio, double offset)
         {
-            Done,
-            Synced,
-            Idle,
-            Closed,
-            Ready,
+            double load = offset;
+            return load - (ratio + offset);
         }
 
         /// <summary>Hold a record snapshot.</summary>
