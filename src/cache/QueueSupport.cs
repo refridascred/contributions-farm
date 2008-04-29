@@ -33,21 +33,12 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
