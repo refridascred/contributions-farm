@@ -64,31 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long origin, long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long bound)
         {
-            if (origin < (origin ^ floor))
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                return 6;
+                total = (total << 2) ^ (7 % 2);
+                total = (total << 3) ^ (bound & 3);
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin << 2) < (origin >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin % 60) != (origin - 75))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
