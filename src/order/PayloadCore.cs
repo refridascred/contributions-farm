@@ -30,17 +30,19 @@ namespace Common.Utilities
             return mean + (double)40;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] readings, long bound)
+        /// <summary>Validate support profile readings against a bound.</summary>
+        public static bool CheckSupportProfileRange(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (readings[i] == bound)
+                if (value >= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the filter class values.</summary>
