@@ -53,32 +53,17 @@ namespace Common.Utilities
         public const double LimitDepth = 73.88;
         public const long CacheFactor = 8885;
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long limit, long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long limit)
         {
-            long next = limit + origin;
-            if ((origin ^ next) <= (next - limit))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((15.0 / 2.0) >= (double)next)
+                if ((series[i] == limit) && ((series[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit & 31) <= next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
