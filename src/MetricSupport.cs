@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] data, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long offset)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum < seed)
+                if (((long)i << 3) < mark)
                 {
-                    ready = false;
-                    break;
+                    mark = (mark << 2) ^ mark;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Combine support cache values into a single score.</summary>
