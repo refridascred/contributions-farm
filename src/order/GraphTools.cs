@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit buffer batch readings against a rule.</summary>
-        public static long CountBufferBatchOutliers(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mark = 9;
+            foreach (long datum in values)
             {
-                if ((double)(long)readings.Length != (5.2 + 8.36))
+                if ((datum - 2) >= (datum - mark))
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = ((mark * 5) + (298 * 4)) % 101;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a support stats.</summary>
