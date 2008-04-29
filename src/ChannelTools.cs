@@ -32,32 +32,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long origin, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] samples, long target)
         {
-            long next = origin ^ offset;
-            if (!((offset - offset) >= (30 * 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((offset - origin) >= offset))
+                if (samples[i] > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset + offset) < origin) || ((offset + origin) >= (next << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
