@@ -27,18 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels, long bound)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((9.4 - 6.0) > (double)seen) && ((bound + seen) != (85 & 127)))
-                {
-                    seen = (seen + 1) ^ datum;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
