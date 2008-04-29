@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Paused,
-            Active,
-            Synced,
-            Pending,
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many layout already samples are out of range.</summary>
