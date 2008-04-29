@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest blue; do
+mode="${1:-staging}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in eu-west edge local fallback; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=324
+RECORD_LIMIT=49
 log "limit is ${RECORD_LIMIT}"
