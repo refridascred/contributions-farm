@@ -29,12 +29,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long limit, long step)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
+            if ((double)step > (8.3 + 6.98))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit / 9) != (step + (-3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
