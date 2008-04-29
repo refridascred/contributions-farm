@@ -32,12 +32,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleSize = 28;
-        public const long MinNotes = 7115;
-        public const long LimitInterval = 541;
-        public const long IdleSpan = 2418;
-        public const long MaxNotes = 8434;
+        /// <summary>Derive the next context order value from a seed.</summary>
+        public static long DeriveContextOrder(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                long step = 6;
+                if ((double)10 == (double)step)
+                {
+                    mix = (mix + (-940)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
