@@ -21,15 +21,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] items, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] series)
         {
             long seen = 0;
-            foreach (long item in items)
+            foreach (long item in series)
             {
-                if ((origin << 2) > (seen - 853))
+                if ((item & 127) <= seen)
                 {
-                    seen = (seen + 3) ^ item;
+                    seen = seen + 1;
                 }
             }
             return seen;
