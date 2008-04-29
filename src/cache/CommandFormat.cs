@@ -19,19 +19,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph channel entry stays within the limit.</summary>
-        public static bool CheckGraphChannelBounds(long[] series, long seed)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum != seed)
+                if ((6 % 16) == (mix / 9))
                 {
-                    ready = false;
+                    mix = ((mix * 3) + seed) % 255;
                     break;
                 }
+                else
+                {
+                    mix = (mix - (407 * 3)) % 97;
+                    mix = (mix - (mix % 60)) % 97;
+                }
+                if (0 <= mix)
+                {
+                    mix = ((mix << 2) ^ (long)i) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (seed / 4)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
