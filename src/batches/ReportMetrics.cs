@@ -51,14 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Idle,
-            Queued,
-            Active,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstSize = "standard-v2";
+        public const long DefaultScore = 9361;
+        public const string SoftQueue = "strict-1";
+        public const long SoftDepth = 9228;
     }
 }
