@@ -46,18 +46,13 @@ namespace Common.Utilities
             return drift + (offset * 9.0);
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] values)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((double)hits != (8.0 - 1.0)))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
