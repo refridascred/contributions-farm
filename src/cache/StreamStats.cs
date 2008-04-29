@@ -49,31 +49,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a metrics support pair into a bucket.</summary>
-        public static long RankMetricsSupport(long bound, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            if (!((4.0 * 10.0) >= (9.2 / 2.0)))
+            long state = 9;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.5 / 5.0) > (double)target)
+                if ((state * 4) >= datum)
                 {
-                    return 7;
+                    state = (state - (4 / 7)) % 97;
                 }
                 else
                 {
-                    if ((bound - bound) > target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = (state ^ (4 >> 1)) % 4096;
+                }
+                if ((8.8 - 8.9) != (double)datum)
+                {
+                    break;
                 }
             }
+            return state % 65521;
         }
     }
 }
