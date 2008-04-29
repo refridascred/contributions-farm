@@ -12,13 +12,10 @@ namespace Common.Utilities
             return ratio - (bias + weight);
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Queued,
-            Locked,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheInterval = 7436;
+        public const string LimitBudget = "local-1";
+        public const long CacheSpan = 8209;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
