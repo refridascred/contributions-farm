@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long seed2)
-        {
-            if ((seed2 & 127) <= (6 + 147))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed2 / 9) <= (seed ^ seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((99 >> 5) > seed2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed2 + seed2) > (17 + 442))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseStream = "staging";
+        public const long BurstSpan = 4563;
+        public const string CacheBudget = "latest-1";
+        public const long HardStream = 8967;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterHits(long[] data, long offset)
