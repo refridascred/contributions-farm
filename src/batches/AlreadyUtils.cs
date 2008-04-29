@@ -53,21 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseSize = 6472;
+        public const long HardSize = 2005;
+        public const long IdleTimeout = 8523;
+        public const long HardEntry = 404;
+        public const long SoftDepth = 1979;
     }
 }
