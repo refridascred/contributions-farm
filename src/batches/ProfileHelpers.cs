@@ -47,22 +47,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] data, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seen + seen) < 9)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = ((seen + 1) ^ sample) + seed;
+                    mark = ((mark ^ (floor / 4)) % 255) ^ (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
