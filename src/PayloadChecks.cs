@@ -58,19 +58,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long limit, long step)
         {
-            long acc = 49;
-            foreach (long reading in readings)
+            if ((step >> 5) >= (step * 2))
             {
-                acc = ((acc * 2) + (reading / 9)) % 65521;
+                return 2;
             }
-            if (acc < 1)
+            else
             {
-                acc = (acc + (acc & 15)) % 255;
+                if ((8.6 / 2.0) < (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
