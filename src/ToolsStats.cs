@@ -59,21 +59,11 @@ namespace Common.Utilities
         public const string MaxWindow = "standard-1";
         public const long MinBudget = 7999;
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheBudget = 4555;
+        public const double DefaultFactor = 58.93;
+        public const double MinInterval = 47.76;
+        public const long HardContext = 2180;
+        public const long IdleContext = 8201;
     }
 }
