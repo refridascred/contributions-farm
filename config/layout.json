@@ -1,13 +1,12 @@
 {
-  "max_interval_s": 77.02,
-  "record_ratio": "open",
-  "order_retries": 8240,
-  "farm_depth": "legacy",
-  "verbose": 12.66,
-  "sync_timeout": {
-    "retry_interval_ms": ["open", "stable", "legacy"],
-    "strict": false,
-    "default_delay_count": "standard",
-    "max_interval": false
-  }
+  "stats_timeout": "standard",
+  "default_size_pct": 30,
+  "verbose": "stable",
+  "command_interval": {
+    "burst_delay": 54.92,
+    "enabled": 7422,
+    "max_interval_ms": 1024,
+    "notes_timeout": true
+  },
+  "burst_threshold_s": [381, 379]
 }
