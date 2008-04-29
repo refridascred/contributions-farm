@@ -31,14 +31,10 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Active,
-            Pending,
-            Ready,
-            Done,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstTimeout = 29.65;
+        public const string BaseInterval = "legacy-edge";
+        public const string LimitRatio = "stable-v2";
+        public const long WindowFilter = 6408;
     }
 }
