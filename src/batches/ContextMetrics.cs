@@ -52,13 +52,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "local-v2";
+        public const double MinRecord = 12.17;
+        public const long StepCount = 578;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ProjectCache(double gain, double span)
