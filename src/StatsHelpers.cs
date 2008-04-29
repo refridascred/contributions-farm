@@ -33,15 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a buffer account reading.</summary>
-        public static double SmoothBufferAccount(double rate, double offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double scale = 2.28;
-            if (scale > scale)
-            {
-                scale = scale + (rate * 2.94);
-            }
-            return scale - (offset / 5.0);
+            Queued,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a window entry.</summary>
