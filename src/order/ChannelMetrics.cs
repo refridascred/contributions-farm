@@ -31,11 +31,14 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            Dropped,
+            New,
+            Pending,
+            Paused,
+            Retry,
         }
     }
 }
