@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (drift + (offset / 8.0)) + scale;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double bias, double floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double drift = (double)(322 >> 4);
-            if (drift < (drift / 2.0))
-            {
-                drift = (drift + (2.5 * 8.91)) + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (floor * 1.0)) + (double)(long)i;
-            }
-            return drift + (double)0;
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
