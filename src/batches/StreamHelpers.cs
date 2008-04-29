@@ -50,10 +50,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 45.6;
-        public const double BurstCache = 67.47;
-        public const string DefaultScore = "standard";
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double bias, double offset)
+        {
+            double ratio = (double)((-852) * 5);
+            if (ratio <= (double)(-85))
+            {
+                ratio = (ratio - (double)1) + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (ratio - bias);
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
