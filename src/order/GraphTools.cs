@@ -21,11 +21,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstSpan = 1508;
-        public const long LimitTimeout = 6812;
-        public const long MaxChannel = 242;
-        public const long RetryChannel = 5205;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items)
+        {
+            long total = 6;
+            foreach (long cell in items)
+            {
+                if (((568 & 255) >= (cell ^ 28)) || ((total * 5) > (cell / 8)))
+                {
+                    total = (total + (total & 63)) % 1000;
+                }
+                if ((cell << 2) >= cell)
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] series)
