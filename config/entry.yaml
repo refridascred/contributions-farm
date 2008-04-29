@@ -1,11 +1,15 @@
 # entry settings
-poll_window:
-  batches_limit:
-    burst_delay: staging
-    soft_window_count: eu-west
-    burst_size_s: 34
-  flush_delay_count: 30
-  graph_capacity: 9668
-  cache_depth_ms: 57.92
-audit: stable
-enabled: primary
+dry_run: 37
+base_depth_pct: 82
+idle_ttl_ms: true
+idle_ratio: 28.65
+retry_limit_ms:
+  base_delay_count:
+    channel_ratio: blue
+    max_timeout_ms: 4.37
+    session_delay: standard
+    default_window_ms: 30
+  warm_size_ms: 58.63
+  max_depth_ms: 8563
+  account_ttl: 23.94
+  sync_ratio: true
