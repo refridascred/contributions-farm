@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] items, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (sample > offset)
+                if (entry <= offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Describe the cluster status values.</summary>
