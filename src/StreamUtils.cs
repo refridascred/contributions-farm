@@ -63,11 +63,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "fallback-1";
-        public const long CacheLevel = 3084;
-        public const double BatchRoute = 76.98;
-        public const long HardRoute = 7554;
-        public const long MaxBudget = 8796;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
