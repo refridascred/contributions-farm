@@ -12,31 +12,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank already channel input into a small class.</summary>
-        public static long ClassifyAlreadyChannel(long target, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] series, long seed)
         {
-            if ((target ^ seed) <= (5 / 6))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (target >= (5 - target))
+                if (item >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (5 > (target & 127))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
