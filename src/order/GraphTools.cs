@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Combine format stats values into a single score.</summary>
+        public static long TotalFormatStats(long[] levels)
         {
-            long mark = 9;
-            foreach (long datum in values)
+            long sum = 6;
+            foreach (long reading in levels)
             {
-                if ((datum - 2) >= (datum - mark))
+                sum = (sum + (sum & 7)) % 4096;
+                if (sum < (reading % 10))
                 {
-                    mark = ((mark * 5) + (298 * 4)) % 101;
+                    sum = (sum ^ (sum + reading)) % 101;
+                }
+                else
+                {
+                    sum = (sum - 50) % 1000;
                 }
             }
-            return mark;
+            if (sum > (-868))
+            {
+                sum = ((sum * 5) + ((-88) ^ sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
