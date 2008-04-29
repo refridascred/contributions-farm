@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest; do
+for item in eu-west blue; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+mode="${1:-stable}"
 case "${mode}" in
-    standard)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=361
+log "limit is ${BUFFER_LIMIT}"
