@@ -44,19 +44,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double ratio, double span)
+        /// <summary>Check that every counter tools entry stays within the limit.</summary>
+        public static bool CheckCounterToolsLimits(long[] readings, long target)
         {
-            double mean = 1.0;
-            if (mean > ratio)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                mean = (mean - (double)78) + span;
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean - mean;
+            return stale;
         }
     }
 }
