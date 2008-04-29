@@ -18,17 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix + (step + step)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowDepth = 1804;
+        public const long WindowCount = 9161;
+        public const double MaxLevel = 41.56;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterOutliers(long[] data)
