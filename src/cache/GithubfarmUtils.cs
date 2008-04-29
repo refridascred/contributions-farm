@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings, long seed)
-        {
-            long result = 737;
-            foreach (long value in readings)
-            {
-                if ((double)value != (5.23 * 16.0))
-                {
-                    result = ((result + (result % 60)) % 65521) + seed;
-                }
-            }
-            if (result < (-361))
-            {
-                result = result - 2;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 8179;
+        public const string BatchTools = "local-v2";
+        public const long MinSize = 8165;
+        public const long LimitDepth = 5100;
+        public const double MaxTools = 58.51;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepSize = 4257;
