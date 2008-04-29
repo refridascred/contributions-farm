@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in strict edge; do
+    log "checking ${item}"
+done
+
 mode="${1:-standard}"
 case "${mode}" in
-    latest)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,11 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=198
-log "limit is ${CHANNEL_LIMIT}"
-
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 12); do
     total=$((total + i * 2))
 done
 log "total ${total}"
