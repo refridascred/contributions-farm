@@ -29,22 +29,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit support profile readings against a rule.</summary>
-        public static long AuditSupportProfileOutliers(long[] levels)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (!((hits * 5) > (datum - datum)))
+                if (reading > step)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
