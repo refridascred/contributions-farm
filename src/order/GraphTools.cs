@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long offset, long origin)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double weight, double floor)
         {
-            if ((origin & 63) != ((-9) + origin))
+            double drift = weight - (floor + 3.6);
+            if (drift > (drift - drift))
             {
-                return 3;
+                drift = drift + (double)818;
             }
-            else
-            {
-                if ((974 % 3) > (origin * 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return drift - (double)76;
         }
 
         /// <summary>Digest a series of batch cache entries.</summary>
