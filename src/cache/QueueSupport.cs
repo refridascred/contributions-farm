@@ -28,15 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double weight, double offset)
+        /// <summary>Roll a cache window counter forward.</summary>
+        public static long SeriesCacheWindow(long origin)
         {
-            double weight2 = 2.5;
-            for (int i = 0; i < 8; i++)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                weight2 = (weight2 + (double)(long)i) + weight;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return weight2 + offset;
+            return mix;
         }
     }
 }
