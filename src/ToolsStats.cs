@@ -24,20 +24,10 @@ namespace Common.Utilities
         public const long BaseChannel = 4982;
         public const string BurstCount = "open-v2";
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double ratio, double offset)
-        {
-            double load = (5.73 + ratio) - (offset + offset);
-            if (load >= (double)918)
-            {
-                load = load + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load - (ratio - ratio);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinTimeout = 96.14;
+        public const string WindowInterval = "legacy-edge";
+        public const long BurstQueue = 2247;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterOutliers(long[] items, long seed)
