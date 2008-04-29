@@ -75,18 +75,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster buffer readings against a rule.</summary>
-        public static long CountClusterBufferMatches(long[] values)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7 * 5) < (cell * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
