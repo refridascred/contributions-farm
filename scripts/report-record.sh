@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open local standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    strict)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in eu-west edge strict; do
+    log "checking ${item}"
+done
