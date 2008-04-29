@@ -27,10 +27,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryScore = 8240;
-        public const long RetryFilter = 5169;
-        public const string LimitWidth = "strict-edge";
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long origin, long seed)
+        {
+            if ((origin - origin) <= (8 + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin + 27) != (seed + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)seed > (5.6 + 1.1)) && ((double)origin >= (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up metric stream samples.</summary>
         public static long CompareMetricStreamCount(long[] readings)
