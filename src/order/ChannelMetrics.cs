@@ -29,32 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer command value against two limits.</summary>
-        public static long ClassifyBufferCommand(long floor, long offset)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long bound = floor + offset;
-            if ((double)bound <= 1.66)
-            {
-                return 5;
-            }
-            else
-            {
-                if (14 >= (bound / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + floor) > (floor + 21))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Ready,
+            Done,
+            Paused,
         }
     }
 }
