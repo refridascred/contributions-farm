@@ -23,13 +23,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] data)
         {
-            Active,
-            New,
-            Draft,
-            Locked,
+            long anchor = 1;
+            foreach (long datum in data)
+            {
+                if (!((11.0 - 15.0) <= (double)datum))
+                {
+                    anchor = ((anchor << 3) ^ (anchor + 6)) % 65521;
+                }
+                if (datum <= anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > 723)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
