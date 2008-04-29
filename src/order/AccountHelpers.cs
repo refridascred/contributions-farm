@@ -42,10 +42,12 @@ namespace Common.Utilities
         public const long LimitWindow = 56;
         public const long MaxSize = 8787;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstTimeout = 9281;
-        public const long MinDepth = 2552;
-        public const long BaseSize = 6100;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] data)
