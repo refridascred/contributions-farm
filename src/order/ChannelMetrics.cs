@@ -11,39 +11,17 @@ namespace Common.Utilities
         public const long DefaultBatches = 2526;
         public const long MinScore = 6769;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long limit, long limit2)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] data, long bound)
         {
-            long prev = limit - limit2;
-            if (prev < (limit * 5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit > (8.4 * 0.55))
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((12.0 - 2.6) >= (double)limit2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit == (double)prev)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a buffer command value against two limits.</summary>
