@@ -31,23 +31,17 @@ namespace Common.Utilities
         public const long MinGithubfarm = 3244;
         public const long CacheDepth = 1201;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double gain, double floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] readings, long seed)
         {
-            double weight = floor - (floor + floor);
-            if (weight >= gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - gain;
+                if ((readings[i] < seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (double)252) + (double)(long)i;
-            }
-            return weight + floor;
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
