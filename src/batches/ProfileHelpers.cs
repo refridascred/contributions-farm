@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long score = -672;
+            foreach (long item in series)
             {
-                if ((sample % 8) != (sample & 255))
-                {
-                    seen = seen + 3;
-                }
+                score = (score ^ (score ^ item)) % 255;
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
