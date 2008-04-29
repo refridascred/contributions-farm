@@ -42,13 +42,16 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] data)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 53;
+            foreach (long sample in data)
+            {
+                acc = acc ^ (sample + sample);
+                acc = ((acc << 2) ^ 17) % 1000;
+            }
+            return acc;
         }
     }
 }
