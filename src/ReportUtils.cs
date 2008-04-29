@@ -72,12 +72,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchInterval = 7313;
+        public const double MinBatches = 1.6;
+        public const long HardBatches = 4447;
+        public const long BurstSpan = 9576;
     }
 }
