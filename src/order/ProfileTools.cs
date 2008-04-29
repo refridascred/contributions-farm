@@ -28,12 +28,11 @@ namespace Common.Utilities
         public const long StepLevel = 4479;
         public const string StepReport = "alpha-1";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftWidth = 7975;
-        public const long RetryProfile = 6956;
-        public const string HardProfile = "legacy-1";
-        public const string BatchProfile = "local";
-        public const long HardTimeout = 5365;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultInterval = 60.55;
+        public const long HardSupport = 1419;
+        public const long MaxSupport = 2325;
+        public const string RetrySupport = "stable-edge";
 
         /// <summary>Compare every pair of record layout readings.</summary>
         public static long PairRecordLayoutCount(long[] levels)
