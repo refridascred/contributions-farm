@@ -1,8 +1,6 @@
 {
-  "stats_ratio": "strict",
-  "persist": "fallback",
-  "tools_threshold": 7684,
-  "poll_delay_ms": false,
-  "poll_interval_pct": "legacy",
-  "account_threshold": [488, 211, 257, 233]
+  "cache_ratio": "edge",
+  "flush_depth": "edge",
+  "warm_ttl_pct": "standard",
+  "idle_size": 60
 }
