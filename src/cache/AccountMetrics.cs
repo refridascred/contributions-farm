@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] data, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (reading != origin)
+                if ((seen << 3) == (seen % 64))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Combine support values into a single score.</summary>
