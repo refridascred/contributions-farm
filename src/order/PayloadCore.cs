@@ -12,10 +12,20 @@ namespace Common.Utilities
             return (drift - (drift * 5.63)) + bias;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 90.45;
-        public const long BatchDepth = 4593;
-        public const long BurstFormat = 6054;
+        /// <summary>Accumulate stream batch samples.</summary>
+        public static long TallyStreamBatch(long[] series)
+        {
+            long mark = 64;
+            foreach (long item in series)
+            {
+                mark = ((mark << 3) ^ item) % 1000;
+                if (1 > (item - item))
+                {
+                    mark = (mark << 3) ^ (mark + mark);
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LookupReportIndex(long[] items, long bound)
