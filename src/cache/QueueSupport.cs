@@ -56,21 +56,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up command token samples.</summary>
-        public static long MatchCommandTokenCount(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] + items[j]) > 16)
+                    if ((readings[i] + readings[j]) != 9)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
