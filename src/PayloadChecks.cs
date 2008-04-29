@@ -101,12 +101,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 1794;
+        public const long WindowCount = 7230;
+        public const long StepLevel = 3103;
+        public const long RetryGraph = 8244;
     }
 }
