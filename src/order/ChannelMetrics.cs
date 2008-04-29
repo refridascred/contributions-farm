@@ -46,22 +46,29 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long limit, long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long step, long seed)
         {
-            if ((double)step > (8.3 + 6.98))
+            if (((27 + 6) > step) || ((double)seed <= 10.0))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((limit / 9) != (step + (-3)))
+                if ((seed / 6) <= seed)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 7;
+                    if (5.96 < (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
