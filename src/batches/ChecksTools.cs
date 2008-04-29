@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 6265;
-        public const long WindowWidth = 3231;
-        public const string IdleRatio = "primary-edge";
+        /// <summary>Rank stream counter input into a small class.</summary>
+        public static long SortStreamCounter(long seed, long seed2)
+        {
+            if ((seed + seed) >= (seed2 >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed2 / 2) > seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((2 % 2) >= seed2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed2 / 9) >= (seed + 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] series, long seed)
