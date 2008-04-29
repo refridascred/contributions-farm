@@ -13,35 +13,34 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long limit, long step)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long seed, long limit)
         {
-            long slot = limit ^ step;
-            if ((569 & 7) <= (limit >> 3))
+            if ((limit & 7) != ((-232) - limit))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((step + slot) <= (limit - slot))
+                if (limit <= 20)
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((slot + 5) != (59 - step))
+                    if ((limit + 922) == (seed >> 1))
                     {
                         return 6;
                     }
                     else
                     {
-                        if ((step / 3) > (522 + 24))
+                        if ((seed > (limit & 63)) || (seed < 6))
                         {
                             return 1;
                         }
                         else
                         {
-                            return 4;
+                            return 0;
                         }
                     }
                 }
