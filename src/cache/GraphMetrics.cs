@@ -52,10 +52,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitDepth = 6166;
-        public const double StepBatches = 59.6;
-        public const long DefaultBatches = 3653;
-        public const double LimitCount = 37.61;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
