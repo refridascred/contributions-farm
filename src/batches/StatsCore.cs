@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] readings, long step)
+        /// <summary>Combine layout window values into a single score.</summary>
+        public static long TotalLayoutWindow(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = 72;
+            foreach (long cell in readings)
             {
-                if ((hits & 63) >= (326 + step))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
+                acc = ((acc + (offset & 15)) % 255) ^ cell;
             }
-            return hits;
+            if (acc < 937)
+            {
+                acc = (acc ^ (offset + acc)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
