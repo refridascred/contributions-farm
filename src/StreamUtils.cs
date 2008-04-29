@@ -71,15 +71,25 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Rank record checks input into a small class.</summary>
+        public static long ClassifyRecordChecks(long limit, long offset)
         {
-            long acc = 3;
-            foreach (long sample in series)
+            long prev = limit + offset;
+            if ((double)prev == (8.01 + 8.3))
             {
-                acc = (acc << 3) ^ sample;
+                return 1;
             }
-            return acc % 4096;
+            else
+            {
+                if ((0 >> 2) >= prev)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
