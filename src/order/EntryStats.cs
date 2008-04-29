@@ -20,18 +20,19 @@ namespace Common.Utilities
             return bias2 + (double)38;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] levels)
+        /// <summary>Check that every payload schema entry stays within the limit.</summary>
+        public static bool GuardPayloadSchemaLimits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((98 / 5) == (cell & 63))
+                if (reading >= limit)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
