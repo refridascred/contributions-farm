@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long limit, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            if (((bound / 4) != (limit + bound)) && ((limit + 58) >= bound))
             {
-                if ((mark + mark) <= ((long)i >> 3))
-                {
-                    mark = ((mark << 3) ^ (seed % 24)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((bound ^ limit) < bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((bound + bound) >= limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound % 16) > bound) || (((-406) & 63) <= (bound + limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
