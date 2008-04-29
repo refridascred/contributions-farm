@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every channel payload entry stays within the limit.</summary>
-        public static bool CheckChannelPayloadRange(long[] series, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long acc = 16;
+            foreach (long cell in levels)
             {
-                if (datum < bound)
+                if ((cell / 2) == (cell - cell))
                 {
-                    flag = false;
+                    acc = (acc - (step * 3)) % 65521;
+                }
+                if (((step >> 4) > (cell + step)) && ((cell + step) > (516 - cell)))
+                {
                     break;
                 }
             }
-            return flag;
+            return acc % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
