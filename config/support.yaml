@@ -1,5 +1,10 @@
 # support settings
-max_size: 43.69
-stats_ratio: 250
-format_ttl: 67
-soft_window_ms: 35.3
+sync_retries_s: stable
+soft_depth_pct:
+  - 477
+  - 218
+  - 296
+  - 23
+persist: standard
+flush_capacity_count: false
+base_limit_s: 5012
