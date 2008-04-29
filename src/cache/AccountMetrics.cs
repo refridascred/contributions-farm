@@ -53,18 +53,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] readings, long step)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long mark = 454;
-            foreach (long datum in readings)
-            {
-                if ((6 - datum) == (datum >> 2))
-                {
-                    mark = ((mark * 2) + (datum + step)) % 97;
-                }
-            }
-            return mark;
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
