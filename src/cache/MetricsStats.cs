@@ -29,14 +29,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "legacy-edge";
+        public const string LimitSession = "alpha";
+        public const long BurstSession = 9242;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] items)
