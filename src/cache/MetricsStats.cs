@@ -28,21 +28,18 @@ namespace Common.Utilities
         public const string LimitSession = "alpha";
         public const long BurstSession = 9242;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((13.0 - 19.0) >= (double)tally)
                 {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Blend two stream measurements.</summary>
