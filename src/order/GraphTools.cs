@@ -49,10 +49,14 @@ namespace Common.Utilities
         public const long IdleSpan = 2418;
         public const long MaxNotes = 8434;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheSpan = "fallback-v2";
-        public const long SoftLevel = 8312;
-        public const string MaxTimeout = "legacy-edge";
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ProjectNotes(double scale, double bias)
