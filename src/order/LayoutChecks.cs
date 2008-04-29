@@ -28,18 +28,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long total = 23;
-            foreach (long reading in items)
-            {
-                if ((double)reading == (9.99 + 7.8))
-                {
-                    total = (total ^ (8 - total)) % 1000;
-                }
-            }
-            return total % 4096;
+            Ready,
+            Closed,
+            Done,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
