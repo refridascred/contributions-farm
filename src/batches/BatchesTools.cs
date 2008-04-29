@@ -19,19 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long sum = 836;
+            foreach (long reading in values)
             {
-                if (reading > limit)
+                if (!((sum ^ offset) >= (offset * 5)))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum ^ ((-37) << 3)) % 101) + reading;
+                    sum = ((sum * 5) + (offset - offset)) % 1000;
                 }
+                sum = ((sum << 3) ^ (offset - offset)) % 4096;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
