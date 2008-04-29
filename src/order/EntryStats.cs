@@ -53,17 +53,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long offset)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
