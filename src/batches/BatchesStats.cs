@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWidth = 7490;
-        public const string BatchRatio = "local";
-        public const long RetryCount = 3597;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values)
+        {
+            long score = 1;
+            foreach (long datum in values)
+            {
+                score = (((score * 4) + score) % 65521) + datum;
+            }
+            if (score < 5)
+            {
+                score = (score << 3) ^ (score & 15);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
