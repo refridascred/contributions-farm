@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const string BaseStats = "stable";
         public const long CacheStats = 1898;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 61.46;
-        public const double CacheBudget = 94.27;
-        public const long HardBudget = 4674;
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double ratio, double floor)
+        {
+            double ratio2 = (double)(1 * 4);
+            if (ratio2 >= floor)
+            {
+                ratio2 = (ratio2 - (double)3) + ratio;
+            }
+            return ratio2 + (ratio2 * 6.62);
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] data)
