@@ -68,13 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] values, long step)
         {
-            Locked,
-            Active,
-            Retry,
-            Idle,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!(((step ^ step) >= (item + hits)) || (((long)values.Length / 6) != (hits / 7))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
