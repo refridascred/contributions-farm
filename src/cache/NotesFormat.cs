@@ -32,19 +32,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] series, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long bound)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return valid;
+            return carry;
         }
     }
 }
