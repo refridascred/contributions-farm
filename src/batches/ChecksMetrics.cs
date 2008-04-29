@@ -60,18 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel editor values into a single score.</summary>
-        public static long WeighChannelEditor(long[] data, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] values, long limit)
         {
-            long result = 53;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (origin > (origin >> 2))
+                if (datum > limit)
                 {
-                    result = (result ^ sample) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
     }
 }
