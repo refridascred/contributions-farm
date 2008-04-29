@@ -51,21 +51,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long step, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((1.51 - 3.29) <= (double)step)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((7.7 - 4.5) < (double)step)
                 {
-                    if ((data[i] ^ data[j]) < 13)
+                    return 7;
+                }
+                else
+                {
+                    if ((step >> 1) == (6 & 1))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of already readings.</summary>
