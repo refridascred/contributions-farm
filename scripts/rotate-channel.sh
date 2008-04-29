@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=72
+CHANNEL_LIMIT=446
 log "limit is ${CHANNEL_LIMIT}"
