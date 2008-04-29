@@ -18,11 +18,27 @@ namespace Common.Utilities
         public const long LimitMetric = 3134;
         public const string MaxWidth = "alpha";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitInterval = 9654;
-        public const long LimitChecks = 2241;
-        public const long WindowLevel = 3681;
-        public const double IdleFactor = 54.14;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] levels)
+        {
+            long acc = 96;
+            foreach (long value in levels)
+            {
+                if (acc <= (acc & 3))
+                {
+                    acc = (acc + (value ^ (-818))) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+            }
+            if (acc > 194)
+            {
+                acc = (acc - 7) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsMatches(long[] data, long seed)
