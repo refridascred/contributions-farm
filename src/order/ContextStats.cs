@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit token channel readings against a rule.</summary>
-        public static long AuditTokenChannelMatches(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((double)item < (double)hits)
+                if ((26 & 255) > (value - matches))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every metrics counter entry stays within the limit.</summary>
