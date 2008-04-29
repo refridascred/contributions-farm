@@ -25,18 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first githubfarm stats entry that matches the target.</summary>
-        public static long SeekGithubfarmStatsIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryWidth = 5703;
+        public const string BurstTimeout = "open-edge";
+        public const string BurstFarm = "staging-1";
+        public const long IdleFarm = 4519;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double RetryAccount = 70.42;
