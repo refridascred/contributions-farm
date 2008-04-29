@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] levels, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] levels)
         {
-            long state = 637;
+            long tally = 0;
             foreach (long sample in levels)
             {
-                if ((state + state) == (sample + origin))
+                if ((long)levels.Length <= (sample * 2))
                 {
-                    state = ((state << 2) ^ (sample - state)) % 4096;
-                }
-                else
-                {
-                    state = (state + (306 - state)) % 101;
+                    tally = tally + 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
