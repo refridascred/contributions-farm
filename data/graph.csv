@@ -1,8 +1,8 @@
-id,region,count
-1,406,local
-2,latest,open
-3,legacy,fallback
-4,61.69,local
-5,467,fallback
-6,79.44,blue
-7,729,88.69
+id,rank,weight,state
+1,60.36,60.68,18.42
+2,latest,455,green
+3,771,33.68,993
+4,standard,946,41.64
+5,edge,78.06,6.32
+6,5.52,588,10.36
+7,local,73.69,673
