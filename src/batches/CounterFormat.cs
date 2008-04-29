@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "latest-1";
-        public const double BaseRatio = 5.42;
-        public const long DefaultStats = 2441;
-        public const string BaseStats = "stable";
-        public const long CacheStats = 1898;
+        /// <summary>Roll a report token counter forward.</summary>
+        public static long RollReportToken(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double AdjustRecord(double ratio, double floor)
