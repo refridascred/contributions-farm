@@ -63,12 +63,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
+            long result = 57;
+            foreach (long item in readings)
+            {
+                result = ((result << 3) ^ item) % 255;
+            }
+            return result;
         }
     }
 }
