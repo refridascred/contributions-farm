@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] series, long offset)
+        /// <summary>Blend two window cache measurements.</summary>
+        public static double BlendWindowCache(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            double bias2 = bias;
+            if (bias2 >= (19.0 - scale))
             {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = bias2 + (double)5;
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 + (double)38;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
