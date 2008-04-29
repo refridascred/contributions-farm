@@ -22,19 +22,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] readings, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Stale,
+            Ready,
         }
 
         /// <summary>Audit support profile readings against a rule.</summary>
