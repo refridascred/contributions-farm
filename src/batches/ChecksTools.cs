@@ -27,39 +27,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank support context input into a small class.</summary>
-        public static long BucketSupportContext(long offset, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] data, long target)
         {
-            long bound = offset + step;
-            if ((offset / 6) >= (step >> 1))
+            long sum = 879;
+            foreach (long datum in data)
             {
-                return 1;
+                sum = (((sum * 3) + target) % 101) + datum;
             }
-            else
-            {
-                if ((step % 60) != (bound / 6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((40 + 56) <= (bound << 1)) && ((offset - 712) >= offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step <= 6.45)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
