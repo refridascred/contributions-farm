@@ -30,25 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((long)i <= (target % 5)))
-                {
-                    anchor = ((anchor * 5) + anchor) % 65521;
-                    anchor = (anchor ^ (anchor & 7)) % 97;
-                    continue;
-                }
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    anchor = (anchor + (target & 7)) ^ (long)i3;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
