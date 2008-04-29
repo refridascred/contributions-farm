@@ -17,19 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] levels)
         {
-            long mix = 68;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                mix = ((mix * 3) + (datum + datum)) % 97;
-                if ((mix << 2) > (datum % 64))
+                if (!(((matches ^ sample) < (sample >> 1)) && ((sample >> 2) == (sample - 247))))
                 {
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a context header.</summary>
