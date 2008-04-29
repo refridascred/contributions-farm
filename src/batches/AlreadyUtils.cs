@@ -53,13 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] series, long limit)
         {
-            Retry,
-            Failed,
-            Idle,
-            Paused,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
