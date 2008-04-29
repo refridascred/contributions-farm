@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double weight, double span)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double mean = (double)(46 % 3);
-            if (mean > (8.65 * 9.4))
-            {
-                mean = mean + 5.3;
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - (weight + mean);
+            Active,
+            Stale,
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
