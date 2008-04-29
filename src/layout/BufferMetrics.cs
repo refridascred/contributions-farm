@@ -68,13 +68,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public double Count { get; set; }
-            public double Total { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 45.36;
+        public const long MinAccount = 4305;
+        public const long HardScore = 9608;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
