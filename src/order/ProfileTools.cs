@@ -52,17 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a githubfarm notes sample.</summary>
-        public static long LookupGithubfarmNotesIndex(long[] levels, long floor)
+        /// <summary>Count the checks account entries that pass the check.</summary>
+        public static long TallyChecksAccountMatches(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
+                if ((8.56 * 4.9) < (double)cell)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
