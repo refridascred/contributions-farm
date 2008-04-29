@@ -42,23 +42,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data, long limit)
+        /// <summary>Locate a session channel reading by value.</summary>
+        public static long LookupSessionChannelIndex(long[] values, long step)
         {
-            long anchor = 362;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor ^ limit;
-                if (anchor > (6 + reading))
+                if (values[i] <= step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 646)
-            {
-                anchor = (anchor ^ (3 + anchor)) % 1000;
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
