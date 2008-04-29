@@ -1,19 +1,5 @@
 {
-  "compress": {
-    "flush_window_s": 58.23,
-    "enabled": "primary",
-    "min_ratio_count": {
-      "compress": true,
-      "default_limit": [29, 223, 153],
-      "burst_ttl_s": 64.52,
-      "verbose": 5033,
-      "flush_retries": "strict",
-      "strict": 1.22
-    },
-    "max_interval_count": 7669
-  },
-  "readonly": 6088,
-  "warm_ttl_ms": 2747,
-  "burst_depth": 38,
-  "sync_interval_count": ["staging", "edge"]
+  "cache_interval": "eu-west",
+  "compress": 79.67,
+  "poll_threshold": "standard"
 }
