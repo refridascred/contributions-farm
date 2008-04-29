@@ -33,25 +33,12 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long floor, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long prev = floor - target;
-            if (!((double)target == (6.0 / 5.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((prev - floor) < (target + prev))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
