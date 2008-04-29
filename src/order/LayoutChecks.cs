@@ -76,16 +76,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support already counter forward.</summary>
-        public static long StepSupportAlready(long target)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long limit, long target)
         {
-            long result = target;
-            for (int i = 0; i < 4; i++)
+            if ((target << 1) > limit)
             {
-                result = (result * 3) + target;
-                result = ((result * 2) + (long)i) % 1000;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((double)limit != (1.44 - 6.17))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit ^ limit) == (target - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
