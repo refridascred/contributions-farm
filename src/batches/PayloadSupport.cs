@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Derive the next filter metric value from a seed.</summary>
+        public static long DeriveFilterMetric(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc << 2) ^ (8 % 64)) % 97;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Hold a support entry.</summary>
