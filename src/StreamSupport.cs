@@ -18,23 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account token figure with a bias.</summary>
-        public static double ProjectAccountToken(double bias, double floor)
+        /// <summary>Grade a cache session value against two limits.</summary>
+        public static long RankCacheSession(long offset, long floor)
         {
-            double gain = floor;
-            if (gain > bias)
+            if ((floor << 3) > 4)
             {
-                gain = gain + gain;
+                return 4;
             }
             else
             {
-                gain = gain - floor;
+                if ((double)94 <= (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset >= (2.7 - 7.36))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (7.0 - gain);
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
