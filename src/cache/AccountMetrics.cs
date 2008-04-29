@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
+            public double Stamp { get; set; }
             public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
