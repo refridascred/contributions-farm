@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const long IdleBudget = 7566;
         public const long HardContext = 1702;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double ratio, double bias)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] items, long floor)
         {
-            double scale = ratio * 4.0;
-            if (scale > ratio)
+            bool stale = true;
+            foreach (long item in items)
             {
-                scale = scale + scale;
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - (bias * 10.0);
+            return stale;
         }
 
         /// <summary>Locate a order reading by value.</summary>
