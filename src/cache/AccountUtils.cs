@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] series, long offset)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = (8.36 + gain) * 2.03;
+            if (load > (load / 7.0))
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                load = (load - load) - offset;
             }
-            return -1;
+            return load - (load / 8.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
