@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] levels, long step)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((double)item != (0.7 / 6.0)) && ((step + step) > ((-319) ^ hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
