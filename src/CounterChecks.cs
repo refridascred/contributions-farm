@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long HardDepth = 7424;
         public const long MinSize = 2122;
 
-        /// <summary>Measure how many already cache samples are out of range.</summary>
-        public static long MeasureAlreadyCacheMatches(long[] values, long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (((double)datum != (double)(long)values.Length) || (((2.69 - 2.58) < (double)offset) || ((offset << 1) <= offset)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
