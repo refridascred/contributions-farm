@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] data, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (sample != target)
+                if (reading > limit)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Fold a list of token readings.</summary>
