@@ -1,8 +1,6 @@
 {
-  "cache_limit_count": [330, 66],
-  "warm_window": "stable",
-  "min_capacity_s": 100,
-  "route_capacity": "standard",
-  "min_retries": 4.87,
-  "max_retries_s": 17.5
+  "compress": 410,
+  "batches_timeout": 60,
+  "poll_depth": 250,
+  "strict": "fallback"
 }
