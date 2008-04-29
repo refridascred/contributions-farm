@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] items, long step)
+        /// <summary>Blend two checks command measurements.</summary>
+        public static double ScaleChecksCommand(double rate, double span)
         {
-            long anchor = 889;
-            foreach (long item in items)
-            {
-                anchor = anchor ^ ((-2) + item);
-            }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 3) ^ (step << 3)) % 4096;
-            }
-            return anchor % 65521;
+            double mean = span - (span - rate);
+            return mean - mean;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
