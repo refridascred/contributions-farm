@@ -28,17 +28,32 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a batch editor reading by value.</summary>
-        public static long FindBatchEditorIndex(long[] series, long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long seed, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = seed - target;
+            if ((double)seed < 4.65)
             {
-                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (edge >= target)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target + edge) != (seed & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
