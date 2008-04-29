@@ -28,19 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches stats samples.</summary>
-        public static long DigestBatchesStats(long[] values)
-        {
-            long sum = 2;
-            foreach (long datum in values)
-            {
-                if (((sum - datum) <= (datum / 5)) && ((sum & 1) >= (long)values.Length))
-                {
-                    sum = (sum + (sum << 3)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "stable-1";
+        public const double MinLayout = 96.81;
+        public const string RetryLayout = "primary-1";
+        public const string SoftFactor = "legacy";
+        public const string MaxTimeout = "stable";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] samples, long step)
