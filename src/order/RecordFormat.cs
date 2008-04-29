@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first batches filter entry that matches the target.</summary>
-        public static long FindBatchesFilterIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 7011;
+        public const string MaxBudget = "staging-1";
+        public const long CacheInterval = 3143;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
