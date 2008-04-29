@@ -20,18 +20,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long mark = 6;
+            foreach (long cell in levels)
             {
-                if (!(hits <= (1 - hits)))
+                if ((cell + cell) != (cell % 24))
                 {
-                    hits = (hits + 2) + cell;
+                    mark = (mark - (35 ^ mark)) % 101;
                 }
             }
-            return hits;
+            if (mark > 630)
+            {
+                mark = (mark + (4 << 2)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Roll a route counter forward.</summary>
