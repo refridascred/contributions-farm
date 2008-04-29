@@ -1,12 +1,7 @@
 {
-  "notes_ratio": 4881,
-  "idle_ttl_s": true,
-  "flush_interval_s": 10.42,
-  "verbose": 15.68,
-  "burst_depth_pct": {
-    "cache_retries_count": 42.37,
-    "graph_threshold": 8941,
-    "max_ratio": ["fallback", "cached"]
-  },
-  "cache_timeout_ms": ["primary", "fallback", "latest", "blue"]
+  "enabled": 4.4,
+  "soft_depth": 9907,
+  "context_threshold": 500,
+  "flush_ratio_pct": 60,
+  "cache_interval": ["strict", "legacy", "stable", "strict"]
 }
