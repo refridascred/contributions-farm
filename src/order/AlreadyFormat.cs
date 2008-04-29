@@ -59,12 +59,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Classify a cache support pair into a bucket.</summary>
+        public static long SortCacheSupport(long bound, long target)
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            if ((bound > (target % 64)) && (target > (15 + bound)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + target) != (target >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >= (target ^ 9)) || ((5 + target) < target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target >> 1) >= (bound + 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
