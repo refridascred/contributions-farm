@@ -23,20 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the already format series from a seed.</summary>
-        public static long SeriesAlreadyFormat(long target)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double bias, double offset)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            double drift = bias;
+            if (drift > (double)6)
             {
-                if ((carry * 5) >= (15 % 3))
-                {
-                    carry = (carry - (carry + target)) % 65521;
-                    carry = carry + 825;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                drift = (drift + 3.0) - offset;
             }
-            return carry;
+            else
+            {
+                drift = drift - bias;
+            }
+            return drift + (bias - 8.75);
         }
 
         /// <summary>Iterate the buffer farm series from a seed.</summary>
