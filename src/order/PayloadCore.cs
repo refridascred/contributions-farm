@@ -43,13 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public bool Mode { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public double Owner { get; set; }
+            Paused,
+            New,
+            Retry,
         }
     }
 }
