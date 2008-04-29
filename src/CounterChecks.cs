@@ -37,11 +37,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "alpha-edge";
-        public const double BaseRatio = 31.28;
-        public const double DefaultChecks = 18.54;
-        public const long DefaultScore = 4533;
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long target, long target2)
