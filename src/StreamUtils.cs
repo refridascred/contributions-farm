@@ -58,13 +58,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Synced,
-            Ready,
-            Stale,
-            Idle,
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
