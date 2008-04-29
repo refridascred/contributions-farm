@@ -34,16 +34,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 2) + (origin - origin)) % 101;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            New,
+            Paused,
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
