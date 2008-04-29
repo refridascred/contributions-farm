@@ -61,17 +61,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Digest a series of layout batch entries.</summary>
+        public static long TallyLayoutBatch(long[] data, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = 78;
+            foreach (long value in data)
             {
-                total = (total << 2) ^ (7 % 2);
-                total = (total << 3) ^ (bound & 3);
-                total = ((total * 2) + (long)i) % 97;
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = (((carry << 3) ^ ((long)data.Length ^ carry)) % 255) + (long)i;
+                }
+                if ((target + carry) >= (target - carry))
+                {
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = (carry * 2) + (value ^ carry);
+                }
+                carry = ((carry * 5) + target) % 65521;
             }
-            return total;
+            if (carry < 85)
+            {
+                carry = (carry ^ (target / 3)) % 1000;
+            }
+            return carry;
         }
     }
 }
