@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long floor, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if ((origin >> 4) >= (origin + 151))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((2.0 >= (double)origin) || ((floor % 10) != (8 / 6)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor + floor) > (origin % 12)) || ((floor * 2) > floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            New,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
