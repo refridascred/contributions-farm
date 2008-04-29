@@ -32,23 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] samples, long offset)
         {
-            long mix = 20;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix + ((-41) / 4);
-                if ((mix / 6) > sample)
+                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 854)
-            {
-                mix = mix ^ (mix ^ mix);
-            }
-            return mix % 65521;
+            return -1;
         }
     }
 }
