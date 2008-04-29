@@ -55,13 +55,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Adjust a buffer account reading.</summary>
+        public static double SmoothBufferAccount(double rate, double offset)
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Label { get; set; }
-            public long Token { get; set; }
+            double scale = 2.28;
+            if (scale > scale)
+            {
+                scale = scale + (rate * 2.94);
+            }
+            return scale - (offset / 5.0);
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
