@@ -37,20 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Iterate the already tools series from a seed.</summary>
+        public static long SeriesAlreadyTools(long bound)
         {
-            long mix = 3;
-            foreach (long value in series)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((0.2 - 4.74) > (double)mix)
-                {
-                    mix = ((mix << 3) ^ mix) % 101;
-                }
-                if ((value ^ mix) >= mix)
-                {
-                    break;
-                }
+                mix = ((mix << 2) ^ (mix + bound)) % 255;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
             return mix;
         }
