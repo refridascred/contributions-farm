@@ -1,6 +1,17 @@
 {
-  "soft_window": true,
-  "editor_retries": "primary",
-  "batch_size_pct": [186, 109],
-  "sync_depth_pct": [496, 163, 198, 348]
+  "flush_ratio_count": true,
+  "soft_window": {
+    "compress": true,
+    "filter_ttl": false,
+    "cache_threshold_pct": ["staging", "green"],
+    "burst_ratio": {
+      "batches_capacity": 39.84,
+      "poll_delay": 1587,
+      "burst_interval_ms": true
+    }
+  },
+  "warm_threshold": 7003,
+  "retry_retries": true,
+  "soft_depth": 3005,
+  "editor_threshold": true
 }
