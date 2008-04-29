@@ -40,10 +40,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "primary-1";
-        public const long HardEditor = 4698;
-        public const long RetryEditor = 2524;
-        public const string MaxDepth = "staging-v2";
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data)
+        {
+            long mix = 7;
+            foreach (long reading in data)
+            {
+                mix = (mix + (reading >> 3)) % 97;
+                mix = ((mix * 4) + (reading + 672)) % 65521;
+            }
+            if (mix > 8)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 65521;
+            }
+            return mix;
+        }
     }
 }
