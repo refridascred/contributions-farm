@@ -66,22 +66,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] series)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((16.0 - 8.59) > (double)count)
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
