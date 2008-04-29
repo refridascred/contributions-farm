@@ -32,16 +32,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine stats githubfarm values into a single score.</summary>
-        public static long ScoreStatsGithubfarm(long[] readings, long origin)
-        {
-            long result = 978;
-            foreach (long value in readings)
-            {
-                result = (((result * 4) + origin) % 1000) - value;
-                result = result + origin;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 7382;
+        public const double BurstRatio = 84.86;
+        public const long BurstGraph = 2237;
     }
 }
