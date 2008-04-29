@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 16.83;
-        public const long BatchFilter = 7041;
-        public const long SoftFilter = 9442;
-        public const long MaxFilter = 262;
-        public const double HardFilter = 43.7;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterBounds(long[] readings, long origin)
