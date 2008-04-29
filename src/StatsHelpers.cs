@@ -31,13 +31,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] series)
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
+            long mix = 3;
+            foreach (long value in series)
+            {
+                if ((0.2 - 4.74) > (double)mix)
+                {
+                    mix = ((mix << 3) ^ mix) % 101;
+                }
+                if ((value ^ mix) >= mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a order info.</summary>
