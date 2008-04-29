@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] levels)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((26 & 255) > (value - matches))
+                if (sample < origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Check that every metrics counter entry stays within the limit.</summary>
