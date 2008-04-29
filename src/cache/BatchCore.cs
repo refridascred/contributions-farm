@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long bound, long floor)
-        {
-            if (4 > (bound + floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound <= 8.41)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheFactor = 86.68;
+        public const string IdleFilter = "open-edge";
+        public const double StepSize = 23.73;
+        public const long WindowDepth = 3860;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultReport = 7610;
