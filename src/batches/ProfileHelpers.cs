@@ -81,12 +81,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 7758;
-        public const long RetryCache = 3425;
-        public const long HardRatio = 6519;
-        public const long WindowCache = 6747;
-        public const double DefaultScore = 97.29;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleCount = 1370;
+        public const long IdleBudget = 5848;
+        public const long MaxStats = 9705;
+        public const long HardStats = 8688;
+        public const double DefaultStats = 1.86;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long SortCommits(long origin, long offset)
