@@ -50,11 +50,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchFactor = 50.02;
-        public const double DefaultSpan = 17.08;
-        public const long LimitWindow = 56;
-        public const long MaxSize = 8787;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
