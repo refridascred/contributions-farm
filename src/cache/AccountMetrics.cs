@@ -122,21 +122,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter tools readings.</summary>
-        public static long OverlapCounterToolsCount(long[] samples)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
