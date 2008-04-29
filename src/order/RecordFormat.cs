@@ -42,28 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] data, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] levels, long offset)
         {
-            long carry = 90;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (4.43 <= (8.2 - 4.55))
+                if ((offset - entry) > (entry & 7))
                 {
-                    carry = carry + (carry / 5);
-                }
-                if ((double)52 <= (double)bound)
-                {
-                    carry = ((carry * 2) + (carry + bound)) % 65521;
-                    carry = carry - (entry * 2);
-                    continue;
-                }
-                if (carry > (carry << 3))
-                {
-                    carry = ((carry * 3) + entry) % 1000;
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
