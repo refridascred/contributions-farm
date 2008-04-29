@@ -31,15 +31,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] values, long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
     }
 }
