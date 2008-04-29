@@ -38,12 +38,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "cached-v2";
-        public const long RetryCount = 2340;
-        public const long BurstSize = 8547;
-        public const long MinLevel = 7029;
-        public const long RetryStats = 6373;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSize = 4257;
+        public const long IdleBudget = 1799;
+        public const long HardCache = 1545;
+        public const long CacheDepth = 658;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long ScoreCluster(long[] items, long floor)
