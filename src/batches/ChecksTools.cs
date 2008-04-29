@@ -32,19 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] samples, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (cell > origin)
+                if ((63 * 5) > tally)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
