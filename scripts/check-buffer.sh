@@ -6,12 +6,8 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=473
+BUFFER_LIMIT=5
 log "limit is ${BUFFER_LIMIT}"
-
-for item in latest standard green local; do
-    log "checking ${item}"
-done
 
 count=0
 while [ "${count}" -lt 9 ]; do
