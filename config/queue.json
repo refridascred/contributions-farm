@@ -1,15 +1,17 @@
 {
-  "persist": "staging",
-  "flush_depth_count": {
-    "cache_limit_count": {
-      "poll_window": "edge",
-      "cache_capacity_pct": "standard",
-      "flush_delay": ["cached", "blue", "latest", "latest"]
-    },
-    "batch_interval_ms": ["strict", "blue", "fallback"],
-    "support_size": 59.43
+  "strict": "open",
+  "notes_ttl": {
+    "flush_interval": "eu-west",
+    "cache_limit": 16.81,
+    "enabled": [335, 175, 347, 276],
+    "default_delay_s": {
+      "idle_retries_s": "staging",
+      "command_capacity": 68.72,
+      "sync_retries_ms": "green",
+      "default_window": "local",
+      "flush_size": [224, 202, 283]
+    }
   },
-  "commits_depth": 2647,
-  "batch_delay": 6.25,
-  "batch_window_ms": 1749
+  "burst_capacity": [328, 319, 13, 396],
+  "hard_depth_s": 2804
 }
