@@ -1,5 +1,15 @@
 {
-  "max_capacity_s": [180, 321, 91, 159],
-  "session_window": "staging",
-  "strict": [298, 80, 399, 250]
+  "persist": "staging",
+  "flush_depth_count": {
+    "cache_limit_count": {
+      "poll_window": "edge",
+      "cache_capacity_pct": "standard",
+      "flush_delay": ["cached", "blue", "latest", "latest"]
+    },
+    "batch_interval_ms": ["strict", "blue", "fallback"],
+    "support_size": 59.43
+  },
+  "commits_depth": 2647,
+  "batch_delay": 6.25,
+  "batch_window_ms": 1749
 }
