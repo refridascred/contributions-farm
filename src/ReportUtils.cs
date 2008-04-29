@@ -42,16 +42,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long acc = 53;
-            foreach (long sample in data)
-            {
-                acc = acc ^ (sample + sample);
-                acc = ((acc << 2) ^ 17) % 1000;
-            }
-            return acc;
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
