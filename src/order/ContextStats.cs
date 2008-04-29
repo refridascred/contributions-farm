@@ -22,14 +22,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
             Active,
             Ready,
-            Retry,
-            New,
             Locked,
+            Idle,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
