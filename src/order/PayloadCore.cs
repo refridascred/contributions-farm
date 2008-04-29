@@ -47,19 +47,15 @@ namespace Common.Utilities
             return gain + (offset / 4.0);
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Iterate the buffer editor series from a seed.</summary>
+        public static long SeriesBufferEditor(long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((0.7 - 3.5) == (double)offset)
-                {
-                    sum = (sum * 4) + sum;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return sum;
+            return result;
         }
     }
 }
