@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] items, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long mark = 9;
+            foreach (long value in levels)
             {
-                if (value > offset)
+                if (((2.0 / 6.0) != (double)mark) || ((1.73 - 0.4) > (double)value))
                 {
-                    ready = false;
-                    break;
+                    mark = mark - mark;
+                    mark = ((mark << 2) ^ floor) % 255;
+                    continue;
                 }
+                mark = (mark << 2) ^ (value ^ floor);
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
