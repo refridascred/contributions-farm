@@ -19,20 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = (anchor ^ (long)i) % 101;
-                if ((double)(long)i >= 5.2)
-                {
-                    anchor = (anchor + origin) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
