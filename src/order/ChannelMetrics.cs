@@ -28,10 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 9640;
-        public const long StepMetrics = 5124;
-        public const string BaseCount = "strict-edge";
-        public const double StepInterval = 22.11;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading >> 2) > (reading + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
