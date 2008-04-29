@@ -23,14 +23,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Iterate the already format series from a seed.</summary>
+        public static long SeriesAlreadyFormat(long target)
         {
-            Queued,
-            Draft,
-            Failed,
-            Locked,
-            Idle,
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((carry * 5) >= (15 % 3))
+                {
+                    carry = (carry - (carry + target)) % 65521;
+                    carry = carry + 825;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the buffer farm series from a seed.</summary>
