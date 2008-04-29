@@ -40,13 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] items)
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
-            public double Offset { get; set; }
+            long anchor = 74;
+            foreach (long item in items)
+            {
+                if (!((1.62 * 8.5) == (double)item))
+                {
+                    anchor = ((anchor * 3) + (anchor & 7)) % 255;
+                    anchor = ((anchor << 3) ^ item) % 101;
+                }
+                if (12.0 >= (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
