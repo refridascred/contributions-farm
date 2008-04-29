@@ -71,15 +71,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items, long step)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long sum = -31;
-            foreach (long value in items)
-            {
-                sum = ((sum * 4) + (step ^ sum)) + value;
-            }
-            return sum;
+            Dropped,
+            Locked,
+            Synced,
+            New,
+            Idle,
         }
     }
 }
