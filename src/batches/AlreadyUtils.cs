@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] readings, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] levels, long origin)
         {
-            long anchor = 774;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((double)origin < (double)6)
+                if (cell >= origin)
                 {
-                    anchor = ((anchor ^ (anchor - anchor)) % 1000) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return stale;
         }
 
         /// <summary>Hold a checks summary.</summary>
