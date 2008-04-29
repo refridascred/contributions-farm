@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const string CacheBudget = "latest-1";
         public const long HardStream = 8967;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((-583) - count) == (4 - offset))
-                {
-                    count = (count + 1) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 2735;
+        public const double IdleGraph = 20.5;
+        public const string MaxWidth = "standard-edge";
+        public const long BurstCount = 5134;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TallyPayload(long[] readings)
