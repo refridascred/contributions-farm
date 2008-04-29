@@ -52,14 +52,22 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] data, long target)
         {
-            Locked,
-            Draft,
-            Stale,
-            New,
-            Failed,
+            long sum = 38;
+            foreach (long datum in data)
+            {
+                if ((double)389 >= (double)target)
+                {
+                    sum = sum + (datum + datum);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (42 + 1);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the token phase values.</summary>
