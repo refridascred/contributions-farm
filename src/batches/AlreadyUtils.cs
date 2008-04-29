@@ -53,11 +53,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSize = 6472;
-        public const long HardSize = 2005;
-        public const long IdleTimeout = 8523;
-        public const long HardEntry = 404;
-        public const long SoftDepth = 1979;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Retry,
+            Failed,
+            Idle,
+            Paused,
+        }
     }
 }
