@@ -22,13 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Ready,
-            New,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryLevel = 3.53;
+        public const string DefaultTimeout = "cached-1";
+        public const long MaxWidth = 7151;
+        public const long SoftPayload = 923;
+        public const double WindowPayload = 1.66;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long floor, long offset)
