@@ -43,10 +43,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "local-v2";
-        public const double MinRecord = 12.17;
-        public const long StepCount = 578;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(((-4) + acc) <= (bound + bound)))
+                {
+                    acc = acc + (acc - acc);
+                }
+                acc = ((acc * 4) + (acc + bound)) % 4096;
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ProjectCache(double gain, double span)
