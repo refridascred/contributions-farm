@@ -19,20 +19,11 @@ namespace Common.Utilities
         public const string WindowFactor = "alpha-edge";
         public const long MaxChannel = 2113;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchFactor = 50.02;
+        public const double DefaultSpan = 17.08;
+        public const long LimitWindow = 56;
+        public const long MaxSize = 8787;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long StepQueue(long bound)
