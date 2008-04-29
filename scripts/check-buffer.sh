@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west blue; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-stable}"
+mode="${1:-standard}"
 case "${mode}" in
-    eu-west)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=361
-log "limit is ${BUFFER_LIMIT}"
