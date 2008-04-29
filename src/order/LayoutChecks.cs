@@ -25,22 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batches cluster entries.</summary>
-        public static long ScoreBatchesCluster(long[] items, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] items)
         {
-            long result = 35;
-            foreach (long datum in items)
+            long total = 23;
+            foreach (long reading in items)
             {
-                if ((191 + datum) >= limit)
+                if ((double)reading == (9.99 + 7.8))
                 {
-                    result = (result ^ (datum - datum)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ ((long)items.Length / 5)) % 97;
+                    total = (total ^ (8 - total)) % 1000;
                 }
             }
-            return result;
+            return total % 4096;
         }
 
         /// <summary>Count tools already pairs that satisfy a relation.</summary>
