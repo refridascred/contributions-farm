@@ -45,12 +45,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Synced,
-            New,
-            Done,
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
