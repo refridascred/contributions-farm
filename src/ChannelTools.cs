@@ -22,10 +22,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 1432;
-        public const long BurstWidth = 3310;
-        public const double WindowBudget = 61.5;
-        public const double BaseSize = 21.05;
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
