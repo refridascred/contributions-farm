@@ -39,15 +39,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double bias, double floor)
+        /// <summary>Count the notes order entries that pass the check.</summary>
+        public static long TallyNotesOrderMatches(long[] samples)
         {
-            double ratio = (double)270 * 4.15;
-            if (ratio > (3.83 * 7.4))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                ratio = ((ratio + (double)673) + bias) + floor;
+                if (seen < (seen & 3))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
             }
-            return ratio - (3.61 - 10.0);
+            return seen;
         }
 
         /// <summary>Combine session format values into a single score.</summary>
