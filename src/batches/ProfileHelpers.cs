@@ -60,19 +60,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark ^ (floor / 4)) % 255) ^ (long)i2;
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
