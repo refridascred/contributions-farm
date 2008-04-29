@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((hits ^ value) > (hits * 5))
+                if ((double)count == (7.7 / 7.0))
                 {
-                    hits = hits + 2;
+                    count = (count + 1) + reading;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a report session reading by value.</summary>
