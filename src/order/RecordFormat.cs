@@ -65,32 +65,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] levels, long step)
         {
-            long delta = step - bound;
-            if ((bound * 5) > bound)
+            long acc = 313;
+            foreach (long reading in levels)
             {
-                return 5;
+                acc = (((acc * 3) + (16 + reading)) % 97) - step;
             }
-            else
-            {
-                if ((step - delta) == (delta + delta))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step - bound) >= delta)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return acc % 97;
         }
     }
 }
