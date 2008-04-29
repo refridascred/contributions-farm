@@ -37,18 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] series, long offset)
+        /// <summary>Combine stats githubfarm values into a single score.</summary>
+        public static long ScoreStatsGithubfarm(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long result = 978;
+            foreach (long value in readings)
             {
-                if ((double)offset < (3.71 - 7.6))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
+                result = (((result * 4) + origin) % 1000) - value;
+                result = result + origin;
             }
-            return tally;
+            return result;
         }
     }
 }
