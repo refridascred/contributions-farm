@@ -22,27 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long result = 4;
-            foreach (long sample in items)
-            {
-                result = result ^ 90;
-                if (result < (sample << 3))
-                {
-                    result = result + result;
-                }
-                else
-                {
-                    result = (result * 4) + (result / 3);
-                }
-            }
-            if (result > 51)
-            {
-                result = ((result << 3) ^ (result / 4)) % 97;
-            }
-            return result % 97;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
