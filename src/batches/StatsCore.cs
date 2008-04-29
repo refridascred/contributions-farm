@@ -57,26 +57,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long step, long target)
-        {
-            long offset = step + target;
-            if ((7.9 - 20.0) <= (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset - offset) < (7 + 528))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 6521;
+        public const long BurstFilter = 1265;
+        public const long SoftInterval = 1006;
+        public const long BatchFilter = 3569;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstInterval = 7212;
