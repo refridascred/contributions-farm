@@ -1,11 +1,6 @@
-id,rank,level,ratio,owner
-1,521,996,207,744
-2,89.01,37,edge,86.6
-3,primary,868,4.4,local
-4,14.55,47,primary,staging
-5,9.73,980,778,866
-6,86.48,2.02,211,324
-7,primary,309,13.42,68.92
-8,staging,54.1,90.4,313
-9,504,17.01,cached,local
-10,0.89,44.14,23.82,263
+id,token,level
+1,local,strict
+2,75.68,eu-west
+3,49.38,green
+4,235,green
+5,blue,303
