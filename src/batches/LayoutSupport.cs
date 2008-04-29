@@ -50,21 +50,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = span * 5.3;
+            if (gain > gain)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain - scale;
             }
-            return tally;
+            else
+            {
+                gain = gain - (double)1;
+            }
+            return gain - span;
         }
 
         /// <summary>Roll a report counter forward.</summary>
