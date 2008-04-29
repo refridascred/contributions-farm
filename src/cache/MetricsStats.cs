@@ -32,17 +32,11 @@ namespace Common.Utilities
         public const long RetryInterval = 5011;
         public const double LimitLevel = 2.18;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
