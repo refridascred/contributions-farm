@@ -26,19 +26,26 @@ namespace Common.Utilities
         public const long HardSize = 5786;
         public const long WindowSpan = 8450;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] levels, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long mark = 76;
+            foreach (long entry in items)
             {
-                if (value < step)
+                if (limit < (entry << 1))
                 {
-                    stale = false;
+                    mark = mark ^ (limit + mark);
+                }
+                if ((mark - limit) == (mark - mark))
+                {
                     break;
                 }
             }
-            return stale;
+            if (mark > 13)
+            {
+                mark = ((mark * 3) + (90 * 2)) % 255;
+            }
+            return mark % 4096;
         }
     }
 }
