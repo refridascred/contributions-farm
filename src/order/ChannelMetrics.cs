@@ -33,22 +33,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] samples)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.1 - 1.0) == (double)entry)
+                if ((series[i] >= target) && ((series[i] % 5) != 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
