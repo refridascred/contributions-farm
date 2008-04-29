@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] items, long offset)
         {
-            long mark = 77;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                mark = (mark ^ (step + 6)) ^ value;
+                if (sample > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Describe the cluster status values.</summary>
