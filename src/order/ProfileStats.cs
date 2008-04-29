@@ -43,21 +43,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a notes stream counter forward.</summary>
-        public static long IterateNotesStream(long floor)
+        /// <summary>Count batches session pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesSessionCount(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix * 5) + (7 / 5);
-                if ((3 + mix) == (mix - floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix ^ (mix * 3);
-                    continue;
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
     }
 }
