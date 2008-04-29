@@ -30,27 +30,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels, long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mix = 672;
-            foreach (long value in levels)
-            {
-                if ((value - mix) > (long)levels.Length)
-                {
-                    mix = (mix + (mix & 15)) % 101;
-                }
-                else
-                {
-                    mix = (mix + (value + 50)) % 101;
-                }
-                mix = ((mix << 3) ^ ((long)levels.Length / 3)) % 101;
-                if ((mix * 3) != (60 ^ value))
-                {
-                    mix = (mix + (bound - mix)) % 255;
-                }
-            }
-            return mix;
+            Stale,
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Blend two layout measurements.</summary>
