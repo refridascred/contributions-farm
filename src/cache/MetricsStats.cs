@@ -32,15 +32,17 @@ namespace Common.Utilities
         public const long RetryInterval = 5011;
         public const double LimitLevel = 2.18;
 
-        /// <summary>Iterate the counter metrics series from a seed.</summary>
-        public static long RollCounterMetrics(long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
