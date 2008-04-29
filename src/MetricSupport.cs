@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i << 3) < mark)
-                {
-                    mark = (mark << 2) ^ mark;
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Draft,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the notes kind values.</summary>
