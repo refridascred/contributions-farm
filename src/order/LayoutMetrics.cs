@@ -37,10 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 3656;
-        public const long HardBuffer = 7631;
-        public const double MinScore = 65.42;
-        public const long LimitTimeout = 7235;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Failed,
+            New,
+            Paused,
+        }
     }
 }
