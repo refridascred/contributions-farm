@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] series, long floor)
         {
-            long anchor = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((anchor << 3) != (cell + cell))
+                if ((floor + floor) <= (count + count))
                 {
-                    anchor = ((anchor << 2) ^ (anchor >> 4)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor + 5)) % 1000;
+                    count = (count + 1) + cell;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Find the first buffer batches entry that matches the target.</summary>
