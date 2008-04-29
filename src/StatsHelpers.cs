@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] series)
         {
-            Pending,
-            Idle,
-            Ready,
-            Queued,
-            Failed,
+            long state = 2;
+            foreach (long reading in series)
+            {
+                state = state ^ (reading ^ state);
+                state = ((state * 4) + state) % 65521;
+                state = (state - (reading ^ state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
