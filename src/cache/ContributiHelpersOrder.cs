@@ -31,39 +31,21 @@ namespace Common.Utilities
             return scale + 4.22;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long step, long offset)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            long bound = step ^ offset;
-            if ((double)bound >= (9.0 - 1.61))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset & 7) >= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((14 ^ offset) == (offset + offset)) || ((step - bound) <= (58 ^ 42)))
+                    if ((levels[i] - levels[j]) == 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset + 0) == (305 >> 2)) || ((offset - bound) > (35 * 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
