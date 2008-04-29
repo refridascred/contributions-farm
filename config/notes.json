@@ -1,9 +1,7 @@
 {
-  "persist": 500,
-  "sync_retries": {
-    "window_capacity": "blue",
-    "command_ttl": 8556,
-    "retry_limit_ms": 43
-  },
-  "hard_ttl_count": "open"
+  "idle_timeout_ms": 66,
+  "strict": "cached",
+  "soft_timeout_pct": 18.29,
+  "graph_size": 32.94,
+  "warm_delay_ms": 100
 }
