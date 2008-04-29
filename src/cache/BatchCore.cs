@@ -56,21 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinScore = "fallback-1";
+        public const long HardQueue = 2391;
+        public const long MinBudget = 4837;
+        public const long RetryBudget = 6769;
+        public const long StepLevel = 9385;
     }
 }
