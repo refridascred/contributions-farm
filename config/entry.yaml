@@ -1,10 +1,9 @@
 # entry settings
-compress: blue
-default_window_pct: false
-support_interval:
-  - green
+tools_timeout: 2718
+sync_size_ms: staging
+dry_run: 250
+idle_window: 22.62
+sync_timeout_count:
   - edge
-  - strict
-readonly: 65
-poll_delay_ms: standard
-audit: blue
+  - staging
+soft_interval: 31
