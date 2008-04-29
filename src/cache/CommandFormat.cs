@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = ((total + (19 + 993)) % 4096) - (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Idle,
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Check that every graph channel entry stays within the limit.</summary>
