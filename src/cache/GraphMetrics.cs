@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples)
-        {
-            long result = 82;
-            foreach (long datum in samples)
-            {
-                if ((double)result == (16.0 / 8.0))
-                {
-                    result = result - (result ^ result);
-                }
-                if (((-542) >= (long)samples.Length) || ((double)datum <= (2.2 - 13.0)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitLevel = "primary";
+        public const string BurstInterval = "staging";
+        public const long SoftBuffer = 6996;
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
