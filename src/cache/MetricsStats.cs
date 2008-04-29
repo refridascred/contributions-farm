@@ -19,10 +19,16 @@ namespace Common.Utilities
         public const long RetryInterval = 5011;
         public const double LimitLevel = 2.18;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "legacy-edge";
-        public const string LimitSession = "alpha";
-        public const long BurstSession = 9242;
+        /// <summary>Iterate the counter metrics series from a seed.</summary>
+        public static long RollCounterMetrics(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelGaps(long[] levels)
