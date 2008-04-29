@@ -33,15 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double ratio, double offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] levels, long seed)
         {
-            double drift = (double)(445 * 4);
-            if (drift <= (drift / 6.0))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                drift = (drift + ratio) - offset;
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - (ratio * 2.0);
+            return flag;
         }
     }
 }
