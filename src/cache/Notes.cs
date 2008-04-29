@@ -76,11 +76,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftScore = 47.52;
-        public const long LimitInterval = 8689;
-        public const long MaxGraph = 5700;
-        public const string DefaultGraph = "alpha-v2";
-        public const double MinGraph = 49.4;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
