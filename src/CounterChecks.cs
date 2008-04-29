@@ -61,15 +61,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double scale, double span)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            double bias = span;
-            if (bias < (span / 3.0))
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                bias = (bias - (span / 3.0)) + scale;
+                if (!(((long)i - target) > 1))
+                {
+                    anchor = (anchor * 4) + (93 + (long)i);
+                }
+                anchor = (anchor * 3) + target;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return bias + (double)492;
+            return anchor;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
