@@ -31,38 +31,19 @@ namespace Common.Utilities
         public const long DefaultChecks = 8091;
         public const double StepChecks = 8.05;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long step, long offset)
+        /// <summary>Adjust a commits checks reading.</summary>
+        public static double AdjustCommitsChecks(double bias, double floor)
         {
-            if ((offset / 6) == (99 - 26))
+            double ratio = (double)(1 << 2);
+            if (ratio > (3.2 - floor))
             {
-                return 0;
+                ratio = ratio - bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((((-9) >> 3) == (offset & 15)) || (offset > (offset / 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((251 >> 4) >= (offset - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset / 2) < (offset * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                ratio = (ratio - bias) + (double)(long)i;
             }
+            return ratio - (double)8;
         }
 
         /// <summary>Fold a list of order profile readings.</summary>
