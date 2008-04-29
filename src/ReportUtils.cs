@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank checks order input into a small class.</summary>
-        public static long SortChecksOrder(long target, long step)
+        /// <summary>Find the first cache channel entry that matches the target.</summary>
+        public static long LookupCacheChannelIndex(long[] data, long floor)
         {
-            long step2 = target - step;
-            if ((target >> 5) > (target - step2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (14.0 < (double)target)
+                if (data[i] < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + target) >= (step2 + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
