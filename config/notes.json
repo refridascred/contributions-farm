@@ -1,7 +1,12 @@
 {
-  "support_interval": "primary",
-  "sync_delay": 9470,
-  "min_ratio_pct": 3851,
-  "retry_window_ms": false,
-  "dry_run": 92.6
+  "notes_ratio": 4881,
+  "idle_ttl_s": true,
+  "flush_interval_s": 10.42,
+  "verbose": 15.68,
+  "burst_depth_pct": {
+    "cache_retries_count": 42.37,
+    "graph_threshold": 8941,
+    "max_ratio": ["fallback", "cached"]
+  },
+  "cache_timeout_ms": ["primary", "fallback", "latest", "blue"]
 }
