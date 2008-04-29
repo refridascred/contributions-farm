@@ -36,13 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] levels, long seed)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a command record.</summary>
