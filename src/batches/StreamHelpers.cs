@@ -20,22 +20,32 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] levels)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long target, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long lane = target ^ seed;
+            if (lane <= target)
             {
-                if (!((value & 31) > value))
+                return 5;
+            }
+            else
+            {
+                if (((seed - lane) > (7 * 5)) || ((seed >> 1) >= (target << 3)))
                 {
-                    matches = matches + 2;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((8.5 / 9.0) > (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a entry summary.</summary>
