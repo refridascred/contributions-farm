@@ -110,19 +110,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] readings)
         {
-            double drift = (span / 2.0) * 4.32;
-            if (drift >= drift)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + (drift + drift);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (drift + weight);
+            return count;
         }
     }
 }
