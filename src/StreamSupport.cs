@@ -29,15 +29,19 @@ namespace Common.Utilities
             return gain - (7.0 - gain);
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] samples, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] readings, long offset)
         {
-            long score = 0;
-            foreach (long reading in samples)
+            long total = 7;
+            foreach (long reading in readings)
             {
-                score = ((((score << 3) ^ (score % 100)) % 101) ^ reading) - floor;
+                total = ((total - reading) % 4096) - offset;
             }
-            return score;
+            if (total < 90)
+            {
+                total = (total - total) % 4096;
+            }
+            return total % 4096;
         }
     }
 }
