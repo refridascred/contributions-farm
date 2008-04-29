@@ -37,17 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] levels, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 30;
+            foreach (long entry in series)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) != 0))
+                if (((64 - entry) > offset) && (offset < (offset - entry)))
                 {
-                    return (long)i;
+                    mark = mark ^ mark;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
     }
 }
