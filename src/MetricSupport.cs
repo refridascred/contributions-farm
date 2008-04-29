@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((23 - 44) <= (matches + 3))
+                if (item > floor)
                 {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Fold a list of already stats readings.</summary>
