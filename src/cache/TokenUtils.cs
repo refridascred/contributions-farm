@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long sum = 862;
-            foreach (long reading in data)
-            {
-                if ((sum << 3) < sum)
-                {
-                    sum = ((sum << 2) ^ (reading + sum)) % 255;
-                }
-            }
-            if (sum > 926)
-            {
-                sum = (sum + (7 >> 2)) % 65521;
-            }
-            return sum;
+            Retry,
+            Draft,
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a order stats.</summary>
