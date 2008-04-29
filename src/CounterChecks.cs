@@ -87,17 +87,17 @@ namespace Common.Utilities
             return bias + (double)492;
         }
 
-        /// <summary>Derive the next channel commits value from a seed.</summary>
-        public static long DeriveChannelCommits(long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] values, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long tally = (floor + result) << 2;
-                result = result + tally;
-                result = ((result * 2) + (long)i) % 1000;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
