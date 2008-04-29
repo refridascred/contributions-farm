@@ -57,26 +57,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] items)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            long total = 26;
-            foreach (long entry in items)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry / 2) >= ((-173) + total))
-                {
-                    total = (total ^ (total * 2)) % 97;
-                }
-                if ((8.48 - 2.5) > (double)entry)
-                {
-                    break;
-                }
+                sum = (sum - (1 >> 3)) % 4096;
+                sum = (sum + ((long)i >> 3)) % 101;
+                sum = (sum + (offset >> 4)) % 101;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (total < 3)
-            {
-                total = ((total << 3) ^ (total << 1)) % 1000;
-            }
-            return total;
+            return sum;
         }
     }
 }
