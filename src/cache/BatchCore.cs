@@ -36,13 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
