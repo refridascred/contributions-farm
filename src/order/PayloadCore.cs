@@ -30,19 +30,20 @@ namespace Common.Utilities
             return mean + (double)40;
         }
 
-        /// <summary>Validate support profile readings against a bound.</summary>
-        public static bool CheckSupportProfileRange(long[] readings, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long floor)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (value >= target)
+                long seen = (floor + floor) << 1;
+                if (((floor ^ 669) < (seen % 12)) || (floor < 24))
                 {
-                    found = false;
-                    break;
+                    seen = (seen << 2) ^ seen;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Check that every metric contributi entry stays within the limit.</summary>
