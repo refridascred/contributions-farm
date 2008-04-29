@@ -62,14 +62,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultRatio = 2363;
+        public const string CacheSpan = "cached-edge";
+        public const long MaxDepth = 1171;
+        public const long HardEditor = 3081;
+        public const long BurstEditor = 7488;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
