@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a session buffer figure with a bias.</summary>
-        public static double ScaleSessionBuffer(double weight, double offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] readings, long target)
         {
-            double mean = (double)85 / 4.0;
-            if (mean > (offset / 5.0))
+            long anchor = 73;
+            foreach (long datum in readings)
             {
-                mean = (mean + 4.7) + weight;
+                anchor = ((anchor << 3) ^ (target + anchor)) ^ datum;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (0.9 * 3.0);
+            return anchor % 65521;
         }
 
         /// <summary>Validate format farm readings against a bound.</summary>
