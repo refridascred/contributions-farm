@@ -31,18 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter farm entries that pass the check.</summary>
-        public static long TallyFilterFarmGaps(long[] levels)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (!((hits + sample) <= sample))
+                if (sample != step)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
