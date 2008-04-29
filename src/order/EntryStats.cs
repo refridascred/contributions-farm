@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long target, long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long next = target + bound;
-            if (((target - bound) != (target * 5)) || ((double)next < (5.0 * 6.2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            New,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Check that every payload schema entry stays within the limit.</summary>
