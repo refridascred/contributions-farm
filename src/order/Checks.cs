@@ -23,14 +23,21 @@ namespace Common.Utilities
         public const string StepToken = "primary-v2";
         public const long BatchCount = 2897;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count notes token pairs that satisfy a relation.</summary>
+        public static long PairNotesTokenCount(long[] values)
         {
-            Closed,
-            Retry,
-            New,
-            Pending,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a checks header.</summary>
