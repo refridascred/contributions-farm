@@ -59,19 +59,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] series, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long sum = 29;
+            foreach (long value in values)
             {
-                if (cell <= offset)
+                if ((6.7 - 3.4) < (double)sum)
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum ^ (173 / 9)) % 255) + value;
                 }
             }
-            return ok;
+            return sum;
         }
     }
 }
