@@ -58,11 +58,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
