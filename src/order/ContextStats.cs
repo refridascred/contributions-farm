@@ -28,19 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] readings, long floor)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = (double)(633 ^ 6);
+            return ((scale + scale) + rate) + offset;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
