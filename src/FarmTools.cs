@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Audit window queue readings against a rule.</summary>
+        public static long AuditWindowQueueGaps(long[] data)
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (0.15 > (double)seen)
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
