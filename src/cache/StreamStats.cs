@@ -42,16 +42,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Classify a metrics support pair into a bucket.</summary>
+        public static long RankMetricsSupport(long bound, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            if (!((4.0 * 10.0) >= (9.2 / 2.0)))
             {
-                total = (total ^ (0 + total)) % 65521;
-                total = ((total * 3) + (long)i) % 65521;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((7.5 / 5.0) > (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - bound) > target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
