@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = 7.3;
+            if (scale > (scale + 6.4))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - (offset + rate);
             }
-            return tally;
+            return scale + 4.22;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
