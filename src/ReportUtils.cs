@@ -68,10 +68,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchInterval = 7313;
-        public const double MinBatches = 1.6;
-        public const long HardBatches = 4447;
-        public const long BurstSpan = 9576;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] samples)
+        {
+            long total = 668;
+            foreach (long item in samples)
+            {
+                total = (total ^ total) % 65521;
+                if (item <= (item - item))
+                {
+                    total = ((total * 4) + (2 / 8)) % 255;
+                }
+            }
+            if (total > 8)
+            {
+                total = total + (total ^ total);
+            }
+            return total;
+        }
     }
 }
