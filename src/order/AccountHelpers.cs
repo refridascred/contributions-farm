@@ -14,20 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every buffer account entry stays within the limit.</summary>
-        public static bool GuardBufferAccountRange(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 3971;
+        public const string WindowFactor = "alpha-edge";
+        public const long MaxChannel = 2113;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueLimits(long[] data, long target)
