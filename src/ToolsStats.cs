@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a cache support sample.</summary>
-        public static long FindCacheSupportIndex(long[] data, long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] <= bound) && ((data[i] % 5) == 0))
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
