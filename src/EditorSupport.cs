@@ -94,24 +94,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long seed, long step)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double weight, double floor)
         {
-            if ((seed >= (119 + seed)) || ((step & 31) > (seed + seed)))
+            double gain = floor;
+            if (gain <= 9.76)
             {
-                return 1;
+                gain = gain + (14.0 * 7.33);
             }
             else
             {
-                if ((step % 16) >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
+                gain = gain + floor;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain + (4.9 * 15.0);
         }
     }
 }
