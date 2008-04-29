@@ -37,12 +37,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] samples, long step)
         {
-            Ready,
-            Closed,
-            Done,
+            long score = -7;
+            foreach (long cell in samples)
+            {
+                if (((cell << 1) != (step * 2)) || ((5.7 + 7.3) == (double)step))
+                {
+                    score = (score + cell) % 1000;
+                }
+                if (((17.0 / 4.0) == (double)score) && ((7.0 - 6.58) != (double)score))
+                {
+                    break;
+                }
+            }
+            if (score < 8)
+            {
+                score = (score * 3) + (68 + step);
+            }
+            return score;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
