@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] items, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long result = 737;
+            foreach (long value in readings)
             {
-                if (datum >= floor)
+                if ((double)value != (5.23 * 16.0))
                 {
-                    ready = false;
-                    break;
+                    result = ((result + (result % 60)) % 65521) + seed;
                 }
             }
-            return ready;
+            if (result < (-361))
+            {
+                result = result - 2;
+            }
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
