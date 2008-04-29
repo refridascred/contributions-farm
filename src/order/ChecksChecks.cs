@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] data, long limit)
+        /// <summary>Adjust a githubfarm stream reading.</summary>
+        public static double AdjustGithubfarmStream(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double mean = (double)(0 + 0);
+            if (mean > 9.17)
             {
-                if ((double)tally != (9.9 * 5.0))
-                {
-                    tally = ((tally + 3) ^ sample) + limit;
-                }
+                mean = mean + mean;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (ratio / 2.0)) - (double)(long)i;
+            }
+            return mean + (bias + ratio);
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
