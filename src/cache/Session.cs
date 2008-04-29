@@ -23,17 +23,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] values, long offset)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = floor;
+            if (rate <= (double)33)
             {
-                if ((values[i] > offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)978) - scale;
             }
-            return -1;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - floor) - (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
