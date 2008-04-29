@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double span)
         {
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            double drift = (double)(794 * 4);
+            if (drift > (drift / 6.0))
+            {
+                drift = (drift - (span / 3.0)) - bias;
+            }
+            else
+            {
+                drift = drift - (span / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)3) + (double)(long)i;
+            }
+            return drift + (double)35;
         }
 
         /// <summary>Accumulate channel payload samples.</summary>
