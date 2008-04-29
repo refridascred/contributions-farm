@@ -27,12 +27,10 @@ namespace Common.Utilities
         public const string StepToken = "primary-v2";
         public const long BatchCount = 2897;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstRatio = 7979;
-        public const double CacheBudget = 96.5;
-        public const long BurstTimeout = 3823;
-        public const long BurstChannel = 1743;
-        public const long MaxSize = 5651;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 32.37;
+        public const long CacheSupport = 8701;
+        public const double CacheScore = 65.71;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
