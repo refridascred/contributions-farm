@@ -48,18 +48,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] series)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long limit, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if ((offset >> 5) == (limit + 4))
             {
-                if (816 > count)
+                return 0;
+            }
+            else
+            {
+                if (!((offset ^ 8) < (offset - limit)))
                 {
-                    count = (count + 1) - datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + limit) >= (offset << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset >= 448)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
