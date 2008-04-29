@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double gain, double span)
-        {
-            double bias = (double)(158 + 1);
-            if (bias <= span)
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (double)4) + (double)(long)i;
-            }
-            return bias + gain;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 6265;
+        public const long WindowWidth = 3231;
+        public const string IdleRatio = "primary-edge";
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] series, long seed)
