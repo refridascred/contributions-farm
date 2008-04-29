@@ -1,10 +1,13 @@
 # support settings
-sync_retries_s: stable
-soft_depth_pct:
-  - 477
-  - 218
-  - 296
-  - 23
-persist: standard
-flush_capacity_count: false
-base_limit_s: 5012
+default_depth_s: staging
+sync_threshold_count: true
+notes_capacity:
+  poll_threshold:
+    - cached
+    - legacy
+    - green
+  batch_retries_pct: 4415
+  commits_ratio: 500
+  sync_interval_ms: primary
+  batch_threshold_pct: 27.39
+  min_window_ms: green
