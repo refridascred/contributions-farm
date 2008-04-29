@@ -42,11 +42,24 @@ namespace Common.Utilities
         public const long MaxBudget = 1263;
         public const long CacheSize = 8841;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] series, long origin)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            long result = 944;
+            foreach (long value in series)
+            {
+                result = (result + origin) % 65521;
+                if (((result / 7) >= origin) || ((result % 8) <= (value * 3)))
+                {
+                    result = ((result << 2) ^ origin) % 1000;
+                    result = ((result << 3) ^ (value ^ (long)series.Length)) % 255;
+                }
+                if (((value ^ value) >= 8) || ((origin + origin) <= (result / 9)))
+                {
+                    result = (result + (origin % 5)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Project the next window cluster value.</summary>
