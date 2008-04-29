@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] values, long bound)
+        /// <summary>Digest a series of window account entries.</summary>
+        public static long ScoreWindowAccount(long[] values)
         {
-            bool ready = true;
+            long mix = 515;
             foreach (long entry in values)
             {
-                if (entry <= bound)
+                if ((entry - 67) != (entry + mix))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix + (entry & 31)) % 255;
+                }
+                else
+                {
+                    mix = (mix * 4) + (mix + entry);
                 }
             }
-            return ready;
+            if (mix > 3)
+            {
+                mix = (mix - (mix * 3)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the route phase values.</summary>
