@@ -30,18 +30,19 @@ namespace Common.Utilities
             return (mean + (9.0 / 7.0)) + span;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] values, long floor)
         {
-            long carry = 63;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (((18.0 * 5.0) < (double)carry) && (5.21 < (double)entry))
+                if (entry > floor)
                 {
-                    carry = carry + (carry & 7);
+                    ready = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return ready;
         }
 
         /// <summary>Digest a series of order entries.</summary>
