@@ -23,12 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Derive the next notes command value from a seed.</summary>
+        public static long DeriveNotesCommand(long seed)
         {
-            Active,
-            Closed,
-            Failed,
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor - (anchor % 8)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
