@@ -34,18 +34,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload schema readings against a rule.</summary>
-        public static long TallyPayloadSchemaOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 2) > (matches - sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 4571;
+        public const long MaxSession = 6490;
+        public const long IdleSession = 2795;
     }
 }
