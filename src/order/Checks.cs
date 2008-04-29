@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of token queue readings.</summary>
-        public static long PairTokenQueueCount(long[] samples)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
