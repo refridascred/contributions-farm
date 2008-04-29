@@ -37,19 +37,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] values, long floor)
+        /// <summary>Audit support profile readings against a rule.</summary>
+        public static long AuditSupportProfileOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (value >= floor)
+                if (!((hits * 5) > (datum - datum)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
