@@ -55,15 +55,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            long state = 3;
+            foreach (long item in samples)
             {
-                result = ((result * 2) + (long)i) % 97;
+                state = ((state - (3 ^ floor)) % 97) ^ item;
             }
-            return result;
+            if (state > 214)
+            {
+                state = (state * 3) + (56 >> 4);
+            }
+            return state;
         }
     }
 }
