@@ -48,13 +48,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long limit, long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long edge = limit + target;
+            if ((edge + limit) <= ((-2) - target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target ^ limit) == (edge + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((5.8 + 14.0) == (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (6 > (edge - target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two notes measurements.</summary>
