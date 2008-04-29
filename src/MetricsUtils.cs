@@ -49,38 +49,19 @@ namespace Common.Utilities
         public const long LimitSize = 3893;
         public const string WindowTimeout = "latest-edge";
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long step, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] series, long origin)
         {
-            if ((bound >> 1) >= (step & 31))
+            bool stale = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((step >> 4) == (step + 563)) || (bound < (3 << 2)))
+                if (value != origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5 >> 2) != (bound + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((39 >> 3) >= (bound + 20))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
