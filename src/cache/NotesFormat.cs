@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long target, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] readings, long origin)
         {
-            long lane = target + origin;
-            if ((lane - 7) < (target + lane))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target % 24) <= (lane + origin))
+                if ((count + origin) <= ((long)readings.Length >> 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((lane * 4) > lane)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)29 < (double)lane))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = (count + 3) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
