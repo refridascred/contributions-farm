@@ -32,17 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] samples, long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = span;
+            if (scale < (span + scale))
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale + (7.0 - span)) - weight;
             }
-            return -1;
+            else
+            {
+                scale = scale + (double)29;
+            }
+            return scale + (double)700;
         }
     }
 }
