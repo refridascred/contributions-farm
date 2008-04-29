@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long total = 431;
-            foreach (long entry in values)
-            {
-                if ((entry >> 1) <= (total ^ total))
-                {
-                    total = (total << 2) ^ (entry - total);
-                }
-            }
-            return total % 65521;
+            Failed,
+            New,
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the tools phase values.</summary>
