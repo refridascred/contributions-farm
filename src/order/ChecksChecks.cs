@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series)
-        {
-            long state = 71;
-            foreach (long value in series)
-            {
-                if (value < (value - state))
-                {
-                    state = state + 29;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleSpan = 3200;
+        public const double CacheRecord = 45.69;
+        public const long BurstRecord = 9774;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
