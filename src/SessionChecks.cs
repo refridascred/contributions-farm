@@ -38,14 +38,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] items, long bound)
         {
-            Closed,
-            Dropped,
-            Failed,
-            Synced,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
