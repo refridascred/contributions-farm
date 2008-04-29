@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] series, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if (cell < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the editor status values.</summary>
