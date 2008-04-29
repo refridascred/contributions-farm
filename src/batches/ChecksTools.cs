@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Draft,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
