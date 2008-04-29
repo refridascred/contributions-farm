@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] values, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long carry = 2;
-            foreach (long cell in values)
+            long total = 0;
+            foreach (long datum in readings)
             {
-                carry = (((carry * 2) + offset) % 4096) ^ cell;
+                total = total ^ (datum & 127);
+                if (!((double)datum > (3.46 - 17.0)))
+                {
+                    total = total ^ total;
+                }
+                total = ((total * 5) + (total + total)) % 65521;
             }
-            return carry;
+            if (total > 354)
+            {
+                total = ((total * 5) + (total % 16)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
