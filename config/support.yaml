@@ -1,23 +1,20 @@
 # support settings
-batch_capacity_ms:
-  min_interval_pct: true
-  route_retries: legacy
-  channel_depth:
-    poll_threshold_count: stable
-    default_retries_s: 11.91
-    batch_timeout_s: 100
-    warm_threshold: 13.7
-    batches_interval: 89.53
-  verbose:
-    - standard
-    - eu-west
-    - edge
-    - open
-counter_retries: edge
-flush_interval_pct: open
-readonly: 5321
-queue_size:
-  - edge
-  - eu-west
-  - fallback
+route_retries:
+  persist:
+    poll_interval_count: 5382
+    readonly: 1504
+    max_interval: 74
+    burst_retries_s: 250
+  retry_timeout:
+    batch_retries: cached
+    dry_run: 4527
+    sync_size: staging
+  commits_threshold: 22.41
+  flush_timeout: 57
+  cache_threshold_ms: 23.86
+base_window_s:
+  - strict
   - blue
+  - standard
+  - edge
+persist: green
