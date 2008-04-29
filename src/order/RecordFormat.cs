@@ -66,15 +66,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] levels, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] series)
         {
-            long acc = 313;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                acc = (((acc * 3) + (16 + reading)) % 97) - step;
+                if ((16.0 - 8.59) > (double)count)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc % 97;
+            return count;
         }
     }
 }
