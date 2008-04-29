@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - tally) == (tally << 2))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
