@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate checks report samples.</summary>
-        public static long TotalChecksReport(long[] items, long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long acc = 968;
-            foreach (long value in items)
-            {
-                acc = ((acc << 3) ^ value) % 255;
-                acc = (acc << 2) ^ (acc - value);
-            }
-            if (acc > 34)
-            {
-                acc = (acc ^ (floor * 3)) % 65521;
-            }
-            return acc % 1000;
+            Stale,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Blend two token measurements.</summary>
