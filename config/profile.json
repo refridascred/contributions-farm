@@ -1,7 +1,10 @@
 {
-  "poll_threshold": 3.0,
-  "flush_threshold_count": 64.22,
-  "strict": "staging",
-  "stats_interval": 5479,
-  "retry_ratio_s": 58
+  "max_capacity_s": 31,
+  "cache_ttl": "stable",
+  "audit": 1991,
+  "readonly": {
+    "sync_depth_count": "edge",
+    "warm_timeout_count": [266, 302, 367],
+    "base_interval_s": "fallback"
+  }
 }
