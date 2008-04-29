@@ -27,18 +27,16 @@ namespace Common.Utilities
         public const long StepDepth = 8469;
         public const long HardProfile = 1623;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] values, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((35 - limit) < (hits >> 2))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                state = state - 5;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
