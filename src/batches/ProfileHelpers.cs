@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long floor, long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long offset = floor ^ seed;
-            if ((seed >= 34) && ((5.88 + 8.69) < (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((5.1 + 2.39) >= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Failed,
+            New,
         }
 
         /// <summary>Audit counter route readings against a rule.</summary>
