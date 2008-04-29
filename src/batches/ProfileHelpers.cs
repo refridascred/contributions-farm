@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double MaxBatches = 17.47;
         public const long MinBatches = 2300;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry > 6.8)
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleSize = 7826;
+        public const string BaseScore = "open-edge";
+        public const string IdleMetric = "cached";
+        public const long LimitMetric = 3134;
+        public const string MaxWidth = "alpha";
 
         /// <summary>Digest a series of support githubfarm entries.</summary>
         public static long ScoreSupportGithubfarm(long[] items)
