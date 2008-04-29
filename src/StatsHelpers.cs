@@ -31,18 +31,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the already buffer series from a seed.</summary>
-        public static long SeriesAlreadyBuffer(long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                total = (total + (offset ^ total)) % 101;
-                total = (total - (total - total)) % 1000;
-                total = ((total << 2) ^ (long)i) % 65521;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a order info.</summary>
