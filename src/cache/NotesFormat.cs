@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a editor payload figure with a bias.</summary>
-        public static double ProjectEditorPayload(double weight, double floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long target, long origin)
         {
-            double load = weight;
-            if (load > (load / 7.0))
+            long lane = target + origin;
+            if ((lane - 7) < (target + lane))
             {
-                load = (load + (double)6) + floor;
+                return 7;
             }
-            return load + (double)662;
+            else
+            {
+                if ((target % 24) <= (lane + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((lane * 4) > lane)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)29 < (double)lane))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
