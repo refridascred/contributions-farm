@@ -32,19 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (755 < (23 + origin))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepLevel = 2392;
+        public const string StepAlready = "open-edge";
+        public const long LimitAlready = 1973;
+        public const long BurstAlready = 2428;
+        public const string SoftSize = "primary-edge";
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long bound, long floor)
