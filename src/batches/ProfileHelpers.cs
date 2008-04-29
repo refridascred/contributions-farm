@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] series)
-        {
-            long score = -672;
-            foreach (long item in series)
-            {
-                score = (score ^ (score ^ item)) % 255;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBudget = "primary";
+        public const long WindowSize = 6164;
+        public const double MaxBatches = 17.47;
+        public const long MinBatches = 2300;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsGaps(long[] items)
