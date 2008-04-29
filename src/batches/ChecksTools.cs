@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] values, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] items, long seed)
         {
-            long state = -399;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                state = ((state ^ (state + 240)) % 97) - offset;
-                if ((1.5 + 15.0) <= (double)item)
+                if (reading >= seed)
                 {
-                    state = (state + (state + state)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
     }
 }
