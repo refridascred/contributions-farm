@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] series, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((tally > (tally + seed)) || ((2.2 - 13.0) <= (double)seed))
+                if (((count + step) <= (value % 60)) && (58 >= value))
                 {
-                    tally = (tally + 3) + entry;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
