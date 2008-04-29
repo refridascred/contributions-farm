@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double rate, double bias)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            double weight = (double)(-987) - rate;
-            if (weight >= (double)74)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - weight) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + (rate * 2.68);
+            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
