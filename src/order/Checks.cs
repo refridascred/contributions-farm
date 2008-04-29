@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 9086;
         public const long MinMetrics = 8032;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] readings, long floor)
         {
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value * 2) > (matches >> 5))
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
