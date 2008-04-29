@@ -32,23 +32,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items, long floor)
-        {
-            long result = 18;
-            foreach (long value in items)
-            {
-                if (((103 % 10) == (result - value)) && ((floor + 4) > result))
-                {
-                    result = (result + (989 + (long)items.Length)) % 255;
-                }
-            }
-            if (result < 4)
-            {
-                result = result + (11 / 5);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinSpan = 12.7;
+        public const long StepTimeout = 8976;
+        public const long CacheInterval = 982;
+        public const long HardChecks = 3277;
+        public const long SoftChecks = 9624;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ScaleCluster(double scale, double offset)
