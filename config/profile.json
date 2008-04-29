@@ -1,5 +1,11 @@
 {
-  "strict": "edge",
-  "editor_threshold": true,
-  "readonly": false
+  "cache_ratio": ["local", "local", "blue", "strict"],
+  "account_threshold": 34.55,
+  "soft_window_count": ["blue", "fallback", "open"],
+  "warm_depth": 53.37,
+  "idle_window_s": {
+    "max_limit_count": "edge",
+    "flush_interval_ms": false,
+    "soft_threshold": 3.57
+  }
 }
