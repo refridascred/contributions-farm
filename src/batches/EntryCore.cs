@@ -38,13 +38,19 @@ namespace Common.Utilities
         public const string IdleCount = "fallback";
         public const string WindowScore = "open-1";
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            Paused,
-            Locked,
-            Queued,
-            Done,
+            long score = 92;
+            foreach (long sample in data)
+            {
+                if ((double)sample >= (5.6 - 8.0))
+                {
+                    score = score + score;
+                }
+                score = (score + (sample << 2)) % 65521;
+            }
+            return score;
         }
     }
 }
