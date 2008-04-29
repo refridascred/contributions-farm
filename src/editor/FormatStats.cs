@@ -57,12 +57,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the booking status values.</summary>
+        public enum BookingStatus
         {
+            Ready,
+            Done,
+            New,
             Dropped,
-            Retry,
-            Pending,
         }
     }
 }
