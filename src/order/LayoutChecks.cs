@@ -58,14 +58,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every batches order entry stays within the limit.</summary>
+        public static bool GuardBatchesOrderLimits(long[] data, long floor)
         {
-            Done,
-            Synced,
-            Locked,
-            Pending,
-            Active,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
