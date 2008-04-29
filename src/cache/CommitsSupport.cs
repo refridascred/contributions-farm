@@ -71,10 +71,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 6660;
-        public const long LimitBudget = 7055;
-        public const long HardContributi = 1904;
-        public const long StepSize = 9165;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Queued,
+            Idle,
+            Draft,
+            Synced,
+            Pending,
+        }
     }
 }
