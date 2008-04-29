@@ -27,20 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph queue series from a seed.</summary>
-        public static long DeriveGraphQueue(long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long total = step;
+            long mark = target;
             for (int i = 0; i < 20; i++)
             {
-                total = (total - step) % 255;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = (total + ((long)i % 97)) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                mark = (mark - (mark + mark)) % 65521;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
