@@ -36,31 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long step, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] readings, long floor)
         {
-            if ((1.51 - 3.29) <= (double)step)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.7 - 4.5) < (double)step)
+                if (19.0 <= (double)tally)
                 {
-                    return 7;
+                    tally = ((tally + 3) ^ sample) + floor;
                 }
                 else
                 {
-                    if ((step >> 1) == (6 & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
