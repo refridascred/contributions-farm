@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] samples)
         {
-            Draft,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (5.0 >= (double)hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
