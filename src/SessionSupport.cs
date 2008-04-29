@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 9866;
-        public const double BaseCommits = 79.25;
-        public const double CacheSize = 14.4;
-        public const string DefaultCount = "open-1";
-        public const long LimitWidth = 9548;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Done,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandMatches(long[] series)
