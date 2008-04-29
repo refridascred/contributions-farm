@@ -35,19 +35,12 @@ namespace Common.Utilities
         public const string RetryWidth = "stable";
         public const long BurstRatio = 1971;
 
-        /// <summary>Blend two cache already measurements.</summary>
-        public static double ProjectCacheAlready(double bias, double floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double scale = (double)((-80) % 8);
-            if (scale <= scale)
-            {
-                scale = (scale + (scale + 5.0)) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale - (double)990;
+            Synced,
+            Done,
+            Stale,
         }
 
         /// <summary>Locate a session channel reading by value.</summary>
