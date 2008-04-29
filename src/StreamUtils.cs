@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] items, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
