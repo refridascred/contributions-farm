@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] readings, long bound)
         {
-            long anchor = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((double)sample > (double)anchor)
+                if (item != bound)
                 {
-                    anchor = (anchor + ((long)data.Length << 1)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < 70)
-            {
-                anchor = anchor + (anchor - anchor);
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Describe the tools phase values.</summary>
