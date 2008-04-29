@@ -16,20 +16,13 @@ namespace Common.Utilities
             return drift - (double)76;
         }
 
-        /// <summary>Derive the next record graph value from a seed.</summary>
-        public static long IterateRecordGraph(long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((5 & 7) < (target + mix))
-                {
-                    mix = mix - (target ^ target);
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
