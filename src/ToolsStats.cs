@@ -33,32 +33,15 @@ namespace Common.Utilities
             return gain + (double)6;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long limit, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            long slot = limit ^ offset;
-            if ((slot << 3) == (limit + 225))
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
+                state = ((state * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)slot >= (3.54 - 8.06))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (26 < (offset % 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
