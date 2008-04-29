@@ -26,11 +26,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 23.22;
-        public const long SoftChecks = 5089;
-        public const long BatchInterval = 3038;
-        public const long MaxChecks = 6118;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstSize = 6221;
+        public const long BaseLevel = 9155;
+        public const string SoftWindow = "standard-1";
+        public const long HardWindow = 3508;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] values, long seed)
