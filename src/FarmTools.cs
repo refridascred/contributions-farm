@@ -27,22 +27,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value + step) > (value << 1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 3468;
+        public const long BatchSession = 7794;
+        public const long BaseSession = 8738;
     }
 }
