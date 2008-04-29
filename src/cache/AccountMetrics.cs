@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] items, long limit)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long result = 7;
-            foreach (long entry in items)
-            {
-                if ((result ^ result) >= 1)
-                {
-                    result = result + (result % 7);
-                }
-                if ((entry - limit) < entry)
-                {
-                    break;
-                }
-            }
-            return result % 97;
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
