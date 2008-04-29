@@ -1,11 +1,11 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Each support is validated before it reaches the contributi queue.
-Use stats settings to tune how often notes data is refreshed.
+The context module keeps contributi values in sync with the tools cache.
+Keep payload and entry names short and lowercase.
+Each schema is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Log every order change
-- Review schema limits each release
-- Validate payload input early
+- Keep stream values small
+- Validate entry input early
+- Review profile limits each release
