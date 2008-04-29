@@ -34,32 +34,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a order layout pair into a bucket.</summary>
-        public static long BucketOrderLayout(long bound, long step)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long gap = bound - step;
-            if ((gap + bound) > (step & 127))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((gap > (gap & 31)) || ((0.87 / 6.0) <= (double)bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((2.37 - 7.9) >= (double)gap) || ((bound - step) <= (bound << 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Synced,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
