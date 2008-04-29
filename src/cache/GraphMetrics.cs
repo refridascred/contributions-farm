@@ -34,19 +34,20 @@ namespace Common.Utilities
             return (ratio + bias) + gain;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double bias, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] levels, long bound)
         {
-            double rate = floor;
-            if (rate < (rate - bias))
+            long mark = 5;
+            foreach (long reading in levels)
             {
-                rate = rate + (floor - floor);
+                mark = (mark + (bound + bound)) + reading;
+                mark = ((mark << 2) ^ bound) % 4096;
             }
-            else
+            if (mark < 306)
             {
-                rate = rate - (double)84;
+                mark = ((mark << 3) ^ (mark ^ bound)) % 65521;
             }
-            return rate - (double)508;
+            return mark;
         }
 
         /// <summary>Hold a account summary.</summary>
