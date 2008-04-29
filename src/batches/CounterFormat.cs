@@ -14,18 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of batch channel entries.</summary>
-        public static long CombineBatchChannel(long[] readings, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long score = 840;
-            foreach (long item in readings)
-            {
-                if ((item + step) < score)
-                {
-                    score = (score - step) % 1000;
-                }
-            }
-            return score % 97;
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
