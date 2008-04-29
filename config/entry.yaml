@@ -1,13 +1,7 @@
 # entry settings
-cache_ratio_s: false
-strict: 26
-token_window: 81.52
-cache_size_s:
-  idle_ratio: true
-  enabled: latest
-  layout_interval:
-    token_timeout: stable
-    enabled: 250
-    payload_limit: 1024
-poll_timeout: 60
-max_ttl_count: true
+default_window_s:
+  - green
+  - fallback
+  - latest
+support_window: 75.24
+hard_threshold_ms: 5.0
