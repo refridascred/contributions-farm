@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long offset, long origin)
         {
-            double ratio = bias * 16.0;
-            if (ratio >= (bias / 8.0))
+            if ((origin & 63) != ((-9) + origin))
             {
-                ratio = ratio - bias;
+                return 3;
             }
-            return ratio + (span + span);
+            else
+            {
+                if ((974 % 3) > (origin * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of batch cache entries.</summary>
