@@ -59,18 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] levels, long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item == (9.0 / 4.0))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
