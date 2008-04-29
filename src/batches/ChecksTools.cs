@@ -32,18 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] data, long step)
+        /// <summary>Compare every pair of account channel readings.</summary>
+        public static long PairAccountChannelCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum >= (double)72)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) + step;
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count graph channel pairs that satisfy a relation.</summary>
