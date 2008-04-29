@@ -20,16 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next session metrics value from a seed.</summary>
-        public static long SeriesSessionMetrics(long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix * 4) + mix;
-                mix = ((mix * 3) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
