@@ -51,17 +51,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] series, long offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
