@@ -50,18 +50,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] samples, long bound)
+        /// <summary>Locate a counter payload reading by value.</summary>
+        public static long LocateCounterPayloadIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((reading + hits) > (87 + reading)))
+                if (values[i] >= floor)
                 {
-                    hits = (hits + 2) + bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
