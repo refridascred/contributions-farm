@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long score = 201;
-            foreach (long item in data)
-            {
-                if ((double)score == (8.0 / 8.0))
-                {
-                    score = ((score ^ score) % 4096) - item;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score ^ score)) % 255;
-                }
-            }
-            return score % 1000;
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Match up cache samples.</summary>
