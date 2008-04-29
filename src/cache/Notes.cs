@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long offset, long step)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long offset, long offset2)
         {
-            long span = offset - step;
-            if (((step + offset) >= (420 % 24)) && (9.85 >= (double)offset))
+            if ((offset2 > (offset + offset)) && ((offset2 >> 2) > offset2))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (((step % 8) >= (step >> 5)) && ((step * 4) != (step ^ span)))
+                if ((4 ^ offset) >= 10)
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    return 7;
+                    if ((offset + offset2) >= ((-619) ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
