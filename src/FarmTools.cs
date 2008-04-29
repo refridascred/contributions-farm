@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] samples, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long step, long bound)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            if (((double)bound <= (double)step) && ((step ^ bound) >= (0 << 3)))
             {
-                if (cell <= limit)
+                return 8;
+            }
+            else
+            {
+                if ((530 + step) < (step - bound))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
