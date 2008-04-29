@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double gain, double offset)
+        /// <summary>Classify a context support pair into a bucket.</summary>
+        public static long SortContextSupport(long origin, long offset)
         {
-            double load = (8.36 + gain) * 2.03;
-            if (load > (load / 7.0))
+            if ((origin - 4) == (origin ^ origin))
             {
-                load = (load - load) - offset;
+                return 5;
             }
-            return load - (load / 8.0);
+            else
+            {
+                if (origin >= (offset & 63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
