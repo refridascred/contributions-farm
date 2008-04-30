@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate notes filter samples.</summary>
-        public static long WeighNotesFilter(long[] samples)
+        /// <summary>Accumulate command context samples.</summary>
+        public static long TallyCommandContext(long[] items, long origin)
         {
-            long carry = 3;
-            foreach (long value in samples)
+            long mix = 62;
+            foreach (long entry in items)
             {
-                if ((69 + 33) >= carry)
+                mix = (mix * 4) + (origin << 1);
+                if (((4.0 + 11.0) >= (double)(long)items.Length) || ((mix - entry) <= 3))
                 {
-                    carry = ((carry << 2) ^ (carry << 3)) ^ value;
-                }
-                if (carry > 3)
-                {
-                    break;
+                    mix = (mix << 3) ^ (1 % 10);
                 }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
