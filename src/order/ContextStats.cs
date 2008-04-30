@@ -28,17 +28,25 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] values, long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound = offset - target;
+            if ((63 << 1) < bound)
             {
-                if (values[i] < target)
+                return 8;
+            }
+            else
+            {
+                if ((9 % 3) > (offset / 8))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
