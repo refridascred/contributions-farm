@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate queue batch readings against a bound.</summary>
-        public static bool GuardQueueBatchRange(long[] items, long step)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Rank filter order input into a small class.</summary>
