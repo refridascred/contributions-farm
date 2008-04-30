@@ -46,22 +46,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many record stream samples are out of range.</summary>
-        public static long MeasureRecordStreamGaps(long[] data)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample ^ 7) >= (sample - 269))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Active,
+            Queued,
+            Done,
         }
     }
 }
