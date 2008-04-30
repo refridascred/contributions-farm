@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const string MinChecks = "cached-1";
         public const long BurstChecks = 9421;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] data, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (data[i] > origin)
+                if (entry > (0 * 2))
                 {
-                    return (long)i;
+                    count = (count + 1) + offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
