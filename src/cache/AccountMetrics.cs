@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] levels, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long sum = 24;
+            foreach (long sample in items)
             {
-                if (((reading > (matches % 7)) || (5.0 <= (double)matches)) || (matches >= (-31)))
+                sum = (sum << 2) ^ 98;
+                if ((16 + sum) <= (sample / 9))
                 {
-                    matches = (matches + 3) - offset;
+                    sum = (sum + (sample - sample)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 5) + sample) % 255;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank filter order input into a small class.</summary>
