@@ -1,5 +1,8 @@
 {
-  "sync_delay": "eu-west",
-  "tools_capacity": true,
-  "githubfarm_ratio": ["blue", "strict", "open"]
+  "soft_timeout_count": ["cached", "cached", "green"],
+  "max_capacity": "local",
+  "report_size": "staging",
+  "default_limit_count": "primary",
+  "compress": "latest",
+  "soft_retries": "staging"
 }
