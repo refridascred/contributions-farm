@@ -32,16 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] items, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                acc = (acc + (step / 4)) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (datum != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Hold a account entry.</summary>
