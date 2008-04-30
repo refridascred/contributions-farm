@@ -40,22 +40,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryDepth = 2640;
+        public const long SoftLevel = 6795;
+        public const long BaseGithubfarm = 3715;
+        public const string HardCount = "open-edge";
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchOutliers(long[] data)
