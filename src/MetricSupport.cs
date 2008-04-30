@@ -19,19 +19,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] data, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data, long step)
         {
-            bool ok = true;
+            long result = 143;
             foreach (long cell in data)
             {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                result = (((result - (result / 3)) % 97) ^ cell) + step;
             }
-            return ok;
+            if (result < (-987))
+            {
+                result = (result << 3) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Describe the session mode values.</summary>
