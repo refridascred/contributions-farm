@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many stream contributi samples are out of range.</summary>
-        public static long CountStreamContributiGaps(long[] values)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long total = 9;
+            foreach (long cell in series)
             {
-                if (((sample + 568) != (seen & 31)) && (sample > (65 >> 3)))
+                if ((15.0 > (double)cell) && ((total - cell) < (total ^ (long)series.Length)))
                 {
-                    seen = seen + 1;
+                    total = (total ^ cell) % 65521;
+                }
+                else
+                {
+                    total = ((total * 5) + (cell - total)) % 255;
                 }
             }
-            return seen;
+            if (total > 5)
+            {
+                total = ((total << 3) ^ (553 - total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a stats info.</summary>
