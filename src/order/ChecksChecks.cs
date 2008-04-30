@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many cache entry samples are out of range.</summary>
-        public static long CountCacheEntryOutliers(long[] items)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (entry > (306 + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate record command readings against a bound.</summary>
