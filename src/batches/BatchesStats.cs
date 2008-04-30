@@ -46,21 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metric stream samples.</summary>
-        public static long CompareMetricStreamCount(long[] readings)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum != bound)
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
