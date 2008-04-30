@@ -12,25 +12,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long offset, long seed)
-        {
-            if ((7.58 / 5.0) > (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)seed >= (15.0 + 2.1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 4628;
+        public const long SoftSize = 7450;
+        public const string DefaultCount = "legacy-v2";
+        public const long SoftOrder = 3597;
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
