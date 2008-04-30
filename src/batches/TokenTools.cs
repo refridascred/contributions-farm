@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long carry = 30;
-            foreach (long sample in samples)
-            {
-                if (((double)carry >= (2.92 + 1.0)) && ((751 + sample) != (carry + sample)))
-                {
-                    carry = (carry - carry) % 255;
-                }
-            }
-            return carry % 65521;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
