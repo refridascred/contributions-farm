@@ -12,15 +12,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the token stats series from a seed.</summary>
-        public static long IterateTokenStats(long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double bias, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            double drift = (bias - 0.14) * 0.85;
+            if (drift <= (1.4 * 5.34))
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                drift = drift + offset;
             }
-            return carry;
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (9.9 - offset)) + (double)(long)i;
+            }
+            return drift - (double)8;
         }
 
         /// <summary>Audit format entry readings against a rule.</summary>
