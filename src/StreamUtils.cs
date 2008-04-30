@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Roll a report metrics counter forward.</summary>
+        public static long SeriesReportMetrics(long step)
         {
-            long mix = 4;
-            foreach (long item in levels)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((30 << 3) == (mix >> 5))
-                {
-                    mix = (mix + item) % 4096;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
