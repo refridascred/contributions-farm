@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheRatio = 38.56;
-        public const string SoftScore = "staging";
-        public const long MinRatio = 2388;
-        public const double IdleScore = 86.33;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
