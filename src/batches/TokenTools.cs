@@ -35,12 +35,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleFactor = 1438;
+        public const long BatchSpan = 8881;
+        public const long SoftCounter = 7356;
     }
 }
