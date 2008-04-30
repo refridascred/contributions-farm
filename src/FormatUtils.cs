@@ -52,23 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] items)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] series, long target)
         {
-            long acc = 6;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                acc = acc + (entry ^ acc);
-                if (!((entry * 5) <= (entry + entry)))
+                if (entry < target)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (acc < 5)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
