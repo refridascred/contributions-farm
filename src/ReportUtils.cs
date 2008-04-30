@@ -31,18 +31,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] values, long target)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally + tally) > (6 - value))
-                {
-                    tally = (tally + 1) + target;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Rank profile editor input into a small class.</summary>
