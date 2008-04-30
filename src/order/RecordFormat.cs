@@ -22,20 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cache stats counter forward.</summary>
-        public static long SeriesCacheStats(long limit)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((11.0 - 18.0) != (double)limit))
-                {
-                    result = (result - (limit * 3)) % 101;
-                    result = (result + limit) % 101;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Blend two notes measurements.</summary>
