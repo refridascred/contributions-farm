@@ -36,21 +36,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Classify a record batches pair into a bucket.</summary>
+        public static long GradeRecordBatches(long limit, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit ^ limit) <= 4)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit & 7) <= (target >> 2))
                 {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
