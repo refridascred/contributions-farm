@@ -56,19 +56,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell * 4) != (hits << 2))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "alpha";
+        public const string BurstLayout = "legacy";
+        public const long WindowLayout = 6523;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsGaps(long[] values)
