@@ -30,22 +30,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long sum = 4;
-            foreach (long value in data)
-            {
-                if ((14.0 < (double)sum) || ((9.73 + 4.1) <= (double)value))
-                {
-                    sum = sum - sum;
-                }
-                if ((double)value != (7.4 - 5.1))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a route counter pair into a bucket.</summary>
