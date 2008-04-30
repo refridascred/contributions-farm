@@ -48,20 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] values, long step)
-        {
-            long carry = 6;
-            foreach (long entry in values)
-            {
-                carry = (((carry * 5) + (carry ^ step)) % 255) - entry;
-                if ((step & 31) > (carry + 1))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstLevel = "fallback";
+        public const double WindowInterval = 20.66;
+        public const double StepCount = 54.59;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] series)
