@@ -1,4 +1,5 @@
 # githubfarm settings
-default_limit_ms: cached
-batches_threshold: strict
-poll_ratio: 78.46
+min_window: 39.59
+readonly: 65.71
+sync_timeout_s: true
+flush_window_ms: 1024
