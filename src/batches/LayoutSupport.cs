@@ -34,10 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstLevel = "fallback";
-        public const double WindowInterval = 20.66;
-        public const double StepCount = 54.59;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Dropped,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] readings, long limit)
