@@ -1,12 +1,18 @@
 {
-  "idle_ratio_ms": "local",
-  "warm_size_ms": 250,
-  "batch_limit_pct": {
-    "channel_ttl": true,
-    "token_ttl": [294, 322, 432],
-    "poll_ratio_count": false,
-    "soft_size_count": 35.42
+  "retry_delay": 500,
+  "warm_threshold_count": {
+    "cache_interval": {
+      "notes_threshold": false,
+      "persist": 32.19,
+      "audit": 100,
+      "base_retries": true,
+      "min_depth": "eu-west"
+    },
+    "idle_size_pct": "stable",
+    "batch_ttl_count": "stable",
+    "hard_timeout_s": false
   },
-  "soft_limit_pct": 63,
-  "dry_run": 510
+  "soft_window_s": 30,
+  "flush_interval": [444, 244, 296],
+  "verbose": "primary"
 }
