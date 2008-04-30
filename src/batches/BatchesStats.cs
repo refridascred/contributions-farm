@@ -58,9 +58,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 2184;
-        public const long RetryDepth = 364;
-        public const long DefaultTimeout = 9764;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double rate, double offset)
+        {
+            double bias = offset * 3.2;
+            if (bias > rate)
+            {
+                bias = bias - offset;
+            }
+            else
+            {
+                bias = bias + (2.45 / 3.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (rate + bias)) + (double)(long)i;
+            }
+            return bias - rate;
+        }
     }
 }
