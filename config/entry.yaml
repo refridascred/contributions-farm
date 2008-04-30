@@ -1,4 +1,20 @@
 # entry settings
-strict: 22.55
-audit: cached
-graph_ratio: 9.08
+buffer_ratio:
+  cache_retries_pct:
+    cache_size_pct: 46.38
+    burst_timeout_s: stable
+    max_retries_pct:
+      - blue
+      - cached
+      - open
+    poll_window_pct: green
+    window_window: true
+    cache_timeout: stable
+  soft_threshold_s: false
+  soft_window: cached
+  default_retries_s:
+    - 347
+    - 302
+    - 431
+base_interval_s: 100
+enabled: legacy
