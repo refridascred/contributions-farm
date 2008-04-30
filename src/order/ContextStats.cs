@@ -24,25 +24,17 @@ namespace Common.Utilities
         public const string CacheBudget = "primary-1";
         public const long DefaultFilter = 9008;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long offset, long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] levels, long origin)
         {
-            long bound = offset - target;
-            if ((63 << 1) < bound)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9 % 3) > (offset / 8))
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a checks entry.</summary>
