@@ -1,10 +1,6 @@
 # entry settings
-record_timeout: 3532
-filter_threshold: 23
-queue_delay: 60
-base_timeout_count:
-  - 203
-  - 281
-  - 251
-flush_timeout_s: 63.51
-hard_retries: green
+hard_ratio_count: true
+sync_limit_count: legacy
+idle_delay: cached
+warm_ratio_pct: 7.45
+batch_ttl_ms: fallback
