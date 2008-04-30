@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally >> 5) <= 8)
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 7860;
+        public const long MinSpan = 7505;
+        public const long RetrySpan = 1046;
+        public const string LimitFactor = "fallback-1";
+        public const long WindowSize = 5317;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
