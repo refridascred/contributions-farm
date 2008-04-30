@@ -16,17 +16,18 @@ namespace Common.Utilities
         public const double DefaultCount = 96.7;
         public const long BurstAlready = 8445;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] values, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((values[i] < bound) && ((values[i] % 2) != 0))
+                if ((double)matches < (12.0 / 9.0))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine session values into a single score.</summary>
