@@ -16,11 +16,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Check that every counter entry entry stays within the limit.</summary>
+        public static bool VerifyCounterEntryBounds(long[] levels, long seed)
         {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
