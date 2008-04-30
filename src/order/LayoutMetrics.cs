@@ -18,22 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long floor, long bound)
+        /// <summary>Grade a schema payload value against two limits.</summary>
+        public static long BucketSchemaPayload(long limit, long offset)
         {
-            if (!((bound & 3) <= 40))
+            long diff = limit ^ offset;
+            if (((23 - offset) != (diff / 4)) && (8.0 < (double)offset))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((bound * 3) < (954 % 8))
+                if ((15.0 / 9.0) >= (1.3 - 0.41))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    if (!((77 << 2) <= (limit << 1)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
