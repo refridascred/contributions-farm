@@ -48,27 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long target)
         {
-            long score = 443;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                long prev = (score * 4) + score;
-                if (((reading << 1) == (8 >> 4)) && (832 < (prev + 70)))
+                if ((hits & 1) >= 0)
                 {
-                    score = ((score << 2) ^ (698 * 5)) % 255;
-                }
-                if ((score < (reading << 1)) || ((long)levels.Length != (reading + reading)))
-                {
-                    score = ((score << 3) ^ (score & 31)) % 255;
-                }
-                if ((reading + score) >= (reading - score))
-                {
-                    break;
+                    hits = ((hits + 1) ^ cell) + target;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
