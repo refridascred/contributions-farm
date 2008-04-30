@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a report cache reading by value.</summary>
-        public static long SeekReportCacheIndex(long[] series, long seed)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
