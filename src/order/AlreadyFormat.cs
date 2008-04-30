@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const string MinChecks = "cached-1";
         public const long BurstChecks = 9421;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            Idle,
+            Ready,
+            Synced,
+            Failed,
         }
 
         /// <summary>Project the next buffer value.</summary>
