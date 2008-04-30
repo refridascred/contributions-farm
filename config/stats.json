@@ -1,18 +1,5 @@
 {
-  "readonly": 15.22,
-  "soft_interval_pct": false,
-  "tools_timeout": {
-    "hard_ttl_ms": [69, 4, 488],
-    "retry_interval_s": true,
-    "enabled": 24,
-    "warm_limit": "cached"
-  },
-  "command_capacity": true,
-  "audit": {
-    "compress": true,
-    "hard_interval": false,
-    "checks_timeout": false,
-    "sync_capacity": "stable"
-  },
-  "default_retries_s": "latest"
+  "flush_depth": true,
+  "idle_limit_s": 1024,
+  "dry_run": "eu-west"
 }
