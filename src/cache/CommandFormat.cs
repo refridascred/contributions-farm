@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long bound, long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long edge = bound - offset;
-            if ((edge << 1) > 2)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + 3) > edge)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((51 + offset) >= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
