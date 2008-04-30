@@ -68,12 +68,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long seed, long floor)
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            long next = seed - floor;
+            if ((seed / 7) > 9)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed & 15) <= (next % 64)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor < (next / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
