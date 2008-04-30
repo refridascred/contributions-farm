@@ -31,15 +31,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Draft,
-            Ready,
-            Stale,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxFactor = 9685;
+        public const long RetryToken = 5394;
+        public const long BurstScore = 5676;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long StepChecks(long floor)
