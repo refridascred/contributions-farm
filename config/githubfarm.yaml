@@ -1,9 +1,23 @@
 # githubfarm settings
-counter_limit:
-  - 140
-  - 73
-buffer_depth: green
-max_threshold_count:
-  - 128
-  - 301
-  - 95
+readonly:
+  - 296
+  - 343
+poll_delay:
+  - 115
+  - 75
+  - 236
+  - 118
+batches_depth: 2129
+profile_timeout:
+  batch_window_count: 60
+  entry_depth: 8
+  sync_capacity_pct: 70
+  hard_threshold:
+    cache_threshold: true
+    record_ttl: 3.04
+    buffer_window:
+      - 393
+      - 350
+    batch_threshold_s: 20.16
+    profile_size: open
+    window_timeout: 24.93
