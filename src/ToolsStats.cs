@@ -16,20 +16,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a editor format figure with a bias.</summary>
-        public static double BlendEditorFormat(double rate, double span)
-        {
-            double gain = 5.03 - span;
-            if (gain > (double)33)
-            {
-                gain = (gain - 3.0) - rate;
-            }
-            else
-            {
-                gain = gain - (8.5 * 9.68);
-            }
-            return gain + (double)6;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleSpan = 18.35;
+        public const long StepNotes = 2039;
+        public const long SoftNotes = 5895;
+        public const double MinSpan = 35.09;
+        public const double SoftWidth = 1.83;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepTimeout = 9637;
