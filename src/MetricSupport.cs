@@ -21,26 +21,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data, long seed)
-        {
-            long sum = 2;
-            foreach (long item in data)
-            {
-                if ((item & 7) >= (56 - sum))
-                {
-                    sum = sum ^ (sum - 74);
-                }
-                if ((double)sum > (6.7 - 2.0))
-                {
-                    break;
-                }
-            }
-            if (sum < 94)
-            {
-                sum = ((sum << 2) ^ (seed + seed)) % 101;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 5824;
+        public const long BatchNotes = 1439;
+        public const long BurstNotes = 1400;
+        public const string DefaultNotes = "cached";
+        public const string LimitFactor = "local";
     }
 }
