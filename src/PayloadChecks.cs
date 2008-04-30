@@ -93,14 +93,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Validate payload batch readings against a bound.</summary>
+        public static bool VerifyPayloadBatchBounds(long[] data, long step)
         {
-            Draft,
-            Dropped,
-            Stale,
-            Closed,
-            Ready,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
