@@ -23,26 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank session token input into a small class.</summary>
-        public static long GradeSessionToken(long floor, long bound)
-        {
-            long gap = floor - bound;
-            if ((double)gap > 16.0)
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor < 8)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 5166;
+        public const long LimitWidth = 1622;
+        public const long BurstRoute = 9830;
+        public const long HardRoute = 8328;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double BlendPayload(double ratio, double floor)
