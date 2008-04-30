@@ -13,22 +13,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftBudget = 93.48;
+        public const long MaxSession = 8906;
+        public const double HardRatio = 87.01;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterMatches(long[] levels)
