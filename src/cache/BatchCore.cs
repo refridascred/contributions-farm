@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] readings, long target)
+        /// <summary>Rank contributi cache input into a small class.</summary>
+        public static long GradeContributiCache(long target, long origin)
         {
-            long acc = 8;
-            foreach (long datum in readings)
+            if (!((5.67 - 1.6) == (double)target))
             {
-                acc = ((acc * 4) + (target / 6)) ^ datum;
+                return 5;
             }
-            return acc % 65521;
+            else
+            {
+                if (!((double)origin >= 19.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
