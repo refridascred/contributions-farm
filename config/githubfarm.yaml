@@ -1,9 +1,11 @@
 # githubfarm settings
-flush_ratio: green
-buffer_delay: 91
-retry_limit_count: standard
-verbose: 77.65
-batch_window: 7647
-poll_limit_pct:
-  - 86
-  - 125
+flush_window_pct:
+  soft_interval_s: 78.42
+  window_capacity:
+    report_window: standard
+    retry_depth_pct: strict
+    sync_window: 34.54
+    soft_ttl_s: 42.43
+  hard_timeout: true
+account_threshold: 1024
+readonly: edge
