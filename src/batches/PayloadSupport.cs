@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double bias, double floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long seed)
         {
-            double scale = (double)(28 + (-90));
-            if (scale >= (bias - bias))
+            if (bound <= seed)
             {
-                scale = (scale - (1.85 * 4.0)) - floor;
+                return 3;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                scale = (scale - (bias / 4.0)) + (double)(long)i;
+                if ((bound / 5) >= (seed - bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (seed > bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0.7 - 4.0) <= (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return scale + bias;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
