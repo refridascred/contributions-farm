@@ -14,18 +14,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] values)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample << 2) >= 230)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
