@@ -65,9 +65,11 @@ namespace Common.Utilities
         public const long SoftInterval = 1006;
         public const long BatchFilter = 3569;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstInterval = 7212;
-        public const long SoftBatch = 2185;
-        public const long CacheBudget = 7485;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
