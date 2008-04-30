@@ -32,12 +32,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepSpan = 5559;
-        public const double WindowPayload = 69.39;
-        public const long MinPayload = 4074;
-        public const long RetryPayload = 5868;
-        public const double DefaultPayload = 13.86;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long offset, long step)
+        {
+            long lane = offset + step;
+            if ((offset + offset) <= (lane + offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((0 << 2) <= (lane & 63)) || ((step - lane) >= (-6)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step > 3.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (lane <= (4 % 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long GradeMetrics(long offset, long offset2)
