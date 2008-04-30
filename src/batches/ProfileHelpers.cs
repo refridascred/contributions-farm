@@ -58,19 +58,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double scale, double bias)
+        /// <summary>Match up graph checks samples.</summary>
+        public static long PairGraphChecksCount(long[] levels)
         {
-            double load = bias - bias;
-            if (load >= (double)383)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (bias - load)) + scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load - load;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
