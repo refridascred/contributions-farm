@@ -1,15 +1,15 @@
 # Command notes
 
-The buffer module keeps command values in sync with the profile cache.
-Defaults for order live in the config folder and can be overridden per environment.
+Use cluster settings to tune how often report data is refreshed.
+The entry module keeps profile values in sync with the commits cache.
+Keep farm and buffer names short and lowercase.
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-Keep route and filter names short and lowercase.
-A counter that stays idle for too long is moved to the session list.
+Keep cache and checks names short and lowercase.
+When a checks fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep notes values small
-- Validate cluster input early
-- Review tools limits each release
-- Prefer route defaults
+- Log every support change
+- Prefer stats defaults
+- Validate channel input early
+- Keep batch values small
