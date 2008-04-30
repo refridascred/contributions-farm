@@ -48,26 +48,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] levels, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            long mark = 4;
-            foreach (long item in levels)
+            long score = 443;
+            foreach (long reading in levels)
             {
-                if ((step + item) > (step ^ mark))
+                long prev = (score * 4) + score;
+                if (((reading << 1) == (8 >> 4)) && (832 < (prev + 70)))
                 {
-                    mark = ((mark * 2) + (item + step)) % 4096;
+                    score = ((score << 2) ^ (698 * 5)) % 255;
                 }
-                if ((item + mark) == (item - step))
+                if ((score < (reading << 1)) || ((long)levels.Length != (reading + reading)))
                 {
-                    mark = (mark - (453 - mark)) % 1000;
+                    score = ((score << 3) ^ (score & 31)) % 255;
                 }
-                else
+                if ((reading + score) >= (reading - score))
                 {
-                    mark = mark - 957;
+                    break;
                 }
             }
-            return mark;
+            return score % 97;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
