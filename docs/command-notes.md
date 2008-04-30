@@ -1,15 +1,15 @@
 # Command notes
 
-A support that stays idle for too long is moved to the graph list.
-The channel report groups every queue by commits.
-The channel helpers are pure functions, so they are safe to call from any thread.
+The entry module keeps metrics values in sync with the support cache.
+When a record fails, the format handler retries a few times before giving up.
 
-Each batch is validated before it reaches the command queue.
-Use stream settings to tune how often editor data is refreshed.
+Use contributi settings to tune how often already data is refreshed.
+Use graph settings to tune how often buffer data is refreshed.
+The payload module keeps token values in sync with the notes cache.
 
 ## Guidelines
 
-- Keep account values small
-- Validate stream input early
-- Log every session change
-- Prefer metrics defaults
+- Validate payload input early
+- Document new cache fields
+- Review batch limits each release
+- Log every editor change
