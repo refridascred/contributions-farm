@@ -28,22 +28,13 @@ namespace Common.Utilities
         public const long RetrySchema = 1763;
         public const string WindowDepth = "staging-v2";
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] values, long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long result = -715;
-            foreach (long entry in values)
-            {
-                if (12.0 <= (double)origin)
-                {
-                    result = ((result << 2) ^ (entry ^ (-169))) % 65521;
-                }
-            }
-            if (result < 472)
-            {
-                result = result ^ (result / 6);
-            }
-            return result;
+            Paused,
+            Synced,
+            Retry,
+            Idle,
         }
     }
 }
