@@ -1,5 +1,6 @@
 {
-  "command_retries": 16.11,
-  "cache_retries_pct": ["eu-west", "local"],
-  "enabled": ["latest", "cached", "open"]
+  "poll_capacity": 500,
+  "batch_threshold_pct": "blue",
+  "batch_ttl": 32,
+  "persist": 60
 }
