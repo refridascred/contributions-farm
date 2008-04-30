@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command order values into a single score.</summary>
-        public static long TallyCommandOrder(long[] levels)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            long mix = 678;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                mix = (((mix << 2) ^ 53) % 255) ^ cell;
+                if ((cell / 9) > (cell & 127))
+                {
+                    count = count + 1;
+                }
             }
-            if (mix > 50)
-            {
-                mix = mix ^ (mix / 8);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Combine context values into a single score.</summary>
