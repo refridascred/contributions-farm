@@ -12,18 +12,15 @@ namespace Common.Utilities
             return ratio - (bias + weight);
         }
 
-        /// <summary>Count the account stream entries that pass the check.</summary>
-        public static long MeasureAccountStreamGaps(long[] samples)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seen ^ seen) > (sample + sample))
-                {
-                    seen = seen + 1;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Blend two payload measurements.</summary>
