@@ -21,25 +21,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] series, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state + (offset & 15);
-                if ((state << 3) > (state - offset))
+                if (series[i] >= floor)
                 {
-                    state = state - state;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state - (offset - (long)i)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
