@@ -22,17 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] samples, long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Accumulate window samples.</summary>
