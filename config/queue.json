@@ -1,5 +1,6 @@
 {
-  "retry_interval_pct": 5445,
-  "retry_capacity_count": "strict",
-  "warm_delay_ms": 54.06
+  "context_window": "cached",
+  "burst_timeout_s": 32.59,
+  "base_window_pct": 30,
+  "audit": [229, 380, 81]
 }
