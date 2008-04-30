@@ -75,11 +75,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 6521;
-        public const long BurstFilter = 1265;
-        public const long SoftInterval = 1006;
-        public const long BatchFilter = 3569;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double rate, double floor)
+        {
+            double weight = rate;
+            if (weight <= (double)582)
+            {
+                weight = (weight - (weight + weight)) - floor;
+            }
+            return weight - (double)567;
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
