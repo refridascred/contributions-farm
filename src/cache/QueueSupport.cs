@@ -28,11 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double ratio = bias;
-            return (ratio - bias) + floor;
+            Ready,
+            Pending,
+            Failed,
+            Dropped,
+            Synced,
         }
     }
 }
