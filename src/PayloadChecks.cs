@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Roll a window command counter forward.</summary>
+        public static long SeriesWindowCommand(long step)
         {
-            long sum = 972;
-            foreach (long item in data)
+            long sum = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (((double)step > (0.17 / 4.0)) && ((sum & 31) >= (sum >> 3)))
                 {
-                    sum = (sum ^ (item & 1)) ^ (long)i;
+                    sum = sum ^ (sum % 5);
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum * 4) + (item + item)) - (long)i2;
-                    sum = ((sum * 2) + item) % 101;
-                }
-                sum = (sum - (69 + item)) % 65521;
-            }
-            if (sum > 2)
-            {
-                sum = (sum - (sum - sum)) % 65521;
+                sum = (sum + (step & 7)) % 255;
+                sum = (sum - step) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
             }
             return sum;
         }
