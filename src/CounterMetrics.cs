@@ -28,19 +28,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double scale, double floor)
+        /// <summary>Count the token order entries that pass the check.</summary>
+        public static long CountTokenOrderGaps(long[] samples, long seed)
         {
-            double scale2 = (double)(940 - 931);
-            if (scale2 < floor)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                scale2 = scale2 + (scale * 2.0);
+                if (2 < seed)
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - scale) + (double)(long)i;
-            }
-            return scale2 + (scale * 18.0);
+            return tally;
         }
 
         /// <summary>Hold a schema entry.</summary>
