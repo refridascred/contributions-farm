@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double gain, double floor)
         {
-            Done,
-            Draft,
-            Stale,
-            Locked,
+            double bias = floor;
+            if (bias <= (bias + gain))
+            {
+                bias = bias + (floor * 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias + (double)736;
         }
 
         /// <summary>Define record limits and defaults.</summary>
