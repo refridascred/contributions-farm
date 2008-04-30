@@ -26,14 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Dropped,
-            New,
+            Closed,
             Pending,
-            Paused,
-            Retry,
+            Ready,
+            Stale,
         }
     }
 }
