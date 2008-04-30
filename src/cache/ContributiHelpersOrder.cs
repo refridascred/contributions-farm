@@ -27,19 +27,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate token format readings against a bound.</summary>
-        public static bool ValidateTokenFormatBounds(long[] readings, long seed)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Ready,
+            New,
+            Stale,
         }
 
         /// <summary>Rank channel stats input into a small class.</summary>
