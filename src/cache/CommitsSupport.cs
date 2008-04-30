@@ -54,12 +54,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values, long bound)
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            long result = 3;
+            foreach (long value in values)
+            {
+                result = (result + result) % 4096;
+                result = (result + value) % 4096;
+            }
+            if (result > 0)
+            {
+                result = (result << 2) ^ (bound + result);
+            }
+            return result;
         }
 
         /// <summary>Project the next format value.</summary>
