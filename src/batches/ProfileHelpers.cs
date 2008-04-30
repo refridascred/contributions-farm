@@ -59,23 +59,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long seed, long bound)
         {
-            long result = 59;
-            foreach (long datum in data)
+            long span = seed + bound;
+            if (((span + seed) != (span & 3)) && ((3.14 - 13.0) <= (double)bound))
             {
-                result = (result ^ datum) % 255;
-                if ((8.45 + 3.4) < (double)datum)
+                return 7;
+            }
+            else
+            {
+                if (((bound >> 5) > bound) || ((seed + 834) >= (425 % 3)))
                 {
-                    result = (result * 3) + (result - (long)data.Length);
+                    return 8;
                 }
                 else
                 {
-                    result = (result + datum) % 255;
+                    if (bound <= span)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + seed) == (span * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
