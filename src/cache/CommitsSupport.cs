@@ -54,15 +54,13 @@ namespace Common.Utilities
         public const double StepChecks = 9.82;
         public const double BaseChecks = 88.72;
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double bias, double floor)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double bias2 = bias;
-            if (bias2 <= floor)
-            {
-                bias2 = bias2 - (bias / 2.0);
-            }
-            return bias2 - (double)134;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
