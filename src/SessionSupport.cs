@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
+        public static long MeasureGithubfarmEntryGaps(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                total = ((total << 2) ^ (total << 2)) % 101;
-                total = ((total * 3) + (long)i) % 4093;
+                if ((double)value > 8.7)
+                {
+                    count = count + 2;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
