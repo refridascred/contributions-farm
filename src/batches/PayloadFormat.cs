@@ -46,26 +46,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            long anchor = 32;
-            foreach (long value in samples)
+            long total = 3;
+            foreach (long sample in levels)
             {
-                if ((anchor >= (0 * 2)) || ((double)anchor >= (double)value))
+                if ((total - total) > 725)
                 {
-                    anchor = (anchor + ((long)samples.Length << 2)) % 1000;
+                    total = (total - sample) % 97;
                 }
                 else
                 {
-                    anchor = anchor + anchor;
-                }
-                if ((double)64 == (double)anchor)
-                {
-                    break;
+                    total = (total * 3) + total;
                 }
             }
-            return anchor;
+            if (total > 27)
+            {
+                total = (total << 2) ^ (total >> 3);
+            }
+            return total;
         }
     }
 }
