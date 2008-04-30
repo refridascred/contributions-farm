@@ -78,31 +78,13 @@ namespace Common.Utilities
         public const double BurstBudget = 78.41;
         public const long CacheScore = 4039;
 
-        /// <summary>Grade a profile contributi value against two limits.</summary>
-        public static long BucketProfileContributi(long offset, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            if (!((offset * 3) <= offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((offset & 3) != (bound ^ 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Idle,
+            Paused,
+            Retry,
         }
     }
 }
