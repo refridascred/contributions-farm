@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every context format entry stays within the limit.</summary>
-        public static bool GuardContextFormatRange(long[] levels, long step)
+        /// <summary>Roll a payload buffer counter forward.</summary>
+        public static long SeriesPayloadBuffer(long origin)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell < step)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
