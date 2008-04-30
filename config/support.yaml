@@ -1,16 +1,11 @@
 # support settings
-stream_interval: latest
-dry_run:
-  channel_delay:
-    - edge
-    - primary
-    - fallback
-  metric_limit: 26.83
-  commits_threshold:
-    - 155
-    - 106
-  verbose: 250
-readonly: legacy
-base_timeout_s: legacy
-tools_limit: false
-default_ratio_s: stable
+batches_delay: blue
+cache_timeout: 60
+hard_capacity_pct: 22.59
+verbose: 8833
+batch_window_count:
+  - 4
+  - 102
+  - 16
+  - 429
+sync_window_count: edge
