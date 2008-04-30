@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double scale, double bias)
+        /// <summary>Grade a order stream value against two limits.</summary>
+        public static long ClassifyOrderStream(long bound, long target)
         {
-            double drift = (double)46 * 9.9;
-            if (drift < (scale * 4.0))
+            if ((bound << 1) >= 0)
             {
-                drift = drift - scale;
+                return 1;
             }
-            return drift - (bias + bias);
+            else
+            {
+                if ((double)bound >= 3.0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Blend two layout measurements.</summary>
