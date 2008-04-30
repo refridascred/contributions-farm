@@ -1,11 +1,11 @@
 # Command notes
 
-When a command fails, the window handler retries a few times before giving up.
-A counter that stays idle for too long is moved to the buffer list.
-Use batch settings to tune how often layout data is refreshed.
+The format report groups every record by entry.
+Keep route and stream names short and lowercase.
+Use schema settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Document new metrics fields
-- Review token limits each release
-- Prefer channel defaults
+- Keep profile values small
+- Validate cache input early
+- Log every schema change
