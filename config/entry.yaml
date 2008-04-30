@@ -1,4 +1,9 @@
 # entry settings
-compress: blue
-farm_threshold: 6292
-format_ratio: 79
+idle_delay_ms: 8
+already_retries: 60
+soft_window:
+  window_capacity: eu-west
+  cache_size: 4890
+  idle_timeout_count: fallback
+  readonly: 1187
+verbose: stable
