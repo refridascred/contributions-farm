@@ -1,6 +1,20 @@
 # support settings
-hard_size_s: 76
-hard_size_pct: 29.64
-audit: cached
-cache_ttl: fallback
-default_size_count: green
+batch_window_pct: cached
+min_ttl_ms:
+  filter_interval: stable
+  persist: 91.48
+  sync_delay_ms:
+    max_timeout_pct: 88.23
+    default_window_s: local
+    window_ratio: true
+    sync_timeout: strict
+  readonly: 61
+  burst_retries_ms:
+    - standard
+    - open
+    - stable
+    - open
+  flush_retries: 60
+hard_size_ms: 45
+format_limit: cached
+format_ttl: false
