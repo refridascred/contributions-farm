@@ -45,17 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] readings, long limit)
+        /// <summary>Measure how many already metrics samples are out of range.</summary>
+        public static long TallyAlreadyMetricsMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
+                if ((count & 3) != ((-4) ^ 62))
                 {
-                    return (long)i;
+                    count = (count + 2) + cell;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
