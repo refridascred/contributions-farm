@@ -50,22 +50,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            long state = 75;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((state ^ state) > (state + state))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state * 4) + state) % 65521;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state + cell)) % 255;
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return count;
         }
     }
 }
