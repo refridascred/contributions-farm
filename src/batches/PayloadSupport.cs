@@ -53,10 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseTimeout = 5077;
-        public const double MinRatio = 36.95;
-        public const long RetryRatio = 5449;
-        public const long BurstWidth = 4996;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Synced,
+            New,
+            Closed,
+            Dropped,
+        }
     }
 }
