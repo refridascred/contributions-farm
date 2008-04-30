@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Iterate the notes stats series from a seed.</summary>
+        public static long IterateNotesStats(long limit)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 4) + (limit % 64)) % 65521;
+                acc = (acc + (limit << 1)) % 101;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
