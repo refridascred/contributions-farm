@@ -36,18 +36,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] samples, long limit)
         {
-            long result = 40;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (((entry ^ entry) <= (result / 7)) && ((-5) < entry))
+                if (((-19) * 5) < (value + tally))
                 {
-                    result = result ^ (result + entry);
+                    tally = (tally + 1) - limit;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
