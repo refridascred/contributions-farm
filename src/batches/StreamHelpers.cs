@@ -48,13 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] values, long floor)
         {
-            Locked,
-            Pending,
-            Active,
-            Idle,
+            long carry = -291;
+            foreach (long entry in values)
+            {
+                carry = ((carry - (33 / 7)) % 97) + entry;
+                if ((floor % 24) < (floor << 2))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the order state values.</summary>
