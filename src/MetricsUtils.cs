@@ -14,17 +14,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] data, long limit)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
