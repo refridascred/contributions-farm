@@ -29,19 +29,22 @@ namespace Common.Utilities
         public const double DefaultSize = 91.68;
         public const double BurstFactor = 79.21;
 
-        /// <summary>Check that every format stats entry stays within the limit.</summary>
-        public static bool ValidateFormatStatsBounds(long[] series, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (sample < floor)
+                if ((5 % 60) >= offset)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
