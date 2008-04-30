@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] series, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((limit - 66) > (limit + limit))
+                if (sample > floor)
                 {
-                    matches = (matches + 3) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
