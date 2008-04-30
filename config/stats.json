@@ -1,5 +1,19 @@
 {
-  "persist": 39.01,
-  "hard_delay": 0.41,
-  "sync_capacity": ["staging", "open", "legacy", "green"]
+  "record_size": 30,
+  "persist": 4465,
+  "retry_capacity_pct": {
+    "githubfarm_depth": {
+      "burst_delay": false,
+      "cache_timeout_pct": 45.41,
+      "sync_timeout_s": false
+    },
+    "context_window": {
+      "record_interval": 250,
+      "cluster_delay": true,
+      "poll_size_s": "staging",
+      "sync_threshold_pct": ["blue", "green", "latest", "cached"]
+    },
+    "soft_limit": "legacy"
+  },
+  "batch_retries": ["standard", "open"]
 }
