@@ -19,23 +19,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double scale, double floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] values, long floor)
         {
-            double rate = floor;
-            if (rate <= (double)33)
+            bool found = true;
+            foreach (long sample in values)
             {
-                rate = (rate - (double)978) - scale;
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - floor) - (double)(long)i;
-            }
-            return rate + floor;
+            return found;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
