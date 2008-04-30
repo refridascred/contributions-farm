@@ -31,12 +31,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 5449;
-        public const long BaseScore = 3610;
-        public const string BurstFactor = "local-1";
-        public const string MinSize = "local-1";
-        public const string IdleFilter = "local-edge";
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "open";
+        public const double StepAlready = 89.92;
+        public const string WindowRatio = "latest-edge";
+        public const long MinAlready = 8825;
+        public const double BurstAlready = 75.57;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchOutliers(long[] data)
