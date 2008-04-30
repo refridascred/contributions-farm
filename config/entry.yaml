@@ -1,18 +1,20 @@
 # entry settings
-flush_capacity_count: latest
-window_timeout: 79.82
-hard_limit_pct:
-  - 114
-  - 95
-  - 8
-  - 311
-readonly:
-  base_size_ms: edge
-  batch_ratio: strict
-  verbose: 52.71
-githubfarm_ratio:
-  sync_capacity: 1024
-  burst_ratio: 100
-  default_depth_pct: blue
-  default_ratio: 43.13
-  persist: fallback
+flush_ttl_pct:
+  - 250
+  - 58
+  - 26
+  - 128
+flush_timeout_pct: stable
+batch_threshold_pct: true
+graph_depth: 31.48
+max_ttl_pct: 9950
+cache_retries:
+  token_threshold: 25.13
+  record_window:
+    sync_timeout: staging
+    persist: 11.71
+    batch_retries_ms: primary
+    max_threshold: strict
+    retry_delay_pct: 4974
+  batch_limit: 64.1
+  payload_size: 0.4
