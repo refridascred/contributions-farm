@@ -38,21 +38,14 @@ namespace Common.Utilities
             return scale + (scale * 4.0);
         }
 
-        /// <summary>Count editor notes pairs that satisfy a relation.</summary>
-        public static long PairEditorNotesCount(long[] samples)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Done,
+            Stale,
+            Synced,
+            Queued,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
