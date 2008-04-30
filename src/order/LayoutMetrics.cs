@@ -22,10 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLayout = "alpha";
-        public const long WindowLayout = 8728;
-        public const long BaseScore = 1728;
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double weight, double floor)
+        {
+            double weight2 = (weight - weight) + (floor - floor);
+            if (weight2 < (floor * 16.0))
+            {
+                weight2 = weight2 + floor;
+            }
+            else
+            {
+                weight2 = weight2 - (weight2 + weight);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - floor) + (double)(long)i;
+            }
+            return weight2 - weight2;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphGaps(long[] values)
