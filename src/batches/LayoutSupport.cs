@@ -20,27 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate graph cache samples.</summary>
-        public static long CombineGraphCache(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] values)
         {
-            long acc = 438;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                acc = ((acc << 3) ^ (94 * 5)) % 1000;
-                if ((long)series.Length < acc)
+                if ((tally >> 5) <= 8)
                 {
-                    acc = (acc + value) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (value >> 4)) % 97;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            if (acc < 13)
-            {
-                acc = acc + (acc ^ acc);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Audit editor filter readings against a rule.</summary>
