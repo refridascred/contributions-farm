@@ -46,10 +46,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 2585;
-        public const long DefaultBuffer = 4756;
-        public const double HardSize = 23.76;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
