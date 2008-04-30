@@ -1,7 +1,15 @@
 {
-  "readonly": ["blue", "latest", "latest", "legacy"],
-  "flush_ratio_s": 320,
-  "min_timeout_pct": "stable",
-  "default_ttl_ms": "local",
-  "sync_ttl_count": "eu-west"
+  "readonly": 48,
+  "verbose": {
+    "support_timeout": 96.34,
+    "enabled": "cached",
+    "persist": 5180,
+    "token_timeout": "green",
+    "metric_size": 4335,
+    "tools_ratio": [162, 9, 481, 359]
+  },
+  "flush_depth": false,
+  "enabled": "local",
+  "default_threshold_ms": 20,
+  "token_capacity": true
 }
