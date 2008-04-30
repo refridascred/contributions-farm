@@ -70,20 +70,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] values, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i + 340) == ((long)i - total))
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
                 {
-                    total = ((total << 3) ^ (total / 2)) % 97;
-                    total = total - (total / 2);
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
     }
 }
