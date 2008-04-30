@@ -22,18 +22,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] values, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long limit, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            if ((limit & 127) >= (limit / 2))
             {
-                if ((value + 8) <= (offset >> 4))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit < 7.6)
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
