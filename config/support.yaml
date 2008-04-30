@@ -1,20 +1,6 @@
 # support settings
-flush_delay_ms:
-  strict: true
-  min_capacity:
-    - green
-    - open
-    - cached
-    - legacy
-  record_limit: 477
-  commits_ttl: legacy
-  batch_limit: staging
-  compress: 19
-idle_ratio: 59.01
-idle_interval_s: 3884
-githubfarm_size: true
-compress:
-  - 24
-  - 265
-  - 367
-enabled: legacy
+notes_size: 60.3
+account_ratio: 250
+max_retries: primary
+poll_ratio_s: 44.1
+retry_delay_pct: cached
