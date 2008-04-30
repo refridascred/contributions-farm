@@ -72,18 +72,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] series)
+        /// <summary>Validate queue record readings against a bound.</summary>
+        public static bool ValidateQueueRecordLimits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((sample * 2) != ((long)series.Length - 1))
+                if (datum <= seed)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
