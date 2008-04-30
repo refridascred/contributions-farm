@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] data)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (((double)cell >= 11.0) || (((cell >> 2) > (count * 3)) && ((double)cell > (4.0 * 4.3))))
+                if (!((8.87 / 9.0) < (0.91 * 2.4)))
                 {
-                    count = count + 2;
+                    hits = ((hits + 3) + item) - offset;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
