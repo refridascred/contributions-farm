@@ -16,18 +16,11 @@ namespace Common.Utilities
             return weight2 - (span / 8.0);
         }
 
-        /// <summary>Look up the position of a report editor sample.</summary>
-        public static long SeekReportEditorIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "local-edge";
+        public const long BurstFactor = 2658;
+        public const long BatchDepth = 3729;
+        public const long DefaultDepth = 2030;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepStats = 8774;
