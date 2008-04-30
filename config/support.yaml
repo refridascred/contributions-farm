@@ -1,20 +1,22 @@
 # support settings
-batch_window_pct: cached
-min_ttl_ms:
-  filter_interval: stable
-  persist: 91.48
-  sync_delay_ms:
-    max_timeout_pct: 88.23
-    default_window_s: local
-    window_ratio: true
-    sync_timeout: strict
-  readonly: 61
-  burst_retries_ms:
-    - standard
-    - open
-    - stable
-    - open
-  flush_retries: 60
-hard_size_ms: 45
-format_limit: cached
-format_ttl: false
+enabled: strict
+metrics_window:
+  warm_limit_pct: false
+  sync_size_ms: fallback
+  githubfarm_capacity: 250
+  min_window: primary
+  min_ratio:
+    retry_ttl_pct:
+      - 100
+      - 362
+      - 415
+    tools_ttl: standard
+    record_ttl: cached
+  burst_threshold_pct:
+    cache_depth_ms: staging
+    metrics_limit: 59.73
+    burst_delay_s: true
+    strict: stable
+    record_limit: 48
+    enabled: stable
+profile_capacity: fallback
