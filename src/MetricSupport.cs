@@ -21,17 +21,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] readings, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 8;
+            foreach (long value in items)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score - (origin / 4)) % 101) ^ value;
+                score = (score + (origin % 5)) % 255;
             }
-            return -1;
+            if (score < 826)
+            {
+                score = (score - (origin ^ score)) % 1000;
+            }
+            return score;
         }
     }
 }
