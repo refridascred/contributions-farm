@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every window already entry stays within the limit.</summary>
-        public static bool CheckWindowAlreadyBounds(long[] series, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < bound)
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Measure how many command cluster samples are out of range.</summary>
