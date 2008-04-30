@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Accumulate session schema samples.</summary>
+        public static long WeighSessionSchema(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 158;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 2) + (seed >> 1)) ^ entry;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Hold a batch options.</summary>
