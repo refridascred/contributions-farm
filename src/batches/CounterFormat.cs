@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Retry,
-            Draft,
-            Done,
-            Stale,
-            Locked,
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Rank record input into a small class.</summary>
