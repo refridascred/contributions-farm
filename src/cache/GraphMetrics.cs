@@ -25,11 +25,23 @@ namespace Common.Utilities
         public const long LimitStream = 9935;
         public const long BaseWidth = 2693;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double rate, double floor)
         {
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            double rate2 = floor;
+            if (rate2 >= (rate + rate2))
+            {
+                rate2 = rate2 + rate;
+            }
+            else
+            {
+                rate2 = rate2 + (floor / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - floor) + (double)(long)i;
+            }
+            return rate2 + (double)22;
         }
 
         /// <summary>Blend two metric report measurements.</summary>
