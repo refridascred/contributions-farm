@@ -72,26 +72,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long step)
         {
-            long anchor = -106;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (((anchor + (-75)) == (datum + 87)) && ((anchor + anchor) != (datum << 2)))
+                if (value >= step)
                 {
-                    anchor = (anchor ^ datum) % 65521;
-                }
-                else
-                {
-                    anchor = anchor - (datum >> 1);
-                }
-                if ((1 + anchor) >= ((-844) % 7))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return anchor;
+            return flag;
         }
     }
 }
