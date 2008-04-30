@@ -1,5 +1,7 @@
 {
-  "max_retries_ms": 33.53,
-  "verbose": "cached",
-  "flush_threshold_count": "cached"
+  "warm_retries_s": "fallback",
+  "cache_capacity_s": 9358,
+  "format_delay": ["green", "blue", "latest", "eu-west"],
+  "base_size": 5234,
+  "layout_ratio": "cached"
 }
