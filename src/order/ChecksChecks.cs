@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheSize = 8139;
+        public const long MinStream = 2445;
+        public const string LimitLevel = "latest-1";
+        public const string StepStream = "local-1";
+        public const string MaxCount = "cached-1";
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
