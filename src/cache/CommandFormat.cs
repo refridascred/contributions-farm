@@ -33,14 +33,22 @@ namespace Common.Utilities
         public const long BatchBudget = 8328;
         public const double MaxReport = 92.49;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the order counter entries that pass the check.</summary>
+        public static long MeasureOrderCounterHits(long[] items)
         {
-            Locked,
-            Stale,
-            Paused,
-            Done,
-            New,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((tally / 6) == (9 * 3))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a report record.</summary>
