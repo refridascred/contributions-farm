@@ -52,12 +52,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] items)
         {
-            Active,
-            Ready,
-            Paused,
+            long acc = 6;
+            foreach (long entry in items)
+            {
+                acc = acc + (entry ^ acc);
+                if (!((entry * 5) <= (entry + entry)))
+                {
+                    break;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
