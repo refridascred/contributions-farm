@@ -17,18 +17,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] levels, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((40 % 2) == (reading + 25))
+                if (((value + value) > (8 + value)) && (value < (seen & 3)))
                 {
-                    hits = (hits + 3) + origin;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
