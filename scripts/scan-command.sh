@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+for item in strict staging legacy eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-standard}"
 case "${mode}" in
-    standard)
+    local)
         log "fast path"
         ;;
     *)
@@ -17,11 +21,7 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in latest standard stable; do
-    log "checking ${item}"
-done
