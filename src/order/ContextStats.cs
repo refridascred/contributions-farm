@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Locked,
-            Draft,
-            Idle,
-            Ready,
-            Done,
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
