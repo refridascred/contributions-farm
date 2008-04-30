@@ -51,19 +51,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long sum = 7;
-            foreach (long cell in values)
-            {
-                sum = sum ^ (9 % 7);
-                if ((21 ^ sum) < cell)
-                {
-                    sum = ((sum << 2) ^ (sum % 12)) % 1000;
-                }
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
