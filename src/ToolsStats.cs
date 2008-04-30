@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] samples, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] items)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mark = 743;
+            foreach (long sample in items)
             {
-                if (cell >= bound)
+                for (int i = 0; i < 9; i++)
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 3) ^ ((long)i - sample)) % 101;
+                    mark = mark - mark;
                 }
+                mark = ((mark * 5) + (mark + sample)) % 65521;
             }
-            return found;
+            return mark % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
