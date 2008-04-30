@@ -50,15 +50,27 @@ namespace Common.Utilities
         public const long BurstWidth = 6251;
         public const long LimitGithubfarm = 8871;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] data, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] values)
         {
-            long anchor = 96;
-            foreach (long sample in data)
+            long acc = 3;
+            foreach (long datum in values)
             {
-                anchor = (anchor ^ (sample << 2)) - step;
+                if (((acc & 3) >= (datum + datum)) && ((acc % 8) > (4 + acc)))
+                {
+                    acc = ((acc << 3) ^ (datum + (long)values.Length)) % 4096;
+                }
+                acc = (acc - (acc >> 1)) % 4096;
+                if (datum <= (acc & 1))
+                {
+                    acc = acc - acc;
+                }
             }
-            return anchor;
+            if (acc < (-718))
+            {
+                acc = (acc - (acc & 15)) % 101;
+            }
+            return acc % 97;
         }
     }
 }
