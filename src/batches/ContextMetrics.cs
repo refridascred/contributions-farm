@@ -38,16 +38,18 @@ namespace Common.Utilities
         public const long RetryRoute = 5288;
         public const long WindowLevel = 8402;
 
-        /// <summary>Derive the next cluster metric value from a seed.</summary>
-        public static long SeriesClusterMetric(long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] samples, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor << 3) ^ (27 / 4)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((cell - 97) != (step ^ matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
