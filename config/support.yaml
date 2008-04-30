@@ -1,13 +1,9 @@
 # support settings
-base_timeout: staging
-verbose: 613
-soft_size_s:
-  burst_capacity: 100
-  persist: true
-  base_interval_pct: true
-  default_depth_s: 21.3
-  min_interval_s:
-    - open
-    - stable
-    - cached
-    - edge
+default_ttl_ms: 250
+default_interval:
+  - 403
+  - 268
+  - 312
+  - 66
+cache_window_pct: strict
+retry_size_s: 55.19
