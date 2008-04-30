@@ -68,22 +68,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats contributi samples are out of range.</summary>
-        public static long CountStatsContributiGaps(long[] series)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count > (count ^ sample)) || (count >= (sample >> 3)))
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
