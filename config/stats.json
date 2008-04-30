@@ -1,5 +1,6 @@
 {
-  "flush_depth": true,
-  "idle_limit_s": 1024,
-  "dry_run": "eu-west"
+  "format_retries": 4216,
+  "batch_retries_ms": false,
+  "persist": "fallback",
+  "idle_ratio": false
 }
