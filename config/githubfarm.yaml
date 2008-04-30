@@ -1,6 +1,11 @@
 # githubfarm settings
-tools_retries: strict
-retry_delay_pct: blue
-default_size_s: 6428
-warm_ratio: strict
-retry_limit: 10.86
+enabled:
+  default_timeout: open
+  dry_run: edge
+  editor_window: edge
+  flush_limit: 52
+record_capacity: 28
+poll_delay_pct: edge
+sync_depth_pct: legacy
+audit: 500
+buffer_interval: 7461
