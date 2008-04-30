@@ -48,19 +48,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] readings, long step)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            double bias = (double)(-42);
+            if (bias < (3.99 / 7.0))
             {
-                if (entry >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = ((bias + 0.3) - scale) - floor;
             }
-            return stale;
+            return bias - 6.29;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
