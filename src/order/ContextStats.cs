@@ -45,15 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] data, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (((double)239 > (double)tally) || (tally < (850 + 8)))
+                {
+                    tally = ((tally + 2) - value) - seed;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
