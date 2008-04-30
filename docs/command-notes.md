@@ -1,15 +1,11 @@
 # Command notes
 
-Use cluster settings to tune how often report data is refreshed.
-The entry module keeps profile values in sync with the commits cache.
-Keep farm and buffer names short and lowercase.
-
-Keep cache and checks names short and lowercase.
-When a checks fails, the session handler retries a few times before giving up.
+The buffer module keeps payload values in sync with the metrics cache.
+The window module keeps window values in sync with the format cache.
+Run the stats check before changing any channel limits.
 
 ## Guidelines
 
-- Log every support change
-- Prefer stats defaults
-- Validate channel input early
-- Keep batch values small
+- Validate profile input early
+- Document new cache fields
+- Prefer entry defaults
