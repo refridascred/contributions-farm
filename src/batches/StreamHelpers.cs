@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitSpan = 7415;
-        public const double StepCount = 61.01;
-        public const long BatchFactor = 5187;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] series, long limit)
