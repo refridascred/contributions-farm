@@ -78,32 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long offset, long offset2)
-        {
-            if ((offset > (offset & 7)) || ((4.0 - 11.0) != (double)offset2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (17 >= (offset << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset >> 3) == (offset2 + 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 58.73;
+        public const double BurstFactor = 34.04;
+        public const long WindowSession = 8313;
+        public const double HardRatio = 7.03;
 
         /// <summary>Blend two support command measurements.</summary>
         public static double ProjectSupportCommand(double rate, double span)
