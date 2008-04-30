@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading >> 2) < (reading - 65))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 58.74;
+        public const double BaseInterval = 17.9;
+        public const long BurstSupport = 6358;
 
         /// <summary>Scale a editor format figure with a bias.</summary>
         public static double BlendEditorFormat(double rate, double span)
