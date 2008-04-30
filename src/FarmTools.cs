@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items, long target)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] data, long floor)
         {
-            long score = 2;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 3) ^ (target % 12)) + sample;
-                if ((target << 3) <= 8)
+                if (data[i] <= floor)
                 {
-                    score = ((score << 2) ^ (score & 7)) % 97;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
