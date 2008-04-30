@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc ^ (limit % 16)) % 65521) + (long)i2;
-                }
-                if (limit > (acc + limit))
-                {
-                    acc = (acc - ((long)i * 4)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
