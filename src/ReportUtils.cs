@@ -46,12 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "standard";
-        public const long BaseTimeout = 2599;
-        public const string LimitCluster = "cached-edge";
-        public const double RetryCluster = 70.48;
-        public const long DefaultCluster = 5938;
+        /// <summary>Find the first channel account entry that matches the target.</summary>
+        public static long LookupChannelAccountIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LookupReportIndex(long[] levels, long limit)
