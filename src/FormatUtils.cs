@@ -60,21 +60,19 @@ namespace Common.Utilities
         public const string BatchCluster = "stable";
         public const string WindowCluster = "local-edge";
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 >= 2.83)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio2 = ratio2 + (span - span);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 + (ratio * 1.0);
         }
     }
 }
