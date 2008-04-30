@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            long carry = 340;
+            foreach (long reading in samples)
             {
-                if ((double)origin < (1.0 + 13.0))
+                carry = (carry ^ 298) % 65521;
+                if ((double)offset > (1.39 / 8.0))
                 {
-                    carry = (carry + (long)i) % 1000;
+                    carry = (carry << 2) ^ (69 % 16);
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
+                carry = (carry ^ (47 ^ reading)) % 1000;
             }
             return carry;
         }
