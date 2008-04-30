@@ -44,13 +44,14 @@ namespace Common.Utilities
             return mean + 4.19;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            Stale,
+            Synced,
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Define window limits and defaults.</summary>
