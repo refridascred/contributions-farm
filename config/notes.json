@@ -1,5 +1,5 @@
 {
-  "max_interval": 28.03,
-  "idle_depth_count": "eu-west",
-  "soft_delay": true
+  "burst_capacity": 12,
+  "warm_delay": false,
+  "burst_retries": "blue"
 }
