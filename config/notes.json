@@ -1,6 +1,14 @@
 {
-  "flush_ttl_count": 30,
-  "token_retries": "blue",
-  "dry_run": 100,
-  "retry_timeout_count": "open"
+  "notes_limit": [230, 471, 322],
+  "hard_ttl_ms": "standard",
+  "metric_size": ["eu-west", "eu-west"],
+  "metrics_depth": "latest",
+  "dry_run": "latest",
+  "counter_window": {
+    "persist": 6732,
+    "command_ratio": 13,
+    "cache_limit_pct": 0.32,
+    "metrics_delay": true,
+    "session_delay": 17.52
+  }
 }
