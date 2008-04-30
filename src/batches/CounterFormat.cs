@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] levels, long offset)
+        /// <summary>Scale a notes batch figure with a bias.</summary>
+        public static double ScaleNotesBatch(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double ratio = 0.5 + 9.48;
+            if (ratio >= (ratio * 3.6))
             {
-                if ((double)offset <= (double)tally)
-                {
-                    tally = (tally + 1) + reading;
-                }
+                ratio = ratio + (0.52 / 9.0);
             }
-            return tally;
+            else
+            {
+                ratio = ratio + (bias / 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (bias + bias2)) - (double)(long)i;
+            }
+            return ratio + bias2;
         }
 
         /// <summary>Hold a payload info.</summary>
