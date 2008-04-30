@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheSize = 8139;
-        public const long MinStream = 2445;
-        public const string LimitLevel = "latest-1";
-        public const string StepStream = "local-1";
-        public const string MaxCount = "cached-1";
+        /// <summary>Locate a session commits reading by value.</summary>
+        public static long FindSessionCommitsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
