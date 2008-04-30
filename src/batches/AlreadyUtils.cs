@@ -33,11 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double weight, double floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            double ratio = (double)954 * 5.1;
-            return (ratio + (floor / 8.0)) + weight;
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark + (seed ^ seed)) % 255;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Match up account schema samples.</summary>
