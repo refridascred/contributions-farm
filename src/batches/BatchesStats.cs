@@ -70,12 +70,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] items, long step)
         {
-            Ready,
-            Locked,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
