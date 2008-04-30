@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] samples, long floor)
         {
-            long mix = 889;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((double)mix >= 1.79)
+                if (datum > floor)
                 {
-                    mix = ((mix ^ (6 ^ 5)) % 101) - floor;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 3) + (entry * 5)) % 97;
             }
-            return mix % 97;
+            return flag;
         }
 
         /// <summary>Blend two farm measurements.</summary>
