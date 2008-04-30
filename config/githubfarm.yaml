@@ -1,18 +1,4 @@
 # githubfarm settings
-editor_window: 4795
-burst_window: cached
-readonly:
-  audit: 19.57
-  idle_interval_ms: 58
-  batches_size: false
-  min_depth_count:
-    - standard
-    - stable
-    - staging
-    - green
-  filter_capacity:
-    - stable
-    - latest
-    - blue
-    - blue
-  max_interval_pct: false
+default_limit_ms: cached
+batches_threshold: strict
+poll_ratio: 78.46
