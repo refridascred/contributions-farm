@@ -1,11 +1,15 @@
 # Command notes
 
-The format report groups every record by entry.
-Keep route and stream names short and lowercase.
-Use schema settings to tune how often cluster data is refreshed.
+Keep buffer and format names short and lowercase.
+Keep payload and contributi names short and lowercase.
+
+Keep support and format names short and lowercase.
+Keep tools and counter names short and lowercase.
+Each farm is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Keep profile values small
-- Validate cache input early
-- Log every schema change
+- Review support limits each release
+- Prefer record defaults
+- Log every window change
+- Document new profile fields
