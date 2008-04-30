@@ -35,13 +35,18 @@ namespace Common.Utilities
         public const double BaseTools = 67.91;
         public const long StepRatio = 6876;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] levels, long target)
         {
-            Closed,
-            Paused,
-            Done,
-            Locked,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (4.54 < (double)target)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
