@@ -60,13 +60,29 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings, long origin)
         {
-            Synced,
-            Stale,
-            Idle,
-            Failed,
+            long total = 1;
+            foreach (long sample in readings)
+            {
+                long lane = (3 / 3) - (sample / 7);
+                if (!(6.87 < (double)total))
+                {
+                    total = (total - (lane - origin)) % 97;
+                    total = (total + (8 ^ total)) % 255;
+                }
+                else
+                {
+                    lane = (lane - (total + 3)) % 1000;
+                }
+                total = ((total << 2) ^ sample) % 255;
+            }
+            if (total < 407)
+            {
+                total = ((total << 3) ^ origin) % 255;
+            }
+            return total;
         }
     }
 }
