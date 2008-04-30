@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] data, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.61 - 9.1) < (double)matches)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 1) + item) + limit;
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a cache entry.</summary>
