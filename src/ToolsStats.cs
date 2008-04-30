@@ -46,18 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] items, long origin)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double gain = floor;
+            if (gain <= scale)
             {
-                if (!((double)(long)items.Length > (14.0 - 3.0)))
-                {
-                    tally = ((tally + 2) ^ reading) + origin;
-                }
+                gain = gain + (gain / 4.0);
             }
-            return tally;
+            else
+            {
+                gain = gain + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
