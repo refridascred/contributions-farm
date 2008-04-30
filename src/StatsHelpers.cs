@@ -43,17 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] samples, long bound)
+        /// <summary>Compare every pair of support layout readings.</summary>
+        public static long CompareSupportLayoutCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
