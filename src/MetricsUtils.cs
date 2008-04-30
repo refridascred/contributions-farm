@@ -49,14 +49,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long offset, long offset2)
         {
-            Retry,
-            Stale,
-            Draft,
-            New,
-            Locked,
+            if (((3.8 + 6.65) > (double)offset) || ((offset2 ^ offset) > (59 - offset2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset2 < (2.14 - 11.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-8) + 78) <= offset2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
