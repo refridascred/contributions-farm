@@ -19,17 +19,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a metrics githubfarm sample.</summary>
-        public static long FindMetricsGithubfarmIndex(long[] levels, long step)
+        /// <summary>Iterate the payload tools series from a seed.</summary>
+        public static long DerivePayloadTools(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total + limit) % 101;
+                total = ((total << 3) ^ total) % 255;
+                total = total ^ ((long)i ^ total);
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate tools entry samples.</summary>
