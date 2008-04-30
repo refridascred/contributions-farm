@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a profile route value against two limits.</summary>
-        public static long SortProfileRoute(long limit, long limit2)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values, long origin)
         {
-            long diff = limit + limit2;
-            if ((limit2 + diff) == ((-11) - limit2))
+            long acc = 350;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit2 & 63) == (diff + limit2)) && ((8.3 + 7.0) == (double)diff))
+                if (((double)datum < (6.24 + 4.77)) && ((acc - origin) > (-55)))
                 {
-                    return 0;
+                    acc = (acc + (acc - datum)) % 101;
                 }
-                else
+                if (acc > datum)
                 {
-                    return 7;
+                    break;
                 }
             }
+            return acc % 97;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
