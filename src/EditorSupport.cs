@@ -95,12 +95,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double scale, double floor)
         {
-            Ready,
-            New,
-            Synced,
+            double bias = (scale + floor) + (double)79;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + 19.0) + (double)(long)i;
+            }
+            return bias + (floor * 9.88);
         }
     }
 }
