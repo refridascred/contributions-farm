@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Fold a list of contributi checks readings.</summary>
+        public static long CombineContributiChecks(long[] data)
         {
-            public double Rank { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            long acc = 8;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = (acc ^ (acc - datum)) + (long)i;
+                }
+                if (((double)acc <= 0.29) || (datum <= (datum - datum)))
+                {
+                    acc = ((acc * 5) + acc) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Project the next counter entry value.</summary>
