@@ -12,6 +12,9 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-for item in legacy standard stable eu-west; do
+for item in fallback green edge primary; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=23
+log "limit is ${COMMAND_LIMIT}"
