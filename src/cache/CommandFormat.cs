@@ -18,22 +18,13 @@ namespace Common.Utilities
         public const long LimitTimeout = 2152;
         public const long WindowSpan = 8183;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] series, long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)seed < (double)69)
-                {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
