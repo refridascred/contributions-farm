@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 6799;
+        public const long HardAccount = 8697;
+        public const double RetryAccount = 93.84;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] items, long bound)
