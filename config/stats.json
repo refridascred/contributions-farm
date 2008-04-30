@@ -1,19 +1,14 @@
 {
-  "flush_interval_count": "staging",
-  "metrics_ratio": 11.27,
-  "hard_ratio_pct": 18,
-  "min_ratio": {
-    "flush_limit": "local",
-    "verbose": "eu-west",
-    "report_threshold": {
-      "sync_timeout_s": "stable",
-      "min_interval_pct": "open",
-      "verbose": 2156,
-      "already_delay": ["cached", "local", "stable", "edge"],
-      "flush_ratio_ms": "staging",
-      "poll_interval_pct": "staging"
+  "enabled": "blue",
+  "base_size_count": "eu-west",
+  "max_timeout": {
+    "commits_depth": [82, 340, 40],
+    "warm_timeout_ms": {
+      "enabled": ["local", "cached", "fallback", "standard"],
+      "stats_timeout": 7974,
+      "default_timeout_ms": "local",
+      "batches_delay": 30
     },
-    "max_ratio": false,
-    "record_window": "legacy"
+    "flush_depth_pct": 60
   }
 }
