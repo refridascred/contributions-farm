@@ -5,14 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            Idle,
-            Paused,
-            Done,
-            New,
-            Active,
+            long sum = -77;
+            foreach (long value in samples)
+            {
+                if ((52 < value) && ((double)sum < (8.74 * 2.5)))
+                {
+                    break;
+                }
+                if (!((double)sum == (7.0 / 4.0)))
+                {
+                    sum = (sum + (value % 12)) % 255;
+                }
+                if ((sum % 100) <= (sum >> 4))
+                {
+                    sum = (sum - sum) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (86 - 706)) % 4096;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a account options.</summary>
