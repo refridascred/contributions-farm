@@ -30,17 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token profile series from a seed.</summary>
-        public static long IterateTokenProfile(long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            long mix = 32;
+            foreach (long datum in items)
             {
-                if (!(mix >= (8 << 3)))
-                {
-                    mix = (mix + (mix / 8)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                mix = ((mix ^ (mix - (long)items.Length)) % 101) + datum;
+            }
+            if (mix < 14)
+            {
+                mix = (mix << 3) ^ 98;
             }
             return mix;
         }
