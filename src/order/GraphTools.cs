@@ -57,15 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] samples, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
