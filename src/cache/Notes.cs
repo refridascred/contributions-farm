@@ -35,22 +35,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit already layout readings against a rule.</summary>
-        public static long TallyAlreadyLayoutOutliers(long[] data)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((matches >> 5) <= (matches << 2)) && ((13.0 * 4.2) <= (double)matches)) || ((3.03 * 0.3) <= (double)cell))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = matches + 1;
+                    mark = (mark ^ (mark >> 2)) - (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 4) + (origin >> 4)) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Locate a record reading by value.</summary>
