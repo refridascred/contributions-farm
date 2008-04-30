@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long bound, long offset)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            if (20 > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset << 2) == (offset / 7)) && ((0.4 + 8.9) == (double)bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset % 97) != (bound + 234))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4 + bound) > 8)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Idle,
+            Stale,
+            Draft,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
