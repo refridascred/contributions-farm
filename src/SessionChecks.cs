@@ -33,19 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Match up command samples.</summary>
