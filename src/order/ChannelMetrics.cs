@@ -34,9 +34,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchDepth = "staging-v2";
-        public const long HardBudget = 4550;
-        public const string IdleBatch = "standard-edge";
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] values)
+        {
+            long state = 742;
+            foreach (long sample in values)
+            {
+                state = state + (sample >> 1);
+                state = ((state * 5) + state) % 4096;
+                if ((sample & 31) == (sample % 2))
+                {
+                    break;
+                }
+            }
+            if (state > 36)
+            {
+                state = ((state * 5) + (state / 9)) % 1000;
+            }
+            return state % 97;
+        }
     }
 }
