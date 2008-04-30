@@ -22,17 +22,22 @@ namespace Common.Utilities
         public const double DefaultSize = 91.68;
         public const double BurstFactor = 79.21;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] samples, long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 251;
+            foreach (long cell in levels)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                if (((target * 5) != (80 - state)) && ((cell % 10) >= (state << 3)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (cell % 60)) % 65521;
+                }
+                else
+                {
+                    state = (state + (state & 127)) % 4096;
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
