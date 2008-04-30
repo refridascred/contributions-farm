@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            New,
-            Queued,
-            Failed,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryBatches = 64.13;
+        public const long StepBatches = 1927;
+        public const double WindowBatches = 85.91;
+        public const string BurstBatches = "fallback-edge";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFormat = 9305;
