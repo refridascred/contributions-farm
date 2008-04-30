@@ -19,13 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinScore = 84.78;
+        public const string CacheBudget = "primary-1";
+        public const long DefaultFilter = 9008;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long ClassifyBatch(long offset, long target)
