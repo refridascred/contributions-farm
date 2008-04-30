@@ -1,4 +1,10 @@
 # entry settings
-base_limit_s: cached
-layout_ttl: false
-checks_interval: false
+base_ratio: false
+metrics_size:
+  - 182
+  - 410
+  - 252
+batch_depth: 21
+max_timeout_s: primary
+default_depth_pct: edge
+window_timeout: green
