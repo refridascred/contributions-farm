@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] levels)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (11.0 >= (double)matches)
+                if ((values[i] >= floor) && ((values[i] % 5) != 0))
                 {
-                    matches = (matches + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
