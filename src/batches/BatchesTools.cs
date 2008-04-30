@@ -29,31 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long offset, long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            if ((offset + offset) < (bound * 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound / 9) <= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (632 <= (bound * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
