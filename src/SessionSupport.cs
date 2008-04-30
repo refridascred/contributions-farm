@@ -38,31 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Check that every commits session entry stays within the limit.</summary>
+        public static bool VerifyCommitsSessionLimits(long[] levels, long seed)
         {
-            long mark = 28;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (entry < (mark / 4))
+                if (reading != seed)
                 {
-                    long cur = (entry << 3) % 8;
-                    mark = (mark * 3) + (mark ^ cur);
-                }
-                if (((double)mark > (double)entry) && ((mark / 8) > entry))
-                {
-                    mark = (mark * 4) + 512;
-                }
-                else
-                {
-                    mark = mark - (entry % 64);
+                    ready = false;
+                    break;
                 }
             }
-            if (mark < (-319))
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
+            return ready;
         }
     }
 }
