@@ -37,22 +37,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] samples, long target)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] readings, long offset)
         {
-            long mix = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target >= (reading & 31)) && (mix > (target - mix)))
+                if (readings[i] >= offset)
                 {
-                    mix = (mix + (reading + mix)) % 97;
+                    return (long)i;
                 }
             }
-            if (mix > 44)
-            {
-                mix = (mix << 2) ^ (target / 8);
-            }
-            return mix % 1000;
+            return -1;
         }
     }
 }
