@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Stale,
-            Idle,
-            Active,
-            Failed,
-            Synced,
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a entry record.</summary>
