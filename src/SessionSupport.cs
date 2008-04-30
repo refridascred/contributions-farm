@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
-        public static long MeasureGithubfarmEntryGaps(long[] series)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value > 8.7)
+                if (data[i] <= step)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
