@@ -34,11 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public bool Size { get; set; }
-            public bool Level { get; set; }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
