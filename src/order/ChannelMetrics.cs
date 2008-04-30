@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "primary-edge";
-        public const string DefaultAlready = "local-1";
-        public const long HardInterval = 8832;
-        public const long MinAlready = 7729;
+        /// <summary>Roll a notes stream counter forward.</summary>
+        public static long SeriesNotesStream(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state - (seed / 6)) % 4096;
+                state = state - ((long)i ^ state);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Adjust a entry buffer reading.</summary>
         public static double ScaleEntryBuffer(double weight, double bias)
