@@ -67,16 +67,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "standard-1";
+        public const double MinCluster = 90.64;
+        public const string BatchCluster = "stable";
+        public const string WindowCluster = "local-edge";
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
