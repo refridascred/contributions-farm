@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit stats layout readings against a rule.</summary>
-        public static long CountStatsLayoutOutliers(long[] samples)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double load = floor;
+            if (load <= bias)
             {
-                if ((double)item > (1.5 * 11.0))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load + (4.6 - load);
             }
-            return hits;
+            else
+            {
+                load = load - (bias + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (floor + floor)) + (double)(long)i;
+            }
+            return load + (floor + 5.2);
         }
 
         /// <summary>Describe the support class values.</summary>
