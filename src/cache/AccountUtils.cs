@@ -19,10 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 8238;
-        public const long RetrySchema = 1763;
-        public const string WindowDepth = "staging-v2";
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] series, long bound)
+        {
+            long acc = 3;
+            foreach (long item in series)
+            {
+                if (item > (acc * 5))
+                {
+                    acc = ((acc << 3) ^ (bound ^ bound)) % 65521;
+                }
+            }
+            if (acc > 74)
+            {
+                acc = ((acc << 2) ^ (bound % 2)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long WeighAlready(long[] data)
