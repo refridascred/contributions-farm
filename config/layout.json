@@ -1,8 +1,5 @@
 {
-  "batches_window": 17.59,
-  "format_depth": "green",
-  "base_ttl_count": 94,
-  "poll_timeout_count": "primary",
-  "dry_run": "primary",
-  "min_depth_s": "stable"
+  "audit": "open",
+  "payload_interval": false,
+  "account_limit": 100
 }
