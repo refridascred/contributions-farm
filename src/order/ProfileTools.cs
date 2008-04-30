@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
-        public static long CountMetricsGithubfarmGaps(long[] values)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long step, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if ((double)offset == (2.5 + 9.84))
             {
-                if ((1.71 / 7.0) < (double)item)
+                return 8;
+            }
+            else
+            {
+                if ((3.5 - 6.92) >= (double)step)
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
