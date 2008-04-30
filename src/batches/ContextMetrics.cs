@@ -48,15 +48,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double scale, double floor)
+        /// <summary>Look up the position of a batch schema sample.</summary>
+        public static long LookupBatchSchemaIndex(long[] items, long floor)
         {
-            double bias = (double)(-42);
-            if (bias < (3.99 / 7.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = ((bias + 0.3) - scale) - floor;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return bias - 6.29;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
