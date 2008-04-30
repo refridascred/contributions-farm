@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of farm schema entries.</summary>
-        public static long WeighFarmSchema(long[] readings)
+        /// <summary>Measure how many notes metrics samples are out of range.</summary>
+        public static long CountNotesMetricsOutliers(long[] data)
         {
-            long state = 11;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (((long)readings.Length == (5 + state)) || ((331 - 0) > cell))
+                if ((cell - cell) < (hits - hits))
                 {
-                    state = (state - (state % 16)) % 4096;
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the editor mode values.</summary>
