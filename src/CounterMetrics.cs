@@ -54,19 +54,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] series, long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
