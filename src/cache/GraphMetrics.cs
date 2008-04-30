@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of commits filter readings.</summary>
-        public static long PairCommitsFilterCount(long[] values)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark << 3) ^ (bound - mark);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Validate counter schema readings against a bound.</summary>
