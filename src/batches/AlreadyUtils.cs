@@ -17,19 +17,21 @@ namespace Common.Utilities
             return (ratio + (floor / 8.0)) + weight;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Match up account schema samples.</summary>
+        public static long CompareAccountSchemaCount(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((6.0 * 5.8) == (double)acc))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc << 3) ^ (163 + acc);
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
