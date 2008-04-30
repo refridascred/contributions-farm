@@ -32,14 +32,10 @@ namespace Common.Utilities
         public const string StepCommits = "cached";
         public const long SoftSpan = 9230;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Retry,
-            Ready,
-            Failed,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstCount = 29.22;
+        public const long BatchSpan = 505;
+        public const long HardScore = 2562;
+        public const long HardWidth = 1742;
     }
 }
