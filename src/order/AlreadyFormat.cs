@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCommits = 65.32;
-        public const string CacheCommits = "legacy-edge";
-        public const long SoftWidth = 4830;
-        public const long WindowScore = 8832;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long OverlapCommitsCount(long[] readings)
