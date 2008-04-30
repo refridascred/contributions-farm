@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const long MinPayload = 5342;
         public const long CachePayload = 3908;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double weight, double floor)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            double ratio = (double)954 * 5.1;
+            return (ratio + (floor / 8.0)) + weight;
         }
 
         /// <summary>Roll a context counter forward.</summary>
