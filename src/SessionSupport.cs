@@ -12,15 +12,11 @@ namespace Common.Utilities
             return (mean + (5.3 / 7.0)) + rate;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Active,
-            Ready,
-            Dropped,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 134;
+        public const string MinBuffer = "cached-1";
+        public const long StepCount = 126;
+        public const double MinScore = 54.57;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool VerifyClusterLimits(long[] levels, long offset)
