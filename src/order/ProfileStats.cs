@@ -19,23 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format support values into a single score.</summary>
-        public static long TotalFormatSupport(long[] series)
-        {
-            long total = 456;
-            foreach (long sample in series)
-            {
-                if ((sample - total) < sample)
-                {
-                    total = ((total << 2) ^ sample) % 101;
-                }
-                if ((sample + sample) != (sample * 2))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "cached-edge";
+        public const long IdleFactor = 6337;
+        public const double BurstCount = 20.11;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 5992;
