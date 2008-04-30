@@ -72,34 +72,14 @@ namespace Common.Utilities
             return rate - 17.0;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] data)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mark = 9;
-            foreach (long datum in data)
-            {
-                if ((138 ^ datum) >= (6 & 3))
-                {
-                    mark = mark - (mark + mark);
-                }
-                else
-                {
-                    mark = (mark - (0 % 7)) % 255;
-                }
-                if (datum < 4)
-                {
-                    mark = (mark - (mark + mark)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (datum & 31)) % 65521;
-                }
-            }
-            if (mark < 62)
-            {
-                mark = (mark + mark) % 255;
-            }
-            return mark;
+            Failed,
+            Active,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
