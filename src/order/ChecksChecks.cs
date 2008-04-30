@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] levels, long limit)
         {
-            long result = 3;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                result = ((result - (result << 1)) % 65521) + value;
+                if ((double)seen != (2.2 / 8.0))
+                {
+                    seen = ((seen + 2) - value) - limit;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Validate record command readings against a bound.</summary>
