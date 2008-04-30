@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            Idle,
+            Pending,
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
