@@ -23,17 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a notes stream counter forward.</summary>
-        public static long SeriesNotesStream(long seed)
+        /// <summary>Digest a series of metric already entries.</summary>
+        public static long TallyMetricAlready(long[] series, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long sum = 5;
+            foreach (long cell in series)
             {
-                state = (state - (seed / 6)) % 4096;
-                state = state - ((long)i ^ state);
-                state = ((state * 5) + (long)i) % 97;
+                sum = ((sum - (bound / 7)) % 97) + cell;
             }
-            return state;
+            if (sum < 8)
+            {
+                sum = ((sum << 3) ^ 34) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
