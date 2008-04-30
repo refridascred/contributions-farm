@@ -33,24 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long limit, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] samples, long offset)
         {
-            if (((step % 64) == (limit + step)) && (limit <= (-51)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5.1 - 2.2) > (double)step)
+                if (samples[i] >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a batch farm figure with a bias.</summary>
