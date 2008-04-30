@@ -1,7 +1,10 @@
-id,score,active
-1,stable,green
-2,blue,32.93
-3,84.17,latest
-4,primary,1.91
-5,open,local
-6,541,519
+id,owner,token,level
+1,52.72,41,366
+2,518,standard,821
+3,4.58,27,12.11
+4,243,30.67,fallback
+5,73.78,736,166
+6,standard,edge,938
+7,540,74.33,742
+8,40.61,945,11.88
+9,blue,76.95,41.88
