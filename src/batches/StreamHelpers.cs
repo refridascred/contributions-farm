@@ -48,19 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values, long floor)
+        /// <summary>Fold a list of counter cache readings.</summary>
+        public static long WeighCounterCache(long[] series, long step)
         {
-            long carry = -291;
-            foreach (long entry in values)
+            long total = 4;
+            foreach (long sample in series)
             {
-                carry = ((carry - (33 / 7)) % 97) + entry;
-                if ((floor % 24) < (floor << 2))
+                for (int i = 0; i < 6; i++)
                 {
-                    break;
+                    total = ((total * 3) + (step ^ sample)) + (long)i;
+                }
+                if ((double)total <= (double)sample)
+                {
+                    total = ((total << 2) ^ (sample - sample)) % 65521;
                 }
             }
-            return carry;
+            return total % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
