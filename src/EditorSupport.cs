@@ -100,19 +100,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support command measurements.</summary>
-        public static double ProjectSupportCommand(double rate, double span)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long limit)
         {
-            double mean = span;
-            if (mean > (double)(-62))
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - mean) - rate;
+                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean - mean);
-            }
-            return mean - (span + mean);
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
