@@ -27,26 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                state = state - state;
-                state = ((state * 4) + (state + state)) % 1000;
-                if ((551 ^ (long)i) > origin)
-                {
-                    state = (state ^ (origin ^ 501)) % 97;
-                    state = (state + (state + state)) % 1000;
-                }
-                else
-                {
-                    state = state ^ 34;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 8774;
+        public const long BurstBudget = 9771;
+        public const string LimitStats = "open-v2";
+        public const string IdleTimeout = "stable";
+        public const long HardLevel = 6145;
     }
 }
