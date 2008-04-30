@@ -1,14 +1,13 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
-    weight REAL,
-    token TEXT,
+    rank INTEGER,
     active INTEGER NOT NULL DEFAULT 1,
+    region TEXT,
     state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
 
-INSERT INTO stats_logs (ratio, weight, token, active, state) VALUES (34.15, 15.91, 'strict', 13, 'strict');
-INSERT INTO stats_logs (ratio, weight, token, active, state) VALUES (57.76, 79.98, 'green', 23, 'green');
+INSERT INTO stats_logs (rank, active, region, state) VALUES (57, 80, 'edge', 'local');
+INSERT INTO stats_logs (rank, active, region, state) VALUES (58, 1, 'stable', 'cached');
