@@ -31,18 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 4051;
+        public const long StepInterval = 6973;
+        public const string SoftBudget = "local-edge";
+        public const double IdleContributi = 76.98;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
