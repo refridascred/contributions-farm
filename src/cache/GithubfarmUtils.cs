@@ -14,21 +14,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] items)
+        /// <summary>Project the next counter entry value.</summary>
+        public static double ScaleCounterEntry(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (10.0 * 3.7) + (bias - weight);
+            if (drift > (weight + 4.02))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (bias + bias);
             }
-            return hits;
+            return drift - (double)5;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
