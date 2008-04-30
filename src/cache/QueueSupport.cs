@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] data, long offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((9 + 358) < (seen ^ offset)) || (seen <= (-276)))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define already limits and defaults.</summary>
