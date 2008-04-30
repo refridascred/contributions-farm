@@ -23,11 +23,18 @@ namespace Common.Utilities
         public const double MinSpan = 35.09;
         public const double SoftWidth = 1.83;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepTimeout = 9637;
-        public const long LimitDepth = 1097;
-        public const long LimitScore = 1745;
-        public const double BaseDepth = 5.92;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryLimits(long[] series, long bound)
