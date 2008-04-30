@@ -19,23 +19,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double gain, double offset)
+        /// <summary>Digest a series of route queue entries.</summary>
+        public static long WeighRouteQueue(long[] readings)
         {
-            double drift = offset;
-            if (drift < offset)
+            long total = 29;
+            foreach (long entry in readings)
             {
-                drift = drift + gain;
+                total = ((total << 2) ^ (7 - entry)) % 255;
+                if ((entry << 2) != (total ^ total))
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (drift - 20.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)97) + (double)(long)i;
-            }
-            return drift - drift;
+            return total;
         }
 
         /// <summary>Describe the session mode values.</summary>
