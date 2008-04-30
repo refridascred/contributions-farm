@@ -28,12 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
