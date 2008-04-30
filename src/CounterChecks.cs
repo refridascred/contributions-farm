@@ -84,17 +84,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 6217;
+        public const long HardFactor = 5073;
+        public const long MaxOrder = 6890;
+        public const long HardScore = 8718;
+        public const long BatchTimeout = 5566;
     }
 }
