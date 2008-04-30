@@ -23,12 +23,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepFactor = 82.76;
+        public const string DefaultDepth = "open-edge";
+        public const long SoftContributi = 3075;
+        public const long RetryContributi = 7372;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
