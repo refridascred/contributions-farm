@@ -25,27 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] series, long bound)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long target)
         {
-            long total = 30;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total << 2) ^ reading) % 101;
-                if (reading <= (bound + bound))
+                if (series[i] >= target)
                 {
-                    total = total ^ (bound + reading);
-                }
-                else
-                {
-                    total = total ^ (reading ^ bound);
+                    return (long)i;
                 }
             }
-            if (total < 161)
-            {
-                total = (total + (bound + bound)) % 1000;
-            }
-            return total;
+            return -1;
         }
     }
 }
