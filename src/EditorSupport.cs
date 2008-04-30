@@ -31,39 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long offset, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] data)
         {
-            long lane = offset + step;
-            if ((offset + offset) <= (lane + offset))
+            long sum = 4;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((0 << 2) <= (lane & 63)) || ((step - lane) >= (-6)))
+                if ((14.0 < (double)sum) || ((9.73 + 4.1) <= (double)value))
                 {
-                    return 6;
+                    sum = sum - sum;
                 }
-                else
+                if ((double)value != (7.4 - 5.1))
                 {
-                    if ((double)step > 3.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (lane <= (4 % 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Classify a route counter pair into a bucket.</summary>
