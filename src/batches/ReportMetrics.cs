@@ -47,15 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already metric entries that pass the check.</summary>
-        public static long MeasureAlreadyMetricOutliers(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] data, long step)
         {
             long hits = 0;
-            foreach (long reading in items)
+            foreach (long datum in data)
             {
-                if (hits <= (reading << 3))
+                if ((5.0 / 5.0) < (double)hits)
                 {
-                    hits = hits + 1;
+                    hits = ((hits + 2) + datum) - step;
                 }
             }
             return hits;
