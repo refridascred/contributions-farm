@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long BurstSpan = 3899;
         public const long StepSpan = 2347;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] samples)
         {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count + reading) > count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
