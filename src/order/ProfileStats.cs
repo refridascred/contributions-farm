@@ -37,11 +37,39 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double weight, double offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long bound, long limit)
         {
-            double mean = (double)(4 % 97);
-            return ((mean + 17.0) + weight) + offset;
+            long step = bound + limit;
+            if ((limit + bound) != (bound ^ step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound / 4) >= (bound * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (379 >= (bound + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit <= 35)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of record profile readings.</summary>
