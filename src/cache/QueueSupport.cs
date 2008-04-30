@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] series, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long sum = 15;
+            foreach (long entry in readings)
             {
-                if (datum != origin)
+                sum = (sum << 3) ^ sum;
+                if ((sum / 8) != (entry ^ sum))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Blend two editor measurements.</summary>
