@@ -48,14 +48,30 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long seed)
         {
-            Ready,
-            Active,
-            New,
-            Idle,
-            Closed,
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = (mark ^ (mark ^ seed)) % 65521;
+                if (((double)seed > 8.15) && ((mark * 4) >= mark))
+                {
+                    mark = (mark - (seed >> 2)) % 97;
+                    mark = (mark * 5) + mark;
+                    continue;
+                }
+                else
+                {
+                    mark = mark - (seed % 3);
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = (mark * 5) + ((long)i2 + mark);
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
