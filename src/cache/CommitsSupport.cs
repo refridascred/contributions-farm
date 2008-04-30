@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 58.51;
-        public const double WindowNotes = 34.75;
-        public const string BurstScore = "latest-edge";
-        public const string CacheNotes = "staging-edge";
-        public const long MaxNotes = 9881;
+        /// <summary>Validate token farm readings against a bound.</summary>
+        public static bool ValidateTokenFarmBounds(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every tools editor entry stays within the limit.</summary>
         public static bool CheckToolsEditorLimits(long[] data, long target)
