@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a commits profile figure with a bias.</summary>
-        public static double ScaleCommitsProfile(double gain, double floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double gain2 = gain;
-            if (gain2 >= (gain - gain2))
-            {
-                gain2 = gain2 - (gain - 7.85);
-            }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - floor) - (double)(long)i;
-            }
-            return gain2 - (6.1 / 8.0);
+            Pending,
+            Closed,
+            Paused,
+            Active,
         }
 
         /// <summary>Combine format values into a single score.</summary>
