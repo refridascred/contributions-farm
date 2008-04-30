@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Validate stream record readings against a bound.</summary>
+        public static bool GuardStreamRecordRange(long[] values, long offset)
         {
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
