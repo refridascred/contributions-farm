@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstTimeout = 66.96;
-        public const long DefaultFormat = 745;
-        public const long LimitFormat = 3734;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            New,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] values, long target)
