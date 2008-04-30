@@ -20,22 +20,21 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] levels)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(((matches ^ sample) < (sample >> 1)) && ((sample >> 2) == (sample - 247))))
+                if ((double)(long)i != (0.09 - 5.6))
                 {
-                    matches = matches + 2;
+                    score = ((score << 3) ^ ((long)i + 4)) % 101;
+                    continue;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score ^ (score % 3)) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Fold a list of window account readings.</summary>
