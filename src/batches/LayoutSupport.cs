@@ -20,32 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a counter checks value against two limits.</summary>
-        public static long BucketCounterChecks(long origin, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] levels, long limit)
         {
-            long prev = origin - bound;
-            if ((9.8 / 4.0) != (double)origin)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin > (prev * 4)) && ((16.0 + 0.46) > (double)origin))
+                if ((count + datum) <= count)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + bound) <= (origin / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 1) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
