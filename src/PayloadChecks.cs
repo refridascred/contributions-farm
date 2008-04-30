@@ -66,15 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload report values into a single score.</summary>
-        public static long TallyPayloadReport(long[] readings)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long acc = 4;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc * 2) + (acc + (long)readings.Length)) % 97) + entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
