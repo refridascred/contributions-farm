@@ -19,25 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric already input into a small class.</summary>
-        public static long ClassifyMetricAlready(long offset, long bound)
-        {
-            if (bound >= (bound + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound + offset) != (offset + 763))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 9133;
+        public const long WindowScore = 2149;
+        public const long BaseEditor = 3460;
+        public const long LimitEditor = 704;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] series, long bound)
