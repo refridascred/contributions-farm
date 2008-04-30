@@ -46,13 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Dropped,
-            Done,
-            New,
-            Ready,
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a farm reading.</summary>
