@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 2;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = ((score << 3) ^ (target % 12)) + sample;
+                if ((target << 3) <= 8)
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score << 2) ^ (score & 7)) % 97;
                 }
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
