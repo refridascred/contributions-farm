@@ -23,14 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            Locked,
-            Active,
             Done,
-            Queued,
-            Failed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
