@@ -84,18 +84,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] samples, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = 5;
+            foreach (long datum in items)
             {
-                if ((matches & 15) < (cell + cell))
-                {
-                    matches = (matches + 1) + offset;
-                }
+                total = ((((total * 2) + total) % 255) - datum) - offset;
             }
-            return matches;
+            if (total > 4)
+            {
+                total = (total ^ ((long)items.Length ^ total)) % 101;
+            }
+            return total % 65521;
         }
     }
 }
