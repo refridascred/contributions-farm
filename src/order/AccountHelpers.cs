@@ -39,12 +39,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long limit)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
