@@ -27,10 +27,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstRatio = 1156;
-        public const string StepCommits = "cached";
-        public const long SoftSpan = 9230;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double SmoothGithubfarm(double ratio, double bias)
