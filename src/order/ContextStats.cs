@@ -48,16 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] samples, long offset)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long acc = 16;
-            foreach (long datum in samples)
-            {
-                acc = ((acc + (offset % 97)) % 65521) + datum;
-                acc = acc + acc;
-            }
-            return acc % 4096;
+            Closed,
+            Ready,
+            Retry,
         }
     }
 }
