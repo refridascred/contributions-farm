@@ -43,18 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((46 + origin) >= (origin << 1))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 7556;
+        public const double HardSpan = 61.74;
+        public const string IdleTimeout = "strict-1";
+        public const string WindowMetric = "stable";
+        public const long DefaultSize = 7933;
     }
 }
