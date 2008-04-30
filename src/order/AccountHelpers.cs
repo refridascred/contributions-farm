@@ -39,11 +39,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long offset)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long result = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
