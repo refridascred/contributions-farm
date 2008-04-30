@@ -17,19 +17,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((933 - bound) < mix) && (7.3 >= (double)bound))
-                {
-                    mix = ((mix << 3) ^ bound) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Pending,
+            Failed,
+            Draft,
+            Stale,
         }
     }
 }
