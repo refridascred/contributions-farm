@@ -67,22 +67,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstRatio = 29.46;
+        public const long IdleInterval = 8519;
+        public const double StepTimeout = 41.79;
+        public const long MinCluster = 1293;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleOrder = 6217;
