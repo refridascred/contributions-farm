@@ -28,13 +28,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the farm format entries that pass the check.</summary>
+        public static long AuditFarmFormatMatches(long[] items)
         {
-            Dropped,
-            Retry,
-            Failed,
-            Locked,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (cell <= (cell << 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
