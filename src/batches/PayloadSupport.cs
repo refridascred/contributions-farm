@@ -39,25 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long seed, long seed2)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] items, long origin)
         {
-            long edge = seed - seed2;
-            if ((4.7 * 9.1) < (double)edge)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed2 + edge) != (seed * 5)) || ((seed2 % 7) < (seed ^ seed)))
+                if (6.6 > (double)origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) + datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a order tools reading.</summary>
