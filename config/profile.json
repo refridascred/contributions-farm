@@ -1,17 +1,8 @@
 {
-  "enabled": "stable",
-  "sync_size_pct": {
-    "dry_run": false,
-    "compress": 57,
-    "max_delay_ms": false,
-    "poll_interval_ms": false,
-    "retry_capacity_ms": "eu-west",
-    "stream_timeout": "primary"
-  },
-  "githubfarm_timeout": {
-    "enabled": 5274,
-    "poll_timeout_pct": "staging",
-    "readonly": 100,
-    "warm_interval": "primary"
-  }
+  "min_interval_pct": 47.9,
+  "already_capacity": 12,
+  "commits_delay": true,
+  "notes_size": "fallback",
+  "retry_size_count": "open",
+  "flush_delay_ms": false
 }
