@@ -1,6 +1,6 @@
 {
-  "audit": ["local", "fallback", "local"],
-  "warm_ttl_s": 96.38,
-  "idle_window": true,
-  "buffer_limit": false
+  "graph_depth": "staging",
+  "poll_threshold": true,
+  "soft_size": ["green", "latest"],
+  "githubfarm_delay": 47.66
 }
