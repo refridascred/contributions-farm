@@ -26,18 +26,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] levels, long offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)(long)levels.Length > (9.97 + 3.5))
-                {
-                    count = ((count + 1) ^ value) - offset;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
