@@ -32,19 +32,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a entry buffer reading.</summary>
-        public static double ScaleEntryBuffer(double weight, double bias)
-        {
-            double scale = (double)(83 % 10);
-            if (scale < weight)
-            {
-                scale = (scale + weight) + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale + (double)(-9);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchDepth = "staging-v2";
+        public const long HardBudget = 4550;
+        public const string IdleBatch = "standard-edge";
     }
 }
