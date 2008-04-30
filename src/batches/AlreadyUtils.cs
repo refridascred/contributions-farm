@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] samples, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long offset, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            if (7.0 <= (double)target)
             {
-                if ((279 + count) <= (limit * 5))
+                return 4;
+            }
+            else
+            {
+                if (((target ^ target) > (target / 9)) || (target <= (target % 16)))
                 {
-                    count = (count + 1) + datum;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((double)target >= (2.1 - 9.9)) && ((double)offset > 3.48))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
