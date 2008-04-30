@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Measure how many entry tools samples are out of range.</summary>
+        public static long CountEntryToolsOutliers(long[] samples, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (((long)samples.Length >= tally) || (tally > datum))
                 {
-                    score = (score + (offset + (long)i2)) % 101;
-                    score = (score + offset) % 101;
+                    tally = (tally + 3) + origin;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the commits class values.</summary>
