@@ -30,11 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a queue profile reading.</summary>
-        public static double SmoothQueueProfile(double gain, double offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double load = gain;
-            return (load + gain) + offset;
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a commits snapshot.</summary>
