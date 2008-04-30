@@ -42,17 +42,11 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 3715;
         public const string HardCount = "open-edge";
 
-        /// <summary>Look up the position of a metrics support sample.</summary>
-        public static long LocateMetricsSupportIndex(long[] levels, long limit)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
