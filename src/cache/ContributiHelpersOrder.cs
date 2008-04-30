@@ -42,22 +42,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] readings)
+        /// <summary>Rank channel stats input into a small class.</summary>
+        public static long SortChannelStats(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if ((0 >> 3) > origin)
             {
-                if (((10 & 63) > (tally + 914)) || ((double)sample > (double)tally))
+                return 6;
+            }
+            else
+            {
+                if ((3.4 + 1.42) >= (double)origin)
                 {
-                    tally = tally + 1;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
