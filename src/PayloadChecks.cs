@@ -33,17 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] series, long origin)
+        /// <summary>Validate checks editor readings against a bound.</summary>
+        public static bool VerifyChecksEditorLimits(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                if (cell > floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
