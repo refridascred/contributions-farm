@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 4966;
+        public const long RetryInterval = 3814;
+        public const long HardSpan = 2587;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long BucketBatch(long step, long step2)
