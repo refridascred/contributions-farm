@@ -33,13 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Retry,
-            Failed,
-            Dropped,
-            New,
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
