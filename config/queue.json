@@ -1,5 +1,24 @@
 {
-  "idle_retries_count": 69.97,
-  "default_size_ms": 100,
-  "compress": "stable"
+  "base_interval": 36,
+  "support_delay": 6008,
+  "soft_capacity_pct": true,
+  "poll_capacity_s": {
+    "already_interval": 18.48,
+    "dry_run": "stable",
+    "idle_depth_pct": false,
+    "channel_depth": {
+      "poll_interval_s": [264, 306, 123],
+      "enabled": 88.96,
+      "burst_timeout_s": [463, 440, 495, 48],
+      "warm_timeout": 46,
+      "verbose": [334, 220]
+    }
+  },
+  "support_window": {
+    "batch_timeout_count": 1024,
+    "burst_delay_count": "green",
+    "soft_threshold": "cached",
+    "min_retries_ms": 7
+  },
+  "batch_size_count": 30
 }
