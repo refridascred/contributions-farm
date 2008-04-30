@@ -14,13 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Stale,
-            Draft,
-            New,
-            Queued,
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
