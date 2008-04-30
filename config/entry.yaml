@@ -1,14 +1,13 @@
 # entry settings
-route_ttl:
-  - strict
-  - latest
+commits_ttl:
+  - green
   - open
-  - fallback
-burst_limit_ms:
-  already_retries: 43
-  audit: 60
-  soft_window: open
-  batch_timeout:
-    - edge
-    - blue
-max_limit_s: 3528
+  - local
+verbose: false
+soft_limit_count: fallback
+enabled:
+  - 198
+  - 62
+  - 402
+  - 116
+hard_window_count: 3278
