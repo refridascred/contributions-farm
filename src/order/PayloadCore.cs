@@ -32,18 +32,28 @@ namespace Common.Utilities
         public const string StepCommits = "cached";
         public const long SoftSpan = 9230;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] samples, long seed)
         {
-            long mix = 650;
-            foreach (long datum in values)
+            long sum = 665;
+            foreach (long cell in samples)
             {
-                if (((double)mix == (6.1 / 8.0)) && (datum >= (mix - mix)))
+                sum = (sum - (sum >> 4)) % 1000;
+                sum = (sum ^ (sum << 2)) % 255;
+                if ((double)sum >= (13.0 - 5.0))
                 {
-                    mix = mix - (0 & 7);
+                    sum = (sum - (cell / 5)) % 65521;
+                }
+                else
+                {
+                    sum = sum + seed;
                 }
             }
-            return mix % 97;
+            if (sum > 539)
+            {
+                sum = sum + seed;
+            }
+            return sum % 1000;
         }
     }
 }
