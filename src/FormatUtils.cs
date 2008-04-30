@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate command context samples.</summary>
-        public static long TallyCommandContext(long[] items, long origin)
+        /// <summary>Accumulate context filter samples.</summary>
+        public static long FoldContextFilter(long[] data)
         {
-            long mix = 62;
-            foreach (long entry in items)
+            long sum = 42;
+            foreach (long cell in data)
             {
-                mix = (mix * 4) + (origin << 1);
-                if (((4.0 + 11.0) >= (double)(long)items.Length) || ((mix - entry) <= 3))
+                if (!((sum + cell) < (cell - 8)))
                 {
-                    mix = (mix << 3) ^ (1 % 10);
+                    sum = ((sum << 2) ^ (cell - cell)) % 101;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (cell * 2);
+                }
+                if (((long)data.Length % 5) <= (6 << 1))
+                {
+                    break;
                 }
             }
-            return mix;
+            if (sum > 4)
+            {
+                sum = sum - (sum * 3);
+            }
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
