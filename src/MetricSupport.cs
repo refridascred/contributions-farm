@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long limit)
         {
-            Paused,
-            Synced,
-            Dropped,
+            long offset = target ^ limit;
+            if ((17 + 5) > target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7 + limit) >= (offset + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((-8) <= (target + 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset >> 3) <= limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a checks summary.</summary>
