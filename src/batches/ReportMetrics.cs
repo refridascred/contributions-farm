@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank record commits input into a small class.</summary>
-        public static long BucketRecordCommits(long seed, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long prev = seed - target;
-            if ((target - target) <= 29)
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed < (prev / 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + prev) > (prev >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0 < target) || (seed > target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
