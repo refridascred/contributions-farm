@@ -58,18 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (!!((seen + cell) >= cell))
+                if ((double)offset >= 5.9)
                 {
-                    seen = seen + 1;
+                    tally = (tally + 2) - value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the counter phase values.</summary>
