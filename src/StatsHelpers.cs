@@ -52,26 +52,11 @@ namespace Common.Utilities
         public const long BatchToken = 4146;
         public const long MinWidth = 2031;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] readings, long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double bias, double offset)
         {
-            long carry = 156;
-            foreach (long value in readings)
-            {
-                if (!((double)value > 4.41))
-                {
-                    carry = (carry ^ (8 - carry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry - (value + value)) % 1000;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = (carry ^ (origin * 3)) % 4096;
-            }
-            return carry % 4096;
+            double load = (offset - offset) - bias;
+            return load - load;
         }
     }
 }
