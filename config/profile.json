@@ -1,8 +1,21 @@
 {
-  "min_interval_pct": 47.9,
-  "already_capacity": 12,
-  "commits_delay": true,
-  "notes_size": "fallback",
-  "retry_size_count": "open",
-  "flush_delay_ms": false
+  "max_depth_ms": {
+    "idle_limit_pct": "edge",
+    "readonly": 64.18,
+    "batch_interval_count": 96,
+    "command_retries": 1024,
+    "window_timeout": 1,
+    "sync_interval_s": "blue"
+  },
+  "batch_ttl": "fallback",
+  "min_ratio": ["open", "fallback"],
+  "soft_window_pct": [257, 40, 316],
+  "order_capacity": {
+    "contributi_ttl": 72,
+    "poll_capacity_count": "latest",
+    "hard_capacity": ["fallback", "local", "staging", "blue"],
+    "notes_depth": ["stable", "blue", "open"],
+    "warm_limit": 9.42
+  },
+  "burst_delay_pct": 30
 }
