@@ -45,14 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            New,
-            Stale,
-            Dropped,
             Closed,
-            Idle,
+            Synced,
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
