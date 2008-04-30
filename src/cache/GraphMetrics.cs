@@ -31,15 +31,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double ratio, double bias)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long offset)
         {
-            double gain = (double)(-2) - (double)4;
-            if (gain < 10.0)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                gain = (gain + (bias / 6.0)) - ratio;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return gain + 16.0;
+            return score;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
