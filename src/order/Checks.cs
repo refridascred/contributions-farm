@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            Ready,
+            New,
+            Done,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
