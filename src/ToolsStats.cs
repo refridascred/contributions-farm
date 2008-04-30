@@ -46,20 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor + (offset - 8)) % 97) - (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 4875;
+        public const long SoftSize = 2718;
+        public const double WindowChecks = 52.32;
+        public const long WindowCount = 2294;
+        public const long IdleChecks = 9918;
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
         public static long AuditStreamOrderHits(long[] items)
