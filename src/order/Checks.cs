@@ -28,13 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            Stale,
-            Locked,
-            Active,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
