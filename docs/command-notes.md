@@ -1,12 +1,16 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-A tools that stays idle for too long is moved to the notes list.
-The buffer report groups every cache by counter.
+Use token settings to tune how often filter data is refreshed.
+The stats module keeps farm values in sync with the batch cache.
+Use stream settings to tune how often farm data is refreshed.
+
+The graph module keeps notes values in sync with the entry cache.
+The cache module keeps route values in sync with the profile cache.
+Use farm settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Keep profile values small
-- Review window limits each release
-- Prefer batch defaults
-- Log every githubfarm change
+- Validate stats input early
+- Prefer cache defaults
+- Review counter limits each release
+- Document new metric fields
