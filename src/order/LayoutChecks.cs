@@ -11,23 +11,38 @@ namespace Common.Utilities
         public const long CacheInterval = 632;
         public const long MaxMetric = 6032;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long limit, long target)
         {
-            long score = -82;
-            foreach (long entry in data)
+            if (((5.5 * 5.2) >= (double)target) && ((double)target > (2.9 + 1.0)))
             {
-                if ((score >> 3) >= entry)
+                return 1;
+            }
+            else
+            {
+                if ((target * 4) > (target + target))
                 {
-                    score = ((score * 2) + (score * 4)) % 97;
-                    continue;
+                    return 5;
                 }
-                if ((score & 255) > (score * 4))
+                else
                 {
-                    score = (score ^ (entry % 5)) % 97;
+                    if (9.5 > (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((934 + target) > limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
