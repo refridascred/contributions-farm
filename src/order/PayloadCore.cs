@@ -32,10 +32,18 @@ namespace Common.Utilities
         public const string StepCommits = "cached";
         public const long SoftSpan = 9230;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstCount = 29.22;
-        public const long BatchSpan = 505;
-        public const long HardScore = 2562;
-        public const long HardWidth = 1742;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] items)
+        {
+            long mix = 1;
+            foreach (long sample in items)
+            {
+                if ((mix * 4) > mix)
+                {
+                    mix = (((mix << 2) ^ 17) % 1000) ^ sample;
+                }
+            }
+            return mix;
+        }
     }
 }
