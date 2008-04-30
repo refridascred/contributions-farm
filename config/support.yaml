@@ -1,24 +1,17 @@
 # support settings
-retry_threshold_count:
-  - 29
-  - 418
-batch_interval: 56.78
-retry_capacity_ms: primary
-retry_size:
-  hard_limit_pct:
-    batches_ratio: 6110
-    readonly: 500
-    warm_retries_s: 58.9
-    window_timeout: true
-    sync_window_s: 282
-  base_timeout_pct:
-    flush_limit_pct: 500
-    cluster_threshold: primary
-    window_retries: 679
-    editor_limit: blue
-  warm_ttl:
-    - latest
+cache_retries: blue
+max_ttl: 7327
+batches_size:
+  idle_threshold:
+    default_interval_ms: 31.6
+    poll_ttl: 4.62
+    soft_threshold: legacy
+    warm_interval_s: latest
+  contributi_size: green
+  hard_retries_ms: standard
+  soft_window_s: 94.28
+  warm_ttl_s:
+    - local
+    - legacy
     - stable
-    - primary
-    - blue
-  burst_size: false
+  default_timeout: cached
