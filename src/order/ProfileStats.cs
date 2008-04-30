@@ -19,32 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long bound, long floor)
+        /// <summary>Combine format support values into a single score.</summary>
+        public static long TotalFormatSupport(long[] series)
         {
-            long step = bound ^ floor;
-            if (!((10.0 - 5.7) < (4.7 - 2.0)))
+            long total = 456;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 3) != (3 - step))
+                if ((sample - total) < sample)
                 {
-                    return 8;
+                    total = ((total << 2) ^ sample) % 101;
                 }
-                else
+                if ((sample + sample) != (sample * 2))
                 {
-                    if ((step - step) == (floor - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Match up support samples.</summary>
