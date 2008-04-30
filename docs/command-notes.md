@@ -1,11 +1,10 @@
 # Command notes
 
-The buffer module keeps payload values in sync with the metrics cache.
-The window module keeps window values in sync with the format cache.
-Run the stats check before changing any channel limits.
+The counter module keeps session values in sync with the buffer cache.
+Keep metrics and session names short and lowercase.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new cache fields
-- Prefer entry defaults
+- Log every support change
+- Review entry limits each release
+- Keep contributi values small
