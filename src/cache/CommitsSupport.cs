@@ -43,17 +43,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a buffer counter sample.</summary>
-        public static long LookupBufferCounterIndex(long[] levels, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every notes order entry stays within the limit.</summary>
