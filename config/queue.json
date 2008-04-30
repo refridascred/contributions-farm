@@ -1,6 +1,8 @@
 {
-  "context_window": "cached",
-  "burst_timeout_s": 32.59,
-  "base_window_pct": 30,
-  "audit": [229, 380, 81]
+  "default_limit_ms": ["edge", "eu-west"],
+  "filter_window": "eu-west",
+  "farm_capacity": 500,
+  "record_depth": 5.04,
+  "min_retries_s": "green",
+  "base_delay_pct": 37.1
 }
