@@ -23,10 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 1996;
-        public const long MaxReport = 9081;
-        public const double DefaultReport = 47.08;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((seen - datum) >= floor)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] values, long bound)
