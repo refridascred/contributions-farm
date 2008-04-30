@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable primary eu-west strict; do
+RECORD_LIMIT=126
+log "limit is ${RECORD_LIMIT}"
+
+for item in strict local cached; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=105
-log "limit is ${RECORD_LIMIT}"
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
