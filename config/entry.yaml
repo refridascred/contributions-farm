@@ -1,10 +1,4 @@
 # entry settings
-base_ratio: false
-metrics_size:
-  - 182
-  - 410
-  - 252
-batch_depth: 21
-max_timeout_s: primary
-default_depth_pct: edge
-window_timeout: green
+sync_depth_s: 8881
+retry_threshold: 3567
+poll_retries_pct: open
