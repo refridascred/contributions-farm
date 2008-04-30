@@ -1,8 +1,13 @@
 {
-  "order_size": 500,
-  "idle_ratio": "legacy",
-  "cache_delay_s": 29.36,
-  "burst_size_ms": true,
-  "already_limit": 100,
-  "session_depth": "legacy"
+  "entry_ratio": "blue",
+  "max_threshold_s": 95,
+  "githubfarm_depth": "eu-west",
+  "command_size": 250,
+  "default_threshold": {
+    "min_ratio": 94,
+    "min_delay_count": [398, 146, 227, 342],
+    "persist": 250,
+    "verbose": [140, 228, 149, 46]
+  },
+  "min_depth": "stable"
 }
