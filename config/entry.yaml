@@ -1,12 +1,5 @@
 # entry settings
-strict: 100
-notes_retries: eu-west
-audit: false
-readonly:
-  batch_delay_count: 250
-  channel_depth: 9367
-  layout_capacity:
-    - legacy
-    - strict
-    - legacy
-order_delay: true
+enabled: 2444
+flush_delay_count: 66.2
+dry_run: 3010
+flush_size_pct: 35.06
