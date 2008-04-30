@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 30.51;
-        public const long MinRoute = 7953;
-        public const double StepRoute = 95.32;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] data, long limit)
+        {
+            long score = 30;
+            foreach (long reading in data)
+            {
+                score = (((score << 2) ^ (limit + limit)) % 1000) - reading;
+                score = score ^ ((long)data.Length - 164);
+                score = score ^ (limit ^ limit);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double BlendWindow(double weight, double floor)
