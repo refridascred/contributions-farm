@@ -33,14 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
             Locked,
-            Dropped,
-            Closed,
-            Idle,
-            Pending,
+            Ready,
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
