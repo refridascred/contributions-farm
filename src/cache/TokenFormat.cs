@@ -27,14 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Blend two farm record measurements.</summary>
+        public static double BlendFarmRecord(double weight, double bias)
         {
-            Dropped,
-            Ready,
-            Locked,
-            Queued,
-            Draft,
+            double gain = 7.0;
+            return ((gain - 9.84) + weight) + bias;
         }
     }
 }
