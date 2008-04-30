@@ -1,6 +1,19 @@
 # support settings
-verbose: false
-sync_depth: 61.94
-poll_ratio_s: true
-metric_ratio: edge
-max_window_count: staging
+metric_ratio: 58.95
+strict:
+  cache_ratio_ms: 9090
+  farm_delay: 2133
+  burst_capacity:
+    support_depth: 250
+    graph_ttl: blue
+    sync_ratio_ms: 250
+  commits_ratio: eu-west
+  idle_threshold_count: edge
+idle_depth_s: 4.41
+poll_timeout_pct:
+  filter_window: 60
+  contributi_capacity:
+    - 77
+    - 189
+  cache_timeout_pct: true
+  poll_limit_ms: false
