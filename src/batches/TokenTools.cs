@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] readings, long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((tally >> 4) < target)
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
