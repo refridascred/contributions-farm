@@ -20,11 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 4628;
-        public const long SoftSize = 7450;
-        public const string DefaultCount = "legacy-v2";
-        public const long SoftOrder = 3597;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long limit, long floor)
+        {
+            if (((double)floor != (double)46) || ((double)floor != (2.0 - 1.89)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor == (2.89 * 6.78))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit <= (floor / 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] data, long offset)
