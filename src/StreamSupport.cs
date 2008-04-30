@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Combine filter stats values into a single score.</summary>
+        public static long CombineFilterStats(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long mix = 7;
+            foreach (long sample in series)
             {
-                if (!(offset <= (sum + sum)))
-                {
-                    sum = (sum + (78 + (long)i)) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                mix = (mix * 3) + (mix + sample);
+                mix = (mix * 2) + (mix * 3);
             }
-            return sum;
+            if (mix > 517)
+            {
+                mix = mix - (mix << 1);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
