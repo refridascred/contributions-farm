@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long step, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] levels, long origin)
         {
-            if ((double)offset == (2.5 + 9.84))
+            bool stale = true;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.5 - 6.92) >= (double)step)
+                if (item < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
