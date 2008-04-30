@@ -31,21 +31,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Look up the position of a buffer channel sample.</summary>
+        public static long LookupBufferChannelIndex(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((items[i] <= step) && ((items[i] % 5) == 0))
                 {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
