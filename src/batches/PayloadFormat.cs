@@ -45,21 +45,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile batches readings.</summary>
-        public static long PairProfileBatchesCount(long[] readings)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] readings, long limit)
         {
-            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
