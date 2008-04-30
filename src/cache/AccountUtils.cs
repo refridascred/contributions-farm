@@ -28,13 +28,23 @@ namespace Common.Utilities
         public const long RetrySchema = 1763;
         public const string WindowDepth = "staging-v2";
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Blend two batches notes measurements.</summary>
+        public static double ProjectBatchesNotes(double ratio, double floor)
         {
-            Paused,
-            Synced,
-            Retry,
-            Idle,
+            double scale = 5.3;
+            if (scale > (ratio - floor))
+            {
+                scale = scale - 2.4;
+            }
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (double)652) - (double)(long)i;
+            }
+            return scale + (floor / 2.0);
         }
     }
 }
