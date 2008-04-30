@@ -1,13 +1,7 @@
 {
-  "warm_timeout": [469, 372],
-  "batch_delay_pct": 100,
-  "flush_retries_pct": 14,
-  "cache_window_count": "local",
-  "support_interval": {
-    "format_limit": 31.77,
-    "hard_ratio_s": "standard",
-    "batch_interval": false,
-    "strict": 1024
-  },
-  "flush_ttl_count": ["open", "eu-west", "fallback", "standard"]
+  "sync_threshold_pct": 2832,
+  "filter_window": 5750,
+  "hard_delay": "open",
+  "cache_retries": "stable",
+  "verbose": "legacy"
 }
