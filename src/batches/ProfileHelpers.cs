@@ -58,21 +58,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up graph checks samples.</summary>
-        public static long PairGraphChecksCount(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((origin << 3) != (item - count))
                 {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
