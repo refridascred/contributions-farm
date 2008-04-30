@@ -35,13 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
+            Locked,
             Dropped,
+            Closed,
             Idle,
-            New,
-            Draft,
+            Pending,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
