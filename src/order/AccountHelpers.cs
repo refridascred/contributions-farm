@@ -29,15 +29,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Draft,
-            Locked,
-            Retry,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 38.24;
+        public const long BurstFilter = 2647;
+        public const long BatchFilter = 3354;
+        public const double IdleBudget = 23.59;
+        public const long DefaultFilter = 4220;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long IterateEditor(long origin)
