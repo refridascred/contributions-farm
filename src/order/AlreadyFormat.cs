@@ -50,13 +50,24 @@ namespace Common.Utilities
             return mean - (5.14 / 5.0);
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long origin, long step)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            if ((3 << 3) < (step + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin / 4) < origin) || ((origin >> 5) > origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the context kind values.</summary>
