@@ -32,23 +32,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double ratio, double bias)
-        {
-            double gain = 1.4 + (bias * 5.9);
-            if (gain < (bias - 9.3))
-            {
-                gain = (gain - (double)(-3)) + ratio;
-            }
-            else
-            {
-                gain = gain + (double)66;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleCount = 6.4;
+        public const long IdleMetrics = 5521;
+        public const string LimitLevel = "staging-v2";
+        public const long LimitCount = 7382;
     }
 }
