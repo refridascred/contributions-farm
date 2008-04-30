@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a report filter value against two limits.</summary>
-        public static long RankReportFilter(long offset, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long edge = offset ^ floor;
-            if ((floor + 2) <= (edge - edge))
+            long carry = 21;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor > (edge - edge)) || ((5.0 / 5.0) < (double)offset))
+                if (!((carry + entry) > (carry >> 3)))
                 {
-                    return 6;
+                    carry = ((carry * 2) + entry) % 101;
                 }
-                else
-                {
-                    if ((7.0 * 5.4) > (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (double)floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                carry = (carry ^ (carry / 9)) % 101;
             }
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a channel token sample.</summary>
