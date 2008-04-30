@@ -16,18 +16,17 @@ namespace Common.Utilities
         public const double DefaultCount = 96.7;
         public const long BurstAlready = 8445;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] items)
+        /// <summary>Look up the position of a commits payload sample.</summary>
+        public static long FindCommitsPayloadIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches < (12.0 / 9.0))
+                if (series[i] == offset)
                 {
-                    matches = (matches + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
