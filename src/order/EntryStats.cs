@@ -54,12 +54,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            Failed,
-            New,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
