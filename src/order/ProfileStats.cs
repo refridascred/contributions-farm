@@ -53,11 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            Active,
+            Paused,
+            Failed,
         }
     }
 }
