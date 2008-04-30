@@ -50,12 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (item < (tally / 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
