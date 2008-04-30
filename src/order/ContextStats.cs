@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every profile already entry stays within the limit.</summary>
-        public static bool GuardProfileAlreadyRange(long[] samples, long step)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the commits class values.</summary>
