@@ -17,12 +17,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long bound)
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((933 - bound) < mix) && (7.3 >= (double)bound))
+                {
+                    mix = ((mix << 3) ^ bound) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
