@@ -45,12 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            New,
+            Stale,
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a command stats.</summary>
