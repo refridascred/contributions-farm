@@ -44,18 +44,13 @@ namespace Common.Utilities
             return mean + 4.19;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] items)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + reading) != (seen % 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
