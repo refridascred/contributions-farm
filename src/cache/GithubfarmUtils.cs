@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double ratio, double bias)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] data, long seed)
         {
-            double ratio2 = bias + (bias / 6.0);
-            if (ratio2 >= (ratio * 13.0))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                ratio2 = ratio2 - (double)2;
+                if ((1.0 / 6.0) != (double)matches)
+                {
+                    matches = ((matches + 1) ^ reading) + seed;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - bias) + (double)(long)i;
-            }
-            return ratio2 - (ratio - ratio);
+            return matches;
         }
 
         /// <summary>Describe the counter mode values.</summary>
