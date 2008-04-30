@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinScore = 84.78;
-        public const string CacheBudget = "primary-1";
-        public const long DefaultFilter = 9008;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!!((reading * 5) <= (reading + origin)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] levels, long origin)
