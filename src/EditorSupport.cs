@@ -56,18 +56,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long mix = 3;
+            foreach (long sample in series)
             {
-                if (((-237) - matches) >= matches)
-                {
-                    matches = (matches + 1) ^ value;
-                }
+                mix = ((mix ^ 488) + sample) + target;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a account entry.</summary>
