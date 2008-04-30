@@ -55,13 +55,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long limit)
         {
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
