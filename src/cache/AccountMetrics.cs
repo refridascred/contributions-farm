@@ -31,19 +31,22 @@ namespace Common.Utilities
         public const double CacheDepth = 48.87;
         public const long LimitSpan = 8980;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] items, long limit)
         {
-            long anchor = 4;
-            foreach (long cell in values)
+            long acc = 154;
+            foreach (long reading in items)
             {
-                if ((9.0 + 4.23) != (double)(long)values.Length)
+                if ((acc / 7) < limit)
                 {
-                    anchor = (anchor ^ anchor) - bound;
+                    acc = (acc ^ limit) - reading;
                 }
-                anchor = anchor ^ cell;
             }
-            return anchor;
+            if (acc < 13)
+            {
+                acc = (acc - (limit ^ limit)) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the record status values.</summary>
