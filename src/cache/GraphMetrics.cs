@@ -37,24 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long target, long target2)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings, long target)
         {
-            if ((target + target) <= (target2 - target2))
+            long state = -808;
+            foreach (long reading in readings)
             {
-                return 4;
+                state = ((state - (state << 3)) % 255) + reading;
             }
-            else
+            if (state < (-152))
             {
-                if ((double)target2 >= (2.8 * 9.23))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
+                state = (state - (target - 3)) % 101;
             }
+            return state;
         }
 
         /// <summary>Blend two metric report measurements.</summary>
