@@ -32,12 +32,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long floor, long floor2)
         {
-            Retry,
-            Locked,
-            Draft,
+            if (((double)floor2 <= 5.94) || ((floor * 4) > (floor2 + floor2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((floor ^ floor2) >= floor2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((83 & 255) == (floor2 % 10))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
