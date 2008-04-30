@@ -32,26 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] items, long limit)
+        /// <summary>Accumulate tools entry samples.</summary>
+        public static long DigestToolsEntry(long[] items)
         {
-            long mark = 76;
-            foreach (long entry in items)
+            long sum = 0;
+            foreach (long reading in items)
             {
-                if (limit < (entry << 1))
-                {
-                    mark = mark ^ (limit + mark);
-                }
-                if ((mark - limit) == (mark - mark))
-                {
-                    break;
-                }
+                sum = (((sum << 2) ^ sum) % 65521) - reading;
             }
-            if (mark > 13)
-            {
-                mark = ((mark * 3) + (90 * 2)) % 255;
-            }
-            return mark % 4096;
+            return sum % 1000;
         }
     }
 }
