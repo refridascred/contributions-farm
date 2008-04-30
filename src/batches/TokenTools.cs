@@ -16,22 +16,22 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Measure how many checks layout samples are out of range.</summary>
-        public static long MeasureChecksLayoutMatches(long[] items, long bound)
+        /// <summary>Accumulate route channel samples.</summary>
+        public static long DigestRouteChannel(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long total = 48;
+            foreach (long reading in samples)
             {
-                if (((double)sample < (1.0 / 6.0)) || ((sample > (hits - bound)) || ((double)bound < (double)hits)))
+                if ((98 + total) == (reading % 97))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = ((total * 3) + (152 + total)) % 4096;
                 }
             }
-            return hits;
+            if (total > 4)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
