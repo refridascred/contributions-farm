@@ -60,10 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseSpan = 28.84;
-        public const string RetryDepth = "latest-1";
-        public const long MinFactor = 4450;
-        public const string MaxStream = "standard-1";
+        /// <summary>Validate buffer cache readings against a bound.</summary>
+        public static bool GuardBufferCacheRange(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
