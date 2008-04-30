@@ -49,18 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] items, long offset)
+        /// <summary>Accumulate account filter samples.</summary>
+        public static long FoldAccountFilter(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mix = -975;
+            foreach (long datum in data)
             {
-                if ((entry % 100) >= (matches + matches))
-                {
-                    matches = (matches + 3) + offset;
-                }
+                mix = mix - (floor + 319);
+                mix = mix + (datum % 8);
+                mix = mix + (mix >> 4);
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count the cache contributi entries that pass the check.</summary>
