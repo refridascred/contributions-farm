@@ -32,19 +32,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] items, long offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
