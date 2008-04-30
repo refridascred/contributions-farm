@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] values, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (cell >= seed)
+                if ((double)matches <= (2.8 * 5.5))
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 1) - reading) - target;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
