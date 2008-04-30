@@ -54,30 +54,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long target, long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long step)
         {
-            long edge = target + floor;
-            if ((double)target < (2.7 + 17.0))
+            if ((double)origin >= (2.81 * 2.89))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((floor * 4) < (target * 4))
+                if (((0.5 / 9.0) > (double)origin) && (origin > (step / 9)))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((target % 8) == (edge + (-1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 1;
                 }
             }
         }
