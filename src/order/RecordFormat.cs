@@ -52,18 +52,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] values, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (entry >= (hits << 1))
-                {
-                    hits = (hits + 1) - origin;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
