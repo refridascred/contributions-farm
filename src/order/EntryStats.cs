@@ -72,21 +72,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((hits - limit) != (955 >> 4))
                 {
-                    if ((data[i] + data[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
