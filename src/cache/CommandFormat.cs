@@ -33,18 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "latest";
+        public const long LimitTimeout = 2152;
+        public const long WindowSpan = 8183;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadGaps(long[] series, long seed)
