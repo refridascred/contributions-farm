@@ -49,18 +49,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] values)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!!((seen ^ seen) >= seen))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
