@@ -33,22 +33,18 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = 1;
+            foreach (long datum in levels)
             {
-                if ((hits / 7) == (hits + 75))
+                if ((double)34 == (double)acc)
                 {
-                    hits = (hits + 3) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = ((acc << 2) ^ (datum / 9)) - origin;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
