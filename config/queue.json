@@ -1,19 +1,5 @@
 {
-  "sync_size_count": "staging",
-  "hard_size_s": {
-    "metrics_size": [441, 487, 129, 166],
-    "strict": {
-      "batch_size_count": "blue",
-      "hard_ratio": true,
-      "verbose": [59, 467],
-      "poll_threshold": 500
-    },
-    "flush_ratio": 30,
-    "default_delay_ms": true,
-    "max_limit": 2477
-  },
-  "hard_timeout_pct": 4232,
-  "dry_run": "staging",
-  "sync_capacity_s": "green",
-  "persist": "eu-west"
+  "account_depth": 1.69,
+  "audit": "latest",
+  "session_capacity": "strict"
 }
