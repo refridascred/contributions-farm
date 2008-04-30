@@ -1,8 +1,13 @@
 {
-  "checks_delay": "primary",
-  "default_interval": 4823,
-  "base_limit_ms": 500,
-  "warm_capacity_s": false,
-  "poll_threshold": "strict",
-  "hard_threshold_count": ["standard", "stable"]
+  "sync_capacity_s": 5320,
+  "default_retries_count": 90.7,
+  "hard_timeout_s": 500,
+  "cache_retries": 44,
+  "enabled": {
+    "dry_run": "legacy",
+    "cache_size_pct": "green",
+    "poll_retries_pct": 85.46,
+    "flush_threshold": "staging",
+    "audit": 500
+  }
 }
