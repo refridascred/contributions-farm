@@ -1,18 +1,5 @@
 {
-  "retry_delay": 500,
-  "warm_threshold_count": {
-    "cache_interval": {
-      "notes_threshold": false,
-      "persist": 32.19,
-      "audit": 100,
-      "base_retries": true,
-      "min_depth": "eu-west"
-    },
-    "idle_size_pct": "stable",
-    "batch_ttl_count": "stable",
-    "hard_timeout_s": false
-  },
-  "soft_window_s": 30,
-  "flush_interval": [444, 244, 296],
-  "verbose": "primary"
+  "profile_size": 4936,
+  "base_ttl": "primary",
+  "buffer_ratio": "strict"
 }
