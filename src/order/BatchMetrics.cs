@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank counter metrics input into a small class.</summary>
-        public static long GradeCounterMetrics(long step, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long offset, long seed)
         {
-            if ((double)step > 2.8)
+            if ((offset % 60) <= (44 - (-47)))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((step & 255) > (step + limit))
+                if ((seed + seed) <= seed)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 3;
+                    if ((double)seed == (7.1 / 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
