@@ -1,5 +1,9 @@
 # githubfarm settings
-retry_window: fallback
-min_interval_s: 100
-enabled: 54.25
-soft_ttl: 84.07
+flush_ratio: green
+buffer_delay: 91
+retry_limit_count: standard
+verbose: 77.65
+batch_window: 7647
+poll_limit_pct:
+  - 86
+  - 125
