@@ -18,14 +18,12 @@ namespace Common.Utilities
         public const long LimitTimeout = 2152;
         public const long WindowSpan = 8183;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinWidth = 7708;
+        public const double MinCount = 86.1;
+        public const long LimitDepth = 5582;
+        public const double LimitSession = 83.62;
+        public const double HardSession = 25.06;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long offset)
