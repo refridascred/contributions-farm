@@ -1,22 +1,12 @@
 # githubfarm settings
-hard_delay_ms:
-  checks_limit: 22
-  base_window_count: 48
-  dry_run: 49.13
-  idle_interval_s:
-    - staging
-    - stable
-    - green
-  base_interval_ms:
-    batch_capacity: 90.34
-    sync_window: 76.99
-    soft_timeout: 58
-cluster_window:
-  commits_limit: 62.05
-  queue_ttl: 32
-  soft_retries: 29.0
-  hard_ratio_ms: eu-west
-  flush_interval_s: 1024
-retry_limit: 64.62
-readonly: 94.15
-poll_ttl: 66.03
+route_depth:
+  - open
+  - latest
+  - local
+retry_ttl_ms: legacy
+cache_size_s: staging
+max_ratio_count: latest
+retry_capacity: primary
+persist:
+  - 498
+  - 104
