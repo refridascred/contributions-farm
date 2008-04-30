@@ -29,11 +29,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "local-edge";
-        public const long RetryWidth = 9110;
-        public const long WindowTimeout = 6130;
-        public const long CacheFactor = 2369;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Draft,
+            Locked,
+            Retry,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long IterateEditor(long origin)
