@@ -38,24 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record batches pair into a bucket.</summary>
-        public static long GradeRecordBatches(long limit, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] samples, long limit)
         {
-            if ((limit ^ limit) <= 4)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit & 7) <= (target >> 2))
+                if (cell < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
