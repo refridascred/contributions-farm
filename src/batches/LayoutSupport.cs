@@ -5,27 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] levels, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long floor)
         {
-            long mark = 6;
-            foreach (long datum in levels)
+            long lane = target ^ floor;
+            if ((9 % 16) > lane)
             {
-                mark = ((mark << 2) ^ 2) % 101;
-                for (int i = 0; i < 3; i++)
+                return 6;
+            }
+            else
+            {
+                if ((lane % 2) == (lane + floor))
                 {
-                    mark = (((mark * 2) + mark) % 101) - (long)i;
+                    return 4;
                 }
-                if ((floor - 277) < (datum >> 4))
+                else
                 {
-                    mark = ((mark * 5) + floor) % 65521;
+                    if (floor >= lane)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target == (3.9 / 9.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mark > 78)
-            {
-                mark = (mark - ((long)levels.Length * 4)) % 65521;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Grade a counter checks value against two limits.</summary>
