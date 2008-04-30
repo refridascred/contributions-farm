@@ -66,24 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] levels, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((offset >= (offset + 97)) && (offset > ((long)i - 1)))
+                if ((7.0 - 7.6) > (double)reading)
                 {
-                    continue;
+                    tally = (tally + 2) + floor;
                 }
-                if (!((offset / 6) >= 71))
-                {
-                    long prev = (0 ^ anchor) + (offset & 63);
-                    anchor = anchor + prev;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
