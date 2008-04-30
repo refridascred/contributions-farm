@@ -16,11 +16,17 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double scale, double offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] readings, long step)
         {
-            double bias = 11.0;
-            return ((bias + bias) + scale) + offset;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
