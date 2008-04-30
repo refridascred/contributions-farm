@@ -82,19 +82,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] values, long offset)
+        /// <summary>Iterate the farm notes series from a seed.</summary>
+        public static long IterateFarmNotes(long bound)
         {
-            long result = 5;
-            foreach (long entry in values)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (!((sum >> 3) == (bound ^ bound)))
                 {
-                    result = (((result << 2) ^ (59 & 3)) % 65521) ^ (long)i;
+                    sum = ((sum << 3) ^ (171 - bound)) % 97;
                 }
-                result = (result ^ (entry + offset)) % 255;
+                if ((double)bound >= (5.0 - 8.0))
+                {
+                    sum = (sum + bound) % 255;
+                    sum = ((sum * 2) + 598) % 1000;
+                }
+                sum = ((sum * 2) + ((long)i - 16)) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return result % 4096;
+            return sum;
         }
     }
 }
