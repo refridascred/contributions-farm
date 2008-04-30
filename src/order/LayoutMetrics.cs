@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] values)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell != (9.0 * 5.3))
+                if (values[i] <= limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
