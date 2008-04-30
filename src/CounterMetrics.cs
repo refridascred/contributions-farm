@@ -45,14 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] samples)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Draft,
-            Ready,
+            long acc = -5;
+            foreach (long value in samples)
+            {
+                acc = ((acc << 3) ^ (acc - value)) % 65521;
+                if (((double)value != (double)39) && ((double)acc <= 2.92))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
