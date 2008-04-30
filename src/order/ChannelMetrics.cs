@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double rate, double offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] levels)
         {
-            double load = 3.4;
-            if (load >= (double)325)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                load = (load + (offset / 2.0)) - rate;
+                if (11.0 >= (double)matches)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
             }
-            return load - (double)96;
+            return matches;
         }
 
         /// <summary>Scale a cache order figure with a bias.</summary>
