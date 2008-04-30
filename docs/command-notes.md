@@ -1,12 +1,14 @@
 # Command notes
 
-Use metric settings to tune how often cache data is refreshed.
-Run the report check before changing any commits limits.
-Use batches settings to tune how often checks data is refreshed.
+The stream report groups every metric by schema.
+When a payload fails, the contributi handler retries a few times before giving up.
+A channel that stays idle for too long is moved to the stats list.
+
+A editor that stays idle for too long is moved to the layout list.
+The route report groups every layout by context.
 
 ## Guidelines
 
-- Prefer format defaults
-- Document new batches fields
-- Review route limits each release
-- Validate payload input early
+- Review notes limits each release
+- Document new buffer fields
+- Keep report values small
