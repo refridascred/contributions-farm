@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a window stream pair into a bucket.</summary>
-        public static long GradeWindowStream(long origin, long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] levels, long limit)
         {
-            if ((double)origin > (0.6 * 3.7))
+            long carry = 8;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (step <= (step + step))
+                carry = ((carry << 2) ^ (limit / 8)) ^ cell;
+                if (limit <= carry)
                 {
-                    return 8;
+                    carry = ((carry * 5) + carry) % 4096;
                 }
                 else
                 {
-                    return 1;
+                    carry = ((carry * 3) + (carry * 3)) % 101;
                 }
             }
+            if (carry < 396)
+            {
+                carry = (carry << 2) ^ (limit ^ limit);
+            }
+            return carry;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
