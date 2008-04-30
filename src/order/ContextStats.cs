@@ -26,18 +26,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Fold a list of checks profile readings.</summary>
+        public static long DigestChecksProfile(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long sum = 40;
+            foreach (long datum in values)
             {
-                acc = (acc ^ (origin + acc)) % 101;
-                long bound = origin & 7;
-                acc = acc + bound;
-                acc = ((acc * 5) + (long)i) % 97;
+                if (((-33) - datum) == (sum - datum))
+                {
+                    sum = (sum + datum) % 97;
+                }
             }
-            return acc;
+            return sum % 1000;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
