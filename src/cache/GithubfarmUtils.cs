@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] items, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (value != step)
+                if (((((-422) & 255) >= count) && ((double)sample > 9.7)) && (sample < (count - count)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
