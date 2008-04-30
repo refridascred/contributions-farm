@@ -38,19 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((seen + value) > seen)
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseInterval = 8847;
+        public const long HardTimeout = 6676;
+        public const long SoftScore = 8662;
+        public const double DefaultLevel = 30.3;
+        public const long HardCounter = 4532;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long ScoreLayout(long[] levels, long step)
