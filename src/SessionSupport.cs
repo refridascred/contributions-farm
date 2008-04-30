@@ -22,24 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long floor, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long bound)
         {
-            if ((floor % 2) < (floor / 8))
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (floor < step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the metric state values.</summary>
