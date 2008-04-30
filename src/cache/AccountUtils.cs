@@ -38,18 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] levels, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((matches + matches) <= (matches / 2))
+                if (sample >= seed)
                 {
-                    matches = ((matches + 1) - reading) - floor;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
