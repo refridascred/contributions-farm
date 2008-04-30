@@ -38,22 +38,22 @@ namespace Common.Utilities
         public const long IdleSpan = 2407;
         public const long IdleCommand = 3163;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] values)
+        /// <summary>Audit support order readings against a rule.</summary>
+        public static long AuditSupportOrderGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (!((value + hits) >= (40 + value)) || ((hits <= (value * 4)) && ((17.0 + 4.54) <= (double)hits)))
+                if ((double)item == (double)matches)
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
