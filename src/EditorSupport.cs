@@ -59,18 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] levels)
+        /// <summary>Blend two support command measurements.</summary>
+        public static double ProjectSupportCommand(double rate, double span)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double mean = span;
+            if (mean > (double)(-62))
             {
-                if ((38 >= (count / 8)) && ((count & 31) > (sample & 15)))
-                {
-                    count = count + 1;
-                }
+                mean = (mean - mean) - rate;
             }
-            return count;
+            else
+            {
+                mean = mean + (mean - mean);
+            }
+            return mean - (span + mean);
         }
 
         /// <summary>Project the next profile value.</summary>
