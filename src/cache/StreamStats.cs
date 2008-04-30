@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a order stream value against two limits.</summary>
-        public static long ClassifyOrderStream(long bound, long target)
+        /// <summary>Check that every metric cluster entry stays within the limit.</summary>
+        public static bool GuardMetricClusterLimits(long[] data, long target)
         {
-            if ((bound << 1) >= 0)
+            bool found = true;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound >= 3.0)
+                if (cell >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Blend two layout measurements.</summary>
