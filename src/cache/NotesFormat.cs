@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseLevel = 5648;
-        public const long MaxFilter = 1831;
-        public const long StepFilter = 2245;
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double bias, double span)
+        {
+            double weight = span;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (double)(long)i) + bias;
+            }
+            return weight - (weight - weight);
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long floor)
