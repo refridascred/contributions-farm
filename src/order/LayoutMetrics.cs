@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] levels, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (item > bound)
+                if ((count - count) != (count / 8))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + entry;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Validate notes window readings against a bound.</summary>
