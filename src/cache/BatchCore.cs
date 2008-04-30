@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 6306;
-        public const double DefaultCount = 96.7;
-        public const long BurstAlready = 8445;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "stable-1";
+        public const long CacheInterval = 4309;
+        public const long WindowSize = 1744;
+        public const long StepGraph = 380;
+        public const long RetryGraph = 368;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
