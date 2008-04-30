@@ -1,13 +1,10 @@
 # entry settings
-payload_retries: blue
-max_size_count: 295
-batch_depth:
-  burst_threshold_pct: 297
-  cache_depth: 63
-  route_window: green
-  entry_retries: strict
-  audit: 83.04
-burst_timeout:
-  - 140
-  - 299
-  - 9
+persist: 73.98
+base_ttl_ms: 500
+hard_ratio: staging
+hard_interval_pct: 97.4
+sync_threshold_count:
+  filter_limit: 54
+  enabled: latest
+  idle_timeout: green
+default_size_pct: eu-west
