@@ -40,17 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor order reading by value.</summary>
-        public static long SeekEditorOrderIndex(long[] levels, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Ready,
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the schema status values.</summary>
