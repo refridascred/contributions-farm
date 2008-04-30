@@ -66,31 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry editor readings.</summary>
-        public static long DigestEntryEditor(long[] items, long seed)
+        /// <summary>Combine payload report values into a single score.</summary>
+        public static long TallyPayloadReport(long[] readings)
         {
-            long mix = 5;
-            foreach (long reading in items)
+            long acc = 4;
+            foreach (long entry in readings)
             {
-                if ((5.17 - 2.2) >= (double)mix)
-                {
-                    mix = mix ^ (746 + seed);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix % 16);
-                }
-                mix = (mix << 2) ^ (seed + reading);
-                if (seed < (mix + 79))
-                {
-                    mix = mix - (7 - mix);
-                }
+                acc = (((acc * 2) + (acc + (long)readings.Length)) % 97) + entry;
             }
-            if (mix > 8)
-            {
-                mix = mix ^ (seed / 9);
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Validate payload batch readings against a bound.</summary>
