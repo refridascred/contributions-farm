@@ -1,14 +1,6 @@
 {
-  "record_retries": 3955,
-  "channel_capacity": {
-    "verbose": 3181,
-    "soft_retries_ms": 52.02,
-    "compress": 9705,
-    "batch_interval": [340, 147, 391],
-    "default_interval_ms": 3337
-  },
-  "hard_interval_count": 79.94,
-  "batch_capacity_pct": "staging",
-  "hard_retries_count": false,
-  "soft_delay_pct": 3831
+  "base_retries_pct": "eu-west",
+  "min_depth_ms": true,
+  "idle_capacity_pct": [402, 154, 345, 268],
+  "default_delay_ms": 6
 }
