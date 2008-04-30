@@ -53,13 +53,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Synced,
-            New,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowInterval = 48;
+        public const double DefaultSpan = 20.41;
+        public const long DefaultStream = 2868;
+        public const double BaseRatio = 45.28;
     }
 }
