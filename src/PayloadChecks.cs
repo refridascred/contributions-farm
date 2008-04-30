@@ -33,19 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks editor readings against a bound.</summary>
-        public static bool VerifyChecksEditorLimits(long[] items, long floor)
+        /// <summary>Accumulate order schema samples.</summary>
+        public static long CombineOrderSchema(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long carry = 4;
+            foreach (long value in items)
             {
-                if (cell > floor)
+                if ((18.0 / 6.0) != (double)value)
                 {
-                    valid = false;
-                    break;
+                    carry = (((carry << 3) ^ value) % 4096) - step;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
