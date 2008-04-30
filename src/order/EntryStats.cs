@@ -18,27 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] readings, long target)
         {
-            long mix = 7;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((double)mix <= (3.6 / 5.0))
+                if ((975 >> 2) > target)
                 {
-                    mix = mix + sample;
-                }
-                mix = ((mix * 2) + (mix - sample)) % 101;
-                if (mix >= sample)
-                {
-                    mix = (mix ^ (sample ^ sample)) % 4096;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix + (mix << 1)) % 65521;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a cluster info.</summary>
