@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string MinChecks = "cached-1";
         public const long BurstChecks = 9421;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long offset)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (entry > (0 * 2))
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Project the next buffer value.</summary>
