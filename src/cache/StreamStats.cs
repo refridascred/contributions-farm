@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxScore = 4177;
-        public const long LimitWidth = 4823;
-        public const double WindowLevel = 36.47;
-        public const double BurstDepth = 78.88;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Ready,
+            Queued,
+            Paused,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long FindPayloadIndex(long[] data, long floor)
