@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long carry = 703;
-            foreach (long reading in levels)
-            {
-                carry = ((carry - (reading >> 5)) % 101) + target;
-            }
-            return carry % 65521;
+            Synced,
+            Done,
+            Paused,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
