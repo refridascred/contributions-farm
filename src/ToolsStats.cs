@@ -31,10 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxFactor = 9685;
-        public const long RetryToken = 5394;
-        public const long BurstScore = 5676;
+        /// <summary>Look up the position of a context account sample.</summary>
+        public static long SeekContextAccountIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long StepChecks(long floor)
