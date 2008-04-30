@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const long CacheLevel = 6870;
         public const long MaxPayload = 3133;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long offset)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
