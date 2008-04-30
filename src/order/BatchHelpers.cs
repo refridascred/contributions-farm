@@ -37,38 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long limit, long origin)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            if ((origin >> 1) > (379 + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.19 / 4.0) >= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(6.54 >= (double)limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
