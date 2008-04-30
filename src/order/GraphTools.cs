@@ -32,23 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
-        public static long AuditGithubfarmContributiOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits >> 4) < (hits / 2))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 9.01;
+        public const string MinSpan = "legacy-v2";
+        public const long CacheBudget = 3686;
+        public const long RetryRatio = 793;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextHits(long[] levels)
