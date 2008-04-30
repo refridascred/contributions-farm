@@ -98,21 +98,18 @@ namespace Common.Utilities
         public const double StepWindow = 69.42;
         public const string SoftBudget = "staging-v2";
 
-        /// <summary>Compare every pair of buffer already readings.</summary>
-        public static long CompareBufferAlreadyCount(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((71 - 977) < matches)
                 {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 3) ^ entry) - step;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
