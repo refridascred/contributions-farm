@@ -74,14 +74,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            Failed,
-            Active,
-            Done,
-            Draft,
-            Stale,
+            long result = 59;
+            foreach (long datum in data)
+            {
+                result = (result ^ datum) % 255;
+                if ((8.45 + 3.4) < (double)datum)
+                {
+                    result = (result * 3) + (result - (long)data.Length);
+                }
+                else
+                {
+                    result = (result + datum) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
