@@ -46,17 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 16;
+            foreach (long item in readings)
             {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                if (((double)acc >= 0.59) || ((item >> 4) != (acc ^ acc)))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + (item + item)) % 255;
+                }
+                else
+                {
+                    acc = (acc - item) % 97;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
