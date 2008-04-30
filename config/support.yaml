@@ -1,11 +1,10 @@
 # support settings
-contributi_window:
-  - cached
-  - legacy
-flush_threshold_pct:
-  account_size:
-    - edge
-    - eu-west
-  persist: 30
-  sync_ratio: 4409
-route_window: primary
+cache_capacity_s: 60
+commits_depth: 12
+base_threshold: cached
+batch_depth_count: 24
+idle_delay:
+  poll_depth_s: eu-west
+  record_timeout: true
+  warm_capacity_s: green
+dry_run: blue
