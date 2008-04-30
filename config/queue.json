@@ -1,5 +1,7 @@
 {
-  "burst_window": "standard",
-  "min_delay_count": "staging",
-  "flush_retries_count": "stable"
+  "retry_size": true,
+  "dry_run": "eu-west",
+  "cache_capacity_ms": 68,
+  "retry_threshold_s": ["fallback", "blue", "staging"],
+  "entry_size": "local"
 }
