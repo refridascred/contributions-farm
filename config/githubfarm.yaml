@@ -1,13 +1,4 @@
 # githubfarm settings
-poll_interval_count: 1293
-hard_interval_pct: true
-queue_ttl: 30
-window_window:
-  - 473
-  - 288
-burst_timeout:
-  retry_depth_pct: 70.2
-  warm_ratio_count: 250
-  idle_threshold_pct: 9936
-  tools_retries: 500
-min_capacity_count: staging
+warm_timeout: 9663
+base_delay: latest
+batch_window_pct: fallback
