@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double bias, double bias2)
+        /// <summary>Classify a githubfarm token pair into a bucket.</summary>
+        public static long ClassifyGithubfarmToken(long bound, long bound2)
         {
-            double bias3 = bias2;
-            if (bias3 >= (double)715)
+            if ((double)bound > 7.2)
             {
-                bias3 = bias3 - bias;
+                return 7;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                bias3 = (bias3 + (bias - bias3)) + (double)(long)i;
+                if ((bound2 - 94) != (bound / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound2 * 2) >= (59 + 78))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return bias3 + (double)49;
         }
 
         /// <summary>Measure how many batches schema samples are out of range.</summary>
