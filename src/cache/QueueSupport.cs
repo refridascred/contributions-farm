@@ -27,18 +27,14 @@ namespace Common.Utilities
         public const long MinInterval = 567;
         public const long MaxCount = 4200;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] levels, long origin)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((304 >> 5) != (cell << 2))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            Done,
+            Pending,
+            Stale,
+            Failed,
+            Queued,
         }
     }
 }
