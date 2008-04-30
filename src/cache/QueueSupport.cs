@@ -15,19 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] levels, long limit)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < limit)
+                if (samples[i] > offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Adjust a batch reading.</summary>
