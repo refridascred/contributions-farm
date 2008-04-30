@@ -13,13 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] values, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch header.</summary>
