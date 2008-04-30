@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Classify a window stream pair into a bucket.</summary>
+        public static long GradeWindowStream(long origin, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            if ((double)origin > (0.6 * 3.7))
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (step <= (step + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
