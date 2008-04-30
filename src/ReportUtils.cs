@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit notes filter readings against a rule.</summary>
-        public static long MeasureNotesFilterGaps(long[] values, long bound)
+        /// <summary>Adjust a support filter reading.</summary>
+        public static double SmoothSupportFilter(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double bias2 = 7.8;
+            if (bias2 < (1.36 * 1.2))
             {
-                if ((cell + bound) <= cell)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias2 = (bias2 - scale) + bias;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + 14.0) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Hold a contributi record.</summary>
