@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] levels, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                total = (total ^ ((long)i & 15)) % 97;
-                total = ((total * 3) + (long)i) % 65521;
+                if ((double)offset <= (double)tally)
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
