@@ -33,17 +33,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] levels, long bound)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Ready,
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Adjust a report reading.</summary>
