@@ -62,12 +62,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] series)
         {
-            Paused,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (2 <= (reading / 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
