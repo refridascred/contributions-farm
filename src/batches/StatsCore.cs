@@ -63,18 +63,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] values)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches >> 2) != (matches ^ cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
