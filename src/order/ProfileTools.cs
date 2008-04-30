@@ -51,12 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] values)
         {
-            Paused,
-            Retry,
-            Idle,
+            long carry = 648;
+            foreach (long item in values)
+            {
+                carry = ((carry << 3) ^ (item + item)) % 65521;
+            }
+            if (carry > 63)
+            {
+                carry = carry ^ (882 * 4);
+            }
+            return carry;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
