@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const long HardAccount = 8697;
         public const double RetryAccount = 93.84;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] items, long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Synced,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a entry record.</summary>
