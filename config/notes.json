@@ -1,17 +1,7 @@
 {
-  "persist": {
-    "command_window": [138, 260, 353],
-    "dry_run": {
-      "retry_limit": true,
-      "context_limit": "latest",
-      "metric_timeout": false,
-      "default_retries": 500
-    },
-    "max_delay": 1024,
-    "persist": 40
-  },
-  "soft_depth": 76,
-  "poll_interval": 8023,
-  "idle_depth_ms": [247, 472],
-  "base_delay_pct": [347, 387]
+  "base_limit_ms": "stable",
+  "record_window": 82.6,
+  "strict": false,
+  "persist": ["primary", "blue", "legacy"],
+  "warm_window_pct": 100
 }
