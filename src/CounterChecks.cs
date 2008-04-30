@@ -33,17 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] items, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                mix = ((mix << 3) ^ (step & 127)) % 1000;
-                mix = (mix + (long)i) % 4096;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((datum ^ 187) > 743)
+                {
+                    seen = (seen + 3) + limit;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a format entry.</summary>
