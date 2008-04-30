@@ -6,17 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open standard; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=132
+log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-local}"
 case "${mode}" in
     latest)
         log "fast path"
