@@ -21,19 +21,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] values, long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= floor)
+                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
