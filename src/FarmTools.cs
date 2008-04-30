@@ -27,17 +27,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a record payload reading by value.</summary>
-        public static long LocateRecordPayloadIndex(long[] data, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long floor, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((step - floor) <= (316 << 3))
             {
-                if ((data[i] >= seed) && ((data[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((floor * 5) >= 1) || (0 >= (floor * 4)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
