@@ -29,11 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 7556;
-        public const double HardSpan = 61.74;
-        public const string IdleTimeout = "strict-1";
-        public const string WindowMetric = "stable";
-        public const long DefaultSize = 7933;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long offset, long bound)
+        {
+            if ((offset + offset) < (bound * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound / 9) <= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (632 <= (bound * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
