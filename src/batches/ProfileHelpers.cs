@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long origin, long seed)
+        /// <summary>Locate a report cache reading by value.</summary>
+        public static long SeekReportCacheIndex(long[] series, long seed)
         {
-            long delta = origin ^ seed;
-            if (delta <= (origin + origin))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((delta + delta) >= (seed + origin))
+                if (series[i] > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((delta & 63) >= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
