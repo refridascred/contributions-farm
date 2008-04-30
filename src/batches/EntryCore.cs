@@ -34,17 +34,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] values, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = -986;
+            foreach (long value in readings)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (result + value)) % 65521) + floor;
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Fold a list of order profile readings.</summary>
