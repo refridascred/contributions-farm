@@ -1,7 +1,10 @@
-id,region,score
-1,eu-west,859
-2,780,fallback
-3,55.2,standard
-4,strict,56.6
-5,blue,20.07
-6,25.57,strict
+id,token,owner
+1,33.43,fallback
+2,90.14,42.14
+3,cached,primary
+4,92.97,17.39
+5,427,staging
+6,597,648
+7,stable,881
+8,120,open
+9,311,latest
