@@ -19,38 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a payload counter value against two limits.</summary>
-        public static long RankPayloadCounter(long offset, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] values, long step)
         {
-            if (((6.32 / 6.0) > (double)seed) || ((offset ^ offset) == (offset & 3)))
+            bool valid = true;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed > (5.8 - 0.6))
+                if (entry <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)offset != (20.0 * 4.3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0.44 > (double)offset) || (seed < (offset - offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a token entry.</summary>
