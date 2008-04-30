@@ -1,17 +1,12 @@
 # entry settings
-token_depth:
-  readonly: 26.69
-  idle_size_pct:
-    soft_ttl_pct: blue
-    strict:
-      - 57
-      - 280
-      - 38
-      - 244
-    commits_delay: staging
-    cache_timeout_ms: 1024
-  notes_depth: 18.78
-  base_timeout_s: 82
-  min_interval_s: eu-west
-strict: 77.53
-base_depth_count: green
+strict: 100
+notes_retries: eu-west
+audit: false
+readonly:
+  batch_delay_count: 250
+  channel_depth: 9367
+  layout_capacity:
+    - legacy
+    - strict
+    - legacy
+order_delay: true
