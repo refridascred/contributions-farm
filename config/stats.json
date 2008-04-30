@@ -1,14 +1,13 @@
 {
-  "editor_capacity": "open",
-  "tools_limit": {
-    "stream_interval": {
-      "batches_interval": ["standard", "edge"],
-      "githubfarm_size": 82.39,
-      "batch_delay_s": ["strict", "open", "legacy"]
-    },
-    "dry_run": "staging",
-    "persist": 39.64
+  "default_capacity": 23.38,
+  "already_ttl": false,
+  "hard_capacity_count": [275, 168, 93],
+  "cache_capacity": {
+    "persist": 3788,
+    "batch_delay_s": 81.45,
+    "layout_ratio": ["stable", "edge", "local"],
+    "cluster_interval": "legacy"
   },
-  "readonly": 83,
-  "enabled": 26.48
+  "schema_capacity": "strict",
+  "warm_size": false
 }
