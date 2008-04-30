@@ -20,18 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first stream checks entry that matches the target.</summary>
-        public static long LocateStreamChecksIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultFactor = 2812;
+        public const long CacheBudget = 2771;
+        public const string StepFactor = "latest-v2";
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long target)
