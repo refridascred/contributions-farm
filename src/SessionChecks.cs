@@ -71,21 +71,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 75;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((state ^ state) > (state + state))
                 {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state * 4) + state) % 65521;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state + cell)) % 255;
                 }
             }
-            return hits;
+            return state % 4096;
         }
     }
 }
