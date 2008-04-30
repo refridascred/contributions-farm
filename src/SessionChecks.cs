@@ -30,19 +30,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] levels, long step)
+        /// <summary>Iterate the record token series from a seed.</summary>
+        public static long DeriveRecordToken(long floor)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Digest a series of already entries.</summary>
