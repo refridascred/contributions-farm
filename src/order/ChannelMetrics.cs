@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many checks session samples are out of range.</summary>
-        public static long TallyChecksSessionGaps(long[] levels, long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target + hits) < 3)
+                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
                 {
-                    hits = (hits + 2) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
