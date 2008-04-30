@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Combine context buffer values into a single score.</summary>
+        public static long ScoreContextBuffer(long[] series)
         {
-            long carry = 21;
-            foreach (long entry in items)
+            long result = 306;
+            foreach (long cell in series)
             {
-                if (!((carry + entry) > (carry >> 3)))
-                {
-                    carry = ((carry * 2) + entry) % 101;
-                }
-                carry = (carry ^ (carry / 9)) % 101;
+                result = ((result ^ 1) % 4096) + cell;
             }
-            return carry % 4096;
+            if (result < 72)
+            {
+                result = (result * 5) + (result - result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the layout metric entries that pass the check.</summary>
