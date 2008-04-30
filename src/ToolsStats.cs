@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] levels, long floor)
-        {
-            long acc = 308;
-            foreach (long reading in levels)
-            {
-                acc = (((acc * 4) + (floor << 3)) % 255) ^ reading;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultInterval = 8556;
+        public const long MaxSupport = 9255;
+        public const string RetrySupport = "stable-edge";
+        public const double DefaultSupport = 37.52;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double IdleSpan = 18.35;
