@@ -47,19 +47,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a format queue counter forward.</summary>
-        public static long StepFormatQueue(long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long anchor = 32;
+            foreach (long value in samples)
             {
-                if ((acc % 100) < (step + step))
+                if ((anchor >= (0 * 2)) || ((double)anchor >= (double)value))
                 {
-                    acc = (acc * 5) + (acc >> 2);
+                    anchor = (anchor + ((long)samples.Length << 2)) % 1000;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
+                else
+                {
+                    anchor = anchor + anchor;
+                }
+                if ((double)64 == (double)anchor)
+                {
+                    break;
+                }
             }
-            return acc;
+            return anchor;
         }
     }
 }
