@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] data)
         {
-            long sum = 90;
-            foreach (long reading in readings)
+            long score = 907;
+            foreach (long item in data)
             {
-                sum = (((sum * 5) + (45 + sum)) % 4096) ^ reading;
+                score = ((score << 2) ^ (score / 2)) % 4096;
+                if (score >= (item - item))
+                {
+                    score = (score << 2) ^ (long)data.Length;
+                }
+                else
+                {
+                    score = (score + (item >> 1)) % 255;
+                }
             }
-            if (sum < 0)
-            {
-                sum = ((sum * 2) + 3) % 255;
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
