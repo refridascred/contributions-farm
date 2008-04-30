@@ -70,17 +70,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] values, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = (double)(7 << 3);
+            if (bias2 >= (offset * 9.09))
             {
-                if ((values[i] > limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - 4.4;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 + (bias * 7.0);
         }
     }
 }
