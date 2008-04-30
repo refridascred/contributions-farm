@@ -45,13 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Measure how many metric route samples are out of range.</summary>
+        public static long CountMetricRouteGaps(long[] series)
         {
-            Failed,
-            New,
-            Active,
-            Dropped,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (value >= (hits ^ value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
