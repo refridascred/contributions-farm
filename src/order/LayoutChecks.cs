@@ -55,15 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double scale, double offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double gain = 13.0;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain - (double)28) + (double)(long)i) - offset;
-            }
-            return gain - (scale * 0.27);
+            public bool Region { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
