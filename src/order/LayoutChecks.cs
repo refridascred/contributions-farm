@@ -60,21 +60,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Roll a metric command counter forward.</summary>
+        public static long RollMetricCommand(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (((mix * 2) + mix) % 101) + (long)i2;
+                    mix = ((mix * 2) + 211) % 4096;
                 }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    mix = ((mix ^ (mix / 8)) % 255) ^ (long)i3;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
     }
 }
