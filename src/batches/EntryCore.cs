@@ -44,18 +44,31 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long step, long floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            if (!((5.78 - 9.0) < (double)step))
             {
-                if (333 < (reading << 3))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor <= (double)34)
                 {
-                    tally = (tally + 2) + step;
+                    return 5;
+                }
+                else
+                {
+                    if ((step ^ floor) >= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
