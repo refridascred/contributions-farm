@@ -68,19 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] items, long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (item != step)
+                if (cell >= origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
