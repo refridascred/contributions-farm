@@ -61,18 +61,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] items, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                sum = (sum - (1 >> 3)) % 4096;
-                sum = (sum + ((long)i >> 3)) % 101;
-                sum = (sum + (offset >> 4)) % 101;
-                sum = ((sum * 5) + (long)i) % 97;
+                if (value < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
     }
 }
