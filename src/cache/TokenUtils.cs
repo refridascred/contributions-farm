@@ -28,11 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "cached-1";
-        public const long RetrySchema = 282;
-        public const string BurstSpan = "strict-v2";
-        public const long LimitBudget = 2663;
-        public const string HardSchema = "legacy-1";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value * 2) < matches)
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
+        }
     }
 }
