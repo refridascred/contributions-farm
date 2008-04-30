@@ -32,28 +32,23 @@ namespace Common.Utilities
         public const string StepCommits = "cached";
         public const long SoftSpan = 9230;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] samples, long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double ratio, double bias)
         {
-            long sum = 665;
-            foreach (long cell in samples)
+            double gain = 1.4 + (bias * 5.9);
+            if (gain < (bias - 9.3))
             {
-                sum = (sum - (sum >> 4)) % 1000;
-                sum = (sum ^ (sum << 2)) % 255;
-                if ((double)sum >= (13.0 - 5.0))
-                {
-                    sum = (sum - (cell / 5)) % 65521;
-                }
-                else
-                {
-                    sum = sum + seed;
-                }
+                gain = (gain - (double)(-3)) + ratio;
             }
-            if (sum > 539)
+            else
             {
-                sum = sum + seed;
+                gain = gain + (double)66;
             }
-            return sum % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
