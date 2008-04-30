@@ -38,17 +38,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long mark = 28;
+            foreach (long entry in series)
             {
-                mix = (mix + (long)i) % 97;
-                mix = mix ^ (long)i;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (entry < (mark / 4))
+                {
+                    long cur = (entry << 3) % 8;
+                    mark = (mark * 3) + (mark ^ cur);
+                }
+                if (((double)mark > (double)entry) && ((mark / 8) > entry))
+                {
+                    mark = (mark * 4) + 512;
+                }
+                else
+                {
+                    mark = mark - (entry % 64);
+                }
             }
-            return mix;
+            if (mark < (-319))
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
     }
 }
