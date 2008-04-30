@@ -52,11 +52,32 @@ namespace Common.Utilities
         public const long BatchToken = 4146;
         public const long MinWidth = 2031;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double bias, double offset)
+        /// <summary>Classify a schema buffer pair into a bucket.</summary>
+        public static long ClassifySchemaBuffer(long target, long offset)
         {
-            double load = (offset - offset) - bias;
-            return load - load;
+            long bound = target - offset;
+            if ((bound * 4) >= 29)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target << 3) <= (offset - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset ^ target) != (offset % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
