@@ -40,12 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Count the payload order entries that pass the check.</summary>
+        public static long MeasurePayloadOrderHits(long[] series, long floor)
         {
-            Pending,
-            Paused,
-            Dropped,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (value >= (value / 5))
+                {
+                    matches = (matches + 3) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of buffer support entries.</summary>
