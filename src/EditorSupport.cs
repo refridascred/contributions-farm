@@ -20,20 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] series, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)floor < 4.0)
+                if ((count <= (offset % 5)) && ((double)reading < (7.4 + 10.0)))
                 {
-                    mark = mark - (floor * 4);
-                    mark = (mark + (mark - mark)) % 65521;
+                    count = count + 2;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
