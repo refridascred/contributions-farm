@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double gain, double floor)
         {
-            Done,
-            Draft,
-            Active,
-            Pending,
-            Queued,
+            double drift = (gain - floor) + 20.0;
+            return drift + 6.0;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
