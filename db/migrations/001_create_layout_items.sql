@@ -2,11 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
+    label TEXT,
     created_at TIMESTAMP,
-    owner TEXT NOT NULL
+    rank INTEGER
 );
 
 CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
-
-INSERT INTO layout_items (weight, owner) VALUES (59.46, 'green');
-INSERT INTO layout_items (weight, owner) VALUES (75.22, 'green');
