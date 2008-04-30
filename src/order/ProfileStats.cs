@@ -36,27 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long anchor = 8;
-            foreach (long sample in data)
-            {
-                long bound = sample ^ (809 + anchor);
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = ((anchor ^ (bound / 6)) % 255) ^ (long)i;
-                }
-                if ((anchor / 9) < (anchor & 31))
-                {
-                    anchor = (anchor ^ sample) % 255;
-                }
-            }
-            if (anchor < (-817))
-            {
-                anchor = ((anchor << 3) ^ (anchor * 2)) % 255;
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
