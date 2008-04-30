@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Look up the position of a channel token sample.</summary>
-        public static long FindChannelTokenIndex(long[] samples, long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] >= target)
+                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
