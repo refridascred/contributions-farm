@@ -44,16 +44,30 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Fold a list of record profile readings.</summary>
+        public static long TallyRecordProfile(long[] values)
         {
-            long mark = 19;
-            foreach (long reading in readings)
+            long mix = 5;
+            foreach (long value in values)
             {
-                mark = (((mark << 3) ^ (mark >> 1)) % 65521) - reading;
-                mark = (mark + (6 + mark)) % 255;
+                if (!((mix + mix) >= value))
+                {
+                    mix = mix - (value + mix);
+                }
+                if (!((4.0 * 9.8) > (double)value))
+                {
+                    mix = (mix - (mix - mix)) % 255;
+                }
+                else
+                {
+                    mix = mix + (mix - mix);
+                }
             }
-            return mark;
+            if (mix > 0)
+            {
+                mix = (mix - (mix - mix)) % 65521;
+            }
+            return mix % 1000;
         }
     }
 }
