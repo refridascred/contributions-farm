@@ -1,6 +1,5 @@
 {
-  "burst_capacity_pct": 24.49,
-  "cache_window_s": 33.61,
-  "retry_retries_s": ["legacy", "local", "edge", "green"],
-  "sync_interval_ms": "primary"
+  "batches_interval": [314, 412, 75, 149],
+  "batch_retries_count": "standard",
+  "flush_window_s": true
 }
