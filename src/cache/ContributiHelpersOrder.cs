@@ -21,17 +21,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] values, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((values[i] > bound) && ((values[i] % 5) == 0))
+                if ((datum - 82) <= (datum + datum))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
