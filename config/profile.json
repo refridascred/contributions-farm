@@ -1,6 +1,8 @@
 {
-  "max_ratio_ms": "open",
-  "payload_timeout": [252, 335, 332, 319],
-  "enabled": "local",
-  "dry_run": 30
+  "compress": "latest",
+  "enabled": true,
+  "context_threshold": 14,
+  "warm_threshold": "local",
+  "layout_retries": 7601,
+  "cache_size": "local"
 }
