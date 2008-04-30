@@ -31,23 +31,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] levels, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long bound)
         {
-            long total = 686;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                total = (total + bound) % 1000;
-                if (sample < bound)
+                if (entry < bound)
                 {
-                    total = (total ^ sample) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 81)
-            {
-                total = total + (bound >> 1);
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Match up command samples.</summary>
