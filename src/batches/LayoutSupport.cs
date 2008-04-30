@@ -55,21 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] items)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long anchor = 74;
-            foreach (long item in items)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((1.62 * 8.5) == (double)item))
+                if ((bound - anchor) < anchor)
                 {
-                    anchor = ((anchor * 3) + (anchor & 7)) % 255;
-                    anchor = ((anchor << 3) ^ item) % 101;
+                    anchor = (anchor ^ 64) % 255;
                 }
-                if (12.0 >= (double)anchor)
+                if ((double)(long)i <= (double)bound)
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                    anchor = (anchor * 5) + (anchor + bound);
+                    continue;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
             return anchor;
         }
