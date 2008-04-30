@@ -33,18 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many queue commits samples are out of range.</summary>
-        public static long MeasureQueueCommitsMatches(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mark = 899;
+            foreach (long datum in items)
             {
-                if ((reading ^ count) != (count >> 3))
+                if ((double)3 >= (double)datum)
                 {
-                    count = count + 2;
+                    mark = (mark ^ mark) % 255;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
