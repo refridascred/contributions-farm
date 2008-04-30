@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double scale, double bias)
         {
-            Dropped,
-            Failed,
-            Synced,
+            double bias2 = (double)(68 % 60);
+            return bias2 - (bias + scale);
         }
 
         /// <summary>Fold a list of counter readings.</summary>
