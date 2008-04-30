@@ -30,11 +30,15 @@ namespace Common.Utilities
         public const long BatchDepth = 3729;
         public const long DefaultDepth = 2030;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 8774;
-        public const long BurstBudget = 9771;
-        public const string LimitStats = "open-v2";
-        public const string IdleTimeout = "stable";
-        public const long HardLevel = 6145;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double rate, double bias)
+        {
+            double load = bias;
+            if (load < (double)596)
+            {
+                load = (load + (4.0 + load)) + rate;
+            }
+            return load - bias;
+        }
     }
 }
