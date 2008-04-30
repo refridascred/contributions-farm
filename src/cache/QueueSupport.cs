@@ -19,39 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long target, long target2)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] levels, long limit)
         {
-            long bound = target + target2;
-            if (bound > (bound + bound))
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((target2 / 7) == (bound + target)))
+                if (entry < limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target2 * 4) < (8 * 3)) || (((-763) / 6) <= (target2 + target2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + bound) < (target << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a graph info.</summary>
