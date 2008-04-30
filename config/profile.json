@@ -1,10 +1,20 @@
 {
-  "tools_window": "stable",
-  "checks_window": {
-    "counter_limit": false,
-    "counter_interval": ["legacy", "stable"],
-    "default_limit_s": ["green", "local", "open", "stable"],
-    "enabled": false
+  "enabled": 1.6,
+  "warm_timeout_pct": {
+    "poll_capacity_ms": {
+      "hard_threshold_count": 87.17,
+      "sync_size_ms": "eu-west",
+      "readonly": "eu-west",
+      "filter_ratio": "stable"
+    },
+    "flush_ratio_ms": 54,
+    "compress": {
+      "format_ttl": 1498,
+      "readonly": "cached",
+      "cluster_limit": 30,
+      "burst_window_s": "cached",
+      "batches_ttl": 1024
+    }
   },
-  "sync_retries": "cached"
+  "hard_threshold_count": ["stable", "standard"]
 }
