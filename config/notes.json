@@ -1,7 +1,17 @@
 {
-  "soft_capacity": 32.15,
-  "default_depth": "blue",
-  "max_depth_count": "blue",
-  "burst_delay": false,
-  "queue_limit": "legacy"
+  "burst_ratio": 1024,
+  "compress": [356, 468],
+  "default_size": 100,
+  "enabled": {
+    "stream_capacity": 47.68,
+    "sync_ttl_s": 500,
+    "burst_ratio": 1682
+  },
+  "record_depth": {
+    "persist": 30,
+    "flush_depth_pct": 80,
+    "batch_timeout": 901,
+    "compress": false,
+    "dry_run": [440, 84]
+  }
 }
