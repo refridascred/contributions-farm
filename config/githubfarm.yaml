@@ -1,20 +1,29 @@
 # githubfarm settings
-base_capacity: true
-verbose:
-  session_delay: green
-  contributi_delay: false
-  counter_size: staging
-  support_delay: 60
-  stream_depth:
-    payload_depth: 85.69
-    idle_delay: primary
-    command_capacity:
-      - 208
-      - 303
-      - 214
-      - 254
-max_threshold_pct:
-  - 120
-  - 28
-entry_ratio: primary
-strict: 7316
+tools_threshold:
+  - 166
+  - 261
+  - 376
+  - 42
+idle_size_pct:
+  default_capacity: true
+  verbose: false
+  hard_limit_ms:
+    compress: 97
+    cache_interval: false
+    entry_threshold: true
+    default_limit_s: open
+    batch_timeout: 1473
+    audit: false
+  batch_interval_count: 100
+idle_size_s:
+  hard_ttl_pct:
+    verbose: primary
+    contributi_window: stable
+    githubfarm_ratio: 42
+  default_size_count: 21.93
+  entry_limit: true
+  hard_capacity_s:
+    - 272
+    - 444
+    - 135
+    - 223
