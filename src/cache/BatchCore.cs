@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const double StepSize = 23.73;
         public const long WindowDepth = 3860;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 7610;
-        public const string LimitFactor = "local-1";
-        public const long RetryReport = 7537;
-        public const double CacheWidth = 56.87;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
