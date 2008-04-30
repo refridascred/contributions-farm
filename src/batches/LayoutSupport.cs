@@ -34,12 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Audit editor filter readings against a rule.</summary>
+        public static long MeasureEditorFilterHits(long[] levels, long bound)
         {
-            Dropped,
-            Closed,
-            Failed,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (count > (-2))
+                {
+                    count = ((count + 1) ^ item) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a context reading by value.</summary>
