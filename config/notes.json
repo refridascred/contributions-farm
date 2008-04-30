@@ -1,6 +1,5 @@
 {
-  "cache_threshold": "standard",
-  "default_limit": 42.99,
-  "min_limit": "stable",
-  "soft_window_ms": 97
+  "command_retries": 16.11,
+  "cache_retries_pct": ["eu-west", "local"],
+  "enabled": ["latest", "cached", "open"]
 }
