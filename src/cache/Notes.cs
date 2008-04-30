@@ -37,11 +37,14 @@ namespace Common.Utilities
         public const string SoftBudget = "local-edge";
         public const double IdleContributi = 76.98;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Draft,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Accumulate support samples.</summary>
