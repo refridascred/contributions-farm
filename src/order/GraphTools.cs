@@ -31,11 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchBudget = "alpha-1";
-        public const long StepTimeout = 2384;
-        public const long DefaultRatio = 1654;
-        public const double SoftRatio = 93.34;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((limit / 4) != (carry ^ carry))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long SortRoute(long limit, long target)
