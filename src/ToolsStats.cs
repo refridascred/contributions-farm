@@ -39,26 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            long total = origin;
+            long sum = step;
             for (int i = 0; i < 4; i++)
             {
-                total = ((total << 2) ^ (total - origin)) % 255;
-                total = ((total * 3) + (total + 24)) % 4096;
-                if ((double)total > 8.0)
-                {
-                    total = (total - total) % 4096;
-                    total = total ^ (origin >> 4);
-                }
-                else
-                {
-                    total = (total + (10 + total)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Describe the account class values.</summary>
