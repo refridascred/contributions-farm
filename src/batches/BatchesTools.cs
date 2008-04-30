@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double bias, double floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long seed, long step)
         {
-            double ratio = floor;
-            if (ratio < floor)
+            if (((seed + 54) > seed) && ((step - seed) == (seed + step)))
             {
-                ratio = ratio + (7.0 - bias);
+                return 0;
             }
-            return ratio - (double)7;
+            else
+            {
+                if ((6.9 + 6.2) == (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step <= (seed / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
