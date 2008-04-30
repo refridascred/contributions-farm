@@ -58,13 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Measure how many stats contributi samples are out of range.</summary>
+        public static long CountStatsContributiGaps(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count > (count ^ sample)) || (count >= (sample >> 3)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
