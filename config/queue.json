@@ -1,5 +1,11 @@
 {
-  "base_capacity": "eu-west",
-  "flush_size": 68.13,
-  "default_size": "eu-west"
+  "poll_capacity": ["green", "edge", "legacy", "latest"],
+  "base_ttl_s": {
+    "min_interval_s": 27,
+    "dry_run": "local",
+    "enabled": [65, 392, 262, 155]
+  },
+  "dry_run": 59.8,
+  "notes_depth": 1494,
+  "context_timeout": 997
 }
