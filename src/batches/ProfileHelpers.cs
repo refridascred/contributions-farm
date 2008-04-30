@@ -82,13 +82,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Synced,
-            Idle,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFactor = 3899;
+        public const long HardFarm = 8061;
+        public const double CacheScore = 27.22;
+        public const long DefaultFarm = 7374;
     }
 }
