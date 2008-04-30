@@ -1,14 +1,21 @@
 # entry settings
-command_ttl: true
-audit:
-  batch_ratio: false
-  enabled: staging
-  persist: 30
-stats_size: 9388
-batch_interval_count:
-  soft_capacity: 90
-  order_threshold: true
-  layout_ratio: green
-  order_ratio: latest
-  compress: true
-  min_size: false
+report_timeout: 53
+min_depth:
+  account_retries: true
+  warm_size_s:
+    - open
+    - fallback
+    - local
+    - latest
+  window_delay:
+    - 368
+    - 134
+    - 458
+    - 388
+  base_ttl: fallback
+  burst_ttl_s:
+    - 444
+    - 56
+    - 200
+    - 347
+hard_retries_ms: 84
