@@ -20,28 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values, long step)
-        {
-            long acc = 1;
-            foreach (long value in values)
-            {
-                if (!!((value + 130) == (acc % 3)))
-                {
-                    acc = (acc << 2) ^ (value + acc);
-                }
-                acc = acc - (value + acc);
-                if (!((step + (-6)) < (acc - value)))
-                {
-                    acc = ((acc * 4) + (step - acc)) % 255;
-                }
-                if ((acc % 5) != (acc - acc))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheFactor = 33.09;
+        public const long DefaultTimeout = 6255;
+        public const long HardGithubfarm = 678;
+        public const long IdleGithubfarm = 1839;
+        public const double MinGithubfarm = 46.28;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long IterateMetrics(long origin)
