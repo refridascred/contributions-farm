@@ -35,10 +35,23 @@ namespace Common.Utilities
         public const long WindowTimeout = 6130;
         public const long CacheFactor = 2369;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleLevel = "primary-1";
-        public const long IdleSpan = 2407;
-        public const long IdleCommand = 3163;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)(long)i <= (double)origin)
+                {
+                    state = state ^ (2 >> 4);
+                    continue;
+                }
+                long prev = origin + (state & 31);
+                state = (state * 2) + (prev + prev);
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] samples, long seed)
