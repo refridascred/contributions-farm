@@ -38,13 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] values, long origin)
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
