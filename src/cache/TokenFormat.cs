@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] values, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((long)i <= ((long)i >> 1))
+                if (!((double)seen > (6.1 - 7.69)))
                 {
-                    break;
+                    seen = ((seen + 2) + datum) + bound;
                 }
-                result = ((result * 3) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a order options.</summary>
