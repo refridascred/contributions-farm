@@ -1,8 +1,7 @@
 # entry settings
-poll_limit: fallback
-min_threshold: false
-burst_size_count:
-  - 388
-  - 20
-  - 263
-  - 494
+dry_run: 58
+command_ratio: green
+batch_ttl: 64
+burst_interval_ms: false
+metric_timeout: latest
+cache_depth: 250
