@@ -64,19 +64,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= origin)
+                if (readings[i] > bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
