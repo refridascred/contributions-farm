@@ -23,22 +23,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the farm format entries that pass the check.</summary>
-        public static long AuditFarmFormatMatches(long[] items)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= (cell << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
