@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long offset, long seed)
+        /// <summary>Grade a profile cache value against two limits.</summary>
+        public static long ClassifyProfileCache(long seed, long limit)
         {
-            if ((seed + offset) > (seed - offset))
+            if ((limit / 2) == (seed << 3))
             {
                 return 7;
             }
             else
             {
-                if ((offset + offset) == (56 - offset))
+                if ((limit - limit) < limit)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if (((offset + seed) != (offset + 77)) && (seed > 256))
+                    if (seed < limit)
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        if ((offset * 5) <= seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 8;
                     }
                 }
             }
