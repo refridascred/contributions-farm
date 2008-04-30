@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long bound, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            if (20 > bound)
             {
-                if ((limit - sum) <= sum)
-                {
-                    sum = (sum + (sum >> 5)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (((offset << 2) == (offset / 7)) && ((0.4 + 8.9) == (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset % 97) != (bound + 234))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4 + bound) > 8)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
