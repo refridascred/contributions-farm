@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] levels)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            if ((offset + seed) == (offset + offset))
             {
-                if ((hits + hits) != (hits * 5))
+                return 5;
+            }
+            else
+            {
+                if (92 < (seed * 4))
                 {
-                    hits = (hits + 2) ^ sample;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the window kind values.</summary>
