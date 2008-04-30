@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-staging}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in green stable eu-west open; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 11); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in green primary staging legacy; do
+    log "checking ${item}"
+done
