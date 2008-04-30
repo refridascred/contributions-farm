@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            New,
-            Pending,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowWidth = 4.45;
+        public const string IdleFormat = "legacy-v2";
+        public const long MaxFactor = 4623;
+        public const long DefaultRatio = 765;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long SeriesLayout(long target)
