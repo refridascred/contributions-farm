@@ -34,12 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series, long offset)
         {
-            Failed,
-            Locked,
-            Ready,
+            long mix = 5;
+            foreach (long cell in series)
+            {
+                mix = ((((mix * 4) + ((-5) + mix)) % 1000) + cell) + offset;
+            }
+            if (mix > 43)
+            {
+                mix = ((mix * 3) + (mix - mix)) % 4096;
+            }
+            return mix % 65521;
         }
     }
 }
