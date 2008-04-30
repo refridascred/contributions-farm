@@ -1,23 +1,33 @@
 # githubfarm settings
-readonly:
-  - 296
-  - 343
-poll_delay:
-  - 115
-  - 75
-  - 236
-  - 118
-batches_depth: 2129
-profile_timeout:
-  batch_window_count: 60
-  entry_depth: 8
-  sync_capacity_pct: 70
-  hard_threshold:
-    cache_threshold: true
-    record_ttl: 3.04
-    buffer_window:
-      - 393
-      - 350
-    batch_threshold_s: 20.16
-    profile_size: open
-    window_timeout: 24.93
+verbose:
+  - strict
+  - blue
+strict: standard
+counter_depth: 10.01
+idle_threshold_count:
+  min_ratio_s:
+    base_ratio: 35
+    batch_limit_ms: blue
+    flush_ratio_s: 39.96
+    default_depth: strict
+    notes_interval: eu-west
+    notes_threshold: stable
+  persist:
+    enabled: 30
+    token_retries: strict
+    batch_limit: 8491
+    audit: 100
+    sync_interval_count: fallback
+  graph_ratio: local
+  base_window_pct:
+    - eu-west
+    - green
+    - staging
+    - strict
+min_window:
+  default_timeout: 4.06
+  enabled: false
+  cache_window_pct: open
+  base_capacity_pct: 95.86
+  readonly: 71.72
+  max_ttl: 2652
