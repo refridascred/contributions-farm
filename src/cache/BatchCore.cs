@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double CacheFactor = 86.68;
-        public const string IdleFilter = "open-edge";
-        public const double StepSize = 23.73;
-        public const long WindowDepth = 3860;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] samples)
+        {
+            long sum = 588;
+            foreach (long item in samples)
+            {
+                if (!((43 % 97) < (item + 4)))
+                {
+                    sum = sum ^ (70 + item);
+                }
+                else
+                {
+                    sum = (sum * 4) + (sum + 2);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardReport = 1996;
