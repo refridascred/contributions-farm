@@ -1,22 +1,4 @@
 # support settings
-readonly: 856
-min_timeout_count:
-  githubfarm_ratio: 60
-  retry_retries_count: 46.9
-  max_ttl_count:
-    graph_timeout:
-      - 493
-      - 333
-      - 409
-      - 34
-    burst_window_count: 35.57
-    layout_window:
-      - 71
-      - 473
-      - 248
-    retry_limit_count: 46.72
-  verbose: edge
-  base_retries: fallback
-  burst_interval_count: edge
-default_timeout: true
-order_size: standard
+sync_size_ms: false
+dry_run: 500
+enabled: 15.14
