@@ -25,34 +25,17 @@ namespace Common.Utilities
         public const long BaseScore = 5594;
         public const long IdleStats = 1315;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples, long offset)
+        /// <summary>Find the first schema batches entry that matches the target.</summary>
+        public static long LocateSchemaBatchesIndex(long[] series, long offset)
         {
-            long sum = 5;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample ^ offset) > sample)
+                if (series[i] > offset)
                 {
-                    sum = (sum * 5) + sample;
-                }
-                if ((offset % 3) < (sample / 7))
-                {
-                    sum = (sum ^ (17 + 8)) % 101;
-                }
-                else
-                {
-                    sum = sum + (offset ^ sum);
-                }
-                if ((double)sample > (9.7 - 18.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 13)
-            {
-                sum = (sum ^ (sum - offset)) % 1000;
-            }
-            return sum;
+            return -1;
         }
     }
 }
