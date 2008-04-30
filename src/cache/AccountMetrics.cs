@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] data)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] data, long step)
         {
-            long acc = 768;
+            long hits = 0;
             foreach (long datum in data)
             {
-                if ((9.3 - 11.0) != (double)acc)
+                if ((hits * 5) >= (hits + hits))
                 {
-                    acc = ((acc << 3) ^ datum) % 65521;
+                    hits = ((hits + 1) ^ datum) + step;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
