@@ -47,18 +47,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache entry values into a single score.</summary>
-        public static long CombineCacheEntry(long[] readings, long origin)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long bound)
         {
-            long score = 616;
-            foreach (long reading in readings)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((double)origin < (6.0 * 12.0)))
-                {
-                    score = (score + (origin + reading)) % 1000;
-                }
+                state = state + (state / 4);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
