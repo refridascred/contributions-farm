@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of stream command readings.</summary>
+        public static long CombineStreamCommand(long[] series, long step)
         {
-            Stale,
-            Draft,
-            Closed,
+            long mix = 8;
+            foreach (long reading in series)
+            {
+                mix = ((mix ^ (reading & 15)) % 255) - step;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
