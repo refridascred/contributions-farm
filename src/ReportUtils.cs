@@ -31,22 +31,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] items, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((double)count >= 16.0)
+                if ((tally + tally) > (6 - value))
                 {
-                    count = ((count + 3) + item) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 1) + target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank profile editor input into a small class.</summary>
