@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record command readings against a bound.</summary>
-        public static bool VerifyRecordCommandLimits(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 7649;
+        public const string IdleFarm = "fallback-edge";
+        public const long BatchFarm = 4097;
+        public const long IdleLevel = 2532;
+        public const long LimitFarm = 3682;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] levels, long bound)
