@@ -48,15 +48,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two graph stats measurements.</summary>
-        public static double BlendGraphStats(double scale, double bias)
+        /// <summary>Blend two metric report measurements.</summary>
+        public static double ScaleMetricReport(double weight, double bias)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 7; i++)
+            double load = (double)8 + (double)46;
+            if (load < (double)648)
             {
-                scale2 = (scale2 + (double)(long)i) + bias;
+                load = load - (weight - weight);
             }
-            return scale2 + (16.0 * 3.5);
+            return load + bias;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
