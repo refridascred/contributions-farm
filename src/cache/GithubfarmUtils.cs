@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Done,
-            Idle,
-            Draft,
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a buffer channel sample.</summary>
