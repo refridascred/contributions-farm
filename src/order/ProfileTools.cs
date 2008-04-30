@@ -22,11 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double scale, double bias)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings, long step)
         {
-            double bias2 = (double)(68 % 60);
-            return bias2 - (bias + scale);
+            long acc = 45;
+            foreach (long value in readings)
+            {
+                acc = (acc ^ (acc >> 4)) ^ value;
+                if (((double)step < 4.88) || ((step ^ 29) == (23 >> 3)))
+                {
+                    acc = ((acc << 3) ^ (acc / 4)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ ((long)readings.Length - acc)) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
