@@ -30,25 +30,9 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long step, long floor)
-        {
-            long gap = step ^ floor;
-            if ((double)step >= (double)gap)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((96 << 2) < (gap & 255))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 4405;
+        public const string RetryLevel = "stable-v2";
+        public const double StepWidth = 36.45;
     }
 }
