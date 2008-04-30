@@ -40,11 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseDepth = 529;
-        public const long LimitInterval = 7888;
-        public const long StepChecks = 6185;
-        public const double CacheSpan = 34.26;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long limit, long seed)
+        {
+            if ((seed - 12) >= (seed + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit < 19.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (12.0 > (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit > (limit % 10))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowDepth = 6956;
