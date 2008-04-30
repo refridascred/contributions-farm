@@ -86,31 +86,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of layout batch entries.</summary>
-        public static long TallyLayoutBatch(long[] data, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long carry = 78;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    carry = (((carry << 3) ^ ((long)data.Length ^ carry)) % 255) + (long)i;
-                }
-                if ((target + carry) >= (target - carry))
-                {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = (carry * 2) + (value ^ carry);
-                }
-                carry = ((carry * 5) + target) % 65521;
-            }
-            if (carry < 85)
-            {
-                carry = (carry ^ (target / 3)) % 1000;
-            }
-            return carry;
+            Dropped,
+            New,
+            Active,
+            Queued,
         }
     }
 }
