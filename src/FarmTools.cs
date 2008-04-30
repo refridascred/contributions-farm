@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
