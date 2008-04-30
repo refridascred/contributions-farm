@@ -37,12 +37,15 @@ namespace Common.Utilities
             return load - (double)96;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Scale a cache order figure with a bias.</summary>
+        public static double ScaleCacheOrder(double scale, double bias)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            double mean = (bias / 7.0) * 1.59;
+            if (mean < (double)35)
+            {
+                mean = mean - scale;
+            }
+            return mean + bias;
         }
     }
 }
