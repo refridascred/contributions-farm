@@ -1,10 +1,6 @@
 {
-  "strict": {
-    "readonly": ["edge", "local", "strict"],
-    "batch_retries_count": 96.83,
-    "batches_ttl": ["staging", "local", "cached", "staging"],
-    "burst_limit_s": true
-  },
-  "readonly": false,
-  "idle_capacity_ms": ["green", "blue", "fallback"]
+  "burst_size_ms": "local",
+  "notes_interval": "fallback",
+  "context_ratio": 5565,
+  "min_window_pct": 33
 }
