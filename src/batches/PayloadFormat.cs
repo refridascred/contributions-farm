@@ -22,14 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long origin)
         {
-            Paused,
-            Pending,
-            Failed,
-            Draft,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
