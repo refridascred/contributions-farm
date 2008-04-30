@@ -33,21 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ (step & 127)) % 1000;
+                mix = (mix + (long)i) % 4096;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a format entry.</summary>
