@@ -60,12 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] values, long step)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
