@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long score = 27;
-            foreach (long reading in items)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((8.45 / 5.0) == (double)origin) || ((double)score >= (8.1 * 5.8)))
-                {
-                    score = (score * 2) + (score + reading);
-                }
-                else
-                {
-                    score = (score - (512 << 2)) % 65521;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
             return score;
         }
