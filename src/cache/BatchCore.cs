@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] readings, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] readings, long step)
         {
-            long state = 3;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state - (state >> 5)) + value) + target;
-                state = (state ^ state) % 4096;
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
