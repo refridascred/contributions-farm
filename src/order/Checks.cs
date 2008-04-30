@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] data, long step)
         {
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (item >= ((long)data.Length * 4))
+                {
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch options.</summary>
