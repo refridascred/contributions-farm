@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the commits cache entries that pass the check.</summary>
-        public static long TallyCommitsCacheOutliers(long[] values, long floor)
+        /// <summary>Accumulate metrics channel samples.</summary>
+        public static long CombineMetricsChannel(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long carry = -9;
+            foreach (long sample in levels)
             {
-                if (cell <= floor)
-                {
-                    hits = hits + 3;
-                }
+                carry = ((carry * 4) + (carry & 3)) % 1000;
+                carry = (carry + sample) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
