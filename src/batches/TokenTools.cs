@@ -27,19 +27,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] levels, long seed)
+        /// <summary>Roll a route profile counter forward.</summary>
+        public static long RollRouteProfile(long target)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return flag;
+            return total;
         }
     }
 }
