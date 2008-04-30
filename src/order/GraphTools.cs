@@ -75,13 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long bound)
         {
-            public double Level { get; set; }
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
