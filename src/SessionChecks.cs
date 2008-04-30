@@ -18,19 +18,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] values, long bound)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long bound, long step)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            if ((double)step == (5.42 + 7.75))
             {
-                if (reading >= bound)
+                return 6;
+            }
+            else
+            {
+                if ((3.11 * 6.9) < (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (step & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9.6 / 3.0) != (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
