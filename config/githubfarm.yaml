@@ -1,24 +1,10 @@
 # githubfarm settings
-token_interval:
-  githubfarm_timeout: fallback
-  cache_size_pct: 30
-  already_ratio: 90.39
-  min_threshold_pct: false
-  cache_delay_count:
-    poll_ratio_s: false
-    contributi_size:
-      - 166
-      - 452
-      - 372
-      - 396
-    hard_depth: 60
-    batch_delay_s: 56.61
-    idle_interval_ms: 57.29
-    cache_limit_ms: true
-base_threshold_count:
-  - 135
-  - 323
-  - 83
-burst_capacity_s: 5111
-base_threshold_s: 250
-command_window: 36.67
+retry_size_s: 34.78
+cache_depth: edge
+poll_size:
+  - fallback
+  - standard
+  - green
+  - eu-west
+flush_retries: cached
+farm_window: false
