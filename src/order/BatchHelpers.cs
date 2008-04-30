@@ -39,22 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
-        public static long TallySupportGithubfarmMatches(long[] series)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count ^ count) >= 904)
+                if (items[i] <= target)
                 {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
