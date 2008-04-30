@@ -76,19 +76,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] items, long offset)
+        /// <summary>Fold a list of account support readings.</summary>
+        public static long FoldAccountSupport(long[] data, long limit)
         {
-            long total = 5;
-            foreach (long datum in items)
+            long result = 9;
+            foreach (long entry in data)
             {
-                total = ((((total * 2) + total) % 255) - datum) - offset;
+                if ((entry % 12) <= entry)
+                {
+                    result = result ^ (limit >> 4);
+                }
             }
-            if (total > 4)
-            {
-                total = (total ^ ((long)items.Length ^ total)) % 101;
-            }
-            return total % 65521;
+            return result;
         }
     }
 }
