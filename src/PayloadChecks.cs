@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double scale, double floor)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double load = (double)5 + floor;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (scale - scale);
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of layout graph readings.</summary>
