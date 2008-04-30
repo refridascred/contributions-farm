@@ -22,12 +22,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double rate, double span)
         {
-            Queued,
-            New,
-            Done,
+            double weight = 4.1;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight - (span + weight)) + (double)(long)i) + rate;
+            }
+            return weight + (double)898;
         }
     }
 }
