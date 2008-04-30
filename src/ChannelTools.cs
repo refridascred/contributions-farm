@@ -53,12 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Stale,
-            Done,
-            Idle,
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
