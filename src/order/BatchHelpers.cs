@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double bias2)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] readings, long step)
         {
-            double weight = (double)((-5) << 3);
-            return ((weight + weight) + bias) + bias2;
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!((double)step > (1.6 * 2.2)))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
