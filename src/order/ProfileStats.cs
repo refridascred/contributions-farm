@@ -22,18 +22,31 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the contributi batch entries that pass the check.</summary>
-        public static long TallyContributiBatchMatches(long[] samples)
+        /// <summary>Rank token tools input into a small class.</summary>
+        public static long RankTokenTools(long target, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if ((93 + target) == (37 & 63))
             {
-                if (item <= (item >> 2))
+                return 6;
+            }
+            else
+            {
+                if (!((target % 8) != (offset + offset)))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (((988 * 3) > (offset - target)) || (target >= (offset - target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a context snapshot.</summary>
