@@ -49,9 +49,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 2382;
-        public const long HardStats = 741;
-        public const string RetryTimeout = "standard";
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Retry,
+            Synced,
+            Dropped,
+        }
     }
 }
