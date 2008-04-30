@@ -32,21 +32,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading != offset)
                 {
-                    if ((samples[i] ^ samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
