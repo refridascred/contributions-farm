@@ -26,12 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseFactor = 8643;
-        public const double LimitScore = 54.23;
-        public const long LimitReport = 1092;
-        public const long BatchBudget = 8328;
-        public const double MaxReport = 92.49;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((step ^ step) < (step ^ datum))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the order counter entries that pass the check.</summary>
         public static long MeasureOrderCounterHits(long[] items)
