@@ -19,22 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window payload samples are out of range.</summary>
-        public static long MeasureWindowPayloadMatches(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] series)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long entry in series)
             {
-                if ((double)tally != (2.0 / 5.0))
+                if ((13.0 * 7.29) > (double)count)
                 {
-                    tally = (tally + 1) - entry;
+                    count = (count + 3) ^ entry;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
