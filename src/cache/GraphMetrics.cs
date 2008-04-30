@@ -69,21 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Accumulate farm account samples.</summary>
+        public static long TotalFarmAccount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 90;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((7.69 + 7.4) > (double)reading) && ((double)state < 3.9))
                 {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state * 4) + reading;
                 }
             }
-            return count;
+            return state % 97;
         }
     }
 }
