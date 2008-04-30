@@ -38,22 +38,17 @@ namespace Common.Utilities
         public const long IdleSpan = 2407;
         public const long IdleCommand = 3163;
 
-        /// <summary>Audit support order readings against a rule.</summary>
-        public static long AuditSupportOrderGaps(long[] readings)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item == (double)matches)
+                if ((samples[i] > seed) && ((samples[i] % 3) == 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
