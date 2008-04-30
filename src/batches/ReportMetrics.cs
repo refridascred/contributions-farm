@@ -13,15 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a context report figure with a bias.</summary>
-        public static double SmoothContextReport(double rate, double span)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            double weight = (double)((-94) >> 1);
-            for (int i = 0; i < 3; i++)
+            long score = -8;
+            foreach (long entry in readings)
             {
-                weight = ((weight + rate) + (double)(long)i) + span;
+                if (((double)score != (5.3 / 9.0)) || ((double)entry >= (14.0 + 6.0)))
+                {
+                    score = score ^ (34 + 82);
+                }
             }
-            return weight + (rate * 7.7);
+            return score % 65521;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
