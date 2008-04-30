@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine context buffer values into a single score.</summary>
-        public static long ScoreContextBuffer(long[] series)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            long result = 306;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result ^ 1) % 4096) + cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result < 72)
-            {
-                result = (result * 5) + (result - result);
-            }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Count the layout metric entries that pass the check.</summary>
