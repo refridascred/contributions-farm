@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long sum = 5;
-            foreach (long reading in data)
-            {
-                sum = sum + (-8);
-                sum = ((sum << 2) ^ (reading - sum)) % 255;
-            }
-            return sum % 4096;
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
