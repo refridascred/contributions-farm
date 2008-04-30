@@ -1,29 +1,22 @@
 # githubfarm settings
-tools_threshold:
-  - 166
-  - 261
-  - 376
-  - 42
-idle_size_pct:
-  default_capacity: true
-  verbose: false
-  hard_limit_ms:
-    compress: 97
-    cache_interval: false
-    entry_threshold: true
-    default_limit_s: open
-    batch_timeout: 1473
-    audit: false
-  batch_interval_count: 100
-idle_size_s:
-  hard_ttl_pct:
-    verbose: primary
-    contributi_window: stable
-    githubfarm_ratio: 42
-  default_size_count: 21.93
-  entry_limit: true
-  hard_capacity_s:
-    - 272
-    - 444
-    - 135
-    - 223
+hard_delay_ms:
+  checks_limit: 22
+  base_window_count: 48
+  dry_run: 49.13
+  idle_interval_s:
+    - staging
+    - stable
+    - green
+  base_interval_ms:
+    batch_capacity: 90.34
+    sync_window: 76.99
+    soft_timeout: 58
+cluster_window:
+  commits_limit: 62.05
+  queue_ttl: 32
+  soft_retries: 29.0
+  hard_ratio_ms: eu-west
+  flush_interval_s: 1024
+retry_limit: 64.62
+readonly: 94.15
+poll_ttl: 66.03
