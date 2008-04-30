@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            long acc = 350;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((double)datum < (6.24 + 4.77)) && ((acc - origin) > (-55)))
+                if (item < (hits - item))
                 {
-                    acc = (acc + (acc - datum)) % 101;
-                }
-                if (acc > datum)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
