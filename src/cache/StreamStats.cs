@@ -28,10 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitChecks = "cached-edge";
-        public const long CacheChecks = 2873;
-        public const long RetryChecks = 8973;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool GuardSessionLimits(long[] readings, long step)
