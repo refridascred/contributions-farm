@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long floor, long origin)
         {
-            Dropped,
-            Done,
-            New,
-            Locked,
-            Pending,
+            if (origin <= (origin + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((floor - floor) < (873 * 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a route summary.</summary>
