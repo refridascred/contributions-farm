@@ -10,25 +10,17 @@ namespace Common.Utilities
         public const long RetryInterval = 3814;
         public const long HardSpan = 2587;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long step, long step2)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] items, long seed)
         {
-            long bound = step - step2;
-            if (((double)bound == (5.7 / 7.0)) || ((step2 - step2) <= (bound >> 4)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (step < (bound - bound))
+                if ((items[i] == seed) && ((items[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
