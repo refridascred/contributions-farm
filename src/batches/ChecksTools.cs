@@ -27,22 +27,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] series)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((long)series.Length & 7) >= seen)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
