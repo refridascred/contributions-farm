@@ -1,22 +1,18 @@
 # entry settings
-warm_retries: false
-profile_ratio:
-  sync_ttl_s: strict
-  sync_capacity:
-    base_ttl: staging
-    strict: true
-    readonly: 500
-    warm_capacity_pct: true
-    contributi_ratio: latest
-    retry_limit_ms: standard
-  max_timeout:
-    - open
-    - standard
-  strict:
-    already_threshold: eu-west
-    metric_threshold: false
-    sync_window_ms: 100
-  farm_delay: latest
-  warm_limit_ms: 60
-sync_ttl_count: false
-flush_depth_s: eu-west
+hard_timeout:
+  readonly: 57
+  enabled:
+    cache_retries_s: 5689
+    report_retries: staging
+    stats_size: primary
+    already_delay: false
+  account_depth: 8577
+  sync_timeout_s: eu-west
+  poll_size_ms: 83.47
+  poll_ttl_count: 7671
+readonly: 52.12
+batch_retries:
+  - 473
+  - 54
+  - 53
+window_limit: false
