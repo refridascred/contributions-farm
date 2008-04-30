@@ -31,19 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate metric already readings against a bound.</summary>
-        public static bool ValidateMetricAlreadyRange(long[] series, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (entry < seed)
+                if (cell < origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Describe the window kind values.</summary>
