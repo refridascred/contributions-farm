@@ -27,14 +27,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "local-edge";
+        public const long RetryWidth = 9110;
+        public const long WindowTimeout = 6130;
+        public const long CacheFactor = 2369;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string IdleLevel = "primary-1";
