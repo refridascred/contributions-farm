@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] levels, long seed)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            long anchor = 3;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor - (708 + 949)) % 1000) ^ entry) - seed;
-                anchor = anchor + (anchor - anchor);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (anchor < 62)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 97;
-            }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Describe the context mode values.</summary>
