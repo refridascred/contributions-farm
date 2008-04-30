@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
+        public static long CountMetricsGithubfarmGaps(long[] values)
         {
-            Ready,
-            New,
-            Draft,
-            Done,
-            Paused,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((1.71 / 7.0) < (double)item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
