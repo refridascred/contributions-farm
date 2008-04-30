@@ -79,24 +79,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a notes schema value against two limits.</summary>
-        public static long SortNotesSchema(long step, long step2)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            if ((step2 >> 2) > (step2 & 3))
+            long score = 101;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((1 & 3) == (step2 + step2)))
+                score = (score + (715 >> 2)) % 1000;
+                score = ((score << 2) ^ (score + score)) % 1000;
+                if ((score / 3) != (8 - entry))
                 {
-                    return 4;
+                    score = ((score << 2) ^ (entry & 127)) % 97;
                 }
                 else
                 {
-                    return 6;
+                    score = ((score * 5) + entry) % 1000;
                 }
             }
+            return score;
         }
     }
 }
