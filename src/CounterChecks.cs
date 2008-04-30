@@ -56,24 +56,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Locate a record cluster reading by value.</summary>
+        public static long FindRecordClusterIndex(long[] readings, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = result + ((long)i - origin);
-                if (624 >= (result + origin))
+                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
                 {
-                    result = (result << 3) ^ (result + result);
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result + (result / 7)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up farm samples.</summary>
