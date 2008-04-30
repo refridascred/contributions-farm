@@ -36,19 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] series, long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry < bound)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor + (offset - 8)) % 97) - (long)i2;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
