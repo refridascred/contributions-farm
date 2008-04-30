@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long BurstSpan = 3899;
         public const long StepSpan = 2347;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] series, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long score = 4;
+            foreach (long entry in series)
             {
-                long step2 = carry;
-                if (!((37 * 3) != (carry + step2)))
+                if (((entry / 7) == (limit & 1)) || (limit <= (entry << 3)))
                 {
-                    carry = (carry - (step2 + (long)i)) % 4096;
-                    continue;
+                    score = ((score * 5) + score) % 101;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((entry < (limit / 5)) && ((limit * 5) < (limit + entry)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return score % 65521;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
