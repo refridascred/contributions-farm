@@ -32,22 +32,13 @@ namespace Common.Utilities
         public const string BaseMetric = "latest";
         public const string BurstInterval = "cached";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] levels, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)seen <= 4.4)
-                {
-                    seen = ((seen + 2) + reading) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first cache payload entry that matches the target.</summary>
