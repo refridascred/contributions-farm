@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long mix = 33;
-            foreach (long reading in samples)
-            {
-                mix = ((mix << 2) ^ 1) - reading;
-                mix = (mix + (303 / 3)) % 97;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a stats options.</summary>
