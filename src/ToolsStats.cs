@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] samples, long bound)
         {
-            Failed,
-            Stale,
-            Retry,
-            Paused,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
