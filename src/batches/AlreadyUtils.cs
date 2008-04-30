@@ -33,16 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            long acc = 146;
+            foreach (long item in data)
             {
-                mark = (mark + (seed ^ seed)) % 255;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((acc ^ item) == (acc + acc))
+                {
+                    acc = acc - (item - item);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc / 6);
+                }
             }
-            return mark;
+            return acc % 1000;
         }
 
         /// <summary>Match up account schema samples.</summary>
