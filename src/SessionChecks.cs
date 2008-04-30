@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the order tools entries that pass the check.</summary>
-        public static long AuditOrderToolsGaps(long[] items)
+        /// <summary>Derive the next record contributi value from a seed.</summary>
+        public static long RollRecordContributi(long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)cell > (20.0 * 2.15)))
-                {
-                    tally = tally + 2;
-                }
+                sum = ((sum << 2) ^ (sum ^ sum)) % 1000;
+                sum = ((sum << 2) ^ (limit + limit)) % 65521;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
