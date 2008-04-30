@@ -1,10 +1,6 @@
-id,region,state,active,level
-1,strict,171,411,523
-2,747,cached,901,20.28
-3,20.36,22.3,789,16.92
-4,807,853,fallback,589
-5,5.18,2.43,latest,311
-6,15,35.92,181,246
-7,704,local,19.15,258
-8,668,11.13,784,44.38
-9,latest,671,53.44,eu-west
+id,score,label,token
+1,108,433,722
+2,251,green,613
+3,primary,45.2,57.84
+4,970,fallback,cached
+5,88.84,97.93,864
