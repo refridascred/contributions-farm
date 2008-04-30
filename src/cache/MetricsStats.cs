@@ -35,14 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit format entry readings against a rule.</summary>
+        public static long CountFormatEntryHits(long[] levels)
         {
-            Pending,
-            Closed,
-            Retry,
-            Ready,
-            Idle,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!(2.99 > (double)matches) || ((double)matches <= (14.0 * 6.0)))
+                {
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
