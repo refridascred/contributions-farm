@@ -30,19 +30,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double ratio, double offset)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            double mean = 16.0;
-            if (mean >= ratio)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 6.57) + (double)(long)i;
-            }
-            return mean - (mean + 4.59);
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
