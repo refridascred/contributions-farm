@@ -1,14 +1,5 @@
 {
-  "soft_timeout_ms": 84,
-  "strict": 2414,
-  "burst_window_ms": 4989,
-  "max_limit_pct": 33.45,
-  "poll_interval_ms": {
-    "counter_window": [3, 203, 279],
-    "sync_ratio_ms": "eu-west",
-    "max_ratio_ms": 17,
-    "report_ratio": 51.84,
-    "cache_limit": [72, 289, 146],
-    "format_retries": "open"
-  }
+  "idle_depth_s": 46,
+  "tools_size": 10,
+  "audit": "stable"
 }
