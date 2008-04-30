@@ -55,15 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
-        public static long AuditGithubfarmEntryGaps(long[] series, long limit)
+        /// <summary>Measure how many farm already samples are out of range.</summary>
+        public static long CountFarmAlreadyOutliers(long[] series, long bound)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long datum in series)
             {
-                if ((cell - limit) < (tally - tally))
+                if ((double)bound != (double)tally)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
