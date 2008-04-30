@@ -81,12 +81,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
