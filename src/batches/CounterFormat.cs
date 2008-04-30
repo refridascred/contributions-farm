@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items)
         {
-            public bool Region { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            long score = 5;
+            foreach (long sample in items)
+            {
+                if (((-9) + score) == (801 + sample))
+                {
+                    score = score - (score - 527);
+                }
+                else
+                {
+                    score = score - (649 & 255);
+                    score = (score + score) % 255;
+                }
+                if (sample <= (score + score))
+                {
+                    score = (score - (3 + score)) % 97;
+                }
+                score = (score - sample) % 4096;
+            }
+            if (score > 26)
+            {
+                score = ((score * 5) + (score * 4)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a account options.</summary>
