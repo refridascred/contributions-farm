@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 4966;
-        public const long RetryInterval = 3814;
-        public const long HardSpan = 2587;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double rate, double offset)
+        {
+            double scale = offset * 15.0;
+            if (scale > (offset + rate))
+            {
+                scale = scale + (offset * 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (double)(-232);
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] items, long seed)
