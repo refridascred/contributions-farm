@@ -1,9 +1,15 @@
 # githubfarm settings
-poll_interval_count: strict
-sync_capacity_pct: primary
-retry_depth_count: true
-format_depth:
-  - 2
-  - 377
-  - 492
-  - 201
+warm_depth: 95.49
+batch_threshold_count:
+  flush_capacity_s: 80.72
+  batch_retries_count:
+    - edge
+    - eu-west
+    - cached
+  audit: stable
+burst_timeout: 77
+record_capacity: 6818
+base_window:
+  - 393
+  - 174
+account_size: stable
