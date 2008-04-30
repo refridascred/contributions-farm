@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in blue green staging standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-local}"
 case "${mode}" in
-    cached)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in strict edge legacy eu-west; do
+    log "checking ${item}"
+done
