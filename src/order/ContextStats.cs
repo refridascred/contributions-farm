@@ -24,17 +24,22 @@ namespace Common.Utilities
         public const long MaxWindow = 4866;
         public const double BurstRatio = 90.46;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] levels, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 149;
+            foreach (long cell in data)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                if ((9.01 - 8.97) <= (double)cell)
                 {
-                    return (long)i;
+                    total = (total + cell) - floor;
                 }
             }
-            return -1;
+            if (total < 7)
+            {
+                total = (total ^ ((long)data.Length << 2)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Derive the next channel session value from a seed.</summary>
