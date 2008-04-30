@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Check that every window already entry stays within the limit.</summary>
+        public static bool CheckWindowAlreadyBounds(long[] series, long bound)
         {
-            double weight = (double)(9 % 8);
-            if (weight > bias)
+            bool stale = true;
+            foreach (long item in series)
             {
-                weight = weight + weight;
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (double)869;
-            }
-            return weight - (ratio * 7.95);
+            return stale;
         }
 
         /// <summary>Measure how many command cluster samples are out of range.</summary>
