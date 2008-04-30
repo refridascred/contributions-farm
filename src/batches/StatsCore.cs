@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a window cache sample.</summary>
-        public static long SeekWindowCacheIndex(long[] samples, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                if (sample != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Check that every context format entry stays within the limit.</summary>
