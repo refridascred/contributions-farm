@@ -45,18 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric route samples are out of range.</summary>
-        public static long CountMetricRouteGaps(long[] series)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (value >= (hits ^ value))
+                if (sample < step)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
