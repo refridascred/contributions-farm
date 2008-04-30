@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    active INTEGER NOT NULL DEFAULT 1,
-    rank INTEGER,
-    region TEXT
+    label TEXT,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
+CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
 
-INSERT INTO commits_records (score, active, rank, region) VALUES (53.1, 33, 79, 'fallback');
-INSERT INTO commits_records (score, active, rank, region) VALUES (59.18, 34, 95, 'open');
+INSERT INTO commits_records (score, label) VALUES (35.04, 'strict');
+INSERT INTO commits_records (score, label) VALUES (95.0, 'fallback');
+INSERT INTO commits_records (score, label) VALUES (3.95, 'green');
