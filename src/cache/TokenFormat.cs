@@ -34,11 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two farm record measurements.</summary>
-        public static double BlendFarmRecord(double weight, double bias)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double gain = 7.0;
-            return ((gain - 9.84) + weight) + bias;
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
