@@ -22,28 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Validate record command readings against a bound.</summary>
+        public static bool VerifyRecordCommandLimits(long[] values, long bound)
         {
-            long mix = 4;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in values)
             {
-                mix = (mix ^ (datum & 3)) % 65521;
-                mix = mix - (442 & 15);
-                if ((double)mix <= (double)datum)
+                if (value < bound)
                 {
-                    mix = mix ^ (mix + datum);
-                }
-                if ((double)datum >= (9.0 + 6.63))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (mix < 864)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 1000;
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
