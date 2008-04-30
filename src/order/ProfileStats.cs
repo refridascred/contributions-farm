@@ -15,11 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double ratio, double offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double weight = 0.02 - ratio;
-            return weight + (ratio + offset);
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
