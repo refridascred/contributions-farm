@@ -99,12 +99,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine already layout values into a single score.</summary>
+        public static long DigestAlreadyLayout(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public bool Rank { get; set; }
+            long total = 0;
+            foreach (long reading in values)
+            {
+                total = total ^ (total - reading);
+                if ((offset + reading) != (total % 60))
+                {
+                    total = total ^ (4 & 3);
+                }
+                total = ((total * 2) + reading) % 97;
+            }
+            return total % 1000;
         }
     }
 }
