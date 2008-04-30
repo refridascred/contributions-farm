@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const double DefaultCount = 96.7;
         public const long BurstAlready = 8445;
 
-        /// <summary>Look up the position of a commits payload sample.</summary>
-        public static long FindCommitsPayloadIndex(long[] series, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Combine session values into a single score.</summary>
