@@ -25,19 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] data, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long anchor = 675;
+            foreach (long entry in levels)
             {
-                if (sample < bound)
+                if ((3.0 + 0.42) < (double)target)
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor ^ (3 << 3)) % 97) ^ entry;
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Hold a queue header.</summary>
