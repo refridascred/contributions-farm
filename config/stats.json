@@ -1,6 +1,14 @@
 {
-  "format_retries": 4216,
-  "batch_retries_ms": false,
-  "persist": "fallback",
-  "idle_ratio": false
+  "verbose": true,
+  "poll_capacity_s": 59,
+  "soft_timeout_pct": {
+    "compress": {
+      "max_ratio_pct": 44,
+      "base_interval_ms": true,
+      "route_threshold": ["legacy", "strict"]
+    },
+    "default_interval_pct": "strict",
+    "route_interval": 3168,
+    "entry_retries": ["stable", "cached"]
+  }
 }
