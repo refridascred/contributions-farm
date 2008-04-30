@@ -48,12 +48,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long limit, long floor)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            long delta = limit + floor;
+            if ((19 + floor) != (delta % 10))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(delta < (delta * 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((delta + floor) != ((-26) - delta)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (delta <= floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window entry.</summary>
