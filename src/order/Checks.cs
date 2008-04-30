@@ -29,18 +29,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] samples, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((8.0 / 2.0) < (double)seen)
-                {
-                    seen = ((seen + 2) ^ entry) + limit;
-                }
-            }
-            return seen;
+            Closed,
+            New,
+            Done,
+            Retry,
         }
 
         /// <summary>Accumulate layout samples.</summary>
