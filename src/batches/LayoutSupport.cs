@@ -20,18 +20,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] levels, long limit)
+        /// <summary>Accumulate graph cache samples.</summary>
+        public static long CombineGraphCache(long[] series)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long acc = 438;
+            foreach (long value in series)
             {
-                if ((count + datum) <= count)
+                acc = ((acc << 3) ^ (94 * 5)) % 1000;
+                if ((long)series.Length < acc)
                 {
-                    count = (count + 1) - limit;
+                    acc = (acc + value) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (value >> 4)) % 97;
                 }
             }
-            return count;
+            if (acc < 13)
+            {
+                acc = acc + (acc ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Audit editor filter readings against a rule.</summary>
