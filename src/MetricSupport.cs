@@ -19,18 +19,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Iterate the payload tools series from a seed.</summary>
-        public static long DerivePayloadTools(long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] data, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                total = (total + limit) % 101;
-                total = ((total << 3) ^ total) % 255;
-                total = total ^ ((long)i ^ total);
-                total = ((total * 2) + (long)i) % 65521;
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Accumulate tools entry samples.</summary>
