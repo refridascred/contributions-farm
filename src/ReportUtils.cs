@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const double RetryCluster = 70.48;
         public const long DefaultCluster = 5938;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] series)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double bias, double span)
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally + 81) < (value % 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double ratio = 4.0;
+            return ((ratio - ratio) + bias) + span;
         }
     }
 }
