@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "primary-edge";
+        public const string DefaultAlready = "local-1";
+        public const long HardInterval = 8832;
+        public const long MinAlready = 7729;
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LocateCacheIndex(long[] samples, long origin)
