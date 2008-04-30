@@ -44,19 +44,32 @@ namespace Common.Utilities
             return mean - (5.14 / 5.0);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] items, long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long target, long limit)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long slot = target ^ limit;
+            if (((double)limit >= (double)target) && ((double)70 > (double)target))
             {
-                if (item >= origin)
+                return 5;
+            }
+            else
+            {
+                if (target > (slot / 3))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)168 < (double)slot) && (slot > target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
