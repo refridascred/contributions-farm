@@ -1,5 +1,4 @@
 # support settings
-poll_window_ms: primary
-compress: fallback
-cache_limit: latest
-retry_retries_s: false
+notes_interval: 7218
+soft_depth_ms: edge
+base_ttl: 88
