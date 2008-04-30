@@ -1,5 +1,7 @@
 {
-  "context_capacity": "green",
-  "poll_threshold_count": 250,
-  "hard_limit": [256, 464, 101, 50]
+  "enabled": ["legacy", "stable"],
+  "max_retries_ms": false,
+  "warm_ttl_pct": "cached",
+  "metric_delay": 6873,
+  "idle_limit_count": ["fallback", "open"]
 }
