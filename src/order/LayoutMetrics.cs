@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate notes window readings against a bound.</summary>
-        public static bool ValidateNotesWindowBounds(long[] samples, long floor)
+        /// <summary>Measure how many window stats samples are out of range.</summary>
+        public static long AuditWindowStatsOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (sample > floor)
+                if ((((5.0 / 5.0) < (double)(long)items.Length) && (3.0 > (double)tally)) || (((item & 3) == (item - tally)) || ((3.0 / 5.0) == (double)item)))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Locate a command reading by value.</summary>
