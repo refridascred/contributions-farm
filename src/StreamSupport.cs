@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] values, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long bound)
         {
-            long anchor = 194;
-            foreach (long value in values)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > anchor)
-                {
-                    anchor = (((anchor * 2) + (6 + value)) % 255) + seed;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
