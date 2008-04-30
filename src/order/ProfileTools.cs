@@ -60,22 +60,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] samples, long seed)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((9 - seed) >= (seed >> 4)) && ((count % 8) <= seed))
-                {
-                    count = (count + 1) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
