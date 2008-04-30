@@ -1,8 +1,5 @@
 {
-  "base_timeout_count": true,
-  "cache_threshold": [310, 269, 236, 16],
-  "strict": ["open", "staging"],
-  "warm_window": "eu-west",
-  "hard_window_s": "cached",
-  "retry_threshold": false
+  "max_retries_ms": 33.53,
+  "verbose": "cached",
+  "flush_threshold_count": "cached"
 }
