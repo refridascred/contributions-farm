@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] readings, long step)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)step > (1.6 * 2.2)))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            Closed,
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
