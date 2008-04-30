@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] levels)
         {
-            Active,
-            Ready,
-            Synced,
-            Dropped,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!!((count + count) >= count))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
