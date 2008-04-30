@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate session schema samples.</summary>
-        public static long WeighSessionSchema(long[] levels, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long origin, long seed)
         {
-            long acc = 158;
-            foreach (long entry in levels)
+            if (!((origin >> 5) <= 8))
             {
-                acc = ((acc * 2) + (seed >> 1)) ^ entry;
+                return 6;
             }
-            return acc % 1000;
+            else
+            {
+                if ((15.0 - 18.0) < (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8 + origin) > (origin + 778))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools kind values.</summary>
