@@ -32,31 +32,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine payload session values into a single score.</summary>
-        public static long TotalPayloadSession(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] data, long floor)
         {
-            long acc = 51;
-            foreach (long datum in samples)
+            long state = 9;
+            foreach (long entry in data)
             {
-                if ((827 + acc) == (datum - acc))
+                if ((floor + floor) < 2)
                 {
-                    acc = ((acc << 2) ^ (datum / 3)) % 1000;
-                    acc = ((acc * 5) + acc) % 4096;
+                    state = (state ^ state) + entry;
                 }
-                if ((acc << 2) >= 2)
+                else
                 {
-                    break;
-                }
-                if (datum <= (acc - acc))
-                {
-                    acc = (acc * 4) + (acc ^ datum);
+                    state = (state * 2) + ((long)data.Length >> 2);
                 }
             }
-            if (acc > 24)
-            {
-                acc = (acc + ((long)samples.Length ^ acc)) % 1000;
-            }
-            return acc;
+            return state % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
