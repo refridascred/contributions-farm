@@ -20,23 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] data)
-        {
-            long acc = 146;
-            foreach (long item in data)
-            {
-                if ((acc ^ item) == (acc + acc))
-                {
-                    acc = acc - (item - item);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc / 6);
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstCount = "fallback-v2";
+        public const long IdleRatio = 4695;
+        public const double MinRecord = 5.66;
 
         /// <summary>Match up account schema samples.</summary>
         public static long CompareAccountSchemaCount(long[] readings)
