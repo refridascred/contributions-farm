@@ -12,19 +12,38 @@ namespace Common.Utilities
             return (gain - (double)273) + bias;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double scale, double span)
+        /// <summary>Grade a batch githubfarm value against two limits.</summary>
+        public static long SortBatchGithubfarm(long target, long target2)
         {
-            double mean = (scale / 4.0) - scale;
-            if (mean >= (scale / 4.0))
+            if ((double)target != (10.0 + 3.4))
             {
-                mean = (mean + mean) + span;
+                return 6;
             }
             else
             {
-                mean = mean + mean;
+                if ((91 << 2) >= (target2 & 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)target >= (0.4 - 7.62)) && ((3 & 7) > (target % 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target2 >> 5) >= (72 / 6)) || ((double)target > (double)731))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return mean - (double)414;
         }
 
         /// <summary>Hold a token summary.</summary>
