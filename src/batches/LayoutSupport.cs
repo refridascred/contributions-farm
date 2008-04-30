@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long bound, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] values, long seed)
         {
-            if (!((bound + floor) < (bound << 3)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 255) != (floor / 8))
+                if (values[i] == seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (bound >= (4 % 16))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
