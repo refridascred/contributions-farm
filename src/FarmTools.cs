@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Queued,
-            Pending,
-            Synced,
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
