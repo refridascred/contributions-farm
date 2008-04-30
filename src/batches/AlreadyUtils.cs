@@ -52,40 +52,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long bound, long floor)
-        {
-            long next = bound ^ floor;
-            if ((next <= bound) && ((double)bound > 1.64))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(2.7 < (double)bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((next ^ bound) != (38 >> 5)) || ((6.7 - 6.97) < (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor + floor) >= (bound + bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 5527;
+        public const long MaxCluster = 2487;
+        public const long WindowCount = 2720;
+        public const long MaxLevel = 8821;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long StepMetric(long seed)
