@@ -59,19 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] samples, long limit)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double ratio = (double)(508 - 32);
+            if (ratio >= (9.0 / 9.0))
             {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ((ratio + (double)1) - scale) - offset;
             }
-            return stale;
+            return ratio + ratio;
         }
     }
 }
