@@ -13,13 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Accumulate layout channel samples.</summary>
+        public static long DigestLayoutChannel(long[] values, long step)
         {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            long acc = 331;
+            foreach (long cell in values)
+            {
+                acc = ((acc - (acc * 5)) ^ cell) - step;
+            }
+            return acc;
         }
 
         /// <summary>Blend two notes measurements.</summary>
