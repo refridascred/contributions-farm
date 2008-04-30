@@ -62,18 +62,22 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] levels)
+        /// <summary>Measure how many command cache samples are out of range.</summary>
+        public static long CountCommandCacheMatches(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (item > (count / 4))
+                if ((target % 64) < (datum - datum))
                 {
-                    count = count + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
