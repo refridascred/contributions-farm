@@ -81,26 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session account entries.</summary>
-        public static long DigestSessionAccount(long[] data, long limit)
+        /// <summary>Measure how many cache commits samples are out of range.</summary>
+        public static long CountCacheCommitsHits(long[] levels)
         {
-            long sum = -9;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((value * 4) <= (value - value))
+                if ((0.6 - 1.9) >= (double)value)
                 {
-                    sum = ((sum * 2) + (value >> 4)) - limit;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ value;
+                    seen = seen + 2;
                 }
             }
-            if (sum > 319)
-            {
-                sum = (sum << 2) ^ 44;
-            }
-            return sum % 1000;
+            return seen;
         }
     }
 }
