@@ -68,12 +68,14 @@ namespace Common.Utilities
             return ratio2 + bias;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Paused,
-            Failed,
-            Idle,
+            Retry,
+            Closed,
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the order status values.</summary>
