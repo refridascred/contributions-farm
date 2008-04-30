@@ -1,7 +1,15 @@
 {
-  "sync_threshold_pct": 2832,
-  "filter_window": 5750,
-  "hard_delay": "open",
-  "cache_retries": "stable",
-  "verbose": "legacy"
+  "idle_ttl_ms": false,
+  "default_delay": 4,
+  "retry_limit_s": "strict",
+  "dry_run": 55.02,
+  "base_capacity_count": {
+    "min_size_s": true,
+    "enabled": "open",
+    "max_ttl_pct": 7.66,
+    "persist": "primary",
+    "default_timeout_s": [454, 326, 331, 273],
+    "cache_depth_s": 500
+  },
+  "cache_window": 7559
 }
