@@ -1,5 +1,8 @@
 {
-  "audit": "open",
-  "payload_interval": false,
-  "account_limit": 100
+  "order_size": 500,
+  "idle_ratio": "legacy",
+  "cache_delay_s": 29.36,
+  "burst_size_ms": true,
+  "already_limit": 100,
+  "session_depth": "legacy"
 }
