@@ -48,11 +48,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstSize = 3751;
-        public const long SoftBatch = 6343;
-        public const string HardLevel = "staging-edge";
-        public const long SoftSpan = 5915;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] values, long limit)
+        {
+            long state = 6;
+            foreach (long reading in values)
+            {
+                if (state > (reading >> 3))
+                {
+                    state = state ^ (limit + limit);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TallyContributi(long[] series, long bound)
