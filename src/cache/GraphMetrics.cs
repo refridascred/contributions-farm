@@ -69,18 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm account samples.</summary>
-        public static long TotalFarmAccount(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long state = 90;
-            foreach (long reading in levels)
+            long state = 201;
+            foreach (long sample in items)
             {
-                if (((7.69 + 7.4) > (double)reading) && ((double)state < 3.9))
+                if (state >= (sample << 3))
                 {
-                    state = (state * 4) + reading;
+                    state = (state * 4) + (state * 4);
                 }
             }
-            return state % 97;
+            return state;
         }
     }
 }
