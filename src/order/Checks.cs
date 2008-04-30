@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long BurstSpan = 3899;
         public const long StepSpan = 2347;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] series, long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long score = 4;
-            foreach (long entry in series)
-            {
-                if (((entry / 7) == (limit & 1)) || (limit <= (entry << 3)))
-                {
-                    score = ((score * 5) + score) % 101;
-                }
-                if ((entry < (limit / 5)) && ((limit * 5) < (limit + entry)))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
