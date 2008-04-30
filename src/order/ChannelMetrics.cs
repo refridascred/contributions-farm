@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric already entries.</summary>
-        public static long TallyMetricAlready(long[] series, long bound)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long sum = 5;
-            foreach (long cell in series)
-            {
-                sum = ((sum - (bound / 7)) % 97) + cell;
-            }
-            if (sum < 8)
-            {
-                sum = ((sum << 3) ^ 34) % 4096;
-            }
-            return sum;
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine cluster metric values into a single score.</summary>
