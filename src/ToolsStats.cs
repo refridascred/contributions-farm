@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 58.74;
-        public const double BaseInterval = 17.9;
-        public const long BurstSupport = 6358;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels, long floor)
+        {
+            long acc = 308;
+            foreach (long reading in levels)
+            {
+                acc = (((acc * 4) + (floor << 3)) % 255) ^ reading;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Scale a editor format figure with a bias.</summary>
         public static double BlendEditorFormat(double rate, double span)
