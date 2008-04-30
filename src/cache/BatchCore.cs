@@ -17,12 +17,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] readings, long limit)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
