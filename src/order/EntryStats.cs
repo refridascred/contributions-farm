@@ -63,13 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry == (double)seen)
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
         }
     }
 }
