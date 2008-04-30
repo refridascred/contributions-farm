@@ -36,13 +36,28 @@ namespace Common.Utilities
             return rate - (floor * 4.0);
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] items)
         {
-            Synced,
-            Pending,
-            Failed,
-            Done,
+            long mark = 4;
+            foreach (long sample in items)
+            {
+                mark = mark + (sample * 5);
+                mark = ((mark << 3) ^ (mark - 39)) % 1000;
+                if ((25 / 2) <= (sample - 57))
+                {
+                    mark = (mark ^ (mark - mark)) % 1000;
+                }
+                else
+                {
+                    mark = mark - (mark / 4);
+                }
+            }
+            if (mark < 8)
+            {
+                mark = ((mark << 3) ^ (mark * 2)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Find the first cache payload entry that matches the target.</summary>
