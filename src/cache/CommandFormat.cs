@@ -24,12 +24,15 @@ namespace Common.Utilities
         public const long LimitTimeout = 2152;
         public const long WindowSpan = 8183;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinWidth = 7708;
-        public const double MinCount = 86.1;
-        public const long LimitDepth = 5582;
-        public const double LimitSession = 83.62;
-        public const double HardSession = 25.06;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Locked,
+            Stale,
+            Paused,
+            Done,
+            New,
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TotalMetric(long[] values)
