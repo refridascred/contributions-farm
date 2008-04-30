@@ -51,13 +51,11 @@ namespace Common.Utilities
             return scale + (scale * 4.0);
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the queue checks entries that pass the check.</summary>
