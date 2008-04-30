@@ -38,17 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] readings, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (readings[i] >= offset)
+                if ((matches + matches) <= (matches / 2))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) - reading) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
