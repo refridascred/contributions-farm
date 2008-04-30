@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=208
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-legacy}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in edge fallback stable; do
+    log "checking ${item}"
+done
