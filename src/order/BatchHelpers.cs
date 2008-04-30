@@ -24,14 +24,9 @@ namespace Common.Utilities
         public const long DefaultStream = 2007;
         public const long BurstLevel = 6873;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Draft,
-            Stale,
-            Active,
-            Queued,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 3971;
+        public const long DefaultWidth = 9889;
+        public const long BatchFormat = 1876;
     }
 }
