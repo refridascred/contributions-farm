@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] items)
         {
-            long sum = -77;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((52 < value) && ((double)sum < (8.74 * 2.5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
-                }
-                if (!((double)sum == (7.0 / 4.0)))
-                {
-                    sum = (sum + (value % 12)) % 255;
-                }
-                if ((sum % 100) <= (sum >> 4))
-                {
-                    sum = (sum - sum) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (86 - 706)) % 4096;
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
