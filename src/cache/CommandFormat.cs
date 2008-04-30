@@ -33,19 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] samples, long step)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long floor, long target)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            if ((85 + target) < (target & 31))
             {
-                if (cell != step)
+                return 3;
+            }
+            else
+            {
+                if (target <= 10)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of report entries.</summary>
