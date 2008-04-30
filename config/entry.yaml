@@ -1,8 +1,22 @@
 # entry settings
-farm_size:
-  - blue
-  - open
-  - staging
-base_threshold: stable
-max_ttl_count: edge
-persist: 95.52
+contributi_ratio:
+  max_ratio:
+    - stable
+    - primary
+  stats_depth: 44
+  filter_limit:
+    min_limit_s: cached
+    filter_ttl: 99
+    cache_limit_ms: 28.88
+  max_window_ms: staging
+  report_capacity:
+    hard_limit_pct: legacy
+    hard_retries_ms: true
+    support_capacity: staging
+poll_window_count: primary
+flush_interval: false
+verbose: green
+soft_depth_pct: 1636
+flush_interval_count:
+  - 134
+  - 392
