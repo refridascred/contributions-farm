@@ -1,7 +1,8 @@
 {
-  "context_depth": "strict",
-  "cache_ratio": "primary",
-  "compress": "local",
-  "cache_ttl": "standard",
-  "verbose": true
+  "soft_ttl_count": "strict",
+  "tools_interval": ["edge", "stable"],
+  "cache_capacity_ms": false,
+  "base_retries": "legacy",
+  "farm_retries": 61.34,
+  "token_size": 30
 }
