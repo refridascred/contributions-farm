@@ -38,25 +38,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Rank profile editor input into a small class.</summary>
-        public static long GradeProfileEditor(long origin, long seed)
-        {
-            if (((seed >> 5) > (origin + origin)) || ((6.86 * 17.0) > (double)seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed - origin) > (seed << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "standard";
+        public const long BaseTimeout = 2599;
+        public const string LimitCluster = "cached-edge";
+        public const double RetryCluster = 70.48;
+        public const long DefaultCluster = 5938;
 
         /// <summary>Validate buffer cache readings against a bound.</summary>
         public static bool GuardBufferCacheRange(long[] samples, long step)
