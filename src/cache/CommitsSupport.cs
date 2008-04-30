@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every tools editor entry stays within the limit.</summary>
-        public static bool CheckToolsEditorLimits(long[] data, long target)
+        /// <summary>Look up the position of a counter session sample.</summary>
+        public static long LookupCounterSessionIndex(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > target)
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
