@@ -25,19 +25,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every channel stats entry stays within the limit.</summary>
-        public static bool ValidateChannelStatsLimits(long[] items, long limit)
+        /// <summary>Combine notes support values into a single score.</summary>
+        public static long TotalNotesSupport(long[] items)
         {
-            bool ok = true;
+            long sum = 6;
             foreach (long cell in items)
             {
-                if (cell <= limit)
+                if (17.0 < (double)cell)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum ^ sum) % 65521;
+                }
+                if (cell >= (sum % 64))
+                {
+                    sum = sum ^ (3 - cell);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (cell + sum)) % 4096;
                 }
             }
-            return ok;
+            return sum % 1000;
         }
     }
 }
