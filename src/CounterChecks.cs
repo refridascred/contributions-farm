@@ -58,17 +58,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 4531;
         public const long MaxInterval = 6172;
 
-        /// <summary>Locate a record cluster reading by value.</summary>
-        public static long FindRecordClusterIndex(long[] readings, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
+                if ((count & 15) != (count / 3))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up farm samples.</summary>
