@@ -19,19 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double gain, double floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long target, long offset)
         {
-            double bias = floor;
-            if (bias <= (bias + gain))
+            if ((target - target) == (717 & 127))
             {
-                bias = bias + (floor * 3.0);
+                return 2;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias = (bias - floor) + (double)(long)i;
+                if ((double)target > 1.7)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((target - offset) <= (offset + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset == (2.67 + 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return bias + (double)736;
         }
 
         /// <summary>Define record limits and defaults.</summary>
