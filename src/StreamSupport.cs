@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheLevel = 9079;
-        public const long DefaultNotes = 6834;
-        public const string HardNotes = "latest";
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Done,
+            Draft,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] items, long seed)
