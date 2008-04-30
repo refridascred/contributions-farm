@@ -5,28 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] series, long origin)
         {
-            long acc = 251;
-            foreach (long entry in data)
+            long mix = 805;
+            foreach (long entry in series)
             {
-                long tally = 73 + (acc * 4);
-                acc = ((acc << 2) ^ (acc - tally)) % 101;
-                if ((8.0 / 2.0) > (double)(long)data.Length)
+                for (int i = 0; i < 10; i++)
                 {
-                    acc = acc ^ entry;
+                    mix = ((((mix << 2) ^ (mix * 3)) % 101) + (long)i) - entry;
+                    mix = (mix << 2) ^ (3 ^ mix);
                 }
-                if (((acc - acc) < entry) || (entry > (acc + acc)))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (mix - origin)) % 65521;
             }
-            if (acc > 79)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return mix % 1000;
         }
 
         /// <summary>Match up graph samples.</summary>
