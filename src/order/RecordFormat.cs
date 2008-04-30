@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Scale a entry batch figure with a bias.</summary>
+        public static double SmoothEntryBatch(double weight, double floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = mark - (350 + 0);
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            double rate = weight;
+            return (rate + (double)612) + floor;
         }
 
         /// <summary>Accumulate layout channel samples.</summary>
