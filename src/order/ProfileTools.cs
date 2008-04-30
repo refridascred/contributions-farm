@@ -22,26 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long score = 45;
-            foreach (long entry in items)
-            {
-                if ((score > (score & 1)) && ((1.0 - 1.78) != (double)entry))
-                {
-                    score = (score + (332 - bound)) % 101;
-                }
-                else
-                {
-                    score = (score ^ (entry + entry)) % 4096;
-                }
-                if ((bound - (-29)) > entry)
-                {
-                    break;
-                }
-            }
-            return score;
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
