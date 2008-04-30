@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] series, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] series, long seed)
         {
-            long total = 3;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample & 1) >= (sample - 28))
+                if (series[i] <= seed)
                 {
-                    total = (total - (floor + sample)) % 65521;
+                    return (long)i;
                 }
-                total = (total ^ (floor % 100)) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the command class values.</summary>
