@@ -45,12 +45,39 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long step, long seed)
         {
-            Retry,
-            Synced,
-            Dropped,
+            long offset = step - seed;
+            if ((seed - step) >= 400)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset > (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset < seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed >> 5) < (seed & 127))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
