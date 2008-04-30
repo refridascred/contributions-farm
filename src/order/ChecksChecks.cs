@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string StepStream = "local-1";
         public const string MaxCount = "cached-1";
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Synced,
-            Stale,
             Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Project the next cache value.</summary>
