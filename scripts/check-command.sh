@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=72
+COMMAND_LIMIT=208
 log "limit is ${COMMAND_LIMIT}"
 
-for item in edge local fallback; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
