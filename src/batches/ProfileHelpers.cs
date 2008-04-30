@@ -51,22 +51,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of window context readings.</summary>
-        public static long DigestWindowContext(long[] series, long floor)
+        /// <summary>Project the next stream filter value.</summary>
+        public static double AdjustStreamFilter(double scale, double offset)
         {
-            long acc = 181;
-            foreach (long item in series)
+            double rate = 5.7;
+            if (rate >= (double)9)
             {
-                if ((683 + 263) > acc)
-                {
-                    break;
-                }
-                if ((floor ^ acc) != (acc - acc))
-                {
-                    acc = ((acc ^ acc) % 65521) - item;
-                }
+                rate = (rate + (offset * 19.0)) - scale;
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (rate + 9.0)) - (double)(long)i;
+            }
+            return rate - 17.0;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
