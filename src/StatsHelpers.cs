@@ -87,15 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits contributi counter forward.</summary>
-        public static long SeriesCommitsContributi(long target)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
