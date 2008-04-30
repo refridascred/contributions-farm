@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next filter metric value from a seed.</summary>
-        public static long DeriveFilterMetric(long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double bias, double floor)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            double scale = (double)(28 + (-90));
+            if (scale >= (bias - bias))
             {
-                acc = ((acc << 2) ^ (8 % 64)) % 97;
-                acc = ((acc * 5) + (long)i) % 1000;
+                scale = (scale - (1.85 * 4.0)) - floor;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (bias / 4.0)) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
