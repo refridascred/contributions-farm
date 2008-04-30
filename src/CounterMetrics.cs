@@ -28,17 +28,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] readings, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = (double)(940 - 931);
+            if (scale2 < floor)
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 + (scale * 2.0);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - scale) + (double)(long)i;
+            }
+            return scale2 + (scale * 18.0);
         }
 
         /// <summary>Hold a tools info.</summary>
