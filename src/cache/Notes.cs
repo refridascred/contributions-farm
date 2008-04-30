@@ -46,18 +46,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] levels, long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long acc = 7;
-            foreach (long cell in levels)
-            {
-                if (cell >= (step ^ 523))
-                {
-                    acc = ((acc * 2) + cell) % 65521;
-                }
-            }
-            return acc % 65521;
+            Done,
+            Pending,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Fold a list of format readings.</summary>
