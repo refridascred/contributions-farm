@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 7967;
+        public const long WindowSpan = 5740;
+        public const double BaseTools = 67.91;
+        public const long StepRatio = 6876;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BatchMetrics = 9.01;
