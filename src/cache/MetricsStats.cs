@@ -83,23 +83,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double scale, double span)
+        /// <summary>Grade a notes schema value against two limits.</summary>
+        public static long SortNotesSchema(long step, long step2)
         {
-            double weight = scale + span;
-            if (weight < weight)
+            if ((step2 >> 2) > (step2 & 3))
             {
-                weight = weight + (double)1;
+                return 1;
             }
             else
             {
-                weight = weight - (span / 6.0);
+                if (!((1 & 3) == (step2 + step2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight + 0.19;
         }
     }
 }
