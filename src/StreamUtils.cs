@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const string MinSize = "local-1";
         public const string IdleFilter = "local-edge";
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] data)
         {
-            long acc = 733;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((entry + acc) <= entry)
+                if (!((double)seen <= 9.87))
                 {
-                    acc = acc - (entry << 2);
+                    seen = (seen + 2) + cell;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
