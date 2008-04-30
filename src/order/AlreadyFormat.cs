@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ratio - (1.0 + bias);
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] samples, long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry - (446 ^ (long)i)) % 65521;
+                carry = (carry - (step + step)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Project the next route value.</summary>
