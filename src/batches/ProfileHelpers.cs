@@ -69,13 +69,34 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] data)
         {
-            Retry,
-            Dropped,
-            Ready,
-            Failed,
+            long mark = 9;
+            foreach (long datum in data)
+            {
+                if ((138 ^ datum) >= (6 & 3))
+                {
+                    mark = mark - (mark + mark);
+                }
+                else
+                {
+                    mark = (mark - (0 % 7)) % 255;
+                }
+                if (datum < 4)
+                {
+                    mark = (mark - (mark + mark)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (datum & 31)) % 65521;
+                }
+            }
+            if (mark < 62)
+            {
+                mark = (mark + mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
