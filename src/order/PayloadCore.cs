@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] values)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)tally < 3.71)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate stream batch samples.</summary>
