@@ -57,11 +57,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long target)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            long total = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((long)i + 340) == ((long)i - total))
+                {
+                    total = ((total << 3) ^ (total / 2)) % 97;
+                    total = total - (total / 2);
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
