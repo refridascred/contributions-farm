@@ -29,19 +29,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double weight, double span)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double mean = (span / 9.0) * 9.0;
-            if (mean <= (span * 2.5))
-            {
-                mean = (mean + (span + mean)) - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (mean * 4.0)) + (double)(long)i;
-            }
-            return mean + (span - 12.0);
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Fold a list of format readings.</summary>
