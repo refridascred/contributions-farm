@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] data)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long anchor = 194;
+            foreach (long value in values)
             {
-                if ((count << 3) >= (reading - count))
+                if (value > anchor)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (((anchor * 2) + (6 + value)) % 255) + seed;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Grade a cache session value against two limits.</summary>
