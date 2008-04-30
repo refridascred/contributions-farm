@@ -32,13 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Dropped,
-            Idle,
-            Synced,
-            Failed,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
