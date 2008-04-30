@@ -10,22 +10,32 @@ namespace Common.Utilities
         public const double LimitTools = 91.33;
         public const double BurstRatio = 88.22;
 
-        /// <summary>Combine stream filter values into a single score.</summary>
-        public static long CombineStreamFilter(long[] levels, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long origin, long origin2)
         {
-            long score = 829;
-            foreach (long sample in levels)
+            long lane = origin ^ origin2;
+            if ((lane + origin) > lane)
             {
-                if ((7.0 + 9.3) == (double)score)
+                return 5;
+            }
+            else
+            {
+                if ((lane - origin) == (93 + origin))
                 {
-                    score = (score + (target ^ score)) % 101;
+                    return 4;
                 }
-                if (sample >= (sample << 3))
+                else
                 {
-                    score = (score ^ sample) % 65521;
+                    if (((origin2 + origin2) > (origin2 ^ 10)) && ((6.6 * 8.7) <= (4.4 * 4.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Hold a already snapshot.</summary>
