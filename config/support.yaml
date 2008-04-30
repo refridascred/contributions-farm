@@ -1,7 +1,16 @@
 # support settings
-profile_size:
-  - local
-  - primary
-  - edge
-poll_limit: 47.61
-burst_threshold_s: fallback
+batch_size_count: cached
+max_retries_s: 1896
+min_interval_count: 34.9
+enabled: false
+queue_timeout: 89.02
+max_ratio_count:
+  flush_ttl_s: 100
+  warm_ttl_count: 89.06
+  account_delay: staging
+  enabled:
+    batch_size_s: 75
+    flush_retries_s: stable
+    hard_limit: fallback
+    idle_threshold_count: 15.82
+    base_threshold_ms: 17.77
