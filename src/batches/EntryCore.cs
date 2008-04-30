@@ -15,13 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate already checks readings against a bound.</summary>
+        public static bool GuardAlreadyChecksRange(long[] series, long offset)
         {
-            Locked,
-            Synced,
-            Ready,
-            Failed,
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
