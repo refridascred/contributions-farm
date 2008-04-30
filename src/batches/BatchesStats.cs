@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long target)
+        /// <summary>Count the payload stream entries that pass the check.</summary>
+        public static long AuditPayloadStreamGaps(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (value >= target)
+                if ((((-605) / 6) >= (hits * 3)) || (((long)items.Length ^ floor) > (hits - datum)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
