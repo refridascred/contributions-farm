@@ -1,4 +1,13 @@
 # entry settings
-sync_window: standard
-flush_threshold: false
-dry_run: open
+counter_retries: 5.03
+poll_threshold_s: false
+schema_ratio:
+  - strict
+  - staging
+  - fallback
+  - staging
+batches_threshold: true
+batches_ratio:
+  checks_timeout: 30
+  max_window_s: strict
+  buffer_timeout: 65
