@@ -1,7 +1,22 @@
 # entry settings
-dry_run: 58
-command_ratio: green
-batch_ttl: 64
-burst_interval_ms: false
-metric_timeout: latest
-cache_depth: 250
+warm_retries: false
+profile_ratio:
+  sync_ttl_s: strict
+  sync_capacity:
+    base_ttl: staging
+    strict: true
+    readonly: 500
+    warm_capacity_pct: true
+    contributi_ratio: latest
+    retry_limit_ms: standard
+  max_timeout:
+    - open
+    - standard
+  strict:
+    already_threshold: eu-west
+    metric_threshold: false
+    sync_window_ms: 100
+  farm_delay: latest
+  warm_limit_ms: 60
+sync_ttl_count: false
+flush_depth_s: eu-west
