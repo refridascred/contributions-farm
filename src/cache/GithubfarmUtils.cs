@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long limit, long offset)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            long lane = limit + offset;
+            if ((double)lane < (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset - limit) < (limit - 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset > (lane + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
