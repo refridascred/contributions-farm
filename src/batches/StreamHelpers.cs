@@ -66,10 +66,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchBudget = 9264;
-        public const double DefaultRatio = 54.25;
-        public const long RetryBatch = 3456;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((long)i < (acc % 10)) || ((target - acc) <= (target * 3)))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of command commits readings.</summary>
         public static long PairCommandCommitsCount(long[] readings)
