@@ -68,11 +68,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            Locked,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Compare every pair of command commits readings.</summary>
