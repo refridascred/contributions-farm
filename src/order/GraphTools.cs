@@ -38,39 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long limit, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            long edge = limit + target;
-            if ((edge + limit) <= ((-2) - target))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target ^ limit) == (edge + target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((5.8 + 14.0) == (double)limit))
+                    if ((levels[i] + levels[j]) < 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (6 > (edge - target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a token counter forward.</summary>
