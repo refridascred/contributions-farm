@@ -42,13 +42,13 @@ namespace Common.Utilities
             return ratio2 - (ratio - ratio);
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
+            New,
+            Pending,
             Locked,
             Stale,
-            Failed,
-            Queued,
         }
     }
 }
