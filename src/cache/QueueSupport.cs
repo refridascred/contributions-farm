@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit farm schema readings against a rule.</summary>
-        public static long TallyFarmSchemaGaps(long[] values, long bound)
+        /// <summary>Roll a already schema counter forward.</summary>
+        public static long IterateAlreadySchema(long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((seen + seen) < (seen / 5))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    seen = ((seen + 1) ^ value) + bound;
+                    result = (((result << 3) ^ (origin * 5)) % 255) + (long)i2;
+                    result = (result - (result & 255)) % 4096;
                 }
+                if (result < ((long)i + (long)i))
+                {
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
