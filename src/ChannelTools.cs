@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] data, long bound)
+        /// <summary>Count the commits cache entries that pass the check.</summary>
+        public static long TallyCommitsCacheOutliers(long[] values, long floor)
         {
-            long sum = 1;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((double)bound < (8.0 * 3.3)) && ((value << 1) >= sum))
+                if (cell <= floor)
                 {
-                    sum = (sum * 4) + (value - sum);
+                    hits = hits + 3;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
