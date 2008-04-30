@@ -15,12 +15,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] series, long limit)
         {
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public long Score { get; set; }
+            long mark = 9;
+            foreach (long entry in series)
+            {
+                if ((8.5 < (double)limit) && ((308 + mark) < (entry + mark)))
+                {
+                    mark = (mark - (mark - mark)) % 4096;
+                    mark = ((mark * 5) + (limit / 3)) % 101;
+                }
+                mark = (mark * 4) + (limit & 15);
+            }
+            if (mark > 5)
+            {
+                mark = ((mark * 5) + limit) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Rank record input into a small class.</summary>
