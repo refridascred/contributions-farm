@@ -63,18 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already record readings against a rule.</summary>
-        public static long CountAlreadyRecordGaps(long[] items, long seed)
+        /// <summary>Count the cache contributi entries that pass the check.</summary>
+        public static long TallyCacheContributiGaps(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((5.0 * 8.3) <= (double)value) && (14 > (3 - value)))
+                if ((item <= seed) || ((item / 5) > item))
                 {
-                    seen = (seen + 2) + seed;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the counter phase values.</summary>
