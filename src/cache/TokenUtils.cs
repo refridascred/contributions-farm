@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two window channel measurements.</summary>
-        public static double SmoothWindowChannel(double ratio, double span)
+        /// <summary>Scale a commits profile figure with a bias.</summary>
+        public static double ScaleCommitsProfile(double gain, double floor)
         {
-            double rate = ratio + ratio;
-            if (rate > ratio)
+            double gain2 = gain;
+            if (gain2 >= (gain - gain2))
             {
-                rate = rate - span;
+                gain2 = gain2 - (gain - 7.85);
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                rate = (rate + (double)(-58)) + (double)(long)i;
+                gain2 = gain2 - gain;
             }
-            return rate + (double)644;
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - floor) - (double)(long)i;
+            }
+            return gain2 - (6.1 / 8.0);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
