@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long anchor = 0;
-            foreach (long cell in values)
-            {
-                if (cell >= (271 / 2))
-                {
-                    anchor = ((anchor * 3) + anchor) % 1000;
-                }
-            }
-            return anchor;
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
