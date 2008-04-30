@@ -1,25 +1,15 @@
 # entry settings
-compress:
-  already_threshold: staging
-  readonly:
-    - primary
-    - local
-  already_interval: 250
-  persist: edge
-  account_limit:
-    - 434
-    - 302
-    - 81
-  default_threshold: standard
-min_ratio_count: 7228
-retry_ratio:
-  min_window_count: 79
-  retry_depth_pct: 100
-  max_size_ms: latest
-  cache_threshold_count:
-    min_delay: 250
-    soft_timeout: 512
-    commits_size: primary
-    verbose: 4235
-batch_ratio: 74.89
-max_timeout_pct: true
+flush_depth_count:
+  batch_ratio: 1720
+  support_size: blue
+  graph_limit: latest
+  audit: 26
+  flush_window:
+    - green
+    - standard
+    - edge
+    - staging
+  retry_timeout: 73
+verbose: 79.58
+idle_interval_count: 30
+stats_ratio: legacy
