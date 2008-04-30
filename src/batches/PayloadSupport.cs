@@ -38,13 +38,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowRatio = 858;
+        public const string BaseCommand = "local";
+        public const string StepSize = "cached-v2";
     }
 }
