@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many entry tools samples are out of range.</summary>
-        public static long CountEntryToolsOutliers(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((long)samples.Length >= tally) || (tally > datum))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 13.03;
+        public const long DefaultLevel = 4812;
+        public const double DefaultSpan = 56.34;
+        public const long BurstLevel = 7056;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MinWindow = 2062;
