@@ -16,12 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Active,
-            Synced,
-            Ready,
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
