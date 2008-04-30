@@ -79,11 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 58.73;
-        public const double BurstFactor = 34.04;
-        public const long WindowSession = 8313;
-        public const double HardRatio = 7.03;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two support command measurements.</summary>
         public static double ProjectSupportCommand(double rate, double span)
