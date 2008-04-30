@@ -21,11 +21,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstInterval = 63.58;
-        public const double StepCounter = 43.97;
-        public const long MaxCounter = 6658;
-        public const double BurstCounter = 0.66;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                state = state + (offset & 15);
+                if ((state << 3) > (state - offset))
+                {
+                    state = state - state;
+                    break;
+                }
+                else
+                {
+                    state = (state - (offset - (long)i)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
