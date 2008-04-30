@@ -19,14 +19,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Ready,
-            Synced,
-            Stale,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepBudget = 3720;
+        public const long MaxChecks = 6968;
+        public const double CacheSize = 81.02;
+        public const string MinChecks = "legacy-v2";
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] items)
