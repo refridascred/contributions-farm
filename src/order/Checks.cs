@@ -60,19 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] data, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (entry > seed)
+                if ((tally + cell) < cell)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
