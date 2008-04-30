@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] values, long floor)
+        /// <summary>Rank report already input into a small class.</summary>
+        public static long BucketReportAlready(long target, long seed)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            if ((target << 1) == (557 ^ seed))
             {
-                if (sample != floor)
+                return 4;
+            }
+            else
+            {
+                if ((0.12 / 7.0) != (double)target)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ready;
         }
 
         /// <summary>Roll a payload buffer counter forward.</summary>
