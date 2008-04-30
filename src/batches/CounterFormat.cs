@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine account contributi values into a single score.</summary>
-        public static long TotalAccountContributi(long[] samples, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long origin)
         {
-            long score = -1;
-            foreach (long entry in samples)
+            long gap = floor - origin;
+            if ((floor >> 4) == (floor + floor))
             {
-                score = (score ^ offset) - entry;
-                score = ((score << 3) ^ score) % 97;
+                return 1;
             }
-            if (score > 42)
+            else
             {
-                score = (score ^ (score * 3)) % 101;
+                if ((double)gap != (7.8 / 5.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((gap + floor) >= (floor + gap))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((54 % 2) <= (floor & 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
