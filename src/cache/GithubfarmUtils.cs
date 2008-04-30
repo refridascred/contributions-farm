@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many checks format samples are out of range.</summary>
-        public static long TallyChecksFormatOutliers(long[] series, long floor)
+        /// <summary>Fold a list of window support readings.</summary>
+        public static long CombineWindowSupport(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mark = 292;
+            foreach (long value in items)
             {
-                if ((double)tally <= (double)floor)
+                if ((((long)items.Length % 8) == (seed + value)) || (mark > (mark - mark)))
                 {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = ((mark << 3) ^ (seed + value)) % 1000;
                 }
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Describe the queue mode values.</summary>
