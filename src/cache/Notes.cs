@@ -37,13 +37,18 @@ namespace Common.Utilities
         public const string SoftBudget = "local-edge";
         public const double IdleContributi = 76.98;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] levels, long step)
         {
-            Dropped,
-            Ready,
-            Failed,
-            Draft,
+            long acc = 7;
+            foreach (long cell in levels)
+            {
+                if (cell >= (step ^ 523))
+                {
+                    acc = ((acc * 2) + cell) % 65521;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate support samples.</summary>
