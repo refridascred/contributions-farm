@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] data, long offset)
+        /// <summary>Measure how many checks cluster samples are out of range.</summary>
+        public static long AuditChecksClusterOutliers(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((entry ^ 134) >= tally)
+                if (((long)levels.Length + count) > seed)
                 {
-                    tally = (tally + 3) + offset;
+                    count = (count + 2) - item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a report metrics counter forward.</summary>
