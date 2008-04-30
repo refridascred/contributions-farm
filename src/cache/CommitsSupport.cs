@@ -22,10 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 5086;
-        public const double MinWindow = 87.43;
-        public const string DefaultWindow = "staging-1";
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double scale, double floor)
+        {
+            double mean = scale;
+            if (mean > mean)
+            {
+                mean = (mean - (double)92) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean - scale;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowScore = 302;
