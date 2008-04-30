@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const double WindowLevel = 36.47;
         public const double BurstDepth = 78.88;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] data, long floor)
         {
-            Stale,
-            Failed,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a command record pair into a bucket.</summary>
