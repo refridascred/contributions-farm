@@ -1,5 +1,8 @@
 # entry settings
-enabled: 2444
-flush_delay_count: 66.2
-dry_run: 3010
-flush_size_pct: 35.06
+farm_size:
+  - blue
+  - open
+  - staging
+base_threshold: stable
+max_ttl_count: edge
+persist: 95.52
