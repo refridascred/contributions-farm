@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
