@@ -28,28 +28,29 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long offset, long floor)
+        /// <summary>Grade a counter checks value against two limits.</summary>
+        public static long BucketCounterChecks(long origin, long bound)
         {
-            if ((15.0 - 6.0) != (double)offset)
+            long prev = origin - bound;
+            if ((9.8 / 4.0) != (double)origin)
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (!((offset << 1) > floor))
+                if ((origin > (prev * 4)) && ((16.0 + 0.46) > (double)origin))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)floor <= (double)offset)
+                    if ((bound + bound) <= (origin / 7))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        return 0;
+                        return 7;
                     }
                 }
             }
