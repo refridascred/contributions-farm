@@ -23,21 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Audit counter metrics readings against a rule.</summary>
+        public static long TallyCounterMetricsMatches(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((long)data.Length == (hits - hits)))
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 1) ^ cell) + offset;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
