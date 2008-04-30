@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] items, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long target, long target2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = target - target2;
+            if (37 > (675 - target))
             {
-                if ((items[i] >= offset) && ((items[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if (gap >= (target2 + 983))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
