@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxFactor = 9472;
-        public const long MaxToken = 1295;
-        public const long CacheToken = 9228;
-        public const double BaseDepth = 83.72;
-        public const long DefaultSize = 4988;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] samples, long bound)
+        {
+            long state = 74;
+            foreach (long value in samples)
+            {
+                state = (state - bound) ^ value;
+            }
+            if (state > 847)
+            {
+                state = state + (bound + state);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] samples)
