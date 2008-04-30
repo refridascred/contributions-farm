@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long step, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] items, long seed)
         {
-            long slot = step + floor;
-            if ((slot + slot) < floor)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((791 << 1) >= (slot % 10))
+                if (cell > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor < (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step ^ step) <= 159) && ((72 >> 1) >= (step * 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
