@@ -70,15 +70,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double scale, double offset)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            double ratio = (double)(508 - 32);
-            if (ratio >= (9.0 / 9.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ((ratio + (double)1) - scale) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + ratio;
+            return matches;
         }
     }
 }
