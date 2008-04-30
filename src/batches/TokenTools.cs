@@ -26,15 +26,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a route profile counter forward.</summary>
-        public static long RollRouteProfile(long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
