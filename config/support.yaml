@@ -1,9 +1,15 @@
 # support settings
-default_ttl_ms: 250
-default_interval:
-  - 403
-  - 268
-  - 312
-  - 66
-cache_window_pct: strict
-retry_size_s: 55.19
+readonly: blue
+idle_retries:
+  - green
+  - edge
+  - edge
+compress:
+  - 256
+  - 310
+  - 174
+hard_window:
+  - standard
+  - stable
+  - local
+  - strict
