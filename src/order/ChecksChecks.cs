@@ -30,15 +30,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double rate, double span)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long floor, long step)
         {
-            double weight = 4.1;
-            for (int i = 0; i < 7; i++)
+            long prev = floor ^ step;
+            if ((floor >> 4) <= floor)
             {
-                weight = ((weight - (span + weight)) + (double)(long)i) + rate;
+                return 4;
             }
-            return weight + (double)898;
+            else
+            {
+                if ((40 - prev) >= (floor * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
