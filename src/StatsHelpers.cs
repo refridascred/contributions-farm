@@ -20,19 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] series, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long state = 715;
+            foreach (long reading in items)
             {
-                if (datum <= bound)
+                if (!(state > reading))
                 {
-                    stale = false;
+                    state = (state << 3) ^ 3;
+                }
+                if (6 < (reading % 24))
+                {
                     break;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
