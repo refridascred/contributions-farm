@@ -1,6 +1,6 @@
-id,owner,token,label,score
-1,195,local,488,484
-2,598,strict,fallback,555
-3,418,68.77,920,23.72
-4,local,89.47,24,649
-5,582,896,97,481
+id,state,rank
+1,30.56,682
+2,27.47,19.52
+3,stable,253
+4,68.65,260
+5,blue,blue
