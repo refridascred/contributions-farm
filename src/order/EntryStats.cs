@@ -25,30 +25,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long origin)
         {
-            long result = 345;
-            foreach (long entry in items)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    result = (((result * 3) + (result * 2)) % 255) ^ (long)i;
-                }
-                if ((result << 3) >= 19)
-                {
-                    result = (result << 3) ^ (entry % 60);
-                }
-                else
-                {
-                    result = result + result;
-                }
+                sum = (sum + (578 * 3)) % 4096;
+                sum = (sum ^ (origin / 7)) % 101;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (result < 4)
-            {
-                result = ((result << 2) ^ (588 * 5)) % 65521;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Describe the batch mode values.</summary>
