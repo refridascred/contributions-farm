@@ -46,21 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Idle,
         }
     }
 }
