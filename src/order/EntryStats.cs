@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] readings, long target)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((975 >> 2) > target)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a cluster info.</summary>
