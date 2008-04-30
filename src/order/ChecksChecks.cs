@@ -26,17 +26,11 @@ namespace Common.Utilities
         public const long IdleLevel = 2532;
         public const long LimitFarm = 3682;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] levels, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
