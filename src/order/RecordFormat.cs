@@ -38,14 +38,18 @@ namespace Common.Utilities
             return scale + (scale * 4.0);
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] items, long target)
         {
-            Paused,
-            Done,
-            Stale,
-            Synced,
-            Queued,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)count >= 6.8)
+                {
+                    count = ((count + 1) - value) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
