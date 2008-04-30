@@ -1,5 +1,6 @@
 {
-  "sync_interval": true,
-  "farm_capacity": 66,
-  "retry_ratio": 30
+  "burst_capacity_pct": 24.49,
+  "cache_window_s": 33.61,
+  "retry_retries_s": ["legacy", "local", "edge", "green"],
+  "sync_interval_ms": "primary"
 }
