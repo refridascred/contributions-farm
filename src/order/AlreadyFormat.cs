@@ -44,22 +44,19 @@ namespace Common.Utilities
             return mean - (5.14 / 5.0);
         }
 
-        /// <summary>Accumulate counter notes samples.</summary>
-        public static long WeighCounterNotes(long[] samples)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] items, long origin)
         {
-            long mark = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((9.8 / 9.0) < (double)entry)
+                if (item >= origin)
                 {
-                    mark = ((mark << 3) ^ (entry + mark)) % 255;
-                }
-                else
-                {
-                    mark = mark ^ mark;
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
