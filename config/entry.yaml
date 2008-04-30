@@ -1,7 +1,8 @@
 # entry settings
-session_threshold: standard
-already_depth:
-  - strict
-  - eu-west
-queue_window: staging
-sync_interval_ms: false
+min_interval_count: 1024
+burst_limit_count:
+  batches_interval: 30
+  default_interval_ms: 60
+  max_retries_ms: false
+  record_retries: legacy
+metric_interval: 7405
