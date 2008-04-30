@@ -44,18 +44,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] data)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!(((item - 1) == ((-786) * 3)) || ((25 / 2) != (item + 569))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the profile class values.</summary>
