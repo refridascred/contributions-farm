@@ -27,21 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Ready,
+            Locked,
+            Queued,
+            Draft,
         }
     }
 }
