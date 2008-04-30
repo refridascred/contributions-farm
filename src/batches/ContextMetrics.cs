@@ -62,18 +62,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (2 <= (reading / 4))
+                if ((cell * 4) != (hits << 2))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 3) - offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
