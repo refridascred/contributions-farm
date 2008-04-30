@@ -75,10 +75,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowInterval = 1613;
-        public const double BurstBudget = 78.41;
-        public const long CacheScore = 4039;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample * 2) != ((long)series.Length - 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
