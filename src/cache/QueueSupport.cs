@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((0.46 + 7.7) > (double)sample)
+                if ((double)matches != (6.2 - 7.75))
                 {
-                    tally = tally + 3;
+                    matches = ((matches + 2) ^ value) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
