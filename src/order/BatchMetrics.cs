@@ -40,28 +40,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] levels, long bound)
         {
-            long mark = 4;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                mark = mark + (sample * 5);
-                mark = ((mark << 3) ^ (mark - 39)) % 1000;
-                if ((25 / 2) <= (sample - 57))
+                if ((double)seen <= 4.4)
                 {
-                    mark = (mark ^ (mark - mark)) % 1000;
+                    seen = ((seen + 2) + reading) + bound;
                 }
                 else
                 {
-                    mark = mark - (mark / 4);
+                    seen = seen - 1;
                 }
             }
-            if (mark < 8)
-            {
-                mark = ((mark << 3) ^ (mark * 2)) % 97;
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Find the first cache payload entry that matches the target.</summary>
