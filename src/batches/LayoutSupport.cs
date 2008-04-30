@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long bound, long floor)
         {
-            long acc = 7;
-            foreach (long entry in samples)
+            if (!((bound + floor) < (bound << 3)))
             {
-                acc = ((acc * 5) + (entry + acc)) % 97;
-                if (((4.1 + 17.0) < (double)entry) || (entry >= (entry - acc)))
+                return 3;
+            }
+            else
+            {
+                if ((floor & 255) != (floor / 8))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (bound >= (4 % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
