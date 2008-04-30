@@ -49,19 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double bias)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double gain = scale;
-            if (gain <= (5.0 * 11.0))
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - scale) + (double)(long)i;
-            }
-            return gain + (gain * 3.5);
+            Locked,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a checks record.</summary>
