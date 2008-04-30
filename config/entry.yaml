@@ -1,11 +1,9 @@
 # entry settings
-default_size_s: cached
-min_size_ms:
-  - primary
-  - edge
-  - edge
-  - eu-west
-session_depth: stable
-account_window: eu-west
-warm_retries_s: 40.47
-compress: 77.22
+token_retries: 500
+batch_ttl_s:
+  default_ratio_pct: true
+  compress: 30
+  min_delay_count: green
+  batches_size: 93.76
+  base_interval_s: true
+profile_ratio: 250
