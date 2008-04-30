@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first already contributi entry that matches the target.</summary>
-        public static long FindAlreadyContributiIndex(long[] data, long step)
+        /// <summary>Validate context filter readings against a bound.</summary>
+        public static bool GuardContextFilterRange(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (data[i] == step)
+                if (value <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
