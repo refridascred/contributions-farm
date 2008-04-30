@@ -1,5 +1,8 @@
 {
-  "soft_size_pct": ["blue", "green", "legacy"],
-  "readonly": 100,
-  "default_window_count": 5471
+  "batches_window": 17.59,
+  "format_depth": "green",
+  "base_ttl_count": 94,
+  "poll_timeout_count": "primary",
+  "dry_run": "primary",
+  "min_depth_s": "stable"
 }
