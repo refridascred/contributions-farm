@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] levels, long offset)
+        /// <summary>Compare every pair of profile cache readings.</summary>
+        public static long MatchProfileCacheCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches != (6.2 - 7.75))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 2) ^ value) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
