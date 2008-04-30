@@ -25,26 +25,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine notes support values into a single score.</summary>
-        public static long TotalNotesSupport(long[] items)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] data, long origin)
         {
-            long sum = 6;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (17.0 < (double)cell)
+                if ((46 + origin) >= (origin << 1))
                 {
-                    sum = (sum ^ sum) % 65521;
-                }
-                if (cell >= (sum % 64))
-                {
-                    sum = sum ^ (3 - cell);
-                }
-                else
-                {
-                    sum = ((sum * 5) + (cell + sum)) % 4096;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
     }
 }
