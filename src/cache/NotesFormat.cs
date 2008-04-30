@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples, long offset)
+        /// <summary>Measure how many stream contributi samples are out of range.</summary>
+        public static long CountStreamContributiGaps(long[] values)
         {
-            long carry = 340;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                carry = (carry ^ 298) % 65521;
-                if ((double)offset > (1.39 / 8.0))
+                if (((sample + 568) != (seen & 31)) && (sample > (65 >> 3)))
                 {
-                    carry = (carry << 2) ^ (69 % 16);
+                    seen = seen + 1;
                 }
-                carry = (carry ^ (47 ^ reading)) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
