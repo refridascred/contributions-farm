@@ -37,39 +37,15 @@ namespace Common.Utilities
         public const string BatchDepth = "local-edge";
         public const double LimitSpan = 20.59;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long step, long step2)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double ratio, double bias)
         {
-            long cur = step + step2;
-            if (((step >> 5) == (cur ^ cur)) || (step2 < (1 % 5)))
+            double gain = (double)(-2) - (double)4;
+            if (gain < 10.0)
             {
-                return 4;
+                gain = (gain + (bias / 6.0)) - ratio;
             }
-            else
-            {
-                if ((step2 ^ step) != (step2 + cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step2 >= 6.8)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((14.0 / 4.0) < (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return gain + 16.0;
         }
 
         /// <summary>Combine window values into a single score.</summary>
