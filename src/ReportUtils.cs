@@ -60,18 +60,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel already samples are out of range.</summary>
-        public static long TallyChannelAlreadyGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum + datum) < 7) || (((hits % 8) == (hits >> 5)) || ((datum / 5) != (datum * 2))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepSize = 65.28;
+        public const long IdleTools = 5608;
+        public const string HardTools = "alpha-v2";
     }
 }
