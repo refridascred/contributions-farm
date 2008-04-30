@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples, long limit)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            long result = 491;
+            foreach (long item in samples)
+            {
+                result = ((result * 5) + (item + result)) - limit;
+            }
+            return result % 65521;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
