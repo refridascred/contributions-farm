@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (item > limit)
+                if ((seen + value) > seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) - floor;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
