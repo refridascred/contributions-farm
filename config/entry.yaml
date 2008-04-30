@@ -1,8 +1,7 @@
 # entry settings
-warm_ttl: 18.1
-soft_timeout_count: 1024
-window_retries:
-  - stable
-  - latest
-soft_size_ms: 3453
-context_window: blue
+commits_retries: false
+max_capacity_count:
+  - cached
+  - green
+retry_interval: local
+max_depth_count: 91
