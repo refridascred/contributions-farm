@@ -23,19 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double ratio, double offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double scale = (offset / 5.0) / 9.0;
-            if (scale <= (double)87)
-            {
-                scale = scale - (scale + ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + (scale * 4.0);
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
