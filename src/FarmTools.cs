@@ -27,14 +27,12 @@ namespace Common.Utilities
         public const long MaxCounter = 6658;
         public const double BurstCounter = 0.66;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Pending,
-            Active,
-            Ready,
+            Failed,
             Locked,
-            Stale,
+            Ready,
         }
     }
 }
