@@ -21,13 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] items, long step)
         {
-            Queued,
-            Stale,
-            Ready,
-            New,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
