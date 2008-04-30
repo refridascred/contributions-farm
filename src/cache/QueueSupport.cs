@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of profile cache readings.</summary>
-        public static long MatchProfileCacheCount(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] data, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((9 + 358) < (seen ^ offset)) || (seen <= (-276)))
                 {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + reading;
                 }
             }
             return seen;
