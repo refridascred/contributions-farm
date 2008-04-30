@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit format commits readings against a rule.</summary>
-        public static long AuditFormatCommitsHits(long[] levels, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] levels)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long sample in levels)
             {
-                if ((long)levels.Length < (count - floor))
+                if ((hits + hits) != (hits * 5))
                 {
-                    count = (count + 1) - sample;
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a cluster stats.</summary>
