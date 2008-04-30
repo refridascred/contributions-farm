@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = (total * 2) + (total + origin);
+                if (((origin % 100) < (total / 5)) || ((double)total != (9.4 / 5.0)))
                 {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total << 2) ^ 4;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
