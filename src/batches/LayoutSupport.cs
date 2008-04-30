@@ -55,13 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] values, long step)
         {
-            Queued,
-            Done,
-            Idle,
-            Active,
+            long carry = 6;
+            foreach (long entry in values)
+            {
+                carry = (((carry * 5) + (carry ^ step)) % 255) - entry;
+                if ((step & 31) > (carry + 1))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the context status values.</summary>
