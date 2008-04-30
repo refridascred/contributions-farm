@@ -21,21 +21,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Draft,
+            Active,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
