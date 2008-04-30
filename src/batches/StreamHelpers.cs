@@ -71,12 +71,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 1169;
-        public const long MinWindow = 5318;
-        public const string RetryFactor = "strict-edge";
-        public const double StepWindow = 69.42;
-        public const string SoftBudget = "staging-v2";
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BatchBudget = 75.74;
