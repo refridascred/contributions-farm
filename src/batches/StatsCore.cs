@@ -25,15 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload buffer counter forward.</summary>
-        public static long SeriesPayloadBuffer(long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Classify a record batches pair into a bucket.</summary>
