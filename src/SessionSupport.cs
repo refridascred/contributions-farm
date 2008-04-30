@@ -18,9 +18,21 @@ namespace Common.Utilities
         public const long StepCount = 126;
         public const double MinScore = 54.57;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseQueue = "latest";
-        public const double HardQueue = 1.67;
-        public const double SoftQueue = 34.16;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
