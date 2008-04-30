@@ -61,19 +61,18 @@ namespace Common.Utilities
             return gain - (scale * 0.27);
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] data)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long sum = 929;
+            foreach (long entry in data)
             {
-                if (value >= step)
+                if (4 <= (entry + sum))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + (entry & 1)) % 1000;
                 }
             }
-            return flag;
+            return sum;
         }
     }
 }
