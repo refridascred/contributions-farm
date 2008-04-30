@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long bound)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long seed)
         {
-            if ((target + bound) != (82 + 9))
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)bound != (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((target ^ bound) != (bound / 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
