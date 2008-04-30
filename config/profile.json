@@ -1,5 +1,5 @@
 {
-  "batch_retries_ms": true,
-  "compress": [60, 377, 139],
-  "route_window": "stable"
+  "flush_retries_ms": 2151,
+  "tools_window": 100,
+  "audit": "eu-west"
 }
