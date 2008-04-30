@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] values)
+        /// <summary>Validate batches contributi readings against a bound.</summary>
+        public static bool ValidateBatchesContributiRange(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((hits >= (hits % 16)) && ((((-5) >> 3) < (hits + hits)) || ((hits & 255) < 40)))
+                if (sample > target)
                 {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Fold a list of cluster window readings.</summary>
