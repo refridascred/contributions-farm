@@ -25,11 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseWidth = "open-1";
-        public const long IdleSchema = 2446;
-        public const long MinSchema = 3834;
-        public const long WindowDepth = 9842;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((double)score == (double)score)
+                {
+                    score = (score + score) % 1000;
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
