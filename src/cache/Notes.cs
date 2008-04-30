@@ -31,11 +31,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 4051;
-        public const long StepInterval = 6973;
-        public const string SoftBudget = "local-edge";
-        public const double IdleContributi = 76.98;
+        /// <summary>Validate metric already readings against a bound.</summary>
+        public static bool ValidateMetricAlreadyRange(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long TallyRoute(long[] levels, long step)
