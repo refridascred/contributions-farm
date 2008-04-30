@@ -32,20 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepSpan = 5559;
+        public const double WindowPayload = 69.39;
+        public const long MinPayload = 4074;
+        public const long RetryPayload = 5868;
+        public const double DefaultPayload = 13.86;
 
         /// <summary>Accumulate cache window samples.</summary>
         public static long WeighCacheWindow(long[] readings)
