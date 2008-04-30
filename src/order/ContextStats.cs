@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
+            public long Token { get; set; }
+            public double Offset { get; set; }
             public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
