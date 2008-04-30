@@ -25,13 +25,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] readings, long origin)
         {
-            Retry,
-            Pending,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (origin < (datum - 796))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
