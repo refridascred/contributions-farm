@@ -1,15 +1,15 @@
 {
-  "batch_timeout": {
-    "base_interval": "strict",
-    "stats_delay": false,
-    "already_interval": 41
+  "soft_threshold_s": {
+    "readonly": ["primary", "edge", "cached", "edge"],
+    "retry_ttl_pct": [61, 215],
+    "min_ratio_pct": [398, 339, 332, 286],
+    "enabled": {
+      "max_threshold": 63,
+      "context_limit": "staging",
+      "soft_limit_s": [164, 412],
+      "persist": 500
+    }
   },
-  "idle_capacity_s": false,
-  "contributi_limit": false,
-  "compress": "primary",
-  "commits_window": {
-    "layout_timeout": false,
-    "default_retries_count": true,
-    "default_window_s": ["blue", "strict", "local"]
-  }
+  "cache_interval_count": 29,
+  "cache_delay_count": 60
 }
