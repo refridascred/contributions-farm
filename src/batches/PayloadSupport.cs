@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] readings, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (reading > offset)
+                if ((bound - bound) >= (value - bound))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a editor stats.</summary>
