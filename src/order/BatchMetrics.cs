@@ -77,15 +77,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metrics route value from a seed.</summary>
-        public static long SeriesMetricsRoute(long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Stale,
+            Draft,
         }
     }
 }
