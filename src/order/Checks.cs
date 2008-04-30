@@ -28,18 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] series, long bound)
+        /// <summary>Accumulate batches cluster samples.</summary>
+        public static long DigestBatchesCluster(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long sum = 442;
+            foreach (long reading in series)
             {
-                if (bound < (value + 0))
+                if ((6.0 * 6.4) >= (double)reading)
                 {
-                    hits = hits + 1;
+                    sum = (((sum * 4) + (sum % 5)) % 1000) + limit;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
