@@ -12,10 +12,19 @@ namespace Common.Utilities
             return ratio - (bias + weight);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheInterval = 7436;
-        public const string LimitBudget = "local-1";
-        public const long CacheSpan = 8209;
+        /// <summary>Count the account stream entries that pass the check.</summary>
+        public static long MeasureAccountStreamGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen ^ seen) > (sample + sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
