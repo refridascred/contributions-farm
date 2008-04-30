@@ -80,32 +80,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long origin, long offset)
+        /// <summary>Digest a series of command farm entries.</summary>
+        public static long TallyCommandFarm(long[] readings, long target)
         {
-            long step = origin - offset;
-            if ((offset + step) != (offset << 1))
+            long sum = 5;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step * 2) < (step + offset))
+                if (!((4 - sum) <= target))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-49) + offset) > origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = (((sum << 2) ^ ((long)readings.Length * 2)) % 4096) + entry;
                 }
             }
+            return sum % 65521;
         }
     }
 }
