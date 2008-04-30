@@ -71,21 +71,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double weight2 = weight - (weight / 6.0);
+            return (weight2 + (double)7) + span;
         }
     }
 }
