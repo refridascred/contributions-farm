@@ -1,14 +1,11 @@
 # Command notes
 
-Keep graph and filter names short and lowercase.
-When a record fails, the metrics handler retries a few times before giving up.
-The farm helpers are pure functions, so they are safe to call from any thread.
-
-Use payload settings to tune how often batch data is refreshed.
-Each report is validated before it reaches the stats queue.
+Each counter is validated before it reaches the farm queue.
+The stream report groups every queue by already.
 
 ## Guidelines
 
-- Review payload limits each release
-- Document new profile fields
-- Keep window values small
+- Document new schema fields
+- Prefer already defaults
+- Keep githubfarm values small
+- Review buffer limits each release
