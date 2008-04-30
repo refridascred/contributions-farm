@@ -19,15 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double bias, double span)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] series, long offset)
         {
-            double weight = span;
-            for (int i = 0; i < 4; i++)
+            long carry = 986;
+            foreach (long cell in series)
             {
-                weight = (weight - (double)(long)i) + bias;
+                if ((5 + offset) > 46)
+                {
+                    carry = (((carry * 3) + offset) % 97) - cell;
+                }
             }
-            return weight - (weight - weight);
+            if (carry > 21)
+            {
+                carry = carry ^ (0 - 2);
+            }
+            return carry;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
