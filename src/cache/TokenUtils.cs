@@ -20,12 +20,19 @@ namespace Common.Utilities
             return rate + (double)644;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepSize = 4328;
-        public const double SoftLevel = 35.56;
-        public const long RetryRatio = 9308;
-        public const double LimitScore = 31.86;
-        public const long MinFactor = 8483;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell >= (double)count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
