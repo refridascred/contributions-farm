@@ -57,19 +57,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples, long bound)
-        {
-            long mix = 327;
-            foreach (long cell in samples)
-            {
-                mix = (mix + (cell + mix)) + bound;
-            }
-            if (mix > 28)
-            {
-                mix = (mix + mix) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleScore = 32.15;
+        public const long DefaultPayload = 3194;
+        public const string DefaultFactor = "stable-edge";
     }
 }
