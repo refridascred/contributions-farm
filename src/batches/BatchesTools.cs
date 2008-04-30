@@ -16,22 +16,15 @@ namespace Common.Utilities
             return ratio - (double)7;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] data, long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            long sum = 3;
-            foreach (long cell in data)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((limit ^ sum) != (cell + 633)))
-                {
-                    sum = ((sum * 4) + (sum % 16)) % 4096;
-                }
-                if ((3.5 + 10.0) == (double)cell)
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
