@@ -102,31 +102,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long seed, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            if (((-545) ^ limit) > (limit << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (limit < 5)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 5) == (limit + limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a schema summary.</summary>
