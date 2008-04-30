@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long step, long limit)
+        /// <summary>Find the first githubfarm checks entry that matches the target.</summary>
+        public static long SeekGithubfarmChecksIndex(long[] series, long bound)
         {
-            long next = step - limit;
-            if (limit < (limit * 5))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((97 / 7) <= step) && (65 < (725 - next)))
+                if ((series[i] == bound) && ((series[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step << 1) >= (1 - step)) && (limit < (next * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
