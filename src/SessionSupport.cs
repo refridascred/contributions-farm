@@ -38,19 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits session entry stays within the limit.</summary>
-        public static bool VerifyCommitsSessionLimits(long[] levels, long seed)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Failed,
+            Dropped,
+            New,
         }
     }
 }
