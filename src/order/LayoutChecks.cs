@@ -55,13 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public bool Region { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCluster = 91.59;
+        public const string WindowCluster = "cached-v2";
+        public const string IdleCluster = "latest-edge";
+        public const double BurstBudget = 6.09;
+        public const double BaseCount = 38.69;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderOutliers(long[] levels)
