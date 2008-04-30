@@ -1,6 +1,8 @@
-id,score,label,token
-1,108,433,722
-2,251,green,613
-3,primary,45.2,57.84
-4,970,fallback,cached
-5,88.84,97.93,864
+id,weight,active
+1,standard,local
+2,590,42.42
+3,open,48.51
+4,73.92,875
+5,57.88,65.91
+6,46.73,34.44
+7,13,stable
