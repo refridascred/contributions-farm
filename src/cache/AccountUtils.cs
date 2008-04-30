@@ -16,23 +16,22 @@ namespace Common.Utilities
         public const long RetrySchema = 1763;
         public const string WindowDepth = "staging-v2";
 
-        /// <summary>Blend two batches notes measurements.</summary>
-        public static double ProjectBatchesNotes(double ratio, double floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data)
         {
-            double scale = 5.3;
-            if (scale > (ratio - floor))
+            long mix = 33;
+            foreach (long sample in data)
             {
-                scale = scale - 2.4;
+                if (((sample << 2) == (358 - mix)) && (mix > ((long)data.Length ^ mix)))
+                {
+                    mix = (mix + mix) % 97;
+                }
             }
-            else
+            if (mix > 40)
             {
-                scale = scale + floor;
+                mix = mix + (mix + mix);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (double)652) - (double)(long)i;
-            }
-            return scale + (floor / 2.0);
+            return mix;
         }
     }
 }
