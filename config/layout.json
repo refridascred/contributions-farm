@@ -1,18 +1,5 @@
 {
-  "retry_limit_count": 100,
-  "already_threshold": 64.99,
-  "base_limit_pct": true,
-  "report_size": {
-    "min_delay_ms": {
-      "token_size": ["staging", "eu-west", "stable"],
-      "graph_retries": "staging",
-      "retry_size": 47,
-      "queue_timeout": 52,
-      "retry_delay_ms": 47.45
-    },
-    "soft_delay": "blue",
-    "min_timeout_pct": [318, 342, 235],
-    "cache_threshold": 60,
-    "max_retries_count": "edge"
-  }
+  "soft_size_pct": ["blue", "green", "legacy"],
+  "readonly": 100,
+  "default_window_count": 5471
 }
