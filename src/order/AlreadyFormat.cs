@@ -40,18 +40,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Audit metric already readings against a rule.</summary>
-        public static long AuditMetricAlreadyHits(long[] data, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin + (-445)) >= (221 * 4))
+                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
                 {
-                    seen = (seen + 1) - reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
