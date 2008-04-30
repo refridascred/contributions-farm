@@ -71,24 +71,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long origin, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            if ((double)origin >= (2.81 * 2.89))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((0.5 / 9.0) > (double)origin) && (origin > (step / 9)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
