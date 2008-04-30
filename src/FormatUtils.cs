@@ -60,11 +60,9 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitLevel = "local-v2";
-        public const long WindowBuffer = 1158;
-        public const double WindowSpan = 26.2;
-        public const long DefaultBuffer = 1226;
-        public const string BurstBuffer = "alpha-edge";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 2569;
+        public const long BaseSchema = 3382;
+        public const double BurstSchema = 71.86;
     }
 }
