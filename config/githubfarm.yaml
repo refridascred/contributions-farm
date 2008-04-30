@@ -1,4 +1,4 @@
 # githubfarm settings
-warm_timeout: 9663
-base_delay: latest
-batch_window_pct: fallback
+idle_ttl: true
+cache_limit_pct: false
+notes_timeout: 4726
