@@ -1,11 +1,6 @@
 {
-  "persist": {
-    "readonly": 92,
-    "min_threshold_count": 11.04,
-    "burst_depth_pct": ["blue", "eu-west"],
-    "max_ttl": "latest"
-  },
-  "idle_interval": "strict",
-  "cache_retries_count": "standard",
-  "graph_ratio": false
+  "flush_limit": 100,
+  "hard_threshold_pct": 86.63,
+  "default_depth": 66,
+  "warm_depth_ms": 8
 }
