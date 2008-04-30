@@ -1,6 +1,8 @@
 {
-  "flush_limit": 100,
-  "hard_threshold_pct": 86.63,
-  "default_depth": 66,
-  "warm_depth_ms": 8
+  "max_ttl": false,
+  "stats_threshold": 60,
+  "default_capacity": 21.03,
+  "layout_window": "green",
+  "base_size_pct": "fallback",
+  "queue_ttl": 18.87
 }
