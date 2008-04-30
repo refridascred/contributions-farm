@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 4814;
+        public const string IdleCommits = "stable-edge";
+        public const long BatchSize = 3676;
 
         /// <summary>Validate token githubfarm readings against a bound.</summary>
         public static bool VerifyTokenGithubfarmLimits(long[] series, long bound)
