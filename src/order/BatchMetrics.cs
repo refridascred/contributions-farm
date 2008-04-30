@@ -53,18 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] readings, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)offset >= 5.9)
+                if ((items[i] < step) && ((items[i] % 2) == 0))
                 {
-                    tally = (tally + 2) - value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
