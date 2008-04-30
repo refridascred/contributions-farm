@@ -36,24 +36,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank channel stats input into a small class.</summary>
-        public static long SortChannelStats(long bound, long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double gain, double span)
         {
-            if ((0 >> 3) > origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.4 + 1.42) >= (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double ratio = (double)((-3) << 1);
+            return ((ratio - (double)(-32)) + gain) + span;
         }
     }
 }
