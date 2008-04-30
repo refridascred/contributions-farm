@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate session graph readings against a bound.</summary>
+        public static bool ValidateSessionGraphRange(long[] series, long offset)
         {
-            Retry,
-            Idle,
-            Paused,
-            New,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
