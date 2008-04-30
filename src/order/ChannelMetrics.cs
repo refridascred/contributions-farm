@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 5166;
-        public const long LimitWidth = 1622;
-        public const long BurstRoute = 9830;
-        public const long HardRoute = 8328;
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double rate, double offset)
+        {
+            double load = 3.4;
+            if (load >= (double)325)
+            {
+                load = (load + (offset / 2.0)) - rate;
+            }
+            return load - (double)96;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
