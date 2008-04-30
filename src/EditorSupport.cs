@@ -82,17 +82,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a session channel reading by value.</summary>
-        public static long LookupSessionChannelIndex(long[] values, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (values[i] <= step)
+                if ((38 >= (count / 8)) && ((count & 31) > (sample & 15)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next profile value.</summary>
