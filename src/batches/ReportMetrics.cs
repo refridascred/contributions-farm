@@ -33,13 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
