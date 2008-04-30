@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            Idle,
-            Synced,
-            Stale,
-            Locked,
+            long sum = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((long)i < step)
+                {
+                    sum = (sum << 3) ^ step;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (229 & 3);
+                }
+                sum = ((sum * 3) + (sum & 7)) % 101;
+                if ((step >> 3) >= (71 * 3))
+                {
+                    sum = ((sum << 3) ^ ((long)i >> 3)) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
