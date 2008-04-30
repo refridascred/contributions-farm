@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > (double)53)
-                {
-                    seen = (seen + 2) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 85.07;
+        public const string MaxChannel = "primary-v2";
+        public const long WindowChannel = 8987;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] items, long seed)
