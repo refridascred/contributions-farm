@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheDepth = 2121;
-        public const long CacheRecord = 334;
-        public const double CacheScore = 8.07;
-        public const double BatchRecord = 80.03;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)tally >= (1.0 / 7.0))
+                {
+                    tally = ((tally + 3) + value) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
