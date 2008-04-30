@@ -107,9 +107,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 5165;
-        public const long MinSpan = 8208;
-        public const long MaxWidth = 4183;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long origin, long target)
+        {
+            if (!((0.9 + 1.0) < (double)target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + target) != (origin ^ origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8.2 + 5.78) >= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
