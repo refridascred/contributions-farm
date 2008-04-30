@@ -49,13 +49,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Retry,
-            Closed,
-            Done,
-            Ready,
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a route options.</summary>
