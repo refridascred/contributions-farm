@@ -1,5 +1,7 @@
 {
-  "idle_depth_s": 46,
-  "tools_size": 10,
-  "audit": "stable"
+  "soft_capacity": 32.15,
+  "default_depth": "blue",
+  "max_depth_count": "blue",
+  "burst_delay": false,
+  "queue_limit": "legacy"
 }
