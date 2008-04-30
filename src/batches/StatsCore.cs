@@ -56,14 +56,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long bound, long floor)
         {
-            Queued,
-            Closed,
-            Dropped,
-            Done,
-            Stale,
+            long slot = bound + floor;
+            if ((606 / 5) <= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor <= (bound * 4)) || ((slot - 68) != (65 * 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
