@@ -35,22 +35,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many farm already samples are out of range.</summary>
-        public static long CountFarmAlreadyOutliers(long[] series, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((double)bound != (double)tally)
+                if (((-6) - cell) > cell)
                 {
-                    tally = (tally + 1) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the farm notes series from a seed.</summary>
