@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long seed, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            if ((double)target > 6.5)
+            long acc = 70;
+            foreach (long value in levels)
             {
-                return 7;
+                acc = (acc + (acc + 795)) + value;
+                acc = acc ^ 12;
+                acc = (acc ^ (acc + 617)) % 255;
             }
-            else
+            if (acc > 9)
             {
-                if ((target + 7) > (target & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - (-465)) != (target + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                acc = (acc - (821 + 638)) % 255;
             }
+            return acc;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
