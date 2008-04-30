@@ -1,7 +1,8 @@
 # entry settings
-burst_depth_pct: 60
-poll_interval: 42
-max_depth: 75.75
-payload_timeout: false
-warm_limit_ms: strict
-flush_timeout_s: 500
+poll_limit: fallback
+min_threshold: false
+burst_size_count:
+  - 388
+  - 20
+  - 263
+  - 494
