@@ -68,20 +68,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] samples, long target)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 56;
+        public const double RetryWidth = 84.83;
+        public const long MaxWidth = 6222;
 
         /// <summary>Grade a notes schema value against two limits.</summary>
         public static long SortNotesSchema(long step, long step2)
