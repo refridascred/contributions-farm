@@ -21,11 +21,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 5824;
-        public const long BatchNotes = 1439;
-        public const long BurstNotes = 1400;
-        public const string DefaultNotes = "cached";
-        public const string LimitFactor = "local";
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Weight { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
