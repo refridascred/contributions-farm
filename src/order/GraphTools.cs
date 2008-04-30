@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Retry,
-            Stale,
-            Failed,
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
