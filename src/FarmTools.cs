@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseRatio = 7435;
+        public const double MinFactor = 25.44;
+        public const double IdleCommand = 94.0;
+        public const long SoftCommand = 4694;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] levels, long origin)
