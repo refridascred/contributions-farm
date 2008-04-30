@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] series, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long mix = 805;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = ((((mix << 2) ^ (mix * 3)) % 101) + (long)i) - entry;
-                    mix = (mix << 2) ^ (3 ^ mix);
-                }
-                mix = ((mix * 2) + (mix - origin)) % 65521;
-            }
-            return mix % 1000;
+            Active,
+            Closed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Match up graph samples.</summary>
