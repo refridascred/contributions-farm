@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const double CacheScore = 8.07;
         public const double BatchRecord = 80.03;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] items, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((long)items.Length != (offset << 3))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            Dropped,
+            Synced,
+            Active,
+            Queued,
+            Done,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
