@@ -55,22 +55,10 @@ namespace Common.Utilities
         public const double CacheDepth = 48.87;
         public const long LimitSpan = 8980;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples, long origin)
-        {
-            long state = 178;
-            foreach (long value in samples)
-            {
-                state = (state ^ (origin % 8)) % 65521;
-                state = (state ^ (state >> 3)) % 4096;
-                state = ((state * 2) + (value % 24)) % 65521;
-            }
-            if (state < (-206))
-            {
-                state = (state - (origin + state)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 85.08;
+        public const long WindowLevel = 775;
+        public const long BatchFarm = 4884;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheMatches(long[] data)
