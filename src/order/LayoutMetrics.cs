@@ -26,18 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache notes samples are out of range.</summary>
-        public static long CountCacheNotesGaps(long[] levels)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)(long)levels.Length == (11.0 / 2.0))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Queued,
+            Stale,
+            Ready,
+            New,
         }
     }
 }
