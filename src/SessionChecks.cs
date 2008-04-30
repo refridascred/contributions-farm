@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Measure how many account payload samples are out of range.</summary>
+        public static long MeasureAccountPayloadMatches(long[] series, long step)
         {
-            Draft,
-            Closed,
-            Failed,
-            Synced,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((10 + value) >= (5 + step)) && ((-877) < value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of already entries.</summary>
