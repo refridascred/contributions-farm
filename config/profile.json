@@ -1,5 +1,15 @@
 {
-  "token_ttl": [254, 339],
-  "default_interval_s": 1024,
-  "audit": "local"
+  "default_interval_count": "cached",
+  "warm_interval": ["standard", "strict"],
+  "layout_retries": ["standard", "blue"],
+  "dry_run": "local",
+  "sync_retries": false,
+  "default_ratio": {
+    "burst_ratio_count": 500,
+    "stats_depth": 4132,
+    "hard_delay_ms": 74.06,
+    "min_timeout": 2,
+    "default_ttl_count": ["staging", "open"],
+    "batch_retries_pct": ["standard", "latest", "stable", "latest"]
+  }
 }
