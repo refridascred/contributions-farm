@@ -34,15 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate tools entry samples.</summary>
-        public static long DigestToolsEntry(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long sum = 0;
-            foreach (long reading in items)
-            {
-                sum = (((sum << 2) ^ sum) % 65521) - reading;
-            }
-            return sum % 1000;
+            Retry,
+            Pending,
+            Locked,
         }
     }
 }
