@@ -46,11 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleSpan = 4284;
-        public const long BaseTimeout = 4683;
-        public const long DefaultDepth = 6322;
-        public const long HardDepth = 301;
-        public const long MinCount = 9284;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] levels, long target)
+        {
+            long sum = 21;
+            foreach (long entry in levels)
+            {
+                sum = (((sum * 2) + target) % 97) ^ entry;
+            }
+            return sum;
+        }
     }
 }
