@@ -1,6 +1,10 @@
-id,level,ratio
-1,open,989
-2,137,stable
-3,open,local
-4,16.24,196
-5,56.64,blue
+id,owner,active,label,count
+1,blue,504,47.96,open
+2,blue,699,442,503
+3,249,legacy,91.11,green
+4,98,31,43.55,46
+5,730,23.6,stable,95.78
+6,277,45.93,576,stable
+7,fallback,49.42,939,fallback
+8,957,46.0,27,latest
+9,616,fallback,557,98.14
