@@ -23,22 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] levels)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits < (sample << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit format entry readings against a rule.</summary>
