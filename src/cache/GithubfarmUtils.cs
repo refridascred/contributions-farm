@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of window support readings.</summary>
-        public static long CombineWindowSupport(long[] items, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] readings, long target)
         {
-            long mark = 292;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((((long)items.Length % 8) == (seed + value)) || (mark > (mark - mark)))
+                if (cell < target)
                 {
-                    mark = ((mark << 3) ^ (seed + value)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return ready;
         }
 
         /// <summary>Describe the queue mode values.</summary>
