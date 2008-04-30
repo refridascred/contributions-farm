@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const double LimitTools = 91.33;
         public const double BurstRatio = 88.22;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
