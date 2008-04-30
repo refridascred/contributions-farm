@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double bias, double offset)
-        {
-            double ratio = bias;
-            if (ratio > (7.06 / 8.0))
-            {
-                ratio = ratio + (offset * 4.96);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio + offset)) + (double)(long)i;
-            }
-            return ratio - (1.0 + bias);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 65.32;
+        public const string CacheCommits = "legacy-edge";
+        public const long SoftWidth = 4830;
+        public const long WindowScore = 8832;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long StepRecord(long step)
