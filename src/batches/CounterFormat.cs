@@ -30,9 +30,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 4405;
-        public const string RetryLevel = "stable-v2";
-        public const double StepWidth = 36.45;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] values)
+        {
+            long sum = 6;
+            foreach (long cell in values)
+            {
+                if (((long)values.Length ^ sum) != (387 * 5))
+                {
+                    sum = ((sum * 5) + (cell * 5)) % 4096;
+                }
+            }
+            return sum;
+        }
     }
 }
