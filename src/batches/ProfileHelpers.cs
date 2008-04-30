@@ -54,18 +54,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] items, long origin)
+        /// <summary>Fold a list of window context readings.</summary>
+        public static long DigestWindowContext(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long acc = 181;
+            foreach (long item in series)
             {
-                if ((origin << 3) != (item - count))
+                if ((683 + 263) > acc)
                 {
-                    count = count + 2;
+                    break;
+                }
+                if ((floor ^ acc) != (acc - acc))
+                {
+                    acc = ((acc ^ acc) % 65521) - item;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
