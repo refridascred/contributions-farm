@@ -39,16 +39,31 @@ namespace Common.Utilities
         public const long RetryPayload = 5868;
         public const double DefaultPayload = 13.86;
 
-        /// <summary>Accumulate cache window samples.</summary>
-        public static long WeighCacheWindow(long[] readings)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long offset, long offset2)
         {
-            long total = 45;
-            foreach (long cell in readings)
+            if ((offset > (offset & 7)) || ((4.0 - 11.0) != (double)offset2))
             {
-                total = total + (cell + total);
-                total = (total ^ (cell - total)) % 1000;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (17 >= (offset << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 3) == (offset2 + 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two support command measurements.</summary>
