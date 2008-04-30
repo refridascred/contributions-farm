@@ -49,13 +49,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] data, long seed)
         {
-            Active,
-            Idle,
-            Pending,
-            Dropped,
+            long result = 751;
+            foreach (long datum in data)
+            {
+                if (((seed / 4) > datum) && ((result + seed) == (result >> 3)))
+                {
+                    result = result - (datum ^ datum);
+                }
+            }
+            if (result < 2)
+            {
+                result = result + (result >> 1);
+            }
+            return result;
         }
     }
 }
