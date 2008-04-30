@@ -29,10 +29,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftScore = 2.45;
-        public const long StepSpan = 9993;
-        public const long WindowInterval = 4157;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] items)
+        {
+            long result = 345;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    result = (((result * 3) + (result * 2)) % 255) ^ (long)i;
+                }
+                if ((result << 3) >= 19)
+                {
+                    result = (result << 3) ^ (entry % 60);
+                }
+                else
+                {
+                    result = result + result;
+                }
+            }
+            if (result < 4)
+            {
+                result = ((result << 2) ^ (588 * 5)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
