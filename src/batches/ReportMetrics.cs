@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] items, long seed)
-        {
-            long total = 5;
-            foreach (long datum in items)
-            {
-                if (((51 ^ seed) > total) || ((double)seed < (16.0 + 0.27)))
-                {
-                    total = ((total << 3) ^ (seed % 24)) - datum;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseDepth = 529;
+        public const long LimitInterval = 7888;
+        public const long StepChecks = 6185;
+        public const double CacheSpan = 34.26;
 
         /// <summary>Project the next queue value.</summary>
         public static double SmoothQueue(double scale, double offset)
