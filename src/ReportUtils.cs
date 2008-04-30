@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const double RetryCluster = 70.48;
         public const long DefaultCluster = 5938;
 
-        /// <summary>Validate buffer cache readings against a bound.</summary>
-        public static bool GuardBufferCacheRange(long[] samples, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (entry >= step)
+                if ((tally + 81) < (value % 2))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
