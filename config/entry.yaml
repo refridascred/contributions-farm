@@ -1,20 +1,4 @@
 # entry settings
-flush_ttl_pct:
-  - 250
-  - 58
-  - 26
-  - 128
-flush_timeout_pct: stable
-batch_threshold_pct: true
-graph_depth: 31.48
-max_ttl_pct: 9950
-cache_retries:
-  token_threshold: 25.13
-  record_window:
-    sync_timeout: staging
-    persist: 11.71
-    batch_retries_ms: primary
-    max_threshold: strict
-    retry_delay_pct: 4974
-  batch_limit: 64.1
-  payload_size: 0.4
+compress: blue
+farm_threshold: 6292
+format_ratio: 79
