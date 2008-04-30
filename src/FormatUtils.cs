@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate context filter samples.</summary>
-        public static long FoldContextFilter(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings, long seed)
         {
-            long sum = 42;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (!((sum + cell) < (cell - 8)))
+                if ((8 + seed) < tally)
                 {
-                    sum = ((sum << 2) ^ (cell - cell)) % 101;
+                    tally = (tally + 3) + entry;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (cell * 2);
-                }
-                if (((long)data.Length % 5) <= (6 << 1))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (sum > 4)
-            {
-                sum = sum - (sum * 3);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
