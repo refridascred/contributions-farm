@@ -28,14 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Ready,
-            Pending,
-            Failed,
-            Dropped,
-            Synced,
+            public double Region { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
