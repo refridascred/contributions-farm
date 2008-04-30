@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long SoftWidth = 4830;
         public const long WindowScore = 8832;
 
-        /// <summary>Count the session batches entries that pass the check.</summary>
-        public static long MeasureSessionBatchesGaps(long[] samples)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (matches > (matches >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Project the next route value.</summary>
