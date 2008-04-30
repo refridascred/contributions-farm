@@ -1,14 +1,15 @@
 {
-  "verbose": true,
-  "poll_capacity_s": 59,
-  "soft_timeout_pct": {
-    "compress": {
-      "max_ratio_pct": 44,
-      "base_interval_ms": true,
-      "route_threshold": ["legacy", "strict"]
-    },
-    "default_interval_pct": "strict",
-    "route_interval": 3168,
-    "entry_retries": ["stable", "cached"]
+  "batch_timeout": {
+    "base_interval": "strict",
+    "stats_delay": false,
+    "already_interval": 41
+  },
+  "idle_capacity_s": false,
+  "contributi_limit": false,
+  "compress": "primary",
+  "commits_window": {
+    "layout_timeout": false,
+    "default_retries_count": true,
+    "default_window_s": ["blue", "strict", "local"]
   }
 }
