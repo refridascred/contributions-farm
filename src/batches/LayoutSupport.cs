@@ -61,13 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many layout channel samples are out of range.</summary>
+        public static long CountLayoutChannelGaps(long[] levels, long step)
         {
-            Dropped,
-            New,
-            Active,
-            Queued,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((step + cell) < (step + step)) && (tally < (cell * 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
