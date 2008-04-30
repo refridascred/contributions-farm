@@ -36,32 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long offset = seed - bound;
-            if ((offset & 31) < (seed << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((936 << 3) != (848 ^ offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((4 ^ 56) <= (bound + bound)) || (offset < (offset + 448)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            Stale,
+            Paused,
+            Locked,
         }
     }
 }
