@@ -110,13 +110,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
