@@ -28,22 +28,21 @@ namespace Common.Utilities
         public const long MaxReport = 9081;
         public const double DefaultReport = 47.08;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Match up editor contributi samples.</summary>
+        public static long CompareEditorContributiCount(long[] readings)
         {
-            long carry = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((126 & 1) > (carry & 127)) && ((carry + carry) == ((long)levels.Length + carry)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry ^ (sample - sample)) % 97;
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry > 2)
-            {
-                carry = ((carry * 2) + (carry ^ 507)) % 255;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
