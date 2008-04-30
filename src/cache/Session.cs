@@ -27,18 +27,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] series, long limit)
+        /// <summary>Match up tools editor samples.</summary>
+        public static long CompareToolsEditorCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(355 <= (reading >> 3)) || ((double)reading <= (4.3 - 3.5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + limit;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
