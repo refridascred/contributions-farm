@@ -28,21 +28,17 @@ namespace Common.Utilities
         public const long MaxReport = 9081;
         public const double DefaultReport = 47.08;
 
-        /// <summary>Match up editor contributi samples.</summary>
-        public static long CompareEditorContributiCount(long[] readings)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] < bound) && ((values[i] % 2) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
