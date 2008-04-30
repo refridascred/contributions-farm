@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of stream command readings.</summary>
-        public static long CombineStreamCommand(long[] series, long step)
+        /// <summary>Count the channel entry entries that pass the check.</summary>
+        public static long TallyChannelEntryOutliers(long[] items)
         {
-            long mix = 8;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                mix = ((mix ^ (reading & 15)) % 255) - step;
+                if (((double)hits <= 19.0) || (((hits - hits) >= (value * 3)) && (108 < (hits ^ 37))))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
