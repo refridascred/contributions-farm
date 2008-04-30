@@ -77,19 +77,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate payload batch readings against a bound.</summary>
-        public static bool VerifyPayloadBatchBounds(long[] data, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long result = 20;
+            foreach (long reading in items)
             {
-                if (sample < step)
+                if ((0 >> 3) < (reading >> 3))
                 {
-                    flag = false;
-                    break;
+                    result = (result * 3) + (reading / 8);
                 }
             }
-            return flag;
+            if (result < 6)
+            {
+                result = (result * 5) + (result + result);
+            }
+            return result;
         }
     }
 }
