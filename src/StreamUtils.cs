@@ -30,24 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long seed, long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double ratio, double offset)
         {
-            if (((floor & 255) >= seed) || ((floor - floor) <= seed))
+            double mean = 16.0;
+            if (mean >= ratio)
             {
-                return 0;
+                mean = mean + offset;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (floor < (seed << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
+                mean = (mean - 6.57) + (double)(long)i;
             }
+            return mean - (mean + 4.59);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
