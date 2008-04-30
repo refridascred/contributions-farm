@@ -55,11 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstTimeout = 78.83;
-        public const long MinDepth = 5034;
-        public const long HardLevel = 5132;
-        public const long CacheCount = 1898;
-        public const double MinLevel = 21.85;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Pending,
+            Done,
+            Locked,
+            Synced,
+        }
     }
 }
