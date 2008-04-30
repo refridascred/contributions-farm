@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank report already input into a small class.</summary>
-        public static long BucketReportAlready(long target, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long origin, long target)
         {
-            if ((target << 1) == (557 ^ seed))
+            if (target < (63 / 9))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((0.12 / 7.0) != (double)target)
+                if (!((target - target) <= (origin / 4)))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    return 8;
                 }
             }
         }
