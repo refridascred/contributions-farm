@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long score = 134;
+            foreach (long entry in items)
             {
-                if (((double)tally < (7.0 * 9.0)) || (((4.83 + 1.5) != (double)tally) || ((value - tally) < (value & 255))))
+                if ((2.35 / 6.0) > (double)score)
                 {
-                    tally = tally + 2;
+                    score = ((score - (limit << 1)) % 97) - entry;
+                }
+                if (!((long)items.Length < (limit << 2)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Locate a queue metrics reading by value.</summary>
