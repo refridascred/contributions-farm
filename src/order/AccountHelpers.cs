@@ -19,16 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a layout stats counter forward.</summary>
-        public static long IterateLayoutStats(long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = acc ^ (origin * 3);
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
