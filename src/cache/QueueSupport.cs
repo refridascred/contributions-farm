@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] data, long target)
+        /// <summary>Audit farm schema readings against a rule.</summary>
+        public static long TallyFarmSchemaGaps(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (matches < (target - target))
+                if ((seen + seen) < (seen / 5))
                 {
-                    matches = (matches + 3) + reading;
+                    seen = ((seen + 1) ^ value) + bound;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
