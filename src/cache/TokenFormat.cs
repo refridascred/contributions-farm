@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (drift - (double)268) + scale;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] readings, long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)reading <= (2.6 + 11.0))
+                if ((long)i <= ((long)i >> 1))
                 {
-                    tally = (tally + 2) + floor;
+                    break;
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
