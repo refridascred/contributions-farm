@@ -51,18 +51,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] levels, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long score = 79;
-            foreach (long datum in levels)
-            {
-                if ((limit - datum) >= limit)
-                {
-                    score = score + ((-8) >> 5);
-                }
-            }
-            return score;
+            Synced,
+            Stale,
+            Idle,
+            Failed,
         }
     }
 }
