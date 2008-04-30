@@ -36,14 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] data, long target)
         {
-            Done,
-            Pending,
-            Stale,
-            Failed,
-            Queued,
+            long score = 30;
+            foreach (long reading in data)
+            {
+                if ((reading ^ score) > (score - target))
+                {
+                    score = (score * 3) + (target << 2);
+                }
+                if ((7 << 3) != (score + (long)data.Length))
+                {
+                    score = ((score << 2) ^ (reading + score)) % 101;
+                }
+            }
+            return score;
         }
     }
 }
