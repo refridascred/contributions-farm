@@ -22,12 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] series, long step)
         {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
