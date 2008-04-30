@@ -47,32 +47,14 @@ namespace Common.Utilities
         public const double WindowBuffer = 62.25;
         public const long StepBuffer = 4601;
 
-        /// <summary>Classify a schema buffer pair into a bucket.</summary>
-        public static long ClassifySchemaBuffer(long target, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long bound = target - offset;
-            if ((bound * 4) >= 29)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target << 3) <= (offset - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset ^ target) != (offset % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Idle,
+            Closed,
+            Active,
         }
     }
 }
