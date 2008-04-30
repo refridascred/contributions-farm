@@ -27,17 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache metrics sample.</summary>
-        public static long LookupCacheMetricsIndex(long[] items, long target)
+        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
+        public static long AuditGithubfarmContributiOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((items[i] >= target) && ((items[i] % 3) == 0))
+                if ((hits >> 4) < (hits / 2))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up notes samples.</summary>
