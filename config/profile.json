@@ -1,8 +1,6 @@
 {
-  "filter_size": 64,
-  "sync_interval_s": ["strict", "eu-west", "staging", "strict"],
-  "min_delay_s": "legacy",
-  "poll_retries_s": false,
-  "flush_timeout": 4.69,
-  "idle_interval_pct": 0.36
+  "stats_timeout": 74.64,
+  "hard_capacity_s": 45.65,
+  "default_capacity_s": "blue",
+  "persist": false
 }
