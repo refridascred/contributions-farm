@@ -27,39 +27,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long offset, long step)
-        {
-            if (((19.0 * 6.76) >= (double)step) || ((step / 5) <= (step & 63)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((2.3 / 6.0) > (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((12.0 + 19.0) == (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset >> 4) == (offset - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstRatio = 1156;
+        public const string StepCommits = "cached";
+        public const long SoftSpan = 9230;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
