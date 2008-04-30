@@ -22,16 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue route series from a seed.</summary>
-        public static long IterateQueueRoute(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 1726;
+        public const string SoftSupport = "stable-1";
+        public const long BaseCount = 3643;
+        public const long MaxSupport = 7136;
 
         /// <summary>Count the order counter entries that pass the check.</summary>
         public static long MeasureOrderCounterHits(long[] items)
