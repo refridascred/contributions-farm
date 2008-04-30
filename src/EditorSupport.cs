@@ -56,15 +56,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] series, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double rate, double bias)
         {
-            long mix = 3;
-            foreach (long sample in series)
+            double bias2 = bias;
+            if (bias2 < (double)(-7))
             {
-                mix = ((mix ^ 488) + sample) + target;
+                bias2 = (bias2 + (bias + bias)) - rate;
             }
-            return mix;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (bias2 / 2.0)) - (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Hold a account entry.</summary>
