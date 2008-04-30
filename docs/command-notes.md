@@ -1,14 +1,11 @@
 # Command notes
 
-Each record is validated before it reaches the metric queue.
-The contributi report groups every metric by stream.
-The window helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Each account is validated before it reaches the queue queue.
+When a command fails, the window handler retries a few times before giving up.
+A counter that stays idle for too long is moved to the buffer list.
+Use batch settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Keep metrics values small
-- Log every layout change
-- Validate channel input early
+- Document new metrics fields
+- Review token limits each release
+- Prefer channel defaults
