@@ -1,9 +1,38 @@
 # githubfarm settings
-hard_size_count: legacy
-base_threshold_pct: 9807
-dry_run:
-  - 50
-  - 470
-  - 136
-cache_capacity: local
-metrics_interval: 24.91
+max_interval: 59.88
+burst_depth_ms:
+  hard_interval_pct:
+    strict: 77.29
+    batch_threshold:
+      - staging
+      - primary
+      - strict
+    githubfarm_size:
+      - 33
+      - 353
+    cache_interval: 2
+    flush_ratio: cached
+    retry_ratio_s:
+      - latest
+      - fallback
+  buffer_depth: true
+  idle_interval_ms:
+    - edge
+    - primary
+    - strict
+    - staging
+  idle_interval_pct:
+    cache_retries_s: 3226
+    idle_timeout: 1682
+    audit: 0.62
+    context_size: 100
+    default_size: staging
+    batches_interval: 30
+  default_capacity_count:
+    sync_capacity_count: local
+    compress: 1
+    base_timeout_ms: legacy
+  route_window: standard
+retry_delay_ms: 44.5
+default_size_count: edge
+metric_ttl: strict
