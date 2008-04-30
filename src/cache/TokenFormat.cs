@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)count <= (6.6 / 8.0))
-                {
-                    count = ((count + 2) ^ cell) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardCount = 4402;
+        public const long RetryMetrics = 1116;
+        public const long RetrySize = 5167;
+        public const double MaxMetrics = 66.44;
+        public const long BurstMetrics = 786;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
