@@ -48,18 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long target)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits & 1) >= 0)
+                if (data[i] >= floor)
                 {
-                    hits = ((hits + 1) ^ cell) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
