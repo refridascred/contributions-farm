@@ -32,15 +32,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Adjust a route checks reading.</summary>
+        public static double SmoothRouteChecks(double ratio, double floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            double rate = (double)719 + (floor + floor);
+            return (rate + 19.0) + ratio;
         }
 
         /// <summary>Accumulate report samples.</summary>
