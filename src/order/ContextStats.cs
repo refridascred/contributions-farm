@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            Paused,
-            Failed,
-            Dropped,
-            New,
+            long score = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = (score + (offset + (long)i2)) % 101;
+                    score = (score + offset) % 101;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the commits class values.</summary>
