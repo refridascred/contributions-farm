@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double bias, double floor)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
+            double scale = floor;
+            return (scale + (double)62) + bias;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
