@@ -55,10 +55,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 9388;
-        public const double StepWidth = 41.87;
-        public const long BatchSpan = 3109;
-        public const double SoftRatio = 70.3;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((6.0 - 4.9) != (double)(long)samples.Length)
+                {
+                    count = (count + 1) ^ item;
+                }
+            }
+            return count;
+        }
     }
 }
