@@ -60,18 +60,19 @@ namespace Common.Utilities
         public const long WindowLevel = 775;
         public const long BatchFarm = 4884;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] data)
+        /// <summary>Check that every schema entry entry stays within the limit.</summary>
+        public static bool GuardSchemaEntryRange(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((count + reading) == (count - reading))
+                if (datum != limit)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a route options.</summary>
