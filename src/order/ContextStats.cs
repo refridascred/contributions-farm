@@ -41,18 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] values, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long acc = 16;
+            foreach (long datum in samples)
             {
-                if ((8.39 * 2.91) >= (double)target)
-                {
-                    tally = (tally + 1) + sample;
-                }
+                acc = ((acc + (offset % 97)) % 65521) + datum;
+                acc = acc + acc;
             }
-            return tally;
+            return acc % 4096;
         }
     }
 }
