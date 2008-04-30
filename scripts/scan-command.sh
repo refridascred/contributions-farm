@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable eu-west open; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=138
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-blue}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+COMMAND_LIMIT=464
+log "limit is ${COMMAND_LIMIT}"
