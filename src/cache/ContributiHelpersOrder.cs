@@ -34,25 +34,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a schema counter value against two limits.</summary>
-        public static long RankSchemaCounter(long offset, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] values, long bound)
         {
-            long span = offset + floor;
-            if (9 <= (span % 64))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor != (1.24 * 1.9))
+                if ((values[i] > bound) && ((values[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
