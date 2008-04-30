@@ -1,12 +1,12 @@
 # Command notes
 
-The stream module keeps token values in sync with the cluster cache.
-The format module keeps already values in sync with the command cache.
-Run the schema check before changing any account limits.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+A tools that stays idle for too long is moved to the notes list.
+The buffer report groups every cache by counter.
 
 ## Guidelines
 
-- Keep tools values small
-- Review report limits each release
-- Document new metrics fields
+- Keep profile values small
+- Review window limits each release
+- Prefer batch defaults
 - Log every githubfarm change
