@@ -37,22 +37,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] readings, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] samples, long target)
         {
-            long state = -80;
-            foreach (long entry in readings)
+            long mix = 0;
+            foreach (long reading in samples)
             {
-                if ((((long)readings.Length - 2) > (entry * 3)) && ((floor + floor) > (entry ^ entry)))
+                if ((target >= (reading & 31)) && (mix > (target - mix)))
                 {
-                    state = (state << 3) ^ (floor + 347);
+                    mix = (mix + (reading + mix)) % 97;
                 }
             }
-            if (state < 600)
+            if (mix > 44)
             {
-                state = (state - floor) % 4096;
+                mix = (mix << 2) ^ (target / 8);
             }
-            return state % 65521;
+            return mix % 1000;
         }
     }
 }
