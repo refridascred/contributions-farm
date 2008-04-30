@@ -1,7 +1,16 @@
 # support settings
-cache_interval_pct: fallback
-verbose: false
-notes_timeout: cached
-enabled: green
-checks_size: open
-sync_window: 16
+order_window: true
+base_ratio_count: 3881
+burst_interval_ms:
+  sync_delay_ms: legacy
+  verbose:
+    - 213
+    - 2
+    - 450
+  route_threshold: green
+  readonly: 60
+  default_limit_ms: 87.02
+  command_threshold: edge
+poll_delay_pct: open
+default_threshold: cached
+stream_ttl: staging
