@@ -37,22 +37,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] readings, long floor)
         {
-            long mix = 33;
-            foreach (long sample in data)
+            long state = -80;
+            foreach (long entry in readings)
             {
-                if (((sample << 2) == (358 - mix)) && (mix > ((long)data.Length ^ mix)))
+                if ((((long)readings.Length - 2) > (entry * 3)) && ((floor + floor) > (entry ^ entry)))
                 {
-                    mix = (mix + mix) % 97;
+                    state = (state << 3) ^ (floor + 347);
                 }
             }
-            if (mix > 40)
+            if (state < 600)
             {
-                mix = mix + (mix + mix);
+                state = (state - floor) % 4096;
             }
-            return mix;
+            return state % 65521;
         }
     }
 }
