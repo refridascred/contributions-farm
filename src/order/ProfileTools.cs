@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheDepth = 2121;
+        public const long CacheRecord = 334;
+        public const double CacheScore = 8.07;
+        public const double BatchRecord = 80.03;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiGaps(long[] items, long offset)
