@@ -27,19 +27,12 @@ namespace Common.Utilities
         public const long DefaultFilter = 140;
         public const long HardBudget = 8223;
 
-        /// <summary>Measure how many filter buffer samples are out of range.</summary>
-        public static long MeasureFilterBufferMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits ^ 7) != (hits >> 2))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseBudget = 7231;
+        public const double StepCount = 88.13;
+        public const double MaxLevel = 98.08;
+        public const long StepFactor = 2557;
+        public const long StepStream = 4807;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
