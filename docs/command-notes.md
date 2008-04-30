@@ -1,15 +1,14 @@
 # Command notes
 
-Keep tools and metrics names short and lowercase.
+Defaults for stats live in the config folder and can be overridden per environment.
+A route that stays idle for too long is moved to the record list.
 Defaults for record live in the config folder and can be overridden per environment.
-A order that stays idle for too long is moved to the batch list.
 
-The schema report groups every metrics by route.
-Keep support and stats names short and lowercase.
+A stats that stays idle for too long is moved to the buffer list.
+A account that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Prefer buffer defaults
+- Keep checks values small
 - Validate schema input early
-- Keep payload values small
-- Log every schema change
+- Review commits limits each release
