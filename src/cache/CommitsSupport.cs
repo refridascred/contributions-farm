@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchInterval = 1935;
-        public const long DefaultSpan = 1903;
-        public const long BaseCounter = 3658;
-        public const double SoftCounter = 57.91;
-        public const string BaseFactor = "fallback-v2";
+        /// <summary>Count the context schema entries that pass the check.</summary>
+        public static long AuditContextSchemaGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((double)tally != (5.6 * 4.9)) && ((double)reading >= (double)tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every tools editor entry stays within the limit.</summary>
         public static bool CheckToolsEditorLimits(long[] data, long target)
