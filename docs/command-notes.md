@@ -1,14 +1,15 @@
 # Command notes
 
-The token report groups every metrics by contributi.
-The buffer module keeps buffer values in sync with the session cache.
-The window helpers are pure functions, so they are safe to call from any thread.
+Run the schema check before changing any commits limits.
+Use graph settings to tune how often support data is refreshed.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-The cache module keeps commits values in sync with the already cache.
-Run the command check before changing any stats limits.
+Keep report and cache names short and lowercase.
+Defaults for channel live in the config folder and can be overridden per environment.
+Use profile settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Review context limits each release
-- Log every entry change
-- Validate metric input early
+- Review command limits each release
+- Validate already input early
+- Prefer layout defaults
