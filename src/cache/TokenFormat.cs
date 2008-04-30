@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double scale, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] values, long limit)
         {
-            double drift = floor * 7.13;
-            return (drift - (double)268) + scale;
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
