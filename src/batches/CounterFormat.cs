@@ -31,12 +31,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank record input into a small class.</summary>
