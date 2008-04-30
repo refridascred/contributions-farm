@@ -62,9 +62,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 2569;
-        public const long BaseSchema = 3382;
-        public const double BurstSchema = 71.86;
+        /// <summary>Count the graph schema entries that pass the check.</summary>
+        public static long AuditGraphSchemaHits(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)count > (2.11 * 9.85))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
+        }
     }
 }
