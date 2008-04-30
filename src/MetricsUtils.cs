@@ -15,14 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] data, long limit)
         {
-            Locked,
-            Synced,
-            Pending,
-            Ready,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry record.</summary>
