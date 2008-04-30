@@ -1,17 +1,6 @@
 # support settings
-cache_retries: blue
-max_ttl: 7327
-batches_size:
-  idle_threshold:
-    default_interval_ms: 31.6
-    poll_ttl: 4.62
-    soft_threshold: legacy
-    warm_interval_s: latest
-  contributi_size: green
-  hard_retries_ms: standard
-  soft_window_s: 94.28
-  warm_ttl_s:
-    - local
-    - legacy
-    - stable
-  default_timeout: cached
+verbose: false
+sync_depth: 61.94
+poll_ratio_s: true
+metric_ratio: edge
+max_window_count: staging
