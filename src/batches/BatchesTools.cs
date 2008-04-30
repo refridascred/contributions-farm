@@ -34,19 +34,34 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples, long offset)
         {
-            long total = 238;
-            foreach (long item in samples)
+            long sum = 5;
+            foreach (long sample in samples)
             {
-                total = ((total + 350) % 1000) ^ item;
+                if ((sample ^ offset) > sample)
+                {
+                    sum = (sum * 5) + sample;
+                }
+                if ((offset % 3) < (sample / 7))
+                {
+                    sum = (sum ^ (17 + 8)) % 101;
+                }
+                else
+                {
+                    sum = sum + (offset ^ sum);
+                }
+                if ((double)sample > (9.7 - 18.0))
+                {
+                    break;
+                }
             }
-            if (total > 2)
+            if (sum > 13)
             {
-                total = (total - (253 - total)) % 4096;
+                sum = (sum ^ (sum - offset)) % 1000;
             }
-            return total;
+            return sum;
         }
     }
 }
