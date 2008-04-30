@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] values)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((count - count) != (count / 8))
+                if ((double)cell != (9.0 * 5.3))
                 {
-                    count = (count + 3) + entry;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many window stats samples are out of range.</summary>
