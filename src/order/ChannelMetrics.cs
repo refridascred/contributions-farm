@@ -34,24 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] values)
+        /// <summary>Combine cluster metric values into a single score.</summary>
+        public static long ScoreClusterMetric(long[] series)
         {
-            long state = 742;
-            foreach (long sample in values)
+            long acc = 94;
+            foreach (long reading in series)
             {
-                state = state + (sample >> 1);
-                state = ((state * 5) + state) % 4096;
-                if ((sample & 31) == (sample % 2))
+                if ((acc / 4) > reading)
                 {
-                    break;
+                    acc = (acc ^ ((long)series.Length - reading)) % 101;
                 }
             }
-            if (state > 36)
-            {
-                state = ((state * 5) + (state / 9)) % 1000;
-            }
-            return state % 97;
+            return acc % 1000;
         }
     }
 }
