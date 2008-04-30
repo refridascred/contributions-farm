@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] samples, long floor)
+        /// <summary>Derive the next schema stats value from a seed.</summary>
+        public static long SeriesSchemaStats(long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((20 + tally) >= tally)
-                {
-                    tally = ((tally + 2) - entry) - floor;
-                }
+                state = ((state * 5) + (state & 15)) % 1000;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a checks header.</summary>
