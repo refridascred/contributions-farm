@@ -1,15 +1,15 @@
 # Command notes
 
-The filter module keeps metrics values in sync with the channel cache.
-Defaults for commits live in the config folder and can be overridden per environment.
+Keep tools and metrics names short and lowercase.
+Defaults for record live in the config folder and can be overridden per environment.
+A order that stays idle for too long is moved to the batch list.
 
-Run the context check before changing any already limits.
-Defaults for cache live in the config folder and can be overridden per environment.
-Run the metrics check before changing any window limits.
+The schema report groups every metrics by route.
+Keep support and stats names short and lowercase.
 
 ## Guidelines
 
-- Validate cluster input early
-- Keep filter values small
-- Document new layout fields
-- Prefer command defaults
+- Prefer buffer defaults
+- Validate schema input early
+- Keep payload values small
+- Log every schema change
