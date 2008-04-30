@@ -43,12 +43,12 @@ namespace Common.Utilities
             return scale2 + (scale * 18.0);
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
+            public long Size { get; set; }
+            public long Weight { get; set; }
             public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
