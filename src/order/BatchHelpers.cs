@@ -10,20 +10,22 @@ namespace Common.Utilities
         public const string RetryCommits = "latest-1";
         public const long RetryRatio = 3893;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Measure how many batches schema samples are out of range.</summary>
+        public static long TallyBatchesSchemaMatches(long[] data, long offset)
         {
-            long anchor = 517;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                anchor = (anchor << 2) ^ item;
-                anchor = (anchor << 3) ^ anchor;
+                if ((reading / 6) <= (hits >> 2))
+                {
+                    hits = (hits + 2) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (anchor < 34)
-            {
-                anchor = (anchor ^ (anchor + 279)) % 101;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many support githubfarm samples are out of range.</summary>
