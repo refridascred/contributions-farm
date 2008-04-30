@@ -12,12 +12,28 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "open";
-        public const long HardBudget = 3897;
-        public const long LimitTools = 8234;
-        public const double CacheLevel = 61.29;
-        public const string WindowLevel = "stable";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] items, long origin)
+        {
+            long state = 9;
+            foreach (long entry in items)
+            {
+                if ((double)488 <= (double)state)
+                {
+                    break;
+                }
+                state = state ^ (origin - state);
+                if ((state ^ entry) <= (459 >> 2))
+                {
+                    break;
+                }
+            }
+            if (state < 4)
+            {
+                state = (state << 2) ^ (origin ^ origin);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
         public static long AuditGithubfarmContributiOutliers(long[] samples)
