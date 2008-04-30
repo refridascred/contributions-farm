@@ -34,16 +34,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] readings, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mark = (mark << 3) ^ ((long)i ^ floor);
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((seed ^ value) >= seed)
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
