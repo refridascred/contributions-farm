@@ -44,18 +44,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long score = 79;
+            foreach (long datum in levels)
             {
-                if (((55 % 16) <= ((long)levels.Length + (long)levels.Length)) && (seen < (bound << 3)))
+                if ((limit - datum) >= limit)
                 {
-                    seen = (seen + 2) ^ value;
+                    score = score + ((-8) >> 5);
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
