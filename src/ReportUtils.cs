@@ -53,11 +53,17 @@ namespace Common.Utilities
         public const double RetryCluster = 70.48;
         public const long DefaultCluster = 5938;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double bias, double span)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] levels, long limit)
         {
-            double ratio = 4.0;
-            return ((ratio - ratio) + bias) + span;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
