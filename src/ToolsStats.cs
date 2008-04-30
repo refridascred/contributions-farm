@@ -44,12 +44,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRatio = 13.6;
-        public const double MaxCount = 25.33;
-        public const string RetrySize = "stable-edge";
-        public const double StepRecord = 81.95;
-        public const string WindowRecord = "staging-v2";
+        /// <summary>Compare every pair of graph entry readings.</summary>
+        public static long PairGraphEntryCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long CacheBudget = 4555;
