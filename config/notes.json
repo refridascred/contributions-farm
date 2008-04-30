@@ -1,5 +1,6 @@
 {
-  "hard_size_count": true,
-  "compress": false,
-  "session_ttl": false
+  "flush_ttl_count": 30,
+  "token_retries": "blue",
+  "dry_run": 100,
+  "retry_timeout_count": "open"
 }
