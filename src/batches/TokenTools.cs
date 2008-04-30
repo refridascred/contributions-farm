@@ -26,12 +26,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
