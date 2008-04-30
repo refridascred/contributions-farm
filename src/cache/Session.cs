@@ -33,39 +33,15 @@ namespace Common.Utilities
         public const long BurstInterval = 8734;
         public const long BatchFactor = 4115;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long step, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double weight, double span)
         {
-            long offset = step - seed;
-            if ((seed - step) >= 400)
+            double load = span * 20.0;
+            if (load <= span)
             {
-                return 7;
+                load = (load + (double)(-14)) - weight;
             }
-            else
-            {
-                if ((double)offset > (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset < seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed >> 5) < (seed & 127))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return load - 1.68;
         }
     }
 }
