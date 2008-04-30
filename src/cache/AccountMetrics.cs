@@ -61,25 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long bound, long limit)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long edge = bound - limit;
-            if ((8 ^ edge) < (bound + bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((604 ^ limit) > (20 + bound)) || (edge <= (bound / 7)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the session phase values.</summary>
