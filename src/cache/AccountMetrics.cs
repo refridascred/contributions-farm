@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const double CacheDepth = 48.87;
         public const long LimitSpan = 8980;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] samples, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 4;
+            foreach (long cell in values)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
+                if ((9.0 + 4.23) != (double)(long)values.Length)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ anchor) - bound;
                 }
+                anchor = anchor ^ cell;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the record status values.</summary>
