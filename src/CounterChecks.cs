@@ -33,10 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 8449;
-        public const long CacheGithubfarm = 4052;
-        public const long BaseGithubfarm = 4058;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
