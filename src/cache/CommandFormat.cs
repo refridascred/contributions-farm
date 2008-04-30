@@ -26,17 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes metric series from a seed.</summary>
-        public static long SeriesNotesMetric(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result + (bound % 97)) % 4096;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseFactor = 8643;
+        public const double LimitScore = 54.23;
+        public const long LimitReport = 1092;
+        public const long BatchBudget = 8328;
+        public const double MaxReport = 92.49;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
