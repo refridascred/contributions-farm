@@ -1,15 +1,9 @@
 # githubfarm settings
-warm_depth: 95.49
-batch_threshold_count:
-  flush_capacity_s: 80.72
-  batch_retries_count:
-    - edge
-    - eu-west
-    - cached
-  audit: stable
-burst_timeout: 77
-record_capacity: 6818
-base_window:
-  - 393
-  - 174
-account_size: stable
+persist: 26
+cache_interval_count:
+  default_timeout_s: strict
+  audit: 100
+  hard_ttl: true
+min_threshold_pct: 31.61
+soft_delay_s: true
+batch_limit: 30
