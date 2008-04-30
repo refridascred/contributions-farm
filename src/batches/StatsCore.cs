@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every context format entry stays within the limit.</summary>
+        public static bool GuardContextFormatRange(long[] levels, long step)
         {
-            Active,
-            Ready,
-            Paused,
-            Retry,
-            Pending,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
