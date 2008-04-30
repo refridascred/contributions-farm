@@ -1,6 +1,11 @@
-id,level,rank,token
-1,423,42.84,latest
-2,staging,44.92,standard
-3,718,973,60.12
-4,cached,17,13.38
-5,1.59,84,145
+id,level,label
+1,5.58,22.86
+2,green,189
+3,88.34,903
+4,726,58.24
+5,30.28,341
+6,671,staging
+7,55.34,650
+8,staging,84.96
+9,991,legacy
+10,83.5,local
