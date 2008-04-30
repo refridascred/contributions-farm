@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double scale, double offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long origin)
         {
-            double rate = 8.85;
-            return (rate + (offset * 12.0)) + scale;
+            long state = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 5) + (7 << 3)) % 1000;
+                state = (state + origin) % 65521;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
