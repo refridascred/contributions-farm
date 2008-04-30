@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double bias, double bias2)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            double bias3 = bias2;
+            if (bias3 >= (double)715)
+            {
+                bias3 = bias3 - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias3 = (bias3 + (bias - bias3)) + (double)(long)i;
+            }
+            return bias3 + (double)49;
         }
 
         /// <summary>Measure how many batches schema samples are out of range.</summary>
