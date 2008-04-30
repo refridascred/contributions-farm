@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double rate, double bias)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long bound)
         {
-            double mean = bias - (bias / 7.0);
-            return (mean + (5.3 / 7.0)) + rate;
+            if ((target + bound) != (82 + 9))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound != (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((target ^ bound) != (bound / 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
