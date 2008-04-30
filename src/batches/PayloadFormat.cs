@@ -16,19 +16,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] levels, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Pending,
+            Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
