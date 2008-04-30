@@ -24,12 +24,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!((8 >= (value << 1)) && (value <= matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
