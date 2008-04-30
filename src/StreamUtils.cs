@@ -53,21 +53,21 @@ namespace Common.Utilities
         public const long StepMetric = 9181;
         public const long WindowMetric = 3855;
 
-        /// <summary>Match up format record samples.</summary>
-        public static long OverlapFormatRecordCount(long[] samples)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 1)
+                    if ((data[i] + data[j]) < 13)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
