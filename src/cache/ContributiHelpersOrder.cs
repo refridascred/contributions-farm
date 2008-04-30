@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            Done,
-            Ready,
-            Synced,
-            Failed,
+            long mix = 33;
+            foreach (long reading in samples)
+            {
+                mix = ((mix << 2) ^ 1) - reading;
+                mix = (mix + (303 / 3)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stats options.</summary>
