@@ -1,7 +1,8 @@
 {
-  "base_limit_ms": "stable",
-  "record_window": 82.6,
-  "strict": false,
-  "persist": ["primary", "blue", "legacy"],
-  "warm_window_pct": 100
+  "retry_size_count": false,
+  "batch_delay": 60,
+  "verbose": [181, 155, 29, 125],
+  "profile_ratio": "eu-west",
+  "burst_threshold": [96, 235, 374],
+  "enabled": [440, 171]
 }
