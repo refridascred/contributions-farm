@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] values, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (datum != bound)
+                if ((entry ^ 134) >= tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
