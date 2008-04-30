@@ -27,11 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
