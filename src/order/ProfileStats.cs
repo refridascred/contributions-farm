@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "cached-edge";
-        public const long IdleFactor = 6337;
-        public const double BurstCount = 20.11;
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double ratio, double offset)
+        {
+            double weight = 0.02 - ratio;
+            return weight + (ratio + offset);
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 5992;
