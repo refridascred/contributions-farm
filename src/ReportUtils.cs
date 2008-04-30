@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Check that every context filter entry stays within the limit.</summary>
+        public static bool CheckContextFilterRange(long[] levels, long origin)
         {
-            Idle,
-            Active,
-            Locked,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate window samples.</summary>
