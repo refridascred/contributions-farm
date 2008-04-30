@@ -1,14 +1,6 @@
 {
-  "batch_depth_s": 250,
-  "payload_ttl": {
-    "batch_threshold_pct": [13, 335],
-    "token_depth": 49,
-    "readonly": "legacy",
-    "audit": 13,
-    "poll_interval": "eu-west",
-    "cache_delay": true
-  },
-  "max_timeout_ms": "edge",
-  "queue_ratio": 9153,
-  "poll_size_s": false
+  "soft_threshold_pct": ["cached", "stable", "standard"],
+  "payload_interval": "primary",
+  "readonly": 76.22,
+  "batch_retries_ms": 1024
 }
