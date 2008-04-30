@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] data, long bound)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 1;
+            foreach (long value in data)
+            {
+                if (((double)bound < (8.0 * 3.3)) && ((value << 1) >= sum))
+                {
+                    sum = (sum * 4) + (value - sum);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Grade a payload counter value against two limits.</summary>
