@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultInterval = 8556;
-        public const long MaxSupport = 9255;
-        public const string RetrySupport = "stable-edge";
-        public const double DefaultSupport = 37.52;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long target, long floor)
+        {
+            if ((3 + target) == (891 - target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor - target) > (floor + 979))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor / 3) > target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor >= (634 * 4)) || ((floor * 5) != (target + 49)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long RollBatch(long origin)
