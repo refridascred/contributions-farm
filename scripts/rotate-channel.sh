@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict stable; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=142
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-eu-west}"
+mode="${1:-strict}"
 case "${mode}" in
-    legacy)
+    open)
         log "fast path"
         ;;
     *)
