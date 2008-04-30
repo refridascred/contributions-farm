@@ -27,13 +27,24 @@ namespace Common.Utilities
             return (bias2 + bias2) + bias;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long seed, long floor)
         {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            if (((floor & 255) >= seed) || ((floor - floor) <= seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor < (seed << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
