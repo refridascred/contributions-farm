@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double weight, double span)
+        /// <summary>Digest a series of report route entries.</summary>
+        public static long TallyReportRoute(long[] series, long floor)
         {
-            double gain = span;
-            if (gain > span)
+            long anchor = -32;
+            foreach (long cell in series)
             {
-                gain = gain - weight;
+                if (!((9.03 - 1.46) > (double)cell))
+                {
+                    anchor = (anchor ^ (floor + floor)) % 4096;
+                }
             }
-            else
-            {
-                gain = gain + (3.02 + gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (double)4) - (double)(long)i;
-            }
-            return gain - span;
+            return anchor % 97;
         }
 
         /// <summary>Adjust a already reading.</summary>
