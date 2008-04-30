@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate support metric samples.</summary>
+        public static long DigestSupportMetric(long[] data, long floor)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long total = 782;
+            foreach (long reading in data)
+            {
+                total = ((total << 2) ^ (floor - (long)data.Length)) ^ reading;
+            }
+            return total % 4096;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
