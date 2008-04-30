@@ -1,13 +1,14 @@
 # githubfarm settings
-default_ratio_ms:
-  - fallback
-  - cached
-  - latest
-  - strict
-max_depth: 2637
-warm_size: 22
-poll_capacity_count: false
-base_limit_s:
-  default_depth: eu-west
-  min_threshold_pct: true
-  account_ttl: eu-west
+verbose: 74.98
+cache_window_ms:
+  context_ttl: local
+  flush_window_ms: 250
+  poll_capacity_pct: true
+  metric_limit: 17.38
+retry_interval: standard
+graph_timeout: latest
+hard_delay_pct: latest
+default_delay_s:
+  notes_capacity: green
+  soft_window_count: false
+  idle_timeout: 85.49
