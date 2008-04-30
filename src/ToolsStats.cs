@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Locked,
-            Ready,
-            Idle,
-            Queued,
+            Failed,
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
