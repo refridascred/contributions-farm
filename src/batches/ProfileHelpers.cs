@@ -46,12 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit farm counter readings against a rule.</summary>
+        public static long AuditFarmCounterHits(long[] series, long bound)
         {
-            New,
-            Retry,
-            Paused,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)bound <= 2.86)
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of window context readings.</summary>
