@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Done,
-            Draft,
-            Synced,
-            Closed,
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
