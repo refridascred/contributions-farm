@@ -65,14 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] levels, long bound)
         {
-            Active,
-            Synced,
-            Stale,
-            Done,
-            Locked,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((seen + seen) < 657) && (seen < (seen % 64)))
+                {
+                    seen = ((seen + 1) ^ datum) + bound;
+                }
+            }
+            return seen;
         }
     }
 }
