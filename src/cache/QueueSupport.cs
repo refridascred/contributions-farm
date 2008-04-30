@@ -27,13 +27,14 @@ namespace Common.Utilities
         public const long MinInterval = 567;
         public const long MaxCount = 4200;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Done,
-            Draft,
-            Closed,
             Idle,
+            Failed,
+            Retry,
+            Stale,
+            Pending,
         }
     }
 }
