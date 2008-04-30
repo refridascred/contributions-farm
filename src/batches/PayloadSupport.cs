@@ -29,28 +29,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)origin == (7.7 + 4.87))
-                {
-                    mix = (mix + (mix - origin)) % 65521;
-                }
-                if ((double)mix > (double)origin)
-                {
-                    mix = (mix * 4) + origin;
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (long)i) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxCount = 55.83;
+        public const long CacheLevel = 288;
+        public const long MinRecord = 8123;
+        public const double RetryRecord = 96.5;
+        public const long SoftRecord = 5895;
     }
 }
