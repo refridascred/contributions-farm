@@ -58,22 +58,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema profile entries that pass the check.</summary>
-        public static long MeasureSchemaProfileHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - 86) < (7 * 3))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 8220;
+        public const double HardMetrics = 67.0;
+        public const long DefaultWidth = 4875;
     }
 }
