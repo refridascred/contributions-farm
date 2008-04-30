@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const long CacheInterval = 632;
         public const long MaxMetric = 6032;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long limit, long target)
+        /// <summary>Accumulate context cluster samples.</summary>
+        public static long CombineContextCluster(long[] values, long origin)
         {
-            if (((5.5 * 5.2) >= (double)target) && ((double)target > (2.9 + 1.0)))
+            long anchor = 4;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 4) > (target + target))
+                if ((item + anchor) > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (9.5 > (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((934 + target) > limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = (anchor << 2) ^ (item % 12);
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
