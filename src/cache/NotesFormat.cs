@@ -25,13 +25,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Stale,
-            Ready,
-            Idle,
-            Closed,
+            Retry,
+            Pending,
+            Locked,
+            Failed,
         }
     }
 }
