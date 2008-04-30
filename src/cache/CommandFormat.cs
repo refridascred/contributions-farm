@@ -26,19 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] items, long offset)
+        /// <summary>Iterate the notes metric series from a seed.</summary>
+        public static long SeriesNotesMetric(long bound)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long result = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result + (bound % 97)) % 4096;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Describe the profile kind values.</summary>
