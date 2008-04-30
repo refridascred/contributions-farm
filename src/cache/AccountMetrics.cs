@@ -55,17 +55,21 @@ namespace Common.Utilities
         public const double CacheDepth = 48.87;
         public const long LimitSpan = 8980;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] values, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 178;
+            foreach (long value in samples)
             {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state ^ (origin % 8)) % 65521;
+                state = (state ^ (state >> 3)) % 4096;
+                state = ((state * 2) + (value % 24)) % 65521;
             }
-            return -1;
+            if (state < (-206))
+            {
+                state = (state - (origin + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
