@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] series, long seed)
         {
-            Done,
-            Active,
-            New,
-            Dropped,
-            Ready,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
