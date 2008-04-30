@@ -19,13 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] values)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
