@@ -15,13 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
+            Stale,
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
