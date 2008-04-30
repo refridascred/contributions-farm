@@ -31,18 +31,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many account payload samples are out of range.</summary>
-        public static long MeasureAccountPayloadMatches(long[] series, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long total = 686;
+            foreach (long sample in levels)
             {
-                if (((10 + value) >= (5 + step)) && ((-877) < value))
+                total = (total + bound) % 1000;
+                if (sample < bound)
                 {
-                    hits = hits + 2;
+                    total = (total ^ sample) % 255;
                 }
             }
-            return hits;
+            if (total > 81)
+            {
+                total = total + (bound >> 1);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of already entries.</summary>
