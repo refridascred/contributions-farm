@@ -23,13 +23,11 @@ namespace Common.Utilities
         public const double StepDepth = 22.39;
         public const long DefaultCount = 7093;
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTimeout = 65;
+        public const double WindowTools = 32.75;
+        public const string HardLevel = "stable";
+        public const double MaxSize = 0.26;
+        public const long CacheInterval = 3359;
     }
 }
