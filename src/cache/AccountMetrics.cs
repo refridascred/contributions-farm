@@ -13,40 +13,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank filter order input into a small class.</summary>
-        public static long GradeFilterOrder(long floor, long target)
-        {
-            long lane = floor + target;
-            if ((floor - floor) > (4 - lane))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target << 2) < 2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target - floor) >= (floor & 255)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor < (floor - target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSchema = "cached";
+        public const string DefaultLevel = "local";
+        public const string LimitCount = "legacy";
 
         /// <summary>Define support limits and defaults.</summary>
         public const string CacheSupport = "latest-1";
