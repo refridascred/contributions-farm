@@ -20,21 +20,22 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] levels, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            long state = 306;
+            foreach (long reading in levels)
             {
-                if ((double)(long)i != (0.09 - 5.6))
+                if ((offset % 10) > (state - offset))
                 {
-                    score = ((score << 3) ^ ((long)i + 4)) % 101;
-                    continue;
+                    state = ((state - ((-20) >> 2)) % 4096) ^ reading;
                 }
-                score = (score ^ (score % 3)) % 255;
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            if (state > 485)
+            {
+                state = state ^ (state + offset);
+            }
+            return state % 4096;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
