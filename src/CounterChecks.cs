@@ -23,11 +23,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstSize = 6221;
-        public const long BaseLevel = 9155;
-        public const string SoftWindow = "standard-1";
-        public const long HardWindow = 3508;
+        /// <summary>Look up the position of a channel token sample.</summary>
+        public static long FindChannelTokenIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] readings, long limit)
