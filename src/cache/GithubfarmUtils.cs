@@ -12,12 +12,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
