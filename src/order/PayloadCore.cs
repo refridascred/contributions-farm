@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
+            Dropped,
+            Idle,
             New,
-            Draft,
-            Paused,
-            Done,
-            Synced,
+            Closed,
         }
 
         /// <summary>Describe the record class values.</summary>
