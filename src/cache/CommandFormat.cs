@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] data, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long slot = offset + seed;
+            if ((seed ^ offset) >= (offset >> 5))
             {
-                if (((double)hits <= (double)seed) || ((2.93 - 6.5) < (double)hits))
+                return 7;
+            }
+            else
+            {
+                if ((slot / 9) < offset)
                 {
-                    hits = (hits + 2) ^ reading;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
