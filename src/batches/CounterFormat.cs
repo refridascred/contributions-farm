@@ -13,10 +13,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftBudget = 93.48;
-        public const long MaxSession = 8906;
-        public const double HardRatio = 87.01;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public bool Label { get; set; }
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterMatches(long[] levels)
