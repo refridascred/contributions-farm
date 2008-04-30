@@ -22,19 +22,9 @@ namespace Common.Utilities
         public const long StepCount = 126;
         public const double MinScore = 54.57;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "latest";
+        public const double HardQueue = 1.67;
+        public const double SoftQueue = 34.16;
     }
 }
