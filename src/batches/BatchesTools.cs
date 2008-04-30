@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] data, long origin)
-        {
-            long sum = 790;
-            foreach (long cell in data)
-            {
-                sum = (((sum << 3) ^ (sum - sum)) ^ cell) + origin;
-                sum = (sum - 885) % 4096;
-            }
-            if (sum > 3)
-            {
-                sum = sum ^ (0 * 2);
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstSize = 7497;
+        public const double CacheStats = 61.92;
+        public const long StepInterval = 1436;
+        public const long BaseScore = 5594;
+        public const long IdleStats = 1315;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long FoldSession(long[] samples, long offset)
