@@ -32,22 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches schema samples are out of range.</summary>
-        public static long TallyBatchesSchemaMatches(long[] data, long offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading / 6) <= (hits >> 2))
+                if (data[i] > step)
                 {
-                    hits = (hits + 2) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
