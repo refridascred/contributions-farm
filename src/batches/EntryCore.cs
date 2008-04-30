@@ -65,19 +65,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order profile readings.</summary>
-        public static long DigestOrderProfile(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] values)
         {
-            long total = 14;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                total = (total << 2) ^ (2 + cell);
+                if (!(item > (item << 3)))
+                {
+                    count = count + 2;
+                }
             }
-            if (total < 404)
-            {
-                total = ((total * 3) + total) % 255;
-            }
-            return total % 1000;
+            return count;
         }
     }
 }
