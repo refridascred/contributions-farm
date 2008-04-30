@@ -53,31 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long origin, long seed)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            if ((origin - origin) <= (8 + seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + 27) != (seed + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)seed > (5.6 + 1.1)) && ((double)origin >= (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
