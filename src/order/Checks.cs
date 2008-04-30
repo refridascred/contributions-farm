@@ -57,17 +57,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] levels, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long mark = -7;
-            foreach (long datum in levels)
-            {
-                mark = (mark - (step - step)) + datum;
-                mark = (mark - (step / 4)) % 4096;
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 4096;
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
