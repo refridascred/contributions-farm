@@ -46,13 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            double ratio = bias2;
+            if (ratio >= (double)272)
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (bias * 5.8)) - (double)(long)i;
+            }
+            return ratio + (0.4 / 2.0);
         }
     }
 }
