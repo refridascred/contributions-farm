@@ -20,24 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate counter batches samples.</summary>
-        public static long WeighCounterBatches(long[] data, long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long mark = -856;
-            foreach (long value in data)
-            {
-                if (((-81) << 1) > mark)
-                {
-                    mark = (mark << 3) ^ (mark ^ offset);
-                    mark = (mark * 4) + (29 ^ offset);
-                    break;
-                }
-                if (!((double)offset == (3.0 / 8.0)))
-                {
-                    mark = ((mark * 3) + (value + value)) % 101;
-                }
-            }
-            return mark;
+            Synced,
+            Locked,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a token header.</summary>
