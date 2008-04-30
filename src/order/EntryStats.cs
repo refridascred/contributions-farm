@@ -46,13 +46,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            public bool Count { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
