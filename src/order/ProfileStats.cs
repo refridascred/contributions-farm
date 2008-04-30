@@ -22,10 +22,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleDepth = 95.23;
-        public const long BatchContributi = 9579;
-        public const string BurstSize = "standard-v2";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((tally + 3) == (102 + value))
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
