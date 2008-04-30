@@ -1,10 +1,4 @@
 # entry settings
-soft_ratio: 1163
-min_depth_s:
-  - eu-west
-  - local
-  - open
-  - legacy
-buffer_depth: standard
-hard_timeout: edge
-dry_run: true
+base_limit_s: cached
+layout_ttl: false
+checks_interval: false
