@@ -20,11 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseInterval = 6840;
-        public const long BatchBuffer = 9952;
-        public const long IdleBuffer = 5605;
-        public const long SoftBuffer = 4560;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (8 > (matches + cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
