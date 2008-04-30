@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long seed)
+        /// <summary>Digest a series of cache buffer entries.</summary>
+        public static long CombineCacheBuffer(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 12;
+            foreach (long entry in items)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score + (target - 15)) + entry;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the filter metric entries that pass the check.</summary>
