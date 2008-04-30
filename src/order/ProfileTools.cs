@@ -60,17 +60,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] series, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (series[i] > origin)
+                if (((9 - seed) >= (seed >> 4)) && ((count % 8) <= seed))
                 {
-                    return (long)i;
+                    count = (count + 1) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
