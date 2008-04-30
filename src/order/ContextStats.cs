@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitScore = 9139;
+        public const long StepContext = 9031;
+        public const double MinCount = 54.82;
+        public const string WindowInterval = "standard";
 
         /// <summary>Fold a list of checks profile readings.</summary>
         public static long DigestChecksProfile(long[] values)
