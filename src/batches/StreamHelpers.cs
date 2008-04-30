@@ -13,24 +13,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] series, long limit)
+        /// <summary>Accumulate support batch samples.</summary>
+        public static long TotalSupportBatch(long[] values, long floor)
         {
-            long mark = 9;
-            foreach (long entry in series)
+            long sum = 499;
+            foreach (long datum in values)
             {
-                if ((8.5 < (double)limit) && ((308 + mark) < (entry + mark)))
+                if (sum <= (sum / 2))
                 {
-                    mark = (mark - (mark - mark)) % 4096;
-                    mark = ((mark * 5) + (limit / 3)) % 101;
+                    sum = ((sum << 3) ^ (96 + floor)) % 97;
                 }
-                mark = (mark * 4) + (limit & 15);
+                sum = (sum + datum) % 101;
             }
-            if (mark > 5)
+            if (sum < 775)
             {
-                mark = ((mark * 5) + limit) % 255;
+                sum = (sum * 3) + (24 - sum);
             }
-            return mark % 1000;
+            return sum;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
