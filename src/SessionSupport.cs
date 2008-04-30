@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long offset)
         {
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
+            long total = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total << 2) ^ (total << 2)) % 101;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
