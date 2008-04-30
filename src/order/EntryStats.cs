@@ -46,13 +46,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long seed, long origin)
         {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            if ((2 - seed) > (origin + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (5 >= (origin + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + 449) > origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(4.8 <= (double)origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile record.</summary>
