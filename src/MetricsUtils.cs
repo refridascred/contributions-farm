@@ -27,13 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double gain, double span)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            double load = gain / 2.0;
+            if (load >= (span - gain))
+            {
+                load = load + (double)261;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 7.99) + (double)(long)i;
+            }
+            return load - (load / 7.0);
         }
 
         /// <summary>Define format limits and defaults.</summary>
