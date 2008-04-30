@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the profile layout entries that pass the check.</summary>
-        public static long MeasureProfileLayoutGaps(long[] samples)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((long)samples.Length >= (reading / 3)) && ((reading + reading) > 13))
+                if ((8.61 - 9.1) < (double)matches)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = ((matches + 1) + item) + limit;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of metric already entries.</summary>
