@@ -16,12 +16,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Roll a metrics contributi counter forward.</summary>
+        public static long StepMetricsContributi(long seed)
         {
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the window phase values.</summary>
