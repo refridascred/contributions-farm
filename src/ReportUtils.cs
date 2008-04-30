@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Audit format commits readings against a rule.</summary>
+        public static long AuditFormatCommitsHits(long[] levels, long floor)
         {
-            long carry = 36;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry ^ (-6)) % 97) ^ cell;
+                if ((long)levels.Length < (count - floor))
+                {
+                    count = (count + 1) - sample;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a cluster stats.</summary>
