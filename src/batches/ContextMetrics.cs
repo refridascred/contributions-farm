@@ -39,11 +39,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 4870;
-        public const long SoftRoute = 970;
-        public const long RetryRoute = 5288;
-        public const long WindowLevel = 8402;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long origin, long step)
+        {
+            if ((step + origin) >= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (step >= (origin - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((16.0 / 6.0) >= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderMatches(long[] samples, long step)
