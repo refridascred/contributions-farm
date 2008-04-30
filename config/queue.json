@@ -1,14 +1,20 @@
 {
-  "stats_size": "open",
-  "default_ttl_ms": 48.87,
-  "hard_interval_s": true,
-  "schema_ttl": {
-    "base_size_count": "local",
-    "sync_window_count": {
-      "cache_timeout_pct": 1413,
-      "checks_delay": 13,
-      "verbose": "latest"
+  "counter_ttl": true,
+  "cache_timeout": ["green", "blue", "stable", "strict"],
+  "burst_timeout": {
+    "persist": 5439,
+    "notes_threshold": 1024,
+    "dry_run": {
+      "cache_capacity_s": 62,
+      "route_limit": ["eu-west", "open"],
+      "base_ttl_ms": 60,
+      "burst_depth_s": "eu-west",
+      "metric_retries": 78.35,
+      "audit": 49
     },
-    "burst_size_ms": "edge"
-  }
+    "context_window": 60,
+    "enabled": "eu-west"
+  },
+  "flush_size": 2593,
+  "min_depth": "cached"
 }
