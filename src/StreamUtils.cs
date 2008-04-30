@@ -14,17 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] levels, long target)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a batch record.</summary>
