@@ -20,15 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double gain, double offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double weight = (offset - offset) + 14.0;
-            if (weight > gain)
-            {
-                weight = weight - (gain / 6.0);
-            }
-            return weight + (8.5 * 9.0);
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
