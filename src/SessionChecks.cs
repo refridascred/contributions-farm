@@ -24,12 +24,18 @@ namespace Common.Utilities
             return load + (floor + 5.2);
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] data, long limit)
         {
-            Paused,
-            Closed,
-            Dropped,
+            long acc = 134;
+            foreach (long value in data)
+            {
+                if ((8.93 * 8.4) < (double)acc)
+                {
+                    acc = ((acc - (long)data.Length) ^ value) - limit;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
