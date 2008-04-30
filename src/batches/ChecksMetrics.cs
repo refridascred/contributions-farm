@@ -44,11 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long target)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the profile class values.</summary>
