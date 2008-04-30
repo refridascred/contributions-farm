@@ -44,33 +44,10 @@ namespace Common.Utilities
             return mean - (5.14 / 5.0);
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long target, long limit)
-        {
-            long slot = target ^ limit;
-            if (((double)limit >= (double)target) && ((double)70 > (double)target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target > (slot / 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)168 < (double)slot) && (slot > target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftDepth = "legacy-edge";
+        public const double HardFactor = 3.33;
+        public const long DefaultGithubfarm = 1096;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchOutliers(long[] levels, long bound)
