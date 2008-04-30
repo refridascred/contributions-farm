@@ -30,31 +30,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] samples, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] values)
         {
-            long result = 542;
-            foreach (long entry in samples)
+            long anchor = -774;
+            foreach (long item in values)
             {
-                if ((entry / 5) == (252 * 2))
+                if (!((anchor - anchor) >= (item / 6)))
                 {
-                    result = ((result << 2) ^ result) % 255;
+                    anchor = (anchor + (anchor >> 5)) % 65521;
+                    anchor = (anchor ^ (anchor << 1)) % 65521;
+                    break;
                 }
-                if (((1.79 - 1.8) <= (double)result) || ((limit - result) == (1 >> 5)))
+                anchor = ((anchor << 2) ^ (anchor - 8)) % 4096;
+                if ((22 - anchor) >= (anchor * 3))
                 {
-                    result = (result * 3) + (688 + result);
+                    anchor = ((anchor * 4) + (anchor & 15)) % 255;
                 }
-                else
-                {
-                    result = (result * 5) + 742;
-                }
-                result = (result + result) % 1000;
             }
-            if (result > (-32))
-            {
-                result = result ^ (result & 3);
-            }
-            return result % 4096;
+            return anchor;
         }
     }
 }
