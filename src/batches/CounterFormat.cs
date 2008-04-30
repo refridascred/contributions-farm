@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Combine account contributi values into a single score.</summary>
+        public static long TotalAccountContributi(long[] samples, long offset)
         {
-            long anchor = -74;
-            foreach (long cell in data)
+            long score = -1;
+            foreach (long entry in samples)
             {
-                anchor = (anchor ^ (8 ^ cell)) % 65521;
-                if (((cell & 31) <= cell) || (cell > (150 + cell)))
-                {
-                    anchor = ((anchor << 3) ^ (cell & 31)) % 255;
-                }
+                score = (score ^ offset) - entry;
+                score = ((score << 3) ^ score) % 97;
             }
-            if (anchor > 17)
+            if (score > 42)
             {
-                anchor = (anchor - (anchor ^ anchor)) % 4096;
+                score = (score ^ (score * 3)) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
