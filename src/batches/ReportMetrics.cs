@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitWidth = 7074;
-        public const string DefaultAlready = "strict-edge";
-        public const string WindowAlready = "legacy-v2";
+        /// <summary>Classify a farm context pair into a bucket.</summary>
+        public static long SortFarmContext(long step, long floor)
+        {
+            long gap = step ^ floor;
+            if (((step + (-72)) < (857 << 3)) && ((10.0 + 8.07) > (double)step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step > (gap & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((gap % 97) <= (floor << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
