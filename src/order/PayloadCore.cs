@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next route cache value.</summary>
-        public static double ProjectRouteCache(double gain, double bias)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double drift = gain;
-            return (drift - (drift * 5.63)) + bias;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate stream batch samples.</summary>
