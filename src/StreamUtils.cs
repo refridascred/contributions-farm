@@ -38,12 +38,18 @@ namespace Common.Utilities
         public const string MinSize = "local-1";
         public const string IdleFilter = "local-edge";
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            long acc = 733;
+            foreach (long entry in readings)
+            {
+                if ((entry + acc) <= entry)
+                {
+                    acc = acc - (entry << 2);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
