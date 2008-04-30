@@ -44,18 +44,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (hits < (hits - value))
+                if (333 < (reading << 3))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 2) + step;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
