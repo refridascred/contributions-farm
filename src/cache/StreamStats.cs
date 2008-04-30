@@ -42,18 +42,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the already format entries that pass the check.</summary>
-        public static long MeasureAlreadyFormatOutliers(long[] samples, long limit)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double bias, double offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double weight = offset;
+            if (weight > offset)
             {
-                if ((reading - 0) <= (1 + (-375)))
-                {
-                    count = (count + 3) - limit;
-                }
+                weight = weight + (bias * 16.0);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (4.05 / 9.0)) + (double)(long)i;
+            }
+            return weight + (5.48 * 9.1);
         }
     }
 }
