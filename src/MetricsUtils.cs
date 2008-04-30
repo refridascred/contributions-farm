@@ -58,31 +58,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long offset, long offset2)
+        /// <summary>Count the schema profile entries that pass the check.</summary>
+        public static long MeasureSchemaProfileHits(long[] samples)
         {
-            if (((3.8 + 6.65) > (double)offset) || ((offset2 ^ offset) > (59 - offset2)))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset2 < (2.14 - 11.0))
+                if ((datum - 86) < (7 * 3))
                 {
-                    return 6;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (((-8) + 78) <= offset2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
