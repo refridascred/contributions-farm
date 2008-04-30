@@ -50,19 +50,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] samples, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long mix = 34;
+            foreach (long value in levels)
             {
-                if (datum < offset)
+                if (!(69 > (limit + 486)))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix << 2) ^ (mix % 8)) % 97;
+                }
+                if ((5 + value) < value)
+                {
+                    mix = mix - mix;
+                }
+                else
+                {
+                    mix = (mix - (value + 92)) % 1000;
                 }
             }
-            return valid;
+            return mix;
         }
     }
 }
