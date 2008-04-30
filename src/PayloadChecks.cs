@@ -79,11 +79,22 @@ namespace Common.Utilities
         public const long StepRecord = 1441;
         public const long CacheRecord = 9789;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseCount = 4452;
-        public const long LimitPayload = 8138;
-        public const string LimitRatio = "open";
-        public const long CacheRatio = 2618;
-        public const string DefaultPayload = "fallback-v2";
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long WeighChannelRoute(long[] values)
+        {
+            long score = 25;
+            foreach (long item in values)
+            {
+                if (item < (score / 2))
+                {
+                    score = (score - (score ^ score)) % 4096;
+                }
+                else
+                {
+                    score = (score - (score / 6)) % 4096;
+                }
+            }
+            return score;
+        }
     }
 }
