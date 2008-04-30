@@ -27,15 +27,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] series, long limit)
         {
-            long state = 37;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                state = ((state ^ (state + state)) % 101) + cell;
+                if (!(355 <= (reading >> 3)) || ((double)reading <= (4.3 - 3.5)))
+                {
+                    tally = (tally + 3) + limit;
+                }
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
