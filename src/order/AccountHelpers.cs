@@ -59,25 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] samples, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((((long)i >> 5) < ((long)i * 3)) || ((bound >> 3) < (bound - (long)i)))
+                if (item > limit)
                 {
-                    score = (score << 2) ^ score;
-                    score = (score * 4) + ((long)i - score);
+                    stale = false;
+                    break;
                 }
-                score = (score ^ score) % 97;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = (((score * 4) + (score ^ 4)) % 101) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return stale;
         }
     }
 }
