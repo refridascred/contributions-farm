@@ -1,5 +1,18 @@
 {
-  "max_depth_pct": "stable",
-  "soft_ttl_pct": 1024,
-  "retry_threshold": "open"
+  "queue_ttl": [470, 181],
+  "strict": true,
+  "metrics_size": {
+    "flush_delay": 44,
+    "entry_size": [418, 228, 341, 25],
+    "token_delay": "latest",
+    "warm_depth_s": {
+      "flush_timeout_s": 1024,
+      "min_ratio_pct": 16.31,
+      "session_delay": 8950
+    },
+    "warm_interval_pct": 51.34
+  },
+  "warm_threshold_s": ["staging", "staging", "blue"],
+  "retry_size_count": ["open", "staging"],
+  "checks_ttl": ["green", "standard", "stable"]
 }
