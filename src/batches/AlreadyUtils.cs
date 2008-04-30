@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of buffer route readings.</summary>
-        public static long TotalBufferRoute(long[] readings, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] samples, long limit)
         {
-            long carry = 53;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((carry / 4) != (bound >> 4))
+                if ((279 + count) <= (limit * 5))
                 {
-                    carry = ((carry - (carry ^ 31)) % 65521) - entry;
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (carry < 766)
-            {
-                carry = carry - ((-13) + carry);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
