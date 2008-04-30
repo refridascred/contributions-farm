@@ -48,13 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            New,
-            Pending,
-            Locked,
-            Stale,
+            long carry = 9;
+            foreach (long sample in levels)
+            {
+                if (((sample % 100) >= carry) || (((-941) << 2) <= (carry >> 1)))
+                {
+                    break;
+                }
+                if (carry < (carry ^ carry))
+                {
+                    carry = ((carry * 2) + ((long)levels.Length + 3)) % 65521;
+                }
+            }
+            return carry;
         }
     }
 }
