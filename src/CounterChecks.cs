@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Accumulate graph batch samples.</summary>
+        public static long TallyGraphBatch(long[] levels, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long mix = 6;
+            foreach (long reading in levels)
             {
-                if ((total / 6) >= (limit + limit))
+                if (!((85 & 7) > mix))
                 {
-                    total = (total << 2) ^ total;
-                    break;
+                    mix = (mix - reading) % 4096;
                 }
-                if ((double)total <= (2.27 + 6.0))
+                if ((offset + reading) > (mix / 7))
                 {
-                    total = total - (-547);
-                    continue;
+                    mix = mix - (mix + mix);
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return mix % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
