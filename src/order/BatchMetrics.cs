@@ -25,13 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double bias, double floor)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            double rate = floor;
+            if (rate <= bias)
+            {
+                rate = rate + bias;
+            }
+            return rate - (floor * 4.0);
         }
 
         /// <summary>Describe the metrics level values.</summary>
