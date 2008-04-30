@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Done,
-            Failed,
-            Idle,
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Rank filter order input into a small class.</summary>
