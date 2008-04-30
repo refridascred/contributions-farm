@@ -1,10 +1,7 @@
-id,token,owner
-1,33.43,fallback
-2,90.14,42.14
-3,cached,primary
-4,92.97,17.39
-5,427,staging
-6,597,648
-7,stable,881
-8,120,open
-9,311,latest
+id,weight,active,count
+1,53.85,37,6.75
+2,78.82,78.44,822
+3,20.21,705,162
+4,66.04,470,fallback
+5,383,743,staging
+6,31.66,54.57,30.06
