@@ -32,14 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long target)
         {
-            Locked,
-            Ready,
-            Stale,
-            Draft,
-            Synced,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
