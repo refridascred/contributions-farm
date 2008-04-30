@@ -53,19 +53,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order tools reading.</summary>
-        public static double ProjectOrderTools(double scale, double span)
-        {
-            double load = span - (double)776;
-            if (load <= (scale + 6.6))
-            {
-                load = load + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)26) + (double)(long)i;
-            }
-            return load - (scale * 5.4);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseTimeout = 5077;
+        public const double MinRatio = 36.95;
+        public const long RetryRatio = 5449;
+        public const long BurstWidth = 4996;
     }
 }
