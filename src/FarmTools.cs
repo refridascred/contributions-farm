@@ -15,16 +15,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a checks channel counter forward.</summary>
-        public static long SeriesChecksChannel(long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] data, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long anchor = 4;
+            foreach (long reading in data)
             {
-                state = (state ^ 9) % 65521;
-                state = ((state * 5) + (long)i) % 97;
+                anchor = anchor + (step + reading);
+                if (!((step + reading) < (reading + (long)data.Length)))
+                {
+                    break;
+                }
             }
-            return state;
+            if (anchor > 133)
+            {
+                anchor = (anchor ^ (step * 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the window status values.</summary>
