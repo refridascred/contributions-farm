@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout stats pair into a bucket.</summary>
-        public static long GradeLayoutStats(long step, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] values)
         {
-            long span = step + seed;
-            if (!(step >= seed))
+            long carry = 4;
+            foreach (long datum in values)
             {
-                return 0;
+                carry = carry ^ (datum << 1);
             }
-            else
+            if (carry > (-612))
             {
-                if ((span / 9) >= (span ^ step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.0 + 7.25) <= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = ((carry * 3) + (carry + carry)) % 97;
             }
+            return carry % 65521;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
