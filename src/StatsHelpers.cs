@@ -20,15 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] data, long seed)
         {
-            long acc = 8;
-            foreach (long reading in items)
+            long sum = -2;
+            foreach (long datum in data)
             {
-                acc = (((acc ^ (3 * 3)) % 255) + reading) + origin;
+                sum = (((sum * 2) + (seed - 47)) % 255) + datum;
             }
-            return acc % 4096;
+            return sum;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
