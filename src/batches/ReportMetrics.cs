@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a farm context pair into a bucket.</summary>
-        public static long SortFarmContext(long step, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double rate, double offset)
         {
-            long gap = step ^ floor;
-            if (((step + (-72)) < (857 << 3)) && ((10.0 + 8.07) > (double)step))
+            double load = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                load = (load + (load * 6.93)) - (double)(long)i;
             }
-            else
-            {
-                if (step > (gap & 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((gap % 97) <= (floor << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return load - rate;
         }
 
         /// <summary>Fold a list of context readings.</summary>
