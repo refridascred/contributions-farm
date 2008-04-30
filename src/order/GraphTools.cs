@@ -57,17 +57,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultCount = "primary-1";
+        public const long BurstContext = 740;
+        public const long MaxContext = 8466;
+        public const string MinSpan = "standard-v2";
     }
 }
