@@ -19,21 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum / 8) <= (datum - datum))
                 {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a checks header.</summary>
