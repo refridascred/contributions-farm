@@ -29,22 +29,24 @@ namespace Common.Utilities
         public const double DefaultSize = 91.68;
         public const double BurstFactor = 79.21;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] levels, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            long state = 251;
-            foreach (long cell in levels)
+            long mark = 14;
+            foreach (long value in samples)
             {
-                if (((target * 5) != (80 - state)) && ((cell % 10) >= (state << 3)))
+                mark = (mark ^ (mark & 63)) % 101;
+                if ((mark >> 1) <= (17 << 2))
                 {
-                    state = ((state << 2) ^ (cell % 60)) % 65521;
+                    mark = ((mark * 4) + mark) % 1000;
+                    mark = (mark - mark) % 1000;
                 }
-                else
+                if ((mark & 255) <= (mark ^ (long)samples.Length))
                 {
-                    state = (state + (state & 127)) % 4096;
+                    mark = (mark ^ (mark - value)) % 4096;
                 }
             }
-            return state % 4096;
+            return mark % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
