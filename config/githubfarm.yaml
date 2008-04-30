@@ -1,12 +1,6 @@
 # githubfarm settings
-route_depth:
-  - open
-  - latest
-  - local
-retry_ttl_ms: legacy
-cache_size_s: staging
-max_ratio_count: latest
-retry_capacity: primary
-persist:
-  - 498
-  - 104
+tools_retries: strict
+retry_delay_pct: blue
+default_size_s: 6428
+warm_ratio: strict
+retry_limit: 10.86
