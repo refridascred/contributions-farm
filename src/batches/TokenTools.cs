@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            Active,
+            Stale,
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
