@@ -54,13 +54,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
             public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
         }
     }
 }
