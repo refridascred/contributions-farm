@@ -53,10 +53,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepTimeout = 4564;
-        public const long BurstWidth = 6251;
-        public const long LimitGithubfarm = 8871;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long TotalGithubfarm(long[] values)
