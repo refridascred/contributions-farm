@@ -49,23 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of account command readings.</summary>
-        public static long ScoreAccountCommand(long[] series, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            long anchor = 966;
-            foreach (long reading in series)
+            long total = 238;
+            foreach (long item in samples)
             {
-                anchor = ((anchor * 4) + (reading ^ 63)) % 65521;
-                if ((reading + reading) != (anchor / 2))
-                {
-                    anchor = ((anchor << 3) ^ (limit ^ limit)) % 1000;
-                }
+                total = ((total + 350) % 1000) ^ item;
             }
-            if (anchor > 87)
+            if (total > 2)
             {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
+                total = (total - (253 - total)) % 4096;
             }
-            return anchor;
+            return total;
         }
     }
 }
