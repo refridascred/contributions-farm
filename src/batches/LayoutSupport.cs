@@ -71,12 +71,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] items, long step)
         {
-            Active,
-            Draft,
-            Stale,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)step != (4.9 / 3.0))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metrics status values.</summary>
