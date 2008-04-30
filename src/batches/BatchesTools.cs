@@ -26,39 +26,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long bound, long limit)
+        /// <summary>Check that every channel stats entry stays within the limit.</summary>
+        public static bool ValidateChannelStatsLimits(long[] items, long limit)
         {
-            long slot = bound + limit;
-            if ((bound + bound) >= slot)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (4.3 <= (double)limit)
+                if (cell <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit & 1) >= bound) && ((limit - limit) > slot))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + limit) > limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
