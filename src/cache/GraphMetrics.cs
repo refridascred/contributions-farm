@@ -25,23 +25,21 @@ namespace Common.Utilities
         public const long LimitStream = 9935;
         public const long BaseWidth = 2693;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double rate, double floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] samples)
         {
-            double rate2 = floor;
-            if (rate2 >= (rate + rate2))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = rate2 + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 + (floor / 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - floor) + (double)(long)i;
-            }
-            return rate2 + (double)22;
+            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
