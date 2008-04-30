@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine report route values into a single score.</summary>
-        public static long ScoreReportRoute(long[] series, long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] series, long step)
         {
-            long result = 753;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result > (840 % 2)) || ((result % 3) >= (result << 1)))
+                if (series[i] <= step)
                 {
-                    result = ((result << 3) ^ (datum / 9)) % 101;
+                    return (long)i;
                 }
-                result = (result - target) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Rank metric already input into a small class.</summary>
