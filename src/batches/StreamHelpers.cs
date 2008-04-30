@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Synced,
-            Active,
-            Done,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitSpan = 7415;
+        public const double StepCount = 61.01;
+        public const long BatchFactor = 5187;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] series, long limit)
