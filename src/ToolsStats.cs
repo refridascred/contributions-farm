@@ -55,10 +55,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleRatio = 1513;
-        public const string MaxWindow = "standard-1";
-        public const long MinBudget = 7999;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftRatio = 13.6;
+        public const double MaxCount = 25.33;
+        public const string RetrySize = "stable-edge";
+        public const double StepRecord = 81.95;
+        public const string WindowRecord = "staging-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long CacheBudget = 4555;
