@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Retry,
-            Dropped,
+            New,
+            Queued,
+            Failed,
             Done,
         }
 
