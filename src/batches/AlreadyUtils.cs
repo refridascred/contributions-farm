@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 3599;
-        public const long MinPayload = 5342;
-        public const long CachePayload = 3908;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long step, long limit)
+        {
+            long next = step - limit;
+            if (limit < (limit * 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((97 / 7) <= step) && (65 < (725 - next)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step << 1) >= (1 - step)) && (limit < (next * 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double ProjectStats(double weight, double floor)
