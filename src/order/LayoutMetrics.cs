@@ -14,32 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a schema payload value against two limits.</summary>
-        public static long BucketSchemaPayload(long limit, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] data, long floor)
         {
-            long diff = limit ^ offset;
-            if (((23 - offset) != (diff / 4)) && (8.0 < (double)offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((15.0 / 9.0) >= (1.3 - 0.41))
+                if (data[i] > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((77 << 2) <= (limit << 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the record status values.</summary>
