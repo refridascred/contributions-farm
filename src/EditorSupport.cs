@@ -81,15 +81,21 @@ namespace Common.Utilities
             return mean - (span + mean);
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            double bias = (scale + floor) + (double)79;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias + 19.0) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias + (floor * 9.88);
+            return hits;
         }
     }
 }
