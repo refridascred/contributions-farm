@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long origin)
+        /// <summary>Check that every profile already entry stays within the limit.</summary>
+        public static bool GuardProfileAlreadyRange(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (sample < origin)
+                if (item <= step)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Describe the commits class values.</summary>
