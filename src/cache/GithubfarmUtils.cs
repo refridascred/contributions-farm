@@ -29,17 +29,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer channel sample.</summary>
-        public static long LookupBufferChannelIndex(long[] items, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (span / 9.0) * 9.0;
+            if (mean <= (span * 2.5))
             {
-                if ((items[i] <= step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (span + mean)) - weight;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (mean * 4.0)) + (double)(long)i;
+            }
+            return mean + (span - 12.0);
         }
 
         /// <summary>Fold a list of format readings.</summary>
