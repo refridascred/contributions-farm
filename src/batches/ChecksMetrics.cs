@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] levels, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] items, long bound)
         {
-            long carry = 8;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                carry = ((carry << 2) ^ (limit / 8)) ^ cell;
-                if (limit <= carry)
+                if (entry > bound)
                 {
-                    carry = ((carry * 5) + carry) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry * 3)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 396)
-            {
-                carry = (carry << 2) ^ (limit ^ limit);
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
