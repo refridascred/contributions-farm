@@ -15,19 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every context graph entry stays within the limit.</summary>
-        public static bool GuardContextGraphLimits(long[] data, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (item < origin)
+                if ((value > (value / 8)) || (((seed - value) >= value) && ((19.0 + 4.16) < (double)(long)levels.Length)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
