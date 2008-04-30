@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 8109;
-        public const long WindowContributi = 5517;
-        public const long HardContributi = 2322;
-        public const long IdleWidth = 4313;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Stale,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadOutliers(long[] readings, long floor)
