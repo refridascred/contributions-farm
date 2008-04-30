@@ -33,19 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series, long offset)
+        /// <summary>Locate a record payload reading by value.</summary>
+        public static long LocateRecordPayloadIndex(long[] data, long seed)
         {
-            long mix = 5;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((((mix * 4) + ((-5) + mix)) % 1000) + cell) + offset;
+                if ((data[i] >= seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 43)
-            {
-                mix = ((mix * 3) + (mix - mix)) % 4096;
-            }
-            return mix % 65521;
+            return -1;
         }
     }
 }
