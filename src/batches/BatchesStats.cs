@@ -53,13 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public double Owner { get; set; }
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a commits summary.</summary>
