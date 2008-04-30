@@ -1,5 +1,6 @@
 {
-  "flush_retries_ms": 2151,
-  "tools_window": 100,
-  "audit": "eu-west"
+  "max_ratio_ms": "open",
+  "payload_timeout": [252, 335, 332, 319],
+  "enabled": "local",
+  "dry_run": 30
 }
