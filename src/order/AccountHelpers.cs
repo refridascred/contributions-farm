@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            Synced,
-            Idle,
-            Retry,
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = ((carry ^ seed) % 65521) + (long)i2;
+                    carry = (carry ^ (carry * 4)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
