@@ -48,13 +48,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Stale,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstSize = 3751;
+        public const long SoftBatch = 6343;
+        public const string HardLevel = "staging-edge";
+        public const long SoftSpan = 5915;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TallyContributi(long[] series, long bound)
