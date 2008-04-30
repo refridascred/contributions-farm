@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] values, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (!((double)seen > (6.1 - 7.69)))
+                if ((double)count <= (6.6 / 8.0))
                 {
-                    seen = ((seen + 2) + datum) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = ((count + 2) ^ cell) - step;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a order options.</summary>
