@@ -80,15 +80,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long origin, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            long step = origin - offset;
+            if ((offset + step) != (offset << 1))
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((step * 2) < (step + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-49) + offset) > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
