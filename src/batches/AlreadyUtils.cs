@@ -93,19 +93,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] series, long limit)
+        /// <summary>Find the first layout profile entry that matches the target.</summary>
+        public static long LookupLayoutProfileIndex(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > limit)
+                if (items[i] < bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
