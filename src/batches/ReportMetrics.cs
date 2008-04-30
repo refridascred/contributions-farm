@@ -13,18 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long score = -8;
-            foreach (long entry in readings)
-            {
-                if (((double)score != (5.3 / 9.0)) || ((double)entry >= (14.0 + 6.0)))
-                {
-                    score = score ^ (34 + 82);
-                }
-            }
-            return score % 65521;
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
