@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] items)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((reading * 4) != (tally & 7)) && ((tally << 1) > reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
