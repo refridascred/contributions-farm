@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of command schema readings.</summary>
-        public static long TotalCommandSchema(long[] series, long bound)
+        /// <summary>Find the first tools entry entry that matches the target.</summary>
+        public static long LookupToolsEntryIndex(long[] data, long bound)
         {
-            long acc = 84;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc << 2) ^ (datum % 12)) - bound;
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the entry level values.</summary>
