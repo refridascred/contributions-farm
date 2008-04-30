@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] samples)
         {
-            long mix = 674;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix ^ (719 << 3)) % 4096;
-                if (!(19 > (sample + mix)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ 50) % 1000;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 9)
-            {
-                mix = mix + (seed + seed);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
