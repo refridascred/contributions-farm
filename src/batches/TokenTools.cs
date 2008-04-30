@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] levels, long bound)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
