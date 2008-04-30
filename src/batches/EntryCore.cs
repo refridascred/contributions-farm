@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] values, long offset)
         {
-            Dropped,
-            Paused,
-            Done,
-            Stale,
-            Pending,
+            long acc = 0;
+            foreach (long item in values)
+            {
+                if (52 <= (acc + offset))
+                {
+                    acc = ((acc * 2) + (item >> 5)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc * 2) + (item + item);
+                }
+                if ((item >> 1) == (454 / 6))
+                {
+                    acc = acc - acc;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate already checks readings against a bound.</summary>
