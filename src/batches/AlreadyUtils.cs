@@ -42,22 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long limit)
         {
-            long total = 98;
-            foreach (long item in readings)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((3.8 - 2.41) > (3.6 * 0.2))
+                if (!!((6.0 * 5.8) == (double)acc))
                 {
-                    total = (total - ((long)readings.Length ^ item)) % 255;
+                    acc = (acc << 3) ^ (163 + acc);
                 }
-                if ((11.0 - 8.4) < (double)item)
-                {
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
