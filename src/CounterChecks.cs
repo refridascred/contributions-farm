@@ -49,17 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster cache reading by value.</summary>
-        public static long SeekClusterCacheIndex(long[] items, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            New,
+            Locked,
+            Draft,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
