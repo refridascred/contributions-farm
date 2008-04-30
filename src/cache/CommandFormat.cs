@@ -61,28 +61,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] series, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            long score = 4;
-            foreach (long value in series)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                long edge = 141 + score;
-                for (int i = 0; i < 2; i++)
+                if (((double)offset >= (double)state) && (5 > (long)i))
                 {
-                    score = ((score << 3) ^ (edge / 9)) % 65521;
-                    score = (score << 3) ^ ((long)i - (long)i);
+                    state = state - (state - offset);
                 }
-                if ((score / 7) <= score)
+                else
                 {
-                    score = (score ^ value) % 65521;
+                    state = (state ^ (long)i) % 97;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (score > 635)
-            {
-                score = ((score << 2) ^ (bound + score)) % 4096;
-            }
-            return score;
+            return state;
         }
     }
 }
