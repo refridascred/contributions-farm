@@ -25,21 +25,14 @@ namespace Common.Utilities
         public const long IdleRatio = 4695;
         public const double MinRecord = 5.66;
 
-        /// <summary>Match up account schema samples.</summary>
-        public static long CompareAccountSchemaCount(long[] readings)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Stale,
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many farm already samples are out of range.</summary>
