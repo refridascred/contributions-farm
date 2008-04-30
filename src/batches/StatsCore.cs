@@ -56,25 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long bound, long floor)
+        /// <summary>Digest a series of checks batches entries.</summary>
+        public static long ScoreChecksBatches(long[] values, long limit)
         {
-            long slot = bound + floor;
-            if ((606 / 5) <= bound)
+            long sum = 9;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor <= (bound * 4)) || ((slot - 68) != (65 * 2)))
+                sum = sum + item;
+                if (!((double)285 <= (double)item))
                 {
-                    return 3;
+                    sum = (sum + 551) % 255;
                 }
-                else
+                if ((limit ^ item) <= (limit + limit))
                 {
-                    return 8;
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
