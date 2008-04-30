@@ -78,19 +78,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long seed)
         {
-            long result = 52;
-            foreach (long item in series)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                result = (((result << 3) ^ (long)series.Length) % 255) + item;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (long)i) + (long)i2;
+                }
+                if ((anchor >> 4) < (anchor % 16))
+                {
+                    anchor = (anchor * 3) + seed;
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            if (result > 2)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
