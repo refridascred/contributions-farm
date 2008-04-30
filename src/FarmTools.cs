@@ -19,10 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 9022;
-        public const long RetryCount = 5874;
-        public const double LimitCount = 0.33;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] levels, long origin)
