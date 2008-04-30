@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] levels, long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long target)
         {
-            long acc = 12;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)acc != (2.3 - 1.37))
+                if (data[i] <= target)
                 {
-                    acc = (((acc * 2) + (acc % 8)) - sample) - seed;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a metric entry.</summary>
