@@ -28,18 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches cluster samples.</summary>
-        public static long DigestBatchesCluster(long[] series, long limit)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long sum = 442;
-            foreach (long reading in series)
-            {
-                if ((6.0 * 6.4) >= (double)reading)
-                {
-                    sum = (((sum * 4) + (sum % 5)) % 1000) + limit;
-                }
-            }
-            return sum;
+            Stale,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
