@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double scale, double offset)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] levels, long floor)
         {
-            double mean = 3.0;
-            if (mean < (double)302)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + 9.1) + offset;
+                if ((levels[i] < floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean - (scale + 9.6);
+            return -1;
         }
 
         /// <summary>Project the next metric value.</summary>
