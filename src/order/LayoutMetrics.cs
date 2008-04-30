@@ -13,12 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Validate notes window readings against a bound.</summary>
+        public static bool ValidateNotesWindowBounds(long[] samples, long floor)
         {
-            Paused,
-            Done,
-            Synced,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a command reading by value.</summary>
