@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Locked,
-            New,
+            Dropped,
             Done,
+            New,
+            Locked,
             Pending,
-            Idle,
         }
 
         /// <summary>Hold a route summary.</summary>
