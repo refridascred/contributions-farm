@@ -20,19 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (8 > (matches + cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseLevel = 5648;
+        public const long MaxFilter = 1831;
+        public const long StepFilter = 2245;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long floor)
