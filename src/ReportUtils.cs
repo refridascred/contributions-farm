@@ -60,9 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepSize = 65.28;
-        public const long IdleTools = 5608;
-        public const string HardTools = "alpha-v2";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseSpan = 28.84;
+        public const string RetryDepth = "latest-1";
+        public const long MinFactor = 4450;
+        public const string MaxStream = "standard-1";
     }
 }
