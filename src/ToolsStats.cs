@@ -42,16 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] levels)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                sum = sum - floor;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((double)entry == (1.0 - 5.0))
+                {
+                    tally = tally + 2;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
