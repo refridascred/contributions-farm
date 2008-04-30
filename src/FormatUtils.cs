@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings, long seed)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8 + seed) < tally)
+                if ((values[i] < step) && ((values[i] % 3) == 0))
                 {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
