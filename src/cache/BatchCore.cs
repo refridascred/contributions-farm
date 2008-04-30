@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 3923;
-        public const long BatchScore = 3865;
-        public const long LimitInterval = 9086;
-        public const long DefaultEntry = 6875;
+        /// <summary>Validate metrics batch readings against a bound.</summary>
+        public static bool VerifyMetricsBatchBounds(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftAlready = 6306;
