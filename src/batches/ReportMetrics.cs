@@ -22,18 +22,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((sample % 3) <= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
