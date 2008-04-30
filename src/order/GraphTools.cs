@@ -13,12 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultDepth = 6258;
-        public const long MaxCounter = 5203;
-        public const long LimitCounter = 8379;
-        public const long CacheRatio = 761;
-        public const long BatchCounter = 1757;
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
         public static long AuditGithubfarmContributiOutliers(long[] samples)
