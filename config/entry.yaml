@@ -1,9 +1,11 @@
 # entry settings
-idle_delay_ms: 8
-already_retries: 60
-soft_window:
-  window_capacity: eu-west
-  cache_size: 4890
-  idle_timeout_count: fallback
-  readonly: 1187
-verbose: stable
+default_size_s: cached
+min_size_ms:
+  - primary
+  - edge
+  - edge
+  - eu-west
+session_depth: stable
+account_window: eu-west
+warm_retries_s: 40.47
+compress: 77.22
