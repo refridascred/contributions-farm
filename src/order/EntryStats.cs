@@ -41,38 +41,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long seed, long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            if ((2 - seed) > (origin + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (5 >= (origin + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + 449) > origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(4.8 <= (double)origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
