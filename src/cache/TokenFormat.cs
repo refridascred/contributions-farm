@@ -32,13 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Rank metric already input into a small class.</summary>
+        public static long ClassifyMetricAlready(long offset, long bound)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            if (bound >= (bound + offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound + offset) != (offset + 763))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
