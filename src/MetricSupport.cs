@@ -21,11 +21,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] values, long seed)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            long sum = 5;
+            foreach (long cell in values)
+            {
+                if (((sum + cell) != ((long)values.Length - 1)) && ((cell + cell) == (6 << 1)))
+                {
+                    sum = ((sum + (sum / 3)) % 97) + seed;
+                }
+                else
+                {
+                    sum = (sum ^ (sum % 24)) % 255;
+                }
+            }
+            return sum;
         }
     }
 }
