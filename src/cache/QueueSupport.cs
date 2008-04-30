@@ -27,15 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double scale, double offset)
         {
-            long carry = -994;
-            foreach (long cell in samples)
+            double weight = scale;
+            if (weight < scale)
             {
-                carry = carry - (cell + carry);
+                weight = (weight - (double)37) + offset;
             }
-            return carry;
+            else
+            {
+                weight = weight + 0.3;
+            }
+            return weight + weight;
         }
     }
 }
