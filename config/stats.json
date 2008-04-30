@@ -1,6 +1,5 @@
 {
-  "persist": "eu-west",
-  "max_ttl_s": "legacy",
-  "base_capacity": ["strict", "latest", "blue"],
-  "audit": true
+  "batch_limit": false,
+  "metric_limit": "standard",
+  "token_interval": "local"
 }
