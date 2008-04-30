@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            long result = 3;
+            foreach (long value in samples)
+            {
+                result = ((result - (result << 1)) % 65521) + value;
+            }
+            return result;
         }
 
         /// <summary>Validate record command readings against a bound.</summary>
