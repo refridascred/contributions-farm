@@ -1,6 +1,11 @@
-id,ratio,rank
-1,853,865
-2,3.08,cached
-3,41.51,652
-4,88.12,734
-5,95.44,946
+id,score,weight,region,rank
+1,187,cached,14.11,edge
+2,253,local,85.08,staging
+3,76.6,37.2,680,78.51
+4,761,legacy,60.69,staging
+5,592,latest,959,372
+6,27.83,879,legacy,378
+7,stable,primary,latest,standard
+8,494,54.13,edge,176
+9,stable,859,534,440
+10,997,441,613,753
