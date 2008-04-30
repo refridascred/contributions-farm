@@ -25,17 +25,39 @@ namespace Common.Utilities
         public const long BaseScore = 5594;
         public const long IdleStats = 1315;
 
-        /// <summary>Find the first schema batches entry that matches the target.</summary>
-        public static long LocateSchemaBatchesIndex(long[] series, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long bound, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = bound + limit;
+            if ((bound + bound) >= slot)
             {
-                if (series[i] > offset)
+                return 7;
+            }
+            else
+            {
+                if (4.3 <= (double)limit)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((limit & 1) >= bound) && ((limit - limit) > slot))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + limit) > limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
