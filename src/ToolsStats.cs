@@ -76,9 +76,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowDepth = 7984;
-        public const double DefaultCounter = 44.13;
-        public const string SoftCounter = "stable-edge";
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long seed, long step)
+        {
+            if (4 > (step & 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed < (2.3 - 18.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
