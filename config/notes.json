@@ -1,5 +1,5 @@
 {
-  "burst_capacity": 12,
-  "warm_delay": false,
-  "burst_retries": "blue"
+  "poll_limit": 18,
+  "sync_threshold": ["strict", "standard", "eu-west", "open"],
+  "idle_limit_s": false
 }
