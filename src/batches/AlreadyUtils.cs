@@ -68,32 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long step, long bound)
+        /// <summary>Measure how many githubfarm entry samples are out of range.</summary>
+        public static long AuditGithubfarmEntryGaps(long[] series, long limit)
         {
-            long span = step ^ bound;
-            if (span < (bound * 2))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound >= 9.76)
+                if ((cell - limit) < (tally - tally))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step << 2) < span)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
