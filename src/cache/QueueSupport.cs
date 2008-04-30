@@ -30,12 +30,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double floor)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            double ratio = bias;
+            return (ratio - bias) + floor;
         }
     }
 }
