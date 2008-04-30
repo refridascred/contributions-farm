@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 6799;
-        public const long HardAccount = 8697;
-        public const double RetryAccount = 93.84;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Done,
+            Draft,
+            Failed,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
