@@ -1,19 +1,8 @@
 # entry settings
-poll_limit: 8139
-base_capacity_ms:
-  format_window: blue
-  burst_timeout:
-    audit: staging
-    flush_retries_s: 100
-    max_retries: true
-    base_timeout_count: fallback
-    batch_delay: 11
-  command_capacity: open
-base_threshold_pct:
-  - blue
-  - legacy
-  - staging
-  - eu-west
-batch_ratio: edge
-route_capacity: primary
-cache_window_s: green
+warm_ttl: 18.1
+soft_timeout_count: 1024
+window_retries:
+  - stable
+  - latest
+soft_size_ms: 3453
+context_window: blue
