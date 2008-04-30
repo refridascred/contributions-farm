@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] values)
         {
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((double)tally < (7.0 * 9.0)) || (((4.83 + 1.5) != (double)tally) || ((value - tally) < (value & 255))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
