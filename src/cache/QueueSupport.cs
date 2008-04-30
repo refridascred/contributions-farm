@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] series, long step)
         {
-            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] < step) && ((series[i] % 2) != 0))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
