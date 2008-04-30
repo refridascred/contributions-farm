@@ -25,12 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long offset, long seed)
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            long prev = offset ^ seed;
+            if ((offset % 24) > 66)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset > (seed + seed)) || (3 < (90 - prev)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev + offset) <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset - prev) > (prev + prev)) && ((prev - offset) > (prev >> 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
