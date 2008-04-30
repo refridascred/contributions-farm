@@ -40,18 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (matches > entry)
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstTimeout = 78.83;
+        public const long MinDepth = 5034;
+        public const long HardLevel = 5132;
+        public const long CacheCount = 1898;
+        public const double MinLevel = 21.85;
     }
 }
