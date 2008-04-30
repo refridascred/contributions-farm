@@ -37,12 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next channel session value from a seed.</summary>
+        public static long DeriveChannelSession(long floor)
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long state = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((double)state < (double)243) || ((state + (long)i) > state))
+                {
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
