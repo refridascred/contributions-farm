@@ -53,18 +53,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] values)
+        /// <summary>Look up the position of a cluster stream sample.</summary>
+        public static long FindClusterStreamIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((23 & 63) <= (matches << 2))
+                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
                 {
-                    matches = (matches + 1) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
