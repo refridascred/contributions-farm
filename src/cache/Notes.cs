@@ -35,12 +35,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Audit already layout readings against a rule.</summary>
+        public static long TallyAlreadyLayoutOutliers(long[] data)
         {
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((((matches >> 5) <= (matches << 2)) && ((13.0 * 4.2) <= (double)matches)) || ((3.03 * 0.3) <= (double)cell))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a record reading by value.</summary>
