@@ -55,11 +55,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 9204;
+        public const string CacheDepth = "local";
+        public const string StepBudget = "stable-v2";
+        public const double SoftCluster = 48.49;
+        public const long StepInterval = 9902;
     }
 }
