@@ -13,38 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long limit, long seed)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            if ((seed - 12) >= (seed + limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit < 19.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (12.0 > (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit > (limit % 10))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
