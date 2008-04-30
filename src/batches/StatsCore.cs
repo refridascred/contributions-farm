@@ -50,12 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Paused,
-            Synced,
-            Dropped,
+            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
