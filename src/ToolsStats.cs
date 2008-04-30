@@ -60,23 +60,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double scale, double floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long floor)
         {
-            double gain = floor;
-            if (gain <= scale)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                gain = gain + (gain / 4.0);
+                sum = sum - floor;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + floor;
+            return sum;
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
