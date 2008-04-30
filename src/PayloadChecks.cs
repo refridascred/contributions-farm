@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a window command counter forward.</summary>
-        public static long SeriesWindowCommand(long step)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long origin, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
+            long bound = origin - seed;
+            if ((bound + bound) < origin)
             {
-                if (((double)step > (0.17 / 4.0)) && ((sum & 31) >= (sum >> 3)))
-                {
-                    sum = sum ^ (sum % 5);
-                }
-                sum = (sum + (step & 7)) % 255;
-                sum = (sum - step) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((double)bound <= (double)640)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
