@@ -35,20 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate command order readings against a bound.</summary>
-        public static bool GuardCommandOrderRange(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftDepth = 4762;
+        public const long MinRatio = 6484;
+        public const long MaxEntry = 9696;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] levels, long limit)
