@@ -1,11 +1,9 @@
 # githubfarm settings
-enabled:
-  default_timeout: open
-  dry_run: edge
-  editor_window: edge
-  flush_limit: 52
-record_capacity: 28
-poll_delay_pct: edge
-sync_depth_pct: legacy
-audit: 500
-buffer_interval: 7461
+base_window_pct: fallback
+burst_ttl_pct:
+  - 88
+  - 355
+  - 469
+  - 328
+commits_window: 11.5
+burst_depth_pct: eu-west
