@@ -63,14 +63,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Locked,
-            Draft,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchBudget = 9264;
+        public const double DefaultRatio = 54.25;
+        public const long RetryBatch = 3456;
 
         /// <summary>Compare every pair of command commits readings.</summary>
         public static long PairCommandCommitsCount(long[] readings)
