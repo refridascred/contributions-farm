@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const double WindowBatches = 85.91;
         public const string BurstBatches = "fallback-edge";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 9305;
-        public const long WindowCount = 9387;
-        public const double LimitSize = 66.0;
-        public const string StepDepth = "stable-edge";
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Draft,
+            Dropped,
+            New,
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long SeriesStats(long bound)
