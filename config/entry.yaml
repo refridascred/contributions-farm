@@ -1,21 +1,7 @@
 # entry settings
-report_timeout: 53
-min_depth:
-  account_retries: true
-  warm_size_s:
-    - open
-    - fallback
-    - local
-    - latest
-  window_delay:
-    - 368
-    - 134
-    - 458
-    - 388
-  base_ttl: fallback
-  burst_ttl_s:
-    - 444
-    - 56
-    - 200
-    - 347
-hard_retries_ms: 84
+flush_depth_count: fallback
+strict: 7050
+hard_ratio_pct: blue
+window_ratio: 6073
+filter_interval: eu-west
+contributi_ratio: 250
