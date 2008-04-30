@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const double BaseTools = 67.91;
         public const long StepRatio = 6876;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] levels, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (4.54 < (double)target)
+                if (value < step)
                 {
-                    seen = (seen + 3) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
