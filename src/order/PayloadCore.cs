@@ -24,25 +24,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long step, long origin)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long span = step + origin;
-            if ((origin * 4) >= (step * 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (step ^ span))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
