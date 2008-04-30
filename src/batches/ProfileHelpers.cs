@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long seed, long target)
         {
-            Pending,
-            New,
-            Synced,
-            Ready,
+            if ((double)target > 6.5)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target + 7) > (target & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target - (-465)) != (target + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit counter route readings against a rule.</summary>
