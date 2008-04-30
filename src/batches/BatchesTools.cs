@@ -49,21 +49,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Fold a list of account command readings.</summary>
+        public static long ScoreAccountCommand(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 966;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = ((anchor * 4) + (reading ^ 63)) % 65521;
+                if ((reading + reading) != (anchor / 2))
                 {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (limit ^ limit)) % 1000;
                 }
             }
-            return hits;
+            if (anchor > 87)
+            {
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 101;
+            }
+            return anchor;
         }
     }
 }
