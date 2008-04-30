@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
