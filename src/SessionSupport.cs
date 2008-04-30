@@ -22,22 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long floor, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long floor, long step)
         {
-            if (floor > 887)
+            if ((floor % 2) < (floor / 8))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((double)limit < (5.0 + 19.0))
+                if (floor < step)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 3;
+                    return 7;
                 }
             }
         }
