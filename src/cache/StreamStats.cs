@@ -53,18 +53,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (!(tally < 36))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 7282;
+        public const long HardBudget = 9570;
+        public const long SoftRatio = 1222;
+        public const long BurstWindow = 9937;
     }
 }
