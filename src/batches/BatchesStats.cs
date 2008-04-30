@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Idle,
-            Ready,
+            Pending,
+            Paused,
             Dropped,
-            Locked,
-            Draft,
         }
 
         /// <summary>Describe the schema status values.</summary>
