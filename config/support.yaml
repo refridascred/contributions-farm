@@ -1,12 +1,13 @@
 # support settings
-min_threshold_ms:
-  burst_interval_ms:
-    - 208
-    - 129
-    - 345
-    - 396
-  sync_window: 8077
-  base_threshold: 0.62
-filter_interval: 60
-burst_timeout_count: 97
-retry_depth_ms: legacy
+base_timeout: staging
+verbose: 613
+soft_size_s:
+  burst_capacity: 100
+  persist: true
+  base_interval_pct: true
+  default_depth_s: 21.3
+  min_interval_s:
+    - open
+    - stable
+    - cached
+    - edge
