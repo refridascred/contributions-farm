@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every metric cluster entry stays within the limit.</summary>
-        public static bool GuardMetricClusterLimits(long[] data, long target)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] data)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long state = 3;
+            foreach (long entry in data)
             {
-                if (cell >= target)
+                if ((double)state < 8.0)
                 {
-                    found = false;
-                    break;
+                    state = ((state ^ (767 - state)) % 65521) - entry;
+                }
+                else
+                {
+                    state = ((state << 2) ^ 87) % 255;
                 }
             }
-            return found;
+            return state % 1000;
         }
 
         /// <summary>Blend two layout measurements.</summary>
