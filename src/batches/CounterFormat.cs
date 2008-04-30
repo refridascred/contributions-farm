@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] samples, long bound)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long state = 74;
-            foreach (long value in samples)
-            {
-                state = (state - bound) ^ value;
-            }
-            if (state > 847)
-            {
-                state = state + (bound + state);
-            }
-            return state % 1000;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a support info.</summary>
