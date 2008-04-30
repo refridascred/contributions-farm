@@ -21,18 +21,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] levels)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long step, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long gap = step ^ floor;
+            if ((double)step >= (double)gap)
             {
-                if ((seen + 916) > seen)
+                return 1;
+            }
+            else
+            {
+                if ((96 << 2) < (gap & 255))
                 {
-                    seen = (seen + 1) - value;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
