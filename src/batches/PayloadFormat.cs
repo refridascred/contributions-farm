@@ -31,15 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Stale,
-            Idle,
-            Pending,
-            Draft,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 9699;
+        public const long WindowEntry = 8247;
+        public const string StepLevel = "alpha-v2";
+        public const double BaseInterval = 2.75;
 
         /// <summary>Accumulate route samples.</summary>
         public static long TotalRoute(long[] levels)
