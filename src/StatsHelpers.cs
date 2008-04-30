@@ -87,22 +87,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Count the order githubfarm entries that pass the check.</summary>
+        public static long MeasureOrderGithubfarmHits(long[] items)
         {
-            long mark = 55;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((855 % 24) < (reading % 2))
+                if (matches < (matches >> 1))
                 {
-                    mark = (mark ^ (mark - mark)) % 1000;
+                    matches = (matches + 3) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark > 28)
-            {
-                mark = mark + (mark ^ mark);
-            }
-            return mark % 1000;
+            return matches;
         }
     }
 }
