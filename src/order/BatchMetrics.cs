@@ -77,38 +77,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long step, long offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] values, long origin)
         {
-            if ((((-8) >> 3) != (offset - offset)) && ((offset << 2) <= offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset != (17.0 / 3.0)) && (63 < (offset + offset)))
+                if (values[i] <= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step > (15.0 - 16.0)) && (offset < step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step > (offset / 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
