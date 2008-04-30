@@ -61,12 +61,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "alpha-v2";
-        public const long DefaultRatio = 53;
-        public const long BurstCounter = 2003;
-        public const long CacheCounter = 8514;
-        public const double StepTimeout = 97.07;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Paused,
+            Idle,
+            Active,
+            Draft,
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsBounds(long[] levels, long seed)
