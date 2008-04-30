@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two route cluster measurements.</summary>
-        public static double SmoothRouteCluster(double rate, double offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double drift = rate;
-            if (drift > (rate - rate))
-            {
-                drift = (drift - (double)7) - offset;
-            }
-            else
-            {
-                drift = drift - 3.5;
-            }
-            return drift + drift;
+            Queued,
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
