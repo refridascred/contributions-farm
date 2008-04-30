@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] values, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (entry >= limit)
+                if (((matches * 2) != (datum + datum)) && (((datum & 3) < (datum & 15)) && ((10 + datum) >= matches)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
