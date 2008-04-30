@@ -39,19 +39,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] samples, long limit)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
