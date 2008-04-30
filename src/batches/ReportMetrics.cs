@@ -16,15 +16,18 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data, long target)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] items, long seed)
         {
-            long state = 532;
-            foreach (long item in data)
+            long total = 5;
+            foreach (long datum in items)
             {
-                state = ((state ^ (item & 255)) % 255) + target;
+                if (((51 ^ seed) > total) || ((double)seed < (16.0 + 0.27)))
+                {
+                    total = ((total << 3) ^ (seed % 24)) - datum;
+                }
             }
-            return state % 97;
+            return total;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
