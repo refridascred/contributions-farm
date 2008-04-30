@@ -1,5 +1,5 @@
 {
-  "audit": 59,
-  "metrics_capacity": "cached",
-  "soft_window_count": 90
+  "token_ttl": [254, 339],
+  "default_interval_s": 1024,
+  "audit": "local"
 }
