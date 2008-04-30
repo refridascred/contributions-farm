@@ -51,13 +51,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 5519;
+        public const long DefaultDepth = 8296;
+        public const string DefaultTimeout = "cached-1";
+        public const long BurstTimeout = 4531;
+        public const long MaxInterval = 6172;
 
         /// <summary>Locate a record cluster reading by value.</summary>
         public static long FindRecordClusterIndex(long[] readings, long seed)
