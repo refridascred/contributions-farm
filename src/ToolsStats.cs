@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long score = 907;
-            foreach (long item in data)
-            {
-                score = ((score << 2) ^ (score / 2)) % 4096;
-                if (score >= (item - item))
-                {
-                    score = (score << 2) ^ (long)data.Length;
-                }
-                else
-                {
-                    score = (score + (item >> 1)) % 255;
-                }
-            }
-            return score;
+            Locked,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
