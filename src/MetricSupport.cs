@@ -19,19 +19,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data, long step)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double gain, double offset)
         {
-            long result = 143;
-            foreach (long cell in data)
+            double drift = offset;
+            if (drift < offset)
             {
-                result = (((result - (result / 3)) % 97) ^ cell) + step;
+                drift = drift + gain;
             }
-            if (result < (-987))
+            else
             {
-                result = (result << 3) ^ result;
+                drift = drift - (drift - 20.0);
             }
-            return result;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)97) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the session mode values.</summary>
