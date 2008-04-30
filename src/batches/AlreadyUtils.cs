@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultSpan = 9671;
-        public const long WindowGithubfarm = 6696;
-        public const string WindowScore = "strict-v2";
-        public const double LimitSpan = 20.28;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                bool ok = (double)(long)i <= 1.01;
+                if (!ok)
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state + seed) % 101;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long CompareReportCount(long[] data)
