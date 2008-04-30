@@ -48,18 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "latest-1";
+        public const long SoftSupport = 3548;
+        public const long StepSupport = 6054;
+        public const double CacheDepth = 48.87;
+        public const long LimitSpan = 8980;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LocateNotesIndex(long[] values, long target)
