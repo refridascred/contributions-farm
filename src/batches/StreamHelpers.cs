@@ -35,38 +35,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long step, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] series, long offset)
         {
-            if (464 >= (step ^ floor))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-13) & 3) <= (step % 5))
+                if (((((-12) + datum) >= datum) || ((datum >> 5) == (offset - (-54)))) && ((0 ^ (-843)) >= seen))
                 {
-                    return 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((floor + floor) > floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step ^ 534) < (floor / 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate token support readings against a bound.</summary>
