@@ -23,16 +23,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            long mix = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix - (mix ^ mix)) % 1000) + reading;
-                mix = ((mix << 2) ^ mix) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
