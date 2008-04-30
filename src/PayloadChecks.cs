@@ -29,10 +29,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryBudget = 21.25;
-        public const string DefaultWindow = "standard-v2";
-        public const long CacheTimeout = 2584;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long target, long offset)
+        {
+            long bound = target ^ offset;
+            if ((offset + target) != (bound - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((20.0 + 1.65) > (double)offset) || ((8.35 / 4.0) < (double)offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long limit, long floor)
