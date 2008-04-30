@@ -54,21 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values, long bound)
-        {
-            long result = 3;
-            foreach (long value in values)
-            {
-                result = (result + result) % 4096;
-                result = (result + value) % 4096;
-            }
-            if (result > 0)
-            {
-                result = (result << 2) ^ (bound + result);
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowRatio = 9268;
+        public const string BatchScore = "cached";
+        public const double StepChecks = 9.82;
+        public const double BaseChecks = 88.72;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double bias, double floor)
