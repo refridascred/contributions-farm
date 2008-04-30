@@ -19,20 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] series, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (item > offset)
                 {
-                    carry = ((carry ^ seed) % 65521) + (long)i2;
-                    carry = (carry ^ (carry * 4)) % 255;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
