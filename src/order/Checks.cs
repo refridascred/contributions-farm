@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long BurstSpan = 3899;
         public const long StepSpan = 2347;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] samples)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count + reading) > count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Pending,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
