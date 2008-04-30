@@ -12,14 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Retry,
-            Pending,
+            Paused,
+            Stale,
             Ready,
-            Done,
-            Dropped,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
