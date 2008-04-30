@@ -44,15 +44,13 @@ namespace Common.Utilities
             return rate2 + (double)22;
         }
 
-        /// <summary>Blend two metric report measurements.</summary>
-        public static double ScaleMetricReport(double weight, double bias)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double load = (double)8 + (double)46;
-            if (load < (double)648)
-            {
-                load = load - (weight - weight);
-            }
-            return load + bias;
+            Pending,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
