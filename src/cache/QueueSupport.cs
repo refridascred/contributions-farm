@@ -37,24 +37,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long seed, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            if (!((double)target >= 1.75))
-            {
-                return 1;
-            }
-            else
-            {
-                if (14.0 > (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Draft,
+            Closed,
+            Idle,
         }
     }
 }
