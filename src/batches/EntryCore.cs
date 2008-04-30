@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate context record readings against a bound.</summary>
-        public static bool GuardContextRecordBounds(long[] data, long seed)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
