@@ -46,12 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 4875;
-        public const long SoftSize = 2718;
-        public const double WindowChecks = 52.32;
-        public const long WindowCount = 2294;
-        public const long IdleChecks = 9918;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!((double)(long)items.Length > (14.0 - 3.0)))
+                {
+                    tally = ((tally + 2) ^ reading) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
         public static long AuditStreamOrderHits(long[] items)
