@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
+            Synced,
+            Active,
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a buffer header.</summary>
