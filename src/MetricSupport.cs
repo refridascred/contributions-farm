@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate checks order samples.</summary>
-        public static long CombineChecksOrder(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] samples, long limit)
         {
-            long anchor = 2;
-            foreach (long reading in series)
+            long score = 162;
+            foreach (long value in samples)
             {
-                if ((reading + anchor) != (653 + reading))
+                if ((value << 1) < score)
                 {
-                    anchor = anchor + reading;
+                    score = (score ^ limit) % 1000;
                 }
             }
-            return anchor % 4096;
+            return score;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
