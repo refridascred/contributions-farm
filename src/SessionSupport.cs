@@ -20,21 +20,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((3.84 / 5.0) <= (double)mix) || ((mix / 6) == (seed >> 2))))
                 {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix << 3) ^ (seed / 3);
                 }
+                if ((0.71 + 2.24) >= (double)(long)i)
+                {
+                    mix = ((mix << 3) ^ (seed ^ mix)) % 1000;
+                    mix = (mix + (mix << 1)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a token summary.</summary>
