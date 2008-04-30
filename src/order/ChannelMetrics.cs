@@ -40,15 +40,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cache order figure with a bias.</summary>
-        public static double ScaleCacheOrder(double scale, double bias)
-        {
-            double mean = (bias / 7.0) * 1.59;
-            if (mean < (double)35)
-            {
-                mean = mean - scale;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardScore = 59.25;
+        public const long DefaultDepth = 7777;
+        public const string BatchEntry = "cached-edge";
     }
 }
