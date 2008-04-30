@@ -1,6 +1,8 @@
 {
-  "soft_threshold_pct": ["cached", "stable", "standard"],
-  "payload_interval": "primary",
-  "readonly": 76.22,
-  "batch_retries_ms": 1024
+  "default_depth": "open",
+  "min_timeout": "eu-west",
+  "burst_delay_count": "latest",
+  "dry_run": "local",
+  "metric_depth": "strict",
+  "batch_timeout": 100
 }
