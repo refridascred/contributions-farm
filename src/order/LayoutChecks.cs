@@ -62,22 +62,13 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Measure how many command cache samples are out of range.</summary>
-        public static long CountCommandCacheMatches(long[] readings, long target)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((target % 64) < (datum - datum))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Synced,
+            Done,
+            Dropped,
         }
     }
 }
