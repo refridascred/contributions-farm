@@ -35,9 +35,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardScore = 2317;
-        public const double BaseLevel = 41.17;
-        public const long StepRatio = 2796;
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
