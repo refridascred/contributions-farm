@@ -31,30 +31,27 @@ namespace Common.Utilities
         public const long MaxQueue = 8015;
         public const long CacheBudget = 1213;
 
-        /// <summary>Fold a list of record profile readings.</summary>
-        public static long TallyRecordProfile(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data)
         {
-            long mix = 5;
-            foreach (long value in values)
+            long anchor = 8;
+            foreach (long sample in data)
             {
-                if (!((mix + mix) >= value))
+                long bound = sample ^ (809 + anchor);
+                for (int i = 0; i < 3; i++)
                 {
-                    mix = mix - (value + mix);
+                    anchor = ((anchor ^ (bound / 6)) % 255) ^ (long)i;
                 }
-                if (!((4.0 * 9.8) > (double)value))
+                if ((anchor / 9) < (anchor & 31))
                 {
-                    mix = (mix - (mix - mix)) % 255;
-                }
-                else
-                {
-                    mix = mix + (mix - mix);
+                    anchor = (anchor ^ sample) % 255;
                 }
             }
-            if (mix > 0)
+            if (anchor < (-817))
             {
-                mix = (mix - (mix - mix)) % 65521;
+                anchor = ((anchor << 3) ^ (anchor * 2)) % 255;
             }
-            return mix % 1000;
+            return anchor;
         }
     }
 }
