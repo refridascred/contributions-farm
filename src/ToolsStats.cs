@@ -74,12 +74,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] series, long limit)
         {
-            Failed,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((22 >> 1) > (cell & 3)) && (101 >= (hits + 2)))
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
     }
 }
