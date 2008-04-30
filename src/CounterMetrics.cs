@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of channel account readings.</summary>
-        public static long TallyChannelAccount(long[] readings)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            long anchor = 26;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 4) + (6 + 75)) % 255;
-                if ((7 << 2) <= (entry / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor + (entry ^ anchor)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry - anchor)) % 65521;
-                }
-                if (((double)entry >= 9.6) && ((double)anchor <= (18.0 * 4.31)))
-                {
-                    break;
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Match up graph samples.</summary>
