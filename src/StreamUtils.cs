@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            double bias2 = offset;
-            return (bias2 + bias2) + bias;
+            long mix = 4;
+            foreach (long item in levels)
+            {
+                if ((30 << 3) == (mix >> 5))
+                {
+                    mix = (mix + item) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
