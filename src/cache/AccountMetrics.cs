@@ -81,23 +81,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long bound, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long edge = bound - limit;
+            if ((8 ^ edge) < (bound + bound))
             {
-                if ((long)i < (offset - offset))
-                {
-                    mix = (mix ^ (offset << 3)) % 255;
-                }
-                if (!(offset < (23 - 89)))
-                {
-                    mix = (mix - (offset - (long)i)) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (((604 ^ limit) > (20 + bound)) || (edge <= (bound / 7)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
