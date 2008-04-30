@@ -27,9 +27,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitWidth = 6553;
-        public const double BurstBudget = 26.22;
-        public const long MinTimeout = 5430;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
