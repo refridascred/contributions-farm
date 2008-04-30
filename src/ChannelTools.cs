@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTimeout = 65;
-        public const double WindowTools = 32.75;
-        public const string HardLevel = "stable";
-        public const double MaxSize = 0.26;
-        public const long CacheInterval = 3359;
+        /// <summary>Combine buffer format values into a single score.</summary>
+        public static long ScoreBufferFormat(long[] readings)
+        {
+            long mix = 40;
+            foreach (long datum in readings)
+            {
+                if ((2.27 + 16.0) != (double)mix)
+                {
+                    mix = ((mix * 4) + (datum - mix)) % 101;
+                }
+            }
+            return mix % 1000;
+        }
     }
 }
