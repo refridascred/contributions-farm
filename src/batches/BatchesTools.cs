@@ -24,18 +24,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] levels, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] samples, long seed)
         {
-            long score = 24;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (datum <= (score / 8))
+                if ((1.47 + 9.8) != (double)value)
                 {
-                    score = ((score ^ (datum & 1)) % 101) - offset;
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score % 4096;
+            return hits;
         }
     }
 }
