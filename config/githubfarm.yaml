@@ -1,14 +1,9 @@
 # githubfarm settings
-verbose: 74.98
-cache_window_ms:
-  context_ttl: local
-  flush_window_ms: 250
-  poll_capacity_pct: true
-  metric_limit: 17.38
-retry_interval: standard
-graph_timeout: latest
-hard_delay_pct: latest
-default_delay_s:
-  notes_capacity: green
-  soft_window_count: false
-  idle_timeout: 85.49
+counter_limit:
+  - 140
+  - 73
+buffer_depth: green
+max_threshold_count:
+  - 128
+  - 301
+  - 95
