@@ -33,22 +33,13 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] values, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long score = 5;
-            foreach (long item in values)
-            {
-                if (((score >> 5) != (item + score)) && ((score ^ item) >= (bound + bound)))
-                {
-                    score = (score + (score + score)) % 101;
-                }
-                if (!(score >= bound))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            Pending,
+            Draft,
+            New,
+            Locked,
         }
     }
 }
