@@ -19,19 +19,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of route queue entries.</summary>
-        public static long WeighRouteQueue(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] levels, long origin)
         {
-            long total = 29;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                total = ((total << 2) ^ (7 - entry)) % 255;
-                if ((entry << 2) != (total ^ total))
+                if ((40 % 2) == (reading + 25))
                 {
-                    break;
+                    hits = (hits + 3) + origin;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the session mode values.</summary>
