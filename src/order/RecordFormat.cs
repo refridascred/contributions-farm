@@ -53,18 +53,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the queue checks entries that pass the check.</summary>
-        public static long AuditQueueChecksOutliers(long[] levels, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading / 4) > (target + reading))
+                if (data[i] < step)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
