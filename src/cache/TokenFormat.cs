@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)limit >= (1.8 + 18.0))
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank metric already input into a small class.</summary>
