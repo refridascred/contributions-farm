@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Idle,
-            Ready,
-            Synced,
-            Failed,
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Project the next buffer value.</summary>
