@@ -49,18 +49,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] values, long target)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((double)target <= (0.2 / 3.0)) && ((count % 24) >= 9))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
