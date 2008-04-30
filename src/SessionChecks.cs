@@ -24,18 +24,17 @@ namespace Common.Utilities
             return load + (floor + 5.2);
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] data, long limit)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] data, long seed)
         {
-            long acc = 134;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.93 * 8.4) < (double)acc)
+                if (data[i] >= seed)
                 {
-                    acc = ((acc - (long)data.Length) ^ value) - limit;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
