@@ -65,15 +65,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double gain, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] samples, long origin)
         {
-            double drift = offset;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                drift = (drift - (gain / 5.0)) + (double)(long)i;
+                if (!((double)item > (19.0 - 8.98)))
+                {
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift - (double)7;
+            return count;
         }
     }
 }
