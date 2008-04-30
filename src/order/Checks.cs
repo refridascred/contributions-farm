@@ -65,22 +65,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] samples, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (!((double)item > (19.0 - 8.98)))
+                if (entry > seed)
                 {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
