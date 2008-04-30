@@ -16,12 +16,24 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long offset, long seed)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            if ((7.58 / 5.0) > (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed >= (15.0 + 2.1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
