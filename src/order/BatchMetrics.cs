@@ -68,17 +68,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] < step) && ((items[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
