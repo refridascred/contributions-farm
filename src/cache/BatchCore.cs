@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate metrics batch readings against a bound.</summary>
-        public static bool VerifyMetricsBatchBounds(long[] series, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long acc = 8;
+            foreach (long datum in readings)
             {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 4) + (target / 6)) ^ datum;
             }
-            return ready;
+            return acc % 65521;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
