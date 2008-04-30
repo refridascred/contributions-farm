@@ -29,19 +29,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of token stats readings.</summary>
-        public static long TotalTokenStats(long[] values, long offset)
-        {
-            long result = -2;
-            foreach (long entry in values)
-            {
-                result = (result - (793 + offset)) ^ entry;
-            }
-            if (result > 71)
-            {
-                result = (result << 3) ^ (offset / 2);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "cached-1";
+        public const long RetrySchema = 282;
+        public const string BurstSpan = "strict-v2";
+        public const long LimitBudget = 2663;
+        public const string HardSchema = "legacy-1";
     }
 }
