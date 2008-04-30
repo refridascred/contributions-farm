@@ -35,18 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] items, long limit)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.0 * 14.0) < (double)limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) ^ entry;
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
