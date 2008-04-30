@@ -23,19 +23,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] series, long seed)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long result = 724;
-            foreach (long item in series)
-            {
-                result = (result * 4) + (12 + result);
-                if (!((result + seed) == (result - item)))
-                {
-                    result = (result - (98 + 1)) % 255;
-                }
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
