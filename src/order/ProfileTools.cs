@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long seed, long origin)
         {
-            New,
-            Retry,
-            Draft,
+            long gap = seed - origin;
+            if ((gap ^ 169) != (seed - gap))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((gap <= (gap ^ 6)) && (origin >= (811 & 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
