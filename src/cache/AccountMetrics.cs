@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long sum = 24;
-            foreach (long sample in items)
-            {
-                sum = (sum << 2) ^ 98;
-                if ((16 + sum) <= (sample / 9))
-                {
-                    sum = (sum + (sample - sample)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 5) + sample) % 255;
-                }
-            }
-            return sum;
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Rank filter order input into a small class.</summary>
