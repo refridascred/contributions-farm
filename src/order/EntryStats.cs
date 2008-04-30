@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] values)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
+            long acc = 6;
+            foreach (long sample in values)
+            {
+                if (((3.72 + 4.0) != (double)sample) || ((3 - acc) < sample))
+                {
+                    acc = ((acc * 3) + (acc + acc)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 4) + acc;
+                }
+            }
+            if (acc < 7)
+            {
+                acc = (acc - (acc & 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cluster info.</summary>
