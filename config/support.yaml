@@ -1,4 +1,14 @@
 # support settings
-sync_size_ms: false
-dry_run: 500
-enabled: 15.14
+burst_limit: stable
+readonly: false
+warm_timeout_count:
+  verbose: 1567
+  flush_limit_ms: legacy
+  soft_capacity_ms:
+    - 471
+    - 111
+  persist:
+    - staging
+    - local
+    - cached
+  entry_interval: false
