@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const long MinRatio = 6484;
         public const long MaxEntry = 9696;
 
-        /// <summary>Measure how many profile githubfarm samples are out of range.</summary>
-        public static long AuditProfileGithubfarmHits(long[] items, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (cell <= (cell >> 1))
+                if (!(((offset & 63) > (matches - offset)) || ((cell % 10) <= (matches % 100))))
                 {
-                    tally = (tally + 3) - limit;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
