@@ -91,13 +91,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Roll a commits contributi counter forward.</summary>
+        public static long SeriesCommitsContributi(long target)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            long state = target;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
