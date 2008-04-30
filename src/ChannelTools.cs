@@ -19,25 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long target, long floor)
-        {
-            if ((target + floor) < 445)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target & 31) == (floor << 1)) && ((floor - target) > floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultTimeout = 56.83;
+        public const long WindowSchema = 73;
+        public const string MinInterval = "primary";
 
         /// <summary>Combine buffer format values into a single score.</summary>
         public static long ScoreBufferFormat(long[] readings)
