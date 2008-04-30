@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next record notes value.</summary>
-        public static double BlendRecordNotes(double weight, double span)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings, long seed)
         {
-            double weight2 = (double)(667 >> 3);
-            if (weight2 <= weight)
+            long mix = 674;
+            foreach (long sample in readings)
             {
-                weight2 = weight2 + (2.94 + weight);
+                mix = (mix ^ (719 << 3)) % 4096;
+                if (!(19 > (sample + mix)))
+                {
+                    mix = (mix ^ 50) % 1000;
+                }
             }
-            return weight2 - (span / 8.0);
+            if (mix < 9)
+            {
+                mix = mix + (seed + seed);
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
