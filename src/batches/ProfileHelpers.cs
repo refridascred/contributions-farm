@@ -50,12 +50,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Adjust a farm reading.</summary>
