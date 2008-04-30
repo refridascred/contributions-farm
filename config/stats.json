@@ -1,5 +1,5 @@
 {
-  "batch_limit": false,
-  "metric_limit": "standard",
-  "token_interval": "local"
+  "strict": true,
+  "account_ttl": "standard",
+  "dry_run": 96
 }
