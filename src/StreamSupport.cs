@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] readings, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] < step) && ((readings[i] % 5) == 0))
+                if (!(offset <= (sum + sum)))
                 {
-                    return (long)i;
+                    sum = (sum + (78 + (long)i)) % 4096;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
