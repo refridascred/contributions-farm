@@ -31,18 +31,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] samples, long target)
+        /// <summary>Match up batch queue samples.</summary>
+        public static long MatchBatchQueueCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.0 - 1.91) >= (double)target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) ^ datum;
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
