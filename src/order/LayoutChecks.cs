@@ -50,16 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double scale, double offset)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            double gain = 13.0;
+            for (int i = 0; i < 7; i++)
             {
-                state = state + (state / 4);
-                state = ((state * 3) + (long)i) % 65521;
+                gain = ((gain - (double)28) + (double)(long)i) - offset;
             }
-            return state;
+            return gain - (scale * 0.27);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
