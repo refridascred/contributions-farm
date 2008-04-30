@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] items)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -74;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor ^ (8 ^ cell)) % 65521;
+                if (((cell & 31) <= cell) || (cell > (150 + cell)))
                 {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (cell & 31)) % 255;
                 }
             }
-            return matches;
+            if (anchor > 17)
+            {
+                anchor = (anchor - (anchor ^ anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cache info.</summary>
