@@ -30,19 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double gain, double floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double scale, double offset)
         {
-            double gain2 = (double)46;
-            if (gain2 < (floor - floor))
+            double weight = offset;
+            if (weight <= (scale * 4.5))
             {
-                gain2 = gain2 - gain;
+                weight = weight + weight;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                gain2 = gain2 + (7.8 * 8.0);
+                weight = (weight + scale) + (double)(long)i;
             }
-            return gain2 + gain2;
+            return weight - (weight * 7.65);
         }
     }
 }
