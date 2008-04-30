@@ -13,15 +13,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a payload context counter forward.</summary>
-        public static long RollPayloadContext(long seed)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a contributi header.</summary>
