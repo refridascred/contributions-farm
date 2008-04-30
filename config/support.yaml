@@ -1,28 +1,9 @@
 # support settings
-verbose:
-  readonly: standard
-  batch_window: 11
-  burst_threshold_ms:
-    base_depth: 77
-    burst_window_ms: fallback
-    burst_threshold_ms:
-      - cached
-      - standard
-    strict: 30
-    notes_depth: eu-west
-    compress: 49.56
-  retry_depth_pct:
-    batch_depth_ms: primary
-    persist: 8597
-    notes_interval:
-      - 154
-      - 495
-      - 463
-      - 459
-    default_ratio_count: edge
-    payload_retries: true
-poll_timeout:
-  - primary
-  - fallback
-strict: 500
-stream_threshold: 19
+base_limit: 500
+metrics_timeout:
+  - open
+  - staging
+  - stable
+  - green
+flush_threshold_s: latest
+retry_threshold: 9618
