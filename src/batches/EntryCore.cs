@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long floor, long origin)
+        /// <summary>Validate context record readings against a bound.</summary>
+        public static bool GuardContextRecordBounds(long[] data, long seed)
         {
-            if (origin <= (origin + origin))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((floor - floor) < (873 * 5)))
+                if (cell > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
