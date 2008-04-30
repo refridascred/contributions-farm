@@ -20,18 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a counter session sample.</summary>
-        public static long LookupCounterSessionIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 5086;
+        public const double MinWindow = 87.43;
+        public const string DefaultWindow = "staging-1";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowScore = 302;
