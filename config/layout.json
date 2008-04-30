@@ -1,14 +1,5 @@
 {
-  "warm_timeout": [77, 366, 443],
-  "default_depth_pct": 30.52,
-  "enabled": {
-    "queue_ratio": "eu-west",
-    "poll_ratio_pct": "strict",
-    "min_limit_s": 28,
-    "schema_threshold": 4.83,
-    "sync_depth_ms": "green",
-    "sync_retries": "stable"
-  },
-  "checks_limit": true,
-  "readonly": 6.38
+  "sync_delay": "eu-west",
+  "tools_capacity": true,
+  "githubfarm_ratio": ["blue", "strict", "open"]
 }
