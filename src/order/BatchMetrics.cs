@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepBudget = 9282;
-        public const long IdleWidth = 867;
-        public const double RetrySize = 97.76;
-        public const string BaseMetric = "latest";
-        public const string BurstInterval = "cached";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseWidth = "open-1";
+        public const long IdleSchema = 2446;
+        public const long MinSchema = 3834;
+        public const long WindowDepth = 9842;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
