@@ -22,19 +22,25 @@ namespace Common.Utilities
         public const long IdleBuffer = 5605;
         public const long SoftBuffer = 4560;
 
-        /// <summary>Derive the next context metric value from a seed.</summary>
-        public static long StepContextMetric(long bound)
+        /// <summary>Rank context layout input into a small class.</summary>
+        public static long ClassifyContextLayout(long offset, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long cur = offset ^ target;
+            if (((cur & 1) != (cur + target)) && (cur <= (target >> 4)))
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = ((total - bound) % 1000) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 65521;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((target / 8) == (cur + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
