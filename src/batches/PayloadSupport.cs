@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] readings, long offset)
         {
-            if (bound <= seed)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound / 5) >= (seed - bound))
+                if (reading > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed > bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0.7 - 4.0) <= (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
