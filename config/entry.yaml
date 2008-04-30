@@ -1,13 +1,5 @@
 # entry settings
-counter_retries: 5.03
-poll_threshold_s: false
-schema_ratio:
-  - strict
-  - staging
-  - fallback
-  - staging
-batches_threshold: true
-batches_ratio:
-  checks_timeout: 30
-  max_window_s: strict
-  buffer_timeout: 65
+already_ratio: 28.27
+readonly: 56.73
+default_size_pct: 19.33
+default_delay_ms: false
