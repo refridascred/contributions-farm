@@ -14,12 +14,26 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheWidth = 9063;
-        public const long CacheRatio = 4350;
-        public const long StepRatio = 3667;
-        public const double MinMetric = 98.73;
-        public const long IdleCount = 6050;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long step, long step2)
+        {
+            long bound = step - step2;
+            if (((double)bound == (5.7 / 7.0)) || ((step2 - step2) <= (bound >> 4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step < (bound - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] levels)
