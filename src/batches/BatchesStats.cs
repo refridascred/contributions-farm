@@ -35,22 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of buffer support entries.</summary>
-        public static long CombineBufferSupport(long[] values, long seed)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long anchor = 77;
-            foreach (long item in values)
-            {
-                if ((seed & 3) > item)
-                {
-                    anchor = anchor + (item / 2);
-                }
-            }
-            if (anchor > 35)
-            {
-                anchor = ((anchor * 4) + (anchor - seed)) % 65521;
-            }
-            return anchor;
+            Dropped,
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
