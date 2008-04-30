@@ -48,12 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long limit)
         {
-            Closed,
-            Ready,
-            Retry,
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
