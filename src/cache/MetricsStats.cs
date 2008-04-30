@@ -23,31 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long limit, long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            if (floor > (limit + 868))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor >= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((884 ^ floor) >= 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Audit format entry readings against a rule.</summary>
