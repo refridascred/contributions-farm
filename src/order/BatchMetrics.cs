@@ -45,17 +45,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate account filter samples.</summary>
-        public static long FoldAccountFilter(long[] data, long floor)
+        /// <summary>Find the first cache payload entry that matches the target.</summary>
+        public static long LocateCachePayloadIndex(long[] items, long origin)
         {
-            long mix = -975;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix - (floor + 319);
-                mix = mix + (datum % 8);
-                mix = mix + (mix >> 4);
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
