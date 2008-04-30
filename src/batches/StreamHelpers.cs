@@ -30,22 +30,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] series, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (((((-12) + datum) >= datum) || ((datum >> 5) == (offset - (-54)))) && ((0 ^ (-843)) >= seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Fold a list of counter cache readings.</summary>
