@@ -1,9 +1,8 @@
-id,ratio,owner
-1,17.32,913
-2,standard,615
-3,534,stable
-4,836,720
-5,strict,746
-6,standard,77.76
-7,66,open
-8,strict,376
+id,level,rank
+1,cached,30.72
+2,170,82.31
+3,718,34
+4,786,919
+5,182,49.09
+6,cached,edge
+7,17.98,30
