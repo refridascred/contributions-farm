@@ -28,11 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 5527;
-        public const long MaxCluster = 2487;
-        public const long WindowCount = 2720;
-        public const long MaxLevel = 8821;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings)
+        {
+            long total = 98;
+            foreach (long item in readings)
+            {
+                if ((3.8 - 2.41) > (3.6 * 0.2))
+                {
+                    total = (total - ((long)readings.Length ^ item)) % 255;
+                }
+                if ((11.0 - 8.4) < (double)item)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long SortFormat(long step, long bound)
