@@ -1,13 +1,19 @@
 # entry settings
-commits_ttl:
-  - green
-  - open
-  - local
-verbose: false
-soft_limit_count: fallback
-enabled:
-  - 198
-  - 62
-  - 402
-  - 116
-hard_window_count: 3278
+poll_limit: 8139
+base_capacity_ms:
+  format_window: blue
+  burst_timeout:
+    audit: staging
+    flush_retries_s: 100
+    max_retries: true
+    base_timeout_count: fallback
+    batch_delay: 11
+  command_capacity: open
+base_threshold_pct:
+  - blue
+  - legacy
+  - staging
+  - eu-west
+batch_ratio: edge
+route_capacity: primary
+cache_window_s: green
