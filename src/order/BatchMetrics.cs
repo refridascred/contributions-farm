@@ -91,12 +91,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long step, long offset)
         {
-            Paused,
-            Stale,
-            Draft,
+            if ((((-8) >> 3) != (offset - offset)) && ((offset << 2) <= offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)offset != (17.0 / 3.0)) && (63 < (offset + offset)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step > (15.0 - 16.0)) && (offset < step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step > (offset / 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
