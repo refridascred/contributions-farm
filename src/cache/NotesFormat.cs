@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] series, long offset)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long carry = 986;
-            foreach (long cell in series)
-            {
-                if ((5 + offset) > 46)
-                {
-                    carry = (((carry * 3) + offset) % 97) - cell;
-                }
-            }
-            if (carry > 21)
-            {
-                carry = carry ^ (0 - 2);
-            }
-            return carry;
+            public bool Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
