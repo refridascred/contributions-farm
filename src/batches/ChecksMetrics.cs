@@ -19,21 +19,16 @@ namespace Common.Utilities
         public const double LimitSize = 66.0;
         public const string StepDepth = "stable-edge";
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark ^ ((long)i << 2)) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Blend two report measurements.</summary>
