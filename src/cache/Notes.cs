@@ -36,22 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] values, long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!(((step ^ step) >= (item + hits)) || (((long)values.Length / 6) != (hits / 7))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
