@@ -32,10 +32,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowInterval = 48;
-        public const double DefaultSpan = 20.41;
-        public const long DefaultStream = 2868;
-        public const double BaseRatio = 45.28;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings)
+        {
+            long acc = 92;
+            foreach (long value in readings)
+            {
+                acc = ((acc ^ acc) % 4096) ^ value;
+            }
+            return acc;
+        }
     }
 }
