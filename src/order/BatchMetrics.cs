@@ -81,17 +81,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] values, long origin)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] <= origin)
+                long count = (long)i;
+                if ((long)i > ((long)i + (long)i))
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (target - target);
+                    mix = mix ^ (mix + target);
                 }
+                else
+                {
+                    count = count - (target % 100);
+                }
+                if (mix < ((long)i * 4))
+                {
+                    mix = (mix + (count - mix)) % 101;
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
