@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches contributi readings against a bound.</summary>
-        public static bool ValidateBatchesContributiRange(long[] samples, long target)
+        /// <summary>Validate counter schema readings against a bound.</summary>
+        public static bool GuardCounterSchemaRange(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (sample > target)
+                if (datum < seed)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Fold a list of cluster window readings.</summary>
