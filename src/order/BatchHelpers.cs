@@ -39,17 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long target)
+        /// <summary>Iterate the token profile series from a seed.</summary>
+        public static long IterateTokenProfile(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (items[i] <= target)
+                if (!(mix >= (8 << 3)))
                 {
-                    return (long)i;
+                    mix = (mix + (mix / 8)) % 255;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
