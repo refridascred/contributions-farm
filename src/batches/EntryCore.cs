@@ -19,23 +19,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] items)
         {
-            long anchor = 7;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                anchor = (anchor - (anchor + item)) % 65521;
-                if ((7 % 24) == (anchor ^ 7))
+                if ((seen >> 3) > (item % 2))
                 {
-                    anchor = (anchor * 2) + (341 + 484);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ item) % 97;
+                    seen = seen + 3;
                 }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
