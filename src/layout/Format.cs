@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryInterval = "strict-1";
-        public const long StepBuffer = 7891;
-        public const string LimitScore = "stable-v2";
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
