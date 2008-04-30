@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] data)
-        {
-            long state = 1;
-            foreach (long item in data)
-            {
-                state = (state + (item + item)) % 255;
-                if ((state >> 4) < item)
-                {
-                    state = ((state << 3) ^ (state / 4)) % 255;
-                }
-                if (state < (state ^ state))
-                {
-                    break;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 5.94;
+        public const string StepChecks = "strict-edge";
+        public const string LimitRatio = "alpha-1";
+        public const string MinChecks = "cached-1";
+        public const long BurstChecks = 9421;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long OverlapCommitsCount(long[] readings)
