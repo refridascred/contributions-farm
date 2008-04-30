@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
