@@ -12,17 +12,19 @@ namespace Common.Utilities
             return drift + 6.0;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] samples, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (samples[i] > offset)
+                if (datum != origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
