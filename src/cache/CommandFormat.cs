@@ -33,20 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] readings, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum - (sum / 2);
-                for (int i2 = 0; i2 < 11; i2++)
+                if (readings[i] == floor)
                 {
-                    sum = ((sum + (seed % 2)) % 65521) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Roll a account counter forward.</summary>
