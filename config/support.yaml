@@ -1,25 +1,16 @@
 # support settings
-batch_timeout: 7.69
-tools_timeout: 1024
-stream_capacity:
-  batch_limit_s: local
-  metrics_ratio: local
-  schema_depth: 38.48
-  poll_delay: 37.32
-  max_delay_pct: local
-  verbose:
-    - 348
-    - 369
-    - 331
-    - 399
-retry_ttl_pct:
-  burst_limit_s:
-    - blue
-    - legacy
+stream_interval: latest
+dry_run:
+  channel_delay:
+    - edge
     - primary
-  compress: 35
-  batches_ratio: false
-  readonly: 1024
-  audit: standard
-verbose: staging
-window_threshold: false
+    - fallback
+  metric_limit: 26.83
+  commits_threshold:
+    - 155
+    - 106
+  verbose: 250
+readonly: legacy
+base_timeout_s: legacy
+tools_limit: false
+default_ratio_s: stable
