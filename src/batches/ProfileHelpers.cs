@@ -65,17 +65,31 @@ namespace Common.Utilities
         public const double BurstBudget = 78.41;
         public const long CacheScore = 4039;
 
-        /// <summary>Locate a filter commits reading by value.</summary>
-        public static long FindFilterCommitsIndex(long[] levels, long floor)
+        /// <summary>Grade a profile contributi value against two limits.</summary>
+        public static long BucketProfileContributi(long offset, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((offset * 3) <= offset))
             {
-                if (levels[i] < floor)
+                return 5;
+            }
+            else
+            {
+                if (!((offset & 3) != (bound ^ 1)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
