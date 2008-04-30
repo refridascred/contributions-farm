@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = floor;
+            if (ratio < floor)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (7.0 - bias);
             }
-            return -1;
+            return ratio - (double)7;
         }
 
         /// <summary>Describe the cache phase values.</summary>
