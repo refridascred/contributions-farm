@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first tools entry entry that matches the target.</summary>
-        public static long LookupToolsEntryIndex(long[] data, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long target, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((seed ^ seed) < seed) || ((seed + target) >= (target / 2)))
             {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if (seed < target)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((target - 27) > (target + target)) && (target >= (target + target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the entry level values.</summary>
