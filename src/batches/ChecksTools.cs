@@ -49,22 +49,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] values, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((count / 4) != (item / 9))
+                if ((double)matches >= (1.5 + 7.9))
                 {
-                    count = (count + 1) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
