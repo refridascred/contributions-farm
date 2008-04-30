@@ -32,22 +32,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long sum = -617;
+            foreach (long item in series)
             {
-                if (!((8 >= (value << 1)) && (value <= matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = (((sum << 3) ^ 401) + item) + bound;
             }
-            return matches;
+            if (sum > 32)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
