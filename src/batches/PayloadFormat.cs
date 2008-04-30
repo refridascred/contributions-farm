@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] items, long limit)
+        /// <summary>Audit session command readings against a rule.</summary>
+        public static long MeasureSessionCommandHits(long[] series)
         {
-            long anchor = 26;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                anchor = ((anchor ^ (limit >> 4)) % 1000) + value;
+                if (reading < (reading - count))
+                {
+                    count = count + 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
