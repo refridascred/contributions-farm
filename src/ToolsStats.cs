@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long target, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] readings)
         {
-            if ((3 + target) == (891 - target))
+            long sum = 90;
+            foreach (long reading in readings)
             {
-                return 7;
+                sum = (((sum * 5) + (45 + sum)) % 4096) ^ reading;
             }
-            else
+            if (sum < 0)
             {
-                if ((floor - target) > (floor + 979))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor / 3) > target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor >= (634 * 4)) || ((floor * 5) != (target + 49)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                sum = ((sum * 2) + 3) % 255;
             }
+            return sum;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
