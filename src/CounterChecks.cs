@@ -60,11 +60,25 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstRatio = 29.46;
-        public const long IdleInterval = 8519;
-        public const double StepTimeout = 41.79;
-        public const long MinCluster = 1293;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                result = result + ((long)i - origin);
+                if (624 >= (result + origin))
+                {
+                    result = (result << 3) ^ (result + result);
+                }
+                else
+                {
+                    result = (result + (result / 7)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleOrder = 6217;
