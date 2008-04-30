@@ -46,10 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 165;
-        public const long DefaultDepth = 1471;
-        public const long SoftRatio = 2334;
-        public const double HardRatio = 60.34;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Failed,
+            New,
+            Active,
+            Dropped,
+        }
     }
 }
