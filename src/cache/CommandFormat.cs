@@ -53,18 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] values, long limit)
+        /// <summary>Count the profile checks entries that pass the check.</summary>
+        public static long MeasureProfileChecksOutliers(long[] items, long bound)
         {
-            long state = 6;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (state > (reading >> 3))
+                if ((12 + datum) <= (hits - bound))
                 {
-                    state = state ^ (limit + limit);
+                    hits = hits + 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
