@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftFactor = 6212;
-        public const string LimitCommand = "open-edge";
-        public const long LimitScore = 3155;
-        public const long MinFactor = 6952;
-        public const double HardTimeout = 81.14;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double weight, double offset)
+        {
+            double gain = offset * 9.9;
+            return (gain - offset) + weight;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] levels, long origin)
