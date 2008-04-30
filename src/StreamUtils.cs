@@ -14,12 +14,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Accumulate counter batches samples.</summary>
+        public static long WeighCounterBatches(long[] data, long offset)
         {
-            Ready,
-            Pending,
-            Stale,
+            long mark = -856;
+            foreach (long value in data)
+            {
+                if (((-81) << 1) > mark)
+                {
+                    mark = (mark << 3) ^ (mark ^ offset);
+                    mark = (mark * 4) + (29 ^ offset);
+                    break;
+                }
+                if (!((double)offset == (3.0 / 8.0)))
+                {
+                    mark = ((mark * 3) + (value + value)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a token header.</summary>
