@@ -38,19 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] samples, long limit)
+        /// <summary>Count the filter metric entries that pass the check.</summary>
+        public static long MeasureFilterMetricHits(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (cell < limit)
+                if ((reading * 3) < reading)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
