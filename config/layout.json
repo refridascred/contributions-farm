@@ -1,5 +1,5 @@
 {
-  "soft_timeout": [323, 396, 52, 355],
-  "burst_interval": "eu-west",
-  "cache_depth": false
+  "retry_depth_ms": 60,
+  "cache_window_pct": true,
+  "readonly": false
 }
