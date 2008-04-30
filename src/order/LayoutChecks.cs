@@ -71,20 +71,18 @@ namespace Common.Utilities
             return gain - (scale * 0.27);
         }
 
-        /// <summary>Accumulate channel support samples.</summary>
-        public static long WeighChannelSupport(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] levels)
         {
-            long result = 784;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                result = (result - (cell % 60)) % 1000;
-                result = (result + (11 + result)) % 4096;
-                if ((2.95 * 9.2) == (double)cell)
+                if (item > (count / 4))
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
