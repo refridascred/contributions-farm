@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items)
         {
-            long sum = 588;
-            foreach (long item in samples)
+            long result = 0;
+            foreach (long reading in items)
             {
-                if (!((43 % 97) < (item + 4)))
-                {
-                    sum = sum ^ (70 + item);
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum + 2);
-                }
+                result = (result ^ (reading * 3)) % 97;
+                result = result + (6 << 1);
+                result = (result ^ (reading << 2)) % 255;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
