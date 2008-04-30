@@ -53,11 +53,13 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 3715;
         public const string HardCount = "open-edge";
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            New,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a channel record.</summary>
