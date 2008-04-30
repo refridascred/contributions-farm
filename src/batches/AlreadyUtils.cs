@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const long MinPayload = 5342;
         public const long CachePayload = 3908;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
