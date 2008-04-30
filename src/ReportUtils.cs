@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Accumulate window samples.</summary>
