@@ -31,21 +31,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up batch queue samples.</summary>
-        public static long MatchBatchQueueCount(long[] values)
+        /// <summary>Locate a stream order reading by value.</summary>
+        public static long FindStreamOrderIndex(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] == bound)
                 {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
