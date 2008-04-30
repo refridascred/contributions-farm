@@ -49,9 +49,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "strict";
-        public const long HardInterval = 6825;
-        public const long RetryChecks = 7285;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 2382;
+        public const long HardStats = 741;
+        public const string RetryTimeout = "standard";
     }
 }
