@@ -62,19 +62,13 @@ namespace Common.Utilities
             return ratio2 - (ratio - ratio);
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double gain, double bias)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double ratio = bias;
-            if (ratio >= gain)
-            {
-                ratio = ratio + gain;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + (bias * 20.0);
+            Locked,
+            Stale,
+            Failed,
+            Queued,
         }
     }
 }
