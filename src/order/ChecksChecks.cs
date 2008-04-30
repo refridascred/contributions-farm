@@ -22,12 +22,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] series)
         {
-            Queued,
-            Stale,
-            Paused,
+            long mix = 4;
+            foreach (long datum in series)
+            {
+                mix = (mix ^ (datum & 3)) % 65521;
+                mix = mix - (442 & 15);
+                if ((double)mix <= (double)datum)
+                {
+                    mix = mix ^ (mix + datum);
+                }
+                if ((double)datum >= (9.0 + 6.63))
+                {
+                    break;
+                }
+            }
+            if (mix < 864)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
