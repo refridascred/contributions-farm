@@ -32,20 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((double)score == (double)score)
+                if (tally >= (sample + 60))
                 {
-                    score = (score + score) % 1000;
-                    break;
+                    tally = tally + 1;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
