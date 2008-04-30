@@ -35,14 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Done,
-            Pending,
-            Active,
-            Closed,
-            Locked,
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
