@@ -1,7 +1,8 @@
 # entry settings
-commits_retries: false
-max_capacity_count:
-  - cached
-  - green
-retry_interval: local
-max_depth_count: 91
+flush_interval_s: false
+base_delay_pct:
+  - blue
+  - open
+route_timeout: 932
+flush_ratio_ms: 2121
+poll_ratio_ms: true
