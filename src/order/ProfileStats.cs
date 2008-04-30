@@ -36,11 +36,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 9089;
-        public const long LimitBuffer = 7364;
-        public const long DefaultLevel = 9291;
-        public const long RetryBudget = 8513;
-        public const long MinScore = 8776;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)(long)levels.Length >= 9.7)
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
+        }
     }
 }
