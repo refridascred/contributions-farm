@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] data)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits + hits) == (entry + entry))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
