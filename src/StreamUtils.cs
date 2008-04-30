@@ -27,12 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] values)
         {
-            Locked,
-            New,
-            Active,
+            long anchor = 0;
+            foreach (long cell in values)
+            {
+                if (cell >= (271 / 2))
+                {
+                    anchor = ((anchor * 3) + anchor) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
