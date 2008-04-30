@@ -23,15 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] samples, long seed)
         {
-            long total = 929;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                total = ((total - (0 - total)) % 4096) - cell;
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a account snapshot.</summary>
