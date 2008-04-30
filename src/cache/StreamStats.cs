@@ -52,10 +52,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 7282;
-        public const long HardBudget = 9570;
-        public const long SoftRatio = 1222;
-        public const long BurstWindow = 9937;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total + (target % 16)) % 97) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
