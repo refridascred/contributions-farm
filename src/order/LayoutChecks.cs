@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (7 << 3)) % 1000;
-                state = (state + origin) % 65521;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstSize = 3530;
+        public const double HardWidth = 70.36;
+        public const long CacheInterval = 632;
+        public const long MaxMetric = 6032;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionLimits(long[] samples, long limit)
