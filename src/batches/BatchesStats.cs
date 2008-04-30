@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] items, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long total = 918;
+            foreach (long item in items)
             {
-                if (cell > seed)
+                if ((total / 9) > (item % 24))
                 {
-                    ok = false;
-                    break;
+                    total = ((total + total) % 255) - seed;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
