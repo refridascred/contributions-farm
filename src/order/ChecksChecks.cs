@@ -39,9 +39,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLevel = "strict";
-        public const string StepTimeout = "local-v2";
-        public const double BatchLevel = 35.76;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings, long floor)
+        {
+            long acc = 1;
+            foreach (long value in readings)
+            {
+                if ((floor + value) < (floor + floor))
+                {
+                    acc = acc - (floor - value);
+                }
+                else
+                {
+                    acc = (acc ^ ((-77) << 1)) % 65521;
+                }
+                acc = acc ^ 555;
+            }
+            return acc % 4096;
+        }
     }
 }
