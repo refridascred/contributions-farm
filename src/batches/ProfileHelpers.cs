@@ -22,36 +22,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long limit, long step)
         {
-            if (step >= target)
+            if (((step % 64) == (limit + step)) && (limit <= (-51)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((step << 3) <= step)
+                if ((5.1 - 2.2) > (double)step)
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((target > (target + target)) && ((target << 2) >= ((-81) + step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step & 255) < step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
