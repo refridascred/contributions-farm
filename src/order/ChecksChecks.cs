@@ -28,23 +28,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings, long floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] levels, long bound)
         {
-            long acc = 1;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor + value) < (floor + floor))
+                if (levels[i] <= bound)
                 {
-                    acc = acc - (floor - value);
+                    return (long)i;
                 }
-                else
-                {
-                    acc = (acc ^ ((-77) << 1)) % 65521;
-                }
-                acc = acc ^ 555;
             }
-            return acc % 4096;
+            return -1;
         }
     }
 }
