@@ -29,11 +29,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 55.16;
-        public const long StepDepth = 6712;
-        public const string BatchDepth = "local-edge";
-        public const double LimitSpan = 20.59;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double BlendProfile(double ratio, double bias)
