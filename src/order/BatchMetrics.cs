@@ -14,22 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] samples)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally << 3) == (500 + cell))
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
