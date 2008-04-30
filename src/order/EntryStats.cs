@@ -51,12 +51,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long bound)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] > bound)
+                if (items[i] == floor)
                 {
                     return (long)i;
                 }
