@@ -1,7 +1,6 @@
 {
-  "strict": 37,
-  "readonly": "latest",
-  "burst_ratio_ms": true,
-  "warm_interval": 16,
-  "retry_limit": 92.19
+  "persist": "eu-west",
+  "max_ttl_s": "legacy",
+  "base_capacity": ["strict", "latest", "blue"],
+  "audit": true
 }
