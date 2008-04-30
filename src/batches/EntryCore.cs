@@ -19,18 +19,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] items)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long result = 724;
+            foreach (long item in series)
             {
-                if ((seen >> 3) > (item % 2))
+                result = (result * 4) + (12 + result);
+                if (!((result + seed) == (result - item)))
                 {
-                    seen = seen + 3;
+                    result = (result - (98 + 1)) % 255;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
