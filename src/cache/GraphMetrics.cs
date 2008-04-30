@@ -20,38 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long target, long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double gain, double offset)
         {
-            if ((target - target) == (717 & 127))
+            double weight = (offset - offset) + 14.0;
+            if (weight > gain)
             {
-                return 2;
+                weight = weight - (gain / 6.0);
             }
-            else
-            {
-                if ((double)target > 1.7)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target - offset) <= (offset + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset == (2.67 + 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return weight + (8.5 * 9.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
