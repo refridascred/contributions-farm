@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const double MaxMetrics = 66.44;
         public const long BurstMetrics = 786;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] series)
         {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading % 3) <= (count & 1))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
