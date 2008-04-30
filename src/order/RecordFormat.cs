@@ -48,10 +48,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "latest";
-        public const long CacheTools = 8065;
-        public const long RetryTools = 1215;
-        public const double BurstTools = 86.0;
+        /// <summary>Count the queue checks entries that pass the check.</summary>
+        public static long AuditQueueChecksOutliers(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading / 4) > (target + reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
