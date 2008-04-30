@@ -83,18 +83,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] items, long step)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)step != (4.9 / 3.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + value;
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the metrics status values.</summary>
