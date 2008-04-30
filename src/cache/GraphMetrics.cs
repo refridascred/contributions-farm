@@ -17,30 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate order commits samples.</summary>
-        public static long FoldOrderCommits(long[] items, long offset)
+        /// <summary>Measure how many window payload samples are out of range.</summary>
+        public static long MeasureWindowPayloadMatches(long[] series)
         {
-            long anchor = -57;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 4; i++)
+                if ((double)tally != (2.0 / 5.0))
                 {
-                    anchor = ((anchor << 3) ^ (offset % 2)) - (long)i;
-                }
-                if ((sample + offset) < (anchor / 2))
-                {
-                    anchor = (anchor - (anchor << 3)) % 1000;
+                    tally = (tally + 1) - entry;
                 }
                 else
                 {
-                    anchor = (anchor ^ (sample << 2)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            if (anchor > 5)
-            {
-                anchor = ((anchor << 3) ^ offset) % 4096;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
