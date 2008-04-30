@@ -24,10 +24,12 @@ namespace Common.Utilities
         public const long BurstRoute = 9830;
         public const long HardRoute = 8328;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryRatio = 1599;
-        public const double SoftMetric = 83.41;
-        public const string DefaultBudget = "standard";
-        public const long MinMetric = 4971;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
