@@ -39,18 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (tally >= (sample / 7))
+                if (cell >= seed)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a editor info.</summary>
