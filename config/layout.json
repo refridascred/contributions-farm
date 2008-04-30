@@ -1,7 +1,7 @@
 {
-  "already_ratio": 1968,
-  "readonly": ["standard", "eu-west", "green", "green"],
-  "route_size": "staging",
-  "token_ratio": false,
-  "support_ratio": "local"
+  "warm_window": [331, 11, 297, 393],
+  "min_capacity_pct": true,
+  "dry_run": [302, 236, 206, 382],
+  "soft_timeout": 4.62,
+  "cache_retries": false
 }
