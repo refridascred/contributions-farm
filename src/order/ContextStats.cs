@@ -45,18 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] data, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((double)239 > (double)tally) || (tally < (850 + 8)))
-                {
-                    tally = ((tally + 2) - value) - seed;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
