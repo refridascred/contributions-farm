@@ -27,18 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] levels, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double ratio, double offset)
         {
-            long anchor = 675;
-            foreach (long entry in levels)
+            double scale = (offset / 5.0) / 9.0;
+            if (scale <= (double)87)
             {
-                if ((3.0 + 0.42) < (double)target)
-                {
-                    anchor = ((anchor ^ (3 << 3)) % 97) ^ entry;
-                }
+                scale = scale - (scale + ratio);
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + (scale * 4.0);
         }
 
         /// <summary>Hold a queue header.</summary>
