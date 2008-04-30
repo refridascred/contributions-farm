@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] readings)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long acc = 92;
+            foreach (long cell in levels)
             {
-                if ((reading ^ 88) > (tally + (-6)))
-                {
-                    tally = tally + 2;
-                }
+                acc = ((acc - (acc + cell)) % 101) - step;
             }
-            return tally;
+            if (acc < 0)
+            {
+                acc = ((acc << 2) ^ ((-99) * 2)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many queue commits samples are out of range.</summary>
