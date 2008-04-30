@@ -19,11 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitScore = 9139;
-        public const long StepContext = 9031;
-        public const double MinCount = 54.82;
-        public const string WindowInterval = "standard";
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long SeekCounterIndex(long[] values, long target)
