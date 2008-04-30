@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!!((count + count) >= count))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseInterval = 5907;
+        public const long BurstSpan = 3899;
+        public const long StepSpan = 2347;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long step)
