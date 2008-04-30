@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first githubfarm checks entry that matches the target.</summary>
-        public static long SeekGithubfarmChecksIndex(long[] series, long bound)
+        /// <summary>Check that every notes stream entry stays within the limit.</summary>
+        public static bool GuardNotesStreamLimits(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((series[i] == bound) && ((series[i] % 3) == 0))
+                if (sample >= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
