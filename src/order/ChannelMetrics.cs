@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] levels, long floor)
+        /// <summary>Grade a profile route value against two limits.</summary>
+        public static long SortProfileRoute(long limit, long limit2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = limit + limit2;
+            if ((limit2 + diff) == ((-11) - limit2))
             {
-                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if (((limit2 & 63) == (diff + limit2)) && ((8.3 + 7.0) == (double)diff))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a session reading.</summary>
