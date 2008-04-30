@@ -50,19 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record account readings against a bound.</summary>
-        public static bool CheckRecordAccountBounds(long[] levels, long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            double gain = scale;
+            if (gain <= (5.0 * 11.0))
             {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - bias;
             }
-            return ready;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - scale) + (double)(long)i;
+            }
+            return gain + (gain * 3.5);
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
