@@ -27,24 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a checks command counter forward.</summary>
-        public static long DeriveChecksCommand(long offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            long state = 7;
+            foreach (long cell in readings)
             {
-                result = ((result << 2) ^ (result * 2)) % 1000;
-                if (((long)i * 3) < offset)
+                if (((double)cell > (7.11 / 5.0)) || ((cell + cell) > (cell >> 1)))
                 {
-                    result = ((result << 3) ^ (offset << 3)) % 97;
+                    state = state - ((-14) + cell);
                 }
-                else
-                {
-                    result = ((result << 3) ^ (result * 3)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the entry kind values.</summary>
