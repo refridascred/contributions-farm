@@ -66,19 +66,13 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] items, long limit)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Closed,
+            Paused,
+            Done,
         }
     }
 }
