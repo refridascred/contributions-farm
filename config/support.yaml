@@ -1,15 +1,5 @@
 # support settings
-readonly: blue
-idle_retries:
-  - green
-  - edge
-  - edge
-compress:
-  - 256
-  - 310
-  - 174
-hard_window:
-  - standard
-  - stable
-  - local
-  - strict
+farm_interval: 54.48
+readonly: latest
+dry_run: open
+poll_ttl: latest
