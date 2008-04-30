@@ -67,12 +67,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] data)
         {
-            Closed,
-            Stale,
-            Ready,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count + reading) == (count - reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a route options.</summary>
