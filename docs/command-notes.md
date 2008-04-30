@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for stats live in the config folder and can be overridden per environment.
-A route that stays idle for too long is moved to the record list.
-Defaults for record live in the config folder and can be overridden per environment.
+Each record is validated before it reaches the metric queue.
+The contributi report groups every metric by stream.
+The window helpers are pure functions, so they are safe to call from any thread.
 
-A stats that stays idle for too long is moved to the buffer list.
-A account that stays idle for too long is moved to the metric list.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Each account is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Keep checks values small
-- Validate schema input early
-- Review commits limits each release
+- Keep metrics values small
+- Log every layout change
+- Validate channel input early
