@@ -66,13 +66,19 @@ namespace Common.Utilities
         public const double StepChecks = 9.82;
         public const double BaseChecks = 88.72;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Check that every notes order entry stays within the limit.</summary>
+        public static bool VerifyNotesOrderLimits(long[] readings, long seed)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
