@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long offset, long target)
-        {
-            if (7.0 <= (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target ^ target) > (target / 9)) || (target <= (target % 16)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)target >= (2.1 - 9.9)) && ((double)offset > 3.48))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultSpan = 9671;
+        public const long WindowGithubfarm = 6696;
+        public const string WindowScore = "strict-v2";
+        public const double LimitSpan = 20.28;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long WeighFarm(long[] levels)
