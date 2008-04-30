@@ -36,23 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seen ^ offset) != (834 + offset))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "alpha-v2";
+        public const long SoftSpan = 2795;
+        public const double SoftPayload = 34.02;
+        public const long MinPayload = 5155;
+        public const long BatchPayload = 551;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long SeriesBuffer(long offset)
