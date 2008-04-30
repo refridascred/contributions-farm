@@ -74,16 +74,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark << 2) ^ (limit + limit)) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the metrics status values.</summary>
