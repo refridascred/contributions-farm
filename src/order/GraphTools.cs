@@ -46,15 +46,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] levels, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] data, long limit)
         {
-            long sum = 21;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                sum = (((sum * 2) + target) % 97) ^ entry;
+                if (matches > entry)
+                {
+                    matches = (matches + 2) + limit;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
