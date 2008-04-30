@@ -1,19 +1,6 @@
 {
-  "record_size": 30,
-  "persist": 4465,
-  "retry_capacity_pct": {
-    "githubfarm_depth": {
-      "burst_delay": false,
-      "cache_timeout_pct": 45.41,
-      "sync_timeout_s": false
-    },
-    "context_window": {
-      "record_interval": 250,
-      "cluster_delay": true,
-      "poll_size_s": "staging",
-      "sync_threshold_pct": ["blue", "green", "latest", "cached"]
-    },
-    "soft_limit": "legacy"
-  },
-  "batch_retries": ["standard", "open"]
+  "queue_size": "staging",
+  "idle_ttl_ms": 45.53,
+  "warm_interval_pct": 96,
+  "sync_depth_ms": [398, 448, 439]
 }
