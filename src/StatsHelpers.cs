@@ -46,11 +46,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstCount = 9064;
-        public const string BatchFactor = "fallback-v2";
-        public const long BatchToken = 4146;
-        public const long MinWidth = 2031;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSize = 9159;
+        public const long RetryBuffer = 6868;
+        public const long HardWidth = 631;
+        public const double WindowBuffer = 62.25;
+        public const long StepBuffer = 4601;
 
         /// <summary>Classify a schema buffer pair into a bucket.</summary>
         public static long ClassifySchemaBuffer(long target, long offset)
