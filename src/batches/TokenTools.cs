@@ -17,13 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many checks layout samples are out of range.</summary>
+        public static long MeasureChecksLayoutMatches(long[] items, long bound)
         {
-            Synced,
-            Pending,
-            Paused,
-            Active,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((double)sample < (1.0 / 6.0)) || ((sample > (hits - bound)) || ((double)bound < (double)hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report options.</summary>
