@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long origin, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values)
         {
-            if (!((origin >> 5) <= 8))
+            long score = -1;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((15.0 - 18.0) < (double)seed)
+                if (!((4 & 255) == (score / 4)))
                 {
-                    return 5;
+                    score = (score - (score % 12)) % 65521;
+                    score = score + value;
                 }
-                else
+                if ((score << 2) == (score + score))
                 {
-                    if ((8 + origin) > (origin + 778))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = (score << 2) ^ (score / 7);
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Describe the tools kind values.</summary>
