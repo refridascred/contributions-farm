@@ -56,29 +56,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] series)
         {
-            long total = 1;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                long lane = (3 / 3) - (sample / 7);
-                if (!(6.87 < (double)total))
+                if (!(reading > (reading ^ seen)) && !((double)7 != (double)seen))
                 {
-                    total = (total - (lane - origin)) % 97;
-                    total = (total + (8 ^ total)) % 255;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    lane = (lane - (total + 3)) % 1000;
-                }
-                total = ((total << 2) ^ sample) % 255;
             }
-            if (total < 407)
-            {
-                total = ((total << 3) ^ origin) % 255;
-            }
-            return total;
+            return seen;
         }
     }
 }
