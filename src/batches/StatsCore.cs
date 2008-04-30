@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long origin, long target)
-        {
-            if (target < (63 / 9))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((target - target) <= (origin / 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 5851;
+        public const long BurstGithubfarm = 1075;
+        public const long BaseSpan = 7470;
+        public const long WindowRatio = 8417;
 
         /// <summary>Digest a series of cache buffer entries.</summary>
         public static long CombineCacheBuffer(long[] items, long target)
