@@ -1,10 +1,6 @@
-id,owner,ratio,weight
-1,57.04,582,local
-2,staging,83.06,138
-3,staging,322,68
-4,green,primary,primary
-5,staging,246,747
-6,fallback,cached,471
-7,327,53.77,latest
-8,eu-west,76.94,89.56
-9,660,legacy,74.81
+id,ratio,weight,level
+1,609,111,primary
+2,890,9.3,local
+3,855,413,73.02
+4,63.61,primary,42.81
+5,green,875,145
