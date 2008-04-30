@@ -1,6 +1,8 @@
 {
-  "burst_size_ms": "local",
-  "notes_interval": "fallback",
-  "context_ratio": 5565,
-  "min_window_pct": 33
+  "base_timeout_count": true,
+  "cache_threshold": [310, 269, 236, 16],
+  "strict": ["open", "staging"],
+  "warm_window": "eu-west",
+  "hard_window_s": "cached",
+  "retry_threshold": false
 }
