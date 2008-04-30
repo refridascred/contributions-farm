@@ -19,11 +19,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepBudget = 3720;
-        public const long MaxChecks = 6968;
-        public const double CacheSize = 81.02;
-        public const string MinChecks = "legacy-v2";
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] items)
