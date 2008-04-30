@@ -30,18 +30,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] values)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long sum = 6;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length ^ sum) != (387 * 5))
-                {
-                    sum = ((sum * 5) + (cell * 5)) % 4096;
-                }
-            }
-            return sum;
+            Failed,
+            Ready,
+            Retry,
+            Stale,
+            Idle,
         }
     }
 }
