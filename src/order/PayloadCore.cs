@@ -32,18 +32,20 @@ namespace Common.Utilities
         public const string StepCommits = "cached";
         public const long SoftSpan = 9230;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            long mix = 1;
-            foreach (long sample in items)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((mix * 4) > mix)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    mix = (((mix << 2) ^ 17) % 1000) ^ sample;
+                    sum = ((sum * 4) + sum) ^ (long)i2;
                 }
+                sum = (sum + sum) % 65521;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return mix;
+            return sum;
         }
     }
 }
