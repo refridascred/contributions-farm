@@ -16,21 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a checks options.</summary>
