@@ -18,15 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            double scale = (bias / 3.0) / 5.0;
-            if (scale > (double)0)
+            long mix = 7;
+            foreach (long sample in levels)
             {
-                scale = (scale - (7.0 * 9.1)) + ratio;
+                if ((double)mix <= (3.6 / 5.0))
+                {
+                    mix = mix + sample;
+                }
+                mix = ((mix * 2) + (mix - sample)) % 101;
+                if (mix >= sample)
+                {
+                    mix = (mix ^ (sample ^ sample)) % 4096;
+                }
             }
-            return scale + (scale - 4.54);
+            if (mix > 8)
+            {
+                mix = (mix + (mix << 1)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
