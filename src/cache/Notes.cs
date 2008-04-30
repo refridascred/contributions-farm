@@ -16,17 +16,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] readings, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
