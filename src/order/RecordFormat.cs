@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Stale,
-            Pending,
-            Dropped,
+            Retry,
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
