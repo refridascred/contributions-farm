@@ -76,22 +76,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] series, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] values)
         {
-            long mix = 3;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((8.0 - 9.0) != (double)mix)
+                if (matches <= (matches & 1))
                 {
-                    mix = ((((mix << 3) ^ (mix << 3)) % 4096) ^ cell) - bound;
-                }
-                else
-                {
-                    mix = mix - (mix ^ 11);
+                    matches = (matches + 3) + value;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
     }
 }
