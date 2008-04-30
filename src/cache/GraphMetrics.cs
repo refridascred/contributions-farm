@@ -19,23 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((13.0 * 7.29) > (double)count)
-                {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchInterval = 7568;
+        public const long BatchStream = 8278;
+        public const long LimitStream = 9935;
+        public const long BaseWidth = 2693;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] readings, long target)
