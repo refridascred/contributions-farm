@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] data, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] data)
         {
-            long sum = -62;
-            foreach (long reading in data)
+            long total = 5;
+            foreach (long item in data)
             {
-                sum = ((sum - offset) % 101) - reading;
+                if (item >= (total % 97))
+                {
+                    total = total + (total << 2);
+                }
             }
-            if (sum > (-85))
-            {
-                sum = ((sum * 2) + sum) % 101;
-            }
-            return sum % 4096;
+            return total % 1000;
         }
     }
 }
