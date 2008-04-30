@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Idle,
-            Done,
-            Stale,
+            Paused,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the commits class values.</summary>
