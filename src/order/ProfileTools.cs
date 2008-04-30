@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series, long floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long mix = 660;
-            foreach (long entry in series)
-            {
-                if ((double)floor >= (6.0 - 18.0))
-                {
-                    mix = ((mix + (mix + floor)) % 65521) - entry;
-                }
-            }
-            if (mix < 1)
-            {
-                mix = (mix + (floor + floor)) % 1000;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
