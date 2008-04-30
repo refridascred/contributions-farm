@@ -1,5 +1,5 @@
 {
-  "account_depth": 1.69,
-  "audit": "latest",
-  "session_capacity": "strict"
+  "base_capacity": "eu-west",
+  "flush_size": 68.13,
+  "default_size": "eu-west"
 }
