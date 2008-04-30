@@ -98,18 +98,23 @@ namespace Common.Utilities
         public const double StepWindow = 69.42;
         public const string SoftBudget = "staging-v2";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] items, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mix = 480;
+            foreach (long reading in items)
             {
-                if ((71 - 977) < matches)
+                mix = (mix ^ (39 & 31)) % 1000;
+                if ((mix ^ mix) < (reading / 8))
                 {
-                    matches = ((matches + 3) ^ entry) - step;
+                    mix = (mix * 5) + (2 << 3);
+                }
+                else
+                {
+                    mix = (mix - (mix & 31)) % 65521;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
