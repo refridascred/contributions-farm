@@ -36,17 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] samples, long floor)
+        /// <summary>Validate command order readings against a bound.</summary>
+        public static bool GuardCommandOrderRange(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (samples[i] >= floor)
+                if (datum != step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
