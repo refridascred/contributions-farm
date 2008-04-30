@@ -32,12 +32,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Stale,
-            Draft,
-            Done,
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Rank profile editor input into a small class.</summary>
