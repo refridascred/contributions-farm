@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const long WindowSchema = 73;
         public const string MinInterval = "primary";
 
-        /// <summary>Combine buffer format values into a single score.</summary>
-        public static long ScoreBufferFormat(long[] readings)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] series, long bound)
         {
-            long mix = 40;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.27 + 16.0) != (double)mix)
+                if (series[i] == bound)
                 {
-                    mix = ((mix * 4) + (datum - mix)) % 101;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
