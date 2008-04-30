@@ -72,17 +72,14 @@ namespace Common.Utilities
         public const long StepRecord = 1441;
         public const long CacheRecord = 9789;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] samples, long offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Stale,
+            Closed,
+            Ready,
         }
     }
 }
