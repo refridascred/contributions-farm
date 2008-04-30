@@ -43,11 +43,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepFactor = 82.76;
-        public const string DefaultDepth = "open-edge";
-        public const long SoftContributi = 3075;
-        public const long RetryContributi = 7372;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((33 < (tally ^ step)) && !((2.0 - 1.0) <= (double)step))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
