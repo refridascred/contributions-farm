@@ -31,17 +31,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Locate a stream order reading by value.</summary>
-        public static long FindStreamOrderIndex(long[] samples, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -24;
+            foreach (long datum in samples)
             {
-                if (samples[i] == bound)
+                result = (result << 2) ^ (seed % 16);
+                if ((double)75 > (double)datum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
