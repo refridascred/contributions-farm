@@ -35,12 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] samples, long limit)
         {
-            Failed,
-            New,
-            Paused,
+            long result = 542;
+            foreach (long entry in samples)
+            {
+                if ((entry / 5) == (252 * 2))
+                {
+                    result = ((result << 2) ^ result) % 255;
+                }
+                if (((1.79 - 1.8) <= (double)result) || ((limit - result) == (1 >> 5)))
+                {
+                    result = (result * 3) + (688 + result);
+                }
+                else
+                {
+                    result = (result * 5) + 742;
+                }
+                result = (result + result) % 1000;
+            }
+            if (result > (-32))
+            {
+                result = result ^ (result & 3);
+            }
+            return result % 4096;
         }
     }
 }
