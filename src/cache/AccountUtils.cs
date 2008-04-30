@@ -24,19 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] series, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] values)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long datum in values)
             {
-                if ((hits & 255) != (890 * 3))
+                if ((((datum / 8) == (datum / 7)) || ((double)hits >= (double)32)) || (((datum & 7) != (hits % 10)) || ((1.2 + 12.0) <= (double)hits)))
                 {
-                    hits = ((hits + 3) + value) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
