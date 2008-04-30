@@ -14,13 +14,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Look up the position of a report editor sample.</summary>
+        public static long SeekReportEditorIndex(long[] readings, long floor)
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
