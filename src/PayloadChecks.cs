@@ -44,24 +44,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long limit, long floor)
+        /// <summary>Combine order commits values into a single score.</summary>
+        public static long DigestOrderCommits(long[] series)
         {
-            if ((6 - limit) != (floor ^ limit))
+            long total = -59;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 15) < limit)
+                for (int i = 0; i < 3; i++)
                 {
-                    return 2;
+                    total = (((total * 4) + cell) % 255) ^ (long)i;
                 }
-                else
+                if (((-179) + total) <= total)
                 {
-                    return 4;
+                    total = total - (total + total);
                 }
             }
+            return total;
         }
 
         /// <summary>Match up counter samples.</summary>
