@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long seed, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] data, long limit)
         {
-            if (((seed + 54) > seed) && ((step - seed) == (seed + step)))
+            long state = 291;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.9 + 6.2) == (double)step)
+                if ((state + 5) != (limit % 16))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step <= (seed / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = (((state * 4) + (state + limit)) % 65521) - cell;
                 }
             }
+            if (state > (-294))
+            {
+                state = state ^ (69 * 3);
+            }
+            return state % 65521;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
