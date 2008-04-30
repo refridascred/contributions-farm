@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the counter channel entries that pass the check.</summary>
-        public static long AuditCounterChannelMatches(long[] levels)
+        /// <summary>Fold a list of command schema readings.</summary>
+        public static long TotalCommandSchema(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long acc = 84;
+            foreach (long datum in series)
             {
-                if (!(((848 << 2) < item) && ((item % 3) >= matches)))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc << 2) ^ (datum % 12)) - bound;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the entry level values.</summary>
