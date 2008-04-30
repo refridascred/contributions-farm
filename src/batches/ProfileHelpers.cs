@@ -27,31 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long origin, long offset)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            if (offset <= (origin & 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.55 * 9.8) <= (4.1 / 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >= origin) || ((2.66 * 18.0) > (double)offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Dropped,
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Blend two context graph measurements.</summary>
