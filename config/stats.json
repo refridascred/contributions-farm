@@ -1,7 +1,7 @@
 {
-  "warm_interval": 30,
-  "editor_limit": "stable",
-  "profile_size": "blue",
-  "dry_run": 7355,
-  "batch_window_pct": ["legacy", "blue", "open"]
+  "base_timeout_count": "edge",
+  "flush_retries": "blue",
+  "cluster_retries": "fallback",
+  "warm_size_count": true,
+  "base_size_s": "local"
 }
