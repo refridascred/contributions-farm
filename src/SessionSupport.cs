@@ -26,12 +26,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] levels, long offset)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)(long)levels.Length > (9.97 + 3.5))
+                {
+                    count = ((count + 1) ^ value) - offset;
+                }
+            }
+            return count;
         }
     }
 }
