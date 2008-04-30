@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next record contributi value from a seed.</summary>
-        public static long RollRecordContributi(long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum << 2) ^ (sum ^ sum)) % 1000;
-                sum = ((sum << 2) ^ (limit + limit)) % 65521;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
