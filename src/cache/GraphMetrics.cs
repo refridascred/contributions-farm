@@ -37,15 +37,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cluster window readings.</summary>
-        public static long WeighClusterWindow(long[] levels, long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long target, long target2)
         {
-            long mark = -42;
-            foreach (long cell in levels)
+            if ((target + target) <= (target2 - target2))
             {
-                mark = (((mark * 3) + (mark + floor)) % 65521) - cell;
+                return 4;
             }
-            return mark % 65521;
+            else
+            {
+                if ((double)target2 >= (2.8 * 9.23))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Blend two metric report measurements.</summary>
