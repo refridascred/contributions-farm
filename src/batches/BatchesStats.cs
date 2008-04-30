@@ -74,19 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] items, long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
