@@ -1,9 +1,8 @@
 # entry settings
-flush_delay_pct:
-  - latest
+session_ttl:
   - local
-  - primary
-  - open
-command_timeout: strict
-readonly: fallback
-idle_ratio_pct: 60
+  - staging
+  - latest
+poll_timeout_ms: 1024
+max_threshold_count: cached
+poll_ratio_s: 6.71
