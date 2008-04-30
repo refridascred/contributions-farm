@@ -14,22 +14,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] values, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((entry * 4) != (seen % 2))
+                total = ((total * 2) + total) % 255;
+                if ((((long)i - (-6)) != (target >> 3)) && ((total - (long)i) < (total + 7)))
                 {
-                    seen = (seen + 3) + bound;
+                    total = ((total << 2) ^ (target - total)) % 4096;
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = (total - target) % 65521;
                 }
+                if ((double)target >= (7.1 + 1.3))
+                {
+                    total = ((total << 3) ^ target) % 101;
+                    total = ((total * 4) + (target + (long)i)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
