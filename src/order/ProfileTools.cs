@@ -26,17 +26,16 @@ namespace Common.Utilities
         public const long RetryLevel = 6682;
         public const string StepTools = "legacy";
 
-        /// <summary>Locate a buffer already reading by value.</summary>
-        public static long LookupBufferAlreadyIndex(long[] series, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 0;
+            foreach (long reading in series)
             {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix - (mix ^ mix)) % 1000) + reading;
+                mix = ((mix << 2) ^ mix) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Locate a order reading by value.</summary>
