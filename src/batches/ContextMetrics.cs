@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine payload counter values into a single score.</summary>
-        public static long ScorePayloadCounter(long[] samples, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] readings, long target)
         {
-            long mark = -1;
-            foreach (long value in samples)
+            long state = 725;
+            foreach (long datum in readings)
             {
-                if ((mark / 2) > step)
+                if ((double)datum <= (5.68 - 7.2))
                 {
-                    mark = (mark + (step + value)) % 101;
-                    mark = (mark * 2) + (mark - value);
-                }
-                if (value >= (mark + mark))
-                {
-                    mark = mark ^ 251;
-                }
-                else
-                {
-                    mark = (mark + (long)samples.Length) % 101;
+                    state = ((state << 3) ^ state) % 4096;
                 }
             }
-            return mark;
+            if (state > (-7))
+            {
+                state = (state - target) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Count the farm format entries that pass the check.</summary>
