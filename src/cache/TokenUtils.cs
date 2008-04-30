@@ -17,15 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Combine stream filter values into a single score.</summary>
+        public static long CombineStreamFilter(long[] levels, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            long score = 829;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((7.0 + 9.3) == (double)score)
+                {
+                    score = (score + (target ^ score)) % 101;
+                }
+                if (sample >= (sample << 3))
+                {
+                    score = (score ^ sample) % 65521;
+                }
             }
-            return carry;
+            return score % 97;
         }
 
         /// <summary>Hold a already snapshot.</summary>
