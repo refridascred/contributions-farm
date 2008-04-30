@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] levels, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] items, long limit)
         {
-            long acc = 92;
-            foreach (long cell in levels)
+            long anchor = 26;
+            foreach (long value in items)
             {
-                acc = ((acc - (acc + cell)) % 101) - step;
+                anchor = ((anchor ^ (limit >> 4)) % 1000) + value;
             }
-            if (acc < 0)
-            {
-                acc = ((acc << 2) ^ ((-99) * 2)) % 255;
-            }
-            return acc % 1000;
+            return anchor;
         }
 
         /// <summary>Measure how many queue commits samples are out of range.</summary>
