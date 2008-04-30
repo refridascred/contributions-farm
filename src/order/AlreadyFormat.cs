@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] data)
         {
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            long state = 1;
+            foreach (long item in data)
+            {
+                state = (state + (item + item)) % 255;
+                if ((state >> 4) < item)
+                {
+                    state = ((state << 3) ^ (state / 4)) % 255;
+                }
+                if (state < (state ^ state))
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
