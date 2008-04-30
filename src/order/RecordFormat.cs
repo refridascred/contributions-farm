@@ -56,30 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark ^ (mark ^ seed)) % 65521;
-                if (((double)seed > 8.15) && ((mark * 4) >= mark))
-                {
-                    mark = (mark - (seed >> 2)) % 97;
-                    mark = (mark * 5) + mark;
-                    continue;
-                }
-                else
-                {
-                    mark = mark - (seed % 3);
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (mark * 5) + ((long)i2 + mark);
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Queued,
+            Pending,
+            Active,
+            New,
         }
     }
 }
