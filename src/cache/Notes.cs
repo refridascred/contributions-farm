@@ -20,19 +20,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] items, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (cell < origin)
+                if (entry < step)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Hold a counter summary.</summary>
