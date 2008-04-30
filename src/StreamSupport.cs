@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 6779;
-        public const string CacheLevel = "legacy-v2";
-        public const long BurstSize = 3057;
-        public const long MaxSize = 9731;
-        public const long CacheCount = 6133;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheLevel = 9079;
+        public const long DefaultNotes = 6834;
+        public const string HardNotes = "latest";
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] items, long seed)
