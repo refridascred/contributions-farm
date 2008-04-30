@@ -20,39 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long offset, long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long prev = offset ^ seed;
-            if ((offset % 24) > 66)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset > (seed + seed)) || (3 < (90 - prev)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((prev + offset) <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset - prev) > (prev + prev)) && ((prev - offset) > (prev >> 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Ready,
+            Failed,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
