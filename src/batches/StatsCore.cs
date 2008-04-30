@@ -62,23 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks batches entries.</summary>
-        public static long ScoreChecksBatches(long[] values, long limit)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] series, long limit)
         {
-            long sum = 9;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum + item;
-                if (!((double)285 <= (double)item))
+                if ((series[i] < limit) && ((series[i] % 5) == 0))
                 {
-                    sum = (sum + 551) % 255;
-                }
-                if ((limit ^ item) <= (limit + limit))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
