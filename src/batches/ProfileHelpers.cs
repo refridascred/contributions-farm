@@ -46,22 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm counter readings against a rule.</summary>
-        public static long AuditFarmCounterHits(long[] series, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((double)bound <= 2.86)
+                if (datum > offset)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Fold a list of window context readings.</summary>
