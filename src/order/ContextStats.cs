@@ -25,18 +25,17 @@ namespace Common.Utilities
         public const double MinCount = 54.82;
         public const string WindowInterval = "standard";
 
-        /// <summary>Fold a list of checks profile readings.</summary>
-        public static long DigestChecksProfile(long[] values)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long target)
         {
-            long sum = 40;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-33) - datum) == (sum - datum))
+                if (values[i] < target)
                 {
-                    sum = (sum + datum) % 97;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
