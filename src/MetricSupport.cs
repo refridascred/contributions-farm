@@ -20,12 +20,18 @@ namespace Common.Utilities
             return weight - (ratio * 7.95);
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Measure how many command cluster samples are out of range.</summary>
+        public static long TallyCommandClusterOutliers(long[] data, long limit)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (16 >= (limit & 3))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cache phase values.</summary>
