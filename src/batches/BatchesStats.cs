@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long step, long floor)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            long slot = step + floor;
+            if ((slot + slot) < floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((791 << 1) >= (slot % 10))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor < (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step ^ step) <= 159) && ((72 >> 1) >= (step * 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter info.</summary>
