@@ -19,17 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first report token entry that matches the target.</summary>
-        public static long LookupReportTokenIndex(long[] samples, long limit)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
