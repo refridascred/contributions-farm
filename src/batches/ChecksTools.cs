@@ -49,18 +49,38 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] readings)
+        /// <summary>Rank githubfarm tools input into a small class.</summary>
+        public static long BucketGithubfarmTools(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if ((origin < (origin - 5)) || ((limit - origin) <= limit))
             {
-                if ((double)matches >= (1.5 + 7.9))
+                return 6;
+            }
+            else
+            {
+                if ((origin >> 3) != (limit + limit))
                 {
-                    matches = (matches + 2) + datum;
+                    return 2;
+                }
+                else
+                {
+                    if (3 >= (origin + 677))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin >= 9.55)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
