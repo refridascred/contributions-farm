@@ -46,12 +46,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many record stream samples are out of range.</summary>
+        public static long MeasureRecordStreamGaps(long[] data)
         {
-            New,
-            Closed,
-            Failed,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample ^ 7) >= (sample - 269))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
