@@ -23,17 +23,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a queue metrics reading by value.</summary>
-        public static long SeekQueueMetricsIndex(long[] items, long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                state = state - (state >> 5);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate command order readings against a bound.</summary>
