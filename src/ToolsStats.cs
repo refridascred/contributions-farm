@@ -11,12 +11,27 @@ namespace Common.Utilities
         public const string RetrySupport = "stable-edge";
         public const double DefaultSupport = 37.52;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleSpan = 18.35;
-        public const long StepNotes = 2039;
-        public const long SoftNotes = 5895;
-        public const double MinSpan = 35.09;
-        public const double SoftWidth = 1.83;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total << 2) ^ (total - origin)) % 255;
+                total = ((total * 3) + (total + 24)) % 4096;
+                if ((double)total > 8.0)
+                {
+                    total = (total - total) % 4096;
+                    total = total ^ (origin >> 4);
+                }
+                else
+                {
+                    total = (total + (10 + total)) % 97;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] levels, long bound)
