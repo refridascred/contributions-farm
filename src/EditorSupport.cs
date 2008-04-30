@@ -26,21 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 8;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (carry > cell)
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry - ((long)items.Length % 16);
+                }
+                if (((1.33 - 0.42) == (double)carry) || (cell < (776 & 1)))
+                {
+                    carry = carry + (cell + carry);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
