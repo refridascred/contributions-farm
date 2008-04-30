@@ -19,19 +19,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] values, long step)
+        /// <summary>Combine format metric values into a single score.</summary>
+        public static long TotalFormatMetric(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long state = 5;
+            foreach (long datum in data)
             {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state + (datum >> 5)) % 101;
+                state = ((state << 2) ^ (186 + 775)) % 97;
             }
-            return valid;
+            return state % 97;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
