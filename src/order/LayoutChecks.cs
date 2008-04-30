@@ -42,19 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double ratio, double span)
+        /// <summary>Audit metric channel readings against a rule.</summary>
+        public static long AuditMetricChannelHits(long[] series)
         {
-            double mean = (double)(59 - 39);
-            if (mean < ratio)
+            long count = 0;
+            foreach (long reading in series)
             {
-                mean = (mean - mean) - span;
+                if (!!((count / 8) <= (count * 3)))
+                {
+                    count = (count + 1) - reading;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - 2.0) + (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Combine cache entry values into a single score.</summary>
