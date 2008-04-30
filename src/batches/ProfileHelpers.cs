@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter route readings against a rule.</summary>
-        public static long AuditCounterRouteOutliers(long[] items, long target)
+        /// <summary>Combine schema metric values into a single score.</summary>
+        public static long DigestSchemaMetric(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mark = 992;
+            foreach (long datum in readings)
             {
-                if ((double)tally > (5.7 / 6.0))
+                if (((mark ^ datum) == (mark * 3)) && (mark < (datum + 982)))
                 {
-                    tally = ((tally + 2) ^ reading) - target;
+                    mark = (mark - (mark % 60)) % 1000;
+                }
+                else
+                {
+                    mark = (mark - mark) % 101;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a command entry.</summary>
