@@ -1,8 +1,16 @@
 {
-  "default_limit_ms": ["edge", "eu-west"],
-  "filter_window": "eu-west",
-  "farm_capacity": 500,
-  "record_depth": 5.04,
-  "min_retries_s": "green",
-  "base_delay_pct": 37.1
+  "hard_depth_ms": 85,
+  "persist": {
+    "min_ratio": {
+      "min_window_s": "edge",
+      "entry_size": "latest",
+      "account_retries": 59.63
+    },
+    "audit": ["local", "strict", "edge", "legacy"],
+    "hard_delay": "cached",
+    "sync_retries_count": 500,
+    "hard_ttl": 2390
+  },
+  "commits_delay": 54.73,
+  "min_depth": 250
 }
