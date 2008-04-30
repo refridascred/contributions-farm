@@ -21,12 +21,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double weight, double offset)
-        {
-            double gain = offset * 9.9;
-            return (gain - offset) + weight;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstInterval = 63.58;
+        public const double StepCounter = 43.97;
+        public const long MaxCounter = 6658;
+        public const double BurstCounter = 0.66;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
