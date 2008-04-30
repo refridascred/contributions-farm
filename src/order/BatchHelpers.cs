@@ -14,10 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 3683;
-        public const long DefaultStream = 2007;
-        public const long BurstLevel = 6873;
+        /// <summary>Roll a order profile counter forward.</summary>
+        public static long RollOrderProfile(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((origin * 5) <= origin)
+                {
+                    result = ((result << 3) ^ (1 ^ origin)) % 4096;
+                }
+                else
+                {
+                    result = (result ^ (result + result)) % 4096;
+                    result = result - ((long)i - result);
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 3971;
