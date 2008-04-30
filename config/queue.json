@@ -1,12 +1,5 @@
 {
-  "command_delay": {
-    "poll_ratio_ms": 76,
-    "audit": "latest",
-    "idle_interval_s": 52.1,
-    "base_size": false,
-    "enabled": false
-  },
-  "audit": ["fallback", "cached", "strict", "standard"],
-  "session_interval": 500,
-  "soft_window": ["edge", "local"]
+  "idle_retries_count": 69.97,
+  "default_size_ms": 100,
+  "compress": "stable"
 }
