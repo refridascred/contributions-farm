@@ -55,20 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session counter readings.</summary>
-        public static long CombineSessionCounter(long[] samples, long seed)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long limit)
         {
-            long total = 11;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((double)total != (5.0 / 3.0)))
+                if (levels[i] <= limit)
                 {
-                    long bound = (seed - total) + (seed / 2);
-                    total = total - bound;
+                    return (long)i;
                 }
-                total = (total * 4) + (cell + total);
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
