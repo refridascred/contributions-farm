@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long seed, long offset)
-        {
-            if ((offset + seed) == (offset + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (92 < (seed * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheSize = "cached-edge";
+        public const double HardBudget = 58.12;
+        public const double BurstOrder = 87.42;
+        public const double CacheInterval = 34.22;
+        public const long MaxOrder = 2864;
 
         /// <summary>Check that every context filter entry stays within the limit.</summary>
         public static bool CheckContextFilterRange(long[] levels, long origin)
