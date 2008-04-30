@@ -27,18 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] data, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((1.0 / 6.0) != (double)matches)
-                {
-                    matches = ((matches + 1) ^ reading) + seed;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the counter mode values.</summary>
