@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
