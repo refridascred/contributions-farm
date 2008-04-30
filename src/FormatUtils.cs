@@ -16,14 +16,11 @@ namespace Common.Utilities
             return mean + 9.7;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 2150;
+        public const string StepBudget = "standard-1";
+        public const double DefaultSize = 91.68;
+        public const double BurstFactor = 79.21;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] samples, long floor)
