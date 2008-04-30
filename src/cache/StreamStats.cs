@@ -24,25 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command record pair into a bucket.</summary>
-        public static long ClassifyCommandRecord(long origin, long bound)
-        {
-            if ((1.2 * 8.57) == (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound == (3.77 + 1.8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitChecks = "cached-edge";
+        public const long CacheChecks = 2873;
+        public const long RetryChecks = 8973;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool GuardSessionLimits(long[] readings, long step)
