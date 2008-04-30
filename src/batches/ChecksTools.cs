@@ -34,15 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Stale,
-            Done,
-            Paused,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinInterval = "fallback-1";
+        public const long SoftStats = 5808;
+        public const string CacheSpan = "local-v2";
+        public const long MinDepth = 590;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterGaps(long[] samples, long offset)
