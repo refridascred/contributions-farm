@@ -1,14 +1,6 @@
 {
-  "retry_threshold_pct": false,
-  "base_interval": true,
-  "base_timeout_pct": "open",
-  "layout_capacity": ["strict", "blue", "open", "strict"],
-  "idle_depth_ms": {
-    "min_threshold": 49,
-    "max_capacity_s": "green",
-    "route_delay": 60,
-    "record_threshold": true,
-    "soft_depth_pct": 81.88
-  },
-  "enabled": "green"
+  "sync_ratio_s": true,
+  "flush_retries_count": 5608,
+  "poll_threshold_pct": 86,
+  "batch_ttl_count": 9972
 }
