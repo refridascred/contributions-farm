@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series, long floor)
+        /// <summary>Audit notes filter readings against a rule.</summary>
+        public static long MeasureNotesFilterGaps(long[] values, long bound)
         {
-            long state = -34;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (!((double)floor > 15.0))
+                if ((cell + bound) <= cell)
                 {
-                    state = state + datum;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    state = (state + (datum ^ 45)) % 97;
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a contributi record.</summary>
