@@ -21,19 +21,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] items, long step)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= step)
+                if (data[i] > step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
