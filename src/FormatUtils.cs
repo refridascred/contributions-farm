@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double gain, double bias)
+        /// <summary>Accumulate notes filter samples.</summary>
+        public static long WeighNotesFilter(long[] samples)
         {
-            double mean = (0.26 / 3.0) + (gain - gain);
-            for (int i = 0; i < 5; i++)
+            long carry = 3;
+            foreach (long value in samples)
             {
-                mean = ((mean - (9.0 / 7.0)) + (double)(long)i) - bias;
+                if ((69 + 33) >= carry)
+                {
+                    carry = ((carry << 2) ^ (carry << 3)) ^ value;
+                }
+                if (carry > 3)
+                {
+                    break;
+                }
             }
-            return mean + 9.7;
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
