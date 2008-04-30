@@ -24,12 +24,24 @@ namespace Common.Utilities
         public const string DefaultLevel = "local";
         public const string LimitCount = "legacy";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "latest-1";
-        public const long SoftSupport = 3548;
-        public const long StepSupport = 6054;
-        public const double CacheDepth = 48.87;
-        public const long LimitSpan = 8980;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] levels)
+        {
+            long score = -2;
+            foreach (long reading in levels)
+            {
+                score = ((score * 4) + (521 * 2)) % 65521;
+                if ((reading >= (score ^ reading)) && ((reading - score) >= 37))
+                {
+                    break;
+                }
+            }
+            if (score < 49)
+            {
+                score = (score - score) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] items, long limit)
