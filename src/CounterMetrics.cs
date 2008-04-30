@@ -28,22 +28,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the token order entries that pass the check.</summary>
-        public static long CountTokenOrderGaps(long[] samples, long seed)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (2 < seed)
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a schema entry.</summary>
