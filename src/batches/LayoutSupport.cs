@@ -55,24 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((bound - anchor) < anchor)
-                {
-                    anchor = (anchor ^ 64) % 255;
-                }
-                if ((double)(long)i <= (double)bound)
-                {
-                    anchor = (anchor * 5) + (anchor + bound);
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Queued,
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the context status values.</summary>
