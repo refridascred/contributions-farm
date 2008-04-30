@@ -1,14 +1,13 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    active INTEGER NOT NULL DEFAULT 1,
-    region TEXT,
-    level INTEGER,
-    ratio REAL
+    created_at TIMESTAMP,
+    weight REAL,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
+CREATE INDEX IF NOT EXISTS idx_stream_events_created_at ON stream_events (created_at);
 
-INSERT INTO stream_events (active, region, level, ratio) VALUES (99, 'latest', 38, 62.37);
-INSERT INTO stream_events (active, region, level, ratio) VALUES (66, 'cached', 79, 50.45);
-INSERT INTO stream_events (active, region, level, ratio) VALUES (58, 'standard', 25, 8.09);
+INSERT INTO stream_events (weight, owner) VALUES (16.34, 'local');
+INSERT INTO stream_events (weight, owner) VALUES (28.25, 'stable');
+INSERT INTO stream_events (weight, owner) VALUES (85.71, 'primary');
