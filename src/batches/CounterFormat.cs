@@ -24,13 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxFactor = 9472;
+        public const long MaxToken = 1295;
+        public const long CacheToken = 9228;
+        public const double BaseDepth = 83.72;
+        public const long DefaultSize = 4988;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] samples)
