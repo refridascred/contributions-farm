@@ -49,18 +49,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] series, long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum - step) < (datum - 728)) || ((9 ^ datum) >= (datum % 12)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
