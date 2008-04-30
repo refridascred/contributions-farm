@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a queue format reading.</summary>
-        public static double BlendQueueFormat(double weight, double offset)
+        /// <summary>Measure how many cache entry samples are out of range.</summary>
+        public static long CountCacheEntryOutliers(long[] items)
         {
-            double weight2 = weight;
-            if (weight2 <= offset)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                weight2 = weight2 - weight2;
+                if (entry > (306 + hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 - 0.2;
+            return hits;
         }
 
         /// <summary>Validate record command readings against a bound.</summary>
