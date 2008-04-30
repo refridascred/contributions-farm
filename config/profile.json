@@ -1,7 +1,6 @@
 {
-  "poll_threshold_count": ["cached", "blue"],
-  "max_depth_count": false,
-  "idle_timeout_pct": 7366,
-  "idle_depth": 46.2,
-  "flush_depth_ms": 18.78
+  "max_limit_ms": [174, 295, 131, 192],
+  "batch_threshold_pct": "cached",
+  "poll_delay_ms": 62.85,
+  "record_limit": "cached"
 }
