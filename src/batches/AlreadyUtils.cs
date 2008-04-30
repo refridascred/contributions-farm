@@ -93,17 +93,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first layout profile entry that matches the target.</summary>
-        public static long LookupLayoutProfileIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 5165;
+        public const long MinSpan = 8208;
+        public const long MaxWidth = 4183;
     }
 }
