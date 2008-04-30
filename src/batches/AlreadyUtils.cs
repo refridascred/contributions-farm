@@ -43,11 +43,39 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a route checks reading.</summary>
-        public static double SmoothRouteChecks(double ratio, double floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long bound, long floor)
         {
-            double rate = (double)719 + (floor + floor);
-            return (rate + 19.0) + ratio;
+            long next = bound ^ floor;
+            if ((next <= bound) && ((double)bound > 1.64))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(2.7 < (double)bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((next ^ bound) != (38 >> 5)) || ((6.7 - 6.97) < (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor + floor) >= (bound + bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate report samples.</summary>
