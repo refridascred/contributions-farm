@@ -12,15 +12,25 @@ namespace Common.Utilities
             return ratio - (bias + weight);
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Rank session token input into a small class.</summary>
+        public static long GradeSessionToken(long floor, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long gap = floor - bound;
+            if ((double)gap > 16.0)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (floor < 8)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Blend two payload measurements.</summary>
