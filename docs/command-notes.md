@@ -1,12 +1,12 @@
 # Command notes
 
-The stats module keeps support values in sync with the schema cache.
-The route report groups every graph by route.
-Use window settings to tune how often report data is refreshed.
+The stream module keeps token values in sync with the cluster cache.
+The format module keeps already values in sync with the command cache.
+Run the schema check before changing any account limits.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Validate channel input early
-- Review contributi limits each release
-- Keep order values small
+- Keep tools values small
+- Review report limits each release
+- Document new metrics fields
+- Log every githubfarm change
