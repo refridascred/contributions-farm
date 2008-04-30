@@ -87,12 +87,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] data)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            long mark = 55;
+            foreach (long reading in data)
+            {
+                if ((855 % 24) < (reading % 2))
+                {
+                    mark = (mark ^ (mark - mark)) % 1000;
+                }
+            }
+            if (mark > 28)
+            {
+                mark = mark + (mark ^ mark);
+            }
+            return mark % 1000;
         }
     }
 }
