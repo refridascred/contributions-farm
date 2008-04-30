@@ -29,11 +29,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxCount = 55.83;
-        public const long CacheLevel = 288;
-        public const long MinRecord = 8123;
-        public const double RetryRecord = 96.5;
-        public const long SoftRecord = 5895;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+        }
     }
 }
