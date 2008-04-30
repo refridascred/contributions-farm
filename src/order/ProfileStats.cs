@@ -37,20 +37,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double ratio, double span)
-        {
-            double drift = span;
-            if (drift >= span)
-            {
-                drift = drift - ratio;
-            }
-            else
-            {
-                drift = drift - 6.58;
-            }
-            return drift - (ratio / 6.0);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 5992;
+        public const long MinFactor = 7828;
+        public const string BatchQueue = "stable";
+        public const long MaxQueue = 8015;
+        public const long CacheBudget = 1213;
 
         /// <summary>Fold a list of record profile readings.</summary>
         public static long TallyRecordProfile(long[] values)
