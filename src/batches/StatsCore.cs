@@ -75,13 +75,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Fold a list of channel schema readings.</summary>
+        public static long DigestChannelSchema(long[] series, long limit)
         {
-            Done,
-            Closed,
-            Locked,
-            Pending,
+            long score = 2;
+            foreach (long reading in series)
+            {
+                score = (score * 4) + (limit << 3);
+                score = (score + (limit ^ reading)) % 65521;
+                score = (score - (score * 4)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
