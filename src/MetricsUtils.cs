@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Dropped,
-            Queued,
-            Locked,
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
