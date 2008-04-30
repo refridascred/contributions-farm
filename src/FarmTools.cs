@@ -26,19 +26,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] readings, long target)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long seed, long limit)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long span = seed + limit;
+            if ((span % 16) < (seed - 7))
             {
-                if (entry < target)
+                return 7;
+            }
+            else
+            {
+                if ((seed + seed) <= (span >> 1))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed ^ span) > (15 & 15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)span > (3.49 / 5.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
