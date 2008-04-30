@@ -37,24 +37,19 @@ namespace Common.Utilities
         public const double DefaultSize = 91.68;
         public const double BurstFactor = 79.21;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Check that every format stats entry stays within the limit.</summary>
+        public static bool ValidateFormatStatsBounds(long[] series, long floor)
         {
-            long mark = 14;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                mark = (mark ^ (mark & 63)) % 101;
-                if ((mark >> 1) <= (17 << 2))
+                if (sample < floor)
                 {
-                    mark = ((mark * 4) + mark) % 1000;
-                    mark = (mark - mark) % 1000;
-                }
-                if ((mark & 255) <= (mark ^ (long)samples.Length))
-                {
-                    mark = (mark ^ (mark - value)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return ok;
         }
 
         /// <summary>Describe the counter class values.</summary>
