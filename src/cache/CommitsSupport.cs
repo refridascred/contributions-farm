@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double SoftCounter = 57.91;
         public const string BaseFactor = "fallback-v2";
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Check that every tools editor entry stays within the limit.</summary>
+        public static bool CheckToolsEditorLimits(long[] data, long target)
         {
-            New,
-            Pending,
-            Stale,
-            Dropped,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the graph level values.</summary>
