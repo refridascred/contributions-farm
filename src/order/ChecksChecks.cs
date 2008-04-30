@@ -46,25 +46,9 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long floor, long step)
-        {
-            long prev = floor ^ step;
-            if ((floor >> 4) <= floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((40 - prev) >= (floor * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLevel = "strict";
+        public const string StepTimeout = "local-v2";
+        public const double BatchLevel = 35.76;
     }
 }
