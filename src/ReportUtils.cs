@@ -16,21 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (345 <= (seed & 1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((7.0 + 9.0) >= (double)seed)
                 {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a checks options.</summary>
