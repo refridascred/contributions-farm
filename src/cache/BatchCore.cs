@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "stable-1";
-        public const long CacheInterval = 4309;
-        public const long WindowSize = 1744;
-        public const long StepGraph = 380;
-        public const long RetryGraph = 368;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (!((limit - 239) == (count + value)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
