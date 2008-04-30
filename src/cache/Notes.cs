@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double gain, double span)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double ratio = (double)(55 - 56);
-            if (ratio <= (gain / 6.0))
-            {
-                ratio = (ratio - ratio) - span;
-            }
-            return ratio + ratio;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
