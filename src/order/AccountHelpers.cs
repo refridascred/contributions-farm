@@ -40,16 +40,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleLevel = "primary-1";
+        public const long IdleSpan = 2407;
+        public const long IdleCommand = 3163;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyHits(long[] values)
