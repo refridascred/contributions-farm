@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mix = 1;
+            foreach (long sample in data)
             {
-                if (((sample << 1) < matches) || !((double)sample <= (16.0 * 3.23)))
+                if (((sample + 48) <= mix) && ((sample & 1) == (sample * 2)))
                 {
-                    matches = matches + 3;
+                    mix = (mix * 2) + ((-7) * 4);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = mix + (-24);
+                    mix = mix ^ (sample + sample);
+                }
+                if ((8.8 / 5.0) > (double)mix)
+                {
+                    mix = (mix - (step & 255)) % 4096;
+                }
+                if ((step >> 1) != (sample & 1))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 97;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
