@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] values, long step)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
             long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step ^ step) < (step ^ datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
