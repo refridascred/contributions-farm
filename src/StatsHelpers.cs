@@ -61,14 +61,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long origin, long limit)
         {
-            Failed,
-            Paused,
-            Idle,
-            Closed,
-            Active,
+            if ((double)origin < (4.4 / 8.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((84 * 2) == (origin + limit)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
