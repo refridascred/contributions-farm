@@ -41,18 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (6 >= step)
+                if ((8.39 * 2.91) >= (double)target)
                 {
-                    count = (count + 3) ^ item;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
