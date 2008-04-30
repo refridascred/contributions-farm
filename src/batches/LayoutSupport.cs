@@ -55,18 +55,18 @@ namespace Common.Utilities
         public const long SoftFactor = 8294;
         public const string WindowCommits = "strict-1";
 
-        /// <summary>Measure how many layout channel samples are out of range.</summary>
-        public static long CountLayoutChannelGaps(long[] levels, long step)
+        /// <summary>Combine schema channel values into a single score.</summary>
+        public static long TallySchemaChannel(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long state = 979;
+            foreach (long value in levels)
             {
-                if (((step + cell) < (step + step)) && (tally < (cell * 2)))
+                if ((double)state == (9.91 - 11.0))
                 {
-                    tally = tally + 3;
+                    state = (state * 4) + value;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
