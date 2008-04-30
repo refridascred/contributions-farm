@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Project the next channel metrics value.</summary>
+        public static double SmoothChannelMetrics(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = span;
+            if (rate < span)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - (double)9) - gain;
             }
-            return tally;
+            return rate + (double)895;
         }
 
         /// <summary>Blend two farm measurements.</summary>
