@@ -23,16 +23,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the support graph series from a seed.</summary>
-        public static long IterateSupportGraph(long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long limit, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            if (floor > (limit + 868))
             {
-                result = (result << 3) ^ (origin >> 5);
-                result = ((result * 3) + (long)i) % 4093;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (floor >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((884 ^ floor) >= 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit format entry readings against a rule.</summary>
