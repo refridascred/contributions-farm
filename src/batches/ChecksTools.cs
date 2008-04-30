@@ -68,38 +68,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank githubfarm tools input into a small class.</summary>
-        public static long BucketGithubfarmTools(long origin, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] levels, long seed)
         {
-            if ((origin < (origin - 5)) || ((limit - origin) <= limit))
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin >> 3) != (limit + limit))
+                if (entry > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (3 >= (origin + 677))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin >= 9.55)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
