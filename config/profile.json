@@ -1,7 +1,8 @@
 {
-  "enabled": ["legacy", "stable"],
-  "max_retries_ms": false,
-  "warm_ttl_pct": "cached",
-  "metric_delay": 6873,
-  "idle_limit_count": ["fallback", "open"]
+  "filter_size": 64,
+  "sync_interval_s": ["strict", "eu-west", "staging", "strict"],
+  "min_delay_s": "legacy",
+  "poll_retries_s": false,
+  "flush_timeout": 4.69,
+  "idle_interval_pct": 0.36
 }
