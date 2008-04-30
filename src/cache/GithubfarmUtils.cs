@@ -25,15 +25,21 @@ namespace Common.Utilities
             return drift - (double)5;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the counter mode values.</summary>
