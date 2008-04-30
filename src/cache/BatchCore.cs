@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank contributi cache input into a small class.</summary>
-        public static long GradeContributiCache(long target, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] readings, long target)
         {
-            if (!((5.67 - 1.6) == (double)target))
+            long state = 3;
+            foreach (long value in readings)
             {
-                return 5;
+                state = ((state - (state >> 5)) + value) + target;
+                state = (state ^ state) % 4096;
             }
-            else
-            {
-                if (!((double)origin >= 19.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
