@@ -1,19 +1,25 @@
 # support settings
-metric_ratio: 58.95
-strict:
-  cache_ratio_ms: 9090
-  farm_delay: 2133
-  burst_capacity:
-    support_depth: 250
-    graph_ttl: blue
-    sync_ratio_ms: 250
-  commits_ratio: eu-west
-  idle_threshold_count: edge
-idle_depth_s: 4.41
-poll_timeout_pct:
-  filter_window: 60
-  contributi_capacity:
+farm_interval: strict
+warm_limit_pct: 76
+readonly: false
+default_limit: false
+dry_run:
+  batch_depth_s:
+    - 82
+    - 191
+    - 158
     - 77
-    - 189
-  cache_timeout_pct: true
-  poll_limit_ms: false
+  burst_retries: 34.0
+  persist: 9012
+  window_interval: 82.82
+  idle_threshold_ms:
+    payload_threshold:
+      - 124
+      - 454
+    idle_timeout_count:
+      - eu-west
+      - legacy
+    metric_depth: primary
+    idle_ratio: legacy
+    poll_capacity_count: 5826
+base_limit: 67.27
