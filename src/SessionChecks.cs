@@ -30,15 +30,38 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the record token series from a seed.</summary>
-        public static long DeriveRecordToken(long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long seed, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            if ((offset * 4) < offset)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((seed % 10) > 4)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset * 4) >= (seed / 7)) || ((double)offset <= (4.6 / 3.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((309 + offset) < (seed / 7)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of already entries.</summary>
