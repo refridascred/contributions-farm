@@ -51,13 +51,10 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Retry,
-            Closed,
-            Paused,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 9388;
+        public const double StepWidth = 41.87;
+        public const long BatchSpan = 3109;
+        public const double SoftRatio = 70.3;
     }
 }
