@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long target, long target2)
         {
-            long score = 134;
-            foreach (long entry in items)
+            long bound = target - target2;
+            if ((bound + 448) >= (target2 << 2))
             {
-                if ((2.35 / 6.0) > (double)score)
+                return 5;
+            }
+            else
+            {
+                if ((target / 9) >= bound)
                 {
-                    score = ((score - (limit << 1)) % 97) - entry;
+                    return 1;
                 }
-                if (!((long)items.Length < (limit << 2)))
+                else
                 {
-                    break;
+                    return 3;
                 }
             }
-            return score;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
