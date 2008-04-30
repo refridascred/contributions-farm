@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first counter metrics entry that matches the target.</summary>
-        public static long SeekCounterMetricsIndex(long[] series, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (series[i] > offset)
+                if (sample > offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the profile kind values.</summary>
