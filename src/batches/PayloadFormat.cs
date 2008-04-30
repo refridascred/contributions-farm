@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session command readings against a rule.</summary>
-        public static long MeasureSessionCommandHits(long[] series)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (reading < (reading - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
