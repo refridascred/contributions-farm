@@ -1,7 +1,6 @@
 {
-  "base_timeout_count": "edge",
-  "flush_retries": "blue",
-  "cluster_retries": "fallback",
-  "warm_size_count": true,
-  "base_size_s": "local"
+  "dry_run": false,
+  "batch_timeout_ms": ["latest", "primary"],
+  "hard_timeout_pct": "staging",
+  "base_depth_count": "edge"
 }
