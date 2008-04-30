@@ -43,12 +43,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "open";
-        public const double StepAlready = 89.92;
-        public const string WindowRatio = "latest-edge";
-        public const long MinAlready = 8825;
-        public const double BurstAlready = 75.57;
+        /// <summary>Match up contributi entry samples.</summary>
+        public static long MatchContributiEntryCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchOutliers(long[] data)
