@@ -19,32 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a cache session value against two limits.</summary>
-        public static long RankCacheSession(long offset, long floor)
-        {
-            if ((floor << 3) > 4)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)94 <= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset >= (2.7 - 7.36))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheWidth = 9063;
+        public const long CacheRatio = 4350;
+        public const long StepRatio = 3667;
+        public const double MinMetric = 98.73;
+        public const long IdleCount = 6050;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] levels)
