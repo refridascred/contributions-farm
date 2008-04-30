@@ -20,11 +20,14 @@ namespace Common.Utilities
         public const double BaseTools = 67.91;
         public const long StepRatio = 6876;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 9.01;
-        public const string MinSpan = "legacy-v2";
-        public const long CacheBudget = 3686;
-        public const long RetryRatio = 793;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Closed,
+            Paused,
+            Done,
+            Locked,
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextHits(long[] levels)
