@@ -6,6 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in green standard fallback legacy; do
+    log "checking ${item}"
+done
+
 count=0
 while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
@@ -14,6 +18,6 @@ log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 8); do
-    total=$((total + i * 3))
+    total=$((total + i * 2))
 done
 log "total ${total}"
