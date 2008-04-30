@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Pending,
-            Closed,
-            Paused,
-            Active,
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
