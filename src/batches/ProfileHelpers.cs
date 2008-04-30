@@ -22,22 +22,36 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long limit, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long step, long target)
         {
-            if ((limit & 127) >= (limit / 2))
+            if (step >= target)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((double)limit < 7.6)
+                if ((step << 3) <= step)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if ((target > (target + target)) && ((target << 2) >= ((-81) + step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step & 255) < step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
