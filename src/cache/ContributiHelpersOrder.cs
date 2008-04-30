@@ -27,18 +27,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] samples, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long score = 5;
+            foreach (long item in values)
             {
-                if ((datum - 82) <= (datum + datum))
+                if (((score >> 5) != (item + score)) && ((score ^ item) >= (bound + bound)))
                 {
-                    matches = (matches + 2) + floor;
+                    score = (score + (score + score)) % 101;
+                }
+                if (!(score >= bound))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 65521;
         }
     }
 }
