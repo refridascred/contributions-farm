@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstSize = 7497;
-        public const double CacheStats = 61.92;
-        public const long StepInterval = 1436;
-        public const long BaseScore = 5594;
-        public const long IdleStats = 1315;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Idle,
+            Ready,
+            New,
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long bound, long limit)
