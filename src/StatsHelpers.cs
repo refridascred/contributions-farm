@@ -40,12 +40,26 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxSize = 9159;
-        public const long RetryBuffer = 6868;
-        public const long HardWidth = 631;
-        public const double WindowBuffer = 62.25;
-        public const long StepBuffer = 4601;
+        /// <summary>Classify a contributi cache pair into a bucket.</summary>
+        public static long SortContributiCache(long offset, long limit)
+        {
+            long slot = offset + limit;
+            if ((limit - offset) <= (slot - offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-3) + limit) <= (slot + slot))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
