@@ -35,15 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Closed,
-            Pending,
-            Paused,
-            Queued,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowScore = 302;
+        public const string LimitWidth = "alpha-1";
+        public const long HardSpan = 3327;
+        public const double BurstScore = 80.53;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long ScoreChecks(long[] samples)
