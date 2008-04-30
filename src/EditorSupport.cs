@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long target, long target2)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long limit)
         {
-            long gap = target - target2;
-            if (37 > (675 - target))
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (gap >= (target2 + 983))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 4;
+                    acc = ((acc ^ (limit % 16)) % 65521) + (long)i2;
                 }
-                else
+                if (limit > (acc + limit))
                 {
-                    return 5;
+                    acc = (acc - ((long)i * 4)) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
