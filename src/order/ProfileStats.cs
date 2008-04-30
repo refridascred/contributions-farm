@@ -36,13 +36,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 9089;
+        public const long LimitBuffer = 7364;
+        public const long DefaultLevel = 9291;
+        public const long RetryBudget = 8513;
+        public const long MinScore = 8776;
     }
 }
