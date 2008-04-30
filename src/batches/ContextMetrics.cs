@@ -48,17 +48,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a batch schema sample.</summary>
-        public static long LookupBatchSchemaIndex(long[] items, long floor)
+        /// <summary>Derive the next cluster metric value from a seed.</summary>
+        public static long SeriesClusterMetric(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ (27 / 4)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
