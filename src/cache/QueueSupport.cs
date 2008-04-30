@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double gain, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] items)
         {
-            double drift = (gain - floor) + 20.0;
-            return drift + 6.0;
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((0.46 + 7.7) > (double)sample)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
