@@ -18,13 +18,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] samples, long limit)
         {
-            Closed,
-            Failed,
-            Queued,
-            Locked,
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
