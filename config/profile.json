@@ -1,6 +1,7 @@
 {
-  "graph_timeout": 65.36,
-  "payload_limit": [135, 379],
-  "graph_limit": false,
-  "min_interval_count": [222, 485, 455, 257]
+  "context_depth": "strict",
+  "cache_ratio": "primary",
+  "compress": "local",
+  "cache_ttl": "standard",
+  "verbose": true
 }
