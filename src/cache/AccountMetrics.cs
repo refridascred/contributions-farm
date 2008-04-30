@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const long WindowLevel = 775;
         public const long BatchFarm = 4884;
 
-        /// <summary>Check that every schema entry entry stays within the limit.</summary>
-        public static bool GuardSchemaEntryRange(long[] levels, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a route options.</summary>
