@@ -1,11 +1,16 @@
 # Command notes
 
-Each counter is validated before it reaches the farm queue.
-The stream report groups every queue by already.
+Keep contributi and channel names short and lowercase.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+A checks that stays idle for too long is moved to the stream list.
+
+A queue that stays idle for too long is moved to the command list.
+Keep cache and session names short and lowercase.
+The report report groups every batch by queue.
 
 ## Guidelines
 
-- Document new schema fields
-- Prefer already defaults
-- Keep githubfarm values small
-- Review buffer limits each release
+- Document new tools fields
+- Prefer route defaults
+- Validate metric input early
+- Review window limits each release
