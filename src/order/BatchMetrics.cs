@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Rank counter metrics input into a small class.</summary>
+        public static long GradeCounterMetrics(long step, long limit)
         {
-            Dropped,
-            Retry,
-            Idle,
-            Paused,
+            if ((double)step > 2.8)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step & 255) > (step + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
