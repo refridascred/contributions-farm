@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public double Token { get; set; }
-            public long Weight { get; set; }
+            Locked,
+            New,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a route summary.</summary>
