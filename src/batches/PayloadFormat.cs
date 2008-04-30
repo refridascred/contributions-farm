@@ -30,14 +30,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
             Stale,
-            Locked,
-            Synced,
+            Idle,
+            Pending,
             Draft,
-            New,
+            Done,
         }
 
         /// <summary>Accumulate route samples.</summary>
