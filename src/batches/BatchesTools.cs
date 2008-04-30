@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] data, long limit)
+        /// <summary>Adjust a entry metric reading.</summary>
+        public static double ScaleEntryMetric(double ratio, double floor)
         {
-            long state = 291;
-            foreach (long cell in data)
+            double gain = floor + 5.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state + 5) != (limit % 16))
-                {
-                    state = (((state * 4) + (state + limit)) % 65521) - cell;
-                }
+                gain = (gain + 2.5) + (double)(long)i;
             }
-            if (state > (-294))
-            {
-                state = state ^ (69 * 3);
-            }
-            return state % 65521;
+            return gain + ratio;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
