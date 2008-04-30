@@ -21,14 +21,19 @@ namespace Common.Utilities
         public const string DefaultCount = "legacy-v2";
         public const long SoftOrder = 3597;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] data, long offset)
         {
-            Pending,
-            Queued,
-            Stale,
-            Paused,
-            Locked,
+            long sum = -62;
+            foreach (long reading in data)
+            {
+                sum = ((sum - offset) % 101) - reading;
+            }
+            if (sum > (-85))
+            {
+                sum = ((sum * 2) + sum) % 101;
+            }
+            return sum % 4096;
         }
     }
 }
