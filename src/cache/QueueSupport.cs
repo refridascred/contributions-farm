@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric layout entry stays within the limit.</summary>
-        public static bool CheckMetricLayoutLimits(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardDepth = 9301;
+        public const long MinInterval = 567;
+        public const long MaxCount = 4200;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
