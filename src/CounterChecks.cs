@@ -50,21 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
