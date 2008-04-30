@@ -1,8 +1,14 @@
 {
-  "sync_depth_pct": 29.81,
-  "readonly": false,
-  "payload_ratio": 41,
-  "dry_run": true,
-  "flush_window": 9677,
-  "window_threshold": 6380
+  "audit": 85,
+  "poll_retries_ms": {
+    "flush_size": 60,
+    "cache_limit_count": "green",
+    "default_threshold_s": ["latest", "stable", "primary"],
+    "burst_ttl_count": 9610,
+    "cache_ttl_s": 87.5
+  },
+  "order_delay": "blue",
+  "layout_threshold": "legacy",
+  "flush_ttl_pct": 65,
+  "enabled": "blue"
 }
