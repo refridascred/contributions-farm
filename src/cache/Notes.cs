@@ -16,19 +16,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double bias, double span)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double scale, double offset)
         {
-            double weight = bias * 2.0;
-            if (weight <= span)
-            {
-                weight = weight + (span + bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + (bias - span);
+            double bias = 11.0;
+            return ((bias + bias) + scale) + offset;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
