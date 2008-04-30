@@ -33,21 +33,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
                 {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the counter mode values.</summary>
