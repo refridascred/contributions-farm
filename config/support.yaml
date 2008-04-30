@@ -1,5 +1,5 @@
 # support settings
-farm_interval: 54.48
-readonly: latest
-dry_run: open
-poll_ttl: latest
+report_retries: 60
+session_delay: true
+queue_depth: 43.9
+flush_ttl_s: 72
