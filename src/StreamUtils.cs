@@ -19,16 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report metrics counter forward.</summary>
-        public static long SeriesReportMetrics(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitLevel = "standard-1";
+        public const double HardGithubfarm = 96.33;
+        public const long MaxGithubfarm = 9928;
+        public const long CacheGithubfarm = 3553;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] samples)
