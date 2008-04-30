@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] values, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
