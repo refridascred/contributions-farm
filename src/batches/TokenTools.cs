@@ -24,9 +24,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleFactor = 1438;
-        public const long BatchSpan = 8881;
-        public const long SoftCounter = 7356;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long bound)
+        {
+            long offset = seed - bound;
+            if ((offset & 31) < (seed << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((936 << 3) != (848 ^ offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((4 ^ 56) <= (bound + bound)) || (offset < (offset + 448)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
