@@ -47,10 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowDepth = 6956;
-        public const long WindowOrder = 6537;
-        public const long MaxWidth = 3113;
-        public const double MaxBudget = 44.46;
+        /// <summary>Count the already metric entries that pass the check.</summary>
+        public static long MeasureAlreadyMetricOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (hits <= (reading << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
