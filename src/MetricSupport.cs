@@ -13,12 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Locked,
-            New,
-            Active,
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a cluster editor pair into a bucket.</summary>
