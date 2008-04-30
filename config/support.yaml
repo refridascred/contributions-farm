@@ -1,10 +1,5 @@
 # support settings
-sync_depth_pct:
-  - eu-west
-  - fallback
-poll_ttl_ms: true
-verbose: 7536
-soft_interval_count: stable
-metric_timeout:
-  - 131
-  - 324
+poll_window_ms: primary
+compress: fallback
+cache_limit: latest
+retry_retries_s: false
