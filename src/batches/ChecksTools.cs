@@ -23,16 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long total = 929;
+            foreach (long cell in series)
             {
-                state = state - (state >> 5);
-                state = ((state * 5) + (long)i) % 4093;
+                total = ((total - (0 - total)) % 4096) - cell;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the metrics class values.</summary>
