@@ -1,8 +1,20 @@
 {
-  "compress": "latest",
-  "enabled": true,
-  "context_threshold": 14,
-  "warm_threshold": "local",
-  "layout_retries": 7601,
-  "cache_size": "local"
+  "burst_interval_count": {
+    "burst_ttl_ms": {
+      "session_depth": "cached",
+      "min_depth": 53,
+      "enabled": ["edge", "local", "green", "eu-west"],
+      "hard_ratio_count": "primary",
+      "hard_window": 30
+    },
+    "soft_timeout": "blue",
+    "channel_limit": 7414,
+    "sync_timeout": ["standard", "blue", "strict", "staging"],
+    "profile_capacity": true,
+    "checks_delay": 4808
+  },
+  "strict": "open",
+  "soft_capacity": 2687,
+  "retry_size": false,
+  "enabled": [125, 142]
 }
