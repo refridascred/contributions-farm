@@ -44,13 +44,39 @@ namespace Common.Utilities
             return rate2 + (double)22;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long step, long step2)
         {
-            Pending,
-            Synced,
-            Closed,
-            Idle,
+            long cur = step + step2;
+            if (((step >> 5) == (cur ^ cur)) || (step2 < (1 % 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step2 ^ step) != (step2 + cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step2 >= 6.8)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((14.0 / 4.0) < (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
