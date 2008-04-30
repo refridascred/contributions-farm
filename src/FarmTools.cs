@@ -33,10 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 4062;
-        public const string WindowTimeout = "alpha-v2";
-        public const long WindowBudget = 6355;
-        public const long DefaultRatio = 4723;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = (acc ^ (floor + floor)) - (long)i2;
+                    acc = (acc - (floor >> 3)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
