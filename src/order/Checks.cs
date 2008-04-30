@@ -51,18 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] series)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = -7;
+            foreach (long datum in levels)
             {
-                if ((tally + cell) < cell)
-                {
-                    tally = tally + 2;
-                }
+                mark = (mark - (step - step)) + datum;
+                mark = (mark - (step / 4)) % 4096;
+                mark = (mark + mark) % 65521;
             }
-            return tally;
+            return mark % 4096;
         }
     }
 }
