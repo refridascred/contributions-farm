@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepCount = 5727;
-        public const double BatchFormat = 91.46;
-        public const double StepRatio = 14.6;
-        public const long IdleRatio = 6341;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public double Token { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
