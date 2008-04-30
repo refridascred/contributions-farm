@@ -28,19 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] items, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long state = 12;
-            foreach (long datum in items)
-            {
-                state = (state + datum) + floor;
-            }
-            if (state < 17)
-            {
-                state = ((state * 3) + (state + 8)) % 1000;
-            }
-            return state % 4096;
+            Dropped,
+            Retry,
+            Failed,
+            Locked,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
