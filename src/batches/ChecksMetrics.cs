@@ -16,12 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Draft,
-            Dropped,
-            New,
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
