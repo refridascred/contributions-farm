@@ -1,9 +1,18 @@
 # githubfarm settings
-poll_retries_pct: latest
-schema_ratio:
-  command_interval: true
-  soft_delay: local
-  checks_interval: false
-  readonly: blue
-  metric_capacity: strict
-retry_ratio_pct: 33.82
+editor_window: 4795
+burst_window: cached
+readonly:
+  audit: 19.57
+  idle_interval_ms: 58
+  batches_size: false
+  min_depth_count:
+    - standard
+    - stable
+    - staging
+    - green
+  filter_capacity:
+    - stable
+    - latest
+    - blue
+    - blue
+  max_interval_pct: false
