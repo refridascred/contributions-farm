@@ -53,12 +53,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] series, long limit)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] < limit) && ((series[i] % 5) == 0))
+                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
