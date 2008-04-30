@@ -40,17 +40,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first cache payload entry that matches the target.</summary>
-        public static long LocateCachePayloadIndex(long[] items, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 849;
+            foreach (long datum in data)
             {
-                if (items[i] < origin)
+                if ((datum + (long)data.Length) <= (step % 7))
                 {
-                    return (long)i;
+                    result = (result - (datum - datum)) % 4096;
                 }
             }
-            return -1;
+            if (result < (-8))
+            {
+                result = ((result << 3) ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
