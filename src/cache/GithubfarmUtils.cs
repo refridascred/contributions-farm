@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the batches layout series from a seed.</summary>
-        public static long RollBatchesLayout(long step)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score << 2) ^ (score & 3)) % 4096;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public double Rank { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the editor class values.</summary>
