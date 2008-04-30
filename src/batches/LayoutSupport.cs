@@ -46,18 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor filter readings against a rule.</summary>
-        public static long MeasureEditorFilterHits(long[] levels, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (count > (-2))
-                {
-                    count = ((count + 1) ^ item) - bound;
-                }
-            }
-            return count;
+            Retry,
+            Dropped,
+            Active,
+            Stale,
         }
 
         /// <summary>Define record limits and defaults.</summary>
