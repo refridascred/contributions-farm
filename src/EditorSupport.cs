@@ -70,9 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 535;
-        public const long StepSize = 9978;
-        public const double SoftOrder = 62.95;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Ready,
+            New,
+            Synced,
+        }
     }
 }
