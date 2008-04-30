@@ -25,20 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream record readings against a bound.</summary>
-        public static bool GuardStreamRecordRange(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepBudget = 9282;
+        public const long IdleWidth = 867;
+        public const double RetrySize = 97.76;
+        public const string BaseMetric = "latest";
+        public const string BurstInterval = "cached";
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountOutliers(long[] levels, long bound)
