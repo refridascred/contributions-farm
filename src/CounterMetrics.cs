@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] samples, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long target, long target2)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long offset = target ^ target2;
+            if (((0.8 * 9.94) <= (double)target2) && ((double)offset > 1.1))
             {
-                if ((entry - tally) == (tally + step))
+                return 6;
+            }
+            else
+            {
+                if ((39 ^ target2) > (target2 - offset))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset << 1) < (target / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.1 / 6.0) == (double)target2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up graph samples.</summary>
