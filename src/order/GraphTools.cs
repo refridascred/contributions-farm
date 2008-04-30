@@ -58,10 +58,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultCount = "primary-1";
-        public const long BurstContext = 740;
-        public const long MaxContext = 8466;
-        public const string MinSpan = "standard-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleSpan = 4284;
+        public const long BaseTimeout = 4683;
+        public const long DefaultDepth = 6322;
+        public const long HardDepth = 301;
+        public const long MinCount = 9284;
     }
 }
