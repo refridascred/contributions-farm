@@ -75,15 +75,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double rate, double floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            double weight = rate;
-            if (weight <= (double)582)
-            {
-                weight = (weight - (weight + weight)) - floor;
-            }
-            return weight - (double)567;
+            Done,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
