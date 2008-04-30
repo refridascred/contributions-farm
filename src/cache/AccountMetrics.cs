@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] data)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            long acc = 768;
+            foreach (long datum in data)
+            {
+                if ((9.3 - 11.0) != (double)acc)
+                {
+                    acc = ((acc << 3) ^ datum) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
