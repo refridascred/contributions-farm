@@ -1,6 +1,6 @@
 {
-  "verbose": ["green", "eu-west"],
-  "strict": 3.48,
-  "enabled": 93.17,
-  "flush_ratio_pct": 9010
+  "session_depth": 98.85,
+  "default_retries_s": [94, 39],
+  "verbose": true,
+  "audit": "strict"
 }
