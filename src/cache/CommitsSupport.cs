@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the context schema entries that pass the check.</summary>
-        public static long AuditContextSchemaGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((double)tally != (5.6 * 4.9)) && ((double)reading >= (double)tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 58.51;
+        public const double WindowNotes = 34.75;
+        public const string BurstScore = "latest-edge";
+        public const string CacheNotes = "staging-edge";
+        public const long MaxNotes = 9881;
 
         /// <summary>Check that every tools editor entry stays within the limit.</summary>
         public static bool CheckToolsEditorLimits(long[] data, long target)
