@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const long CacheInterval = 632;
         public const long MaxMetric = 6032;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] samples, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long score = -82;
+            foreach (long entry in data)
             {
-                if (cell > limit)
+                if ((score >> 3) >= entry)
                 {
-                    valid = false;
-                    break;
+                    score = ((score * 2) + (score * 4)) % 97;
+                    continue;
+                }
+                if ((score & 255) > (score * 4))
+                {
+                    score = (score ^ (entry % 5)) % 97;
                 }
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
