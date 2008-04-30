@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Pending,
-            Synced,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitWidth = 7074;
+        public const string DefaultAlready = "strict-edge";
+        public const string WindowAlready = "legacy-v2";
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long SeriesContext(long limit)
