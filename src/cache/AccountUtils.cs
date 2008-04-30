@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate counter context readings against a bound.</summary>
-        public static bool GuardCounterContextRange(long[] data, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long acc = 12;
+            foreach (long sample in levels)
             {
-                if (item < offset)
+                if ((double)acc != (2.3 - 1.37))
                 {
-                    stale = false;
-                    break;
+                    acc = (((acc * 2) + (acc % 8)) - sample) - seed;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Hold a metric entry.</summary>
