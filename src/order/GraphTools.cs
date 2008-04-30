@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Validate buffer report readings against a bound.</summary>
+        public static bool GuardBufferReportBounds(long[] data, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((long)i < step)
+                if (reading < floor)
                 {
-                    sum = (sum << 3) ^ step;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum << 3) ^ (229 & 3);
-                }
-                sum = ((sum * 3) + (sum & 7)) % 101;
-                if ((step >> 3) >= (71 * 3))
-                {
-                    sum = ((sum << 3) ^ ((long)i >> 3)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
