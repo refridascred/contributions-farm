@@ -69,19 +69,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate queue record readings against a bound.</summary>
-        public static bool ValidateQueueRecordLimits(long[] readings, long seed)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
