@@ -16,15 +16,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a metrics contributi counter forward.</summary>
-        public static long StepMetricsContributi(long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] levels, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (entry > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Describe the window phase values.</summary>
