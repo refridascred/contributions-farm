@@ -27,11 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 24.59;
-        public const string CacheNotes = "staging-v2";
-        public const long BurstNotes = 6552;
-        public const double BaseFactor = 8.53;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (datum >= (datum - 73))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double BlendCommand(double gain, double span)
