@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long CacheInterval = 632;
         public const long MaxMetric = 6032;
 
-        /// <summary>Accumulate context cluster samples.</summary>
-        public static long CombineContextCluster(long[] values, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] levels, long seed)
         {
-            long anchor = 4;
-            foreach (long item in values)
+            long result = 0;
+            foreach (long item in levels)
             {
-                if ((item + anchor) > origin)
-                {
-                    anchor = (anchor << 2) ^ (item % 12);
-                }
+                result = ((result * 5) + (result - item)) - seed;
             }
-            return anchor % 65521;
+            return result % 4096;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
