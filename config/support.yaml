@@ -1,5 +1,10 @@
 # support settings
-report_retries: 60
-session_delay: true
-queue_depth: 43.9
-flush_ttl_s: 72
+sync_depth_pct:
+  - eu-west
+  - fallback
+poll_ttl_ms: true
+verbose: 7536
+soft_interval_count: stable
+metric_timeout:
+  - 131
+  - 324
