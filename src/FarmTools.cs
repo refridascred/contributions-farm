@@ -20,10 +20,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define command limits and defaults.</summary>
-        public const long BaseRatio = 7435;
-        public const double MinFactor = 25.44;
-        public const double IdleCommand = 94.0;
-        public const long SoftCommand = 4694;
+        public const long SoftFactor = 6212;
+        public const string LimitCommand = "open-edge";
+        public const long LimitScore = 3155;
+        public const long MinFactor = 6952;
+        public const double HardTimeout = 81.14;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] levels, long origin)
