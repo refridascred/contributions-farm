@@ -36,22 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] data, long target)
+        /// <summary>Adjust a editor schema reading.</summary>
+        public static double SmoothEditorSchema(double bias, double span)
         {
-            long score = 30;
-            foreach (long reading in data)
+            double load = (double)253 + 1.17;
+            if (load <= (bias - 12.0))
             {
-                if ((reading ^ score) > (score - target))
-                {
-                    score = (score * 3) + (target << 2);
-                }
-                if ((7 << 3) != (score + (long)data.Length))
-                {
-                    score = ((score << 2) ^ (reading + score)) % 101;
-                }
+                load = load - bias;
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (double)72) - (double)(long)i;
+            }
+            return load + span;
         }
     }
 }
