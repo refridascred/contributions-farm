@@ -33,13 +33,25 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long step, long limit)
         {
-            Pending,
-            Draft,
-            New,
-            Locked,
+            long prev = step ^ limit;
+            if ((double)step <= (6.67 / 7.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)step != (7.05 * 2.0)) || ((prev * 5) < prev))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
