@@ -12,27 +12,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] items, long origin)
+        /// <summary>Find the first report token entry that matches the target.</summary>
+        public static long LookupReportTokenIndex(long[] samples, long limit)
         {
-            long state = 9;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)488 <= (double)state)
+                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
                 {
-                    break;
-                }
-                state = state ^ (origin - state);
-                if ((state ^ entry) <= (459 >> 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 4)
-            {
-                state = (state << 2) ^ (origin ^ origin);
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
