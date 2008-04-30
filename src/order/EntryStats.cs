@@ -63,13 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Retry,
-            Done,
-            Failed,
             Active,
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Match up schema samples.</summary>
