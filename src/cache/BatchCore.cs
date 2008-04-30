@@ -30,18 +30,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] items)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample - count) < sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Idle,
+            Draft,
+            Queued,
         }
     }
 }
