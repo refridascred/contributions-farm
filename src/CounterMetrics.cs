@@ -49,13 +49,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] series, long floor)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
