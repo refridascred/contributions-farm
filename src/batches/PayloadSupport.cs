@@ -38,9 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowRatio = 858;
-        public const string BaseCommand = "local";
-        public const string StepSize = "cached-v2";
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
