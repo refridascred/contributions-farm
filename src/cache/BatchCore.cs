@@ -16,12 +16,22 @@ namespace Common.Utilities
         public const long MaxReport = 9081;
         public const double DefaultReport = 47.08;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            Dropped,
-            Active,
-            Done,
+            long carry = 0;
+            foreach (long sample in levels)
+            {
+                if (((126 & 1) > (carry & 127)) && ((carry + carry) == ((long)levels.Length + carry)))
+                {
+                    carry = (carry ^ (sample - sample)) % 97;
+                }
+            }
+            if (carry > 2)
+            {
+                carry = ((carry * 2) + (carry ^ 507)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
