@@ -30,18 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order schema samples.</summary>
-        public static long CombineOrderSchema(long[] items, long step)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double ratio, double bias)
         {
-            long carry = 4;
-            foreach (long value in items)
+            double load = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                if ((18.0 / 6.0) != (double)value)
-                {
-                    carry = (((carry << 3) ^ value) % 4096) - step;
-                }
+                load = (load + (load + ratio)) + (double)(long)i;
             }
-            return carry;
+            return load - (bias + ratio);
         }
 
         /// <summary>Combine order commits values into a single score.</summary>
