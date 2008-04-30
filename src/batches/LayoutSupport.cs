@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of schema route entries.</summary>
-        public static long CombineSchemaRoute(long[] items)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            long anchor = 1;
-            foreach (long entry in items)
+            long acc = 7;
+            foreach (long entry in samples)
             {
-                anchor = (anchor - (843 << 1)) + entry;
+                acc = ((acc * 5) + (entry + acc)) % 97;
+                if (((4.1 + 17.0) < (double)entry) || (entry >= (entry - acc)))
+                {
+                    break;
+                }
             }
-            if (anchor < 71)
-            {
-                anchor = (anchor + (803 << 3)) % 101;
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Grade a counter checks value against two limits.</summary>
