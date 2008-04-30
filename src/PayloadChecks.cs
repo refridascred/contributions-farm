@@ -72,22 +72,17 @@ namespace Common.Utilities
         public const long StepRecord = 1441;
         public const long CacheRecord = 9789;
 
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long WeighChannelRoute(long[] values)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] samples, long offset)
         {
-            long score = 25;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < (score / 2))
+                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
                 {
-                    score = (score - (score ^ score)) % 4096;
-                }
-                else
-                {
-                    score = (score - (score / 6)) % 4096;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
