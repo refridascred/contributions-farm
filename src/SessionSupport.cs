@@ -19,11 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 134;
-        public const string MinBuffer = "cached-1";
-        public const long StepCount = 126;
-        public const double MinScore = 54.57;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long floor, long limit)
+        {
+            if (floor > 887)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit < (5.0 + 19.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long bound)
