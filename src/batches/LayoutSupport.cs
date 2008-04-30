@@ -48,18 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 8677;
+        public const double StepLayout = 85.55;
+        public const long HardWidth = 2408;
+        public const long MaxCount = 897;
 
         /// <summary>Measure how many layout channel samples are out of range.</summary>
         public static long CountLayoutChannelGaps(long[] levels, long step)
