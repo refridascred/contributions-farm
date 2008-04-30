@@ -1,15 +1,13 @@
 -- Create the cluster_logs table.
 CREATE TABLE IF NOT EXISTS cluster_logs (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
-    active INTEGER NOT NULL DEFAULT 1,
-    owner TEXT NOT NULL,
-    token TEXT,
-    score REAL NOT NULL DEFAULT 0
+    region TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_logs_token ON cluster_logs (token);
+CREATE INDEX IF NOT EXISTS idx_cluster_logs_region ON cluster_logs (region);
 
-INSERT INTO cluster_logs (state, active, owner, token, score) VALUES ('standard', 57, 'edge', 'strict', 16.7);
-INSERT INTO cluster_logs (state, active, owner, token, score) VALUES ('green', 56, 'stable', 'latest', 39.35);
-INSERT INTO cluster_logs (state, active, owner, token, score) VALUES ('blue', 92, 'staging', 'cached', 82.18);
+INSERT INTO cluster_logs (region, score, state) VALUES ('local', 42.49, 'stable');
+INSERT INTO cluster_logs (region, score, state) VALUES ('green', 71.35, 'blue');
+INSERT INTO cluster_logs (region, score, state) VALUES ('cached', 84.95, 'local');
