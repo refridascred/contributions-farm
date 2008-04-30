@@ -1,13 +1,7 @@
 {
-  "entry_ratio": "blue",
-  "max_threshold_s": 95,
-  "githubfarm_depth": "eu-west",
-  "command_size": 250,
-  "default_threshold": {
-    "min_ratio": 94,
-    "min_delay_count": [398, 146, 227, 342],
-    "persist": 250,
-    "verbose": [140, 228, 149, 46]
-  },
-  "min_depth": "stable"
+  "batch_window": "green",
+  "cluster_threshold": false,
+  "editor_timeout": "legacy",
+  "soft_capacity_count": true,
+  "poll_threshold": "strict"
 }
