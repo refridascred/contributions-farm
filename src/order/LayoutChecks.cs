@@ -13,18 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] readings, long limit)
+        /// <summary>Count the order stream entries that pass the check.</summary>
+        public static long MeasureOrderStreamGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((value * 4) > seen)
+                if ((7.0 + 4.7) == (double)datum)
                 {
-                    seen = (seen + 1) - limit;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
