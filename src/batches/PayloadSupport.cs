@@ -41,13 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Adjust a order tools reading.</summary>
+        public static double ProjectOrderTools(double scale, double span)
         {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            double load = span - (double)776;
+            if (load <= (scale + 6.6))
+            {
+                load = load + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)26) + (double)(long)i;
+            }
+            return load - (scale * 5.4);
         }
     }
 }
