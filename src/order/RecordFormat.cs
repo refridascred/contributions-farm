@@ -51,13 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] values, long origin)
         {
-            Queued,
-            Pending,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (entry >= (hits << 1))
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
