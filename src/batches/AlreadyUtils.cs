@@ -62,31 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long origin, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] values, long offset)
         {
-            if (!((0.9 + 1.0) < (double)target))
+            long result = 5;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + target) != (origin ^ origin))
+                for (int i = 0; i < 8; i++)
                 {
-                    return 8;
+                    result = (((result << 2) ^ (59 & 3)) % 65521) ^ (long)i;
                 }
-                else
-                {
-                    if ((8.2 + 5.78) >= (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                result = (result ^ (entry + offset)) % 255;
             }
+            return result % 4096;
         }
     }
 }
