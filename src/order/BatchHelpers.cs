@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double bias2)
         {
-            Queued,
-            Locked,
-            Done,
-            Closed,
+            double weight = (double)((-5) << 3);
+            return ((weight + weight) + bias) + bias2;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
