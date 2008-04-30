@@ -26,25 +26,14 @@ namespace Common.Utilities
         public const long IdleBuffer = 5605;
         public const long SoftBuffer = 4560;
 
-        /// <summary>Rank context layout input into a small class.</summary>
-        public static long ClassifyContextLayout(long offset, long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long cur = offset ^ target;
-            if (((cur & 1) != (cur + target)) && (cur <= (target >> 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target / 8) == (cur + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Synced,
+            Stale,
+            Pending,
+            Locked,
+            Paused,
         }
     }
 }
