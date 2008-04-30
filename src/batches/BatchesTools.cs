@@ -33,13 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] data, long origin)
         {
-            Idle,
-            Paused,
-            Retry,
-            Closed,
+            long sum = 790;
+            foreach (long cell in data)
+            {
+                sum = (((sum << 3) ^ (sum - sum)) ^ cell) + origin;
+                sum = (sum - 885) % 4096;
+            }
+            if (sum > 3)
+            {
+                sum = sum ^ (0 * 2);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
