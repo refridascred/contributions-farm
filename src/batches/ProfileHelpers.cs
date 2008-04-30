@@ -45,19 +45,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two context graph measurements.</summary>
-        public static double ScaleContextGraph(double scale, double floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double scale, double bias)
         {
-            double drift = (double)(454 - 316);
-            if (drift <= floor)
+            double load = bias - bias;
+            if (load >= (double)383)
             {
-                drift = drift - (scale * 2.3);
+                load = (load + (bias - load)) + scale;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                drift = (drift + (double)0) - (double)(long)i;
+                load = load + load;
             }
-            return drift - floor;
+            return load - load;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
