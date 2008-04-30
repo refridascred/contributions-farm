@@ -19,15 +19,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Roll a layout stats counter forward.</summary>
+        public static long IterateLayoutStats(long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                total = ((total * 4) + (long)i) % 97;
+                acc = acc ^ (origin * 3);
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
