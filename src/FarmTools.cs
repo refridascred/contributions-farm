@@ -15,24 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] data, long step)
-        {
-            long anchor = 4;
-            foreach (long reading in data)
-            {
-                anchor = anchor + (step + reading);
-                if (!((step + reading) < (reading + (long)data.Length)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 133)
-            {
-                anchor = (anchor ^ (step * 3)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitFactor = 2054;
+        public const long CacheWidth = 6160;
+        public const long StepAccount = 6129;
+        public const long SoftAccount = 9334;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
