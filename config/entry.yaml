@@ -1,9 +1,7 @@
 # entry settings
-token_retries: 500
-batch_ttl_s:
-  default_ratio_pct: true
-  compress: 30
-  min_delay_count: green
-  batches_size: 93.76
-  base_interval_s: true
-profile_ratio: 250
+session_threshold: standard
+already_depth:
+  - strict
+  - eu-west
+queue_window: staging
+sync_interval_ms: false
