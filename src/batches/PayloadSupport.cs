@@ -20,22 +20,13 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] levels, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long state = 306;
-            foreach (long reading in levels)
-            {
-                if ((offset % 10) > (state - offset))
-                {
-                    state = ((state - ((-20) >> 2)) % 4096) ^ reading;
-                }
-            }
-            if (state > 485)
-            {
-                state = state ^ (state + offset);
-            }
-            return state % 4096;
+            Idle,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
