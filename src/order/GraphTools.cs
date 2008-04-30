@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long limit, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            if ((3.1 + 5.0) != (double)floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((2.82 - 5.1) < (double)limit) || (floor > (limit + limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit & 3) <= floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
