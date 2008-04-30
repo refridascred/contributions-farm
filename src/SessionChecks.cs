@@ -35,38 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long seed, long offset)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            if ((offset * 4) < offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 10) > 4)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset * 4) >= (seed / 7)) || ((double)offset <= (4.6 / 3.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((309 + offset) < (seed / 7)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Failed,
+            Synced,
         }
 
         /// <summary>Digest a series of already entries.</summary>
