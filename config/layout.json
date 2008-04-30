@@ -1,6 +1,8 @@
 {
-  "min_ratio_s": false,
-  "default_depth_ms": 1583,
-  "cache_depth_count": ["stable", "local", "eu-west", "green"],
-  "record_timeout": "primary"
+  "checks_delay": "primary",
+  "default_interval": 4823,
+  "base_limit_ms": 500,
+  "warm_capacity_s": false,
+  "poll_threshold": "strict",
+  "hard_threshold_count": ["standard", "stable"]
 }
