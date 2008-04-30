@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 49.76;
-        public const double HardDepth = 56.21;
-        public const string MaxNotes = "fallback";
-        public const string BaseWidth = "standard-1";
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double scale, double offset)
+        {
+            double mean = 3.0;
+            if (mean < (double)302)
+            {
+                mean = (mean + 9.1) + offset;
+            }
+            else
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean - (scale + 9.6);
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TallySession(long[] data)
