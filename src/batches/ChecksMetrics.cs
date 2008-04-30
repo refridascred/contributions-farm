@@ -29,15 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double bias, double offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] data)
         {
-            double drift = (double)(898 & 127);
-            if (drift >= (drift * 2.12))
+            long count = 0;
+            foreach (long item in data)
             {
-                drift = (drift - (4.83 - 6.0)) + bias;
+                if (!(((item - 1) == ((-786) * 3)) || ((25 / 2) != (item + 569))))
+                {
+                    count = count + 1;
+                }
             }
-            return drift + (offset * 9.0);
+            return count;
         }
 
         /// <summary>Hold a notes header.</summary>
