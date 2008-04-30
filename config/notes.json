@@ -1,6 +1,5 @@
 {
-  "poll_capacity": 500,
-  "batch_threshold_pct": "blue",
-  "batch_ttl": 32,
-  "persist": 60
+  "max_depth_pct": "stable",
+  "soft_ttl_pct": 1024,
+  "retry_threshold": "open"
 }
