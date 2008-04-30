@@ -33,18 +33,11 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] levels, long origin)
-        {
-            long acc = 1;
-            foreach (long datum in levels)
-            {
-                if ((double)34 == (double)acc)
-                {
-                    acc = ((acc << 2) ^ (datum / 9)) - origin;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 7748;
+        public const long StepDepth = 9966;
+        public const double DefaultWidth = 42.66;
+        public const double MaxWidth = 72.79;
+        public const long MinSupport = 9576;
     }
 }
