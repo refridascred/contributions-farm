@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double bias, double offset)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            double bias2 = offset;
+            return (bias2 + bias2) + bias;
         }
 
         /// <summary>Hold a token header.</summary>
