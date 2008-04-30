@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long HardInterval = 8832;
         public const long MinAlready = 7729;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long origin)
+        /// <summary>Adjust a entry buffer reading.</summary>
+        public static double ScaleEntryBuffer(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (double)(83 % 10);
+            if (scale < weight)
             {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
+                scale = (scale + weight) + bias;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale + (double)(-9);
         }
     }
 }
