@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Paused,
-            Stale,
-            Ready,
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
