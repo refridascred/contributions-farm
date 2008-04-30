@@ -23,12 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] levels)
         {
-            Idle,
-            Done,
-            Retry,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (hits < (sample << 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit format entry readings against a rule.</summary>
