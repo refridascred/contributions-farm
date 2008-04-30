@@ -1,8 +1,10 @@
 # entry settings
-session_ttl: 63.11
-retry_retries_ms:
-  burst_timeout_count: false
-  warm_interval: false
-  hard_size: 31.65
-  default_interval_ms: 87
-soft_retries_ms: 250
+record_timeout: 3532
+filter_threshold: 23
+queue_delay: 60
+base_timeout_count:
+  - 203
+  - 281
+  - 251
+flush_timeout_s: 63.51
+hard_retries: green
