@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 13)
+                    if ((levels[i] + levels[j]) != 19)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
