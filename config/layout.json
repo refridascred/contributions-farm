@@ -1,16 +1,6 @@
 {
-  "poll_capacity": {
-    "record_timeout": false,
-    "min_depth": [297, 72, 139],
-    "already_retries": {
-      "channel_timeout": 100,
-      "sync_timeout_pct": 10.53,
-      "burst_timeout_pct": false,
-      "enabled": "cached",
-      "readonly": "staging",
-      "strict": "open"
-    }
-  },
-  "poll_size": 90,
-  "hard_threshold_s": 5496
+  "min_ratio_s": false,
+  "default_depth_ms": 1583,
+  "cache_depth_count": ["stable", "local", "eu-west", "green"],
+  "record_timeout": "primary"
 }
