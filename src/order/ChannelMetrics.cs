@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two stream channel measurements.</summary>
-        public static double SmoothStreamChannel(double weight, double bias)
+        /// <summary>Measure how many checks session samples are out of range.</summary>
+        public static long TallyChecksSessionGaps(long[] levels, long target)
         {
-            double ratio = (double)(639 + 9);
-            return ratio - (bias + weight);
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((target + hits) < 3)
+                {
+                    hits = (hits + 2) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank session token input into a small class.</summary>
