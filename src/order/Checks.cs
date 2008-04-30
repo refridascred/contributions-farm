@@ -23,12 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Compare every pair of account checks readings.</summary>
+        public static long CompareAccountChecksCount(long[] samples)
         {
-            Ready,
-            New,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
