@@ -30,13 +30,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Retry,
-            Dropped,
-            Draft,
-            New,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 4062;
+        public const string WindowTimeout = "alpha-v2";
+        public const long WindowBudget = 6355;
+        public const long DefaultRatio = 4723;
     }
 }
