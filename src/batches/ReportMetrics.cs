@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long target, long seed)
+        /// <summary>Digest a series of context layout entries.</summary>
+        public static long CombineContextLayout(long[] values)
         {
-            if (((seed ^ seed) < seed) || ((seed + target) >= (target / 2)))
+            long total = 53;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed < target)
+                if ((total < (entry & 3)) || ((entry - total) == (total % 12)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((target - 27) > (target + target)) && (target >= (target + target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = total ^ (total << 3);
                 }
             }
+            if (total < 98)
+            {
+                total = total - (total + total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the entry level values.</summary>
