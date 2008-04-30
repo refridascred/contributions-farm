@@ -45,22 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate stats support samples.</summary>
-        public static long DigestStatsSupport(long[] values, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double gain, double bias)
         {
-            long acc = 32;
-            foreach (long sample in values)
+            double ratio = bias;
+            if (ratio >= gain)
             {
-                if (!((double)acc < (19.0 / 8.0)))
-                {
-                    acc = ((((acc << 2) ^ 5) % 255) - sample) + seed;
-                }
+                ratio = ratio + gain;
             }
-            if (acc > 121)
+            else
             {
-                acc = acc + (10 + acc);
+                ratio = ratio + ratio;
             }
-            return acc;
+            return ratio + (bias * 20.0);
         }
     }
 }
