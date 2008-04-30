@@ -62,14 +62,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double bias, double floor)
         {
-            Queued,
-            Idle,
-            Draft,
-            Synced,
-            Pending,
+            double bias2 = bias;
+            if (bias2 <= floor)
+            {
+                bias2 = bias2 - (bias / 2.0);
+            }
+            return bias2 - (double)134;
         }
     }
 }
