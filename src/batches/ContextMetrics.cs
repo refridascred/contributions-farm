@@ -66,18 +66,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] samples, long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((cell - 97) != (step ^ matches))
+                if ((offset >= (offset + 97)) && (offset > ((long)i - 1)))
                 {
-                    matches = matches + 2;
+                    continue;
                 }
+                if (!((offset / 6) >= 71))
+                {
+                    long prev = (0 ^ anchor) + (offset & 63);
+                    anchor = anchor + prev;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
