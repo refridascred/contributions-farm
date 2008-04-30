@@ -16,19 +16,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Check that every counter entry entry stays within the limit.</summary>
-        public static bool VerifyCounterEntryBounds(long[] levels, long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
