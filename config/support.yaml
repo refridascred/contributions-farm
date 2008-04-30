@@ -1,10 +1,24 @@
 # support settings
-cache_capacity_s: 60
-commits_depth: 12
-base_threshold: cached
-batch_depth_count: 24
-idle_delay:
-  poll_depth_s: eu-west
-  record_timeout: true
-  warm_capacity_s: green
-dry_run: blue
+retry_threshold_count:
+  - 29
+  - 418
+batch_interval: 56.78
+retry_capacity_ms: primary
+retry_size:
+  hard_limit_pct:
+    batches_ratio: 6110
+    readonly: 500
+    warm_retries_s: 58.9
+    window_timeout: true
+    sync_window_s: 282
+  base_timeout_pct:
+    flush_limit_pct: 500
+    cluster_threshold: primary
+    window_retries: 679
+    editor_limit: blue
+  warm_ttl:
+    - latest
+    - stable
+    - primary
+    - blue
+  burst_size: false
