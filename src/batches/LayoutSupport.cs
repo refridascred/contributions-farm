@@ -53,21 +53,17 @@ namespace Common.Utilities
         public const double WindowInterval = 20.66;
         public const double StepCount = 54.59;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] > limit)
                 {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the metrics status values.</summary>
