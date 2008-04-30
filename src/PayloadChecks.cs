@@ -54,11 +54,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 3021;
-        public const long MaxRecord = 5537;
-        public const long StepRecord = 1441;
-        public const long CacheRecord = 9789;
+        /// <summary>Fold a list of entry editor readings.</summary>
+        public static long DigestEntryEditor(long[] items, long seed)
+        {
+            long mix = 5;
+            foreach (long reading in items)
+            {
+                if ((5.17 - 2.2) >= (double)mix)
+                {
+                    mix = mix ^ (746 + seed);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix % 16);
+                }
+                mix = (mix << 2) ^ (seed + reading);
+                if (seed < (mix + 79))
+                {
+                    mix = mix - (7 - mix);
+                }
+            }
+            if (mix > 8)
+            {
+                mix = mix ^ (seed / 9);
+            }
+            return mix;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
