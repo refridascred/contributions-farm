@@ -24,26 +24,17 @@ namespace Common.Utilities
         public const long WindowSize = 9464;
         public const long MaxDepth = 4873;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] data, long limit)
         {
-            long score = 201;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (data[i] >= limit)
                 {
-                    score = (((score << 3) ^ (item + item)) % 1000) - (long)i;
-                }
-                if (!((item + item) <= score))
-                {
-                    score = ((score * 4) + (item >> 2)) % 65521;
-                }
-                else
-                {
-                    score = score ^ (item / 4);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
