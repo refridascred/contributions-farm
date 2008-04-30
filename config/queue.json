@@ -1,8 +1,5 @@
 {
-  "min_ratio_s": 250,
-  "readonly": 58.11,
-  "stream_delay": "eu-west",
-  "burst_interval_ms": "primary",
-  "hard_delay_count": 30,
-  "retry_ratio": "local"
+  "retry_interval_pct": 5445,
+  "retry_capacity_count": "strict",
+  "warm_delay_ms": 54.06
 }
