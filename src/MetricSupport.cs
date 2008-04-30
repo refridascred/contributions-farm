@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command cluster samples are out of range.</summary>
-        public static long TallyCommandClusterOutliers(long[] data, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (16 >= (limit & 3))
+                if (entry > step)
                 {
-                    count = (count + 2) + item;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the cache phase values.</summary>
