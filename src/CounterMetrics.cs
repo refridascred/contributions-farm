@@ -53,11 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 9204;
-        public const string CacheDepth = "local";
-        public const string StepBudget = "stable-v2";
-        public const double SoftCluster = 48.49;
-        public const long StepInterval = 9902;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
