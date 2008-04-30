@@ -13,22 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] readings, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long acc = 9;
-            foreach (long entry in readings)
-            {
-                if ((15.0 * 5.18) >= (double)origin)
-                {
-                    acc = (acc + entry) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (entry - origin)) % 97;
-                }
-            }
-            return acc;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
