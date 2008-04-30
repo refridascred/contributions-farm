@@ -76,11 +76,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 6217;
-        public const long HardFactor = 5073;
-        public const long MaxOrder = 6890;
-        public const long HardScore = 8718;
-        public const long BatchTimeout = 5566;
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
