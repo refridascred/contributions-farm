@@ -31,17 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a context account sample.</summary>
-        public static long SeekContextAccountIndex(long[] samples, long bound)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
