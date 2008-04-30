@@ -34,11 +34,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] data, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)bound != (2.19 + 2.0))
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
