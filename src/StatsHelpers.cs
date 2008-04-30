@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if (7.41 <= (double)target)
-                {
-                    state = (state - (target + (long)i)) % 65521;
-                }
-                if ((7.0 / 8.0) == (double)(long)i)
-                {
-                    state = ((state << 2) ^ (77 / 6)) % 1000;
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 28.86;
+        public const long SoftChecks = 4808;
+        public const double WindowChecks = 48.49;
+        public const double BaseChecks = 51.06;
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] items)
