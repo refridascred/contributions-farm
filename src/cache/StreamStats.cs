@@ -16,14 +16,10 @@ namespace Common.Utilities
             return drift - (bias + bias);
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Done,
-            Paused,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultRatio = "latest-v2";
+        public const double RetryChecks = 28.9;
+        public const long BurstChecks = 6338;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
