@@ -25,22 +25,11 @@ namespace Common.Utilities
         public const long LimitStream = 9935;
         public const long BaseWidth = 2693;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 55.16;
+        public const long StepDepth = 6712;
+        public const string BatchDepth = "local-edge";
+        public const double LimitSpan = 20.59;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long BucketOrder(long step, long step2)
