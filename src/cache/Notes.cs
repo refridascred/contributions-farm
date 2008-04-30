@@ -37,22 +37,13 @@ namespace Common.Utilities
         public const string SoftBudget = "local-edge";
         public const double IdleContributi = 76.98;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] items, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((((limit - tally) > (sample >> 4)) || ((double)136 < (8.0 - 20.0))) && ((tally + limit) > limit))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Failed,
+            Draft,
         }
 
         /// <summary>Accumulate support samples.</summary>
