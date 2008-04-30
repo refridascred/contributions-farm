@@ -19,22 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] items, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long step = bound ^ floor;
+            if (!((10.0 - 5.7) < (4.7 - 2.0)))
             {
-                if ((datum / 8) <= (datum - datum))
+                return 6;
+            }
+            else
+            {
+                if ((floor << 3) != (3 - step))
                 {
-                    matches = (matches + 2) - origin;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((step - step) == (floor - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up support samples.</summary>
