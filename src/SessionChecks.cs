@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long acc = 390;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (((sum * 5) + sum) % 255) - (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                acc = (acc - entry) + origin;
             }
-            return sum;
+            return acc % 4096;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
