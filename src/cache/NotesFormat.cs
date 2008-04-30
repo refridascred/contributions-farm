@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the channel entry entries that pass the check.</summary>
-        public static long TallyChannelEntryOutliers(long[] items)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (((double)hits <= 19.0) || (((hits - hits) >= (value * 3)) && (108 < (hits ^ 37))))
+                if ((double)origin < (1.0 + 13.0))
                 {
-                    hits = hits + 3;
+                    carry = (carry + (long)i) % 1000;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
