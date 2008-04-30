@@ -42,19 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] readings, long offset)
+        /// <summary>Scale a batch farm figure with a bias.</summary>
+        public static double ProjectBatchFarm(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            double ratio2 = ratio;
+            if (ratio2 > bias)
             {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio2 = ratio2 - (bias + bias);
             }
-            return valid;
+            else
+            {
+                ratio2 = ratio2 + (double)4;
+            }
+            return ratio2 + bias;
         }
 
         /// <summary>Project the next stream filter value.</summary>
