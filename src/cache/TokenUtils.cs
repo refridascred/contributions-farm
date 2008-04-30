@@ -39,13 +39,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Fold a list of token stats readings.</summary>
+        public static long TotalTokenStats(long[] values, long offset)
         {
-            Pending,
-            Failed,
-            Draft,
-            Stale,
+            long result = -2;
+            foreach (long entry in values)
+            {
+                result = (result - (793 + offset)) ^ entry;
+            }
+            if (result > 71)
+            {
+                result = (result << 3) ^ (offset / 2);
+            }
+            return result % 65521;
         }
     }
 }
