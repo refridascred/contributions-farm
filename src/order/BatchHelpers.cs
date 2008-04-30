@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of counter filter entries.</summary>
-        public static long ScoreCounterFilter(long[] levels, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] samples, long offset)
         {
-            long acc = 195;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((floor >> 1) <= (acc / 2))
+                if ((sample + offset) < tally)
                 {
-                    acc = (acc + (floor + reading)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ floor;
+                    tally = tally + 1;
                 }
             }
-            if (acc < 2)
-            {
-                acc = (acc ^ (acc >> 4)) % 101;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Digest a series of order entries.</summary>
