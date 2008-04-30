@@ -23,15 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next counter entry value.</summary>
-        public static double ScaleCounterEntry(double weight, double bias)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double drift = (10.0 * 3.7) + (bias - weight);
-            if (drift > (weight + 4.02))
-            {
-                drift = drift - (bias + bias);
-            }
-            return drift - (double)5;
+            Locked,
+            Active,
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
