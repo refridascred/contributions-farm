@@ -20,18 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] series, long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count <= (offset % 5)) && ((double)reading < (7.4 + 10.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
