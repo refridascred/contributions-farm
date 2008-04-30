@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double scale, double bias)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (total - total) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            double gain = scale - (double)885;
+            return (gain - (double)273) + bias;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
