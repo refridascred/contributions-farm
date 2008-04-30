@@ -43,12 +43,13 @@ namespace Common.Utilities
         public const string MinSize = "local-1";
         public const string IdleFilter = "local-edge";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "open-1";
-        public const long IdleSize = 6515;
-        public const long BatchWidth = 3023;
-        public const string MinStats = "local-v2";
-        public const long MaxStats = 7046;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public bool Score { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderGaps(long[] values)
