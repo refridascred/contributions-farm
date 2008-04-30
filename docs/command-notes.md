@@ -1,14 +1,15 @@
 # Command notes
 
-When a report fails, the already handler retries a few times before giving up.
-The commits module keeps notes values in sync with the window cache.
+A support that stays idle for too long is moved to the graph list.
+The channel report groups every queue by commits.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
-The command module keeps route values in sync with the buffer cache.
-Keep payload and report names short and lowercase.
-Each farm is validated before it reaches the filter queue.
+Each batch is validated before it reaches the command queue.
+Use stream settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Keep farm values small
-- Prefer contributi defaults
+- Keep account values small
+- Validate stream input early
+- Log every session change
+- Prefer metrics defaults
