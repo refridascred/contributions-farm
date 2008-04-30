@@ -32,28 +32,35 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long floor, long floor2)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long limit, long origin)
         {
-            if (((double)floor2 <= 5.94) || ((floor * 4) > (floor2 + floor2)))
+            if ((origin >> 1) > (379 + origin))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (!((floor ^ floor2) >= floor2))
+                if ((double)origin > (double)limit)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((83 & 255) == (floor2 % 10))
+                    if ((3.19 / 4.0) >= (double)origin)
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 8;
+                        if (!(6.54 >= (double)limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
