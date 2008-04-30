@@ -12,21 +12,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 4;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = (mix + (mix / 8)) % 65521;
+                mix = (mix * 2) + (item << 1);
+                if (((item >> 5) != ((-1) % 97)) && ((double)item > (double)24))
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (mix < 0)
+            {
+                mix = mix ^ (mix - mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
