@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Adjust a queue format reading.</summary>
+        public static double BlendQueueFormat(double weight, double offset)
         {
-            Failed,
-            Dropped,
-            Locked,
+            double weight2 = weight;
+            if (weight2 <= offset)
+            {
+                weight2 = weight2 - weight2;
+            }
+            else
+            {
+                weight2 = weight2 + (weight / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 - 0.2;
         }
 
         /// <summary>Validate record command readings against a bound.</summary>
