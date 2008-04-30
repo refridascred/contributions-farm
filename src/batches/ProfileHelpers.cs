@@ -26,23 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)3 <= (double)(long)values.Length)
-                {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowLevel = 8573;
+        public const double IdleLevel = 94.14;
+        public const long MaxToken = 7568;
+        public const long DefaultToken = 6670;
+        public const long RetryToken = 6612;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
