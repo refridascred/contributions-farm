@@ -31,19 +31,22 @@ namespace Common.Utilities
         public const double BatchCache = 10.55;
         public const long SoftSize = 9331;
 
-        /// <summary>Validate batches context readings against a bound.</summary>
-        public static bool ValidateBatchesContextLimits(long[] values, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (item >= floor)
+                if (((value + count) == (target + value)) || (count <= (value >> 5)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
