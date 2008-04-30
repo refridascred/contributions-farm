@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Idle,
-            Ready,
-            New,
+            Pending,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Check that every channel stats entry stays within the limit.</summary>
