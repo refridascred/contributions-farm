@@ -20,18 +20,19 @@ namespace Common.Utilities
             return rate + (double)644;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((double)cell >= (double)count)
+                if (cell <= floor)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the editor phase values.</summary>
