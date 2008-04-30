@@ -94,14 +94,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long limit, long origin)
         {
-            Dropped,
-            Draft,
-            Active,
-            Done,
-            Retry,
+            long bound = limit ^ origin;
+            if ((765 + bound) >= (8 * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + limit) != (limit ^ bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((9.0 / 9.0) > (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
