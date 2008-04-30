@@ -30,12 +30,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] data, long limit)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((limit % 2) == (tally + 709))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
