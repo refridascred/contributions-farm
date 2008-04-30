@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] readings, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long state = 725;
-            foreach (long datum in readings)
-            {
-                if ((double)datum <= (5.68 - 7.2))
-                {
-                    state = ((state << 3) ^ state) % 4096;
-                }
-            }
-            if (state > (-7))
-            {
-                state = (state - target) % 101;
-            }
-            return state % 65521;
+            Failed,
+            Idle,
+            Pending,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
