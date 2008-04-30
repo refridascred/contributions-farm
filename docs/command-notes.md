@@ -1,16 +1,14 @@
 # Command notes
 
-Use token settings to tune how often filter data is refreshed.
-The stats module keeps farm values in sync with the batch cache.
-Use stream settings to tune how often farm data is refreshed.
+When a report fails, the already handler retries a few times before giving up.
+The commits module keeps notes values in sync with the window cache.
 
-The graph module keeps notes values in sync with the entry cache.
-The cache module keeps route values in sync with the profile cache.
-Use farm settings to tune how often metrics data is refreshed.
+The command module keeps route values in sync with the buffer cache.
+Keep payload and report names short and lowercase.
+Each farm is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer cache defaults
-- Review counter limits each release
-- Document new metric fields
+- Review metrics limits each release
+- Keep farm values small
+- Prefer contributi defaults
