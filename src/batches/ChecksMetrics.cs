@@ -64,22 +64,11 @@ namespace Common.Utilities
             return gain + (gain * 3.5);
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] data, long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long result = 751;
-            foreach (long datum in data)
-            {
-                if (((seed / 4) > datum) && ((result + seed) == (result >> 3)))
-                {
-                    result = result - (datum ^ datum);
-                }
-            }
-            if (result < 2)
-            {
-                result = result + (result >> 1);
-            }
-            return result;
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
