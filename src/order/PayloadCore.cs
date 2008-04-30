@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)tally < 3.71)
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            New,
+            Draft,
+            Paused,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
