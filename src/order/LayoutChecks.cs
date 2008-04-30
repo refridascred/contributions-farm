@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] levels, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] readings, long limit)
         {
-            long result = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                result = ((result * 5) + (result - item)) - seed;
+                if ((value * 4) > seen)
+                {
+                    seen = (seen + 1) - limit;
+                }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
