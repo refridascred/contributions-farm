@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long limit, long offset)
+        /// <summary>Iterate the batches layout series from a seed.</summary>
+        public static long RollBatchesLayout(long step)
         {
-            long lane = limit + offset;
-            if ((double)lane < (double)offset)
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                score = ((score << 2) ^ (score & 3)) % 4096;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset - limit) < (limit - 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset > (lane + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the editor class values.</summary>
