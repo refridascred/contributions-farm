@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 4814;
-        public const string IdleCommits = "stable-edge";
-        public const long BatchSize = 3676;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 49.76;
+        public const double HardDepth = 56.21;
+        public const string MaxNotes = "fallback";
+        public const string BaseWidth = "standard-1";
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TallySession(long[] data)
