@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (175 <= (count - 268))
+                if (cell >= offset)
                 {
-                    count = (count + 1) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
