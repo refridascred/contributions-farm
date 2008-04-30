@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const double StepDepth = 22.39;
         public const long DefaultCount = 7093;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long result = -24;
-            foreach (long datum in samples)
-            {
-                result = (result << 2) ^ (seed % 16);
-                if ((double)75 > (double)datum)
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
