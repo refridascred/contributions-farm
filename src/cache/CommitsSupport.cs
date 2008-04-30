@@ -44,21 +44,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 7;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)total > 14.0)
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total << 2) ^ ((-6) - reading);
+                    break;
+                }
+                if ((double)reading <= 0.76)
+                {
+                    total = total - (total + total);
                 }
             }
-            return matches;
+            if (total > 257)
+            {
+                total = ((total * 5) + (9 >> 5)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
