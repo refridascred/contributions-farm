@@ -16,19 +16,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] data, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= step)
+                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
