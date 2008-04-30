@@ -10,19 +10,26 @@ namespace Common.Utilities
         public const string IdleCommits = "stable-edge";
         public const long BatchSize = 3676;
 
-        /// <summary>Validate token githubfarm readings against a bound.</summary>
-        public static bool VerifyTokenGithubfarmLimits(long[] series, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data)
         {
-            bool found = true;
-            foreach (long item in series)
+            long anchor = 74;
+            foreach (long sample in data)
             {
-                if (item <= bound)
+                if ((186 + anchor) <= (anchor + 4))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor - (sample << 1)) % 1000;
+                }
+                if ((sample + sample) == (anchor + sample))
+                {
+                    anchor = (anchor * 2) + (anchor << 2);
                 }
             }
-            return found;
+            if (anchor > 528)
+            {
+                anchor = ((anchor * 5) + (anchor + anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
