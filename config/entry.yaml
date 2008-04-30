@@ -1,4 +1,14 @@
 # entry settings
-sync_depth_s: 8881
-retry_threshold: 3567
-poll_retries_pct: open
+route_ttl:
+  - strict
+  - latest
+  - open
+  - fallback
+burst_limit_ms:
+  already_retries: 43
+  audit: 60
+  soft_window: open
+  batch_timeout:
+    - edge
+    - blue
+max_limit_s: 3528
