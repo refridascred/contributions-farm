@@ -68,18 +68,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache contributi entries that pass the check.</summary>
-        public static long TallyCacheContributiGaps(long[] readings, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((item <= seed) || ((item / 5) > item))
+                if (!!((seen + cell) >= cell))
                 {
-                    tally = tally + 3;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the counter phase values.</summary>
