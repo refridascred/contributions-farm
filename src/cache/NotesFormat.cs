@@ -34,14 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long floor)
         {
-            Synced,
-            Stale,
-            Pending,
-            Locked,
-            Paused,
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark << 3) ^ ((long)i ^ floor);
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
