@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
