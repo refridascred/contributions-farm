@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "alpha";
-        public const string RetryCommits = "latest-1";
-        public const long RetryRatio = 3893;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((1.08 * 8.54) != (double)(long)i) && (seed > mark))
+                {
+                    mark = ((mark * 4) + (mark ^ seed)) % 65521;
+                    mark = ((mark << 3) ^ mark) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many batches schema samples are out of range.</summary>
         public static long TallyBatchesSchemaMatches(long[] data, long offset)
