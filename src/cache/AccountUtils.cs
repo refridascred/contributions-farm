@@ -26,19 +26,10 @@ namespace Common.Utilities
         public const long SoftEntry = 9408;
         public const string BatchEntry = "local-v2";
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepTimeout = "fallback";
+        public const string MaxWindow = "alpha";
+        public const long BatchWindow = 9333;
+        public const long CacheWindow = 1435;
     }
 }
