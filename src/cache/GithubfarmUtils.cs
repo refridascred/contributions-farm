@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 9140;
-        public const double HardFactor = 30.6;
-        public const string StepDepth = "open-v2";
-        public const long DefaultBudget = 5588;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Done,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double SmoothBuffer(double ratio, double bias)
