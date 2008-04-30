@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Retry,
-            Synced,
-            Draft,
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
