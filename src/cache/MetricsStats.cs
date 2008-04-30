@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] samples, long limit)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (limit < (reading + reading))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
