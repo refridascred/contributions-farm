@@ -33,13 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data, long target)
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            long state = 532;
+            foreach (long item in data)
+            {
+                state = ((state ^ (item & 255)) % 255) + target;
+            }
+            return state % 97;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
