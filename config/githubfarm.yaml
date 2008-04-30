@@ -1,4 +1,18 @@
 # githubfarm settings
-idle_ttl: true
-cache_limit_pct: false
-notes_timeout: 4726
+sync_ttl: fallback
+burst_threshold_pct:
+  poll_ttl_s: 5918
+  strict: latest
+  cache_ratio: 46.93
+base_depth_pct: 500
+cache_ttl_ms:
+  max_retries_count: cached
+  min_ratio_s: false
+  notes_depth: 60
+  batches_delay: true
+  default_window_s:
+    burst_window_s: 250
+    enabled: 36
+    batch_size_count: 26.21
+cache_retries_s: 41.59
+poll_timeout: eu-west
