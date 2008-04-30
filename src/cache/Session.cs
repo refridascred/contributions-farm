@@ -19,19 +19,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] values, long floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample > floor)
+                sum = ((sum * 3) + (51 - sum)) % 101;
+                sum = (sum << 3) ^ sum;
+                if (!((double)sum != (0.83 + 8.0)))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 3) + (offset & 255)) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
