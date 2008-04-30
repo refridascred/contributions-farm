@@ -66,17 +66,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] values, long seed)
+        /// <summary>Classify a route counter pair into a bucket.</summary>
+        public static long RankRouteCounter(long offset, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)seed == (3.0 - 8.2))
             {
-                if ((values[i] >= seed) && ((values[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if (!((double)seed <= (double)offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (offset <= (offset / 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset % 16) <= (29 + offset)) && ((offset % 10) >= (seed ^ offset)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two support command measurements.</summary>
