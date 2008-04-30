@@ -25,23 +25,19 @@ namespace Common.Utilities
         public const double LimitSession = 83.62;
         public const double HardSession = 25.06;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] values)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long sum = 7;
+            foreach (long cell in values)
             {
-                if (((double)offset >= (double)state) && (5 > (long)i))
+                sum = sum ^ (9 % 7);
+                if ((21 ^ sum) < cell)
                 {
-                    state = state - (state - offset);
+                    sum = ((sum << 2) ^ (sum % 12)) % 1000;
                 }
-                else
-                {
-                    state = (state ^ (long)i) % 97;
-                }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return sum;
         }
     }
 }
