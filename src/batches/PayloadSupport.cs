@@ -20,17 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] series, long seed)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
