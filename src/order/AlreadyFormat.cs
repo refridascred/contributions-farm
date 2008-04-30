@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 5.94;
-        public const string StepChecks = "strict-edge";
-        public const string LimitRatio = "alpha-1";
-        public const string MinChecks = "cached-1";
-        public const long BurstChecks = 9421;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheRatio = 38.56;
+        public const string SoftScore = "staging";
+        public const long MinRatio = 2388;
+        public const double IdleScore = 86.33;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
