@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+BUFFER_LIMIT=385
+log "limit is ${BUFFER_LIMIT}"
 
-for item in legacy stable open edge; do
+for item in primary staging local; do
     log "checking ${item}"
 done
