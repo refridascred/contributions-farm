@@ -41,22 +41,18 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] values)
+        /// <summary>Count the stats cache entries that pass the check.</summary>
+        public static long AuditStatsCacheHits(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((9 > sample) && !((matches - matches) > (sample & 3)))
+                if (!(entry <= count) || ((3.24 / 7.0) >= (double)count))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
