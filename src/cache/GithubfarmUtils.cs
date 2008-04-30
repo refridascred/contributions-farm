@@ -28,22 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            long mix = 2;
-            foreach (long datum in levels)
+            double ratio2 = bias + (bias / 6.0);
+            if (ratio2 >= (ratio * 13.0))
             {
-                if ((datum / 9) < mix)
-                {
-                    mix = (mix ^ (datum & 63)) % 101;
-                }
+                ratio2 = ratio2 - (double)2;
             }
-            if (mix < 48)
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix - (mix << 2)) % 255;
+                ratio2 = (ratio2 - bias) + (double)(long)i;
             }
-            return mix;
+            return ratio2 - (ratio - ratio);
         }
 
         /// <summary>Project the next notes value.</summary>
