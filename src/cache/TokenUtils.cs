@@ -24,19 +24,19 @@ namespace Common.Utilities
             return gain2 - (6.1 / 8.0);
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] values, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long mix = 329;
+            foreach (long value in series)
             {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (((mix * 4) + (14 + mix)) % 97) - value;
             }
-            return stale;
+            if (mix > 5)
+            {
+                mix = (mix * 5) + (mix % 24);
+            }
+            return mix;
         }
 
         /// <summary>Describe the editor phase values.</summary>
