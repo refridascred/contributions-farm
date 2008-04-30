@@ -23,19 +23,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen - datum) >= floor)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 6306;
+        public const double DefaultCount = 96.7;
+        public const long BurstAlready = 8445;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] values, long bound)
