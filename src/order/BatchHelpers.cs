@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowWidth = 4.45;
-        public const string IdleFormat = "legacy-v2";
-        public const long MaxFactor = 4623;
-        public const long DefaultRatio = 765;
+        /// <summary>Blend two route cluster measurements.</summary>
+        public static double SmoothRouteCluster(double rate, double offset)
+        {
+            double drift = rate;
+            if (drift > (rate - rate))
+            {
+                drift = (drift - (double)7) - offset;
+            }
+            else
+            {
+                drift = drift - 3.5;
+            }
+            return drift + drift;
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long SeriesLayout(long target)
