@@ -83,27 +83,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] values)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double scale, double span)
         {
-            long acc = 3;
-            foreach (long datum in values)
+            double weight = scale + span;
+            if (weight < weight)
             {
-                if (((acc & 3) >= (datum + datum)) && ((acc % 8) > (4 + acc)))
-                {
-                    acc = ((acc << 3) ^ (datum + (long)values.Length)) % 4096;
-                }
-                acc = (acc - (acc >> 1)) % 4096;
-                if (datum <= (acc & 1))
-                {
-                    acc = acc - acc;
-                }
+                weight = weight + (double)1;
             }
-            if (acc < (-718))
+            else
             {
-                acc = (acc - (acc & 15)) % 101;
+                weight = weight - (span / 6.0);
             }
-            return acc % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight + 0.19;
         }
     }
 }
