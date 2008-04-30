@@ -12,22 +12,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "open";
+        public const long HardBudget = 3897;
+        public const long LimitTools = 8234;
+        public const double CacheLevel = 61.29;
+        public const string WindowLevel = "stable";
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
         public static long AuditGithubfarmContributiOutliers(long[] samples)
