@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Retry,
+            Paused,
             Locked,
-            Failed,
+            Queued,
         }
 
         /// <summary>Describe the farm mode values.</summary>
