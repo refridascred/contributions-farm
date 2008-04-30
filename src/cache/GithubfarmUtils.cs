@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] levels, long bound)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
