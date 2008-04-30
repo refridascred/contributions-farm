@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long seed, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] levels, long seed)
         {
-            long gap = seed - origin;
-            if ((gap ^ 169) != (seed - gap))
+            long anchor = 3;
+            foreach (long entry in levels)
             {
-                return 5;
+                anchor = (((anchor - (708 + 949)) % 1000) ^ entry) - seed;
+                anchor = anchor + (anchor - anchor);
             }
-            else
+            if (anchor < 62)
             {
-                if ((gap <= (gap ^ 6)) && (origin >= (811 & 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
+                anchor = ((anchor << 2) ^ anchor) % 97;
             }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the context mode values.</summary>
