@@ -19,17 +19,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long seed)
+        /// <summary>Rank order command input into a small class.</summary>
+        public static long BucketOrderCommand(long limit, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((offset * 3) == (limit - 611))
             {
-                if (series[i] <= seed)
+                return 8;
+            }
+            else
+            {
+                if (!((offset * 3) < (offset + 37)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit > (2.01 / 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset + offset) > (offset * 3)) && ((3.8 / 9.0) < (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the payload stream entries that pass the check.</summary>
