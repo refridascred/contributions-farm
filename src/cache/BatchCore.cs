@@ -30,13 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Closed,
-            Idle,
-            Draft,
-            Queued,
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
