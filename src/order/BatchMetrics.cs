@@ -70,21 +70,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((seen + entry) < seen) || ((5.11 - 5.79) == (double)seen))
                 {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
