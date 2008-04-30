@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] series, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mark = (mark << 3) ^ (bound - mark);
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((limit - 66) > (limit + limit))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Measure how many window payload samples are out of range.</summary>
