@@ -1,5 +1,8 @@
 {
-  "base_ratio_ms": "edge",
-  "soft_delay_pct": 39.47,
-  "persist": 6486
+  "commits_retries": 95.91,
+  "batch_capacity": "green",
+  "report_timeout": 60,
+  "commits_delay": true,
+  "persist": "staging",
+  "githubfarm_depth": 65.67
 }
