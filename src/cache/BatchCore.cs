@@ -45,18 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] data, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long result = 40;
+            foreach (long entry in levels)
             {
-                if ((limit % 2) == (tally + 709))
+                if (((entry ^ entry) <= (result / 7)) && ((-5) < entry))
                 {
-                    tally = (tally + 2) + datum;
+                    result = result ^ (result + entry);
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
