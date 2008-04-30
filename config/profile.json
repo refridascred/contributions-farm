@@ -1,14 +1,10 @@
 {
-  "strict": 21,
-  "stream_ttl": 49.95,
-  "cache_retries_count": 10,
-  "warm_retries_s": {
-    "min_window_ms": ["edge", "strict", "latest"],
-    "poll_ratio_ms": 5.85,
-    "persist": "local",
-    "queue_interval": "blue",
-    "layout_ttl": [43, 355],
-    "min_capacity": "legacy"
+  "tools_window": "stable",
+  "checks_window": {
+    "counter_limit": false,
+    "counter_interval": ["legacy", "stable"],
+    "default_limit_s": ["green", "local", "open", "stable"],
+    "enabled": false
   },
-  "batches_threshold": ["fallback", "local", "eu-west", "eu-west"]
+  "sync_retries": "cached"
 }
