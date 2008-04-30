@@ -1,7 +1,24 @@
 # entry settings
-flush_depth_count: fallback
-strict: 7050
-hard_ratio_pct: blue
-window_ratio: 6073
-filter_interval: eu-west
-contributi_ratio: 250
+hard_limit_pct: 8770
+stats_timeout: 60
+retry_limit_count: 500
+hard_capacity:
+  retry_retries_count: 18.27
+  cache_retries_pct: eu-west
+  warm_depth_s: stable
+  retry_retries_s:
+    - 454
+    - 169
+  route_ttl:
+    - 346
+    - 275
+    - 310
+    - 328
+base_timeout_ms:
+  flush_size_count:
+    - 80
+    - 110
+    - 131
+  dry_run: local
+  hard_depth_count: edge
+  warm_depth_count: cached
