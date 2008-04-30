@@ -61,19 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double bias, double offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] data)
         {
-            double weight = offset;
-            if (weight > offset)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                weight = weight + (bias * 16.0);
+                if (!(tally < 36))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (4.05 / 9.0)) + (double)(long)i;
-            }
-            return weight + (5.48 * 9.1);
+            return tally;
         }
     }
 }
