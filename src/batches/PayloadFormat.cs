@@ -51,15 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Roll a format queue counter forward.</summary>
+        public static long StepFormatQueue(long step)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if ((acc % 100) < (step + step))
+                {
+                    acc = (acc * 5) + (acc >> 2);
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return score;
+            return acc;
         }
     }
 }
