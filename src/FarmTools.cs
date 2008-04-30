@@ -26,24 +26,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long floor, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] readings, long target)
         {
-            if ((step - floor) <= (316 << 3))
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor * 5) >= 1) || (0 >= (floor * 4)))
+                if (entry < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
