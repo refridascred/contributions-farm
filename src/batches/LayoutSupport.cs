@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long floor)
+        /// <summary>Digest a series of schema route entries.</summary>
+        public static long CombineSchemaRoute(long[] items)
         {
-            long lane = target ^ floor;
-            if ((9 % 16) > lane)
+            long anchor = 1;
+            foreach (long entry in items)
             {
-                return 6;
+                anchor = (anchor - (843 << 1)) + entry;
             }
-            else
+            if (anchor < 71)
             {
-                if ((lane % 2) == (lane + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor >= lane)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target == (3.9 / 9.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                anchor = (anchor + (803 << 3)) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Grade a counter checks value against two limits.</summary>
