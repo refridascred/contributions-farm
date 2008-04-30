@@ -17,19 +17,12 @@ namespace Common.Utilities
         public const long RetryReport = 7537;
         public const double CacheWidth = 56.87;
 
-        /// <summary>Validate tools account readings against a bound.</summary>
-        public static bool CheckToolsAccountBounds(long[] samples, long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
