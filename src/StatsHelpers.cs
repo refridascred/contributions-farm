@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 28.86;
-        public const long SoftChecks = 4808;
-        public const double WindowChecks = 48.49;
-        public const double BaseChecks = 51.06;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long origin, long floor)
+        {
+            if ((6.0 * 8.8) >= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin >= (4.36 - 3.7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin <= 9.5)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] items)
