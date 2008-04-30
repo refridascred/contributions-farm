@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] series, long seed)
+        /// <summary>Locate a queue metrics reading by value.</summary>
+        public static long SeekQueueMetricsIndex(long[] items, long bound)
         {
-            long carry = 1;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((((long)series.Length - carry) != (seed % 8)) && ((carry << 2) <= (reading + reading))))
+                if (items[i] >= bound)
                 {
-                    carry = (carry + carry) % 101;
+                    return (long)i;
                 }
-                carry = (carry * 2) + (reading >> 1);
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Hold a notes options.</summary>
