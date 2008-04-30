@@ -24,15 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values)
+        /// <summary>Count window context pairs that satisfy a relation.</summary>
+        public static long OverlapWindowContextCount(long[] samples)
         {
             long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((datum / 8) == (datum / 7)) || ((double)hits >= (double)32)) || (((datum & 7) != (hits % 10)) || ((1.2 + 12.0) <= (double)hits)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
