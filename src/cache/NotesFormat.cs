@@ -13,39 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long seed, long limit)
-        {
-            if ((limit & 7) != ((-232) - limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit <= 20)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + 922) == (seed >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed > (limit & 63)) || (seed < 6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseInterval = 6840;
+        public const long BatchBuffer = 9952;
+        public const long IdleBuffer = 5605;
+        public const long SoftBuffer = 4560;
 
         /// <summary>Roll a order context counter forward.</summary>
         public static long DeriveOrderContext(long floor)
