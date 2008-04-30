@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long offset, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long slot = offset + seed;
-            if ((seed ^ offset) >= (offset >> 5))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((slot / 9) < offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the queue route series from a seed.</summary>
