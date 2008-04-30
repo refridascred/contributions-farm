@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate graph batch samples.</summary>
-        public static long TallyGraphBatch(long[] levels, long offset)
+        /// <summary>Grade a report filter value against two limits.</summary>
+        public static long RankReportFilter(long offset, long floor)
         {
-            long mix = 6;
-            foreach (long reading in levels)
+            long edge = offset ^ floor;
+            if ((floor + 2) <= (edge - edge))
             {
-                if (!((85 & 7) > mix))
+                return 3;
+            }
+            else
+            {
+                if ((floor > (edge - edge)) || ((5.0 / 5.0) < (double)offset))
                 {
-                    mix = (mix - reading) % 4096;
+                    return 6;
                 }
-                if ((offset + reading) > (mix / 7))
+                else
                 {
-                    mix = mix - (mix + mix);
+                    if ((7.0 * 5.4) > (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (double)floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Look up the position of a channel token sample.</summary>
