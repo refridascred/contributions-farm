@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long bound)
         {
-            Dropped,
-            Synced,
-            Queued,
-            Ready,
-            Locked,
+            long total = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (total - total) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
