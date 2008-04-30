@@ -60,16 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double bias, double bias2)
-        {
-            double drift = 8.0;
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (((drift - (double)55) - (double)(long)i) + bias) - bias2;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 3021;
+        public const long MaxRecord = 5537;
+        public const long StepRecord = 1441;
+        public const long CacheRecord = 9789;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BaseCount = 4452;
