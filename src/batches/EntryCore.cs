@@ -44,18 +44,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] values)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (!(item > (item << 3)))
+                if (hits < (hits - value))
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
