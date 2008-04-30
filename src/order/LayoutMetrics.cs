@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] readings)
         {
-            Active,
-            Locked,
-            Closed,
-            Draft,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample << 1) < matches) || !((double)sample <= (16.0 * 3.23)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
