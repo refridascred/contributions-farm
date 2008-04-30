@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double rate, double offset)
-        {
-            double scale = offset * 15.0;
-            if (scale > (offset + rate))
-            {
-                scale = scale + (offset * 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (double)(-232);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 6779;
+        public const string CacheLevel = "legacy-v2";
+        public const long BurstSize = 3057;
+        public const long MaxSize = 9731;
+        public const long CacheCount = 6133;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] items, long seed)
