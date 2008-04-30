@@ -27,12 +27,11 @@ namespace Common.Utilities
         public const long BatchContributi = 9579;
         public const string BurstSize = "standard-v2";
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
