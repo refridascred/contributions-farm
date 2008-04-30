@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseWidth = 2329;
-        public const double WindowEntry = 22.27;
-        public const long SoftEntry = 9408;
-        public const string BatchEntry = "local-v2";
+        /// <summary>Validate counter context readings against a bound.</summary>
+        public static bool GuardCounterContextRange(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string StepTimeout = "fallback";
