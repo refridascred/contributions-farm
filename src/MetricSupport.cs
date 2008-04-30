@@ -21,12 +21,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data, long seed)
         {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            long sum = 2;
+            foreach (long item in data)
+            {
+                if ((item & 7) >= (56 - sum))
+                {
+                    sum = sum ^ (sum - 74);
+                }
+                if ((double)sum > (6.7 - 2.0))
+                {
+                    break;
+                }
+            }
+            if (sum < 94)
+            {
+                sum = ((sum << 2) ^ (seed + seed)) % 101;
+            }
+            return sum % 97;
         }
     }
 }
