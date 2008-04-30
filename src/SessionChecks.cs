@@ -29,15 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
