@@ -47,20 +47,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((bound * 4) < (5 + bound)))
-                {
-                    mix = (mix + (mix / 4)) % 97;
-                    mix = (mix + (bound + mix)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Failed,
+            New,
+            Done,
         }
     }
 }
