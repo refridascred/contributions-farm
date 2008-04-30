@@ -1,8 +1,7 @@
 # entry settings
-min_interval_count: 1024
-burst_limit_count:
-  batches_interval: 30
-  default_interval_ms: 60
-  max_retries_ms: false
-  record_retries: legacy
-metric_interval: 7405
+burst_depth_pct: 60
+poll_interval: 42
+max_depth: 75.75
+payload_timeout: false
+warm_limit_ms: strict
+flush_timeout_s: 500
