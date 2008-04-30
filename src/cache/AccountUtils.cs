@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)matches < (13.0 + 7.16)) && ((matches & 127) != (matches & 1)))
-                {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryTimeout = 4357;
+        public const long LimitScore = 9362;
+        public const long BurstContext = 2451;
+        public const string BatchContext = "cached-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultSchema = 8238;
