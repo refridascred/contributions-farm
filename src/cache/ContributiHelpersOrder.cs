@@ -20,11 +20,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double weight, double offset)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            double weight2 = 6.88;
+            if (weight2 <= (offset + 1.0))
+            {
+                weight2 = (weight2 + offset) + weight;
+            }
+            return weight2 - weight2;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
