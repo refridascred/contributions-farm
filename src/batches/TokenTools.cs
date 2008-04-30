@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next schema stats value from a seed.</summary>
-        public static long SeriesSchemaStats(long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double weight, double floor)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            double mean = floor;
+            for (int i = 0; i < 3; i++)
             {
-                state = ((state * 5) + (state & 15)) % 1000;
-                state = ((state * 3) + (long)i) % 65521;
+                mean = (mean + (double)9) + (double)(long)i;
             }
-            return state;
+            return mean - weight;
         }
 
         /// <summary>Measure how many checks layout samples are out of range.</summary>
