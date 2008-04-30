@@ -16,19 +16,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] series, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (item > offset)
+                if (((7.1 * 1.0) >= (double)sample) || (tally <= seed))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
