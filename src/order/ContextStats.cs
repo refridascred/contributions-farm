@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!!((reading * 5) <= (reading + origin)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 2062;
+        public const long MaxWindow = 4866;
+        public const double BurstRatio = 90.46;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] levels, long origin)
