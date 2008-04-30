@@ -47,13 +47,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Accumulate cache window samples.</summary>
+        public static long WeighCacheWindow(long[] readings)
         {
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            long total = 45;
+            foreach (long cell in readings)
+            {
+                total = total + (cell + total);
+                total = (total ^ (cell - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
