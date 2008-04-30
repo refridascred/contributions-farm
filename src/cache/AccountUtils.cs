@@ -20,32 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a command queue value against two limits.</summary>
-        public static long SortCommandQueue(long limit, long offset)
-        {
-            if ((limit % 7) >= (offset - 0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((limit + limit) < limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit <= offset) && ((1.98 + 2.6) >= (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseWidth = 2329;
+        public const double WindowEntry = 22.27;
+        public const long SoftEntry = 9408;
+        public const string BatchEntry = "local-v2";
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool CheckBufferLimits(long[] readings, long seed)
