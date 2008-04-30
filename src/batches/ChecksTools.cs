@@ -35,10 +35,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftDepth = 4762;
-        public const long MinRatio = 6484;
-        public const long MaxEntry = 9696;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Stale,
+            Done,
+            Paused,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterGaps(long[] samples, long offset)
