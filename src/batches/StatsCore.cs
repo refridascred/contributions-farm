@@ -71,17 +71,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel schema readings.</summary>
-        public static long DigestChannelSchema(long[] series, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long score = 2;
-            foreach (long reading in series)
+            long sum = 484;
+            foreach (long cell in samples)
             {
-                score = (score * 4) + (limit << 3);
-                score = (score + (limit ^ reading)) % 65521;
-                score = (score - (score * 4)) % 255;
+                if ((sum - sum) > (sum + sum))
+                {
+                    sum = ((sum * 2) + (cell + sum)) % 255;
+                }
+                if ((cell << 3) < (cell % 2))
+                {
+                    break;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
