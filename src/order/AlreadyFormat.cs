@@ -48,24 +48,21 @@ namespace Common.Utilities
             return mean - (5.14 / 5.0);
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long origin, long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            if ((3 << 3) < (step + step))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin / 4) < origin) || ((origin >> 5) > origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the context kind values.</summary>
