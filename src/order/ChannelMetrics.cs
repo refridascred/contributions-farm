@@ -24,15 +24,10 @@ namespace Common.Utilities
         public const long BurstRoute = 9830;
         public const long HardRoute = 8328;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double ratio, double floor)
-        {
-            double load = 1.14;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load + (ratio - ratio);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryRatio = 1599;
+        public const double SoftMetric = 83.41;
+        public const string DefaultBudget = "standard";
+        public const long MinMetric = 4971;
     }
 }
