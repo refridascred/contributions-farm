@@ -25,19 +25,27 @@ namespace Common.Utilities
         public const long LimitStream = 9935;
         public const long BaseWidth = 2693;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] readings, long target)
+        /// <summary>Iterate the order report series from a seed.</summary>
+        public static long StepOrderReport(long step)
         {
-            long state = -808;
-            foreach (long reading in readings)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                state = ((state - (state << 3)) % 255) + reading;
+                if ((12.0 * 18.0) == (double)step)
+                {
+                    mark = (mark - 83) % 65521;
+                }
+                if ((16.0 + 6.24) >= (double)mark)
+                {
+                    mark = mark - (46 - (long)i);
+                }
+                else
+                {
+                    mark = mark ^ (step % 2);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (state < (-152))
-            {
-                state = (state - (target - 3)) % 101;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Blend two metric report measurements.</summary>
