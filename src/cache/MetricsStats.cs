@@ -12,20 +12,16 @@ namespace Common.Utilities
         public const long MaxDepth = 8348;
         public const string BaseInterval = "latest-1";
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Iterate the support graph series from a seed.</summary>
+        public static long IterateSupportGraph(long origin)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (((score >> 5) != (441 + (long)i)) && (((long)i / 4) > (score >> 2)))
-                {
-                    break;
-                }
-                score = score ^ (target ^ score);
-                score = ((score * 4) + (long)i) % 101;
+                result = (result << 3) ^ (origin >> 5);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
