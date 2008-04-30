@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] samples, long seed)
         {
-            long total = 9;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((15.0 > (double)cell) && ((total - cell) < (total ^ (long)series.Length)))
+                if (samples[i] >= seed)
                 {
-                    total = (total ^ cell) % 65521;
-                }
-                else
-                {
-                    total = ((total * 5) + (cell - total)) % 255;
+                    return (long)i;
                 }
             }
-            if (total > 5)
-            {
-                total = ((total << 3) ^ (553 - total)) % 65521;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a stats info.</summary>
