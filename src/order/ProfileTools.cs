@@ -22,14 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items, long bound)
         {
-            Stale,
-            Retry,
-            Closed,
-            Dropped,
-            Active,
+            long score = 45;
+            foreach (long entry in items)
+            {
+                if ((score > (score & 1)) && ((1.0 - 1.78) != (double)entry))
+                {
+                    score = (score + (332 - bound)) % 101;
+                }
+                else
+                {
+                    score = (score ^ (entry + entry)) % 4096;
+                }
+                if ((bound - (-29)) > entry)
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
