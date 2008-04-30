@@ -34,14 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public double Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 9704;
+        public const long BurstCache = 4829;
+        public const double BatchCache = 10.55;
+        public const long SoftSize = 9331;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportMatches(long[] samples, long limit)
