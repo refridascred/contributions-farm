@@ -44,21 +44,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of graph entry readings.</summary>
-        public static long PairGraphEntryCount(long[] items)
+        /// <summary>Measure how many stream order samples are out of range.</summary>
+        public static long AuditStreamOrderHits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum * 5) > (3 - tally))
                 {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
