@@ -42,18 +42,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] samples, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (!(((offset & 63) > (matches - offset)) || ((cell % 10) <= (matches % 100))))
+                if ((count / 4) != (item / 9))
                 {
-                    matches = matches + 3;
+                    count = (count + 1) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
