@@ -79,18 +79,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((22 >> 1) > (cell & 3)) && (101 >= (hits + 2)))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowDepth = 7984;
+        public const double DefaultCounter = 44.13;
+        public const string SoftCounter = "stable-edge";
     }
 }
