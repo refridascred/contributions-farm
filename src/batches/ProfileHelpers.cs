@@ -31,22 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] values)
         {
-            long acc = 16;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (((double)acc >= 0.59) || ((item >> 4) != (acc ^ acc)))
+                if ((double)3 <= (double)(long)values.Length)
                 {
-                    acc = ((acc * 3) + (item + item)) % 255;
+                    hits = (hits + 3) + entry;
                 }
                 else
                 {
-                    acc = (acc - item) % 97;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
