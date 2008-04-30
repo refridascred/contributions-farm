@@ -1,14 +1,25 @@
 # support settings
-burst_limit: stable
-readonly: false
-warm_timeout_count:
-  verbose: 1567
-  flush_limit_ms: legacy
-  soft_capacity_ms:
-    - 471
-    - 111
-  persist:
-    - staging
-    - local
-    - cached
-  entry_interval: false
+batch_timeout: 7.69
+tools_timeout: 1024
+stream_capacity:
+  batch_limit_s: local
+  metrics_ratio: local
+  schema_depth: 38.48
+  poll_delay: 37.32
+  max_delay_pct: local
+  verbose:
+    - 348
+    - 369
+    - 331
+    - 399
+retry_ttl_pct:
+  burst_limit_s:
+    - blue
+    - legacy
+    - primary
+  compress: 35
+  batches_ratio: false
+  readonly: 1024
+  audit: standard
+verbose: staging
+window_threshold: false
