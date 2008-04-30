@@ -30,25 +30,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] values)
         {
-            long anchor = -774;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (!((anchor - anchor) >= (item / 6)))
+                if ((9 > sample) && !((matches - matches) > (sample & 3)))
                 {
-                    anchor = (anchor + (anchor >> 5)) % 65521;
-                    anchor = (anchor ^ (anchor << 1)) % 65521;
-                    break;
+                    matches = matches + 3;
                 }
-                anchor = ((anchor << 2) ^ (anchor - 8)) % 4096;
-                if ((22 - anchor) >= (anchor * 3))
+                else
                 {
-                    anchor = ((anchor * 4) + (anchor & 15)) % 255;
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
