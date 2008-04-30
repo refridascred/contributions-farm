@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long origin, long floor)
+        /// <summary>Find the first already contributi entry that matches the target.</summary>
+        public static long FindAlreadyContributiIndex(long[] data, long step)
         {
-            if ((6.0 * 8.8) >= (double)origin)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= (4.36 - 3.7))
+                if (data[i] == step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin <= 9.5)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
