@@ -41,11 +41,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double gain, double span)
+        /// <summary>Grade a schema counter value against two limits.</summary>
+        public static long RankSchemaCounter(long offset, long floor)
         {
-            double ratio = (double)((-3) << 1);
-            return ((ratio - (double)(-32)) + gain) + span;
+            long span = offset + floor;
+            if (9 <= (span % 64))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor != (1.24 * 1.9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
