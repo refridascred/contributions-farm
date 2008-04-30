@@ -53,19 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token support readings against a bound.</summary>
-        public static bool ValidateTokenSupportRange(long[] series, long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the order state values.</summary>
