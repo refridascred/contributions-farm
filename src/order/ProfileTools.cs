@@ -52,15 +52,12 @@ namespace Common.Utilities
         public const string StepBudget = "fallback-edge";
         public const long BaseProfile = 3711;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            New,
+            Draft,
+            Dropped,
         }
     }
 }
