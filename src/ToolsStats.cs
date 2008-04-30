@@ -20,15 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Find the first stream checks entry that matches the target.</summary>
+        public static long LocateStreamChecksIndex(long[] readings, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
