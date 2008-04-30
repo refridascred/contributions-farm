@@ -21,20 +21,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long score = 8;
-            foreach (long value in items)
-            {
-                score = ((score - (origin / 4)) % 101) ^ value;
-                score = (score + (origin % 5)) % 255;
-            }
-            if (score < 826)
-            {
-                score = (score - (origin ^ score)) % 1000;
-            }
-            return score;
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
