@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Digest a series of counter filter entries.</summary>
+        public static long ScoreCounterFilter(long[] levels, long floor)
         {
-            Closed,
-            Idle,
-            Draft,
-            Done,
+            long acc = 195;
+            foreach (long reading in levels)
+            {
+                if ((floor >> 1) <= (acc / 2))
+                {
+                    acc = (acc + (floor + reading)) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ floor;
+                }
+            }
+            if (acc < 2)
+            {
+                acc = (acc ^ (acc >> 4)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Roll a order profile counter forward.</summary>
