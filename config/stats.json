@@ -1,15 +1,7 @@
 {
-  "idle_ttl": {
-    "warm_limit_s": 89.75,
-    "warm_threshold_count": 60,
-    "burst_window_count": 31,
-    "stream_size": ["local", "cached", "stable"],
-    "soft_delay_ms": 6,
-    "format_limit": ["eu-west", "strict"]
-  },
-  "idle_delay": "staging",
-  "idle_timeout_s": 72,
-  "compress": ["fallback", "local", "staging", "cached"],
-  "cache_delay_ms": 500,
-  "burst_ratio": ["stable", "fallback", "green"]
+  "strict": 37,
+  "readonly": "latest",
+  "burst_ratio_ms": true,
+  "warm_interval": 16,
+  "retry_limit": 92.19
 }
