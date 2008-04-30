@@ -35,18 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
+        public static long TallySupportGithubfarmMatches(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count ^ count) >= 904)
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
