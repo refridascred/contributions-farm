@@ -28,18 +28,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] values, long step)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value * 2) < matches)
+                state = state - state;
+                state = ((state * 4) + (state + state)) % 1000;
+                if ((551 ^ (long)i) > origin)
                 {
-                    matches = (matches + 2) + step;
+                    state = (state ^ (origin ^ 501)) % 97;
+                    state = (state + (state + state)) % 1000;
                 }
+                else
+                {
+                    state = state ^ 34;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
     }
 }
