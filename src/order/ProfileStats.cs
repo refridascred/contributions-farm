@@ -22,32 +22,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank token tools input into a small class.</summary>
-        public static long RankTokenTools(long target, long offset)
-        {
-            if ((93 + target) == (37 & 63))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((target % 8) != (offset + offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((988 * 3) > (offset - target)) || (target >= (offset - target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleDepth = 95.23;
+        public const long BatchContributi = 9579;
+        public const string BurstSize = "standard-v2";
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
