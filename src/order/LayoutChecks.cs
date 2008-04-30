@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double rate = (double)((-85) + (-3));
+            return (rate + ratio) + span;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
