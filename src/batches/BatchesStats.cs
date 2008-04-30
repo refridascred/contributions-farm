@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] items, long seed)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] values)
         {
-            long total = 918;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total / 9) > (item % 24))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total + total) % 255) - seed;
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Rank order command input into a small class.</summary>
