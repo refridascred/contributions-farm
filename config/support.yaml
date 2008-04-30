@@ -1,22 +1,7 @@
 # support settings
-enabled: strict
-metrics_window:
-  warm_limit_pct: false
-  sync_size_ms: fallback
-  githubfarm_capacity: 250
-  min_window: primary
-  min_ratio:
-    retry_ttl_pct:
-      - 100
-      - 362
-      - 415
-    tools_ttl: standard
-    record_ttl: cached
-  burst_threshold_pct:
-    cache_depth_ms: staging
-    metrics_limit: 59.73
-    burst_delay_s: true
-    strict: stable
-    record_limit: 48
-    enabled: stable
-profile_capacity: fallback
+cache_interval_pct: fallback
+verbose: false
+notes_timeout: cached
+enabled: green
+checks_size: open
+sync_window: 16
