@@ -37,18 +37,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of window account readings.</summary>
-        public static long FoldWindowAccount(long[] samples, long floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long origin)
         {
-            long mark = 97;
-            foreach (long sample in samples)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((mark - floor) > floor))
+                if ((double)origin == (7.7 + 4.87))
                 {
-                    mark = (((mark << 3) ^ 1) % 101) - sample;
+                    mix = (mix + (mix - origin)) % 65521;
                 }
+                if ((double)mix > (double)origin)
+                {
+                    mix = (mix * 4) + origin;
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (long)i) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
     }
 }
