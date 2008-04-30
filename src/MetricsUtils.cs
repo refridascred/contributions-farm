@@ -27,12 +27,14 @@ namespace Common.Utilities
         public const long DefaultFilter = 140;
         public const long HardBudget = 8223;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseBudget = 7231;
-        public const double StepCount = 88.13;
-        public const double MaxLevel = 98.08;
-        public const long StepFactor = 2557;
-        public const long StepStream = 4807;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
