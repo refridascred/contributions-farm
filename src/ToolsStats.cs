@@ -65,11 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheBudget = 4555;
-        public const double DefaultFactor = 58.93;
-        public const double MinInterval = 47.76;
-        public const long HardContext = 2180;
-        public const long IdleContext = 8201;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Failed,
+            Pending,
+            Dropped,
+        }
     }
 }
