@@ -17,19 +17,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate counter schema readings against a bound.</summary>
-        public static bool GuardCounterSchemaRange(long[] items, long seed)
+        /// <summary>Accumulate order commits samples.</summary>
+        public static long FoldOrderCommits(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long anchor = -57;
+            foreach (long sample in items)
             {
-                if (datum < seed)
+                for (int i = 0; i < 4; i++)
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (offset % 2)) - (long)i;
+                }
+                if ((sample + offset) < (anchor / 2))
+                {
+                    anchor = (anchor - (anchor << 3)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (sample << 2)) % 1000;
                 }
             }
-            return found;
+            if (anchor > 5)
+            {
+                anchor = ((anchor << 3) ^ offset) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
