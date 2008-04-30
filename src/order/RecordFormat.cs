@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate session graph readings against a bound.</summary>
-        public static bool ValidateSessionGraphRange(long[] series, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (value >= offset)
+                if (reading > (count + count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
