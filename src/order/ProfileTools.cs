@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] levels, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mix = 660;
+            foreach (long entry in series)
             {
-                if ((double)tally >= (1.0 / 7.0))
+                if ((double)floor >= (6.0 - 18.0))
                 {
-                    tally = ((tally + 3) + value) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = ((mix + (mix + floor)) % 65521) - entry;
                 }
             }
-            return tally;
+            if (mix < 1)
+            {
+                mix = (mix + (floor + floor)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the report class values.</summary>
