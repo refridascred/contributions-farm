@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] data, long seed)
         {
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((double)hits <= (double)seed) || ((2.93 - 6.5) < (double)hits))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
