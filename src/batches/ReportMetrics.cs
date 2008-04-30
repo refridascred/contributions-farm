@@ -22,11 +22,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitWidth = 6553;
+        public const double BurstBudget = 26.22;
+        public const long MinTimeout = 5430;
     }
 }
