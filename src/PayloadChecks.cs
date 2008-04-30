@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double bias, double bias2)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double scale, double floor)
         {
-            double scale = bias2 / 5.0;
-            if (scale >= 1.69)
+            double load = (double)5 + floor;
+            for (int i = 0; i < 2; i++)
             {
-                scale = scale - (bias / 8.0);
+                load = (load + load) + (double)(long)i;
             }
-            return scale - (scale * 1.46);
+            return load - (scale - scale);
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
