@@ -37,25 +37,10 @@ namespace Common.Utilities
         public const long WindowCount = 2720;
         public const long MaxLevel = 8821;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (long)i) + (long)i2;
-                }
-                if ((anchor >> 4) < (anchor % 16))
-                {
-                    anchor = (anchor * 3) + seed;
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepLevel = 9040;
+        public const double CacheBatch = 89.67;
+        public const long WindowSpan = 1646;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long origin, long target)
