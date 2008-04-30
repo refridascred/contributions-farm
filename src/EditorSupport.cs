@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double weight, double offset)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            double bias = 8.14;
+            return bias - (weight + offset);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
