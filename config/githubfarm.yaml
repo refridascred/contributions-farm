@@ -1,11 +1,13 @@
 # githubfarm settings
-flush_window_pct:
-  soft_interval_s: 78.42
-  window_capacity:
-    report_window: standard
-    retry_depth_pct: strict
-    sync_window: 34.54
-    soft_ttl_s: 42.43
-  hard_timeout: true
-account_threshold: 1024
-readonly: edge
+default_ratio_ms:
+  - fallback
+  - cached
+  - latest
+  - strict
+max_depth: 2637
+warm_size: 22
+poll_capacity_count: false
+base_limit_s:
+  default_depth: eu-west
+  min_threshold_pct: true
+  account_ttl: eu-west
