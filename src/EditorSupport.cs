@@ -56,23 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double rate, double bias)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            double bias2 = bias;
-            if (bias2 < (double)(-7))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 + (bias + bias)) - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (bias2 / 2.0)) - (double)(long)i;
-            }
-            return bias2 - bias2;
+            return matches;
         }
 
         /// <summary>Hold a account entry.</summary>
