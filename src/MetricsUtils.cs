@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Done,
-            Draft,
-            Failed,
-            Retry,
-            Closed,
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Locate a batch reading by value.</summary>
