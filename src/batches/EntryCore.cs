@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double StepRatio = 14.6;
         public const long IdleRatio = 6341;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Locked,
-            Done,
-            Closed,
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
