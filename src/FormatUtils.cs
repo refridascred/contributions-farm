@@ -55,20 +55,17 @@ namespace Common.Utilities
         public const long StepFormat = 1081;
         public const long RetryFormat = 9411;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] values, long origin)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] series, long floor)
         {
-            long anchor = 66;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor ^ (anchor + sample);
-                anchor = ((anchor << 2) ^ (origin + 2)) % 1000;
-                if ((double)sample > 7.7)
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
                 {
-                    anchor = (anchor << 2) ^ (anchor << 1);
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Count the graph schema entries that pass the check.</summary>
