@@ -51,14 +51,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Blend two graph stats measurements.</summary>
+        public static double BlendGraphStats(double scale, double bias)
         {
-            Draft,
-            New,
-            Locked,
-            Idle,
-            Dropped,
+            double scale2 = scale;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (double)(long)i) + bias;
+            }
+            return scale2 + (16.0 * 3.5);
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
