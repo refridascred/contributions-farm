@@ -33,25 +33,22 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long step, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] samples)
         {
-            long prev = step ^ limit;
-            if ((double)step <= (6.67 / 7.0))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)step != (7.05 * 2.0)) || ((prev * 5) < prev))
+                if ((hits / 7) == (hits + 75))
                 {
-                    return 5;
+                    hits = (hits + 3) - entry;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
