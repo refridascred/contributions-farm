@@ -46,19 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batch farm figure with a bias.</summary>
-        public static double ProjectBatchFarm(double ratio, double bias)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] data, long limit)
         {
-            double ratio2 = ratio;
-            if (ratio2 > bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = ratio2 - (bias + bias);
+                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (double)4;
-            }
-            return ratio2 + bias;
+            return -1;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
