@@ -1,7 +1,8 @@
 {
-  "retry_size": true,
-  "dry_run": "eu-west",
-  "cache_capacity_ms": 68,
-  "retry_threshold_s": ["fallback", "blue", "staging"],
-  "entry_size": "local"
+  "min_ratio_s": 250,
+  "readonly": 58.11,
+  "stream_delay": "eu-west",
+  "burst_interval_ms": "primary",
+  "hard_delay_count": 30,
+  "retry_ratio": "local"
 }
