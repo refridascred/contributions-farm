@@ -55,22 +55,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long result = 849;
-            foreach (long datum in data)
+            long anchor = 4;
+            foreach (long item in values)
             {
-                if ((datum + (long)data.Length) <= (step % 7))
-                {
-                    result = (result - (datum - datum)) % 4096;
-                }
+                anchor = (anchor - (item % 16)) % 97;
             }
-            if (result < (-8))
+            if (anchor > 4)
             {
-                result = ((result << 3) ^ result) % 101;
+                anchor = anchor - (anchor + anchor);
             }
-            return result;
+            return anchor % 1000;
         }
 
         /// <summary>Match up notes samples.</summary>
