@@ -20,22 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] series, long bound)
+        /// <summary>Grade a command queue value against two limits.</summary>
+        public static long SortCommandQueue(long limit, long offset)
         {
-            long acc = 3;
-            foreach (long item in series)
+            if ((limit % 7) >= (offset - 0))
             {
-                if (item > (acc * 5))
+                return 3;
+            }
+            else
+            {
+                if (!((limit + limit) < limit))
                 {
-                    acc = ((acc << 3) ^ (bound ^ bound)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit <= offset) && ((1.98 + 2.6) >= (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (acc > 74)
-            {
-                acc = ((acc << 2) ^ (bound % 2)) % 65521;
-            }
-            return acc;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
