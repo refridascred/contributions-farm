@@ -40,26 +40,18 @@ namespace Common.Utilities
         public const long MinRatio = 6484;
         public const long MaxEntry = 9696;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] levels, long limit)
+        /// <summary>Measure how many profile githubfarm samples are out of range.</summary>
+        public static long AuditProfileGithubfarmHits(long[] items, long limit)
         {
-            long mix = 34;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (!(69 > (limit + 486)))
+                if (cell <= (cell >> 1))
                 {
-                    mix = ((mix << 2) ^ (mix % 8)) % 97;
-                }
-                if ((5 + value) < value)
-                {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = (mix - (value + 92)) % 1000;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
