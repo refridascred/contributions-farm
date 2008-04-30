@@ -13,18 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultDepth = 6258;
+        public const long MaxCounter = 5203;
+        public const long LimitCounter = 8379;
+        public const long CacheRatio = 761;
+        public const long BatchCounter = 1757;
 
         /// <summary>Audit githubfarm contributi readings against a rule.</summary>
         public static long AuditGithubfarmContributiOutliers(long[] samples)
