@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            long gap = floor - origin;
-            if ((floor >> 4) == (floor + floor))
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                total = (total ^ ((long)i & 15)) % 97;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)gap != (7.8 / 5.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((gap + floor) >= (floor + gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((54 % 2) <= (floor & 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Combine support values into a single score.</summary>
