@@ -1,21 +1,20 @@
 # support settings
-soft_capacity_count:
-  min_size: primary
-  compress: blue
-  max_interval:
-    - 378
-    - 434
-  persist: 9021
-  burst_size:
+flush_delay_ms:
+  strict: true
+  min_capacity:
     - green
-    - strict
-    - standard
-    - edge
-  soft_retries_s: cached
-flush_capacity: blue
-max_retries: 33
-farm_ttl: 16.12
-flush_depth_pct:
-  - open
-  - legacy
-batch_threshold: 23
+    - open
+    - cached
+    - legacy
+  record_limit: 477
+  commits_ttl: legacy
+  batch_limit: staging
+  compress: 19
+idle_ratio: 59.01
+idle_interval_s: 3884
+githubfarm_size: true
+compress:
+  - 24
+  - 265
+  - 367
+enabled: legacy
