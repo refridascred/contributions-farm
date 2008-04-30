@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const double StepSize = 23.73;
         public const long WindowDepth = 3860;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 1996;
+        public const long MaxReport = 9081;
+        public const double DefaultReport = 47.08;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
