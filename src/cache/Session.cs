@@ -27,22 +27,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up tools editor samples.</summary>
-        public static long CompareToolsEditorCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 931;
+        public const double MinReport = 85.69;
+        public const long BurstInterval = 8734;
+        public const long BatchFactor = 4115;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long GradeRecord(long step, long seed)
