@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const double DefaultSize = 91.68;
         public const double BurstFactor = 79.21;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] items, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((5 % 60) >= offset)
+                if (value != origin)
                 {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
