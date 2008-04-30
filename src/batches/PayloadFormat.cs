@@ -54,17 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a metrics route sample.</summary>
-        public static long SeekMetricsRouteIndex(long[] samples, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
