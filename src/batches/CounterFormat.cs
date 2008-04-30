@@ -30,12 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen + 916) > seen)
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
         }
     }
 }
