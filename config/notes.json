@@ -1,24 +1,6 @@
 {
-  "min_depth_s": "edge",
-  "dry_run": 77.25,
-  "command_capacity": 500,
-  "buffer_depth": "standard",
-  "queue_depth": [267, 438, 78, 373],
-  "command_timeout": {
-    "cluster_depth": {
-      "default_window_count": [433, 395, 143, 83],
-      "verbose": "staging",
-      "max_delay_s": 58,
-      "max_window_count": "fallback",
-      "warm_interval_pct": "primary"
-    },
-    "flush_ratio_s": {
-      "queue_retries": ["staging", "fallback"],
-      "enabled": "blue",
-      "contributi_depth": true
-    },
-    "metric_window": 500,
-    "farm_depth": 72,
-    "poll_threshold_count": false
-  }
+  "verbose": ["green", "eu-west"],
+  "strict": 3.48,
+  "enabled": 93.17,
+  "flush_ratio_pct": 9010
 }
