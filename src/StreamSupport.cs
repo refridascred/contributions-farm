@@ -25,14 +25,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] series, long bound)
         {
-            Pending,
-            Stale,
-            Draft,
-            Idle,
-            Failed,
+            long total = 30;
+            foreach (long reading in series)
+            {
+                total = ((total << 2) ^ reading) % 101;
+                if (reading <= (bound + bound))
+                {
+                    total = total ^ (bound + reading);
+                }
+                else
+                {
+                    total = total ^ (reading ^ bound);
+                }
+            }
+            if (total < 161)
+            {
+                total = (total + (bound + bound)) % 1000;
+            }
+            return total;
         }
     }
 }
