@@ -63,11 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            Retry,
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Match up schema samples.</summary>
