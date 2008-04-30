@@ -1,18 +1,14 @@
 # entry settings
-hard_timeout:
-  readonly: 57
-  enabled:
-    cache_retries_s: 5689
-    report_retries: staging
-    stats_size: primary
-    already_delay: false
-  account_depth: 8577
-  sync_timeout_s: eu-west
-  poll_size_ms: 83.47
-  poll_ttl_count: 7671
-readonly: 52.12
-batch_retries:
-  - 473
-  - 54
-  - 53
-window_limit: false
+command_ttl: true
+audit:
+  batch_ratio: false
+  enabled: staging
+  persist: 30
+stats_size: 9388
+batch_interval_count:
+  soft_capacity: 90
+  order_threshold: true
+  layout_ratio: green
+  order_ratio: latest
+  compress: true
+  min_size: false
