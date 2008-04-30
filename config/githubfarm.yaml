@@ -1,9 +1,9 @@
 # githubfarm settings
-persist: 26
-cache_interval_count:
-  default_timeout_s: strict
-  audit: 100
-  hard_ttl: true
-min_threshold_pct: 31.61
-soft_delay_s: true
-batch_limit: 30
+poll_retries_pct: latest
+schema_ratio:
+  command_interval: true
+  soft_delay: local
+  checks_interval: false
+  readonly: blue
+  metric_capacity: strict
+retry_ratio_pct: 33.82
