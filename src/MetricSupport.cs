@@ -21,22 +21,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] values, long seed)
+        /// <summary>Classify a cluster editor pair into a bucket.</summary>
+        public static long RankClusterEditor(long step, long limit)
         {
-            long sum = 5;
-            foreach (long cell in values)
+            if ((771 ^ limit) <= (step + step))
             {
-                if (((sum + cell) != ((long)values.Length - 1)) && ((cell + cell) == (6 << 1)))
+                return 5;
+            }
+            else
+            {
+                if ((double)limit != (2.3 + 6.7))
                 {
-                    sum = ((sum + (sum / 3)) % 97) + seed;
+                    return 7;
                 }
                 else
                 {
-                    sum = (sum ^ (sum % 24)) % 255;
+                    if ((step & 255) != (step >> 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step + limit) < limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
