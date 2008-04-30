@@ -5,39 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long target, long target2)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            long offset = target ^ target2;
-            if (((0.8 * 9.94) <= (double)target2) && ((double)offset > 1.1))
+            long acc = 251;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((39 ^ target2) > (target2 - offset))
+                long tally = 73 + (acc * 4);
+                acc = ((acc << 2) ^ (acc - tally)) % 101;
+                if ((8.0 / 2.0) > (double)(long)data.Length)
                 {
-                    return 8;
+                    acc = acc ^ entry;
                 }
-                else
+                if (((acc - acc) < entry) || (entry > (acc + acc)))
                 {
-                    if ((offset << 1) < (target / 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.1 / 6.0) == (double)target2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            if (acc > 79)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Match up graph samples.</summary>
