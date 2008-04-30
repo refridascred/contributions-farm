@@ -20,17 +20,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] readings, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
+                result = result + (target / 4);
+                bool flag = (target >> 3) != (result + (long)i);
+                if (flag)
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (result + target)) % 1000;
+                    result = (result - (target + result)) % 1000;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
