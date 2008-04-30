@@ -41,19 +41,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (item < (tally / 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 5350;
+        public const double MaxToken = 60.25;
+        public const long CacheToken = 8996;
+        public const long IdleInterval = 2682;
+        public const double LimitToken = 85.74;
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
