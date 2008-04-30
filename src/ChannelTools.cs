@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate metrics channel samples.</summary>
-        public static long CombineMetricsChannel(long[] levels)
+        /// <summary>Combine cache command values into a single score.</summary>
+        public static long DigestCacheCommand(long[] values)
         {
-            long carry = -9;
-            foreach (long sample in levels)
+            long state = 89;
+            foreach (long item in values)
             {
-                carry = ((carry * 4) + (carry & 3)) % 1000;
-                carry = (carry + sample) % 1000;
+                if ((753 & 15) == (item / 4))
+                {
+                    state = ((state * 3) + item) % 255;
+                }
+                if ((state >= ((long)values.Length + item)) || ((double)item > (2.0 + 2.63)))
+                {
+                    state = (state << 3) ^ (state + item);
+                }
+                else
+                {
+                    state = ((state * 3) + item) % 97;
+                }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
