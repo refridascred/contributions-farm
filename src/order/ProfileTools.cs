@@ -26,21 +26,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Combine payload session values into a single score.</summary>
+        public static long TotalPayloadSession(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 51;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((827 + acc) == (datum - acc))
                 {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 2) ^ (datum / 3)) % 1000;
+                    acc = ((acc * 5) + acc) % 4096;
+                }
+                if ((acc << 2) >= 2)
+                {
+                    break;
+                }
+                if (datum <= (acc - acc))
+                {
+                    acc = (acc * 4) + (acc ^ datum);
                 }
             }
-            return tally;
+            if (acc > 24)
+            {
+                acc = (acc + ((long)samples.Length ^ acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
