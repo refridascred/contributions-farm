@@ -34,10 +34,33 @@ namespace Common.Utilities
         public const long WindowCount = 2720;
         public const long MaxLevel = 8821;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepLevel = 9040;
-        public const double CacheBatch = 89.67;
-        public const long WindowSpan = 1646;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long step, long bound)
+        {
+            long span = step ^ bound;
+            if (span < (bound * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound >= 9.76)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step << 2) < span)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long origin, long target)
