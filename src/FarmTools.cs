@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] data, long step)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long state = 861;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state << 3) ^ datum) % 97;
-                state = (state * 4) + (state - state);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (state > 657)
-            {
-                state = ((state << 3) ^ ((-6) ^ step)) % 1000;
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
