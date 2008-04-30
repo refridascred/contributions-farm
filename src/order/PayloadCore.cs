@@ -32,20 +32,18 @@ namespace Common.Utilities
         public const string StepCommits = "cached";
         public const long SoftSpan = 9230;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            long mix = 650;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (((double)mix == (6.1 / 8.0)) && (datum >= (mix - mix)))
                 {
-                    sum = ((sum * 4) + sum) ^ (long)i2;
+                    mix = mix - (0 & 7);
                 }
-                sum = (sum + sum) % 65521;
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return mix % 97;
         }
     }
 }
