@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-RECORD_LIMIT=413
+RECORD_LIMIT=370
 log "limit is ${RECORD_LIMIT}"
+
+for item in local strict; do
+    log "checking ${item}"
+done
