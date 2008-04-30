@@ -1,7 +1,16 @@
 {
-  "cache_timeout": true,
-  "verbose": [417, 109, 395],
-  "warm_capacity_count": 11.0,
-  "burst_threshold_s": true,
-  "default_ttl_ms": ["local", "eu-west"]
+  "poll_capacity": {
+    "record_timeout": false,
+    "min_depth": [297, 72, 139],
+    "already_retries": {
+      "channel_timeout": 100,
+      "sync_timeout_pct": 10.53,
+      "burst_timeout_pct": false,
+      "enabled": "cached",
+      "readonly": "staging",
+      "strict": "open"
+    }
+  },
+  "poll_size": 90,
+  "hard_threshold_s": 5496
 }
