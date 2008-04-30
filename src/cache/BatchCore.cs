@@ -27,13 +27,13 @@ namespace Common.Utilities
         public const long StepGraph = 380;
         public const long RetryGraph = 368;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Done,
-            Closed,
-            Ready,
-            New,
+            public double Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
