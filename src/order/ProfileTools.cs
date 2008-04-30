@@ -63,20 +63,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] values)
-        {
-            long carry = 648;
-            foreach (long item in values)
-            {
-                carry = ((carry << 3) ^ (item + item)) % 65521;
-            }
-            if (carry > 63)
-            {
-                carry = carry ^ (882 * 4);
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowScore = 14.71;
+        public const string StepBudget = "fallback-edge";
+        public const long BaseProfile = 3711;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long limit)
