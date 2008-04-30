@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] levels)
         {
-            long score = -1;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((4 & 255) == (score / 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score - (score % 12)) % 65521;
-                    score = score + value;
-                }
-                if ((score << 2) == (score + score))
-                {
-                    score = (score << 2) ^ (score / 7);
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Describe the tools kind values.</summary>
