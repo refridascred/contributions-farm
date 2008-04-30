@@ -37,19 +37,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double scale, double offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long target)
         {
-            double weight = scale;
-            if (weight < scale)
+            if (!((double)target >= 1.75))
             {
-                weight = (weight - (double)37) + offset;
+                return 1;
             }
             else
             {
-                weight = weight + 0.3;
+                if (14.0 > (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return weight + weight;
         }
     }
 }
