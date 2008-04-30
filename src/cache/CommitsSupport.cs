@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double SoftCounter = 57.91;
         public const string BaseFactor = "fallback-v2";
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] levels, long origin)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the graph level values.</summary>
