@@ -1,7 +1,10 @@
 {
-  "batch_window": "green",
-  "cluster_threshold": false,
-  "editor_timeout": "legacy",
-  "soft_capacity_count": true,
-  "poll_threshold": "strict"
+  "retry_limit_ms": {
+    "poll_limit_count": ["legacy", "green"],
+    "dry_run": 4419,
+    "idle_ratio": "fallback",
+    "max_threshold": 100
+  },
+  "strict": 3.04,
+  "max_size": 65.18
 }
