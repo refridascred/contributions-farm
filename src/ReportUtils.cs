@@ -31,13 +31,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Rank profile editor input into a small class.</summary>
