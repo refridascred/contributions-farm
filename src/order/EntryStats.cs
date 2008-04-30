@@ -51,13 +51,11 @@ namespace Common.Utilities
         public const long DefaultBuffer = 4756;
         public const double HardSize = 23.76;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Stale,
-            Dropped,
-            Paused,
-            Queued,
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
