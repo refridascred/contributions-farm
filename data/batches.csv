@@ -1,6 +1,7 @@
-id,count,level,score
-1,green,79.32,898
-2,92.47,eu-west,330
-3,319,71.99,154
-4,strict,393,295
-5,staging,standard,177
+id,region,level
+1,63.32,54.7
+2,blue,548
+3,19,187
+4,92,67.61
+5,primary,edge
+6,89.09,14.33
