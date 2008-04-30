@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] data)
         {
-            long acc = 18;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                acc = (acc * 5) + (origin - entry);
-                acc = ((acc << 2) ^ (entry >> 2)) % 101;
+                if ((hits + hits) == (entry + entry))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first report token entry that matches the target.</summary>
