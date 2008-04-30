@@ -48,11 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 8677;
-        public const double StepLayout = 85.55;
-        public const long HardWidth = 2408;
-        public const long MaxCount = 897;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 3752;
+        public const double SoftLevel = 10.66;
+        public const long HardCommits = 7078;
+        public const long SoftFactor = 8294;
+        public const string WindowCommits = "strict-1";
 
         /// <summary>Measure how many layout channel samples are out of range.</summary>
         public static long CountLayoutChannelGaps(long[] levels, long step)
