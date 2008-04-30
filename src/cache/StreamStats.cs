@@ -16,10 +16,24 @@ namespace Common.Utilities
             return drift - (bias + bias);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultRatio = "latest-v2";
-        public const double RetryChecks = 28.9;
-        public const long BurstChecks = 6338;
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double gain, double floor)
+        {
+            double mean = gain;
+            if (mean < mean)
+            {
+                mean = (mean - mean) + floor;
+            }
+            else
+            {
+                mean = mean - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + 4.19;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
