@@ -25,19 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Look up the position of a cache metrics sample.</summary>
+        public static long LookupCacheMetricsIndex(long[] items, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit / 4) != (carry ^ carry))
+                if ((items[i] >= target) && ((items[i] % 3) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
