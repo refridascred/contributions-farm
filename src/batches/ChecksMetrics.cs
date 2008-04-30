@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBatches = 64.13;
-        public const long StepBatches = 1927;
-        public const double WindowBatches = 85.91;
-        public const string BurstBatches = "fallback-edge";
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
