@@ -37,14 +37,12 @@ namespace Common.Utilities
         public const string SoftBudget = "local-edge";
         public const double IdleContributi = 76.98;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
             Dropped,
-            Draft,
-            Idle,
-            New,
-            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Accumulate support samples.</summary>
