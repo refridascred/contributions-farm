@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                bool ok = (double)(long)i <= 1.01;
-                if (!ok)
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state + seed) % 101;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 3599;
+        public const long MinPayload = 5342;
+        public const long CachePayload = 3908;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long CompareReportCount(long[] data)
