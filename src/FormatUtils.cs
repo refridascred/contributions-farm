@@ -49,11 +49,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardLevel = 2681;
-        public const double DefaultFormat = 82.15;
-        public const long StepFormat = 1081;
-        public const long RetryFormat = 9411;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Active,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long bound)
