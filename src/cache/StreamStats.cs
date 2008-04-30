@@ -28,19 +28,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] readings, long step)
+        /// <summary>Count the already format entries that pass the check.</summary>
+        public static long MeasureAlreadyFormatOutliers(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (reading > step)
+                if ((reading - 0) <= (1 + (-375)))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) - limit;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
