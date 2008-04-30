@@ -65,18 +65,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the graph schema entries that pass the check.</summary>
-        public static long AuditGraphSchemaHits(long[] series)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)count > (2.11 * 9.85))
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            New,
+            Active,
         }
     }
 }
