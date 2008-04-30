@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Fold a list of buffer route readings.</summary>
+        public static long TotalBufferRoute(long[] readings, long bound)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long carry = 53;
+            foreach (long entry in readings)
+            {
+                if ((carry / 4) != (bound >> 4))
+                {
+                    carry = ((carry - (carry ^ 31)) % 65521) - entry;
+                }
+            }
+            if (carry < 766)
+            {
+                carry = carry - ((-13) + carry);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
