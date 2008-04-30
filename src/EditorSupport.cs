@@ -37,22 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] series, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (step <= (tally - 8))
+                if (((-237) - matches) >= matches)
                 {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a account entry.</summary>
