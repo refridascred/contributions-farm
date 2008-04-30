@@ -22,18 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] readings, long floor)
+        /// <summary>Roll a cache stats counter forward.</summary>
+        public static long SeriesCacheStats(long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (((floor & 63) >= (seen % 60)) || !((double)(-367) > (double)seen))
+                if (!((11.0 - 18.0) != (double)limit))
                 {
-                    seen = (seen + 3) + reading;
+                    result = (result - (limit * 3)) % 101;
+                    result = (result + limit) % 101;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Blend two notes measurements.</summary>
