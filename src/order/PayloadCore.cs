@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream batch samples.</summary>
-        public static long TallyStreamBatch(long[] series)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long mark = 64;
-            foreach (long item in series)
-            {
-                mark = ((mark << 3) ^ item) % 1000;
-                if (1 > (item - item))
-                {
-                    mark = (mark << 3) ^ (mark + mark);
-                }
-            }
-            return mark % 4096;
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
