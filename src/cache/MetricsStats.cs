@@ -38,23 +38,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((step >> 4) < (8 / 5)) || ((reading << 2) <= (reading << 3))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepTimeout = 4564;
+        public const long BurstWidth = 6251;
+        public const long LimitGithubfarm = 8871;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] data, long step)
