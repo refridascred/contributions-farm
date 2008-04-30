@@ -22,10 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFactor = 83.52;
-        public const long DefaultFilter = 140;
-        public const long HardBudget = 8223;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Stale,
+            Idle,
+            Active,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
