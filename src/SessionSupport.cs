@@ -46,13 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public bool Region { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Active,
+            Retry,
+            Synced,
         }
     }
 }
