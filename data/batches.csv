@@ -1,7 +1,10 @@
-id,weight,active,count
-1,53.85,37,6.75
-2,78.82,78.44,822
-3,20.21,705,162
-4,66.04,470,fallback
-5,383,743,staging
-6,31.66,54.57,30.06
+id,owner,region
+1,158,95.09
+2,170,34.95
+3,483,50.77
+4,730,latest
+5,41.82,96
+6,standard,staging
+7,eu-west,strict
+8,573,988
+9,470,open
