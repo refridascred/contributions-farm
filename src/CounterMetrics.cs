@@ -54,12 +54,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long target, long floor)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long edge = target + floor;
+            if ((double)target < (2.7 + 17.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor * 4) < (target * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target % 8) == (edge + (-1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
