@@ -34,11 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinInterval = "fallback-1";
-        public const long SoftStats = 5808;
-        public const string CacheSpan = "local-v2";
-        public const long MinDepth = 590;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public bool Size { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterGaps(long[] samples, long offset)
