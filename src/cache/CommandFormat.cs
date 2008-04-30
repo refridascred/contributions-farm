@@ -33,24 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long floor, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            if ((85 + target) < (target & 31))
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target <= 10)
+                sum = sum - (sum / 2);
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 2;
+                    sum = ((sum + (seed % 2)) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    return 4;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Count the profile checks entries that pass the check.</summary>
