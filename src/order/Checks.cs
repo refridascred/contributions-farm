@@ -40,21 +40,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long step, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long next = step + origin;
+            if (((6.0 + 16.0) >= (double)next) || ((origin + 118) >= (39 >> 3)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((next / 4) < (origin % 97))
                 {
-                    if ((samples[i] ^ samples[j]) != 10)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin < 14.0)
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
