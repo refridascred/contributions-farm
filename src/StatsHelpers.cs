@@ -20,21 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 8;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (((acc ^ (3 * 3)) % 255) + reading) + origin;
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
