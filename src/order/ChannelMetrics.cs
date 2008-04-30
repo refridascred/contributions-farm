@@ -26,13 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double ratio, double floor)
         {
-            Closed,
-            Pending,
-            Ready,
-            Stale,
+            double load = 1.14;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load + (ratio - ratio);
         }
     }
 }
