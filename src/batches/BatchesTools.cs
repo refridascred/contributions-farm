@@ -24,12 +24,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] levels, long offset)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long score = 24;
+            foreach (long datum in levels)
+            {
+                if (datum <= (score / 8))
+                {
+                    score = ((score ^ (datum & 1)) % 101) - offset;
+                }
+            }
+            return score % 4096;
         }
     }
 }
