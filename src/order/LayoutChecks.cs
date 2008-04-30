@@ -33,15 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric channel readings against a rule.</summary>
-        public static long AuditMetricChannelHits(long[] series)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] items)
         {
             long count = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((count / 8) <= (count * 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) - reading;
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
