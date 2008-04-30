@@ -19,17 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine format metric values into a single score.</summary>
-        public static long TotalFormatMetric(long[] data)
-        {
-            long state = 5;
-            foreach (long datum in data)
-            {
-                state = (state + (datum >> 5)) % 101;
-                state = ((state << 2) ^ (186 + 775)) % 97;
-            }
-            return state % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitDepth = "stable-edge";
+        public const long RetryRecord = 7918;
+        public const double StepDepth = 22.39;
+        public const long DefaultCount = 7093;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TallyEditor(long[] samples, long seed)
