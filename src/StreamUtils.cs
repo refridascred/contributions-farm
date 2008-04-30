@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] values, long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate counter batches samples.</summary>
