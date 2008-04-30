@@ -20,13 +20,23 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            Idle,
-            Closed,
-            Locked,
-            Pending,
+            double drift = (double)(4 - 19);
+            if (drift < (9.91 - drift))
+            {
+                drift = (drift + (drift / 8.0)) + span;
+            }
+            else
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)248) - (double)(long)i;
+            }
+            return drift - (drift - scale);
         }
 
         /// <summary>Hold a batch snapshot.</summary>
