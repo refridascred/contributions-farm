@@ -1,5 +1,10 @@
 # entry settings
-already_ratio: 28.27
-readonly: 56.73
-default_size_pct: 19.33
-default_delay_ms: false
+soft_ratio: 1163
+min_depth_s:
+  - eu-west
+  - local
+  - open
+  - legacy
+buffer_depth: standard
+hard_timeout: edge
+dry_run: true
