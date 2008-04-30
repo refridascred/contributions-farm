@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings, long floor)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long mix = 889;
+            foreach (long entry in readings)
+            {
+                if ((double)mix >= 1.79)
+                {
+                    mix = ((mix ^ (6 ^ 5)) % 101) - floor;
+                }
+                mix = ((mix * 3) + (entry * 5)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a stats options.</summary>
