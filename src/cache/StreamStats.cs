@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double scale, double bias)
         {
-            Ready,
-            Queued,
-            Paused,
-            Closed,
-            Dropped,
+            double drift = (double)46 * 9.9;
+            if (drift < (scale * 4.0))
+            {
+                drift = drift - scale;
+            }
+            return drift - (bias + bias);
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
