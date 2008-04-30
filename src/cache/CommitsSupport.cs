@@ -49,19 +49,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] values, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (offset >= ((long)i << 1))
+                if (((double)target <= (0.2 / 3.0)) && ((count % 24) >= 9))
                 {
-                    total = total - (offset + total);
+                    count = (count + 1) + cell;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the batch kind values.</summary>
