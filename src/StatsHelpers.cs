@@ -52,40 +52,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long limit, long floor)
-        {
-            long delta = limit + floor;
-            if ((19 + floor) != (delta % 10))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(delta < (delta * 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((delta + floor) != ((-26) - delta)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (delta <= floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstCount = 9064;
+        public const string BatchFactor = "fallback-v2";
+        public const long BatchToken = 4146;
+        public const long MinWidth = 2031;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long CombineSchema(long[] readings, long origin)
