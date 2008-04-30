@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double bias, double floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double rate = floor;
-            if (rate <= bias)
-            {
-                rate = rate + bias;
-            }
-            return rate - (floor * 4.0);
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
