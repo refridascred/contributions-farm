@@ -1,8 +1,4 @@
 # entry settings
-flush_interval_s: false
-base_delay_pct:
-  - blue
-  - open
-route_timeout: 932
-flush_ratio_ms: 2121
-poll_ratio_ms: true
+strict: 22.55
+audit: cached
+graph_ratio: 9.08
