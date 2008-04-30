@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 36;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry ^ (-6)) % 97) ^ cell;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a contributi record.</summary>
