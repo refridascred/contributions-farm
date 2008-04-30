@@ -73,12 +73,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 8629;
+        public const long HardSize = 7439;
+        public const long DefaultFactor = 9989;
+        public const long DefaultQueue = 902;
     }
 }
