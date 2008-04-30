@@ -19,22 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window stats samples are out of range.</summary>
-        public static long AuditWindowStatsOutliers(long[] items)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if (!((bound & 3) <= 40))
             {
-                if ((((5.0 / 5.0) < (double)(long)items.Length) && (3.0 > (double)tally)) || (((item & 3) == (item - tally)) || ((3.0 / 5.0) == (double)item)))
+                return 2;
+            }
+            else
+            {
+                if ((bound * 3) < (954 % 8))
                 {
-                    tally = tally + 1;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a command reading by value.</summary>
