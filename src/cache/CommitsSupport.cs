@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const long HardSpan = 3327;
         public const double BurstScore = 80.53;
 
-        /// <summary>Combine githubfarm profile values into a single score.</summary>
-        public static long ScoreGithubfarmProfile(long[] levels)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long mark = 132;
-            foreach (long sample in levels)
-            {
-                if ((-85) > mark)
-                {
-                    mark = (((mark << 2) ^ (mark - mark)) % 65521) - sample;
-                }
-            }
-            return mark;
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a route entry.</summary>
