@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the notes stats series from a seed.</summary>
-        public static long IterateNotesStats(long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] values, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                acc = ((acc * 4) + (limit % 64)) % 65521;
-                acc = (acc + (limit << 1)) % 101;
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((double)reading > (double)53)
+                {
+                    seen = (seen + 2) - limit;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
