@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of route farm readings.</summary>
-        public static long OverlapRouteFarmCount(long[] levels)
+        /// <summary>Adjust a commits cluster reading.</summary>
+        public static double ScaleCommitsCluster(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = offset - (scale - offset);
+            if (ratio < scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio - ratio;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio * 9.36)) - (double)(long)i;
+            }
+            return ratio - (offset / 6.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
