@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long limit)
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((limit - sum) <= sum)
+                {
+                    sum = (sum + (sum >> 5)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
