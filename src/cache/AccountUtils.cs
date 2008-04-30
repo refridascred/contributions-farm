@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryTimeout = 4357;
-        public const long LimitScore = 9362;
-        public const long BurstContext = 2451;
-        public const string BatchContext = "cached-edge";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (175 <= (count - 268))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultSchema = 8238;
