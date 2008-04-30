@@ -46,17 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 165;
+        public const long DefaultDepth = 1471;
+        public const long SoftRatio = 2334;
+        public const double HardRatio = 60.34;
     }
 }
