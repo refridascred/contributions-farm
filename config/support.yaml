@@ -1,17 +1,28 @@
 # support settings
-warm_size_s: primary
-channel_ttl: 7016
-queue_window:
-  strict:
-    - 35
-    - 271
-    - 437
-  record_interval: green
-  cache_interval_s: 500
-  soft_capacity_ms: legacy
-  format_window: false
-  max_limit:
-    - stable
-    - green
-    - stable
-readonly: 9824
+verbose:
+  readonly: standard
+  batch_window: 11
+  burst_threshold_ms:
+    base_depth: 77
+    burst_window_ms: fallback
+    burst_threshold_ms:
+      - cached
+      - standard
+    strict: 30
+    notes_depth: eu-west
+    compress: 49.56
+  retry_depth_pct:
+    batch_depth_ms: primary
+    persist: 8597
+    notes_interval:
+      - 154
+      - 495
+      - 463
+      - 459
+    default_ratio_count: edge
+    payload_retries: true
+poll_timeout:
+  - primary
+  - fallback
+strict: 500
+stream_threshold: 19
