@@ -41,18 +41,18 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Count the stats cache entries that pass the check.</summary>
-        public static long AuditStatsCacheHits(long[] series)
+        /// <summary>Count the support record entries that pass the check.</summary>
+        public static long AuditSupportRecordGaps(long[] items)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!(entry <= count) || ((3.24 / 7.0) >= (double)count))
+                if (!((value + value) <= (value & 15)) && ((value >= (seen * 2)) || ((double)value > (0.9 * 8.3))))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
