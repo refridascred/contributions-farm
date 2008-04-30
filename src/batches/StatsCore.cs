@@ -52,17 +52,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] samples, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 125;
+            foreach (long cell in levels)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
+                if (((double)cell < 16.0) && ((mark & 63) < (cell >> 4)))
                 {
-                    return (long)i;
+                    mark = mark - (cell & 1);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark << 3)) % 65521;
                 }
             }
-            return -1;
+            if (mark > 433)
+            {
+                mark = (mark - (mark % 8)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
