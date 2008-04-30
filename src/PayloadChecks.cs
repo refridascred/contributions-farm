@@ -33,18 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] data)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + value) >= (count / 9))
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
