@@ -22,11 +22,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = ((mix ^ (origin / 5)) % 65521) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 255;
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    mix = (((mix << 3) ^ (238 ^ origin)) % 255) + (long)i3;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the batch buffer series from a seed.</summary>
