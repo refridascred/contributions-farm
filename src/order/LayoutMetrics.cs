@@ -41,18 +41,17 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Count the support record entries that pass the check.</summary>
-        public static long AuditSupportRecordGaps(long[] items)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((value + value) <= (value & 15)) && ((value >= (seen * 2)) || ((double)value > (0.9 * 8.3))))
+                if (data[i] <= seed)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
