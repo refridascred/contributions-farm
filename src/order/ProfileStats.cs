@@ -37,39 +37,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long bound, long limit)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            long step = bound + limit;
-            if ((limit + bound) != (bound ^ step))
+            double drift = span;
+            if (drift >= span)
             {
-                return 4;
+                drift = drift - ratio;
             }
             else
             {
-                if ((bound / 4) >= (bound * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (379 >= (bound + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit <= 35)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                drift = drift - 6.58;
             }
+            return drift - (ratio / 6.0);
         }
 
         /// <summary>Fold a list of record profile readings.</summary>
