@@ -19,11 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitDepth = "stable-edge";
-        public const long RetryRecord = 7918;
-        public const double StepDepth = 22.39;
-        public const long DefaultCount = 7093;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long target, long floor)
+        {
+            if ((target + floor) < 445)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target & 31) == (floor << 1)) && ((floor - target) > floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long LimitTimeout = 65;
