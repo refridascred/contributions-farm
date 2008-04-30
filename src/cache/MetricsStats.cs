@@ -68,10 +68,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 56;
-        public const double RetryWidth = 84.83;
-        public const long MaxWidth = 6222;
+        /// <summary>Accumulate context stream samples.</summary>
+        public static long TallyContextStream(long[] series, long step)
+        {
+            long mark = -64;
+            foreach (long value in series)
+            {
+                mark = ((mark - step) % 4096) ^ value;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Grade a notes schema value against two limits.</summary>
         public static long SortNotesSchema(long step, long step2)
