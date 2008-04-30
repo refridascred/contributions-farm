@@ -13,17 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] items, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the layout status values.</summary>
