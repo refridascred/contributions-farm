@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema metric values into a single score.</summary>
-        public static long DigestSchemaMetric(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] values, long offset)
         {
-            long mark = 992;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (((mark ^ datum) == (mark * 3)) && (mark < (datum + 982)))
+                if ((value + 8) <= (offset >> 4))
                 {
-                    mark = (mark - (mark % 60)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - mark) % 101;
+                    count = count + 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the batches class values.</summary>
