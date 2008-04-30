@@ -21,10 +21,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultFactor = 2812;
-        public const long CacheBudget = 2771;
-        public const string StepFactor = "latest-v2";
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long target)
