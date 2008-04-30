@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many batch cache samples are out of range.</summary>
+        public static long AuditBatchCacheMatches(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)count <= (3.12 + 0.5)) && ((long)samples.Length > count))
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session state values.</summary>
