@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchInterval = 7568;
-        public const long BatchStream = 8278;
-        public const long LimitStream = 9935;
-        public const long BaseWidth = 2693;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Done,
+            Draft,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double RetryRecord = 55.16;
