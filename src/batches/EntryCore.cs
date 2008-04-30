@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many batch cache samples are out of range.</summary>
-        public static long AuditBatchCacheMatches(long[] samples)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!((double)count <= (3.12 + 0.5)) && ((long)samples.Length > count))
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Paused,
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the session state values.</summary>
