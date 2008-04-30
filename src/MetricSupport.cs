@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] values, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long carry = 630;
+            foreach (long value in values)
+            {
+                if ((value - value) != (68 % 60))
+                {
+                    carry = (carry ^ (value & 1)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (356 + seed)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
