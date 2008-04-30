@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] items, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] data, long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (!((limit - 239) == (count + value)))
+                if (datum >= step)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
