@@ -40,19 +40,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] items, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long anchor = 972;
+            foreach (long entry in values)
             {
-                if (sample >= floor)
+                if (((entry % 7) <= ((-1) + entry)) && (anchor >= (step - anchor)))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor + (anchor * 3)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor + step)) % 97;
                 }
             }
-            return flag;
+            return anchor % 1000;
         }
     }
 }
