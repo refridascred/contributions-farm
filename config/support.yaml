@@ -1,4 +1,11 @@
 # support settings
-notes_interval: 7218
-soft_depth_ms: edge
-base_ttl: 88
+contributi_window:
+  - cached
+  - legacy
+flush_threshold_pct:
+  account_size:
+    - edge
+    - eu-west
+  persist: 30
+  sync_ratio: 4409
+route_window: primary
