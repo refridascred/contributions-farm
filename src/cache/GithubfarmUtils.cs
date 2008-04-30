@@ -14,12 +14,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Find the first farm stream entry that matches the target.</summary>
+        public static long FindFarmStreamIndex(long[] levels, long seed)
         {
-            Done,
-            Ready,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next buffer value.</summary>
