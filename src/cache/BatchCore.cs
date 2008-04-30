@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] items)
-        {
-            long result = 0;
-            foreach (long reading in items)
-            {
-                result = (result ^ (reading * 3)) % 97;
-                result = result + (6 << 1);
-                result = (result ^ (reading << 2)) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 3923;
+        public const long BatchScore = 3865;
+        public const long LimitInterval = 9086;
+        public const long DefaultEntry = 6875;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftAlready = 6306;
