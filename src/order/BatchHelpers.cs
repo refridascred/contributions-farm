@@ -37,13 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            New,
+            Closed,
+            Failed,
         }
     }
 }
