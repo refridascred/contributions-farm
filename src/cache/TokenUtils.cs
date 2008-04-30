@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] values)
         {
-            long mix = 329;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                mix = (((mix * 4) + (14 + mix)) % 97) - value;
+                if ((sample << 2) >= 230)
+                {
+                    matches = matches + 2;
+                }
             }
-            if (mix > 5)
-            {
-                mix = (mix * 5) + (mix % 24);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
