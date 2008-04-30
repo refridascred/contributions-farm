@@ -13,12 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a context report figure with a bias.</summary>
+        public static double SmoothContextReport(double rate, double span)
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            double weight = (double)((-94) >> 1);
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight + rate) + (double)(long)i) + span;
+            }
+            return weight + (rate * 7.7);
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
