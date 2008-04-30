@@ -60,24 +60,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a metric command counter forward.</summary>
-        public static long RollMetricCommand(long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            long anchor = -106;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (((anchor + (-75)) == (datum + 87)) && ((anchor + anchor) != (datum << 2)))
                 {
-                    mix = (((mix * 2) + mix) % 101) + (long)i2;
-                    mix = ((mix * 2) + 211) % 4096;
+                    anchor = (anchor ^ datum) % 65521;
                 }
-                for (int i3 = 0; i3 < 7; i3++)
+                else
                 {
-                    mix = ((mix ^ (mix / 8)) % 255) ^ (long)i3;
+                    anchor = anchor - (datum >> 1);
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((1 + anchor) >= ((-844) % 7))
+                {
+                    break;
+                }
             }
-            return mix;
+            return anchor;
         }
     }
 }
