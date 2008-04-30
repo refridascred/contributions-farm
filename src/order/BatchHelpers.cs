@@ -27,24 +27,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a order profile counter forward.</summary>
-        public static long RollOrderProfile(long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long anchor = 517;
+            foreach (long item in samples)
             {
-                if ((origin * 5) <= origin)
-                {
-                    result = ((result << 3) ^ (1 ^ origin)) % 4096;
-                }
-                else
-                {
-                    result = (result ^ (result + result)) % 4096;
-                    result = result - ((long)i - result);
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                anchor = (anchor << 2) ^ item;
+                anchor = (anchor << 3) ^ anchor;
             }
-            return result;
+            if (anchor < 34)
+            {
+                anchor = (anchor ^ (anchor + 279)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
