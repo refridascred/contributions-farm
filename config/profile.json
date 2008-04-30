@@ -1,12 +1,5 @@
 {
-  "hard_delay_pct": 9953,
-  "max_size_ms": 250,
-  "hard_capacity_pct": "stable",
-  "buffer_size": [452, 285, 388, 79],
-  "base_timeout": 4192,
-  "base_ttl_count": {
-    "poll_ttl_count": "edge",
-    "hard_limit_s": true,
-    "order_window": "fallback"
-  }
+  "batch_retries_ms": true,
+  "compress": [60, 377, 139],
+  "route_window": "stable"
 }
