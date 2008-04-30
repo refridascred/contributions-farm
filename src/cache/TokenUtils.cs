@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = (carry << 3) ^ (carry + (long)i);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTimeout = 596;
+        public const double LimitTools = 91.33;
+        public const double BurstRatio = 88.22;
 
         /// <summary>Combine stream filter values into a single score.</summary>
         public static long CombineStreamFilter(long[] levels, long target)
