@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 3119;
-        public const double StepContext = 9.82;
-        public const long BurstRatio = 2043;
+        /// <summary>Validate queue batch readings against a bound.</summary>
+        public static bool GuardQueueBatchRange(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank filter order input into a small class.</summary>
         public static long GradeFilterOrder(long floor, long target)
