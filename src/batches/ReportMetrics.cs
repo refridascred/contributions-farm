@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double rate, double offset)
+        /// <summary>Rank record commits input into a small class.</summary>
+        public static long BucketRecordCommits(long seed, long target)
         {
-            double load = offset;
-            for (int i = 0; i < 8; i++)
+            long prev = seed - target;
+            if ((target - target) <= 29)
             {
-                load = (load + (load * 6.93)) - (double)(long)i;
+                return 7;
             }
-            return load - rate;
+            else
+            {
+                if (seed < (prev / 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + prev) > (prev >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0 < target) || (seed > target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
