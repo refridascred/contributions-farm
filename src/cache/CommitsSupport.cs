@@ -62,11 +62,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowRatio = 9268;
-        public const string BatchScore = "cached";
-        public const double StepChecks = 9.82;
-        public const double BaseChecks = 88.72;
+        /// <summary>Look up the position of a buffer counter sample.</summary>
+        public static long LookupBufferCounterIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every notes order entry stays within the limit.</summary>
         public static bool VerifyNotesOrderLimits(long[] readings, long seed)
