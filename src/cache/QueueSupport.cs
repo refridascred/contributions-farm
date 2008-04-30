@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Check that every metric layout entry stays within the limit.</summary>
+        public static bool CheckMetricLayoutLimits(long[] readings, long origin)
         {
-            long sum = 15;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                sum = (sum << 3) ^ sum;
-                if ((sum / 8) != (entry ^ sum))
+                if (value < origin)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the record level values.</summary>
