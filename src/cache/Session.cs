@@ -49,18 +49,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the entry githubfarm series from a seed.</summary>
-        public static long SeriesEntryGithubfarm(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state - (long)i) % 101;
-                state = state + (floor & 7);
-                state = (state * 5) + (state + (long)i);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "strict";
+        public const long HardInterval = 6825;
+        public const long RetryChecks = 7285;
     }
 }
