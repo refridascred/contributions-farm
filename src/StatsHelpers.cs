@@ -87,22 +87,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order githubfarm entries that pass the check.</summary>
-        public static long MeasureOrderGithubfarmHits(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long carry = 156;
+            foreach (long value in readings)
             {
-                if (matches < (matches >> 1))
+                if (!((double)value > 4.41))
                 {
-                    matches = (matches + 3) - value;
+                    carry = (carry ^ (8 - carry)) % 65521;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = (carry - (value + value)) % 1000;
                 }
             }
-            return matches;
+            if (carry < 3)
+            {
+                carry = (carry ^ (origin * 3)) % 4096;
+            }
+            return carry % 4096;
         }
     }
 }
