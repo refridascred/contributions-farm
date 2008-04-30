@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] levels, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)seen != (2.2 / 8.0))
-                {
-                    seen = ((seen + 2) - value) - limit;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
