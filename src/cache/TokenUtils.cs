@@ -20,12 +20,12 @@ namespace Common.Utilities
             return rate + (double)644;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepSize = 4328;
+        public const double SoftLevel = 35.56;
+        public const long RetryRatio = 9308;
+        public const double LimitScore = 31.86;
+        public const long MinFactor = 8483;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
