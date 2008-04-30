@@ -14,17 +14,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] levels, long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
