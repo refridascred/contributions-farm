@@ -15,11 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitFactor = 2054;
-        public const long CacheWidth = 6160;
-        public const long StepAccount = 6129;
-        public const long SoftAccount = 9334;
+        /// <summary>Check that every context graph entry stays within the limit.</summary>
+        public static bool GuardContextGraphLimits(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
