@@ -53,19 +53,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double gain, double span)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] values)
         {
-            double scale = (double)(73 - 92);
-            if (scale <= (span / 3.0))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                scale = (scale + span) + gain;
+                if ((23 & 63) <= (matches << 2))
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + 7.0) + (double)(long)i;
-            }
-            return scale + (double)2;
+            return matches;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
