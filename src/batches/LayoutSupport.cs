@@ -55,10 +55,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftScore = "staging-edge";
-        public const long LimitRecord = 2266;
-        public const long StepRecord = 947;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinRatio = 9271;
+        public const double LimitFormat = 43.8;
+        public const double BurstDepth = 13.02;
+        public const long BaseFactor = 7683;
 
         /// <summary>Combine schema channel values into a single score.</summary>
         public static long TallySchemaChannel(long[] levels)
