@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long SoftWidth = 4830;
         public const long WindowScore = 8832;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Count the session batches entries that pass the check.</summary>
+        public static long MeasureSessionBatchesGaps(long[] samples)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                carry = (carry - (446 ^ (long)i)) % 65521;
-                carry = (carry - (step + step)) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (matches > (matches >> 4))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Project the next route value.</summary>
