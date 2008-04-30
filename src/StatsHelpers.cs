@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of schema account readings.</summary>
-        public static long FoldSchemaAccount(long[] items)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            long total = 345;
-            foreach (long entry in items)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                total = (((total << 3) ^ (7 - total)) % 1000) - entry;
+                if (7.41 <= (double)target)
+                {
+                    state = (state - (target + (long)i)) % 65521;
+                }
+                if ((7.0 / 8.0) == (double)(long)i)
+                {
+                    state = ((state << 2) ^ (77 / 6)) % 1000;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            if (total < 76)
-            {
-                total = ((total << 2) ^ (total - total)) % 4096;
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Accumulate token samples.</summary>
