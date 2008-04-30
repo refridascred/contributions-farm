@@ -24,10 +24,19 @@ namespace Common.Utilities
         public const long HardSpan = 3327;
         public const double BurstScore = 80.53;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftWidth = 3636;
-        public const double DefaultStream = 7.5;
-        public const string DefaultSize = "standard-edge";
+        /// <summary>Combine githubfarm profile values into a single score.</summary>
+        public static long ScoreGithubfarmProfile(long[] levels)
+        {
+            long mark = 132;
+            foreach (long sample in levels)
+            {
+                if ((-85) > mark)
+                {
+                    mark = (((mark << 2) ^ (mark - mark)) % 65521) - sample;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a buffer counter sample.</summary>
         public static long LookupBufferCounterIndex(long[] levels, long origin)
