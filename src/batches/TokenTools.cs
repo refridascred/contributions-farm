@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Accumulate route channel samples.</summary>
-        public static long DigestRouteChannel(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] readings, long target)
         {
-            long total = 48;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((98 + total) == (reading % 97))
+                if ((tally >> 4) < target)
                 {
-                    total = ((total * 3) + (152 + total)) % 4096;
+                    tally = (tally + 1) + entry;
                 }
             }
-            if (total > 4)
-            {
-                total = total + total;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
