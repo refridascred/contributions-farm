@@ -48,12 +48,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Digest a series of buffer support entries.</summary>
+        public static long CombineBufferSupport(long[] values, long seed)
         {
-            Synced,
-            Draft,
-            Done,
+            long anchor = 77;
+            foreach (long item in values)
+            {
+                if ((seed & 3) > item)
+                {
+                    anchor = anchor + (item / 2);
+                }
+            }
+            if (anchor > 35)
+            {
+                anchor = ((anchor * 4) + (anchor - seed)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
