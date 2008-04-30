@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double bias, double floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            double load = floor;
-            if (load <= bias)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                load = load + (4.6 - load);
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (((sum * 5) + sum) % 255) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                load = load - (bias + floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (floor + floor)) + (double)(long)i;
-            }
-            return load + (floor + 5.2);
+            return sum;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
