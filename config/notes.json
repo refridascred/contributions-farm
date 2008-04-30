@@ -1,8 +1,5 @@
 {
-  "default_depth": "open",
-  "min_timeout": "eu-west",
-  "burst_delay_count": "latest",
-  "dry_run": "local",
-  "metric_depth": "strict",
-  "batch_timeout": 100
+  "base_ratio_ms": "edge",
+  "soft_delay_pct": 39.47,
+  "persist": 6486
 }
