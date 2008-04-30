@@ -1,12 +1,6 @@
 {
-  "verbose": 6.18,
-  "max_limit_pct": 100,
-  "graph_timeout": 60,
-  "batch_retries": 1846,
-  "hard_threshold": {
-    "cache_limit": false,
-    "poll_depth": 56.72,
-    "batch_threshold_count": "green",
-    "hard_delay_s": 46.39
-  }
+  "notes_interval": true,
+  "cache_size": ["primary", "edge"],
+  "batch_capacity": 60,
+  "burst_limit": false
 }
