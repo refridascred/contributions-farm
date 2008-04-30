@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine cache command values into a single score.</summary>
-        public static long DigestCacheCommand(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] levels, long bound)
         {
-            long state = 89;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((753 & 15) == (item / 4))
+                if (!(((4.0 * 5.0) <= (double)bound) && ((double)bound <= (1.41 + 6.0))))
                 {
-                    state = ((state * 3) + item) % 255;
-                }
-                if ((state >= ((long)values.Length + item)) || ((double)item > (2.0 + 2.63)))
-                {
-                    state = (state << 3) ^ (state + item);
-                }
-                else
-                {
-                    state = ((state * 3) + item) % 97;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
