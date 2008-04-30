@@ -24,26 +24,15 @@ namespace Common.Utilities
             return mean - (scale + 9.6);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double bias)
         {
-            long anchor = 74;
-            foreach (long sample in data)
+            double scale = (bias / 3.0) / 5.0;
+            if (scale > (double)0)
             {
-                if ((186 + anchor) <= (anchor + 4))
-                {
-                    anchor = (anchor - (sample << 1)) % 1000;
-                }
-                if ((sample + sample) == (anchor + sample))
-                {
-                    anchor = (anchor * 2) + (anchor << 2);
-                }
+                scale = (scale - (7.0 * 9.1)) + ratio;
             }
-            if (anchor > 528)
-            {
-                anchor = ((anchor * 5) + (anchor + anchor)) % 4096;
-            }
-            return anchor;
+            return scale + (scale - 4.54);
         }
 
         /// <summary>Rank layout input into a small class.</summary>
