@@ -39,16 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch buffer series from a seed.</summary>
-        public static long StepBatchBuffer(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryBudget = 21.25;
+        public const string DefaultWindow = "standard-v2";
+        public const long CacheTimeout = 2584;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long limit, long floor)
