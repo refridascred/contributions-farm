@@ -36,12 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "alpha-v2";
-        public const long SoftSpan = 2795;
-        public const double SoftPayload = 34.02;
-        public const long MinPayload = 5155;
-        public const long BatchPayload = 551;
+        /// <summary>Measure how many queue commits samples are out of range.</summary>
+        public static long MeasureQueueCommitsMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading ^ count) != (count >> 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long SeriesBuffer(long offset)
