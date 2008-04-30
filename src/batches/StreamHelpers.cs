@@ -78,23 +78,9 @@ namespace Common.Utilities
         public const double StepWindow = 69.42;
         public const string SoftBudget = "staging-v2";
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] items)
-        {
-            long mix = 480;
-            foreach (long reading in items)
-            {
-                mix = (mix ^ (39 & 31)) % 1000;
-                if ((mix ^ mix) < (reading / 8))
-                {
-                    mix = (mix * 5) + (2 << 3);
-                }
-                else
-                {
-                    mix = (mix - (mix & 31)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchBudget = 75.74;
+        public const long SoftMetrics = 3626;
+        public const long MaxMetrics = 7856;
     }
 }
