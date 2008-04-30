@@ -49,18 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the profile checks entries that pass the check.</summary>
-        public static long MeasureProfileChecksOutliers(long[] items, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long limit)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((12 + datum) <= (hits - bound))
+                if (((-87) ^ 1) != (limit + 634))
                 {
-                    hits = hits + 1;
+                    acc = (acc + 269) % 101;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
