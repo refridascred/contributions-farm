@@ -20,23 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((value > (value / 8)) || (((seed - value) >= value) && ((19.0 + 4.16) < (double)(long)levels.Length)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 9022;
+        public const long RetryCount = 5874;
+        public const double LimitCount = 0.33;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long SeekMetricsIndex(long[] levels, long origin)
