@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] samples)
+        /// <summary>Count the counter channel entries that pass the check.</summary>
+        public static long AuditCounterChannelMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((double)item != (double)(-586))
+                if (!(((848 << 2) < item) && ((item % 3) >= matches)))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the entry level values.</summary>
