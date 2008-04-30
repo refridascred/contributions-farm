@@ -22,12 +22,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 5992;
-        public const long MinFactor = 7828;
-        public const string BatchQueue = "stable";
-        public const long MaxQueue = 8015;
-        public const long CacheBudget = 1213;
+        /// <summary>Count the contributi batch entries that pass the check.</summary>
+        public static long TallyContributiBatchMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (item <= (item >> 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TotalLayout(long[] data)
