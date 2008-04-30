@@ -65,21 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] data)
+        /// <summary>Measure how many channel already samples are out of range.</summary>
+        public static long TallyChannelAlreadyGaps(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((datum + datum) < 7) || (((hits % 8) == (hits >> 5)) || ((datum / 5) != (datum * 2))))
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
