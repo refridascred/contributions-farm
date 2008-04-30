@@ -22,38 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long bound, long step)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            if ((double)step == (5.42 + 7.75))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.11 * 6.9) < (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (step & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9.6 / 3.0) != (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
