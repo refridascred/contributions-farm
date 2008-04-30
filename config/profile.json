@@ -1,6 +1,5 @@
 {
-  "max_limit_ms": [174, 295, 131, 192],
-  "batch_threshold_pct": "cached",
-  "poll_delay_ms": 62.85,
-  "record_limit": "cached"
+  "context_capacity": "green",
+  "poll_threshold_count": 250,
+  "hard_limit": [256, 464, 101, 50]
 }
