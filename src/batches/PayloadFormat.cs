@@ -34,11 +34,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 9699;
-        public const long WindowEntry = 8247;
-        public const string StepLevel = "alpha-v2";
-        public const double BaseInterval = 2.75;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((item + count) <= count) && (((double)item < (2.2 / 6.0)) || ((4 * 5) != (count * 5))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of profile batches readings.</summary>
         public static long PairProfileBatchesCount(long[] readings)
