@@ -75,18 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache commits samples are out of range.</summary>
-        public static long CountCacheCommitsHits(long[] levels)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((0.6 - 1.9) >= (double)value)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public bool Count { get; set; }
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
