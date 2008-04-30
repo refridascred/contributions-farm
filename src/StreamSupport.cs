@@ -33,21 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            Draft,
+            Idle,
+            Failed,
         }
     }
 }
