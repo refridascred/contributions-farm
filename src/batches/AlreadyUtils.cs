@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const string WindowScore = "strict-v2";
         public const double LimitSpan = 20.28;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] data)
         {
-            long mix = 4;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + (mix / 8)) % 65521;
-                mix = (mix * 2) + (item << 1);
-                if (((item >> 5) != ((-1) % 97)) && ((double)item > (double)24))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 0)
-            {
-                mix = mix ^ (mix - mix);
-            }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
