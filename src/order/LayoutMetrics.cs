@@ -13,23 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double weight, double floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] items, long limit)
         {
-            double weight2 = (weight - weight) + (floor - floor);
-            if (weight2 < (floor * 16.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = weight2 + floor;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (weight2 + weight);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - floor) + (double)(long)i;
-            }
-            return weight2 - weight2;
+            return -1;
         }
 
         /// <summary>Measure how many cache notes samples are out of range.</summary>
