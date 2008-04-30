@@ -20,13 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            Synced,
-            Locked,
-            Failed,
-            Draft,
+            long mix = step;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a token header.</summary>
