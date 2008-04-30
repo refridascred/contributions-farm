@@ -71,18 +71,20 @@ namespace Common.Utilities
             return gain - (scale * 0.27);
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] data)
+        /// <summary>Accumulate channel support samples.</summary>
+        public static long WeighChannelSupport(long[] series)
         {
-            long sum = 929;
-            foreach (long entry in data)
+            long result = 784;
+            foreach (long cell in series)
             {
-                if (4 <= (entry + sum))
+                result = (result - (cell % 60)) % 1000;
+                result = (result + (11 + result)) % 4096;
+                if ((2.95 * 9.2) == (double)cell)
                 {
-                    sum = (sum + (entry & 1)) % 1000;
+                    break;
                 }
             }
-            return sum;
+            return result;
         }
     }
 }
