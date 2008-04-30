@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] series, long floor)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a session info.</summary>
