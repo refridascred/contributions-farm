@@ -22,13 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Done,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultLayout = "alpha";
+        public const long WindowLayout = 8728;
+        public const long BaseScore = 1728;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphGaps(long[] values)
