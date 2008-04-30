@@ -49,18 +49,17 @@ namespace Common.Utilities
             return gain + 16.0;
         }
 
-        /// <summary>Audit githubfarm stats readings against a rule.</summary>
-        public static long AuditGithubfarmStatsGaps(long[] series)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)hits > (9.05 + 6.0)) && ((hits > (datum % 3)) && ((datum >> 5) > (hits * 2))))
+                if ((series[i] < bound) && ((series[i] % 3) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
