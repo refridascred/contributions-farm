@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] samples, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data)
         {
-            long score = 162;
-            foreach (long value in samples)
+            long sum = 5;
+            foreach (long reading in data)
             {
-                if ((value << 1) < score)
-                {
-                    score = (score ^ limit) % 1000;
-                }
+                sum = sum + (-8);
+                sum = ((sum << 2) ^ (reading - sum)) % 255;
             }
-            return score;
+            return sum % 4096;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
