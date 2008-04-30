@@ -47,11 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryDepth = 2640;
-        public const long SoftLevel = 6795;
-        public const long BaseGithubfarm = 3715;
-        public const string HardCount = "open-edge";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 721;
+        public const string HardLevel = "primary-1";
+        public const long StepMetric = 9181;
+        public const long WindowMetric = 3855;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
