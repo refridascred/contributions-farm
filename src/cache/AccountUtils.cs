@@ -37,18 +37,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the entry filter entries that pass the check.</summary>
-        public static long TallyEntryFilterHits(long[] series)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading <= 16.0)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
