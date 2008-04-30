@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "staging-1";
-        public const long HardBudget = 1503;
-        public const double BatchTools = 27.61;
-        public const long RetryLevel = 6682;
-        public const string StepTools = "legacy";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((long)items.Length != (offset << 3))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TotalProfile(long[] series)
