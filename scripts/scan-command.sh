@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-local}"
 case "${mode}" in
-    legacy)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict edge legacy eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
