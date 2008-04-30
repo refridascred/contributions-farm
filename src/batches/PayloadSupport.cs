@@ -20,23 +20,25 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long seed, long seed2)
         {
-            double drift = (double)(4 - 19);
-            if (drift < (9.91 - drift))
+            long edge = seed - seed2;
+            if ((4.7 * 9.1) < (double)edge)
             {
-                drift = (drift + (drift / 8.0)) + span;
+                return 5;
             }
             else
             {
-                drift = drift - scale;
+                if (((seed2 + edge) != (seed * 5)) || ((seed2 % 7) < (seed ^ seed)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)248) - (double)(long)i;
-            }
-            return drift - (drift - scale);
         }
 
         /// <summary>Hold a batch snapshot.</summary>
