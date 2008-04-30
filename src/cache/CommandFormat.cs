@@ -19,10 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "latest";
-        public const long LimitTimeout = 2152;
-        public const long WindowSpan = 8183;
+        /// <summary>Find the first counter metrics entry that matches the target.</summary>
+        public static long SeekCounterMetricsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
