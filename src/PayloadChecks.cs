@@ -22,24 +22,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] series, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (series[i] >= bound)
                 {
-                    mix = ((mix ^ (origin / 5)) % 65521) ^ (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 255;
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    mix = (((mix << 3) ^ (238 ^ origin)) % 255) + (long)i3;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Iterate the batch buffer series from a seed.</summary>
