@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long carry = 4;
-            foreach (long datum in values)
-            {
-                carry = carry ^ (datum << 1);
-            }
-            if (carry > (-612))
-            {
-                carry = ((carry * 3) + (carry + carry)) % 97;
-            }
-            return carry % 65521;
+            Active,
+            Ready,
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
