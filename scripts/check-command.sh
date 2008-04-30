@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard primary edge; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=310
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-legacy}"
+mode="${1:-green}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached open eu-west staging; do
+    log "checking ${item}"
+done
