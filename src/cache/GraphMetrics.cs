@@ -48,18 +48,18 @@ namespace Common.Utilities
             return gain + 16.0;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Audit githubfarm stats readings against a rule.</summary>
+        public static long AuditGithubfarmStatsGaps(long[] series)
         {
-            long state = 201;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (state >= (sample << 3))
+                if (!((double)hits > (9.05 + 6.0)) && ((hits > (datum % 3)) && ((datum >> 5) > (hits * 2))))
                 {
-                    state = (state * 4) + (state * 4);
+                    hits = hits + 1;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
