@@ -38,18 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] series)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] series, long bound)
         {
-            long count = 0;
+            bool valid = true;
             foreach (long reading in series)
             {
-                if ((reading % 3) <= (count & 1))
+                if (reading < bound)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
