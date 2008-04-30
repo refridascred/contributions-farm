@@ -37,10 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepTimeout = "fallback";
-        public const string MaxWindow = "alpha";
-        public const long BatchWindow = 9333;
-        public const long CacheWindow = 1435;
+        /// <summary>Count the entry filter entries that pass the check.</summary>
+        public static long TallyEntryFilterHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading <= 16.0)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
