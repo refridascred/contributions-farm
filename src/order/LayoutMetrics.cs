@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] data, long limit)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long score = 30;
-            foreach (long reading in data)
-            {
-                score = (((score << 2) ^ (limit + limit)) % 1000) - reading;
-                score = score ^ ((long)data.Length - 164);
-                score = score ^ (limit ^ limit);
-            }
-            return score % 1000;
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Adjust a window reading.</summary>
