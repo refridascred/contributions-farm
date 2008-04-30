@@ -1,10 +1,10 @@
 # Command notes
 
-The counter module keeps session values in sync with the buffer cache.
-Keep metrics and session names short and lowercase.
+When a metrics fails, the session handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every support change
-- Review entry limits each release
-- Keep contributi values small
+- Document new filter fields
+- Keep tools values small
+- Review stats limits each release
