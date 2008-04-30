@@ -31,17 +31,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] samples, long step)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
+            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the counter mode values.</summary>
