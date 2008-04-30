@@ -39,11 +39,13 @@ namespace Common.Utilities
             return scale + (scale * 4.0);
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            Closed,
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Describe the cache status values.</summary>
