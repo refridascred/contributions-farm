@@ -1,22 +1,5 @@
 {
-  "verbose": 100,
-  "cache_size_pct": 14,
-  "burst_delay_ms": 3325,
-  "flush_depth": {
-    "retry_delay_s": {
-      "editor_ratio": true,
-      "readonly": ["open", "latest", "stable"],
-      "verbose": 77,
-      "counter_ttl": [63, 499, 28],
-      "min_capacity_ms": "green"
-    },
-    "dry_run": 9713,
-    "poll_limit_s": true,
-    "flush_depth": false,
-    "max_ttl": {
-      "payload_limit": "latest",
-      "flush_timeout": ["staging", "standard"],
-      "enabled": false
-    }
-  }
+  "soft_timeout": [323, 396, 52, 355],
+  "burst_interval": "eu-west",
+  "cache_depth": false
 }
