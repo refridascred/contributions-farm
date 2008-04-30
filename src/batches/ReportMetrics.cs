@@ -36,22 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] values, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            long anchor = 972;
-            foreach (long entry in values)
+            long acc = 9;
+            foreach (long reading in levels)
             {
-                if (((entry % 7) <= ((-1) + entry)) && (anchor >= (step - anchor)))
-                {
-                    anchor = (anchor + (anchor * 3)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor + step)) % 97;
-                }
+                long lane = (reading + reading) << 2;
+                acc = acc ^ (acc - lane);
+                acc = ((acc * 5) + (reading >> 1)) % 65521;
             }
-            return anchor % 1000;
+            if (acc < 23)
+            {
+                acc = (acc - (acc + acc)) % 101;
+            }
+            return acc;
         }
     }
 }
