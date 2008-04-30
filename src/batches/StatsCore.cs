@@ -89,11 +89,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches & 15) < (cell + cell))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
     }
 }
