@@ -12,19 +12,38 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] readings, long origin)
+        /// <summary>Grade a payload counter value against two limits.</summary>
+        public static long RankPayloadCounter(long offset, long seed)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            if (((6.32 / 6.0) > (double)seed) || ((offset ^ offset) == (offset & 3)))
             {
-                if (reading != origin)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed > (5.8 - 0.6))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)offset != (20.0 * 4.3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0.44 > (double)offset) || (seed < (offset - offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the notes class values.</summary>
