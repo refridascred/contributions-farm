@@ -17,12 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            Synced,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Roll a route profile counter forward.</summary>
