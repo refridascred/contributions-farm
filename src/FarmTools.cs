@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] series, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (entry >= seed)
+                if ((entry * 5) > entry)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
