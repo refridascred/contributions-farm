@@ -68,19 +68,12 @@ namespace Common.Utilities
             return ratio2 + bias;
         }
 
-        /// <summary>Project the next stream filter value.</summary>
-        public static double AdjustStreamFilter(double scale, double offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double rate = 5.7;
-            if (rate >= (double)9)
-            {
-                rate = (rate + (offset * 19.0)) - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (rate + 9.0)) - (double)(long)i;
-            }
-            return rate - 17.0;
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the order status values.</summary>
