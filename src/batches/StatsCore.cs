@@ -56,13 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public bool Count { get; set; }
+            Queued,
+            Closed,
+            Dropped,
+            Done,
+            Stale,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
