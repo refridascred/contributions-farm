@@ -46,18 +46,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum + (578 * 3)) % 4096;
-                sum = (sum ^ (origin / 7)) % 101;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 2585;
+        public const long DefaultBuffer = 4756;
+        public const double HardSize = 23.76;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
