@@ -35,11 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] items, long limit)
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((6.0 * 14.0) < (double)limit)
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
