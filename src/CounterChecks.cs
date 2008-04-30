@@ -20,22 +20,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Count the layout metric entries that pass the check.</summary>
+        public static long AuditLayoutMetricMatches(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                result = result + (target / 4);
-                bool flag = (target >> 3) != (result + (long)i);
-                if (flag)
+                if ((((entry & 31) <= seen) || ((double)entry < (double)9)) || ((double)entry < (7.95 / 6.0)))
                 {
-                    result = ((result << 3) ^ (result + target)) % 1000;
-                    result = (result - (target + result)) % 1000;
+                    seen = seen + 3;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
