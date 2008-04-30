@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a profile cache value against two limits.</summary>
-        public static long ClassifyProfileCache(long seed, long limit)
+        /// <summary>Combine report route values into a single score.</summary>
+        public static long ScoreReportRoute(long[] series, long target)
         {
-            if ((limit / 2) == (seed << 3))
+            long result = 753;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - limit) < limit)
+                if ((result > (840 % 2)) || ((result % 3) >= (result << 1)))
                 {
-                    return 3;
+                    result = ((result << 3) ^ (datum / 9)) % 101;
                 }
-                else
-                {
-                    if (seed < limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                result = (result - target) % 65521;
             }
+            return result;
         }
 
         /// <summary>Rank metric already input into a small class.</summary>
