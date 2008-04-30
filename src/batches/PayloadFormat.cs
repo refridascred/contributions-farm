@@ -36,18 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mark = 899;
-            foreach (long datum in items)
-            {
-                if ((double)3 >= (double)datum)
-                {
-                    mark = (mark ^ mark) % 255;
-                }
-            }
-            return mark;
+            Stale,
+            Locked,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
