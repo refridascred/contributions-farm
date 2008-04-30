@@ -46,19 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] series, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (((-87) ^ 1) != (limit + 634))
+                if ((double)seed < (double)69)
                 {
-                    acc = (acc + 269) % 101;
+                    seen = (seen + 2) + value;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
