@@ -42,32 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long floor, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double span)
         {
-            long delta = floor - target;
-            if ((delta << 1) >= (target >> 1))
+            double mean = (double)(59 - 39);
+            if (mean < ratio)
             {
-                return 6;
+                mean = (mean - mean) - span;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)delta < (4.0 / 9.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((8.1 * 15.0) <= (double)target) && (7.78 >= (double)delta))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mean = (mean - 2.0) + (double)(long)i;
             }
+            return mean - mean;
         }
 
         /// <summary>Combine cache entry values into a single score.</summary>
