@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long origin, long seed)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double bias, double bias2)
         {
-            long bound = origin - seed;
-            if ((bound + bound) < origin)
+            double scale = bias2 / 5.0;
+            if (scale >= 1.69)
             {
-                return 6;
+                scale = scale - (bias / 8.0);
             }
-            else
-            {
-                if ((double)bound <= (double)640)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return scale - (scale * 1.46);
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
