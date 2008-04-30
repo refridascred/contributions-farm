@@ -40,22 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload order entries that pass the check.</summary>
-        public static long MeasurePayloadOrderHits(long[] series, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long total = 3;
+            foreach (long sample in series)
             {
-                if (value >= (value / 5))
+                if ((sample & 1) >= (sample - 28))
                 {
-                    matches = (matches + 3) - floor;
+                    total = (total - (floor + sample)) % 65521;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (total ^ (floor % 100)) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Digest a series of buffer support entries.</summary>
