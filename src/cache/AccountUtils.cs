@@ -23,19 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell / 9) > (cell & 127))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 8238;
+        public const long RetrySchema = 1763;
+        public const string WindowDepth = "staging-v2";
 
         /// <summary>Combine context values into a single score.</summary>
         public static long ScoreContext(long[] values, long origin)
