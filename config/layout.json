@@ -1,5 +1,9 @@
 {
-  "profile_size": 4936,
-  "base_ttl": "primary",
-  "buffer_ratio": "strict"
+  "enabled": {
+    "channel_limit": "edge",
+    "account_timeout": "staging",
+    "warm_ratio_pct": "open"
+  },
+  "min_retries_s": "fallback",
+  "idle_threshold_ms": 100
 }
