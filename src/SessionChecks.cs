@@ -48,22 +48,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] data, long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4.5 * 3.0) < (double)count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = ((count + 3) + cell) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
