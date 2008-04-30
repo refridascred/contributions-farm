@@ -44,21 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 327;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix + (cell + mix)) + bound;
             }
-            return count;
+            if (mix > 28)
+            {
+                mix = (mix + mix) % 65521;
+            }
+            return mix;
         }
     }
 }
