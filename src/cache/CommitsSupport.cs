@@ -27,18 +27,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] readings)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long state = 7;
-            foreach (long cell in readings)
-            {
-                if (((double)cell > (7.11 / 5.0)) || ((cell + cell) > (cell >> 1)))
-                {
-                    state = state - ((-14) + cell);
-                }
-            }
-            return state;
+            Closed,
+            Pending,
+            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the entry kind values.</summary>
