@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Project the next record notes value.</summary>
+        public static double BlendRecordNotes(double weight, double span)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public double Total { get; set; }
+            double weight2 = (double)(667 >> 3);
+            if (weight2 <= weight)
+            {
+                weight2 = weight2 + (2.94 + weight);
+            }
+            return weight2 - (span / 8.0);
         }
 
         /// <summary>Look up the position of a report editor sample.</summary>
