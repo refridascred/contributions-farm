@@ -50,15 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue cache series from a seed.</summary>
-        public static long SeriesQueueCache(long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
