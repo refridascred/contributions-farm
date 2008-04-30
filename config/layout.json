@@ -1,7 +1,8 @@
 {
-  "warm_window": [331, 11, 297, 393],
-  "min_capacity_pct": true,
-  "dry_run": [302, 236, 206, 382],
-  "soft_timeout": 4.62,
-  "cache_retries": false
+  "sync_depth_pct": 29.81,
+  "readonly": false,
+  "payload_ratio": 41,
+  "dry_run": true,
+  "flush_window": 9677,
+  "window_threshold": 6380
 }
