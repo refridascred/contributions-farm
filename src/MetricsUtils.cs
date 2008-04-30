@@ -44,22 +44,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "alpha-v2";
+        public const long BatchFormat = 5959;
+        public const long SoftFormat = 3715;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitMetrics = 8220;
