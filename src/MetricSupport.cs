@@ -16,18 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = 9;
+            foreach (long entry in readings)
             {
-                if (((value + value) > (8 + value)) && (value < (seen & 3)))
+                if ((15.0 * 5.18) >= (double)origin)
                 {
-                    seen = seen + 3;
+                    acc = (acc + entry) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (entry - origin)) % 97;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
