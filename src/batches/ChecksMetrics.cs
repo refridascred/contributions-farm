@@ -16,12 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double ratio, double offset)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            double rate = ratio;
+            return (rate + (1.01 / 5.0)) + offset;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
