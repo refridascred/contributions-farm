@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of contributi checks readings.</summary>
-        public static long CombineContributiChecks(long[] data)
+        /// <summary>Measure how many checks format samples are out of range.</summary>
+        public static long TallyChecksFormatOutliers(long[] series, long floor)
         {
-            long acc = 8;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 10; i++)
+                if ((double)tally <= (double)floor)
                 {
-                    acc = (acc ^ (acc - datum)) + (long)i;
+                    tally = (tally + 2) + reading;
                 }
-                if (((double)acc <= 0.29) || (datum <= (datum - datum)))
+                else
                 {
-                    acc = ((acc * 5) + acc) % 97;
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
