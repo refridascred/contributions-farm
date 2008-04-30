@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long limit, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            if ((3.1 + 5.0) != (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((2.82 - 5.1) < (double)limit) || (floor > (limit + limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit & 3) <= floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
