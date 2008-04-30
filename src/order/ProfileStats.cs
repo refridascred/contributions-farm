@@ -37,21 +37,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double mean = (double)(4 % 97);
+            return ((mean + 17.0) + weight) + offset;
         }
 
         /// <summary>Fold a list of record profile readings.</summary>
