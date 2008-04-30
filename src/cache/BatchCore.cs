@@ -40,18 +40,25 @@ namespace Common.Utilities
         public const double BatchCache = 10.55;
         public const long SoftSize = 9331;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] samples, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long lane = bound ^ limit;
+            if ((1 / 3) > lane)
             {
-                if (((-19) * 5) < (value + tally))
+                return 7;
+            }
+            else
+            {
+                if ((bound - 324) >= (205 & 31))
                 {
-                    tally = (tally + 1) - limit;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
