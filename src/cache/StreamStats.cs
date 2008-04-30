@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double WindowLevel = 36.47;
         public const double BurstDepth = 78.88;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
+            Stale,
             Failed,
-            Draft,
-            Pending,
             Paused,
         }
 
