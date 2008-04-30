@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Count command buffer pairs that satisfy a relation.</summary>
+        public static long OverlapCommandBufferCount(long[] samples)
         {
-            long acc = 69;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc + (reading + reading)) - (long)i;
-                }
-                acc = (acc - acc) % 101;
-                if (((reading & 7) == (reading >> 3)) && ((acc + 1) <= ((long)readings.Length ^ 986)))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 125)
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
