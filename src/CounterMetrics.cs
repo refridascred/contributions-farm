@@ -45,19 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] samples)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] samples)
         {
-            long acc = -5;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                acc = ((acc << 3) ^ (acc - value)) % 65521;
-                if (((double)value != (double)39) && ((double)acc <= 2.92))
+                if (tally >= (sample / 7))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
