@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double ratio, double span)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double scale, double offset)
         {
-            double rate = (double)((-85) + (-3));
-            return (rate + ratio) + span;
+            double rate = 8.85;
+            return (rate + (offset * 12.0)) + scale;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
