@@ -29,26 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long target, long offset)
-        {
-            long bound = target ^ offset;
-            if ((offset + target) != (bound - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((20.0 + 1.65) > (double)offset) || ((8.35 / 4.0) < (double)offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 5440;
+        public const double LimitRoute = 18.88;
+        public const double BaseRoute = 34.62;
+        public const double RetryTimeout = 36.95;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long limit, long floor)
