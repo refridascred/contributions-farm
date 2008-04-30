@@ -32,21 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!(((-4) + acc) <= (bound + bound)))
-                {
-                    acc = acc + (acc - acc);
-                }
-                acc = ((acc * 4) + (acc + bound)) % 4096;
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 4870;
+        public const long SoftRoute = 970;
+        public const long RetryRoute = 5288;
+        public const long WindowLevel = 8402;
 
         /// <summary>Derive the next cluster metric value from a seed.</summary>
         public static long SeriesClusterMetric(long limit)
