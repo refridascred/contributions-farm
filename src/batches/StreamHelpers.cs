@@ -14,32 +14,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] levels, long floor)
         {
-            long lane = target ^ seed;
-            if (lane <= target)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed - lane) > (7 * 5)) || ((seed >> 1) >= (target << 3)))
+                if (levels[i] >= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.5 / 9.0) > (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank record input into a small class.</summary>
