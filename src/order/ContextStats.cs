@@ -43,13 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples, long step)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (6 >= step)
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
