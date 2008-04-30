@@ -43,13 +43,17 @@ namespace Common.Utilities
             return scale + (scale * 4.0);
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] readings, long origin)
         {
-            Closed,
-            Idle,
-            Done,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
