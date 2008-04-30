@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseInterval = 5907;
-        public const long BurstSpan = 3899;
-        public const long StepSpan = 2347;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
