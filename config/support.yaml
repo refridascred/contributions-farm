@@ -1,6 +1,17 @@
 # support settings
-notes_size: 60.3
-account_ratio: 250
-max_retries: primary
-poll_ratio_s: 44.1
-retry_delay_pct: cached
+warm_size_s: primary
+channel_ttl: 7016
+queue_window:
+  strict:
+    - 35
+    - 271
+    - 437
+  record_interval: green
+  cache_interval_s: 500
+  soft_capacity_ms: legacy
+  format_window: false
+  max_limit:
+    - stable
+    - green
+    - stable
+readonly: 9824
