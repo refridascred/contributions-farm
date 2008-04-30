@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] items, long origin)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (6.6 > (double)origin)
+                if ((levels[i] == seed) && ((levels[i] % 3) != 0))
                 {
-                    tally = (tally + 3) + datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
