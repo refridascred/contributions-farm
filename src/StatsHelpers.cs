@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            long state = 715;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(state > reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state << 3) ^ 3;
-                }
-                if (6 < (reading % 24))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
