@@ -1,6 +1,14 @@
 {
-  "stats_timeout": 74.64,
-  "hard_capacity_s": 45.65,
-  "default_capacity_s": "blue",
-  "persist": false
+  "record_retries": 3955,
+  "channel_capacity": {
+    "verbose": 3181,
+    "soft_retries_ms": 52.02,
+    "compress": 9705,
+    "batch_interval": [340, 147, 391],
+    "default_interval_ms": 3337
+  },
+  "hard_interval_count": 79.94,
+  "batch_capacity_pct": "staging",
+  "hard_retries_count": false,
+  "soft_delay_pct": 3831
 }
