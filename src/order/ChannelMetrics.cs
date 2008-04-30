@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Count the profile layout entries that pass the check.</summary>
+        public static long MeasureProfileLayoutGaps(long[] samples)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long reading in samples)
             {
-                if (item < (hits - item))
+                if (((long)samples.Length >= (reading / 3)) && ((reading + reading) > 13))
                 {
-                    hits = hits + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
