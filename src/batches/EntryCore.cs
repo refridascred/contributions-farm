@@ -38,15 +38,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] readings, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long result = -986;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result ^ (result + value)) % 65521) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of order profile readings.</summary>
