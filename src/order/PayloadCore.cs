@@ -29,13 +29,25 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long step, long origin)
         {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
+            long span = step + origin;
+            if ((origin * 4) >= (step * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin <= (step ^ span))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
