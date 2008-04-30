@@ -25,18 +25,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] readings, long seed)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((seed ^ value) >= seed)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Idle,
+            Closed,
         }
     }
 }
