@@ -1,30 +1,9 @@
 # entry settings
-persist: 13.41
-flush_ttl: standard
-sync_threshold_count:
-  batch_limit_ms:
-    editor_depth: 500
-    dry_run: 9236
-    command_window: 500
-    compress: 60
-    soft_depth:
-      - latest
-      - stable
-    batch_delay: 8566
-  poll_ttl:
-    notes_threshold: 7421
-    readonly: blue
-    already_window:
-      - edge
-      - stable
-      - local
-      - strict
-    queue_ttl: green
-    buffer_window: true
-    poll_interval: true
-  readonly: false
-  warm_depth_s:
-    - 341
-    - 84
-  flush_capacity_pct: true
-warm_delay: true
+flush_delay_pct:
+  - latest
+  - local
+  - primary
+  - open
+command_timeout: strict
+readonly: fallback
+idle_ratio_pct: 60
