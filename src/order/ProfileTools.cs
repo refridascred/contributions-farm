@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double bias, double floor)
-        {
-            double scale = floor;
-            return (scale + (double)62) + bias;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstTimeout = 66.96;
+        public const long DefaultFormat = 745;
+        public const long LimitFormat = 3734;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] values, long target)
