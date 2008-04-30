@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate token farm readings against a bound.</summary>
-        public static bool ValidateTokenFarmBounds(long[] items, long seed)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Define window limits and defaults.</summary>
