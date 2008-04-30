@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 85.07;
-        public const string MaxChannel = "primary-v2";
-        public const long WindowChannel = 8987;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LocateProfileIndex(long[] items, long seed)
