@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Active,
-            Stale,
-            Failed,
-            Retry,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
