@@ -44,18 +44,16 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mark = 19;
+            foreach (long reading in readings)
             {
-                if ((double)(long)levels.Length >= 9.7)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
+                mark = (((mark << 3) ^ (mark >> 1)) % 65521) - reading;
+                mark = (mark + (6 + mark)) % 255;
             }
-            return matches;
+            return mark;
         }
     }
 }
