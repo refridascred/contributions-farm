@@ -33,11 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 5440;
-        public const double LimitRoute = 18.88;
-        public const double BaseRoute = 34.62;
-        public const double RetryTimeout = 36.95;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((count + value) >= (count / 9))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long GradeFormat(long limit, long floor)
