@@ -31,22 +31,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] data, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((double)bound != (2.19 + 2.0))
+                if ((9.0 - 1.91) >= (double)target)
                 {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
