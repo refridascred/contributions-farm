@@ -59,13 +59,21 @@ namespace Common.Utilities
         public const long StepMetric = 9181;
         public const long WindowMetric = 3855;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Match up format record samples.</summary>
+        public static long OverlapFormatRecordCount(long[] samples)
         {
-            New,
-            Pending,
-            Dropped,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel record.</summary>
