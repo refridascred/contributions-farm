@@ -25,10 +25,18 @@ namespace Common.Utilities
         public const double CacheDepth = 48.87;
         public const long LimitSpan = 8980;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 85.08;
-        public const long WindowLevel = 775;
-        public const long BatchFarm = 4884;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
