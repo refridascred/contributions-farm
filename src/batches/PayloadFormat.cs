@@ -37,26 +37,21 @@ namespace Common.Utilities
         public const string StepLevel = "alpha-v2";
         public const double BaseInterval = 2.75;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            long total = 3;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total - total) > 725)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - sample) % 97;
-                }
-                else
-                {
-                    total = (total * 3) + total;
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 27)
-            {
-                total = (total << 2) ^ (total >> 3);
-            }
-            return total;
+            return tally;
         }
     }
 }
