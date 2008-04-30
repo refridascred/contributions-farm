@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((((-422) & 255) >= count) && ((double)sample > 9.7)) && (sample < (count - count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 9140;
+        public const double HardFactor = 30.6;
+        public const string StepDepth = "open-v2";
+        public const long DefaultBudget = 5588;
 
         /// <summary>Project the next buffer value.</summary>
         public static double SmoothBuffer(double ratio, double bias)
