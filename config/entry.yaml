@@ -1,26 +1,30 @@
 # entry settings
-record_window: 55.86
-audit: strict
-flush_ttl:
-  max_ttl_s: legacy
-  poll_depth_count: edge
-  hard_interval: 85.92
-  min_size_ms: eu-west
-  warm_depth_count:
-    - stable
-    - green
-    - edge
-    - blue
-  schema_depth:
-    verbose: false
-    queue_threshold:
-      - 252
-      - 390
-    profile_ratio: staging
-    githubfarm_ttl: fallback
-    graph_timeout:
-      - 412
-      - 138
-flush_capacity_s: true
-entry_delay: false
-hard_ratio: 30
+persist: 13.41
+flush_ttl: standard
+sync_threshold_count:
+  batch_limit_ms:
+    editor_depth: 500
+    dry_run: 9236
+    command_window: 500
+    compress: 60
+    soft_depth:
+      - latest
+      - stable
+    batch_delay: 8566
+  poll_ttl:
+    notes_threshold: 7421
+    readonly: blue
+    already_window:
+      - edge
+      - stable
+      - local
+      - strict
+    queue_ttl: green
+    buffer_window: true
+    poll_interval: true
+  readonly: false
+  warm_depth_s:
+    - 341
+    - 84
+  flush_capacity_pct: true
+warm_delay: true
