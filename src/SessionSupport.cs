@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
+            Dropped,
             Synced,
-            Retry,
+            Queued,
             Ready,
+            Locked,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
