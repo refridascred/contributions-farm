@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long state = 3;
-            foreach (long entry in data)
-            {
-                if ((double)state < 8.0)
-                {
-                    state = ((state ^ (767 - state)) % 65521) - entry;
-                }
-                else
-                {
-                    state = ((state << 2) ^ 87) % 255;
-                }
-            }
-            return state % 1000;
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the stats status values.</summary>
