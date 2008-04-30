@@ -1,6 +1,11 @@
 {
-  "audit": "legacy",
-  "account_retries": 21,
-  "poll_ttl_pct": "edge",
-  "payload_limit": false
+  "persist": {
+    "readonly": 92,
+    "min_threshold_count": 11.04,
+    "burst_depth_pct": ["blue", "eu-west"],
+    "max_ttl": "latest"
+  },
+  "idle_interval": "strict",
+  "cache_retries_count": "standard",
+  "graph_ratio": false
 }
