@@ -25,27 +25,11 @@ namespace Common.Utilities
         public const long LimitStream = 9935;
         public const long BaseWidth = 2693;
 
-        /// <summary>Iterate the order report series from a seed.</summary>
-        public static long StepOrderReport(long step)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((12.0 * 18.0) == (double)step)
-                {
-                    mark = (mark - 83) % 65521;
-                }
-                if ((16.0 + 6.24) >= (double)mark)
-                {
-                    mark = mark - (46 - (long)i);
-                }
-                else
-                {
-                    mark = mark ^ (step % 2);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Blend two metric report measurements.</summary>
