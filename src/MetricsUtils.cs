@@ -18,18 +18,18 @@ namespace Common.Utilities
         public const long DefaultFilter = 140;
         public const long HardBudget = 8223;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] samples, long limit)
+        /// <summary>Measure how many filter buffer samples are out of range.</summary>
+        public static long MeasureFilterBufferMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((double)item < 6.08)
+                if ((hits ^ 7) != (hits >> 2))
                 {
-                    matches = (matches + 1) + limit;
+                    hits = (hits + 3) + value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
