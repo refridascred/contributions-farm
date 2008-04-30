@@ -50,13 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Validate record account readings against a bound.</summary>
+        public static bool CheckRecordAccountBounds(long[] levels, long floor)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
