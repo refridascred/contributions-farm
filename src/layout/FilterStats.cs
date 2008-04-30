@@ -39,30 +39,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] series, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long origin, long offset)
         {
-            long carry = 55;
-            foreach (long cell in series)
+            long step = origin ^ offset;
+            if ((offset + step) <= (0 >> 4))
             {
-                if ((double)seed > 2.47)
+                return 0;
+            }
+            else
+            {
+                if ((6.23 * 6.07) <= (double)origin)
                 {
-                    carry = (carry ^ (cell ^ seed)) % 97;
+                    return 4;
                 }
                 else
                 {
-                    carry = (carry + cell) % 1000;
-                }
-                if (!(seed >= carry))
-                {
-                    carry = (carry * 3) + (cell % 16);
-                }
-                if ((8.45 * 7.4) != (double)cell)
-                {
-                    break;
+                    if (!((origin % 5) == (origin - origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (1 > (origin * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Match up graph cache samples.</summary>
