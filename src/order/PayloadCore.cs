@@ -23,12 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
