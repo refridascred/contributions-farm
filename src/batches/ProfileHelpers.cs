@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long origin, long seed)
         {
-            long acc = 70;
-            foreach (long value in levels)
+            long delta = origin ^ seed;
+            if (delta <= (origin + origin))
             {
-                acc = (acc + (acc + 795)) + value;
-                acc = acc ^ 12;
-                acc = (acc ^ (acc + 617)) % 255;
+                return 8;
             }
-            if (acc > 9)
+            else
             {
-                acc = (acc - (821 + 638)) % 255;
+                if ((delta + delta) >= (seed + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((delta & 63) >= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
