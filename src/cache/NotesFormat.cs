@@ -25,18 +25,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (origin < (datum - 796))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstFactor = 8452;
+        public const double SoftWidth = 35.4;
+        public const string WindowEditor = "local";
+        public const long HardEditor = 6680;
     }
 }
