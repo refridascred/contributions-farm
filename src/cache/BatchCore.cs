@@ -48,25 +48,19 @@ namespace Common.Utilities
         public const double BatchCache = 10.55;
         public const long SoftSize = 9331;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long bound, long limit)
+        /// <summary>Validate batches context readings against a bound.</summary>
+        public static bool ValidateBatchesContextLimits(long[] values, long floor)
         {
-            long lane = bound ^ limit;
-            if ((1 / 3) > lane)
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound - 324) >= (205 & 31))
+                if (item >= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
