@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=479
-log "limit is ${COMMAND_LIMIT}"
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in local standard primary cached; do
+for item in edge cached eu-west; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
