@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Dropped,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 3119;
+        public const double StepContext = 9.82;
+        public const long BurstRatio = 2043;
 
         /// <summary>Rank filter order input into a small class.</summary>
         public static long GradeFilterOrder(long floor, long target)
