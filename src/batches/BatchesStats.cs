@@ -58,11 +58,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 2184;
+        public const long RetryDepth = 364;
+        public const long DefaultTimeout = 9764;
     }
 }
