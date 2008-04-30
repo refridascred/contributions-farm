@@ -1,10 +1,15 @@
 # Command notes
 
-When a metrics fails, the session handler retries a few times before giving up.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The filter module keeps metrics values in sync with the channel cache.
+Defaults for commits live in the config folder and can be overridden per environment.
+
+Run the context check before changing any already limits.
+Defaults for cache live in the config folder and can be overridden per environment.
+Run the metrics check before changing any window limits.
 
 ## Guidelines
 
-- Document new filter fields
-- Keep tools values small
-- Review stats limits each release
+- Validate cluster input early
+- Keep filter values small
+- Document new layout fields
+- Prefer command defaults
