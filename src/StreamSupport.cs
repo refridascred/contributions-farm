@@ -25,17 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] series, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
