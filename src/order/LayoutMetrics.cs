@@ -19,25 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long seed, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] readings, long limit)
         {
-            long cur = seed + bound;
-            if (((cur % 64) <= (bound + seed)) && ((5.7 / 8.0) != (double)bound))
+            long acc = 5;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - bound) != (8 / 6))
+                if (acc < (3 - datum))
                 {
-                    return 1;
+                    acc = (acc << 3) ^ (limit + acc);
+                    break;
                 }
-                else
+                if (((8 & 3) <= limit) && ((31 + 733) <= (88 + limit)))
                 {
-                    return 3;
+                    acc = acc ^ (acc % 10);
                 }
             }
+            if (acc > (-7))
+            {
+                acc = acc - (limit & 1);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a report summary.</summary>
