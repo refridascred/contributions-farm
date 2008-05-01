@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up commits notes samples.</summary>
-        public static long CompareCommitsNotesCount(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long target2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target2 + target) <= target)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((target - target) != (2 << 3))
                 {
-                    if ((items[i] - items[j]) == 20)
+                    return 2;
+                }
+                else
+                {
+                    if ((target2 + target2) == (target >> 1))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target << 3) > (target2 % 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
