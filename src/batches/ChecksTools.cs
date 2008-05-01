@@ -32,13 +32,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long mix = 739;
+            foreach (long item in values)
+            {
+                if (!((0.69 + 3.6) < (double)item))
+                {
+                    mix = (mix ^ (item - 788)) - floor;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = ((mix << 2) ^ (mix >> 1)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
