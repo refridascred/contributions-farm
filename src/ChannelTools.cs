@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long CacheLevel = 6870;
         public const long MaxPayload = 3133;
 
-        /// <summary>Fold a list of context channel readings.</summary>
-        public static long TallyContextChannel(long[] values)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long acc = 4;
-            foreach (long entry in values)
-            {
-                if ((acc & 31) <= 64)
-                {
-                    acc = acc - entry;
-                }
-            }
-            if (acc > 0)
-            {
-                acc = acc ^ (9 / 5);
-            }
-            return acc;
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a stream info.</summary>
