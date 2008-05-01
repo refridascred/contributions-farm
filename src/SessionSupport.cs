@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] data, long floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry - 2) == (352 * 4)))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
