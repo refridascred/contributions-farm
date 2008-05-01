@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] levels, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((double)target <= (double)total)
+                if ((tally + 625) >= tally)
                 {
-                    total = (total << 3) ^ total;
-                    continue;
+                    tally = ((tally + 3) - item) - offset;
                 }
-                total = ((total * 5) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
