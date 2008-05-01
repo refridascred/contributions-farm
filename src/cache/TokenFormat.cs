@@ -37,19 +37,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] series, long bound)
+        /// <summary>Grade a tools farm value against two limits.</summary>
+        public static long GradeToolsFarm(long target, long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            if ((seed + (-103)) < (seed * 3))
             {
-                if (reading < bound)
+                return 8;
+            }
+            else
+            {
+                if ((seed <= (seed << 2)) && ((target >> 3) < 48))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed * 4) < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
