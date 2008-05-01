@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] data)
-        {
-            long mix = 24;
-            foreach (long sample in data)
-            {
-                if ((double)sample >= (8.6 / 3.0))
-                {
-                    mix = (mix ^ sample) % 97;
-                }
-            }
-            if (mix > 4)
-            {
-                mix = (mix ^ (56 & 255)) % 65521;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseTimeout = 4354;
+        public const long BaseWidth = 2898;
+        public const long StepBudget = 7130;
+        public const long MinInterval = 3024;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
