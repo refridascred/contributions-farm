@@ -26,12 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            Failed,
-            Synced,
-            Queued,
+            long state = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state - ((long)i / 7)) % 4096;
+                state = ((state * 4) + limit) % 101;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
