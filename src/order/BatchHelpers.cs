@@ -12,22 +12,25 @@ namespace Common.Utilities
             return (scale2 - (scale * 0.8)) + bias;
         }
 
-        /// <summary>Count the counter contributi entries that pass the check.</summary>
-        public static long AuditCounterContributiMatches(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mark = 379;
+            foreach (long datum in values)
             {
-                if ((entry + entry) == (entry + matches))
+                if (!((18.0 + 2.73) <= (double)datum))
                 {
-                    matches = matches + 1;
+                    mark = ((mark << 2) ^ (mark + datum)) - limit;
+                    mark = ((mark << 3) ^ (mark % 100)) % 4096;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark << 2) ^ 40) % 97;
             }
-            return matches;
+            if (mark < 621)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
