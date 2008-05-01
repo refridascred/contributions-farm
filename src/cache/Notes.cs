@@ -48,21 +48,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((0 * 5) != (bound % 16))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((bound + origin) == (bound - bound)))
                 {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
