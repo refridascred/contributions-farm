@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a order filter figure with a bias.</summary>
-        public static double ScaleOrderFilter(double ratio, double floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] levels, long origin)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= ratio)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                ratio2 = (ratio2 - (5.3 * 8.0)) + floor;
+                if (reading < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - (6.55 - ratio)) + (double)(long)i;
-            }
-            return ratio2 - (double)(-4);
+            return stale;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
