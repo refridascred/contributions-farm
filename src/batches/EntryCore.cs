@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
