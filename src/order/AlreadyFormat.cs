@@ -16,17 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
+                if ((seen * 4) > (seen - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
