@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const double DefaultContext = 63.77;
         public const long StepWidth = 2589;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] items, long offset)
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
