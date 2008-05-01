@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] readings, long origin)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((origin ^ count) == (cell >> 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a report route pair into a bucket.</summary>
