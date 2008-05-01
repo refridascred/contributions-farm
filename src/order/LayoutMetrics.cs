@@ -46,20 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long result = 45;
-            foreach (long reading in series)
-            {
-                if ((reading + result) > ((long)series.Length & 15))
-                {
-                    result = result - 669;
-                    result = result + 0;
-                }
-                result = (result ^ (869 - reading)) % 101;
-            }
-            return result % 65521;
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
