@@ -1,7 +1,13 @@
 # githubfarm settings
-max_depth_s:
-  - 246
-  - 163
-poll_capacity_s: 6.37
-already_depth: 9549
-hard_capacity_ms: primary
+editor_depth:
+  - local
+  - open
+  - staging
+poll_depth_pct: 31.43
+persist: 60
+verbose:
+  - 279
+  - 8
+  - 66
+  - 466
+default_limit_s: 69.14
