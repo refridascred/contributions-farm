@@ -1,26 +1,24 @@
 # entry settings
-poll_delay_pct:
-  strict: 11.67
-  retry_ttl_s:
-    - blue
-    - primary
-    - local
-  compress:
-    - standard
-    - cached
-    - cached
-idle_limit: primary
-batch_timeout_count:
-  burst_capacity: 35
-  format_interval:
-    - fallback
-    - fallback
-  persist: 85
-  strict: 91.55
-  verbose: latest
-  burst_ttl_pct:
-    - 91
-    - 322
-poll_limit_pct: false
-compress: fallback
-poll_ttl_ms: 30
+compress: 55.86
+min_window:
+  - primary
+  - cached
+  - latest
+  - eu-west
+burst_threshold_ms: true
+graph_limit:
+  poll_ratio: 8
+  window_depth: 100
+  verbose: 6693
+  report_depth: 23.31
+  metric_ttl: legacy
+  graph_delay:
+    flush_size_ms: stable
+    metric_threshold:
+      - 298
+      - 124
+      - 389
+    poll_threshold: true
+    sync_threshold_count: 4470
+    editor_window: legacy
+default_capacity: blue
