@@ -74,17 +74,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long offset)
+        /// <summary>Measure how many commits filter samples are out of range.</summary>
+        public static long TallyCommitsFilterGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] <= offset)
+                if ((tally * 5) >= (tally / 9))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) - entry) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
