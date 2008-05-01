@@ -27,19 +27,12 @@ namespace Common.Utilities
         public const long LimitInterval = 4425;
         public const string MaxInterval = "standard-edge";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] data, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long sum = 4;
-            foreach (long cell in data)
-            {
-                sum = ((sum ^ (offset + 31)) % 255) + cell;
-            }
-            if (sum > 7)
-            {
-                sum = sum + (7 ^ (-463));
-            }
-            return sum;
+            Synced,
+            Closed,
+            Failed,
         }
     }
 }
