@@ -21,12 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 3872;
-        public const long LimitDepth = 4498;
-        public const long MinBudget = 484;
-        public const long StepAccount = 7627;
-        public const double WindowDepth = 54.0;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)(long)readings.Length == (11.0 - 18.0)) || ((hits * 5) >= (sample >> 5)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheScore = 1743;
