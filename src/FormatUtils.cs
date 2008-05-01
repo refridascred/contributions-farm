@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 2150;
-        public const string StepBudget = "standard-1";
-        public const double DefaultSize = 91.68;
-        public const double BurstFactor = 79.21;
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] levels, long limit)
+        {
+            long mix = -46;
+            foreach (long item in levels)
+            {
+                if ((9.91 + 1.11) > (double)161)
+                {
+                    mix = ((mix + 295) - item) - limit;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double SmoothSession(double weight, double span)
