@@ -37,19 +37,18 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double bias, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] items)
         {
-            double drift = 4.0;
-            if (drift < 0.7)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                drift = drift + (offset / 6.0);
+                if (((long)items.Length >= (seen >> 1)) || ((reading << 3) <= (seen / 6)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                drift = drift + (offset - drift);
-            }
-            return drift + (drift + bias);
+            return seen;
         }
     }
 }
