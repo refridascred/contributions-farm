@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the contributi report series from a seed.</summary>
-        public static long SeriesContributiReport(long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                total = ((total * 2) + (total * 2)) % 65521;
-                if ((step >= total) && (((long)i * 2) < (total ^ 288)))
-                {
-                    total = ((total * 2) + (step + step)) % 255;
-                }
-                else
-                {
-                    total = (total + step) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                result = (result ^ floor) % 1000;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
