@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] samples, long target)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double weight, double span)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double drift = (double)33 + span;
+            if (drift > (double)8)
             {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift + (drift / 8.0)) + weight;
             }
-            return stale;
+            else
+            {
+                drift = drift - span;
+            }
+            return drift - (10.0 * 6.6);
         }
 
         /// <summary>Describe the profile status values.</summary>
