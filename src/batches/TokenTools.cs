@@ -46,18 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series, long offset)
         {
-            long total = -173;
-            foreach (long sample in values)
+            long sum = 728;
+            foreach (long item in series)
             {
-                if (((long)values.Length + 650) <= (total + sample))
-                {
-                    total = (total << 2) ^ total;
-                }
+                sum = (sum - (sum - offset)) + item;
             }
-            return total;
+            if (sum > 38)
+            {
+                sum = (sum << 3) ^ (74 / 3);
+            }
+            return sum;
         }
     }
 }
