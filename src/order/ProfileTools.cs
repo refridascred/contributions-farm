@@ -42,18 +42,19 @@ namespace Common.Utilities
         public const string StepBudget = "fallback-edge";
         public const long BaseProfile = 3711;
 
-        /// <summary>Audit stats token readings against a rule.</summary>
-        public static long MeasureStatsTokenGaps(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((810 % 10) > ((-8) + (long)items.Length))
+                if (entry > bound)
                 {
-                    matches = (matches + 2) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
