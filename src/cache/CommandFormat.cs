@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (data[i] <= step)
+                if (seed < (779 << 3))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a batch format sample.</summary>
