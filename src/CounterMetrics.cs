@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxSpan = 2553;
-        public const long HardCommand = 5795;
-        public const double IdleFactor = 0.72;
-        public const double BaseWidth = 33.84;
-        public const double CacheCommand = 52.9;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] values)
+        {
+            long carry = 91;
+            foreach (long item in values)
+            {
+                if ((carry < (4 >> 5)) || ((carry + item) == (item + carry)))
+                {
+                    carry = (carry << 3) ^ ((long)values.Length % 60);
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] readings, long step)
