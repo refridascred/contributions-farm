@@ -55,9 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 2886;
-        public const long BatchRecord = 3614;
-        public const double HardRecord = 84.33;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches * 2) == (matches & 15))
+                {
+                    matches = ((matches + 2) ^ datum) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
