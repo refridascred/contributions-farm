@@ -21,22 +21,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] data, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] items, long step)
         {
-            long state = 9;
-            foreach (long entry in data)
+            long result = 535;
+            foreach (long sample in items)
             {
-                if ((floor + floor) < 2)
+                result = (((result << 2) ^ (step + result)) % 65521) - sample;
+                for (int i = 0; i < 12; i++)
                 {
-                    state = (state ^ state) + entry;
+                    result = ((result ^ (2 >> 2)) % 255) + (long)i;
                 }
-                else
+                if ((907 > (782 + step)) || ((double)result >= (2.3 - 7.97)))
                 {
-                    state = (state * 2) + ((long)data.Length >> 2);
+                    result = (result - (long)items.Length) % 65521;
                 }
             }
-            return state % 4096;
+            return result % 1000;
         }
 
         /// <summary>Combine session cache values into a single score.</summary>
