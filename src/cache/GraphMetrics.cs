@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Scale a order filter figure with a bias.</summary>
+        public static double ScaleOrderFilter(double ratio, double floor)
         {
-            Active,
-            Retry,
-            New,
+            double ratio2 = ratio;
+            if (ratio2 <= ratio)
+            {
+                ratio2 = (ratio2 - (5.3 * 8.0)) + floor;
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 - (6.55 - ratio)) + (double)(long)i;
+            }
+            return ratio2 - (double)(-4);
         }
 
         /// <summary>Describe the payload level values.</summary>
