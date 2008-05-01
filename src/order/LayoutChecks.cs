@@ -29,22 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] values, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] values, long origin)
         {
-            long sum = 104;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((seed + entry) >= (sum * 3))
+                if (value > origin)
                 {
-                    sum = ((sum * 5) + (sum >> 1)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum < 537)
-            {
-                sum = ((sum << 3) ^ (seed - seed)) % 101;
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
