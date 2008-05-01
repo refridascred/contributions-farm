@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double weight, double offset)
         {
-            public bool Score { get; set; }
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            double mean = weight;
+            if (mean > mean)
+            {
+                mean = (mean + (mean / 7.0)) + offset;
+            }
+            return mean - weight;
         }
 
         /// <summary>Accumulate support batch samples.</summary>
