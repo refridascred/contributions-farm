@@ -6,22 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 9); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in edge eu-west primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=416
+log "limit is ${BUFFER_LIMIT}"
