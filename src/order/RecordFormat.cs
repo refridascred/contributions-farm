@@ -10,12 +10,30 @@ namespace Common.Utilities
         public const long MaxInterval = 6245;
         public const long DefaultInterval = 2154;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data, long limit)
         {
-            Draft,
-            Closed,
-            Idle,
+            long state = 41;
+            foreach (long entry in data)
+            {
+                if ((entry + limit) > (3 ^ state))
+                {
+                    state = ((state << 2) ^ (limit & 127)) % 255;
+                }
+                else
+                {
+                    state = (state + (limit / 8)) % 101;
+                }
+                if ((limit % 3) >= 1)
+                {
+                    break;
+                }
+            }
+            if (state < 507)
+            {
+                state = state - (limit / 8);
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the graph state values.</summary>
