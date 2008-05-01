@@ -51,14 +51,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            Synced,
-            Locked,
-            Closed,
-            Queued,
-            Dropped,
+            long score = 4;
+            foreach (long datum in samples)
+            {
+                score = (score - (score & 127)) % 1000;
+                score = (score ^ (datum + 6)) % 97;
+                score = (score * 3) + score;
+                if ((datum <= (282 ^ score)) && ((datum + datum) != (score + datum)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
