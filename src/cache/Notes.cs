@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of graph already readings.</summary>
-        public static long ScoreGraphAlready(long[] series, long step)
+        /// <summary>Audit payload editor readings against a rule.</summary>
+        public static long CountPayloadEditorHits(long[] samples)
         {
-            long acc = 13;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                double scale = (double)(step >> 2);
-                if (!((scale + scale) < (scale - scale)))
+                if ((sample <= (tally << 2)) && ((double)sample != (double)874))
                 {
-                    scale = scale - scale;
-                    scale = scale - (1.0 + scale);
+                    tally = tally + 2;
                 }
                 else
                 {
-                    scale = scale + scale;
-                }
-                if (step <= (62 >> 4))
-                {
-                    acc = (acc + (step + (-83))) % 65521;
-                }
-                if (((step % 2) <= acc) && ((step % 2) <= (6 - item)))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (acc > 84)
-            {
-                acc = acc - (step - acc);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count session order pairs that satisfy a relation.</summary>
