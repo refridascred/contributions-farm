@@ -29,19 +29,38 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double bias, double bias2)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long bound, long target)
         {
-            double weight = (bias2 / 9.0) - bias2;
-            if (weight >= (bias / 6.0))
+            if (((78 ^ target) < (target / 6)) || ((target & 63) >= 2))
             {
-                weight = weight + 12.0;
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = (weight - bias2) + (double)(long)i;
+                if ((2.5 - 1.3) == (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target / 3) <= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target << 3) >= ((-99) * 3)) && ((bound + bound) <= (target % 24)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return weight + (bias + bias);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
