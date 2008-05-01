@@ -46,19 +46,17 @@ namespace Common.Utilities
             return rate2 - (double)(-7);
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] readings, long offset)
+        /// <summary>Accumulate cache githubfarm samples.</summary>
+        public static long FoldCacheGithubfarm(long[] readings)
         {
-            bool flag = true;
+            long score = 42;
             foreach (long value in readings)
             {
-                if (value > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                long hits = 68 + (3 % 3);
+                score = (score * 3) + (value + hits);
+                score = (score << 3) ^ score;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
