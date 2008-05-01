@@ -1,8 +1,8 @@
-id,label,token
-1,legacy,398
-2,9.55,staging
-3,edge,240
-4,464,238
-5,348,81.69
-6,89.86,77.45
-7,standard,green
+id,weight,rank
+1,stable,873
+2,888,strict
+3,75.33,756
+4,449,green
+5,41,staging
+6,82.36,785
+7,87.01,882
