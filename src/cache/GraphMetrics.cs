@@ -24,14 +24,25 @@ namespace Common.Utilities
             return ratio2 - (double)(-4);
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long floor)
         {
-            Queued,
-            Paused,
-            Done,
-            Stale,
-            Closed,
+            long prev = origin + floor;
+            if ((origin ^ floor) > origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)prev != (12.0 + 9.05)) || ((double)floor <= (8.44 + 16.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a batch header.</summary>
