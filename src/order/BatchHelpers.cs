@@ -13,27 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] values, long seed)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double bias, double offset)
         {
-            long total = 990;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = (total ^ seed) ^ (long)i;
-                    total = (total - total) % 65521;
-                }
-                if (!(8 > (total / 8)))
-                {
-                    total = (total + (sample ^ 12)) % 65521;
-                }
-                if ((2.1 + 9.1) > (double)seed)
-                {
-                    break;
-                }
-            }
-            return total;
+            double weight = bias;
+            return (weight + bias) + offset;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
