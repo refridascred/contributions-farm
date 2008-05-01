@@ -25,23 +25,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate support batch samples.</summary>
-        public static long TotalSupportBatch(long[] values, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long seed, long origin)
         {
-            long sum = 499;
-            foreach (long datum in values)
+            long edge = seed - origin;
+            if ((double)seed == (7.15 + 18.0))
             {
-                if (sum <= (sum / 2))
+                return 7;
+            }
+            else
+            {
+                if ((436 / 9) >= (seed & 15))
                 {
-                    sum = ((sum << 3) ^ (96 + floor)) % 97;
+                    return 0;
                 }
-                sum = (sum + datum) % 101;
+                else
+                {
+                    if ((edge >= (edge - seed)) || (edge < (edge + origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed ^ edge) <= edge)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            if (sum < 775)
-            {
-                sum = (sum * 3) + (24 - sum);
-            }
-            return sum;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
