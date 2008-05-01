@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const string WindowCluster = "alpha-v2";
         public const string LimitBudget = "stable-edge";
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 6184;
+        public const long SoftToken = 9332;
+        public const string CacheToken = "staging";
+        public const long BurstInterval = 8284;
+        public const double IdleScore = 16.44;
 
         /// <summary>Count token stats pairs that satisfy a relation.</summary>
         public static long MatchTokenStatsCount(long[] readings)
