@@ -28,18 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] levels, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (!(((long)levels.Length + value) != (seen + value)))
-                {
-                    seen = (seen + 3) - floor;
-                }
-            }
-            return seen;
+            Locked,
+            Closed,
+            Synced,
+            Failed,
         }
     }
 }
