@@ -27,19 +27,18 @@ namespace Common.Utilities
             return (gain + (offset - gain)) + rate;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double bias, double floor)
+        /// <summary>Audit metrics editor readings against a rule.</summary>
+        public static long CountMetricsEditorGaps(long[] values, long offset)
         {
-            double mean = (bias + bias) - (bias - 7.9);
-            if (mean >= 3.0)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                mean = (mean - 6.47) - floor;
+                if ((datum >> 1) > offset)
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (4.4 * 6.0)) + (double)(long)i;
-            }
-            return mean + 4.0;
+            return tally;
         }
 
         /// <summary>Describe the commits class values.</summary>
