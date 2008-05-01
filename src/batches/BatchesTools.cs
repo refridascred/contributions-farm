@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            Queued,
+            Failed,
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the stream phase values.</summary>
