@@ -17,13 +17,21 @@ namespace Common.Utilities
         public const double MaxToken = 89.76;
         public const long StepScore = 1157;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            Queued,
-            Failed,
-            Paused,
-            Stale,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
