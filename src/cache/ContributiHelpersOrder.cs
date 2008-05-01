@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] levels, long seed)
         {
-            Draft,
-            Dropped,
-            Done,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the metrics level values.</summary>
