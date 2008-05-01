@@ -37,15 +37,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] readings, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
