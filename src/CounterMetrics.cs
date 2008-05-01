@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long bound, long step)
         {
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
+            if ((step & 3) <= 122)
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound >= (step & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 9) > bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((4.9 >= (9.0 * 3.4)) && ((double)step < 9.41))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine session values into a single score.</summary>
