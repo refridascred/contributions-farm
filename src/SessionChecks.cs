@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] data, long origin)
         {
-            long result = 7;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(item > result))
+                if (data[i] == origin)
                 {
-                    result = result - (item >> 1);
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many queue batch samples are out of range.</summary>
