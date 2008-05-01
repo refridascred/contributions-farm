@@ -45,18 +45,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchCount = 56.35;
+        public const long LimitBatches = 1558;
+        public const long BaseBudget = 9164;
+        public const long IdleRatio = 1330;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long ScoreOrder(long[] values, long seed)
