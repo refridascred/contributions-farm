@@ -63,32 +63,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long seed, long floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long next = seed - floor;
-            if ((seed / 7) > 9)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed & 15) <= (next % 64)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor < (next / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
