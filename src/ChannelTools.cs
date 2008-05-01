@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many context payload samples are out of range.</summary>
-        public static long MeasureContextPayloadHits(long[] series)
+        /// <summary>Count already channel pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyChannelCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-98) ^ hits) >= (hits & 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + entry;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
