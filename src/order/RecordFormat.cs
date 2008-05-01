@@ -28,12 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            New,
-            Stale,
-            Dropped,
+            Failed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a commits summary.</summary>
