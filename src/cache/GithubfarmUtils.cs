@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftInterval = 6532;
+        public const long BurstWindow = 991;
+        public const long MaxRatio = 5680;
+        public const string IdleBudget = "staging-v2";
+        public const string WindowSpan = "latest-edge";
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
