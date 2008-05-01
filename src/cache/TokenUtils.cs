@@ -13,15 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Count entry support pairs that satisfy a relation.</summary>
+        public static long MatchEntrySupportCount(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
