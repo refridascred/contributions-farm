@@ -38,31 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a tools farm value against two limits.</summary>
-        public static long GradeToolsFarm(long target, long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            if ((seed + (-103)) < (seed * 3))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed <= (seed << 2)) && ((target >> 3) < 48))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed * 4) < target)
+                    if ((values[i] - values[j]) != 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
