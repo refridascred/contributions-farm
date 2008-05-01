@@ -48,22 +48,29 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long bound, long origin)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long target, long seed)
         {
-            if ((0 * 5) != (bound % 16))
+            if ((target * 4) == (seed << 2))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (!((bound + origin) == (bound - bound)))
+                if ((target >> 1) <= (target * 4))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    if (5 < (target % 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
