@@ -56,13 +56,15 @@ namespace Common.Utilities
         public const double BurstBudget = 6.09;
         public const double BaseCount = 38.69;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double span)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            double rate = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = ((rate + (rate - ratio)) + (double)(long)i) - span;
+            }
+            return rate - 2.4;
         }
     }
 }
