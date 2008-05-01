@@ -26,13 +26,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Pending,
-            Queued,
-            Locked,
-            Failed,
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
