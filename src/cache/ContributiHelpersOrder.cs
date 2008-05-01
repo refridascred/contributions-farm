@@ -31,11 +31,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 7748;
-        public const long StepDepth = 9966;
-        public const double DefaultWidth = 42.66;
-        public const double MaxWidth = 72.79;
-        public const long MinSupport = 9576;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)tally <= (2.46 + 7.95))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
+        }
     }
 }
