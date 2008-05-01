@@ -13,21 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of notes schema readings.</summary>
-        public static long OverlapNotesSchemaCount(long[] readings)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
