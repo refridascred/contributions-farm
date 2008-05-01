@@ -36,19 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] items, long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Synced,
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define route limits and defaults.</summary>
