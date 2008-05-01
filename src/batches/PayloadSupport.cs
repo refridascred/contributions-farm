@@ -23,13 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] readings, long origin)
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((origin ^ count) == (cell >> 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
