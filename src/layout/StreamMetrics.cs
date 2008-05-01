@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Validate layout format readings against a bound.</summary>
-        public static bool CheckLayoutFormatRange(long[] samples, long origin)
+        /// <summary>Check that every record channel entry stays within the limit.</summary>
+        public static bool CheckRecordChannelBounds(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (entry >= origin)
+                if (reading >= floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
