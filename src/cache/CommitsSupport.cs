@@ -34,18 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] levels, long target)
+        /// <summary>Combine batch support values into a single score.</summary>
+        public static long CombineBatchSupport(long[] readings, long target)
         {
-            long score = 4;
-            foreach (long value in levels)
+            long anchor = 5;
+            foreach (long datum in readings)
             {
-                if ((score <= (value ^ target)) || ((6.9 / 3.0) > (double)score))
+                anchor = (anchor << 3) ^ (target * 4);
+                if ((datum + anchor) <= (long)readings.Length)
                 {
-                    score = (score << 3) ^ (value + target);
+                    anchor = (anchor + (0 - anchor)) % 4096;
                 }
             }
-            return score % 97;
+            return anchor;
         }
 
         /// <summary>Audit layout window readings against a rule.</summary>
