@@ -72,12 +72,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] levels, long limit)
         {
-            Draft,
-            Closed,
-            Retry,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a tools record.</summary>
