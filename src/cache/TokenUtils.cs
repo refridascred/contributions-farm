@@ -13,22 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count entry support pairs that satisfy a relation.</summary>
-        public static long MatchEntrySupportCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 18.43;
+        public const string StepScore = "staging";
+        public const long RetryWidth = 8367;
+        public const string LimitRatio = "cached-v2";
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmGaps(long[] items, long limit)
