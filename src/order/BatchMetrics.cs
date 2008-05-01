@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Retry,
-            Paused,
             Synced,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the already level values.</summary>
