@@ -15,21 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up support batch samples.</summary>
-        public static long CompareSupportBatchCount(long[] items)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample > target)
                 {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Measure how many command cluster samples are out of range.</summary>
