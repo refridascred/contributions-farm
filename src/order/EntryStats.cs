@@ -29,11 +29,14 @@ namespace Common.Utilities
         public const string WindowCluster = "alpha-v2";
         public const string LimitBudget = "stable-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinBudget = 23.91;
-        public const string LimitScore = "local";
-        public const long MaxTimeout = 2442;
-        public const long StepCluster = 1436;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count token stats pairs that satisfy a relation.</summary>
         public static long MatchTokenStatsCount(long[] readings)
