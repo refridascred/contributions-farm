@@ -1,5 +1,9 @@
 # entry settings
-counter_size: fallback
-idle_delay_count: true
-default_timeout: 7.07
-sync_interval_count: green
+readonly: 100
+hard_window:
+  - fallback
+  - stable
+  - stable
+  - staging
+order_limit: legacy
+base_delay_s: false
