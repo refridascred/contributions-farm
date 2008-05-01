@@ -54,18 +54,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] levels, long bound)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((seen + seen) < 657) && (seen < (seen % 64)))
-                {
-                    seen = ((seen + 1) ^ datum) + bound;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
