@@ -1,7 +1,5 @@
 {
-  "buffer_size": 1959,
-  "session_timeout": "staging",
-  "support_delay": false,
-  "flush_retries_count": 1024,
-  "burst_window": [432, 490, 19, 5]
+  "route_ratio": "local",
+  "notes_interval": "edge",
+  "batch_retries_pct": ["eu-west", "fallback", "standard"]
 }
