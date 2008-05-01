@@ -43,12 +43,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] items, long offset)
         {
-            New,
-            Ready,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a graph session pair into a bucket.</summary>
