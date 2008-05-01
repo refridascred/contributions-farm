@@ -32,11 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] data, long bound)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
