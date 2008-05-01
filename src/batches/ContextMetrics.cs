@@ -38,22 +38,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] samples, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long floor, long step)
         {
-            long score = 761;
-            foreach (long value in samples)
+            if ((double)floor > 6.6)
             {
-                if ((value > 700) && ((double)value < (double)floor))
+                return 0;
+            }
+            else
+            {
+                if ((step % 5) < 3)
                 {
-                    score = score - value;
+                    return 6;
                 }
                 else
                 {
-                    score = ((score * 4) + ((-78) % 100)) % 255;
+                    return 8;
                 }
             }
-            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
