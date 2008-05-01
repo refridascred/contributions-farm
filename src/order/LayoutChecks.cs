@@ -44,15 +44,10 @@ namespace Common.Utilities
             return drift - (10.0 * 6.6);
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Active,
-            Failed,
-            Closed,
-            Done,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 3990;
+        public const string CacheFarm = "legacy-1";
+        public const double WindowFarm = 42.1;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double LimitCluster = 91.59;
