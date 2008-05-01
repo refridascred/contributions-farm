@@ -47,19 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support payload readings against a bound.</summary>
-        public static bool CheckSupportPayloadLimits(long[] data, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long mark = 6;
+            foreach (long datum in levels)
             {
-                if (value < limit)
+                if ((target + target) > (datum + mark))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark - (target + datum)) % 65521;
                 }
             }
-            return ok;
+            if (mark > 21)
+            {
+                mark = (mark * 4) + (mark - target);
+            }
+            return mark;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
