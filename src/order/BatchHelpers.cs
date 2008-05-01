@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the report buffer entries that pass the check.</summary>
-        public static long TallyReportBufferMatches(long[] samples)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((item * 5) >= item) || (((9 - item) > seen) || ((seen << 3) < (item - item))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double scale2 = (double)(911 >> 3);
+            return (scale2 - (scale * 0.8)) + bias;
         }
 
         /// <summary>Count the counter contributi entries that pass the check.</summary>
