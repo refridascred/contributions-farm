@@ -67,13 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] data, long floor)
         {
-            public double Size { get; set; }
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
