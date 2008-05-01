@@ -55,21 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            New,
+            Stale,
         }
     }
 }
