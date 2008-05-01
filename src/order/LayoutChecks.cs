@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a stats support reading.</summary>
-        public static double SmoothStatsSupport(double scale, double span)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] series, long step)
         {
-            double load = scale / 2.0;
-            if (load < (span * 4.7))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                load = load - load;
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (scale / 5.0)) - (double)(long)i;
-            }
-            return load + load;
+            return ready;
         }
 
         /// <summary>Hold a account summary.</summary>
