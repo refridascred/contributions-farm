@@ -40,14 +40,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double weight, double floor)
         {
-            Closed,
-            Retry,
-            Done,
-            Synced,
-            Draft,
+            double gain = floor;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (weight + 5.6)) + (double)(long)i;
+            }
+            return gain + (double)782;
         }
     }
 }
