@@ -67,18 +67,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long state = 78;
+            foreach (long value in samples)
             {
-                if (hits > 8)
+                if ((offset / 8) != (value + 1))
                 {
-                    hits = (hits + 1) - cell;
+                    state = state - state;
                 }
             }
-            return hits;
+            if (state > 69)
+            {
+                state = (state << 3) ^ (offset + state);
+            }
+            return state;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
