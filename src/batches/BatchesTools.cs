@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a metric queue counter forward.</summary>
-        public static long SeriesMetricQueue(long offset)
+        /// <summary>Match up checks cluster samples.</summary>
+        public static long CompareChecksClusterCount(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a contributi options.</summary>
