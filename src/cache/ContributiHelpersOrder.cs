@@ -23,15 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double weight, double offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double weight2 = 6.88;
-            if (weight2 <= (offset + 1.0))
-            {
-                weight2 = (weight2 + offset) + weight;
-            }
-            return weight2 - weight2;
+            Draft,
+            Queued,
+            New,
         }
 
         /// <summary>Define support limits and defaults.</summary>
