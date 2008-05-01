@@ -1,7 +1,14 @@
 {
-  "soft_limit_ms": false,
-  "soft_depth": "eu-west",
-  "retry_limit_s": "standard",
-  "min_capacity_ms": true,
-  "strict": "staging"
+  "schema_depth": 41.52,
+  "cluster_ttl": false,
+  "flush_interval": {
+    "support_capacity": 1,
+    "default_window": 100,
+    "poll_threshold_pct": "latest",
+    "idle_capacity_pct": "fallback",
+    "verbose": ["cached", "green"],
+    "idle_size": 71.68
+  },
+  "persist": 33,
+  "base_delay": 64.13
 }
