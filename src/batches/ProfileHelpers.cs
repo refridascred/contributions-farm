@@ -55,19 +55,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double weight, double bias)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            double drift = (double)(787 - 66);
-            if (drift < (weight + bias))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                drift = drift - bias;
+                if ((9.0 * 13.0) <= (7.44 - 1.0))
+                {
+                    hits = (hits + 1) + cell;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + weight) + (double)(long)i;
-            }
-            return drift - (6.7 + drift);
+            return hits;
         }
 
         /// <summary>Describe the batch mode values.</summary>
