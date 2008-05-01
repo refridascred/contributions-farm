@@ -33,22 +33,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] readings, long limit)
+        /// <summary>Measure how many schema payload samples are out of range.</summary>
+        public static long AuditSchemaPayloadHits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (((datum % 24) == (matches ^ matches)) || (limit >= (matches + matches)))
+                if (7.0 < (double)step)
                 {
-                    matches = matches + 2;
+                    hits = (hits + 2) - entry;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
