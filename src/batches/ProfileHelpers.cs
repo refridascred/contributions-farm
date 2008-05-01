@@ -60,39 +60,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a filter cache pair into a bucket.</summary>
-        public static long ClassifyFilterCache(long seed, long offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long limit)
         {
-            long slot = seed ^ offset;
-            if (slot < (seed + (-774)))
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((seed - slot) <= (seed ^ 4)))
+                if ((limit + result) > (result * 5))
                 {
-                    return 6;
+                    continue;
                 }
-                else
+                if (!((limit >> 2) == (limit & 63)))
                 {
-                    if ((seed << 1) <= (offset & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((7.8 + 7.7) >= (double)slot)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    result = result + (limit & 31);
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Describe the buffer class values.</summary>
