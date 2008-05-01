@@ -26,21 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Adjust a filter cache reading.</summary>
+        public static double SmoothFilterCache(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = rate;
+            if (drift <= rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - (offset * 8.05);
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (drift * 6.7)) + (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
