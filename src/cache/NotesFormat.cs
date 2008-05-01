@@ -20,32 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long target, long seed)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double ratio, double floor)
         {
-            long delta = target ^ seed;
-            if ((delta << 2) < (delta & 63))
+            double weight = floor;
+            if (weight <= floor)
             {
-                return 7;
+                weight = (weight - weight) + ratio;
             }
-            else
-            {
-                if ((19.0 / 8.0) < 8.37)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 3) <= target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return weight + (double)89;
         }
 
         /// <summary>Describe the farm kind values.</summary>
