@@ -27,15 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] levels, long offset)
         {
-            long acc = 92;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                acc = ((acc ^ acc) % 4096) ^ value;
+                if ((65 & 127) >= item)
+                {
+                    matches = (matches + 1) - offset;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
