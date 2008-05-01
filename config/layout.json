@@ -1,11 +1,5 @@
 {
-  "base_window_count": 1024,
-  "poll_depth": 16,
-  "batch_threshold": 29.66,
-  "batch_delay_pct": {
-    "retry_retries": true,
-    "dry_run": false,
-    "persist": false
-  },
-  "batch_window_s": 45.41
+  "retry_threshold_s": "latest",
+  "batch_depth": [153, 439, 188, 133],
+  "hard_retries": 6.96
 }
