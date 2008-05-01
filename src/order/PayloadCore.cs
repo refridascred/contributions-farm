@@ -27,13 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long target)
         {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long total = target;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
