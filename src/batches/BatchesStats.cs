@@ -37,18 +37,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the payload stream entries that pass the check.</summary>
-        public static long AuditPayloadStreamGaps(long[] items, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long score = 78;
+            foreach (long value in readings)
             {
-                if ((((-605) / 6) >= (hits * 3)) || (((long)items.Length ^ floor) > (hits - datum)))
+                if (2.4 > (double)(long)readings.Length)
                 {
-                    hits = hits + 1;
+                    score = score ^ (value - value);
+                }
+                if ((value + 9) > (value ^ value))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
