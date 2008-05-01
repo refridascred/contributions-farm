@@ -19,17 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] values, long floor)
+        /// <summary>Grade a session profile value against two limits.</summary>
+        public static long SortSessionProfile(long target, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((1.6 + 2.0) < (double)target)
             {
-                if (values[i] > floor)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= (8.34 - 6.74))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((-30) << 1) < origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
