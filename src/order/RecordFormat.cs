@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double bias, double floor)
-        {
-            double ratio = (double)(295 << 1);
-            if (ratio > (ratio - ratio))
-            {
-                ratio = ((ratio + 2.0) - bias) - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (5.5 / 2.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchTimeout = 7165;
+        public const long MaxInterval = 6245;
+        public const long DefaultInterval = 2154;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
