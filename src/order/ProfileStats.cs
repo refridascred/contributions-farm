@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of format batches entries.</summary>
-        public static long CombineFormatBatches(long[] samples, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
         {
-            long anchor = 347;
-            foreach (long reading in samples)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)anchor == (5.28 / 9.0))
+                if (!((target + (long)i) >= state))
                 {
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 4096;
-                    anchor = (anchor - 956) % 97;
+                    state = state - (long)i;
                 }
-                if (((seed + 717) <= reading) && ((7.0 + 8.0) <= (double)seed))
-                {
-                    anchor = ((anchor * 4) + (seed + 9)) % 255;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor ^ (seed << 2)) % 65521;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
