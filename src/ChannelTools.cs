@@ -15,21 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count already channel pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyChannelCount(long[] items)
+        /// <summary>Fold a list of already session readings.</summary>
+        public static long TotalAlreadySession(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 762;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value + 72) <= (mark << 1))
                 {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (mark % 10)) % 1000;
                 }
             }
-            return tally;
+            if (mark < 25)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
