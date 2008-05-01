@@ -30,32 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order batch pair into a bucket.</summary>
-        public static long BucketOrderBatch(long limit, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long lane = limit + origin;
-            if ((origin + origin) >= (1 + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)limit == (1.97 + 5.5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (18.0 > (double)lane)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            New,
+            Active,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
