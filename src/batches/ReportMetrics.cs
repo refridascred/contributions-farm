@@ -35,10 +35,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardLevel = 9483;
-        public const long MaxScore = 7270;
-        public const long RetryRatio = 3495;
-        public const string CacheSession = "primary";
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Locked,
+            Queued,
+            Ready,
+            Idle,
+            Stale,
+        }
     }
 }
