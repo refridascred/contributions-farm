@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] readings)
-        {
-            long total = 23;
-            foreach (long item in readings)
-            {
-                if ((item * 5) == (item + total))
-                {
-                    total = (total ^ total) % 97;
-                }
-                else
-                {
-                    total = ((total * 5) + (item + item)) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchCount = 27.65;
+        public const long BurstSpan = 2059;
+        public const long MinBudget = 2339;
+        public const long StepAlready = 7646;
+        public const string WindowAlready = "open-1";
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsBounds(long[] series, long step)
