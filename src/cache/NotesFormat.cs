@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] data, long origin)
-        {
-            long total = 48;
-            foreach (long reading in data)
-            {
-                if (total <= (origin % 7))
-                {
-                    total = (total - total) ^ reading;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 3786;
+        public const long RetryQueue = 3068;
+        public const double LimitRatio = 88.64;
+        public const long LimitInterval = 4425;
+        public const string MaxInterval = "standard-edge";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long WeighBatches(long[] data, long offset)
