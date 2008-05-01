@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const long IdleCluster = 4069;
         public const long MinBudget = 7512;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Fold a list of stream context readings.</summary>
+        public static long TallyStreamContext(long[] samples, long target)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            long carry = 1;
+            foreach (long datum in samples)
+            {
+                carry = ((carry * 5) + (datum + datum)) % 1000;
+                if (!((double)datum > (13.0 / 7.0)))
+                {
+                    carry = (carry - (target >> 1)) % 1000;
+                }
+            }
+            return carry;
         }
     }
 }
