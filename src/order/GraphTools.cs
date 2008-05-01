@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Iterate the support token series from a seed.</summary>
+        public static long IterateSupportToken(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((double)offset >= 1.53))
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + (91 ^ sum);
+                    sum = sum + (offset >> 2);
                 }
+                sum = ((sum << 2) ^ sum) % 4096;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
