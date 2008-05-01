@@ -37,18 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample / 5) != ((long)data.Length + sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCount = 6515;
+        public const long BaseSpan = 1215;
+        public const string CacheCount = "alpha-edge";
+        public const double MinInterval = 14.97;
+        public const long BatchWidth = 2023;
     }
 }
