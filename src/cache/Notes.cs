@@ -40,12 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit schema command readings against a rule.</summary>
+        public static long AuditSchemaCommandGaps(long[] series, long limit)
         {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((entry % 12) >= entry)
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
