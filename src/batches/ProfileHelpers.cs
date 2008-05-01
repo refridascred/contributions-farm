@@ -33,13 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Synced,
-            Pending,
-            New,
-            Done,
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
