@@ -1,6 +1,6 @@
 {
-  "max_retries": "latest",
-  "poll_retries": "staging",
-  "record_size": "standard",
-  "counter_window": 500
+  "tools_depth": 4762,
+  "tools_size": 30,
+  "flush_ratio_s": 100,
+  "sync_retries_pct": 36.15
 }
