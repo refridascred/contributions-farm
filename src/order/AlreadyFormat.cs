@@ -40,18 +40,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] items, long step)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + step) <= entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Retry,
+            Done,
+            Synced,
+            Draft,
         }
     }
 }
