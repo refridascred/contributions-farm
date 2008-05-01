@@ -29,12 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double bias, double span)
         {
-            Draft,
-            New,
-            Active,
+            double weight = bias;
+            if (weight >= (double)718)
+            {
+                weight = weight - (double)342;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (double)0) + (double)(long)i;
+            }
+            return weight - (span * 1.13);
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
