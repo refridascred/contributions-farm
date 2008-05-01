@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((12.0 * 1.7) == (double)limit)
+                if (values[i] > target)
                 {
-                    state = state ^ (24 - 89);
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
