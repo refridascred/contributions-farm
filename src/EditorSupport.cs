@@ -32,18 +32,17 @@ namespace Common.Utilities
         public const string MinFactor = "legacy-v2";
         public const string IdleCluster = "latest-1";
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] levels, long target)
+        /// <summary>Find the first schema buffer entry that matches the target.</summary>
+        public static long SeekSchemaBufferIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)target > (9.0 * 2.25))
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
-                    seen = (seen + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a window snapshot.</summary>
