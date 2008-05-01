@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] items, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (datum >= offset)
+                if (reading > floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Look up the position of a cluster window sample.</summary>
