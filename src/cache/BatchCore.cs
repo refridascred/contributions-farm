@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of session checks readings.</summary>
-        public static long MatchSessionChecksCount(long[] samples)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (3.0 < (double)target)
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc - (target + target);
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
