@@ -40,11 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 38.03;
-        public const long MaxLevel = 8812;
-        public const long LimitContributi = 8361;
-        public const long MaxContributi = 7438;
-        public const long MaxInterval = 786;
+        /// <summary>Measure how many cluster channel samples are out of range.</summary>
+        public static long MeasureClusterChannelMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen + seen) > seen)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
     }
 }
