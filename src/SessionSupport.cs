@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 7329;
-        public const long CacheSession = 7445;
-        public const string BurstSession = "latest-edge";
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long GradeReport(long offset, long limit)
