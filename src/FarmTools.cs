@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long BurstBatches = 624;
         public const string MaxBatches = "stable-edge";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardSpan = 6148;
-        public const long RetryContext = 8507;
-        public const long RetrySpan = 5653;
-        public const double CacheContext = 74.6;
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series, long origin)
+        {
+            long sum = 837;
+            foreach (long entry in series)
+            {
+                if (((entry << 2) <= entry) || ((origin >> 4) <= (0 + sum)))
+                {
+                    sum = ((sum * 4) + 1) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count the record order entries that pass the check.</summary>
         public static long TallyRecordOrderOutliers(long[] data, long offset)
