@@ -21,13 +21,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Derive the next support cache value from a seed.</summary>
+        public static long DeriveSupportCache(long target)
         {
-            Ready,
-            Done,
-            Synced,
-            Retry,
+            long carry = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!(((-962) * 4) <= (target << 2)))
+                {
+                    carry = ((carry * 3) + carry) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Project the next cache value.</summary>
