@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                long diff = 915 + carry;
-                if (((floor + carry) >= floor) && ((floor >> 5) > (diff - carry)))
+                if ((matches << 1) < 27)
                 {
-                    diff = diff + (carry % 7);
+                    matches = (matches + 1) + reading;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
