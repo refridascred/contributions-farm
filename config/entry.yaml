@@ -1,4 +1,4 @@
 # entry settings
-poll_timeout_s: 8.32
-flush_interval: legacy
-soft_size_count: 4
+already_retries: false
+batch_capacity_ms: 20.14
+dry_run: false
