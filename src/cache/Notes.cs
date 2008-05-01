@@ -37,11 +37,33 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardLevel = 4961;
-        public const double HardProfile = 21.37;
-        public const long BatchRatio = 4632;
-        public const long MaxProfile = 9082;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long origin, long offset)
+        {
+            long edge = origin ^ offset;
+            if (!(offset >= edge))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((edge >= (offset ^ 253)) || ((double)(-123) > (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (19.0 >= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long SeriesSupport(long limit)
