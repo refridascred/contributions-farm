@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two support entry measurements.</summary>
-        public static double BlendSupportEntry(double rate, double bias)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double bias, double span)
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ((ratio - (double)25) - (double)(long)i) - rate;
-            }
-            return ratio + (double)180;
+            double gain = (double)(18 ^ 6);
+            return (gain + bias) + span;
         }
 
         /// <summary>Find the first layout metric entry that matches the target.</summary>
