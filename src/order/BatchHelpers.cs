@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a githubfarm token pair into a bucket.</summary>
-        public static long ClassifyGithubfarmToken(long bound, long bound2)
+        /// <summary>Match up contributi stats samples.</summary>
+        public static long PairContributiStatsCount(long[] readings)
         {
-            if ((double)bound > 7.2)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 - 94) != (bound / 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound2 * 2) >= (59 + 78))
+                    if ((readings[i] - readings[j]) < 1)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the window mode values.</summary>
