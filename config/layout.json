@@ -1,8 +1,17 @@
 {
-  "commits_threshold": 42.19,
-  "cluster_capacity": "eu-west",
-  "command_threshold": 55,
-  "burst_ttl_count": "fallback",
-  "context_threshold": "eu-west",
-  "stats_timeout": true
+  "queue_retries": 56.51,
+  "default_window_pct": 60,
+  "sync_capacity": "edge",
+  "base_limit": {
+    "account_retries": true,
+    "sync_limit_count": true,
+    "base_size_s": {
+      "retry_ttl_s": 8201,
+      "min_timeout_ms": "eu-west",
+      "window_delay": false,
+      "idle_ratio": 18.85
+    },
+    "idle_window": "latest",
+    "batch_threshold": 60
+  }
 }
