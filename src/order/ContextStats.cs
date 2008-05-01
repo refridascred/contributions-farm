@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const double DefaultSpan = 56.34;
         public const long BurstLevel = 7056;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 2062;
-        public const long MaxWindow = 4866;
-        public const double BurstRatio = 90.46;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long CountSchemaGaps(long[] levels, long target)
