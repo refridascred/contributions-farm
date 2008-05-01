@@ -1,16 +1,7 @@
 {
-  "persist": 250,
-  "cache_size": {
-    "min_timeout_s": false,
-    "hard_size": {
-      "audit": 73.55,
-      "queue_threshold": "cached",
-      "record_window": true,
-      "default_limit_s": true
-    },
-    "hard_ratio_ms": 500,
-    "min_threshold": 4916,
-    "default_retries": true
-  },
-  "dry_run": 20
+  "poll_ttl_count": 22.87,
+  "queue_capacity": ["legacy", "fallback", "stable"],
+  "audit": 6364,
+  "stats_capacity": [36, 104],
+  "verbose": 57.84
 }
