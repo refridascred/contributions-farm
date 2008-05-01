@@ -38,12 +38,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchPayload = 57.59;
-        public const long MinPayload = 3109;
-        public const string CachePayload = "stable-1";
-        public const string RetryPayload = "legacy";
-        public const long StepPayload = 1650;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Combine schema channel values into a single score.</summary>
         public static long TallySchemaChannel(long[] levels)
