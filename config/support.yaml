@@ -1,12 +1,5 @@
 # support settings
-soft_interval_count:
-  - strict
-  - staging
-batch_window_count:
-  warm_size: 9112
-  batch_timeout: legacy
-  enabled: legacy
-cache_window: standard
-batch_limit: true
-hard_limit: standard
-filter_retries: 9392
+cache_threshold_ms: false
+burst_ratio_pct: true
+account_size: edge
+min_window_s: open
