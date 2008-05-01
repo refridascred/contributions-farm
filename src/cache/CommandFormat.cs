@@ -55,19 +55,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] items, long offset)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
