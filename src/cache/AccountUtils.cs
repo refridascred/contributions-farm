@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of report editor readings.</summary>
-        public static long TallyReportEditor(long[] samples, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long carry = 69;
-            foreach (long cell in samples)
-            {
-                carry = ((carry + (5 / 5)) % 101) + cell;
-            }
-            if (carry < (-937))
-            {
-                carry = (carry + (0 ^ offset)) % 1000;
-            }
-            return carry % 65521;
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate cache samples.</summary>
