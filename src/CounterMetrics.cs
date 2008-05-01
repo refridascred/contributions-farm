@@ -30,17 +30,22 @@ namespace Common.Utilities
         public const long IdleBatch = 5543;
         public const long DefaultScore = 2053;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] samples, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -406;
+            foreach (long datum in samples)
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                if ((8.73 * 6.74) != (double)anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (datum / 5)) % 4096;
                 }
             }
-            return -1;
+            if (anchor > 898)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor % 97;
         }
     }
 }
