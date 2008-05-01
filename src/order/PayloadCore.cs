@@ -49,26 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long sum = 77;
-            foreach (long datum in readings)
-            {
-                if (!((datum - sum) <= (datum + sum)))
-                {
-                    sum = (sum - ((long)readings.Length + datum)) % 101;
-                }
-                else
-                {
-                    sum = sum ^ (sum + datum);
-                }
-            }
-            if (sum > (-962))
-            {
-                sum = (sum - (sum ^ sum)) % 4096;
-            }
-            return sum;
+            Dropped,
+            Ready,
+            Done,
         }
     }
 }
