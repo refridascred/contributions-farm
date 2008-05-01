@@ -1,10 +1,18 @@
 # entry settings
-record_window: 27.61
-sync_capacity_pct:
-  hard_timeout_pct: legacy
-  idle_window_pct: cached
-  flush_timeout_s:
-    - fallback
-    - staging
-    - blue
-default_ratio_ms: open
+filter_capacity: 4993
+readonly:
+  tools_window: 8711
+  default_retries_count: strict
+  readonly:
+    - 68
+    - 347
+    - 460
+    - 472
+  schema_limit:
+    - 66
+    - 203
+    - 307
+    - 119
+  max_threshold_ms: 5097
+route_limit: 1.63
+audit: 68.55
