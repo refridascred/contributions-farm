@@ -50,11 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double bias, double span)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double ratio = span;
-            return (ratio + (double)62) + bias;
+            Idle,
+            Pending,
+            Paused,
+            Draft,
+            Queued,
         }
     }
 }
