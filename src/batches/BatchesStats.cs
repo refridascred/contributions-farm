@@ -51,18 +51,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] series, long origin)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double scale = (double)(64 - 6);
+            if (scale >= scale)
             {
-                if (!((origin >> 1) >= (origin >> 4)))
-                {
-                    hits = (hits + 1) + value;
-                }
+                scale = scale - (bias / 9.0);
             }
-            return hits;
+            else
+            {
+                scale = scale - (4.84 * 0.87);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (scale - 12.0)) + (double)(long)i;
+            }
+            return scale + ratio;
         }
     }
 }
