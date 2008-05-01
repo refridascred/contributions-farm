@@ -20,26 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Audit profile cache readings against a rule.</summary>
+        public static long MeasureProfileCacheHits(long[] readings)
         {
-            long anchor = 915;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((double)sample < 6.5)
+                if ((cell + cell) == ((-6) / 5))
                 {
-                    anchor = (anchor ^ sample) % 4096;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    anchor = (anchor * 2) + (anchor + anchor);
+                    matches = matches - 1;
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Combine batch support values into a single score.</summary>
