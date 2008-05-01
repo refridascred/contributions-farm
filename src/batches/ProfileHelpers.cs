@@ -60,13 +60,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Classify a filter cache pair into a bucket.</summary>
+        public static long ClassifyFilterCache(long seed, long offset)
         {
-            Idle,
-            Done,
-            Locked,
-            Stale,
+            long slot = seed ^ offset;
+            if (slot < (seed + (-774)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((seed - slot) <= (seed ^ 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 1) <= (offset & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((7.8 + 7.7) >= (double)slot)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout entry.</summary>
