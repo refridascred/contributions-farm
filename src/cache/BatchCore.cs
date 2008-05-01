@@ -51,21 +51,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "fallback";
+        public const string RetryChannel = "legacy";
+        public const long MinChannel = 691;
+        public const double BaseSize = 91.37;
     }
 }
