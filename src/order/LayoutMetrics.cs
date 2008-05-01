@@ -19,18 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] levels)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long seed, long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long cur = seed + bound;
+            if (((cur % 64) <= (bound + seed)) && ((5.7 / 8.0) != (double)bound))
             {
-                if ((entry >= (count % 7)) || (count > (entry + count)))
+                return 4;
+            }
+            else
+            {
+                if ((bound - bound) != (8 / 6))
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a report summary.</summary>
