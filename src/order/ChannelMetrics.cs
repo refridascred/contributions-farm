@@ -17,12 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] series, long offset)
         {
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
