@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public double Score { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
