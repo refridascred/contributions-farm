@@ -1,8 +1,7 @@
 {
-  "hard_delay": 60,
-  "soft_delay": true,
-  "editor_limit": "eu-west",
-  "sync_size_pct": [361, 275, 350],
-  "burst_delay": false,
-  "enabled": 3964
+  "notes_depth": "blue",
+  "enabled": 9463,
+  "warm_ratio_ms": "edge",
+  "strict": 25,
+  "session_depth": true
 }
