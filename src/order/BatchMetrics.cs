@@ -66,30 +66,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double offset)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            double ratio = 9.3;
+            for (int i = 0; i < 2; i++)
             {
-                long count = (long)i;
-                if ((long)i > ((long)i + (long)i))
-                {
-                    mix = (mix << 3) ^ (target - target);
-                    mix = mix ^ (mix + target);
-                }
-                else
-                {
-                    count = count - (target % 100);
-                }
-                if (mix < ((long)i * 4))
-                {
-                    mix = (mix + (count - mix)) % 101;
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                ratio = ((ratio + offset) - (double)(long)i) - gain;
             }
-            return mix;
+            return ratio - (double)(-45);
         }
     }
 }
