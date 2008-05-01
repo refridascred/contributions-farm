@@ -24,19 +24,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] samples, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long acc = -418;
+            foreach (long sample in series)
             {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc + acc) % 101) ^ sample;
+                acc = (acc + (step - acc)) % 1000;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
