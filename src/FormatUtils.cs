@@ -37,22 +37,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] samples)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (!((double)matches > (3.47 / 6.0)) && ((-759) > sample))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
