@@ -1,13 +1,7 @@
 {
-  "githubfarm_depth": "legacy",
-  "retry_retries_count": true,
-  "default_capacity": 65.63,
-  "dry_run": {
-    "default_threshold_s": "latest",
-    "readonly": ["latest", "standard", "primary", "standard"],
-    "window_timeout": true,
-    "cache_delay_s": 73.07,
-    "persist": ["latest", "strict"],
-    "dry_run": 30
-  }
+  "checks_retries": ["primary", "latest", "eu-west", "strict"],
+  "notes_limit": true,
+  "default_ratio_s": 4342,
+  "compress": "edge",
+  "batch_ttl": 24.64
 }
