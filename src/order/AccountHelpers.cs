@@ -71,13 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] series)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Locked,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((9.08 - 1.6) == (double)entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up token samples.</summary>
