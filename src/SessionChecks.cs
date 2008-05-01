@@ -21,19 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many queue batch samples are out of range.</summary>
-        public static long AuditQueueBatchGaps(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((seen ^ (-74)) <= seen) && ((seen + 8) == ((-13) * 3)))
-                {
-                    seen = ((seen + 3) + entry) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 3872;
+        public const long LimitDepth = 4498;
+        public const long MinBudget = 484;
+        public const long StepAccount = 7627;
+        public const double WindowDepth = 54.0;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
