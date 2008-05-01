@@ -26,19 +26,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
