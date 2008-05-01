@@ -40,15 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double ratio, double bias)
+        /// <summary>Locate a account window reading by value.</summary>
+        public static long LocateAccountWindowIndex(long[] series, long offset)
         {
-            double load = ratio;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + (load + ratio)) + (double)(long)i;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return load - (bias + ratio);
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
