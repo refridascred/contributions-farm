@@ -13,22 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate filter route samples.</summary>
-        public static long TotalFilterRoute(long[] levels)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long carry = 3;
-            foreach (long sample in levels)
-            {
-                if (!((sample + carry) == (carry + sample)))
-                {
-                    carry = (carry * 4) + sample;
-                }
-                else
-                {
-                    carry = (carry ^ 3) % 65521;
-                }
-            }
-            return carry;
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up metric account samples.</summary>
