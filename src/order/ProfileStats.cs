@@ -26,16 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Audit batches schema readings against a rule.</summary>
+        public static long TallyBatchesSchemaMatches(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mix = (mix - limit) % 101;
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((item - item) <= item)
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the context kind values.</summary>
