@@ -83,18 +83,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] readings)
+        /// <summary>Measure how many payload batch samples are out of range.</summary>
+        public static long MeasurePayloadBatchHits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((datum & 7) < count) || ((count / 9) < (count << 3)))
+                if (!!((datum << 2) == (4 / 8)))
                 {
-                    count = count + 3;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
