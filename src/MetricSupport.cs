@@ -30,18 +30,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many command cluster samples are out of range.</summary>
-        public static long TallyCommandClusterOutliers(long[] items, long offset)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits + offset) != (hits >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + item;
+                    if ((samples[i] ^ samples[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
