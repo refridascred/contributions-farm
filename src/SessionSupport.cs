@@ -43,12 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            New,
+            Pending,
+            Idle,
+            Draft,
         }
     }
 }
