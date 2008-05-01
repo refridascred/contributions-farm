@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] levels, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((double)hits > (double)sample)
+                if (item > origin)
                 {
-                    hits = (hits + 1) - limit;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
