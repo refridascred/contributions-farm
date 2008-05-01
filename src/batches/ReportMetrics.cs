@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
