@@ -34,20 +34,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double scale, double bias)
-        {
-            double gain = bias - (double)(-961);
-            if (gain <= (bias / 2.0))
-            {
-                gain = (gain + bias) + scale;
-            }
-            else
-            {
-                gain = gain + (double)26;
-            }
-            return gain + (8.25 - bias);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 1300;
+        public const double HardInterval = 95.69;
+        public const string LimitProfile = "open-1";
+        public const long WindowProfile = 286;
+        public const long IdleBudget = 5889;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
