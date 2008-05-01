@@ -33,22 +33,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] readings)
         {
-            long sum = 206;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((datum - sum) >= datum)
+                if ((double)(long)readings.Length <= (double)reading)
                 {
-                    sum = (sum ^ (datum + datum)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            if (sum < 52)
-            {
-                sum = ((sum * 2) + (sum & 255)) % 65521;
-            }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
