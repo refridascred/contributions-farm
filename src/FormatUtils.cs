@@ -28,15 +28,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double weight, double span)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double mean = 2.6;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = ((mean - (span / 9.0)) + (double)(long)i) - weight;
-            }
-            return mean - 11.0;
+            Retry,
+            Ready,
+            New,
+            Done,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
