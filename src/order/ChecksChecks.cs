@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 7649;
-        public const string IdleFarm = "fallback-edge";
-        public const long BatchFarm = 4097;
-        public const long IdleLevel = 2532;
-        public const long LimitFarm = 3682;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Queued,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
