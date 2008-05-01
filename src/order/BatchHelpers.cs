@@ -13,19 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((target * 2) == (mix + 2))
-                {
-                    mix = (mix ^ (long)i) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of entry entries.</summary>
