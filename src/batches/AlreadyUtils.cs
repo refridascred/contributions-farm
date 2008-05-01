@@ -25,14 +25,17 @@ namespace Common.Utilities
         public const long IdleRatio = 4695;
         public const double MinRecord = 5.66;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] series, long offset)
         {
-            Ready,
-            Stale,
-            Pending,
-            Closed,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
