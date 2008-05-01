@@ -36,18 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 1) >= matches)
-                {
-                    matches = (matches + 1) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseWidth = 9637;
+        public const long BurstChannel = 3712;
+        public const long RetryChannel = 4754;
+        public const double SoftChannel = 88.16;
+        public const long CacheChannel = 4746;
     }
 }
