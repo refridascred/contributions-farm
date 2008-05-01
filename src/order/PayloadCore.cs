@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the order schema entries that pass the check.</summary>
-        public static long MeasureOrderSchemaOutliers(long[] values, long origin)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((origin << 2) <= (count >> 5)) && ((double)count == (double)origin))
+                if (values[i] < target)
                 {
-                    count = (count + 3) - entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a buffer header.</summary>
