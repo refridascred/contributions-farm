@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if (3.0 < (double)target)
-                {
-                    acc = acc - (target + target);
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSchema = 20.78;
+        public const double CacheSchema = 13.2;
+        public const string CacheBudget = "stable-1";
+        public const string MaxSchema = "strict";
+        public const double IdleSchema = 77.92;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] series)
