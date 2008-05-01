@@ -1,5 +1,7 @@
 {
-  "dry_run": "blue",
-  "max_limit": 5921,
-  "persist": 6416
+  "persist": false,
+  "burst_limit_count": 100,
+  "poll_size_s": 30,
+  "idle_size": "latest",
+  "readonly": "edge"
 }
