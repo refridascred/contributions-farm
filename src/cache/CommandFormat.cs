@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] data)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long anchor = 41;
-            foreach (long datum in data)
-            {
-                anchor = (anchor ^ datum) % 1000;
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the buffer mode values.</summary>
