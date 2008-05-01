@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of support batch entries.</summary>
-        public static long FoldSupportBatch(long[] levels, long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long acc = -1;
-            foreach (long sample in levels)
-            {
-                if (acc >= 7)
-                {
-                    acc = ((((acc * 3) + (15 & 127)) % 101) - sample) - seed;
-                }
-            }
-            return acc % 4096;
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
