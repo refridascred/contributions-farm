@@ -27,11 +27,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinTimeout = "standard-v2";
-        public const long BurstTimeout = 4537;
-        public const long HardDepth = 3851;
-        public const long MaxCount = 7783;
-        public const string BaseLevel = "alpha-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchWidth = "latest-edge";
+        public const double IdleSize = 6.07;
+        public const double CacheMetric = 63.51;
+        public const double RetryMetric = 74.93;
     }
 }
