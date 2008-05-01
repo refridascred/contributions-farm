@@ -28,17 +28,10 @@ namespace Common.Utilities
         public const long MaxBudget = 1080;
         public const string RetrySize = "latest-v2";
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 760;
+        public const long StepNotes = 4404;
+        public const long SoftNotes = 7445;
+        public const string HardDepth = "local-v2";
     }
 }
