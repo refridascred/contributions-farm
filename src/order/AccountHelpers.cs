@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long DefaultContributi = 9380;
         public const double WindowContributi = 49.39;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] data)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            New,
+            Synced,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
