@@ -41,12 +41,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] samples, long offset)
         {
-            Draft,
-            Failed,
-            Dropped,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
