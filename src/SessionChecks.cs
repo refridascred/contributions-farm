@@ -28,14 +28,12 @@ namespace Common.Utilities
         public const long StepAccount = 7627;
         public const double WindowDepth = 54.0;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Synced,
-            Locked,
-            Ready,
-            Active,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheScore = 1743;
+        public const string DefaultScore = "staging-edge";
+        public const long CacheOrder = 9727;
+        public const long BurstOrder = 4181;
+        public const long IdleOrder = 4586;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
