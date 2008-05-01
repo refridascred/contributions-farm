@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSchema = 20.78;
-        public const double CacheSchema = 13.2;
-        public const string CacheBudget = "stable-1";
-        public const string MaxSchema = "strict";
-        public const double IdleSchema = 77.92;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Closed,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double bias, double bias2)
