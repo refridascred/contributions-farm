@@ -14,11 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseRatio = 6640;
-        public const long WindowSpan = 3953;
-        public const long WindowOrder = 9018;
-        public const long HardBudget = 8879;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 6557;
+        public const long SoftTimeout = 42;
+        public const long CacheContributi = 1062;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
