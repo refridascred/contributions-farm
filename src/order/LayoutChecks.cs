@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] data, long offset)
+        /// <summary>Adjust a stats support reading.</summary>
+        public static double SmoothStatsSupport(double scale, double span)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double load = scale / 2.0;
+            if (load < (span * 4.7))
             {
-                if ((seen - offset) <= (offset + datum))
-                {
-                    seen = seen + 1;
-                }
+                load = load - load;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (scale / 5.0)) - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a account summary.</summary>
