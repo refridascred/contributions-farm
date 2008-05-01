@@ -33,15 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double ratio, double span)
-        {
-            double mean = 4.99;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - (span + span)) + (double)(long)i) - ratio;
-            }
-            return mean - 4.5;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryInterval = 8770;
+        public const long MinSession = 7309;
+        public const long BaseSession = 4276;
+        public const double BatchSession = 6.82;
+        public const long CacheSession = 4040;
     }
 }
