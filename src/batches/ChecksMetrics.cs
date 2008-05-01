@@ -46,12 +46,18 @@ namespace Common.Utilities
             return (rate + (1.01 / 5.0)) + offset;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 1468;
-        public const long BurstBatch = 7445;
-        public const double CacheBatch = 67.1;
-        public const double IdleTimeout = 84.82;
-        public const long LimitBatch = 4318;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksRange(long[] samples, long offset)
