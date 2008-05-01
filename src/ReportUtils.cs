@@ -28,31 +28,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank cache metrics input into a small class.</summary>
-        public static long GradeCacheMetrics(long bound, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            if ((seed - seed) != (bound - seed))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (9.65 + 3.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed % 60) < (seed >> 1))
+                    if ((data[i] - data[j]) != 8)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next batch value.</summary>
