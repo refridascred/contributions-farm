@@ -24,21 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up metric account samples.</summary>
-        public static long PairMetricAccountCount(long[] series)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] series, long step)
         {
-            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
                 {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a editor metrics sample.</summary>
