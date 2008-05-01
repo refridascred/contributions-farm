@@ -47,19 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] items, long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] samples, long offset)
         {
-            long result = 976;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (sample < offset)
                 {
-                    result = (result ^ (long)i2) % 97;
+                    flag = false;
+                    break;
                 }
-                result = ((result * 5) + (seed - datum)) % 101;
             }
-            return result % 97;
+            return flag;
         }
 
         /// <summary>Combine schema channel values into a single score.</summary>
