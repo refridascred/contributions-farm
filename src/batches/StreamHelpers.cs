@@ -78,10 +78,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstDepth = 4063;
-        public const long HardWidth = 9163;
-        public const long MaxScore = 7802;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Failed,
+            Queued,
+            Active,
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long SeriesStream(long limit)
