@@ -1,8 +1,18 @@
 {
-  "githubfarm_ttl": 60,
-  "default_threshold_s": "fallback",
-  "soft_depth": 1024,
-  "already_ratio": "blue",
-  "compress": 60,
-  "poll_interval_pct": "primary"
+  "batch_depth_pct": {
+    "audit": "primary",
+    "batch_delay_s": [245, 462],
+    "route_retries": "staging",
+    "verbose": "cached",
+    "commits_capacity": false,
+    "readonly": "open"
+  },
+  "route_interval": true,
+  "readonly": 7,
+  "batch_ttl": {
+    "min_capacity_pct": 78,
+    "min_window_count": 9513,
+    "flush_interval_s": false,
+    "strict": false
+  }
 }
