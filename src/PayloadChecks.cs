@@ -27,11 +27,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "fallback-v2";
-        public const long SoftCount = 9749;
-        public const long LimitTimeout = 3587;
-        public const long BatchCount = 9305;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double BlendMetrics(double ratio, double bias)
