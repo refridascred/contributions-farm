@@ -1,5 +1,21 @@
 # githubfarm settings
-persist: false
-idle_ratio_ms: legacy
-soft_window_ms: false
-sync_retries: fallback
+window_threshold: 5792
+burst_ttl_s: true
+cache_delay_count: blue
+retry_depth_count:
+  metrics_depth: false
+  flush_timeout_count: 1024
+  schema_capacity:
+    - 55
+    - 85
+    - 469
+  max_ratio:
+    - 302
+    - 254
+    - 253
+    - 469
+  persist: 1011
+dry_run: 67.58
+hard_limit_ms:
+  - 476
+  - 355
