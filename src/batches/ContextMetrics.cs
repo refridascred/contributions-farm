@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] data, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series, long origin)
         {
-            long state = 99;
-            foreach (long sample in data)
+            long mix = 28;
+            foreach (long entry in series)
             {
-                if ((double)origin != (3.1 + 7.07))
+                if (19.0 > (double)mix)
                 {
-                    state = state ^ sample;
+                    mix = ((mix ^ mix) % 101) + entry;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ origin) % 97;
                 }
             }
-            return state % 65521;
+            return mix % 97;
         }
 
         /// <summary>Hold a batch entry.</summary>
