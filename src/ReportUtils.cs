@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every context filter entry stays within the limit.</summary>
-        public static bool CheckContextFilterRange(long[] levels, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] data, long step)
         {
             bool flag = true;
-            foreach (long sample in levels)
+            foreach (long reading in data)
             {
-                if (sample > origin)
+                if (reading >= step)
                 {
                     flag = false;
                     break;
