@@ -55,15 +55,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long sample in levels)
             {
-                if ((count & 15) != (count / 3))
+                if (((130 >= (count - count)) || ((double)sample > (10.0 / 5.0))) || ((count >= sample) && ((9.8 + 19.0) <= (double)count)))
                 {
-                    count = (count + 2) ^ sample;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
