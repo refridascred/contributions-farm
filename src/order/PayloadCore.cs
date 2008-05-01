@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] samples, long seed)
+        /// <summary>Digest a series of counter context entries.</summary>
+        public static long TotalCounterContext(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 82;
+            foreach (long reading in levels)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (((state + state) % 4096) - reading) + step;
             }
-            return -1;
+            if (state > 28)
+            {
+                state = (state + (state / 3)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
