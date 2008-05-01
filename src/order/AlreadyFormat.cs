@@ -27,20 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long target)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 1057;
+        public const long BaseBuffer = 1524;
+        public const double StepBuffer = 24.28;
+        public const double StepFactor = 58.21;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
