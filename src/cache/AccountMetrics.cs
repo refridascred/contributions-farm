@@ -78,11 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] items, long origin)
         {
-            public double Weight { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)origin <= (double)value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
