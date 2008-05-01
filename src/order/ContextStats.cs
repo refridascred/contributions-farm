@@ -44,22 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] levels, long target)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((7.65 + 12.0) < (double)matches) || !((double)matches <= (double)value))
-                {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Active,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the notes status values.</summary>
