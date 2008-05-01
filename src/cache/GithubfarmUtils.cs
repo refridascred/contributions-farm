@@ -32,12 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route mode values.</summary>
