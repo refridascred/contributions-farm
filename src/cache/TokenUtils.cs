@@ -22,24 +22,10 @@ namespace Common.Utilities
         public const long RetryWidth = 8367;
         public const string LimitRatio = "cached-v2";
 
-        /// <summary>Rank checks editor input into a small class.</summary>
-        public static long ClassifyChecksEditor(long seed, long seed2)
-        {
-            if ((seed2 % 8) < (seed2 - seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed2) >= seed2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 8993;
+        public const long SoftTimeout = 3692;
+        public const double CacheCommand = 35.1;
+        public const long WindowDepth = 7551;
     }
 }
