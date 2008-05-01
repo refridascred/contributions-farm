@@ -19,14 +19,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] data, long target)
         {
-            Synced,
-            Failed,
-            Draft,
-            Stale,
-            Locked,
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
