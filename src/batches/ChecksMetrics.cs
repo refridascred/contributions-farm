@@ -68,12 +68,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] values, long origin)
         {
-            Idle,
-            Pending,
-            Queued,
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
