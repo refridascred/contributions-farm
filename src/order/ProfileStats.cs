@@ -54,17 +54,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] readings, long limit)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Synced,
+            Stale,
+            Queued,
         }
     }
 }
