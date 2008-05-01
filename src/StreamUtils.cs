@@ -13,13 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Active,
-            Paused,
-            Idle,
-            Synced,
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Adjust a batch counter reading.</summary>
