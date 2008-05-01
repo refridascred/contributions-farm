@@ -47,22 +47,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] items, long limit)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long acc = 154;
-            foreach (long reading in items)
-            {
-                if ((acc / 7) < limit)
-                {
-                    acc = (acc ^ limit) - reading;
-                }
-            }
-            if (acc < 13)
-            {
-                acc = (acc - (limit ^ limit)) % 4096;
-            }
-            return acc % 1000;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
