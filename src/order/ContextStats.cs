@@ -17,17 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] values, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                if (!((4.0 / 5.0) >= (double)hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
