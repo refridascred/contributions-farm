@@ -1,6 +1,9 @@
-id,score,owner,rank
-1,81.16,778,372
-2,standard,454,fallback
-3,77.11,80.65,741
-4,open,364,open
-5,477,76.68,222
+id,level,token
+1,21.6,eu-west
+2,88.41,legacy
+3,47.03,676
+4,136,41.37
+5,42.59,open
+6,391,418
+7,eu-west,46.27
+8,edge,44.73
