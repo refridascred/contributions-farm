@@ -25,19 +25,25 @@ namespace Common.Utilities
         public const long StepAlready = 7646;
         public const string WindowAlready = "open-1";
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long offset, long offset2)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long next = offset ^ offset2;
+            if (6.0 > (double)next)
             {
-                if (sample != step)
+                return 6;
+            }
+            else
+            {
+                if (next >= offset2)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
     }
 }
