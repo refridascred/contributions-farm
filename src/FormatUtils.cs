@@ -20,13 +20,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] values)
         {
-            Retry,
-            Ready,
-            New,
-            Done,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item - hits) == (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the already class values.</summary>
