@@ -21,14 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data, long offset)
         {
-            Dropped,
-            Done,
-            New,
-            Pending,
-            Synced,
+            long sum = 3;
+            foreach (long reading in data)
+            {
+                if (((sum * 4) <= (reading + offset)) || ((3.69 / 5.0) < (double)offset))
+                {
+                    sum = sum ^ (long)data.Length;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine session cache values into a single score.</summary>
