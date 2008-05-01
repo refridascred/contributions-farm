@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long BurstBatches = 624;
         public const string MaxBatches = "stable-edge";
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series, long origin)
+        /// <summary>Match up record metric samples.</summary>
+        public static long OverlapRecordMetricCount(long[] values)
         {
-            long sum = 837;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry << 2) <= entry) || ((origin >> 4) <= (0 + sum)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum * 4) + 1) % 1000;
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the record order entries that pass the check.</summary>
