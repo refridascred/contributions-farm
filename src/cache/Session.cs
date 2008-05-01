@@ -34,23 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two stats command measurements.</summary>
-        public static double ProjectStatsCommand(double weight, double offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] levels)
         {
-            double bias = (weight * 9.0) - weight;
-            if (bias < (offset * 1.58))
+            long carry = 96;
+            foreach (long sample in levels)
             {
-                bias = bias + (weight - offset);
+                carry = ((carry + carry) % 4096) ^ sample;
             }
-            else
-            {
-                bias = bias + (double)3;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - (weight / 8.0);
+            return carry;
         }
 
         /// <summary>Describe the notes kind values.</summary>
