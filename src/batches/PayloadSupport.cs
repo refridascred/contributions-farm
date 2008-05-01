@@ -28,11 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleLevel = 7.84;
-        public const string BurstOrder = "latest-v2";
-        public const long BatchRatio = 2405;
-        public const string MaxOrder = "standard-edge";
-        public const long SoftLevel = 438;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] items, long limit)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
