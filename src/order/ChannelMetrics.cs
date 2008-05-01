@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of window route readings.</summary>
-        public static long CompareWindowRouteCount(long[] items)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long floor, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (8.4 < (double)origin)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((5.7 + 6.0) > (double)floor)
                 {
-                    if ((items[i] - items[j]) != 5)
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= (origin % 3))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((59 >= (floor >> 3)) && ((double)origin == (1.31 / 6.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
