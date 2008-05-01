@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] samples, long step)
         {
-            Ready,
-            Failed,
-            Queued,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
