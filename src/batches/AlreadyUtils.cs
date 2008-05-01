@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every notes stream entry stays within the limit.</summary>
-        public static bool GuardNotesStreamLimits(long[] samples, long limit)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Closed,
+            Ready,
+            Done,
         }
 
         /// <summary>Define record limits and defaults.</summary>
