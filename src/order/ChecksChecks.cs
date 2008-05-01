@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            Failed,
+            Active,
+            Stale,
+            New,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
