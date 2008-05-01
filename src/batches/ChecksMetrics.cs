@@ -59,19 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] items, long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
