@@ -19,11 +19,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstBudget = 8166;
-        public const long IdleBudget = 1244;
-        public const long HardTools = 5291;
-        public const long SoftTools = 9993;
-        public const long BurstLevel = 6800;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Synced,
+            Failed,
+            Draft,
+            Stale,
+            Locked,
+        }
     }
 }
