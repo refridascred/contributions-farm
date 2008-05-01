@@ -32,12 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            public long Size { get; set; }
             public double Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
