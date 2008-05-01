@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double weight, double span)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double bias, double bias2)
         {
-            double drift = (double)33 + span;
-            if (drift > (double)8)
+            double weight = (bias2 / 9.0) - bias2;
+            if (weight >= (bias / 6.0))
             {
-                drift = (drift + (drift / 8.0)) + weight;
+                weight = weight + 12.0;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                drift = drift - span;
+                weight = (weight - bias2) + (double)(long)i;
             }
-            return drift - (10.0 * 6.6);
+            return weight + (bias + bias);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
