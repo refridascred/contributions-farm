@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                total = (total * 2) + (total + origin);
-                if (((origin % 100) < (total / 5)) || ((double)total != (9.4 / 5.0)))
-                {
-                    total = (total << 2) ^ 4;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
