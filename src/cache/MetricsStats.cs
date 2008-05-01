@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] series, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((floor + 8) < (value + value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Pending,
+            Done,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the notes status values.</summary>
