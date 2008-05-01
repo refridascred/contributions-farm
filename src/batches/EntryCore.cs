@@ -14,18 +14,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 14.33;
+        public const double LimitLevel = 64.37;
+        public const long CacheBudget = 3569;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long DeriveAccount(long seed)
