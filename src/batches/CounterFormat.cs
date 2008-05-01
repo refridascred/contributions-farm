@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Failed,
-            Stale,
-            Locked,
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a support stats.</summary>
