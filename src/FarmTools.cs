@@ -19,13 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            Done,
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
