@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 1910;
+        public const long BatchInterval = 2155;
+        public const long StepPayload = 5329;
+        public const long MinPayload = 6626;
+        public const long DefaultPayload = 6432;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long GradeTools(long origin, long seed)
