@@ -35,24 +35,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a checks entry pair into a bucket.</summary>
-        public static long RankChecksEntry(long target, long offset)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if (offset >= 60)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.1 - 6.5) != (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the checks kind values.</summary>
