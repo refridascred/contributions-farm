@@ -1,15 +1,9 @@
 # entry settings
-idle_delay: 42
-commits_threshold:
-  poll_size:
-    - strict
-    - legacy
-  sync_delay_ms:
-    - 449
-    - 406
-  max_interval_pct:
-    - legacy
-    - edge
-sync_timeout_count: 30
-default_depth_ms: standard
-buffer_threshold: 9433
+max_interval_ms:
+  - local
+  - green
+  - staging
+  - eu-west
+flush_ttl: 500
+flush_interval_count: true
+contributi_window: 42.31
