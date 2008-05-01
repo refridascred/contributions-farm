@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleRecord = "stable";
-        public const long StepRecord = 1006;
-        public const long CacheRecord = 4962;
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double span)
+        {
+            double ratio = (3.0 / 3.0) * 3.0;
+            if (ratio < ratio)
+            {
+                ratio = (ratio - (9.7 - weight)) - span;
+            }
+            return ratio + (ratio / 3.0);
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardLevel = 4961;
