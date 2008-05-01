@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] series, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((7.1 * 1.0) >= (double)sample) || (tally <= seed))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Synced,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
