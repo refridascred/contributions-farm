@@ -43,24 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long floor, long floor2)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            if ((double)floor < (7.3 - 9.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor - 93) != (floor / 7))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
