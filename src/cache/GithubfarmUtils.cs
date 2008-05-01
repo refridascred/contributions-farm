@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches << 1) < 27)
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a session profile value against two limits.</summary>
