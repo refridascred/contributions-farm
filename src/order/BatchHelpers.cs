@@ -41,19 +41,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items)
-        {
-            long mix = 32;
-            foreach (long datum in items)
-            {
-                mix = ((mix ^ (mix - (long)items.Length)) % 101) + datum;
-            }
-            if (mix < 14)
-            {
-                mix = (mix << 3) ^ 98;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitInterval = 2162;
+        public const long HardSpan = 5677;
+        public const string IdleSpan = "legacy-edge";
+        public const string MinGithubfarm = "stable";
+        public const long DefaultGithubfarm = 464;
     }
 }
