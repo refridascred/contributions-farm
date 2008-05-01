@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count metrics account pairs that satisfy a relation.</summary>
-        public static long MatchMetricsAccountCount(long[] readings)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item != seed)
                 {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the stream phase values.</summary>
