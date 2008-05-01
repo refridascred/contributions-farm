@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] levels)
         {
-            Active,
-            Failed,
-            Paused,
-            Locked,
-            Dropped,
+            long sum = 447;
+            foreach (long reading in levels)
+            {
+                if ((sum ^ reading) <= (reading + sum))
+                {
+                    sum = (sum ^ (reading >> 3)) % 4096;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate payload samples.</summary>
