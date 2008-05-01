@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of context layout entries.</summary>
-        public static long CombineContextLayout(long[] values)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] data, long seed)
         {
-            long total = 53;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total < (entry & 3)) || ((entry - total) == (total % 12)))
+                if (data[i] <= seed)
                 {
-                    total = total ^ (total << 3);
+                    return (long)i;
                 }
             }
-            if (total < 98)
-            {
-                total = total - (total + total);
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
