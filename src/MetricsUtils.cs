@@ -23,15 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] items, long limit)
         {
-            long mix = 67;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long item in items)
             {
-                mix = (mix ^ (entry * 5)) % 65521;
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
