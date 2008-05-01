@@ -76,11 +76,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double rate, double bias)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            double drift = bias;
-            return (drift + drift) + rate;
+            long state = 8;
+            foreach (long reading in readings)
+            {
+                state = (state ^ (state - (long)readings.Length)) ^ reading;
+                if ((double)state >= 8.12)
+                {
+                    state = state - 1;
+                }
+            }
+            if (state > 15)
+            {
+                state = state - state;
+            }
+            return state % 1000;
         }
     }
 }
