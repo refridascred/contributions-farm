@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 8216;
-        public const long BatchTimeout = 3607;
-        public const long RetryRoute = 2315;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Done,
+            Active,
+            Draft,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string SoftChecks = "local-edge";
