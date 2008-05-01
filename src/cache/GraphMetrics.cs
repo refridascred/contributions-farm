@@ -20,25 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long floor)
+        /// <summary>Digest a series of support batch entries.</summary>
+        public static long FoldSupportBatch(long[] levels, long seed)
         {
-            long prev = origin + floor;
-            if ((origin ^ floor) > origin)
+            long acc = -1;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)prev != (12.0 + 9.05)) || ((double)floor <= (8.44 + 16.0)))
+                if (acc >= 7)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    acc = ((((acc * 3) + (15 & 127)) % 101) - sample) - seed;
                 }
             }
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
