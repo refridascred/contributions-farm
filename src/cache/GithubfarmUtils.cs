@@ -23,12 +23,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftInterval = 6532;
-        public const long BurstWindow = 991;
-        public const long MaxRatio = 5680;
-        public const string IdleBudget = "staging-v2";
-        public const string WindowSpan = "latest-edge";
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
