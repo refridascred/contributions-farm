@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long floor, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] series, long offset)
         {
-            if ((double)floor != (9.71 / 6.0))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin / 5) <= (origin + origin))
+                if (!((double)932 >= (1.23 + 9.08)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(0 <= (floor + floor)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = ((matches + 3) + cell) + offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
