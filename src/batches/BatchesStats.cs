@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate batch contributi readings against a bound.</summary>
-        public static bool VerifyBatchContributiLimits(long[] items, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (cell != step)
+                if (sample < step)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Describe the queue status values.</summary>
