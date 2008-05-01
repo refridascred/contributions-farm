@@ -35,12 +35,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxLevel = 659;
-        public const long BatchLevel = 4039;
-        public const string HardGraph = "legacy";
-        public const long StepGraph = 9874;
-        public const double BurstLevel = 38.35;
+        /// <summary>Blend two cache channel measurements.</summary>
+        public static double ScaleCacheChannel(double bias, double floor)
+        {
+            double mean = 13.0;
+            return (mean - floor) + bias;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] samples)
