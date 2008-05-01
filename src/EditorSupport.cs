@@ -20,12 +20,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardFactor = 2589;
+        public const long StepBuffer = 5420;
+        public const long DefaultBudget = 9257;
+        public const long LimitFactor = 9776;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string StepCluster = "strict-edge";
