@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string BurstEditor = "local-v2";
         public const long CacheEditor = 6508;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long acc = 29;
-            foreach (long item in items)
-            {
-                if ((item + item) > acc)
-                {
-                    acc = acc + (7 - acc);
-                }
-            }
-            if (acc < 423)
-            {
-                acc = (acc * 5) + (7 * 4);
-            }
-            return acc;
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a stats record.</summary>
