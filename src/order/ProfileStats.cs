@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            long sum = 3;
+            foreach (long entry in readings)
+            {
+                if ((sum + 36) > sum)
+                {
+                    sum = ((sum << 2) ^ (entry << 1)) % 255;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a entry window sample.</summary>
