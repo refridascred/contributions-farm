@@ -13,23 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double bias, double offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double drift = (bias - 0.14) * 0.85;
-            if (drift <= (1.4 * 5.34))
-            {
-                drift = drift + offset;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (9.9 - offset)) + (double)(long)i;
-            }
-            return drift - (double)8;
+            Synced,
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
