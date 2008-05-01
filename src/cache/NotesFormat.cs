@@ -21,10 +21,15 @@ namespace Common.Utilities
         public const long RetryTimeout = 4410;
         public const long BaseCount = 3192;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchWidth = "latest-edge";
-        public const double IdleSize = 6.07;
-        public const double CacheMetric = 63.51;
-        public const double RetryMetric = 74.93;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] readings, long floor)
+        {
+            long result = 3;
+            foreach (long reading in readings)
+            {
+                result = ((result ^ (floor % 5)) % 4096) ^ reading;
+            }
+            return result;
+        }
     }
 }
