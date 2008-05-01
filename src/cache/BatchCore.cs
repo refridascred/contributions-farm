@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] samples, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long carry = 829;
+            foreach (long value in levels)
             {
-                if (datum < origin)
+                if ((3 ^ carry) <= carry)
                 {
-                    ready = false;
-                    break;
+                    carry = (carry << 2) ^ (144 ^ value);
                 }
             }
-            return ready;
+            return carry % 1000;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
