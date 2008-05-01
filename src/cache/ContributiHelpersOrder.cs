@@ -15,19 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] levels, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (datum < seed)
+                if (!((target > (target & 7)) && ((double)hits != (9.0 * 1.8))))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) ^ datum;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
