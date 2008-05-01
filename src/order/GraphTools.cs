@@ -63,12 +63,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] items)
         {
-            Done,
-            Failed,
-            Active,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell >= (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
