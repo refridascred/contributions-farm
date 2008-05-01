@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] data, long step)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark + (724 << 2)) % 1000;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
