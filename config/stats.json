@@ -1,15 +1,17 @@
 {
-  "notes_capacity": 38.62,
-  "hard_window_pct": "legacy",
-  "cache_ttl_pct": true,
-  "min_interval": 24,
-  "farm_ttl": {
-    "soft_depth": "local",
-    "tools_size": [64, 200, 490, 118],
-    "dry_run": false,
-    "persist": 15.61,
-    "channel_ratio": 67.36,
-    "batch_threshold_pct": 9682
+  "max_capacity_pct": {
+    "flush_limit_count": "edge",
+    "flush_delay_pct": 30,
+    "idle_window": ["eu-west", "blue", "eu-west", "edge"]
   },
-  "verbose": "fallback"
+  "record_depth": {
+    "soft_depth_ms": ["local", "legacy", "legacy"],
+    "burst_timeout": 5041,
+    "sync_threshold": [496, 221],
+    "max_depth_count": "cached"
+  },
+  "burst_limit": "local",
+  "hard_capacity_s": 4184,
+  "base_ttl_pct": "strict",
+  "schema_limit": 58.76
 }
