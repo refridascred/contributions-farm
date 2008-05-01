@@ -56,22 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph session pair into a bucket.</summary>
-        public static long GradeGraphSession(long bound, long target)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long floor, long floor2)
         {
-            if ((target / 9) != (bound >> 5))
+            if ((1.32 <= (double)floor2) && ((floor2 - floor) >= (818 ^ floor)))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (((target - target) > 2) && ((bound - target) >= (target ^ bound)))
+                if ((floor2 > floor) || ((floor + floor) >= 9))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    return 1;
                 }
             }
         }
