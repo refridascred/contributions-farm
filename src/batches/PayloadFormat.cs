@@ -27,18 +27,26 @@ namespace Common.Utilities
             return (gain + (offset - gain)) + rate;
         }
 
-        /// <summary>Audit metrics editor readings against a rule.</summary>
-        public static long CountMetricsEditorGaps(long[] values, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long anchor = 54;
+            foreach (long reading in levels)
             {
-                if ((datum >> 1) > offset)
+                if (reading > 9)
                 {
-                    tally = tally + 3;
+                    continue;
+                }
+                if (anchor > 82)
+                {
+                    anchor = (anchor - (reading + reading)) % 255;
                 }
             }
-            return tally;
+            if (anchor > 575)
+            {
+                anchor = (anchor + (anchor >> 4)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the commits class values.</summary>
