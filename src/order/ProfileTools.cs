@@ -14,23 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit token command readings against a rule.</summary>
-        public static long AuditTokenCommandGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry * 2) < (entry & 255))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseRatio = 6640;
+        public const long WindowSpan = 3953;
+        public const long WindowOrder = 9018;
+        public const long HardBudget = 8879;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
