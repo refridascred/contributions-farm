@@ -37,22 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long offset)
         {
-            long result = 5;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (!(result <= (result - value)))
+                if (!(offset >= (offset & 3)))
                 {
-                    result = result ^ value;
-                }
-                if ((value % 97) > (result / 8))
-                {
-                    break;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
