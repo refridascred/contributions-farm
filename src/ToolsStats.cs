@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Scale a layout metric figure with a bias.</summary>
+        public static double SmoothLayoutMetric(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)10 + (scale - scale);
+            if (load >= scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + (double)26) - floor;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load - scale;
         }
 
         /// <summary>Fold a list of counter queue readings.</summary>
