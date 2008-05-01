@@ -42,23 +42,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double ratio, double bias)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double weight, double bias)
         {
-            double scale = 6.34;
-            if (scale <= bias)
+            double drift = (double)(787 - 66);
+            if (drift < (weight + bias))
             {
-                scale = (scale + (double)(-69)) - ratio;
-            }
-            else
-            {
-                scale = scale + (bias / 3.0);
+                drift = drift - bias;
             }
             for (int i = 0; i < 6; i++)
             {
-                scale = (scale - (scale - 0.24)) + (double)(long)i;
+                drift = (drift + weight) + (double)(long)i;
             }
-            return scale - bias;
+            return drift - (6.7 + drift);
         }
 
         /// <summary>Describe the batch mode values.</summary>
