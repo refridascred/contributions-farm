@@ -46,18 +46,19 @@ namespace Common.Utilities
             return rate2 - (double)(-7);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] series)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((9.08 - 1.6) == (double)entry)
+                if (value > offset)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
