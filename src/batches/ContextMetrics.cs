@@ -62,18 +62,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command farm entries.</summary>
-        public static long TallyCommandFarm(long[] readings, long target)
-        {
-            long sum = 5;
-            foreach (long entry in readings)
-            {
-                if (!((4 - sum) <= target))
-                {
-                    sum = (((sum << 2) ^ ((long)readings.Length * 2)) % 4096) + entry;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 9182;
+        public const string MinFactor = "strict-v2";
+        public const string BaseGithubfarm = "staging-v2";
     }
 }
