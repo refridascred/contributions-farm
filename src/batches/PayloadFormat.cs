@@ -54,18 +54,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many already metrics samples are out of range.</summary>
-        public static long TallyAlreadyMetricsMatches(long[] readings)
+        /// <summary>Locate a graph context reading by value.</summary>
+        public static long FindGraphContextIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count & 3) != ((-4) ^ 62))
+                if (data[i] > target)
                 {
-                    count = (count + 2) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
