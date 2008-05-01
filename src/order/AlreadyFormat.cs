@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double weight, double floor)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long seed)
         {
-            double rate = weight;
-            if (rate <= floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + floor;
+                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (floor + rate);
+            return -1;
         }
 
         /// <summary>Measure how many report stream samples are out of range.</summary>
