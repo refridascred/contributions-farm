@@ -43,13 +43,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long target)
         {
-            Paused,
-            Pending,
-            Draft,
-            Synced,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
