@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long origin, long seed)
         {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            if ((origin * 5) <= (29 >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1 < origin) || (origin <= (origin - seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + seed) > (seed + 70))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin == (3.5 * 18.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate cache samples.</summary>
