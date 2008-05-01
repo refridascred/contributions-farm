@@ -68,17 +68,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long bound)
+        /// <summary>Adjust a metric commits reading.</summary>
+        public static double ProjectMetricCommits(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = 4.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (((rate - 1.54) + (double)(long)i) + bias) + span;
             }
-            return -1;
+            return rate + (double)544;
         }
     }
 }
