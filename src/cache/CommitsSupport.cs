@@ -66,16 +66,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] readings, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long acc = 613;
+            foreach (long cell in readings)
             {
-                total = total ^ origin;
-                total = ((total * 4) + (long)i) % 4093;
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((acc ^ (long)i) % 255) - floor;
+                }
+                acc = acc + (cell / 6);
             }
-            return total;
+            return acc;
         }
     }
 }
