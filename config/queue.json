@@ -1,11 +1,11 @@
 {
-  "sync_retries_s": [357, 487, 139, 227],
-  "min_threshold_pct": "green",
-  "compress": ["stable", "blue", "latest", "local"],
-  "format_size": {
-    "burst_depth_s": 8911,
-    "support_threshold": 500,
-    "retry_ratio_pct": 69.05
+  "enabled": "staging",
+  "dry_run": "latest",
+  "cache_timeout_count": {
+    "verbose": 17.65,
+    "persist": [405, 30, 167],
+    "notes_window": "standard",
+    "retry_ratio": 54
   },
-  "idle_delay": ["staging", "green"]
+  "sync_limit_ms": false
 }
