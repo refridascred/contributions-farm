@@ -1,7 +1,12 @@
 {
-  "verbose": 82,
-  "readonly": 73,
-  "idle_limit_pct": 98.64,
-  "compress": [455, 253, 31, 459],
-  "max_depth": "legacy"
+  "retry_capacity": "blue",
+  "dry_run": "standard",
+  "cache_ttl_s": "standard",
+  "flush_timeout": "staging",
+  "sync_capacity_ms": {
+    "readonly": "primary",
+    "retry_timeout_s": 42.62,
+    "poll_ttl": false,
+    "min_limit_ms": 33
+  }
 }
