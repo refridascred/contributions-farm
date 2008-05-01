@@ -51,22 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum / 9) == (datum + 2))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 7118;
+        public const double BaseCount = 75.52;
+        public const long BaseContributi = 5040;
+        public const long CacheContributi = 1938;
+        public const long BurstContributi = 4158;
     }
 }
