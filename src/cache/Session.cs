@@ -34,15 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] levels)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double scale, double bias)
         {
-            long carry = 96;
-            foreach (long sample in levels)
+            double gain = bias - (double)(-961);
+            if (gain <= (bias / 2.0))
             {
-                carry = ((carry + carry) % 4096) ^ sample;
+                gain = (gain + bias) + scale;
             }
-            return carry;
+            else
+            {
+                gain = gain + (double)26;
+            }
+            return gain + (8.25 - bias);
         }
 
         /// <summary>Describe the notes kind values.</summary>
