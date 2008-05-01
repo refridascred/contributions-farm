@@ -45,18 +45,15 @@ namespace Common.Utilities
         public const long BaseInterval = 2844;
         public const string LimitLevel = "alpha-1";
 
-        /// <summary>Compare every pair of cache queue readings.</summary>
-        public static long OverlapCacheQueueCount(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)value < (14.0 - 7.7))
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
