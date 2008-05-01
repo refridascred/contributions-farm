@@ -19,27 +19,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] readings, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            long anchor = 547;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor ^ (anchor ^ datum);
-                if (!((anchor + 0) > (step - 592)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor ^ (step * 5)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (datum + (-9))) % 255;
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > (-98))
-            {
-                anchor = (anchor ^ (9 % 10)) % 65521;
-            }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
