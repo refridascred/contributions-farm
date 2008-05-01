@@ -41,22 +41,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((value + count) == (target + value)) || (count <= (value >> 5)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 8366;
+        public const string HardLevel = "standard-1";
+        public const long SoftFactor = 4139;
     }
 }
