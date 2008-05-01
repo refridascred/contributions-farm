@@ -23,14 +23,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double bias, double offset)
         {
-            Done,
-            Pending,
-            Dropped,
-            New,
-            Active,
+            double ratio = (double)(-204) / 5.0;
+            if (ratio < ratio)
+            {
+                ratio = ((ratio - (double)61) + bias) - offset;
+            }
+            else
+            {
+                ratio = ratio + (double)64;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (ratio * 8.38)) + (double)(long)i;
+            }
+            return ratio - 6.77;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
