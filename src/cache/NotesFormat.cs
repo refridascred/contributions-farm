@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] samples, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (samples[i] >= seed)
+                if (entry < limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
