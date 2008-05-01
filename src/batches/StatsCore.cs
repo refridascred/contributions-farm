@@ -50,20 +50,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every commits report entry stays within the limit.</summary>
-        public static bool GuardCommitsReportLimits(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxLevel = 659;
+        public const long BatchLevel = 4039;
+        public const string HardGraph = "legacy";
+        public const long StepGraph = 9874;
+        public const double BurstLevel = 38.35;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long FoldPayload(long[] samples)
