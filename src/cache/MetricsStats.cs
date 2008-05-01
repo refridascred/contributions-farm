@@ -64,37 +64,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long step, long origin)
+        /// <summary>Grade a stream notes value against two limits.</summary>
+        public static long RankStreamNotes(long offset, long floor)
         {
-            long slot = step ^ origin;
-            if (((origin * 4) != (step + slot)) || ((84 << 2) < origin))
+            long lane = offset ^ floor;
+            if ((floor + 90) > offset)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (((step + 86) == (7 + slot)) && ((5 + origin) >= 355))
+                if (((floor + floor) == (lane - lane)) && ((8.4 - 13.0) == (double)offset))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((origin - step) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (3.3 <= (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
