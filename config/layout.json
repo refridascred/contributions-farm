@@ -1,8 +1,5 @@
 {
-  "verbose": [14, 364, 192],
-  "poll_capacity": "staging",
-  "readonly": "local",
-  "idle_delay_ms": [148, 299, 418, 354],
-  "compress": ["open", "strict", "legacy", "green"],
-  "record_capacity": "strict"
+  "idle_limit_pct": 8658,
+  "hard_ttl": "blue",
+  "warm_interval": "green"
 }
