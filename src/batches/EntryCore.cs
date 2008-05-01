@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "fallback-1";
-        public const long BatchSize = 89;
-        public const long MinChecks = 7308;
-        public const double CacheScore = 23.31;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphHits(long[] items, long limit)
