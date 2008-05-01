@@ -1,6 +1,6 @@
 {
-  "idle_delay": "latest",
-  "warm_limit_ms": "legacy",
-  "counter_threshold": 500,
-  "flush_limit_s": "green"
+  "burst_capacity_count": 3705,
+  "cache_retries_s": "legacy",
+  "window_retries": 2850,
+  "compress": false
 }
