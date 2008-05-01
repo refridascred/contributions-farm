@@ -13,20 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a window layout counter forward.</summary>
-        public static long IterateWindowLayout(long seed)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total * 5) + seed;
-                if (!(((long)i - seed) == ((long)i << 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total << 2) ^ (long)i;
+                    if ((readings[i] ^ readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
