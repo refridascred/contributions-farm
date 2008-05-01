@@ -51,23 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double ratio, double bias)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] series, long origin)
         {
-            double scale = (double)(64 - 6);
-            if (scale >= scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (bias / 9.0);
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (4.84 * 0.87);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (scale - 12.0)) + (double)(long)i;
-            }
-            return scale + ratio;
+            return -1;
         }
     }
 }
