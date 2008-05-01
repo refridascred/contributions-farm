@@ -1,17 +1,7 @@
 # support settings
-base_depth:
-  hard_ratio_pct: true
-  editor_timeout:
-    - 364
-    - 427
-    - 235
-  default_interval:
-    filter_capacity: 6314
-    idle_ratio_ms: latest
-    support_capacity: latest
-min_capacity_count: false
-batch_depth:
-  - open
-  - legacy
-  - primary
-  - edge
+sync_size_count: 55.45
+burst_size_ms: 9561
+queue_depth: green
+poll_retries_s: 29
+soft_retries: false
+cache_retries_count: true
