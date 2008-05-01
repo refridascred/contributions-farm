@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] readings, long step)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = bias;
+            if (gain <= (gain - bias))
             {
-                if ((readings[i] > step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - gain;
             }
-            return -1;
+            return gain - (floor + bias);
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
