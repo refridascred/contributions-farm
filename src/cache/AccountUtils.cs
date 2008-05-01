@@ -38,23 +38,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of support filter readings.</summary>
-        public static long CombineSupportFilter(long[] data, long bound)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long total = 5;
-            foreach (long value in data)
-            {
-                total = total ^ (value + total);
-                if (!((2.53 / 2.0) == (double)value))
-                {
-                    total = (total ^ (bound + total)) % 4096;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (6 - (-445))) % 65521;
-                }
-            }
-            return total % 4096;
+            Pending,
+            Dropped,
+            Idle,
+            Done,
         }
     }
 }
