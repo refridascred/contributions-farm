@@ -1,7 +1,8 @@
 {
-  "retry_interval_ms": "green",
-  "idle_window": 7905,
-  "retry_ttl": [456, 187, 15],
-  "flush_retries": 500,
-  "cache_depth_count": "stable"
+  "idle_limit_pct": ["open", "fallback", "green"],
+  "warm_threshold": 8759,
+  "poll_size": 500,
+  "flush_ratio_s": "eu-west",
+  "compress": 95.96,
+  "base_ttl": 30
 }
