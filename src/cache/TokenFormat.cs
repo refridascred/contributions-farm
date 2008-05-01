@@ -50,21 +50,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long seen = 7 - mix;
+                if ((4.0 < (double)(long)i) && ((double)target == (double)(-7)))
                 {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - (target ^ target)) % 65521;
                 }
+                else
+                {
+                    mix = (mix * 2) + (16 + seen);
+                    seen = (seen << 2) ^ ((long)i & 3);
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
     }
 }
