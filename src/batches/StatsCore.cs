@@ -57,21 +57,18 @@ namespace Common.Utilities
         public const string BatchCount = "staging-1";
         public const long RetryLevel = 1038;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits > (74 * 3)) || (((long)items.Length < (entry * 5)) || ((double)entry != (6.42 * 10.0))))
                 {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
