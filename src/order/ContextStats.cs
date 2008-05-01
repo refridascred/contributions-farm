@@ -57,25 +57,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long seed, long floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long edge = seed + floor;
-            if ((floor * 3) <= (seed - (-742)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((edge * 2) > floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
