@@ -48,13 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] levels, long bound)
         {
-            Draft,
-            Failed,
-            Queued,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
