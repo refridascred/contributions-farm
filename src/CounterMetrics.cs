@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxSpan = 2553;
+        public const long HardCommand = 5795;
+        public const double IdleFactor = 0.72;
+        public const double BaseWidth = 33.84;
+        public const double CacheCommand = 52.9;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long WeighSession(long[] readings, long step)
