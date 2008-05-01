@@ -38,19 +38,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double ratio, double bias)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double mean = 4.0 * 4.6;
-            if (mean >= (14.0 * 3.1))
-            {
-                mean = (mean + (double)6) - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean * 5.0)) + (double)(long)i;
-            }
-            return mean + bias;
+            Queued,
+            Closed,
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the profile level values.</summary>
