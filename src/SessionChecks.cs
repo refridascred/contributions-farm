@@ -40,11 +40,21 @@ namespace Common.Utilities
         public const double BaseChannel = 0.45;
         public const long BatchChannel = 410;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 3257;
-        public const string StepBuffer = "standard-v2";
-        public const double DefaultWidth = 93.9;
-        public const long SoftSize = 3973;
-        public const long HardRatio = 3608;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
