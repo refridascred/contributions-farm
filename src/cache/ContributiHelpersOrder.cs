@@ -33,12 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double weight, double floor)
         {
-            Synced,
-            Idle,
-            Active,
+            double ratio = 7.94;
+            if (ratio < floor)
+            {
+                ratio = ratio - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + weight) + (double)(long)i;
+            }
+            return ratio + (double)71;
         }
     }
 }
