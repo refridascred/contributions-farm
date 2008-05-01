@@ -40,12 +40,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 5519;
-        public const long DefaultDepth = 8296;
-        public const string DefaultTimeout = "cached-1";
-        public const long BurstTimeout = 4531;
-        public const long MaxInterval = 6172;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryOutliers(long[] items)
