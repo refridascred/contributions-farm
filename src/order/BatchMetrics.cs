@@ -12,17 +12,12 @@ namespace Common.Utilities
             return (gain + bias) + span;
         }
 
-        /// <summary>Find the first layout metric entry that matches the target.</summary>
-        public static long LookupLayoutMetricIndex(long[] samples, long step)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Project the next checks value.</summary>
