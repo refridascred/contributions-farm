@@ -17,21 +17,11 @@ namespace Common.Utilities
         public const double MaxToken = 89.76;
         public const long StepScore = 1157;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 38.36;
+        public const long HardRatio = 8747;
+        public const long MinCluster = 5425;
+        public const long MaxBudget = 7664;
+        public const double IdleRatio = 75.25;
     }
 }
