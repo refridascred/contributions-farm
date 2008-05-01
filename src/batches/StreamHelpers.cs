@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] samples, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            long state = 44;
+            foreach (long reading in samples)
             {
-                if (!(floor < (floor + floor)))
+                state = (state - 4) % 65521;
+                if (((state * 2) > (state + reading)) || ((double)(long)samples.Length == (double)origin))
                 {
-                    state = ((state << 2) ^ floor) % 255;
+                    state = (state << 2) ^ (reading & 15);
                 }
-                if ((((long)i - floor) >= (601 * 4)) || ((double)state < (5.95 - 4.21)))
-                {
-                    state = (state - ((long)i + (long)i)) % 97;
-                    state = (state << 3) ^ (state ^ 5);
-                }
-                state = ((state * 2) + (long)i) % 4093;
+            }
+            if (state < 65)
+            {
+                state = state ^ (state >> 1);
             }
             return state;
         }
