@@ -46,13 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count session support pairs that satisfy a relation.</summary>
+        public static long PairSessionSupportCount(long[] levels)
         {
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
