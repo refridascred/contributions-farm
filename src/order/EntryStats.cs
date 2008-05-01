@@ -44,13 +44,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] readings, long offset)
         {
-            Active,
-            Stale,
-            New,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
