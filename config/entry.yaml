@@ -1,5 +1,12 @@
 # entry settings
-sync_capacity_count: fallback
-hard_threshold_s: 100
-hard_limit_s: 53
-entry_timeout: false
+readonly: true
+strict:
+  strict: 23.74
+  default_size_s: false
+  window_interval: 59.29
+  schema_ratio:
+    - 158
+    - 244
+    - 154
+batches_threshold: 13.9
+order_threshold: eu-west
