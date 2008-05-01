@@ -13,11 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
