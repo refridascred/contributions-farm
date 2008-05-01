@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data)
+        /// <summary>Measure how many entry channel samples are out of range.</summary>
+        public static long CountEntryChannelGaps(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((double)datum < 8.7)
+                if (((99 + seed) >= seed) && ((count % 64) == ((long)values.Length + value)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
