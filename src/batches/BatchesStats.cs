@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the editor level values.</summary>
