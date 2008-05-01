@@ -27,16 +27,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                score = score ^ (origin - origin);
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Synced,
+            Idle,
+            Active,
         }
     }
 }
