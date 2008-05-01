@@ -54,19 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] levels, long target)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double gain, double span)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            double ratio = 7.0;
+            if (ratio <= (gain + ratio))
             {
-                if (reading > target)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio - span;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio + gain)) + (double)(long)i;
+            }
+            return ratio + gain;
         }
     }
 }
