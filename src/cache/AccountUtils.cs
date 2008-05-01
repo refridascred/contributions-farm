@@ -20,11 +20,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
             public long Score { get; set; }
-            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count window context pairs that satisfy a relation.</summary>
