@@ -37,16 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix + mix) % 65521;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Closed,
+            Stale,
+            Done,
         }
     }
 }
