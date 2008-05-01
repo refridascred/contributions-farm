@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a order cache value against two limits.</summary>
-        public static long BucketOrderCache(long floor, long floor2)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long origin, long seed)
         {
-            if ((floor - floor2) <= (floor + 5))
+            long lane = origin + seed;
+            if (lane > (seed + seed))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((2.0 - 20.0) <= (double)floor)
+                if (603 <= (seed >> 5))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (floor < (floor ^ 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 6;
                 }
             }
         }
