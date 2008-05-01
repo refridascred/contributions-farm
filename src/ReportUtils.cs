@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 3318;
+        public const long StepRecord = 6677;
+        public const long LimitRecord = 3031;
+        public const double RetryTimeout = 50.64;
+        public const double MinRecord = 72.71;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long IterateEntry(long origin)
