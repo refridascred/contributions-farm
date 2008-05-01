@@ -1,6 +1,10 @@
-id,count,token
-1,70.77,blue
-2,9.75,primary
-3,223,97.97
-4,standard,875
-5,42.96,217
+id,level,score
+1,blue,legacy
+2,58.81,29.51
+3,250,40.49
+4,19.49,981
+5,blue,edge
+6,fallback,806
+7,staging,109
+8,0.11,25.0
+9,7.09,87
