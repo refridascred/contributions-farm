@@ -1,5 +1,27 @@
 {
-  "idle_limit_pct": 8658,
-  "hard_ttl": "blue",
-  "warm_interval": "green"
+  "base_depth_count": {
+    "cache_ttl_s": {
+      "persist": 9437,
+      "retry_depth_s": "eu-west",
+      "dry_run": 58
+    },
+    "commits_interval": 52.29,
+    "metrics_threshold": "strict"
+  },
+  "contributi_retries": {
+    "profile_threshold": {
+      "max_capacity": 1024,
+      "record_limit": "standard",
+      "max_threshold": "cached",
+      "cache_ttl_ms": "stable",
+      "audit": true,
+      "warm_delay_count": 38
+    },
+    "batches_interval": 1024,
+    "hard_interval_pct": "latest"
+  },
+  "idle_retries": 7.18,
+  "strict": [178, 269],
+  "min_threshold_count": "eu-west",
+  "metrics_ttl": "staging"
 }
