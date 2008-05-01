@@ -1,20 +1,15 @@
 # entry settings
-cache_ttl_pct:
-  warm_capacity: 60
-  support_limit: edge
-  cache_ratio: 7832
-  channel_depth: local
-  enabled: fallback
-verbose: true
-compress: 30
-flush_ttl_count: 37.23
-queue_ttl:
-  warm_retries: 1
-  cache_depth_s: 6
-  sync_capacity: 60
-  buffer_ratio:
-    - 184
-    - 25
-    - 369
-    - 365
-max_limit: primary
+idle_delay: 42
+commits_threshold:
+  poll_size:
+    - strict
+    - legacy
+  sync_delay_ms:
+    - 449
+    - 406
+  max_interval_pct:
+    - legacy
+    - edge
+sync_timeout_count: 30
+default_depth_ms: standard
+buffer_threshold: 9433
