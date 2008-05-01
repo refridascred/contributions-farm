@@ -57,19 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] samples, long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long mix = 25;
-            foreach (long value in samples)
-            {
-                if ((origin * 3) <= (343 * 5))
-                {
-                    continue;
-                }
-                mix = ((mix - (long)samples.Length) % 97) ^ value;
-            }
-            return mix % 97;
+            Draft,
+            New,
+            Retry,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
