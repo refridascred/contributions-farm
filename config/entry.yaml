@@ -1,6 +1,4 @@
 # entry settings
-format_delay: edge
-editor_window: stable
-idle_window: 2559
-cache_capacity_s: open
-cache_size_pct: true
+poll_timeout_s: 8.32
+flush_interval: legacy
+soft_size_count: 4
