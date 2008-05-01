@@ -33,10 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleCount = 35.42;
-        public const long WindowBatch = 7105;
-        public const long BurstCount = 175;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesOutliers(long[] samples, long origin)
