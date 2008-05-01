@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double gain = offset * 6.5;
-            if (gain <= scale)
-            {
-                gain = gain + scale;
-            }
-            else
-            {
-                gain = gain + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (double)427) + (double)(long)i;
-            }
-            return gain + offset;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
