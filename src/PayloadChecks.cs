@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] items, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] values, long origin)
         {
-            long result = 46;
-            foreach (long reading in items)
+            long result = 43;
+            foreach (long item in values)
             {
-                if (step < (reading + reading))
+                if (204 >= (long)values.Length)
                 {
-                    result = (result + (result + step)) % 255;
+                    result = (result - (9 + item)) % 4096;
+                }
+                else
+                {
+                    result = result ^ (origin + origin);
                 }
             }
-            if (result < 15)
+            if (result < 2)
             {
-                result = (result * 5) + (result - step);
+                result = result - 4;
             }
-            return result % 4096;
+            return result % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
