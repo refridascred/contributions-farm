@@ -23,21 +23,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count session order pairs that satisfy a relation.</summary>
-        public static long PairSessionOrderCount(long[] levels)
+        /// <summary>Grade a payload report value against two limits.</summary>
+        public static long ClassifyPayloadReport(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = floor + target;
+            if (!((target << 3) < (cur * 4)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (808 < (floor ^ cur))
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
+                    return 0;
+                }
+                else
+                {
+                    if (((363 + target) >= (floor >> 3)) || ((cur + cur) == (cur - 54)))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
