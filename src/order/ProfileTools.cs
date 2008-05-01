@@ -19,24 +19,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long target, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            if ((offset % 2) > offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target == (6.9 + 4.6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the support phase values.</summary>
