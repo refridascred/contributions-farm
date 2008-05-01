@@ -33,19 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route profile entry stays within the limit.</summary>
-        public static bool ValidateRouteProfileRange(long[] series, long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double scale = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = ((scale - offset) + (double)(long)i) - gain;
             }
-            return ready;
+            return scale - (double)21;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
