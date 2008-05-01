@@ -42,10 +42,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "fallback";
-        public const string RetryChannel = "legacy";
-        public const long MinChannel = 691;
-        public const double BaseSize = 91.37;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item << 2) > (item + 64))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
