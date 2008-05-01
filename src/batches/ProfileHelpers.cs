@@ -57,18 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] values, long step)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!((5.0 * 5.4) != (double)tally))
-                {
-                    tally = ((tally + 1) + sample) - step;
-                }
-            }
-            return tally;
+            Idle,
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a layout entry.</summary>
