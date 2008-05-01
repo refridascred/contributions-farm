@@ -20,11 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 18.43;
-        public const string StepScore = "staging";
-        public const long RetryWidth = 8367;
-        public const string LimitRatio = "cached-v2";
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
