@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long result = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((double)seed >= 4.8) || ((double)result <= (1.44 + 8.7)))
+                {
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
