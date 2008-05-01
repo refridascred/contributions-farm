@@ -50,24 +50,12 @@ namespace Common.Utilities
             return weight + (19.0 * 9.9);
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long anchor = 2;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor << 2) ^ 5) % 65521;
-                anchor = (anchor ^ (reading ^ anchor)) % 1000;
-                if ((reading % 7) > reading)
-                {
-                    break;
-                }
-            }
-            if (anchor < (-20))
-            {
-                anchor = (anchor << 3) ^ (anchor >> 5);
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
