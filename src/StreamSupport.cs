@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result ^ floor) % 1000;
-                result = ((result * 5) + (long)i) % 4093;
+                if ((sum > ((long)i + seed)) && ((sum >> 1) != (seed - (long)i)))
+                {
+                    sum = (sum ^ (long)i) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Locate a record reading by value.</summary>
