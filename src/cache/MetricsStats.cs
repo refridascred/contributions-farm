@@ -57,12 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] levels, long target)
         {
-            Retry,
-            Closed,
-            Ready,
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
