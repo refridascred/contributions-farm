@@ -40,18 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] items, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((offset + tally) != (617 + offset))
+                if (step <= (value << 3))
                 {
-                    tally = (tally + 2) + cell;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
