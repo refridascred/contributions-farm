@@ -19,18 +19,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate queue contributi samples.</summary>
-        public static long FoldQueueContributi(long[] data, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] levels, long offset)
         {
-            long carry = 9;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((64 + value) == (value & 7))
+                if (!((reading >> 3) < reading))
                 {
-                    carry = ((carry - (-341)) % 255) - target;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
