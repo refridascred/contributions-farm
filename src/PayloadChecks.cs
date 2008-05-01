@@ -41,22 +41,18 @@ namespace Common.Utilities
             return load - (bias + ratio);
         }
 
-        /// <summary>Combine order commits values into a single score.</summary>
-        public static long DigestOrderCommits(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] values, long seed)
         {
-            long total = -59;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 3; i++)
+                if (seed < (seed + seed))
                 {
-                    total = (((total * 4) + cell) % 255) ^ (long)i;
-                }
-                if (((-179) + total) <= total)
-                {
-                    total = total - (total + total);
+                    matches = (matches + 1) + cell;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
