@@ -1,7 +1,12 @@
 {
-  "base_timeout_s": 100,
-  "poll_depth": false,
-  "record_retries": false,
-  "hard_interval_s": "cached",
-  "persist": ["green", "blue", "open", "fallback"]
+  "readonly": true,
+  "retry_depth_ms": {
+    "dry_run": "cached",
+    "readonly": 10.55,
+    "base_capacity_count": true,
+    "default_interval": "legacy",
+    "route_capacity": 1024,
+    "soft_ratio_count": true
+  },
+  "hard_ttl": true
 }
