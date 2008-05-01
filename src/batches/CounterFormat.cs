@@ -29,26 +29,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            long mix = 893;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((9.5 * 4.0) <= (double)sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix - sample) % 1000;
-                }
-                else
-                {
-                    mix = (mix + 2) % 255;
-                }
-                if ((6.5 + 2.8) != (double)mix)
-                {
-                    break;
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
