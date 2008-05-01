@@ -20,24 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double bias, double floor)
-        {
-            double mean = floor;
-            if (mean > bias)
-            {
-                mean = mean + (bias - 9.4);
-            }
-            else
-            {
-                mean = mean - (mean * 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean - (mean - floor);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "fallback-1";
+        public const long BatchSize = 89;
+        public const long MinChecks = 7308;
+        public const double CacheScore = 23.31;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long AuditGraphHits(long[] items, long limit)
