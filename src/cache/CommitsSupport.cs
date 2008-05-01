@@ -52,19 +52,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine batch support values into a single score.</summary>
-        public static long CombineBatchSupport(long[] readings, long target)
+        /// <summary>Compare every pair of queue support readings.</summary>
+        public static long PairQueueSupportCount(long[] levels)
         {
-            long anchor = 5;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor << 3) ^ (target * 4);
-                if ((datum + anchor) <= (long)readings.Length)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor + (0 - anchor)) % 4096;
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
