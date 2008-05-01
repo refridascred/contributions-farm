@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] samples, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
