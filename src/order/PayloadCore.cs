@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Classify a filter queue pair into a bucket.</summary>
+        public static long GradeFilterQueue(long offset, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            long next = offset ^ floor;
+            if (((next << 3) <= next) || ((740 ^ offset) >= (offset >> 1)))
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((offset ^ floor) < (floor + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor < (2.9 - 2.86))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
