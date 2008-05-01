@@ -1,11 +1,13 @@
 {
-  "profile_timeout": 7348,
-  "sync_window_count": {
-    "retry_interval": 9180,
-    "readonly": 9297,
-    "retry_retries_count": [116, 245],
-    "verbose": ["primary", "green", "legacy"]
+  "min_size_ms": 12.42,
+  "verbose": true,
+  "default_ratio_s": true,
+  "cache_capacity": 30,
+  "retry_ttl": {
+    "account_window": 500,
+    "sync_threshold": "local",
+    "sync_timeout": false,
+    "tools_limit": ["staging", "blue", "standard", "standard"]
   },
-  "persist": false,
-  "default_timeout_ms": "stable"
+  "persist": "legacy"
 }
