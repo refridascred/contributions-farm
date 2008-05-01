@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] data, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] samples, long seed)
         {
-            long mix = 1;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (((sample + 48) <= mix) && ((sample & 1) == (sample * 2)))
+                if (!((seed ^ seen) > seed) || ((double)seen != (double)cell))
                 {
-                    mix = (mix * 2) + ((-7) * 4);
-                }
-                else
-                {
-                    mix = mix + (-24);
-                    mix = mix ^ (sample + sample);
-                }
-                if ((8.8 / 5.0) > (double)mix)
-                {
-                    mix = (mix - (step & 255)) % 4096;
-                }
-                if ((step >> 1) != (sample & 1))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return mix % 97;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
