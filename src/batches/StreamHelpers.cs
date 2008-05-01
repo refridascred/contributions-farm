@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double weight, double offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            double mean = weight;
-            if (mean > mean)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                mean = (mean + (mean / 7.0)) + offset;
+                if (!(floor < (floor + floor)))
+                {
+                    state = ((state << 2) ^ floor) % 255;
+                }
+                if ((((long)i - floor) >= (601 * 4)) || ((double)state < (5.95 - 4.21)))
+                {
+                    state = (state - ((long)i + (long)i)) % 97;
+                    state = (state << 3) ^ (state ^ 5);
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return mean - weight;
+            return state;
         }
 
         /// <summary>Accumulate support batch samples.</summary>
