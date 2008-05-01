@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] data, long origin)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((4.9 * 10.0) < (double)entry)
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a account stats.</summary>
