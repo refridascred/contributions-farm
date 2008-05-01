@@ -1,12 +1,8 @@
 {
-  "readonly": true,
-  "burst_ttl": 1024,
-  "metrics_retries": [329, 416, 95, 442],
-  "audit": {
-    "window_limit": "fallback",
-    "soft_timeout_pct": 11,
-    "warm_interval": "cached",
-    "schema_timeout": ["fallback", "blue", "edge"]
-  },
-  "max_delay": 4891
+  "idle_delay_pct": "stable",
+  "audit": "green",
+  "metrics_delay": 5156,
+  "support_depth": ["primary", "legacy", "standard"],
+  "soft_delay_s": 43.96,
+  "cache_timeout": "blue"
 }
