@@ -19,17 +19,16 @@ namespace Common.Utilities
         public const long IdleRatio = 4695;
         public const double MinRecord = 5.66;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long offset)
+        /// <summary>Iterate the report metric series from a seed.</summary>
+        public static long RollReportMetric(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (limit * 4)) % 97;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the commits kind values.</summary>
