@@ -22,11 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstTimeout = "standard-1";
-        public const string RetryCounter = "standard-v2";
-        public const string DefaultScore = "local-edge";
-        public const long IdleTimeout = 3614;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitTimeout = 3615;
+        public const long MaxDepth = 8381;
+        public const string MinBudget = "primary-1";
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double AdjustLayout(double scale, double span)
