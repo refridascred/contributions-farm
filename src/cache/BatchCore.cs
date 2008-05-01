@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double bias, double floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long floor, long origin)
         {
-            double gain = bias;
-            if (gain <= (gain - bias))
+            if ((double)floor != (9.71 / 6.0))
             {
-                gain = gain - gain;
+                return 2;
             }
-            return gain - (floor + bias);
+            else
+            {
+                if ((origin / 5) <= (origin + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin < floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(0 <= (floor + floor)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
