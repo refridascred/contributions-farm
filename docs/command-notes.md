@@ -1,10 +1,11 @@
 # Command notes
 
-The account report groups every record by queue.
-Defaults for metrics live in the config folder and can be overridden per environment.
+Each report is validated before it reaches the editor queue.
+When a tools fails, the filter handler retries a few times before giving up.
+Keep context and command names short and lowercase.
 
 ## Guidelines
 
-- Log every filter change
-- Prefer checks defaults
-- Review buffer limits each release
+- Document new tools fields
+- Log every githubfarm change
+- Prefer profile defaults
