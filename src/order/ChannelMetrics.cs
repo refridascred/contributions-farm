@@ -31,13 +31,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long origin)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
