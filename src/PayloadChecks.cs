@@ -67,13 +67,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            New,
+            Stale,
+            Idle,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
