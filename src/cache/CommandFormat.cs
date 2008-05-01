@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long limit)
+        /// <summary>Look up the position of a batch format sample.</summary>
+        public static long LookupBatchFormatIndex(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= limit)
+                if (levels[i] >= floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
