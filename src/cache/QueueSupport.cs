@@ -33,13 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the batches cache series from a seed.</summary>
-        public static long SeriesBatchesCache(long offset)
+        /// <summary>Derive the next cluster checks value from a seed.</summary>
+        public static long RollClusterChecks(long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                total = ((total * 2) + (long)i) % 101;
             }
             return total;
         }
