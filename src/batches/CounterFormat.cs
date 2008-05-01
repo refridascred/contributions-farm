@@ -30,13 +30,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultTimeout = 24.28;
+        public const long LimitWindow = 475;
+        public const double BaseSize = 10.27;
+        public const double SoftWindow = 71.34;
     }
 }
