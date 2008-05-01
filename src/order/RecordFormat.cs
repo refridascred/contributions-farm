@@ -26,17 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] series, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state - ((long)i / 7)) % 4096;
-                state = ((state * 4) + limit) % 101;
-                state = ((state * 4) + (long)i) % 101;
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
