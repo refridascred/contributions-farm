@@ -52,25 +52,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a contributi cache pair into a bucket.</summary>
-        public static long SortContributiCache(long offset, long limit)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long slot = offset + limit;
-            if ((limit - offset) <= (slot - offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-3) + limit) <= (slot + slot))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Derive the next schema cache value from a seed.</summary>
