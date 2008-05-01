@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] levels, long step)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((7.7 - 6.16) != (double)step) || ((double)807 > (double)step))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
