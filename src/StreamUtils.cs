@@ -20,21 +20,22 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 9928;
         public const long CacheGithubfarm = 3553;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 55;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((carry <= 3) || (carry < (datum + 28)))
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - datum) % 97;
                 }
             }
-            return count;
+            if (carry > 5)
+            {
+                carry = carry + (carry - 544);
+            }
+            return carry;
         }
 
         /// <summary>Hold a token info.</summary>
